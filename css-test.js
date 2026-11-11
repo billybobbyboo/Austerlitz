@@ -1115,7 +1115,8 @@ if(cerrs) process.exitCode=1;
   const blk=media=>allRules.filter(r=>r.media===media);
   const ph=blk(q||"(max-width:720px)"), ls=blk("(max-height:430px)");
   const decl=(rules,sel,p)=>{ const r=rules.filter(x=>x.sels.indexOf(sel)>=0); let v=null; r.forEach(x=>declsOf(x.body).forEach(([k,w])=>{ if(k===p) v=w; })); return v; };
-  if(q!=="(max-width:720px) and (min-height:431px)") herr.push("app.js: PHONE_Q is not the phone query (max-width:720px) and (min-height:431px): "+q);
+  /* since the final audits' Stage 6 (CL-UX-01): a desktop's narrow window at any height too (a fine pointer); a phone held landscape (coarse) keeps decision 226 (a)'s layout */
+  if(q!=="(max-width:720px) and (min-height:431px), (max-width:720px) and (pointer:fine)") herr.push("app.js: PHONE_Q is not the phone query (max-width:720px) and (min-height:431px), (max-width:720px) and (pointer:fine): "+q);
   if(!ph.length) herr.push("style.css: no @media "+q+" block (the phone layout)");
   ["#prev","#next","#eyesbtn",".speeds",".tb-acts"].forEach(s=>{ if(decl(ph,s,"display")!=="none") herr.push("style.css: "+s+" not hidden on the phone's timeline (decision 225, 224)"); });
   ["#prev","#next","#eyesbtn",".speeds"].forEach(s=>{ if(decl(ls,s,"display")!=="none") herr.push("style.css: "+s+" not off a phone's timeline held landscape (decisions 225, 226)"); });

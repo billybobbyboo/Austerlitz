@@ -1,5 +1,70 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, 1 of 3): reflow, short screens and forced colours (CL-UX-01, CL-UX-09, CL-UX-18)
+
+**Status: on `claude/dreamy-johnson-uadkqa-reflow` (draft PR into `main`, for review, not merged).** WP-09's reflow part. Presentation and the suite
+only: no data file and no guarded declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b0935.html`). Owner decisions applied:
+305 (a), the phase text from the timeline on short screens; 306, the two new `check:visual` cases' limits as measured (`docs/final-stage6-evidence/questions.md`).
+`austerlitz-command-map.html` is now 2,971,888 bytes, md5 `646b1c4f4869d76c5dddcf5c2e67ea5c` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+*Reconciled with `main` after PR #94 (WP-10's meres, `dc04a02`; merged in, not rebased):* no conflict but `package.json`'s baseline line; the
+merged build is 2,982,383 bytes, md5 `d3fdd0ff49dac05681792a570f62d222`, and `check:baseline` moves to it. The self-test's manifest is `main`'s (337: this PR
+adds no self-test check). On the merged build: `npm test`, `check:data` (143 identical) and `check:chronology` pass here; `check:selftest`,
+`check:contrast` and `check:visual` run again on CI: passed, every job (run 42814196635 on `c422983`, the merged build `d3fdd0ff...`, 4 h 20 min;
+`check:selftest` 337 checks). The results below are the unmerged build's.
+
+### What changed, and why
+
+- **Short screens (CL-UX-01; WCAG 1.4.10).** *Was:* at 430 px tall or less, where the dispatch card gives way, its text (the phase's narrative,
+  its events, its changes) had no other way in below 1080 px wide; at 400% zoom on a 1600 x 900 screen (400 x 225) or WCAG's reflow width (320 x 256)
+  the timeline's controls wrapped over the tools and the Panels button, the rail had 0 px for its tabs' content, and the Layers panel 70 px. *Is:*
+  a "Phase text" button in the timeline's control row (decision 305 (a); its words from `LABELS.phone`) opens the card as a sheet over the map, scrolling
+  inside, with the grip, the lede, the events, the changes and the phase list, focus on its grip (`app.js` `SHORT_Q`, `shortSheet`, `setDSheet`); the first
+  card, the tools, the rail, the dossier and the Layers panel take the screen's height and scroll inside it; the control row wraps. A desktop's
+  window under 720 px wide takes the phone layout at any height (`PHONE_Q`'s second clause, `(max-width:720px) and (pointer:fine)`), its timeline's
+  controls at 32 px (a mouse; above the 24 px floor); a phone held landscape (a coarse pointer) keeps decision 226 (a)'s layout.
+- **Forced colours (CL-UX-09; WCAG 1.4.1, 1.4.11).** *Was:* under Windows High Contrast every pressed or selected state drawn by a background alone
+  vanished (the presentation, the ground, the speeds, the vantages, Follow, the layers' rows, the current phase), 22 of 25 event markers vanished, the
+  key's swatches and the side marks before names became identical squares. *Is:* the states drawn in the user's own Highlight and HighlightText
+  (`!important` inside the block: every control's own pressed rule is more specific than an attribute selector, and a first version lost to them,
+  found by its check), the tabs underlined, the side colours (content: the nation) kept with a CanvasText edge.
+- **The card under the tools (CL-UX-18, its 800 x 450 part).** *Was:* at 800 x 450 with the Panels open, the vantage row (wrapped to a third line)
+  lay over the dispatch card's top by 11 px (the tools ending at 119 px, the card starting at 108). *Is:* the tools' lower edge kept as `--tools-b`
+  (`app.js` `syncToolsEdge`, by a ResizeObserver and the resize), the undocked card's height capped to end below it (the card now starts at 129 px).
+  CL-UX-18's other parts: the caption's orphan separators are held since WP-08 (CL-MAP-06's caption reads); the grip's drag is WP-09's focus PR's.
+
+### Checks added, each failing without its fix
+
+- `check:contrast` (`tools/visual/contrast.js`): a third page at 320 x 256, density 4, a desktop's (`REFLOW_STATES`: the first card, the screen after it,
+  the phase text's sheet scrolled to its lede, the Panels, the sources sheet, a dossier, the keys overlay, the Layers panel; each only with what it
+  opens on the screen or scrolling in its own box, and no horizontal scroll; every text at AA) and a fourth in forced colours (`FC_STATES`: the pressed
+  presentation, vantage, speed and phase each drawn in the theme's Highlight and its neighbour not; the event markers drawn, the two sides apart; the
+  key's swatches apart; the layers' rows). Negative controls (`tools/final-stage6/contrast-states.js`, the states alone): on `main`'s build
+  `reflow-explore`, `reflow-phase` (no "Phase text") and `reflow-panels` are not reached, nor any of the four forced-colours states (`docs/final-stage6-evidence/wp09/reflow-controls.txt`); on the branch's previous build, without the `!important`, `fc-explore` is not reached (the pressed buttons keep the app's accent, not Highlight).
+- `check:visual`: two cases (decision 306), `zoom-320x256-explore` and `zoom-400x225-explore`, a desktop's browser at 400% (`harness.js`
+  `PHONE_DEVICES.zoom`: density 4, a mouse, the browser's own agent; reached by clicks), judged by the phone cases' measures: no press target under 24 px,
+  no text cut, nothing off the screen, no panels overlapping, every feature on the screen or one control away but the phone's allowances (the sources,
+  "Whose eyes?"), the phases one press away by "Phase text" (`phone-measure.js`'s openers). Their limits as measured (`thresholds.js`): unobstructed
+  0.453 and 0.386, drops 4 and 6, the timeline 141 px, framing 1 and 0 items of 3 in the free rectangle. A first run of them found the short window's
+  timeline track at 30 px, the hour numerals cut and the clock's rail 6 px off the screen: fixed (the phone's 36 px), not allowed.
+- `check:visual`'s and `check:selftest`'s `narrow` live block: at 800 x 450 in Study with the Panels open, the tools and the card both shown and not
+  overlapping (`thresholds.js` `checkLive`). Negative control (`tools/final-stage6/ux18.js`, the step alone with the block's rule): `main`'s build fails
+  (the card at 108 px under the tools' 119), this build passes (129).
+
+### Verified
+
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 movement findings, 0 errors).
+  `check:baseline`: passes.
+- `check:contrast` (here, the pinned Chromium 141): 9,119 text elements, 120 distinct pairs, 0 below AA, 0 under 10.5 px; 0 font failures; 57 states
+  of 57 reached (12 new: 8 at 320 x 256, 4 in forced colours); the 8 start-up cases pass.
+- On CI (run 42758980065 on `17bbcfb`, `checks.yml`, `visual: true`; the build `646b1c4f...`, the branch's head's): passed, every job: `npm test`,
+  `check:data`, `check:chronology`, `check:selftest` (335 checks, the manifest unchanged), `check:contrast` and `check:visual` (its 41 cases, the two zoom
+  cases within their limits; the run 3 h 42 min).
+
+### Not verified here
+
+- A real screen at 400% and a real Windows High Contrast theme: the cases emulate them (Chromium's density 4 and its forced-colours emulation). The
+  screen-reader session's forced-colours items (F1-F4, `docs/final-stage6-evidence/sr-session.md`, WP-09's script PR) are for the owner.
+
 ## 2026-11 · CI: the jobs pinned to Ubuntu 24.04
 
 GitHub's `ubuntu-latest` image moved to Ubuntu 26.04 on 10 November 2026, and Playwright 1.56 (the project's pin, Chromium 141.0.7390.37,
@@ -88,7 +153,9 @@ All here, on this branch's final build `250b0e32...` (Chromium 141.0.7390.37, th
   disc, against the drawn ground as before). Re-run here on `overview-field`, `pratzen-low-10x` and `phone-390-explore`: the figures' and the
   standards' largest error 0 (was 0.8746, 2.337, 0.8746), each case passing `check-report.js`. The failed run is the negative control: the same build
   judged by the measure without the ice. Every other measure of that run passed (the motion block, culling in motion, the census, the live blocks).
-- `check:visual` on CI, second run: __CI2__
+- `check:visual` on CI, second run (42770857135 on `1bb13f2`, `checks.yml`, `visual: true`; the build `250b0e32...`, the merged head's): passed,
+  every job (the run 4 h 13 min; every case's figures and standards on the drawn ground or a mere's ice). PR #94 was merged (`dc04a02`) before the run
+  ended; this line is recorded with the reflow PR's reconciliation.
 
 ### What remains uncertain, and what is handed on
 

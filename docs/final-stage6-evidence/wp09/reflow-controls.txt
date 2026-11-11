@@ -1,0 +1,36 @@
+# main's build (3388b70b), tools/final-stage6/contrast-states.js
+reflow-explore false
+reflow-phase error: page.evaluate: TypeError: Cannot read properties of null (reading 'click')
+reflow-panels false
+reflow-sources true
+reflow-dossier true
+reflow-help true
+reflow-layers true
+fc-explore false
+fc-markers false
+fc-key false
+fc-layers false
+EXIT 1
+
+# this branch's previous build (dbd4089: no !important, no 800x450 fix), the forced-colours states
+fc-explore false
+fc-markers true
+fc-key true
+fc-layers true
+
+# this branch's build (646b1c4f), contrast.js's settings
+reflow-explore true
+reflow-phase true
+reflow-panels true
+reflow-sources true
+reflow-dossier true
+reflow-help true
+reflow-layers true
+fc-explore true
+fc-markers true
+fc-key true
+fc-layers true
+
+# tools/final-stage6/ux18.js
+main (3388b70b): FAIL {"docked":false,"rail":true,"tools":true,"card":true,"toolsBottom":119,"cardTop":108,"over":true}
+this branch (646b1c4f): OK {"docked":false,"rail":true,"tools":true,"card":true,"toolsBottom":119,"cardTop":129,"over":false}
