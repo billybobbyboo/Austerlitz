@@ -1433,6 +1433,24 @@ function mereLevel(cc,rx,rz,base){
   var lo=1e9; for(var a=0;a<96;a++){ var t=a/96*Math.PI*2; lo=Math.min(lo,displayHeight(cc[0]+Math.cos(t)*rx,cc[1]+Math.sin(t)*rz)); }
   return Math.min(displayY(base+1.2*regionalLevel(cc[0],cc[1])), lo-0.05);
 }
+/* the final audits' Stage 6, WP-10 (CL-VIS-01): what stands on a mere stands on its ice. The ice is drawn as a flat disc at its mere's level
+   (mereLevel), and the drawn ground under it lies up to 0.9 units below at 4x and 2.3 at 10.33x, so a figure seated on the drawn ground there was
+   drawn sunk through the ice (Kienmayer's riders on their phase-1 via, Dokhturov's men and Buxhowden's camp in the ponds' phase): a visual claim of
+   the drowning story the narrative keeps disputed. iceTop(h,x,z) is the height h (the drawn ground's at x,z) or, inside a mere's drawn disc where
+   its ice lies above h, the ice's own level as drawn at the factor (its mesh's height); on the flat paper map h. Presentation only: no position,
+   track or level changes; a figure's place is the model's, its seat the surface drawn there */
+var MERE_ICE=[];   /* the meres' ice discs (buildWater), read live: rescaleWorld moves them */
+function iceTop(h,x,z){
+  if(DISPLAY.flat) return h;
+  for(var i=0;i<MERE_ICE.length;i++){ var m=MERE_ICE[i], q=m.userData.mere, dx=(x-q[0][0])/q[1], dz=(z-q[0][1])/q[2];
+    if(dx*dx+dz*dz<1&&m.position.y>h) return m.position.y; }
+  return h;
+}
+/* the final audits' Stage 6, WP-10 (CL-VIS-02): inside a mere's drawn disc (its trunk or stem there), where no tree or bush stands on the ice */
+function inMereDisc(x,z){
+  for(var i=0;i<MERE_ICE.length;i++){ var q=MERE_ICE[i].userData.mere, dx=(x-q[0][0])/q[1], dz=(z-q[0][1])/q[2]; if(dx*dx+dz*dz<1) return true; }
+  return false;
+}
 /* Stage 4E (docs/STAGE4_SPEC.md sections F.1 and G.2; owner decision 79): the water's palette, one table. The meres are ice (the
    data: the Satschan mere "frozen on 2 December"; the phase-8 texts' guns firing "down on the ice"): smoother than before, taking
    the computed sun's sheen and the sky (the environment map), with a lighter rim where the shore ice meets the bank. Their
@@ -1513,7 +1531,7 @@ function buildWater(scene){
     var m=new THREE.Mesh(new THREE.CircleGeometry(1,48),iceMat);
     m.rotation.x=-Math.PI/2; m.position.set(cc[0],mereLevel(cc,rx,rz,base),cc[1]); m.scale.set(rx,rz,1);
     m.userData.mere=[cc,rx,rz,base];
-    scene.add(m); waterMeshes.push(m);
+    scene.add(m); waterMeshes.push(m); MERE_ICE.push(m);
     var r=new THREE.Mesh(new THREE.RingGeometry(ICE.rim,1,48,1),rimMat);   /* the shore ice: its outer edge the mere's own */
     r.rotation.x=-Math.PI/2; r.position.set(cc[0],mereLevel(cc,rx,rz,base)+ICE.rimLift,cc[1]); r.scale.set(rx,rz,1);
     r.userData.mere=[cc,rx,rz,base]; r.userData.mereLift=ICE.rimLift;
@@ -2218,19 +2236,27 @@ function buildWoods(scene){
   conif.forEach(function(t,i){ conVar[(i*5)%2].push(t); });
   treeMesh=new THREE.Group(); coniferMesh=new THREE.Group();
   var BARE=LAND_COL.bare;
+  /* the final audits' Stage 6, WP-10 (CL-VIS-02): no tree or bush on a mere's ice. A tree or a bush whose trunk stands inside a mere's drawn disc
+     (inMereDisc: four village trees and seventeen bank bushes by Satschan, none by Menitz) is not drawn; its draws are still taken from the
+     sequence and every other keeps its variant, its turn, its size and its colour (its index in its list), so that every other tree and bush is
+     drawn exactly as before, and nothing planned changes (the buildings are planned before the woods are drawn) */
   byVar.forEach(function(list,vi){
+    var keep=list.filter(function(t){ return !inMereDisc(t[0],t[2]); });
     var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,list.length));   /* 8F: both faces (the open shells) */
     treeNear(im.material,1/TREE8F.shrink);   /* 8H: the crowns closing near the eye */
-    im.castShadow=true; im.count=Math.max(1,list.length);
+    im.castShadow=true; im.count=Math.max(1,keep.length);
+    var n=0;
     list.forEach(function(t,k){
-      d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
-      d.scale.set(t[3],t[3]*(0.92+rnd()*0.22),t[3]); d.updateMatrix(); im.setMatrixAt(k,d.matrix);
+      var turn=rnd()*6.28, h=0.92+rnd()*0.22;
+      if(inMereDisc(t[0],t[2])) return;
+      d.position.set(t[0],t[1],t[2]); d.rotation.set(0,turn,0);
+      d.scale.set(t[3],t[3]*h,t[3]); d.updateMatrix(); im.setMatrixAt(n,d.matrix);
       tcol.setHex(BARE[(k*7+vi)%5]).convertSRGBToLinear().multiplyScalar(0.84+0.30*((k*11)%9)/9);
-      im.setColorAt(k,tcol);
+      im.setColorAt(n,tcol); n++;
     });
     if(im.instanceColor) im.instanceColor.needsUpdate=true;
-    im.userData.kinds=list.map(function(t){ return t[4]; });
-    if(list.length) treeMesh.add(im);
+    im.userData.kinds=keep.map(function(t){ return t[4]; });
+    if(keep.length) treeMesh.add(im);
   });
   var EVER=LAND_COL.conifer;
   conVar.forEach(function(list,vi){
@@ -2277,17 +2303,21 @@ function buildWoods(scene){
       scrub.push([x,displayHeight(x,z),z,sc,"stream"]);   /* bank scrub along the streams: not a wood */
     }
   });
-  scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,scrub.length));   /* 8F: both faces */
+  var scrubKeep=scrub.filter(function(t){ return !inMereDisc(t[0],t[2]); });   /* CL-VIS-02: none on a mere's ice (above) */
+  scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true,side:THREE.DoubleSide}),Math.max(1,scrubKeep.length));   /* 8F: both faces */
   treeNear(scrubMesh.material,1/TREE8F.scrubShrink);   /* 8H: the crowns closing near the eye */
   scrubMesh.castShadow=false; scrubMesh.receiveShadow=true;
+  var ns=0;
   scrub.forEach(function(t,k){
-    d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
-    d.scale.set(t[3],t[3]*0.8,t[3]); d.updateMatrix(); scrubMesh.setMatrixAt(k,d.matrix);
+    var turn=rnd()*6.28;
+    if(inMereDisc(t[0],t[2])) return;
+    d.position.set(t[0],t[1],t[2]); d.rotation.set(0,turn,0);
+    d.scale.set(t[3],t[3]*0.8,t[3]); d.updateMatrix(); scrubMesh.setMatrixAt(ns,d.matrix);
     tcol.setHex(LAND_COL.scrub[k%3]).convertSRGBToLinear().multiplyScalar(0.85+0.3*((k*7)%5)/5);
-    scrubMesh.setColorAt(k,tcol);
+    scrubMesh.setColorAt(ns,tcol); ns++;
   });
   if(scrubMesh.instanceColor) scrubMesh.instanceColor.needsUpdate=true;
-  scrubMesh.userData.kinds=scrub.map(function(t){ return t[4]; });
+  scrubMesh.userData.kinds=scrubKeep.map(function(t){ return t[4]; });
   scene.add(treeMesh); scene.add(coniferMesh); scene.add(scrubMesh);
   treeMesh.children.concat(coniferMesh.children,[scrubMesh]).forEach(seatInstances);
 }
