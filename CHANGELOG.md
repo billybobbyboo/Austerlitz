@@ -9,7 +9,8 @@
 *Reconciled with the reflow PR's branch after it took `main` (PR #94, WP-10's meres; merged in, not rebased):* the self-test's two blocks kept side by
 side (`wp09Checks`, `wp10Checks`); the merged build is 3,002,963 bytes, md5 `df4b428b0a3f5124c4d8e0c1170952a5`, and `check:baseline` moves to it. On it, here:
 `npm test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (342 checks, every one passing) pass; the manifest regenerated from that run,
-337 (`main`'s) to 342. `check:contrast` and `check:visual` run again on CI.
+337 (`main`'s) to 342. On CI (run 42922195200 on `b58b7b2`, the build `df4b428b...`): passed, every job, `check:visual` with decision 315's
+limits (4 h 16 min). `main` merged in again after PR #98 (`a7f8763`; its records only, the build unchanged).
 
 ### What changed, and why
 
