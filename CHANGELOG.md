@@ -8,6 +8,12 @@ decision 265 (a) kept). Presentation only: no data file and no guarded declarati
 `archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now 2,971,087 bytes, md5 `c50e08bc47a3f79727c4bb60e95283f1` (was 2,963,994, `3388b70b...`); `check:baseline`
 moves to it.
 
+*Reconciled (11 November 2026; merged in, not rebased) with the picture PR's branch, which holds `main` after PRs #94 and #98, the focus PR, the
+visitor-words PR and the picture PR:* the self-test's blocks kept side by side (`wp09Checks`, `wp10Checks`, `wp10pChecks`, `wp10gChecks`), the height
+guard's sites likewise. The merged build is 3,024,870 bytes, md5 `5245ec4178a3420ea4d6c60bc51d6b1e`, and `check:baseline` moves to it. On it, here: `npm
+test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (348 checks, every one passing) pass; the manifest regenerated from that run,
+346 to 348. `check:contrast` and `check:visual` run again on CI.
+
 ### What changed, and why
 
 - **CL-VIS-08, the crowns' facets near the eye (`world.js` `TREE6`, `treeNear`; decision 308: prototyped, measured, adopted within the budget).** 8H closes a
