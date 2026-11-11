@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 19d7105fcfb262f80b08579417723d84 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "19d7105fcfb262f80b08579417723d84",
- "count": 340,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build df4b428b0a3f5124c4d8e0c1170952a5 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "df4b428b0a3f5124c4d8e0c1170952a5",
+ "count": 342,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -342,6 +342,8 @@
   "the phase text's hint (WP-09, CL-UX-12): its key named only while the single-key shortcuts are on, the opening and the tour told apart, a button that shows the text",
   "the focus to an opened panel (WP-09, CL-UX-10): Layers opened by a key takes it on a ground button, not by a pointer; a map item's Enter puts it on the dossier's heading, and back on the item when closed",
   "the caveats shown (WP-09, CL-UX-08): each derived reading's note as text in the Now tab; the Zuran and Allied vantages' “not what he saw” under the vantages while pressed",
-  "the first card's reconstruction (WP-09, CL-UX-11; decision 276 (a)): the card says it is a reconstruction from the sources, graded A to C, and its key's button opens the key"
+  "the first card's reconstruction (WP-09, CL-UX-11; decision 276 (a)): the card says it is a reconstruction from the sources, graded A to C, and its key's button opens the key",
+  "the meres (WP-10, CL-VIS-01): every man, horse, piece and tent inside a mere's drawn disc stands on its ice (a block's own mesh, the marquee, its lowest point), at 4x and 10.33x, and the gait's slopes on the ice are level",
+  "the meres (WP-10, CL-VIS-02): no tree or bush inside a mere's drawn disc"
  ]
 }

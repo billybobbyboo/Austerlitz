@@ -210,6 +210,15 @@ PHONE.framing["phone-390-watch"]=8; PHONE.framing["phone-844x390-explore"]=8; DR
    dropped, three more leaders) and the Kobelnitz name takes its lower-left place, x 10 against the free rectangle's 16; "IV Column -> Kobelnitz",
    outside on WP-03 too, unchanged. Every other limit of the 39 cases held; none other moved */
 PHONE.framing["phone-390-first"]=16;
+/* the final audits' Stage 6, WP-09 (decision 276 (a), the first card's sentence, and the owner's word of 10 November 2026, "Re-baseline"): the card
+   says it is a reconstruction graded A to C, with its "Show the key", inline in the key's paragraph, about two lines taller; on CI (run 42778177074 on
+   65f1db8, build 19d7105f) the first screens' unobstructed map and phone-390-first's framing fell below their limits, every other measure passing.
+   Set at CI's measures, rounded down to 0.1 point as before: first-run 0.6076 / 0.4788, first-run-laptop 0.5214 / 0.4788, phone-390-first 0.5356, its
+   framing 13 of 15 items */
+UNOBSTRUCTED["first-run"]=[0.607,0.478];   /* was [0.625,0.506] */
+UNOBSTRUCTED["first-run-laptop"]=[0.521,0.478];   /* was [0.546,0.506] */
+UNOBSTRUCTED["phone-390-first"]=[0.535,null];   /* was [0.591,null] */
+PHONE.framing["phone-390-first"]=13;   /* was 16 */
 /* the caption's parts give way in order where its row is narrow (decision 159): the phase's title first, then the act, then the events' names;
    each is whole elsewhere on the screen or one press away (the act as a heading of the phase list, the phase as the dispatch sheet's title, the
    event in the sheet and in its dossier). Held landscape, the track's act and phase names are cut where their band is narrower than the name
