@@ -153,6 +153,12 @@ data declarations identical). `austerlitz-command-map.html` is now 2,964,486 byt
 `check:baseline` moves to it. The history the notes carried (what the map did until roadmap step 4b) is kept here, below, as CL-UX-05's
 remedy asks.
 
+*Reconciled (11 November 2026; merged in, not rebased) with the focus PR's branch, which holds `main` after PRs #94 (WP-10's meres) and #98 (WP-09's
+reflow):* conflicts in `CHANGELOG.md`, `CLAUDE.md` and `package.json` only, both sides kept; `check:data`'s reference stays this PR's archive (no other
+PR changes a data declaration). The merged build is 3,003,455 bytes, md5 `ff86079e9fc4b4857be407aac5cf2214`, and `check:baseline` moves to it. On it,
+here: `npm test`, `check:data` (143 of 143 identical to `archive/stage6wp09w-45d29cc5.html`), `check:chronology` and `check:selftest` (342 checks, every one
+passing, the manifest unchanged) pass. `check:contrast` and `check:visual` run again on CI.
+
 ### What changed, and why (each declaration: what was, what is)
 
 - **`FORMATIONS`** (`data.js`), the tracks' timing notes, shown in the full dossier's "Dated by" row (the audit's `leaks-timing.json`):
