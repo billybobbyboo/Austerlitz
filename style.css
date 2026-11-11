@@ -33,7 +33,7 @@ button{font:inherit;color:inherit}
 /* roadmap step 3 (docs/FINAL_AUDIT.md SW-3): the hidden rail is hidden once it has slid away (and inert at once, app.js syncInert), so its tab,
    its order-of-battle rows and the Sources button are no tab stops while it is off screen */
 body.rail-hidden .rail{transform:translateX(-101%);visibility:hidden;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s linear .32s}
-.brand h1{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);line-height:1.1;margin:0;color:var(--text-hi)}
+.brand .brand-t{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);line-height:1.1;margin:0;color:var(--text-hi)}
 .brand p{font-size:var(--t-ui);color:var(--text-muted);margin:5px 0 0;letter-spacing:.02em}
 .modes{display:flex;margin:16px 0 4px;border:1px solid var(--line-2);border-radius:2px;overflow:hidden}
 .mode-btn{flex:1;background:none;border:0;border-right:1px solid var(--line);padding:7px 4px;font-size:var(--t-small);
@@ -90,6 +90,10 @@ body.docked .dispatch h2{font-size:var(--t-h2)}
 body.docked .dispatch ol{display:block}
 body.docked #d-changes{display:block}
 .now-off{display:none;font-size:var(--t-ui);color:var(--text-muted);line-height:1.5;margin:2px 0 10px}
+.now-off p{margin:0 0 6px}
+/* the final audits' Stage 6, WP-09 (CL-UX-08): the caveats shown as text, not in a tooltip alone */
+.van-note{max-width:260px;margin:2px 0 0;font-size:var(--t-small);color:var(--text-body);text-align:right;line-height:1.4}
+.der-note{display:block;margin:2px 0 6px;font-size:var(--t-small);color:var(--text-body);line-height:1.45}
 body.docked.no-dispatch .now-off{display:block}
 body.docked .drawer{left:0;right:auto;width:var(--rail);bottom:var(--tb);border-left:0;border-right:1px solid var(--line-2);
   transform:translateX(-101%)}
@@ -181,6 +185,9 @@ dl.kvs{margin:0 0 16px;padding:0}
 .sect{margin:0 0 18px}
 .sect h3{font-size:var(--t-small);color:var(--text-muted);letter-spacing:.06em;margin:0 0 8px;
   border-bottom:1px solid var(--line);padding-bottom:5px;font-weight:400}
+/* the final audits' Stage 6, WP-09 (CL-UX-15): a section's layer tag beside its heading, not inside it (it was read as part of the heading: "How many record") */
+.sect-h{display:flex;align-items:baseline;gap:6px;margin:0 0 8px;border-bottom:1px solid var(--line);padding-bottom:5px}
+.sect-h h3{margin:0;border-bottom:0;padding-bottom:0}
 ul.bul{margin:0;padding-left:16px}
 ul.bul li{font-size:var(--t-prose);color:var(--text-body);line-height:1.55;margin-bottom:5px}
 p.prose{font-family:var(--serif);font-size:var(--t-prose);line-height:1.6;color:var(--text-body);margin:0}
@@ -571,7 +578,7 @@ body.pm-map #restore{display:block}
   border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px;vertical-align:1px}
 .dispatch::-webkit-scrollbar{width:6px}
 .dispatch::-webkit-scrollbar-thumb{background:rgba(var(--line-rgb),.18);border-radius:3px}
-.rail .brand h1{font-size:var(--t-h2)}
+.rail .brand .brand-t{font-size:var(--t-h2)}
 #vignette{position:fixed;inset:0;pointer-events:none;z-index:4;
   background:radial-gradient(ellipse 78% 70% at 50% 46%, rgba(0,0,0,0) 62%, rgba(5,8,11,.30) 100%)}
 body.mode-staff #vignette{display:none}
@@ -625,7 +632,7 @@ body.mode-staff #vignette{display:none}
    the narrative, and the tour keeps priority while it is running. */
 @media (max-height:430px){
   .dispatch{display:none}
-  .tb-sit .why{display:none}
+  .tb-sit .why,.tb-sit .der-note{display:none}
   #tourbar{bottom:calc(var(--tb) + 8px);padding:11px 14px 9px}
   #tour-x{font-size:var(--t-prose);max-height:20vh;overflow-y:auto}
   .legend{display:none}
@@ -656,6 +663,8 @@ body.mode-staff #vignette{display:none}
 body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
 #firstrun h2{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);margin:0 0 8px;color:var(--text-hi)}
 #firstrun p{font-family:var(--serif);font-size:var(--t-prose);line-height:1.65;color:var(--text-body);margin:0 0 9px}
+/* the final audits' Stage 6 (decision 276 (a)): the card's "Show the key", a button drawn as a link in its sentence, at least 24 px high */
+#firstrun .fr-link{display:inline-block;min-height:24px;padding:0 2px;background:none;border:0;color:var(--text-hi);font:inherit;text-decoration:underline;cursor:pointer}
 #firstrun .key-sw{display:inline-block;width:11px;height:11px;border:1px solid rgba(0,0,0,.55);border-radius:1px;
   margin:0 5px 0 1px;vertical-align:-1px}
 #firstrun .fr-act .t{min-height:34px;padding:7px 14px;font-size:var(--t-ui)}
@@ -719,8 +728,8 @@ body.firstrun-on #openingbtn{display:none}
 .lg-head{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin:0 0 0 auto;background:none;border:0;padding:0;
   color:var(--text-muted);font-size:var(--t-small);line-height:1.3;cursor:pointer}
 .lg-head:hover{color:var(--text)}
-.lg-head::after{content:"\2212";display:inline-block;width:12px;text-align:center}
-.legend.collapsed .lg-head::after{content:"+"}
+.lg-head::after{content:"\2212" / "";display:inline-block;width:12px;text-align:center}
+.legend.collapsed .lg-head::after{content:"+" / ""}   /* the final audits' Stage 6 (CL-UX-15): the sign drawn, not read into the toggle's name */
 .legend.squeezed .lg-head{cursor:not-allowed}
 .lg-rows{margin-top:3px;max-width:274px}
 .legend.collapsed .lg-rows{position:absolute;right:0;bottom:0;width:max-content;visibility:hidden;pointer-events:none}
@@ -845,9 +854,9 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .dgrip{display:block;position:sticky;top:0;z-index:1;width:100%;height:28px;margin:0 0 2px;padding:0;border:0;cursor:pointer;
     background:rgb(var(--scrim-rgb))}
   .dgrip span{display:block;width:40px;height:4px;margin:12px auto;border-radius:2px;background:var(--text-muted)}
-  .dispatch p.lede,#d-changes,.dispatch .tb-sit .why{display:none}
+  .dispatch p.lede,#d-changes,.dispatch .tb-sit .why,.dispatch .der-note{display:none}   /* the derived readings' notes (CL-UX-08) as the sheet's .why: when it is opened */
   body.dsheet-open .dispatch p.lede{display:block;max-height:none;overflow:visible}
-  body.dsheet-open .dispatch .tb-sit .why{display:block}
+  body.dsheet-open .dispatch .tb-sit .why,body.dsheet-open .dispatch .der-note{display:block}
   body.dsheet-open .dispatch ol,body.dsheet-open #d-changes{display:block}
   body.dsheet-open .phlist{display:block;margin-top:8px;border-top:1px solid var(--line)}
   .ph-item{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 6px;background:none;border:0;
@@ -919,7 +928,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     background:rgb(var(--scrim-rgb))}
   body.dsheet-open .dispatch .dgrip span{display:block;width:40px;height:4px;margin:12px auto;border-radius:2px;background:var(--text-muted)}
   body.dsheet-open .dispatch p.lede{display:block;max-height:none;overflow:visible}
-  body.dsheet-open .dispatch ol,body.dsheet-open #d-changes,body.dsheet-open .dispatch .tb-sit .why{display:block}
+  body.dsheet-open .dispatch ol,body.dsheet-open #d-changes,body.dsheet-open .dispatch .tb-sit .why,body.dsheet-open .dispatch .der-note{display:block}
   body.dsheet-open .phlist{display:block;margin-top:8px;border-top:1px solid var(--line)}
   #firstrun,body.rail-hidden #firstrun{max-height:calc(100vh - var(--tb) - 16px);overflow-y:auto}
   .tb-top{flex-wrap:wrap;row-gap:2px}

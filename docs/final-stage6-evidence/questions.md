@@ -23,5 +23,12 @@ recommendation reads.
 | **313** | The self-test's pinned woods counts after CL-VIS-02 (the trees and bushes on the Satschan mere's ice not drawn) | **re-pinned at the measured counts**: village 184 to 180, stream 222 to 205 (every other tree and bush drawn exactly as before) | WP-10, the meres PR (6e) |
 | **314** | The gait-on-the-ground check's kept-open counts after CL-VIS-01 (the figures on the mere stand on its ice; its waterline is a crease the gait's chords cannot follow, as the ground's own creases are) | **(a)**: twelve fresh groups re-baselined at the measured counts (every case added Dokhturov's or Kienmayer's at the Satschan shore, each within its group's proposed bound); `H_TOL` and every bound unchanged | WP-10, the meres PR (6e) |
 
+
+**Put while the PRs were verified (10 November 2026), decided the same day: "Re-baseline (Recommended)".**
+
+| question | what it asks | decided | where it is applied |
+|---|---|---|---|
+| **315** | The first screens' limits after decision 276 (a): the card's sentence and its "Show the key", inline in the key's paragraph, make the card about two lines taller; on CI (run 42778177074, build `19d7105f`) `first-run`'s unobstructed map 62.5% to 60.8% (at 1280 x 720 50.6% to 47.9%), `first-run-laptop`'s 54.6% to 52.1% (47.9%), `phone-390-first`'s 59.1% to 53.6% and its framing 16 to 13 of 15 items, every other measure passing | **re-baselined at CI's measures**, rounded down as before: `first-run` [0.607, 0.478], `first-run-laptop` [0.521, 0.478], `phone-390-first` 0.535, its framing 13 (the alternatives put: a shorter sentence, or the sentence off the card) | WP-09, the focus PR (6b); `tools/visual/thresholds.js` |
+
 Also carried into WP-09's review by decision 304 (a): the phone's event-named share during Play, accepted as measured; it is measured again on
 the stage's final build and reported there.
