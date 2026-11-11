@@ -235,7 +235,8 @@ remedy asks.
 reflow):* conflicts in `CHANGELOG.md`, `CLAUDE.md` and `package.json` only, both sides kept; `check:data`'s reference stays this PR's archive (no other
 PR changes a data declaration). The merged build is 3,003,455 bytes, md5 `ff86079e9fc4b4857be407aac5cf2214`, and `check:baseline` moves to it. On it,
 here: `npm test`, `check:data` (143 of 143 identical to `archive/stage6wp09w-45d29cc5.html`), `check:chronology` and `check:selftest` (342 checks, every one
-passing, the manifest unchanged) pass. `check:contrast` and `check:visual` run again on CI.
+passing, the manifest unchanged) pass. On CI (run 42958975874 on `a5fc274`, the build `ff86079e...`): passed, every job (`check:visual` 2 h 06 min).
+`main` merged in after PR #100 (`1c466af`; the same tree as the focus branch merged here, no file changed).
 
 ### What changed, and why (each declaration: what was, what is)
 
