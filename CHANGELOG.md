@@ -7,6 +7,17 @@ CL-VIS-03, CL-VIS-05, CL-VIS-07 and CL-VIS-09. Presentation only: no data file a
 identical to `archive/stage5wp08-572b0935.html`). Every value below is a design value, chosen from the measures. `austerlitz-command-map.html` is now
 2,977,379 bytes, md5 `f2e6cd044855db6238e3f2e828e418a4` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
 
+*Reconciled (11 November 2026; merged in, not rebased) with the visitor-words PR's branch, which holds `main` after PRs #94 and #98 and the focus PR:*
+the self-test's blocks kept side by side (`wp09Checks`, `wp10Checks`, `wp10pChecks`); `check:data`'s reference the visitor-words PR's archive. Two things
+found by the self-test on the merged build: (1) the meres' check (CL-VIS-01) required a block's own mesh on the ice, which was a headquarters' camp in the
+rout; this PR strikes the camp while a headquarters moves (CL-VIS-07), so none stood on the ice drawn and the check could not judge the marquee's seat. It
+now judges a block's camp meshes pitched or struck (they are seated with the block either way): 2 meshes on the ice, none below it. (2) Four of the
+gait-on-the-ground check's kept-open counts at 10.33x (horses, fresh) were passed by 3-7 poses, the facings turning halted blocks across other creases of
+the ground; re-baselined at the merged build's counts on the owner's word (decision 316, `docs/final-stage6-evidence/questions.md`): 38 to 49, 38 to 49,
+40 to 47, 38 to 46, `H_TOL` and every bound unchanged. The merged build is 3,017,777 bytes, md5 `1f731ae829a66c778bf0586d5b5d6444`, and `check:baseline` moves to it. On it, here: `npm
+test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (346 checks, every one passing) pass; the manifest regenerated from that run, 342
+to 346. `check:contrast` and `check:visual` run again on CI.
+
 ### What changed, and why
 
 - **CL-VIS-03, blocks facing away from an adjacent enemy (`app.js` `faceWant`, `FACE`, `enemyBearing`, `enemyFacing`).** A block faced along its leg
