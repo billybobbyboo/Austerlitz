@@ -140,6 +140,98 @@ the pinned browser every measured limit and baseline was taken on) does not inst
 ubuntu26.04-x64", so every browser job (`check:selftest`, `check:contrast`, `check:visual`) failed at its install step before any check ran
 (run 42733450089 on PR #94, all three tries in 3 seconds; the node job passed). *Is:* the three jobs of `.github/workflows/checks.yml` run on
 `ubuntu-24.04`, the image they ran on until now, so the pinned browser and every limit stay as measured. No source file and no build change.
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, part 3): the words a visitor is told (CL-UX-05, CL-UX-16)
+
+**Status: on `claude/dreamy-johnson-uadkqa-words` (draft PR into `main`, for review, not merged).** Part of WP-09 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-UX-05 (internal references shown to visitors) and CL-UX-16 (the modelling vocabulary and the overloaded A/B/C letters), with the owner's decision
+**310** of 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`: "anchors" becomes "plotted positions", "Plotted
+leg" becomes "Plotted march", each grade named with its scale). **A data task, words only**: no position, timing, grade, strength, source or reading
+changes, and no claim's kind; what a statement's words say is the same, said without the project's working language. Against
+`archive/stage5wp08-572b0935.html` five data declarations change, each below; the other 138 are identical. `check:data`'s reference moves to this build,
+`archive/stage6wp09w-45d29cc5.html` (the build with every data change; the final build differs from it in the self-test's position-pill check alone, its
+data declarations identical). `austerlitz-command-map.html` is now 2,964,486 bytes, md5 `858db534c73be222ebe140ec88321c32` (was 2,963,994, `3388b70b...`);
+`check:baseline` moves to it. The history the notes carried (what the map did until roadmap step 4b) is kept here, below, as CL-UX-05's
+remedy asks.
+
+*Reconciled (11 November 2026; merged in, not rebased) with the focus PR's branch, which holds `main` after PRs #94 (WP-10's meres) and #98 (WP-09's
+reflow):* conflicts in `CHANGELOG.md`, `CLAUDE.md` and `package.json` only, both sides kept; `check:data`'s reference stays this PR's archive (no other
+PR changes a data declaration). The merged build is 3,003,455 bytes, md5 `ff86079e9fc4b4857be407aac5cf2214`, and `check:baseline` moves to it. On it,
+here: `npm test`, `check:data` (143 of 143 identical to `archive/stage6wp09w-45d29cc5.html`), `check:chronology` and `check:selftest` (342 checks, every one
+passing, the manifest unchanged) pass. On CI (run 42958975874 on `a5fc274`, the build `ff86079e...`): passed, every job (`check:visual` 2 h 06 min).
+`main` merged in after PR #100 (`1c466af`; the same tree as the focus branch merged here, no file changed).
+
+### What changed, and why (each declaration: what was, what is)
+
+- **`FORMATIONS`** (`data.js`), the tracks' timing notes, shown in the full dossier's "Dated by" row (the audit's `leaks-timing.json`):
+  - `gqg@6`: was "The arrival follows the existing 40-minute march (moveMin)"; is "The arrival follows 40 minutes later, this map's time for a
+    headquarters' move (a design value)" (the code's name out; `check:chronology`'s `MOVEMIN_DERIVED` names the same leg).
+  - `friant@1`: the sentence "Until roadmap step 4b the map moved the division from 04:00 and had the brigade at the Goldbach c. 08:00 (question
+    177)" dropped; "the anchor, short of the stream" is "the plotted position, short of the stream" (decision 310).
+  - `friant@3`: "Until roadmap step 4b this anchor was the phase-2 entry, reached at 08:30 on this map (question 177)" dropped.
+  - `bourcier@3`: "Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)" dropped.
+  - `lang@1`, `prz@1`: "Until roadmap step 4b the map moved the column from 04:00 (question 176)" dropped.
+  - `c_gren@7`: "Until roadmap step 4b the map dated the arrival at 14:00, its own, which forced the next leg toward the ceiling (question 181)" dropped.
+  - `vandamme@7`: "the next anchor, the height above Augezd" is "the next plotted position, ..."; `kollo@4`: "the arrival at this anchor" is "the
+    arrival at this plotted position" (decision 310). The military "anchor" (the Santon "the anchor of the French left", the shelf "to anchor the
+    Allied right") is kept: it is the period's word, not the model's.
+- **`SOURCE_NOTE`** (`data.js`), `layers[1][1]`: "a route between anchors" is "a route between plotted positions" (decision 310).
+- **`anchorList`** (`app.js`, the movement model): the flag's words, shown in the timing row ("flagged: ..."), "the tactical rate does not fit before
+  the next anchor" is "... before the next plotted position" (decision 310); the rule and every arrival unchanged (`check:chronology` 0 errors).
+- **`CONF_INTERP`** (`app.js`, a grade text a visitor is told): was "The formation is between two plotted anchors: this position is interpolated, and
+  graded no better than the weaker anchor."; is "The formation is between two plotted positions: this position is interpolated, and graded no better
+  than the weaker of the two." (decision 310).
+- **`STATEMENT_CLAIMS`** (`narrative.js`), five claim notes (shown in "How this is sourced" and the sources sheet's index; the audit's `leaks.json`),
+  each claim, its readings and its statement's hash unchanged:
+  - `EVENTS[#counter-march].dispute`: "is in the register (read partly on the text layer)" is "is in the sources read for this map (one of them read
+    partly from its scanned text, not the page image)".
+  - `FORMATIONS.legrand.staff`: "a reading of roadmap step 6B (docs/stage6-evidence/readings-composition.md)" is "this map's reading of the sources on
+    the army's composition".
+  - `FORMATIONS.rg_cav.strengthNote`, `FORMATIONS.rg_inf.strengthNote`: "read on the page (S5.7)" is "read on the page images"; `FORMATIONS.rg_inf.commander`:
+    "Duffy's order of battle (S5.7)" is "Duffy's order of battle". The register entry S5.7 is unchanged and still the reading cited.
+
+Presentation, not data (`app.js`):
+- `standardNotes` (the sources sheet): "Height, owner decision 106:" is "Height, as this map draws it:".
+- The labels and rows (decision 310): `LABELS.reading.leg` and `LABELS.march.drift` "Plotted leg" are "Plotted march"; the drift's note "a drift
+  between anchors, not a march" is "a drift between plotted positions rather than a formed march" (the row is now named "Plotted march", so "not a
+  march" would contradict it: a choice of words, said here); the march row's "the plotted leg's length" is "the plotted march's length"; the day-track's
+  "anchors graded A/B/C" is "plotted positions graded A/B/C"; the sources sheet's skeleton paragraph "the anchors the clock moves between" is "the
+  positions the clock moves between".
+- **The grades by their scale (`posClaimPill`, `timingPill`, `timingWord`).** The card and the dossier showed "Position: estimated", "Position B" and
+  "Timing B" side by side, three pills and two bare letters of different scales (the appearance grade a third). *Is:* one pill for the position, its
+  claim's words with its grade ("Position: estimated (B)", "(B, interpolated)" between plotted positions), and one for the timing, its grade text's own
+  word read from `TIMING_TEXT` ("Timing: dated (A)", "approximate (B)", "inferred (C)"); an event's dossier the same timing pill.
+
+`docs/step4-evidence/inventory.json` and `.md` regenerated (the timing notes are inventoried statements: 726, unchanged in number).
+
+### Checks added, each failing without its fix
+
+- `runtime-test.js`, the position pills (roadmap step 4's K2 check, extended): every card and dossier at five clocks, its claim pill POS_CLAIM's words
+  with the position's grade, no bare "Position X" or "Timing X" pill, the timing pill "Timing: dated|approximate|inferred (X)". Negative controls,
+  each on a copy with one fix put back and the suite run: the bare timing pill again, failed (the pill check); the claim pill without its grade, failed.
+- `runtime-test.js`, internal references (CL-UX-05): what a visitor is shown, read as drawn (every formation's full dossier at the day's start and
+  inside each of its 25 timed moves, its "Dated by" row, every event's dossier, the sources sheet with its index of claims, and the sheet opened from
+  each formation's dossier: 133 views), holds no roadmap step, owner question or decision by number, register entry, repository path or code name.
+  Negative controls: `main`'s `narrative.js` alone fails it (the sheet's "(S5.7)" and "roadmap step"), `main`'s `data.js` alone fails it (the dossiers'
+  "moveMin" and "roadmap step" in the moves' windows). The ten such words left in the data (`GEOREF`'s two notes, six of `DRESS`, `COLOURS_CARRIED`'s
+  headquarters note, two of `BUILDINGS`) are in notes no view draws, so the check reads the drawn text, not the strings.
+
+### Verified
+
+- `npm test`: all nine suites and the height guard pass. `check:data`: 143 of 143 identical to the new reference; against the old one exactly the five
+  above. `check:chronology`: 0 errors (L9's cited statements are not among those reworded). `check:baseline`: passes.
+- `check:selftest` (Chromium 141.0.7390.37, the pinned browser): every check passes, the manifest unchanged (335; the position-pill check held to decision
+  310's pill: until it was, its one failing line, "Position: estimated (B)" against "Position: estimated"); the motion block's 16 at 227 jumps, 959 pops,
+  105 level-of-detail switches and 12 flickers, `main`'s own counts.
+- `check:contrast`: 7,473 text elements, 0 below AA, 0 under 10.5 px, 0 font failures, 45 of 45 states, 0 console messages, the boot cases 8 of 8 (run on
+  the build before the position-pill check's change, which is self-test code alone).
+- `check:visual` on CI (run 42755772911 on `cce6543`, `checks.yml`, `visual: true`; the build `858db534...`, the branch's head's): passed, every job
+  (`npm test`, `check:data`, `check:chronology`, `check:selftest`, `check:contrast`, `check:visual`; the run 4 h 13 min).
+
+### What remains uncertain, and what is handed on
+
+- "Interpolated", "derived" and "the text layer" (two claim notes on Czartoryski and Davout's report) are kept: each is explained where it is shown
+  or names a reading method; not part of decision 310's words.
+
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 1): the meres (figures on the ice, no trees on it)
 
 **Status: on `claude/dreamy-johnson-uadkqa-meres` (draft PR into `main`, for review, not merged).** Part of WP-10 of
