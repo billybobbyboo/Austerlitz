@@ -1,0 +1,142 @@
+{
+ "set": "wp09",
+ "build": "austerlitz-command-map.html",
+ "md5": "19d7105fcfb262f80b08579417723d84",
+ "mutations": [
+  {
+   "name": "none",
+   "applied": true,
+   "expected": [],
+   "failed": [],
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "the tablist named The rail again",
+   "applied": true,
+   "expected": [
+    "names and structure (WP-09, CL-UX-15)"
+   ],
+   "failed": [
+    "names and structure (WP-09, CL-UX-15)"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: the tablist named The rail"
+   ]
+  },
+  {
+   "name": "Play pressed again",
+   "applied": true,
+   "expected": [
+    "names and structure (WP-09, CL-UX-15)"
+   ],
+   "failed": [
+    "names and structure (WP-09, CL-UX-15)"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: Play's name and pressed state Pause/true, Play/true"
+   ]
+  },
+  {
+   "name": "the layer tag inside its heading again",
+   "applied": true,
+   "expected": [
+    "names and structure (WP-09, CL-UX-15)"
+   ],
+   "failed": [
+    "names and structure (WP-09, CL-UX-15)"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: 5 headings carrying their tag (Whorecord)"
+   ]
+  },
+  {
+   "name": "the hint names D whatever the switch",
+   "applied": true,
+   "expected": [
+    "the phase text's hint (WP-09, CL-UX-12)"
+   ],
+   "failed": [
+    "the phase text's hint (WP-09, CL-UX-12)"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: the key named with them off: “The phase text is hidden. Or press D.”"
+   ]
+  },
+  {
+   "name": "Layers opened by a key leaves the focus on its button",
+   "applied": true,
+   "expected": [
+    "the focus to an opened panel (WP-09, CL-UX-10)"
+   ],
+   "failed": [
+    "the focus to an opened panel (WP-09, CL-UX-10)"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: Layers by a key: the focus on layersbtn"
+   ]
+  },
+  {
+   "name": "a map item's Enter leaves the focus on the item",
+   "applied": true,
+   "expected": [
+    "the focus to an opened panel (WP-09, CL-UX-10)"
+   ],
+   "failed": [
+    "the focus to an opened panel (WP-09, CL-UX-10)"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: Enter on gqg's item: the focus on DIV"
+   ]
+  },
+  {
+   "name": "the derived readings' notes in their tooltips alone",
+   "applied": true,
+   "expected": [
+    "the caveats shown (WP-09, CL-UX-08)"
+   ],
+   "failed": [
+    "the caveats shown (WP-09, CL-UX-08)"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: the plateau reading's note not shown as text in the Now tab"
+   ]
+  },
+  {
+   "name": "the vantage's caveat in its tooltip alone",
+   "applied": true,
+   "expected": [
+    "the caveats shown (WP-09, CL-UX-08)"
+   ],
+   "failed": [
+    "the caveats shown (WP-09, CL-UX-08)"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: the Zuran vantage's caveat not shown (“”)"
+   ]
+  },
+  {
+   "name": "the card without its reconstruction sentence",
+   "applied": true,
+   "expected": [
+    "the first card's reconstruction (WP-09, CL-UX-11; decision 276 (a))"
+   ],
+   "failed": [
+    "the first card's reconstruction (WP-09, CL-UX-11; decision 276 (a))"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: the sentence missing: “ and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle. Show the key”"
+   ]
+  }
+ ],
+ "allAsExpected": true
+}

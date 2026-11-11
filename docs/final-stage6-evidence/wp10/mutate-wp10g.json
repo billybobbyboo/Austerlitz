@@ -1,0 +1,58 @@
+{
+ "set": "wp10g",
+ "build": "austerlitz-command-map.html",
+ "md5": "c50e08bc47a3f79727c4bb60e95283f1",
+ "mutations": [
+  {
+   "name": "none",
+   "applied": true,
+   "expected": [],
+   "failed": [],
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "the closed faces near the eye again (no twigs)",
+   "applied": true,
+   "expected": [
+    "the crowns near the eye (WP-10, CL-VIS-08; decision 308)"
+   ],
+   "failed": [
+    "the crowns near the eye (WP-10, CL-VIS-08; decision 308)"
+   ],
+   "ok": true,
+   "detail": [
+    "a tree 7 units off: the crowns cover 774874 px with the twigs, 774874 closed (100%); the Overview: 0 px differ of 15726 crown px; WRONG: near the eye the twigs cover 100% of the closed faces' pixels (at most 80%)"
+   ]
+  },
+  {
+   "name": "the twigs drawn at every distance",
+   "applied": true,
+   "expected": [
+    "the crowns near the eye (WP-10, CL-VIS-08; decision 308)"
+   ],
+   "failed": [
+    "the crowns near the eye (WP-10, CL-VIS-08; decision 308)"
+   ],
+   "ok": true,
+   "detail": [
+    "a tree 7 units off: the crowns cover 532664 px with the twigs, 774874 closed (69%); the Overview: 13423 px differ of 15726 crown px; WRONG: far from the eye 13423 px differ"
+   ]
+  },
+  {
+   "name": "the sources sheet silent on the blocks among the buildings",
+   "applied": true,
+   "expected": [
+    "the blocks among the buildings (WP-10, CL-VIS-04; decision 307 (c))"
+   ],
+   "failed": [
+    "the blocks among the buildings (WP-10, CL-VIS-04; decision 307 (c))"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: not said"
+   ]
+  }
+ ],
+ "allAsExpected": true
+}

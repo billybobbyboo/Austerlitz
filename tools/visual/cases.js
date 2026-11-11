@@ -49,6 +49,12 @@ module.exports = [
     note:"The owner's iPhone 17 Pro in Safari, 402 x 714 (the viewport P1's report gave, decision 237), after \"Explore\"." },
   { name:"phone-390-paper", viewport:[390,844], fresh:true, device:"ios", phone:"paper", t:570, mode:"staff",
     note:"390 x 844, the paper map entered by its taps (the Menu, Layers, Paper map, the panel closed): the whole field in the free area (decision 238)." },
+  /* the final audits' Stage 6, WP-09 (CL-UX-01; decision 306): a desktop's browser at 400%, reached by clicks (harness.js PHONE_DEVICES.zoom): the
+     phone layout by its pointer:fine query (app.js PHONE_Q), its limits as measured on the reflow PR's build (thresholds.js) */
+  { name:"zoom-320x256-explore", viewport:[320,256], fresh:true, device:"zoom", phone:"explore", t:570,
+    note:"WCAG 1.4.10's reflow width: a 1280 x 1024 screen at 400%, 320 x 256 at density 4, after \"Explore\"." },
+  { name:"zoom-400x225-explore", viewport:[400,225], fresh:true, device:"zoom", phone:"explore", t:570,
+    note:"A 1600 x 900 screen at 400%, 400 x 225 at density 4, after \"Explore\"." },
   { name:"first-run-laptop", viewport:[1366,768], fresh:true, expect:{t:240},
     note:"The same on a common laptop viewport." },
   { name:"overview-field", viewport:[1600,900], t:570, presentation:"study", mode:"terrain",
