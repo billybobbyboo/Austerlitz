@@ -18195,11 +18195,14 @@ function wp10Checks(){
           if(!D.some(function(d){ return inside(d,b.position.x,b.position.z,1.6); })) return;
           if(u&&u.layout) u.layout(u.sw,u.sd,true);   /* the slopes taken, as the gait draws a block it animates */
           b.updateMatrixWorld(true);
-          b.traverse(function(o){ if(o.isMesh&&!o.isInstancedMesh&&shownUp(o)&&o.geometry){   /* a block's own meshes (the headquarters' marquee): their lowest point */
+          /* since CL-VIS-07 a headquarters' camp is struck while it moves, so none stands on the ice drawn; its meshes are still seated with the block, and
+             are judged here whether pitched or struck, so that the marquee's seat on the ice stays checked */
+          var camp=(u&&u.camp)||[], up=function(o){ return shownUp(o)||camp.indexOf(o)>=0; };
+          b.traverse(function(o){ if(o.isMesh&&!o.isInstancedMesh&&up(o)&&o.geometry){   /* a block's own meshes (the headquarters' marquee): their lowest point */
               if(!o.geometry.boundingBox) o.geometry.computeBoundingBox(); var bb=o.geometry.boundingBox.clone().applyMatrix4(o.matrixWorld), cx=(bb.min.x+bb.max.x)/2, cz=(bb.min.z+bb.max.z)/2;
               D.forEach(function(d){ if(!inside(d,cx,cz,1)) return; n++; nF++; nMesh++; var dep=d.y-bb.min.y;
                 if(dep>0.05){ under++; uF++; if(dep>worst){ worst=dep; at=id+"'s "+(o.geometry===GEO.tent?"marquee":"mesh")+" at "+fmtClock(t)+", x"+F+" ("+d.name+")"; } } }); }
-            if(!o.isInstancedMesh||!shownUp(o)) return; var SA=o.geometry.attributes.aSl;
+            if(!o.isInstancedMesh||!up(o)) return; var SA=o.geometry.attributes.aSl;
             for(var i=0;i<o.count;i++){ o.getMatrixAt(i,m); v.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);
               D.forEach(function(d){ if(!inside(d,v.x,v.z,1)) return; n++; nF++; var dep=d.y-v.y;
                 if(dep>0.01){ under++; uF++; if(dep>worst){ worst=dep; at=id+" at "+fmtClock(t)+", x"+F+" ("+d.name+")"; } }
@@ -22665,8 +22668,12 @@ var AUSTERLITZ_DEBUG=(function(){
              sample is not the same from run to run (4,188 to 4,304 poses judged), and the refit lowered Drouet's ground there by 15 m and
              steepened it (3.6 to 4.8 degrees within 2 units, tools/final-stage4-wp04b/gait-ground.js); H_TOL and every bound unchanged */
           "4|men|drawn|motion|simple":1, "10.33|men|drawn|motion|simple":1,
-          "10.33|horses|edges|fresh|rich":38, "10.33|horses|edges|fresh|simple":38, "10.33|horses|edges|motion|rich":9, "10.33|horses|drawn|fresh|rich":40,
-          "10.33|horses|drawn|fresh|simple":38, "10.33|horses|drawn|motion|rich":13};
+          /* the final audits' Stage 6, WP-10 (CL-VIS-03 with CL-VIS-01; the owner's word of 11 November 2026, "Re-baseline", as decision 314 (a)): with the
+             meres' build merged, the facings turn halted blocks to their enemy (Napoleon's headquarters among them), their horses across other creases of the
+             ground; four fresh groups at 10.33x re-baselined at the merged build's counts, every case within its group's proposed bound, H_TOL and every
+             bound unchanged: horses edges rich 38 to 49, simple 38 to 49, drawn rich 40 to 47, simple 38 to 46 */
+          "10.33|horses|edges|fresh|rich":49, "10.33|horses|edges|fresh|simple":49, "10.33|horses|edges|motion|rich":9, "10.33|horses|drawn|fresh|rich":47,
+          "10.33|horses|drawn|fresh|simple":46, "10.33|horses|drawn|motion|rich":13};
         function hSoles(g,horse){ var c=hSolC.get(g); if(c) return c; var P=g.attributes.position, K=g.attributes.aPart, seen={}, out=[];
           for(var i=0;i<P.count;i++){ var k=Math.round(K.array[i]); if(horse?(k<5||k>8):!(k===1||k===2||k===13||k===14)) continue; var y=P.array[i*3+1]; if(y>0.03) continue;
             var x=P.array[i*3], z=P.array[i*3+2], key=k+","+x.toFixed(4)+","+y.toFixed(4)+","+z.toFixed(4); if(seen[key]) continue; seen[key]=1; out.push([k,x,y,z]); }
