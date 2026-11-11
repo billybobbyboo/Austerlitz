@@ -1,0 +1,72 @@
+{
+ "set": "wp10m",
+ "build": "austerlitz-command-map.html",
+ "md5": "fc4f50a8b11916eb02b76f7e8272deb6",
+ "mutations": [
+  {
+   "name": "none",
+   "applied": true,
+   "expected": [],
+   "failed": [],
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "the men and horses seated on the drawn ground under the ice",
+   "applied": true,
+   "expected": [
+    "the meres (WP-10, CL-VIS-01)"
+   ],
+   "failed": [
+    "the meres (WP-10, CL-VIS-01)"
+   ],
+   "ok": true,
+   "detail": [
+    "2463 instances and meshes inside a disc (x4: 1250 inside, 1059 under; x10.33: 1213 inside, 1029 under; 2 a block's own mesh, its lowest point); WRONG: 2088 below the ice, the worst 2.338 units, dok at 12:00, x10.33 (Satschan); 1552 figures with the ice under them all round, WRONG: 1552 with a slope "
+   ]
+  },
+  {
+   "name": "the gait's chords read the drawn ground under the ice",
+   "applied": true,
+   "expected": [
+    "the meres (WP-10, CL-VIS-01)"
+   ],
+   "failed": [
+    "the meres (WP-10, CL-VIS-01)"
+   ],
+   "ok": true,
+   "detail": [
+    "2463 instances and meshes inside a disc (x4: 1250 inside, 0 under; x10.33: 1213 inside, 0 under; 2 a block's own mesh, its lowest point); 1552 figures with the ice under them all round, WRONG: 1552 with a slope (the worst 6.2342)"
+   ]
+  },
+  {
+   "name": "the block (its marquee) placed on the drawn ground under the ice",
+   "applied": true,
+   "expected": [
+    "the meres (WP-10, CL-VIS-01)"
+   ],
+   "failed": [
+    "the meres (WP-10, CL-VIS-01)"
+   ],
+   "ok": true,
+   "detail": [
+    "2463 instances and meshes inside a disc (x4: 1250 inside, 1 under; x10.33: 1213 inside, 1 under; 2 a block's own mesh, its lowest point); WRONG: 2 below the ice, the worst 2.175 units, buxhowden's marquee at 16:40, x10.33 (Satschan); 1552 figures with the ice under them all round, their slopes level"
+   ]
+  },
+  {
+   "name": "the trees and bushes on the ice drawn again",
+   "applied": true,
+   "expected": [
+    "the meres (WP-10, CL-VIS-02)"
+   ],
+   "failed": [
+    "the meres (WP-10, CL-VIS-02)"
+   ],
+   "ok": true,
+   "detail": [
+    "1209 trees and bushes, WRONG: 21 on the ice (village on the Satschan mere, village on the Satschan mere, village on the Satschan mere, village on the Satschan mere, stream on the Satschan mere, stream on the Satschan mere)"
+   ]
+  }
+ ],
+ "allAsExpected": true
+}

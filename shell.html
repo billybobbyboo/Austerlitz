@@ -35,17 +35,20 @@
   <noscript><p class="boot-line">This map needs JavaScript and WebGL.</p></noscript>
 </div>
 
-<nav class="rail" id="rail" aria-label="Army and map controls">
+<!-- the final audits' Stage 6, WP-09 (CL-UX-15): the page's one h1, outside the rail (hidden below 1080 px), so that every width has it; the rail's
+     brand line shows the same word, hidden from assistive technology -->
+<h1 class="sr-only">Austerlitz, 2 December 1805: a command map</h1>
+<aside class="rail" id="rail" aria-label="Panels">
   <div class="brand">
     <!-- roadmap step 6 item 3: below 720 px wide, where the rail is a sheet at the foot, it closes here as well as by the Panels button -->
     <button class="railclose" id="railclose" type="button">&times;</button>
-    <h1>Austerlitz</h1>
+    <p class="brand-t" aria-hidden="true">Austerlitz</p>
     <p>2 December 1805 &middot; Moravia</p>
   </div>
 
   <!-- Stage 3B (docs/STAGE3_SPEC.md section B.2; owner decisions 54, 55): the dispatch is the rail's first tab, "Now", at
        1080 px and wider; below that it stays a card (decision 58) and the Now tab is hidden (app.js syncDock) -->
-  <div class="tabs" role="tablist" aria-label="The rail">
+  <div class="tabs" role="tablist" aria-label="Panels">
     <button class="tab-btn" id="tab-now" data-t="now" role="tab" aria-controls="now" aria-selected="true" tabindex="0">Now</button>
     <button class="tab-btn" id="tab-oob" data-t="oob" role="tab" aria-controls="oob" aria-selected="false" tabindex="-1">Order of battle</button>
     <button class="tab-btn" id="tab-analysis" data-t="analysis" role="tab" aria-controls="analysis" aria-selected="false" tabindex="-1">Analysis</button>
@@ -55,15 +58,17 @@
 
   <div class="railscroll">
     <div id="now" class="tabpane" role="tabpanel" aria-labelledby="tab-now">
-      <p class="now-off">The phase text is hidden: press D to show it. During the guided tour, its text is in the tour bar.</p>
-      <section class="dispatch">
+      <!-- the final audits' Stage 6, WP-09 (CL-UX-12): the hint's words written by app.js paintNowOff (the D key named only while the single-key
+           shortcuts are on; the opening and the tour told apart) and a button that shows the text, for a pointer, a finger or a key -->
+      <div class="now-off"><p id="now-off-t">The phase text is hidden.</p><button class="t" id="now-show" type="button">Show the phase text</button></div>
+      <section class="dispatch" id="dispatch">
         <!-- roadmap step 6 item 3 (decision 223): below 720 px wide the card is a sheet at the screen's foot, its head shown; the grip opens
              it whole, with the phases listed (decision 224 (a); app.js setDSheet, buildTimeline). Not shown elsewhere (style.css) -->
         <button class="dgrip" id="dgrip" type="button" aria-expanded="false"><span aria-hidden="true"></span></button>
         <!-- Stage 3C: the situation's derived readings and the live event's reason (from the timebar's old second row) -->
         <div class="tb-sit" id="situation"></div>
         <div class="clock" id="d-clock"></div>
-        <h2 id="d-title"></h2>
+        <h2 id="d-title" tabindex="-1"></h2>
         <p class="lede" id="d-lede"></p>
         <ol id="d-events"></ol>
         <div id="d-changes"></div>
@@ -102,7 +107,7 @@
   <div class="railfoot">
     <button id="srcbtn" type="button">Accuracy and sources</button>
   </div>
-</nav>
+</aside>
 
 <!-- below 1080 px the dispatch card stands here, where it stood before Stage 3B (app.js syncDock) -->
 <div id="dispatch-home" hidden></div>
@@ -113,7 +118,7 @@
 <!-- roadmap step 6 item 3 (decision 223): below 720 px wide the tools and, in Study, the presentation switch stand behind this button
      (app.js setMenu; style.css); elsewhere it is not shown -->
 <button class="t" id="menubtn" type="button" aria-expanded="false" aria-controls="tools">Menu</button>
-<div class="tools" id="tools">
+<div class="tools" id="tools" role="region" aria-label="Tools">
   <div class="tools-vm" id="tools-vm"><!-- below 720 px, in Study: the presentation switch (app.js syncViewmode) --></div>
   <div class="grp">
     <!-- Stage 7C: the opening again, for a later visit (hidden while the first-run card, whose primary action it is, stands open) -->
@@ -132,6 +137,8 @@
     <button class="t van-btn" data-v="plan" title="Operational overview from directly above">Overview</button>
     <button class="t van-btn" data-v="eye" hidden title="Eye level at the chosen headquarters (Whose eyes?)">Eye level</button>
   </div>
+  <!-- the final audits' Stage 6, WP-09 (CL-UX-08): a pressed vantage's caveat, shown (until Stage 6 only its button's tooltip said it); app.js syncFollow -->
+  <p class="van-note" id="van-note" aria-live="polite" hidden></p>
 </div>
 
 <div id="layerpop" hidden role="dialog" aria-label="Layers and ground">
@@ -305,7 +312,7 @@
     <div class="tb-ctrl">
       <button class="t tb-icon" id="prevEv" aria-label="Previous event" title="Previous event">&#9474;&#9668;</button>
       <button class="t tb-icon" id="prev" aria-label="Back ten minutes" title="Back ten minutes">&#9668;</button>
-      <button class="t tb-play" id="play" aria-pressed="false">Play</button>
+      <button class="t tb-play" id="play" type="button">Play</button>
       <button class="t tb-icon" id="next" aria-label="Forward ten minutes" title="Forward ten minutes">&#9658;</button>
       <button class="t tb-icon" id="nextEv" aria-label="Next event" title="Next event">&#9658;&#9474;</button>
       <button class="t tb-follow" id="follow" aria-pressed="true" title="Follow the action: while the clock plays, keep the live events in view; paused, each phase's view">Follow</button>
@@ -314,6 +321,9 @@
     <!-- roadmap step 6 item 3 (decision 225): below 720 px wide the four speeds as one button that steps through them (style.css; its words
          from LABELS.phone, app.js setSpeed) -->
     <button class="t tb-speed" id="speedbtn" type="button">&frac12;&times;</button>
+    <!-- the final audits' Stage 6, WP-09 (CL-UX-01; owner decision 305 (a)): at 430 px tall or less, where the dispatch card gives way, the phase text
+         opened as a sheet over the map (app.js setDSheet; its words from LABELS.phone). Not shown elsewhere (style.css) -->
+    <button class="t tb-phase" id="phasebtn" type="button" aria-expanded="false" aria-controls="dispatch">Phase text</button>
     <div class="tb-cap" id="tb-cap"></div>
     <button class="t tb-eyes" id="eyesbtn" type="button" aria-label="Eyes: everyone. Whose eyes? Everyone (press to change)" title="Whose eyes? Everyone, Napoleon's headquarters, the Allied headquarters (a model reading)">Eyes: everyone</button>
     <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
@@ -397,7 +407,8 @@
   <h2 id="fr-title">The Battle of Austerlitz</h2>
   <!-- written at start-up from the same colour key as the legend (COLOUR_KEY), so the two cannot disagree -->
   <p id="fr-key">French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath
-     them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.</p>
+     them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.
+     It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.</p>
   <div class="fr-act">
     <button class="t fr-primary" id="fr-tour" type="button">Begin (two min)</button>
     <button class="t" id="fr-close" type="button">Explore on my own</button>

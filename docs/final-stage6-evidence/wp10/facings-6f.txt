@@ -1,0 +1,12 @@
+loaded in 146 s, errors 0
+{"rows":2051,"flags":{"A":0,"B":0,"C":4,"D":1},"movingRows":1342,"driftRows":1042,"haltedNear":248,"haltedNearWithin45":247}
+== A
+== B
+== C
+  kollo: 1  10:20(counterattack,4.86kmh,near sthilaire 0.85km d176.9)
+  caffarelli: 1  11:10(attacking,1.06kmh,near lich 1.3km d124)
+  suchet: 1  11:10(attacking,1.09kmh,near bag 0.63km d-120.3)
+  nansouty: 1  11:10(charging,1.28kmh,near lich 0.46km d120.3)
+== D
+  friant: 1  12:40(engaged,halt,near prz 0.79km d-67.6)
+DONE

@@ -579,7 +579,11 @@ try{
             if(P.length!==1) throw new Error(id+" ("+w+") at "+fmtClock(t)+": "+P.length+" claim pills, want one");
             const cl=P[0][1], txt=P[0][2].replace(/<svg[\s\S]*?<\/svg>/g,"");
             if(cl!==want) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill's class "+cl+", its key is "+want);
-            if(txt!==esc(POS_CLAIM[cl]||"")) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill reads \""+txt+"\", want POS_CLAIM's \""+POS_CLAIM[cl]+"\"");
+            /* the final audits' Stage 6 (decision 310): POS_CLAIM's words with the position's grade, "(B)" or "(B, interpolated)"; no bare grade pill */
+            const pre=esc(POS_CLAIM[cl]||"");
+            if(txt.slice(0,pre.length)!==pre||!/^ \([ABC](, interpolated)?\)$/.test(txt.slice(pre.length))) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill reads \""+txt+"\", want POS_CLAIM's \""+POS_CLAIM[cl]+"\" with its grade");
+            if(/<span class="pill ghost">(Position|Timing) [ABC]<\/span>/.test(h)) throw new Error(id+" ("+w+") at "+fmtClock(t)+": a bare grade pill (Position or Timing and a letter)");
+            const tp=h.match(/<span class="pill ghost">Timing[^<]*<\/span>/); if(tp&&!/^<span class="pill ghost">Timing: (dated|approximate|inferred) \([ABC]\)<\/span>$/.test(tp[0])) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the timing pill reads "+tp[0]);
             if(CL.indexOf(txt)>=0) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill carries CLAIM's words \""+txt+"\"");
             nP++; byCl[cl]=(byCl[cl]||0)+1; }); }); });
     } finally { document.createElement=mk; }
@@ -691,6 +695,12 @@ try{
     Object.keys(STATEMENT_CLAIMS).forEach(r=>{ cnt[STATEMENT_CLAIMS[r].cl]=(cnt[STATEMENT_CLAIMS[r].cl]||0)+1; if(ix.indexOf('<li>'+esc(refLabel(r)||r))<0) bad.push("the index does not list "+r); });
     Object.keys(cnt).forEach(k=>{ if(ix.indexOf('<b>'+esc(CLAIM_WORDS[k].w)+'</b>: '+esc(CLAIM_WORDS[k].d)+' '+esc("("+cnt[k]+(cnt[k]===1?" statement":" statements")+")"))<0) bad.push("the index's count for "+k+" is not "+cnt[k]); });
     if(ix.indexOf('<b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>')<0) bad.push("the index does not name the unchecked");
+    /* the final audits' Stage 6 (CL-UX-21): the app's own list of statements (narrativeRefs) is statements.js's, ref for ref, and the index counts
+       the unchecked from it: neither a claim of its own nor its class's */
+    { const NR=narrativeRefs(), A=new Set(NR), B=new Set(ST.map(x=>x.ref)), onlyA=NR.filter(r=>!B.has(r)), onlyB=ST.map(x=>x.ref).filter(r=>!A.has(r));
+      if(onlyA.length||onlyB.length||NR.length!==A.size) bad.push("narrativeRefs is not statements.js's list: "+onlyA.length+" only in the app ("+onlyA.slice(0,3).join(", ")+"), "+onlyB.length+" only in statements.js ("+onlyB.slice(0,3).join(", ")+")"+(NR.length!==A.size?", duplicates":""));
+      const nUn=ST.filter(x=>!Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,x.ref)&&!KC.some(([re])=>re.test(x.ref))).length;
+      if(ix.indexOf(esc("Every other statement ("+nUn+(nUn===1?" statement":" statements")+")."))<0) bad.push("the index does not count the unchecked as "+nUn); }
     /* each framing class named in the index with the number of its statements that take its claim (tools/step4/statements.js's classes) */
     Object.keys(CLAIM_BY_CLASS).forEach(k=>{ const n=ST.filter(s=>s.cls===k&&!Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,s.ref)).length;
       if(ix.indexOf(esc(CLAIM_BY_CLASS[k].n+" ("+CLAIM_BY_CLASS[k].why+"; "+n+(n===1?" statement":" statements")+")"))<0) bad.push("the index's count for the class "+k+" is not "+n); });
@@ -700,6 +710,25 @@ try{
     console.log("the claims on screen (decision 187): "+nT+" claim tags in "+nV+" dossiers at five clocks, each its statement's claim in CLAIM_WORDS's word ("+
       Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"); every one of "+ST.length+" statements placed in the index's words, the "+Object.keys(STATEMENT_CLAIMS).length+" claimed listed with their counts; "+
       "decision 203: "+nC+" tags in the cards, the events' and the places' dossiers, the button in "+nB+" of them and every full dossier, the dossier's statements first in the index OK"); }
+
+  /* the final audits' Stage 6, WP-09 (CL-UX-05): no internal project reference in what a visitor is shown (the project's working language: a roadmap
+     step, an owner question or decision by number, a register entry, a repository path, a code name). Read as drawn: every formation's full
+     dossier at the day's start and inside each of its timed moves (its "Dated by" row), every event's dossier, the sources sheet (its index of
+     claims with their notes) and the sheet opened from each formation's dossier (its statements at the head) */
+  { const RE=/\broadmap step|\bquestion \d{2,3}\b|\(S\d\.\d+\)|\bdocs\/|\bmoveMin\b|\bowner decision\b|\bregister entry\b|\bthe register\b/i;
+    const mk=document.createElement, bad=[], mb=document.getElementById("modal-body"); let made=[], nV=0, nT=0;
+    const look=(what,h)=>{ nV++; const m=String(h).replace(/<[^>]*>/g," ").match(RE); if(m) bad.push(what+": “"+m[0]+"”"); };
+    try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
+      Object.keys(FORMATIONS).forEach(id=>{ const tr=FORMATIONS[id].track, ts=new Set([T_MIN]);
+        if(tr) Object.keys(tr).forEach(k=>{ const tm=tr[k]&&tr[k].tm; if(tm){ nT++; if(tm.dep!==undefined) ts.add(Math.min(T_MAX,tm.dep+5)); if(tm.at!==undefined) ts.add(Math.max(T_MIN,tm.at-5)); } });
+        ts.forEach(t=>{ setClock(t); made=[]; dossierFormation(id); look(id+"'s dossier at "+fmtClock(t),made.map(x=>x.innerHTML||x.textContent||"").join("\n")); }); });
+      EVENTS.forEach(e=>{ made=[]; dossierEvent(e.id); look("event "+e.id,made.map(x=>x.innerHTML||x.textContent||"").join("\n")); });
+    } finally { document.createElement=mk; }
+    openSources(); look("the sources sheet",mb.innerHTML);
+    Object.keys(FORMATIONS).forEach(id=>{ const refs=Object.keys(STATEMENT_CLAIMS).filter(r=>r.indexOf("FORMATIONS."+id+".")===0); if(refs.length){ openSources({refs:refs}); look("the sheet from "+id+"'s dossier",mb.innerHTML); } });
+    closeSources(); setClock(T_MIN);
+    if(bad.length) throw new Error("internal references shown to a visitor (CL-UX-05): "+bad.slice(0,8).join("; ")+(bad.length>8?" (and "+(bad.length-8)+" more)":""));
+    console.log("internal references (CL-UX-05): none in "+nV+" views (every full dossier at the start and inside its "+nT+" timed moves, every event's dossier, the sources sheet and the sheet from each dossier) OK"); }
 
   /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the sources sheet's notes read the appearance table and the computed sun, not typed values.
      Each value they name is changed in the table for one call and the note must follow it; the table is put back (and the kit's cache). The

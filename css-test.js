@@ -674,7 +674,8 @@ if(cerrs) process.exitCode=1;
   if(!/if\(uDebug>4\.5\) gDbgD=gDc; else \{/.test(gd)) ferr.push("the near detail's debug sample is not apart from the detail's scaling (uDebug 5)");
   /* the self-test's bounds */
   if(!/var ICE8F=\{SHORE:1\.10, MARGIN:1\.25\};/.test(src)) ferr.push("the self-test's ice bounds (ICE8F) are not 1.10 at the shore and 1.25 at the margin");
-  if(!/var WOODS8E=\{wood:357, village:184, conifer:229, edge:205, stream:222, garden:12\}, KIT8E=\{broad:\[560,380,560,380\], conifer:\[62,41\], scrub:360\};/.test(src)) ferr.push("the self-test's woods pins (WOODS8E: since the follow-up 8J the counts of the woods' data tasks; KIT8E, 8E's triangles a tree) are not as recorded");
+  /* the final audits' Stage 6 (owner decision 313, 9 November 2026): village 184 to 180, stream 222 to 205, the trees and bushes on the Satschan mere's ice not drawn (CL-VIS-02) */
+  if(!/var WOODS8E=\{wood:357, village:180, conifer:229, edge:205, stream:205, garden:12\}, KIT8E=\{broad:\[560,380,560,380\], conifer:\[62,41\], scrub:360\};/.test(src)) ferr.push("the self-test's woods pins (WOODS8E: since the follow-up 8J the counts of the woods' data tasks; KIT8E, 8E's triangles a tree) are not as recorded");
   ferr.forEach(e=>console.log("  ! "+e));
   console.log("water, woods and the near ground (decisions 246 (a), 247 (a)): "+(ferr.length?ferr.length+" wrong":"the water's colours in WATER_COL, the paper map's water 8E's materials, the meres' outlines, levels and ring 4E's, the ice writing no depth, the band without an offset and after its ice, nothing animated; TREE8F, the crowns opaque on both faces, 8E's jitter and conifers; GDETAIL on the natural ground only, faded, anchored, a grey ratio, off under lowTier; the self-test's bounds"));
   if(ferr.length) process.exitCode=1;
@@ -1034,7 +1035,7 @@ if(cerrs) process.exitCode=1;
   const sh=fs.readFileSync('shell.html','utf8'), css=fs.readFileSync('style.css','utf8'), src=fs.readFileSync('app.js','utf8'), perr=[];
   const b=(sh.match(/<button[^>]*id="panelsbtn"[^>]*>/)||[""])[0];
   if(!b||!/aria-expanded="false"/.test(b)||!/aria-controls="rail"/.test(b)||!/type="button"/.test(b)) perr.push("shell.html: the Panels button is not a disclosure of #rail");
-  if(!/<nav class="rail" id="rail"/.test(sh)) perr.push("shell.html: the rail has no id for aria-controls");
+  if(!/<aside class="rail" id="rail" aria-label="Panels">/.test(sh)) perr.push("shell.html: the rail has no id for aria-controls, or is not the complementary region named Panels (the final audits' Stage 6, CL-UX-15)");
   if(!/panels:\{button:"Panels"/.test(src)||!/pb\.textContent=LABELS\.panels\.button/.test(src)) perr.push("app.js: the Panels button's words are not from LABELS");
   if(!/\n#panelsbtn\{display:none\}/.test(css)||!/@media \(max-width:1079\.98px\)\{ body:not\(\.firstrun-on\) #panelsbtn\{display:inline-block\} \}/.test(css)) perr.push("style.css: the Panels button is not shown below 1080 px only, outside the first card");
   if(!/setAttribute\("aria-expanded",String\(!document\.body\.classList\.contains\("rail-hidden"\)\)\)/.test(src)) perr.push("app.js: syncInert does not keep the button's aria-expanded");
@@ -1118,7 +1119,8 @@ if(cerrs) process.exitCode=1;
   const blk=media=>allRules.filter(r=>r.media===media);
   const ph=blk(q||"(max-width:720px)"), ls=blk("(max-height:430px)");
   const decl=(rules,sel,p)=>{ const r=rules.filter(x=>x.sels.indexOf(sel)>=0); let v=null; r.forEach(x=>declsOf(x.body).forEach(([k,w])=>{ if(k===p) v=w; })); return v; };
-  if(q!=="(max-width:720px) and (min-height:431px)") herr.push("app.js: PHONE_Q is not the phone query (max-width:720px) and (min-height:431px): "+q);
+  /* since the final audits' Stage 6 (CL-UX-01): a desktop's narrow window at any height too (a fine pointer); a phone held landscape (coarse) keeps decision 226 (a)'s layout */
+  if(q!=="(max-width:720px) and (min-height:431px), (max-width:720px) and (pointer:fine)") herr.push("app.js: PHONE_Q is not the phone query (max-width:720px) and (min-height:431px), (max-width:720px) and (pointer:fine): "+q);
   if(!ph.length) herr.push("style.css: no @media "+q+" block (the phone layout)");
   ["#prev","#next","#eyesbtn",".speeds",".tb-acts"].forEach(s=>{ if(decl(ph,s,"display")!=="none") herr.push("style.css: "+s+" not hidden on the phone's timeline (decision 225, 224)"); });
   ["#prev","#next","#eyesbtn",".speeds"].forEach(s=>{ if(decl(ls,s,"display")!=="none") herr.push("style.css: "+s+" not off a phone's timeline held landscape (decisions 225, 226)"); });
@@ -1129,7 +1131,7 @@ if(cerrs) process.exitCode=1;
     if(!(h>=24)) herr.push("style.css: "+s+" under 24 px high on a phone ("+decl(R,s,"min-height")+")"); });
   if(!/body\.drawer-open \.dispatch/.test(ph.map(r=>r.sel).join("\n"))) herr.push("style.css: the dispatch sheet does not give way to an open dossier on a phone");
   if(decl(ls,"body.firstrun-on .tools","display")!=="none") herr.push("style.css: held landscape the tools stand under the first card (decision 226)");
-  if(!/<button class="t" id="menubtn" type="button" aria-expanded="false" aria-controls="tools">/.test(sh)||!/<div class="tools" id="tools">/.test(sh)) herr.push("shell.html: the Menu is not a disclosure of #tools");
+  if(!/<button class="t" id="menubtn" type="button" aria-expanded="false" aria-controls="tools">/.test(sh)||!/<div class="tools" id="tools" role="region" aria-label="Tools">/.test(sh)) herr.push("shell.html: the Menu is not a disclosure of #tools");
   if(!/<button class="dgrip" id="dgrip" type="button" aria-expanded="false">/.test(sh)) herr.push("shell.html: the dispatch sheet's grip is not a disclosure button");
   if(!/mnb\.textContent=LABELS\.phone\.menu/.test(src)||!/dgb\.setAttribute\("aria-label",LABELS\.phone\.grip\)/.test(src)||!/LABELS\.phone\.speed\+" "\+on\.textContent/.test(src)) herr.push("app.js: the phone layout's words are not from LABELS.phone");
   herr.forEach(e=>console.log("  ! "+e));

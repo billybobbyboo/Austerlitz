@@ -1,0 +1,86 @@
+{
+ "set": "wp10p",
+ "build": "austerlitz-command-map.html",
+ "md5": "de856e9b9e7782d84895c7a375384c7d",
+ "mutations": [
+  {
+   "name": "none",
+   "applied": true,
+   "expected": [],
+   "failed": [],
+   "ok": true,
+   "detail": []
+  },
+  {
+   "name": "a drifting block faces along its drift again",
+   "applied": true,
+   "expected": [
+    "the facings (WP-10, CL-VIS-03)"
+   ],
+   "failed": [
+    "the facings (WP-10, CL-VIS-03)"
+   ],
+   "ok": true,
+   "detail": [
+    "248 halted and 369 drifting near an enemy; the halted within 45 degrees 247 of 248 (99.6%); WRONG: 129 facing away (kienmayer at 06:20 (drifting, 93 deg, 1.50 km); legrand at 07:10 (drifting, 154 deg, 1.01 km); legrand at 07:20 (drifting, 159 deg, 1.04 km); legrand at 07:30 (drifting, 164 deg, 1.08 "
+   ]
+  },
+  {
+   "name": "a halted block's facing taken once in its phase again",
+   "applied": true,
+   "expected": [
+    "the facings (WP-10, CL-VIS-03)"
+   ],
+   "failed": [
+    "the facings (WP-10, CL-VIS-03)"
+   ],
+   "ok": true,
+   "detail": [
+    "248 halted and 369 drifting near an enemy; the halted within 45 degrees 236 of 248 (95.2%); WRONG: 34 facing away (lich at 09:20 (drifting, 109 deg, 1.09 km); sthilaire at 10:00 (drifting, 117 deg, 0.02 km); kamensky at 10:00 (drifting, 117 deg, 0.02 km); lich at 10:00 (drifting, 124 deg, 1.17 km); "
+   ]
+  },
+  {
+   "name": "the camp pitched at every status again",
+   "applied": true,
+   "expected": [
+    "the headquarters' camp (WP-10, CL-VIS-07)"
+   ],
+   "failed": [
+    "the headquarters' camp (WP-10, CL-VIS-07)"
+   ],
+   "ok": true,
+   "detail": [
+    "219 headquarters-clocks, 153 of them moving; WRONG: ahq at 05:00 (moving): the camp pitched; buxhowden at 05:00 (moving): the camp pitched; ahq at 05:10 (moving): the camp pitched; buxhowden at 05:10 (moving): the camp pitched; ahq at 05:20 (moving): the camp pitched"
+   ]
+  },
+  {
+   "name": "the streams at 0.30 again",
+   "applied": true,
+   "expected": [
+    "the streams' glint (WP-10, CL-VIS-05)"
+   ],
+   "failed": [
+    "the streams' glint (WP-10, CL-VIS-05)"
+   ],
+   "ok": true,
+   "detail": [
+    "the brook by the castle, 15:00: the streams' p99 245 (37777 px), the field's 175; Saint-Hilaire's climb, 09:00: the streams' p99 238 (45308 px), the field's 207; WRONG: the brook by the castle, 15:00: the streams' p99 245 over the field's 175 + 15; Saint-Hilaire's climb, 09:00: the streams' p99 238 "
+   ]
+  },
+  {
+   "name": "the tier decided once again (no retier on a resize)",
+   "applied": true,
+   "expected": [
+    "the tier on a resize (WP-10, CL-VIS-09)"
+   ],
+   "failed": [
+    "the tier on a resize (WP-10, CL-VIS-09)"
+   ],
+   "ok": true,
+   "detail": [
+    "WRONG: a small window's page enlarged kept the low tier {\"low\":true,\"shadow\":false,\"detail\":false,\"px\":1}"
+   ]
+  }
+ ],
+ "allAsExpected": true
+}

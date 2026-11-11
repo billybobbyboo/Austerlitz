@@ -428,6 +428,10 @@
   /* ---- figures on the ground ---- */
   /* the figure kit's geometries, read from the app: since Stage 6C every class's (kitGeos), before it the five of the one kit */
   function figureGeos(){ if(typeof kitGeos==="function") return kitGeos(); var K=(typeof figKit==="function")?figKit():FIG; return [K.infCoat,K.infFixed,K.horse,K.rider,K.riderFixed]; }
+  /* the final audits' Stage 6, WP-10 (CL-VIS-01): on a mere the figures stand on its ice disc, drawn above the mere's bed (the drawn ground rg
+     reads); a build with the ice's level (world.js iceTop: the drawn discs' own heights, inside their own outlines) is measured against it there.
+     A build without it (before Stage 6), or a point off every disc, against the drawn ground as before */
+  function onIce(h,x,z){ return (typeof iceTop==="function")?iceTop(h,x,z):h; }
   function figures(){
     var geos=figureGeos(), m=new M4(), p=new V(), n=0, worst=0, sum=0, bad=0, worstId=null;
     Object.keys(units).forEach(function(id){
@@ -437,7 +441,7 @@
         if(!o.isInstancedMesh||geos.indexOf(o.geometry)<0||!effVisible(o)) return;
         for(var i=0;i<o.count;i++){
           o.getMatrixAt(i,m); p.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);
-          var e=p.y-rg(p.x,p.z), a=Math.abs(e);
+          var e=p.y-onIce(rg(p.x,p.z),p.x,p.z), a=Math.abs(e);
           n++; sum+=a; if(a>0.05) bad++; if(a>worst){ worst=a; worstId=id+(e>0?" floats ":" sinks ")+a.toFixed(2); }
         }
       });
@@ -453,7 +457,7 @@
       for(var i=0;i<u.poles.count;i++){
         u.poles.getMatrixAt(i,m);
         p.set(0,-2.6,0).applyMatrix4(m).applyMatrix4(u.poles.matrixWorld);  /* pole geometry is 5.2 long, centred */
-        var a=Math.abs(p.y-rg(p.x,p.z)); n++; if(a>worst) worst=a;
+        var a=Math.abs(p.y-onIce(rg(p.x,p.z),p.x,p.z)); n++; if(a>worst) worst=a;
       }
     });
     return {count:n, maxErr:+worst.toFixed(3)};
