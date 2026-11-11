@@ -11,7 +11,8 @@ declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b
 *Reconciled (11 November 2026; merged in, not rebased) with the crowns PR's branch, which holds `main` after PRs #94 and #98 and the focus, visitor-words,
 picture and crowns PRs:* conflicts in `CHANGELOG.md` and `package.json` only. The merged build is 3,025,956 bytes, md5 `dcc65319b445c119b005f7e5c25a29fc`,
 and `check:baseline` moves to it. On it, here: `npm test` (this PR's runtime-test block among them), `check:data` (143 identical), `check:chronology` and
-`check:selftest` (348 checks, every one passing, the manifest unchanged) pass. `check:contrast` and `check:visual` run again on CI.
+`check:selftest` (348 checks, every one passing, the manifest unchanged) pass. On CI (run 42989164373 on `04ce06f`, the build `dcc65319...`): passed, every job (`check:visual` 3 h 30 min).
+`main` merged in after PR #96 (`9f7c1b0`), the build unchanged.
 
 ### What changed, and why
 
