@@ -12,7 +12,8 @@ moves to it.
 visitor-words PR and the picture PR:* the self-test's blocks kept side by side (`wp09Checks`, `wp10Checks`, `wp10pChecks`, `wp10gChecks`), the height
 guard's sites likewise. The merged build is 3,024,870 bytes, md5 `5245ec4178a3420ea4d6c60bc51d6b1e`, and `check:baseline` moves to it. On it, here: `npm
 test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (348 checks, every one passing) pass; the manifest regenerated from that run,
-346 to 348. `check:contrast` and `check:visual` run again on CI.
+346 to 348. On CI (run 42984402496 on `9f10657`, the build `5245ec41...`): passed, every job (`check:visual` 3 h 29 min). `main` merged in after
+PR #96 (`9f7c1b0`), the build unchanged.
 
 ### What changed, and why
 
