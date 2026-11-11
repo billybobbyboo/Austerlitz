@@ -1455,7 +1455,7 @@ function makeBlock(f,id){
   function seatPrep(){ g.updateMatrixWorld(true); _inv.copy(g.matrixWorld).invert(); _gH=groundHeights(); }   /* 8F: the drawn ground's compact heights, for the slopes */
   function seatLocal(lx,lz,out){
     _wp.set(lx,0,lz).applyMatrix4(g.matrixWorld);
-    _wp.y=groundY(_wp.x,_wp.z);
+    _wp.y=iceTop(groundY(_wp.x,_wp.z),_wp.x,_wp.z);   /* the final audits' Stage 6 (CL-VIS-01): on a mere, its ice */
     return out.copy(_wp).applyMatrix4(_inv);
   }
   /* Stage 8, 8E: the slopes about the upright figure just seated (its world place _wp, on the drawn ground), facing the block's heading
@@ -1469,9 +1469,10 @@ function makeBlock(f,id){
      docs/STAGE8_SPEC.md section 18: the cases these chords leave, kept open with their proposed bounds) */
   var _qw=new THREE.Quaternion(), _fw=new THREE.Vector3(), _yS=0, _yC=1, _gH=null;
   function slopes(rs,rc,horse,out,o){ var fx=_yS*rc+_yC*rs, fz=_yC*rc-_yS*rs, k=g.scale.x||1, x=_wp.x, z=_wp.z, y=_wp.y, GH=_gH;
-    if(!horse){ var a=GAIT.REACH.man*k; out[o]=(groundYFast(GH,x+fx*a,z+fz*a)-y)/a; out[o+1]=(y-groundYFast(GH,x-fx*a,z-fz*a))/a; return; }
-    var H=ANIM.HORSE, f=(H.ZF+GAIT.REACH.horse)*k, h=(GAIT.REACH.horse-H.ZH)*k;
-    out[o]=(groundYFast(GH,x+fx*f,z+fz*f)-y)/f; out[o+1]=(y-groundYFast(GH,x-fx*h,z-fz*h))/h; }
+    /* the final audits' Stage 6 (CL-VIS-01): each chord's end on a mere's ice where the ice lies above the drawn ground (iceTop) */
+    if(!horse){ var a=GAIT.REACH.man*k, xa=x+fx*a, za=z+fz*a, xb=x-fx*a, zb=z-fz*a; out[o]=(iceTop(groundYFast(GH,xa,za),xa,za)-y)/a; out[o+1]=(y-iceTop(groundYFast(GH,xb,zb),xb,zb))/a; return; }
+    var H=ANIM.HORSE, f=(H.ZF+GAIT.REACH.horse)*k, h=(GAIT.REACH.horse-H.ZH)*k, xf=x+fx*f, zf=z+fz*f, xh=x-fx*h, zh=z-fz*h;
+    out[o]=(iceTop(groundYFast(GH,xf,zf),xf,zf)-y)/f; out[o+1]=(y-iceTop(groundYFast(GH,xh,zh),xh,zh))/h; }
   /* the block's rotation is tilt x yaw; this is the local rotation that undoes the tilt and keeps the yaw */
   function uprightQuat(){
     _nb.copy(_up0).applyQuaternion(g.quaternion).normalize();
@@ -1628,7 +1629,7 @@ function makeBlock(f,id){
           if((rx*rx+rz*rz<4e-6&&Math.abs(_apw.y-_ate.y)<0.002)||it===11) break;
           /* the axle moved by the residual over the ground, its wheel on the drawn ground there; the turn kept */
           _ax.set(0,rG,0).applyMatrix4(_a2); _axw.copy(_ax).applyMatrix4(g.matrixWorld); _axw.x+=rx; _axw.z+=rz;
-          _axw.y=groundY(_axw.x-kr*_aup.x,_axw.z-kr*_aup.z)+kr*_aup.y; _axw.applyMatrix4(_inv);
+          var wxq=_axw.x-kr*_aup.x, wzq=_axw.z-kr*_aup.z; _axw.y=iceTop(groundY(wxq,wzq),wxq,wzq)+kr*_aup.y; _axw.applyMatrix4(_inv);   /* on a mere, its ice (CL-VIS-01) */
           _a2.setPosition(_a2.elements[12]+_axw.x-_ax.x,_a2.elements[13]+_axw.y-_ax.y,_a2.elements[14]+_axw.z-_ax.z); }
         gL.setMatrixAt(q,_a2); }
       gL.instanceMatrix.needsUpdate=true; };
@@ -2610,8 +2611,10 @@ function paintExaggeration(){
   /* the paper map has no relief setting (decision 19): the control is not offered there, and its row says why */
   var set=document.getElementById("exag-set"), desc=document.getElementById("exag-desc");
   if(set) set.hidden=paper;
+  /* the final audits' Stage 6 (CL-UX-08): while the setting is off for Play, its row says why (until Stage 6 the disabled buttons' tooltips alone) */
+  var off=playing&&EXAG_MEASURED_MS>EXAG_SLOW_MS;
   if(desc) desc.textContent=paper?"The paper map is drawn flat, with its own hillshade ("+fmtFactor(PAPER_HILLSHADE)+"\u00d7); the setting applies to the landscape"
-    :"How tall the ground is drawn; 1\u00d7 is true scale";
+    :off?"Pause to change the relief: a change takes about "+EXAG_MEASURED_MS+" ms":"How tall the ground is drawn; 1\u00d7 is true scale";
   var el=document.getElementById("exag-line"), sy=document.getElementById("exag-symbols");
   /* the paper map (Stage 2E, decisions 19 and 29): its hillshade's own factor; it draws no figure, building or tree */
   if(paper){ if(el) el.textContent="paper map: the ground drawn flat, in plan; hillshade exaggerated "+fmtFactor(PAPER_HILLSHADE)+"\u00d7 (1\u00d7 is true scale)";
@@ -5191,11 +5194,15 @@ function mlItem(key,cls){
       fid:null,pick:null,focusable:false,op:1,opS:1,rect:null,lead:false,state:"",eFrame:-1};
     e.addEventListener("focus",function(){ ML.focus=key; requestRender(2); });
     e.addEventListener("blur",function(){ if(ML.focus===key){ ML.focus=null; requestRender(2); } });
+    /* the final audits' Stage 6, WP-09 (CL-UX-10): the dossier it opens takes the focus on its heading (until Stage 6 the focus stayed on the item,
+       about 30 Tabs from the dossier, which stands before the map layer in the document); closed, it gives the focus back to the item (PANEL.opener) */
+    var open=function(){ select(it.pick.kind,it.pick.id); var dr=document.getElementById("drawer"), h=dr&&dr.classList.contains("on")?dr.querySelector("h2"):null;
+      if(h&&shown(h)){ h.tabIndex=-1; h.focus({preventScroll:true}); } };
     e.addEventListener("keydown",function(ev){
-      if((ev.key==="Enter"||ev.key===" ")&&it.pick){ ev.preventDefault(); ev.stopPropagation(); select(it.pick.kind,it.pick.id); }
+      if((ev.key==="Enter"||ev.key===" ")&&it.pick){ ev.preventDefault(); ev.stopPropagation(); open(); }
     });
     /* roadmap step 3 (A-2): a click alone (a screen reader's or speech input's activation; the pointer never reaches the layer) selects too */
-    e.addEventListener("click",function(){ if(it.pick) select(it.pick.kind,it.pick.id); });
+    e.addEventListener("click",function(){ if(it.pick) open(); });
   }
   it.frame=ML.frame;
   return it;
@@ -6173,8 +6180,9 @@ var SEAT_STATS={blocks:0, slopes:0, want:0};   /* Stage 8, 8E: slopes, the seati
 function settleBlock(rec){
   var b=rec.block, p=b.position, u=b.userData;
   var e=1.6;
-  var hx=(groundY(p.x+e,p.z)-groundY(p.x-e,p.z))/(2*e);
-  var hz=(groundY(p.x,p.z+e)-groundY(p.x,p.z-e))/(2*e);
+  /* the final audits' Stage 6 (CL-VIS-01): the surface a block stands on, a mere's ice where it lies above the drawn ground (iceTop) */
+  var hx=(iceTop(groundY(p.x+e,p.z),p.x+e,p.z)-iceTop(groundY(p.x-e,p.z),p.x-e,p.z))/(2*e);
+  var hz=(iceTop(groundY(p.x,p.z+e),p.x,p.z+e)-iceTop(groundY(p.x,p.z-e),p.x,p.z-e))/(2*e);
   _nrm.set(-hx,1,-hz).normalize();
   _qt.setFromUnitVectors(_up,_nrm);
   _qy.setFromAxisAngle(_up,rec.yaw||0);
@@ -6363,7 +6371,7 @@ function updateVisibility(){
     var p=posNow(id);
     if(p){
       var wq=W(p[0],p[1]);
-      rec.block.position.set(wq[0],groundY(wq[0],wq[1]),wq[1]);   /* settled below, after pose and scale */
+      rec.block.position.set(wq[0],iceTop(groundY(wq[0],wq[1]),wq[0],wq[1]),wq[1]);   /* settled below, after pose and scale; on a mere, its ice (CL-VIS-01) */
     }
     /* a parent is only folded away by its children if those children are
        divisions; a brigade detachment does not replace its parent */
@@ -6700,6 +6708,12 @@ function syncFollow(){
   if(b&&b.getAttribute("aria-pressed")!==on) b.setAttribute("aria-pressed",on);
   var vs=syncFollow.vs||(syncFollow.vs=document.querySelectorAll(".van-btn"));   /* roadmap step 5 (SW-13): the static buttons found once, not every frame */
   for(var i=0;i<vs.length;i++){ var pr=String(vs[i].dataset.v===curVantage); if(vs[i].getAttribute("aria-pressed")!==pr) vs[i].setAttribute("aria-pressed",pr); }
+  /* the final audits' Stage 6 (CL-UX-08): the pressed vantage's caveat (its title's clause "a preset view, not what ... saw") shown under the buttons;
+     written only when the vantage changes (an idle frame touches nothing, 8H) */
+  if(syncFollow.lastV!==curVantage){ syncFollow.lastV=curVantage; var vn=document.getElementById("van-note"), pb=null;
+    for(var j=0;j<vs.length;j++) if(vs[j].dataset.v===curVantage) pb=vs[j];
+    var m=pb&&/: (a preset view, not what [^.]*)$/.exec(pb.title||"");
+    if(vn){ vn.textContent=m?pb.textContent+": "+m[1]+".":""; vn.hidden=!m; } }
 }
 function setFollow(on){
   if(on){ freeCam=false; flyTo(PHASES[curPhase].cam); }
@@ -6848,6 +6862,9 @@ var LABELS={
      meanwhile): the ten themes "themes" (the code's and the specifications' word; "moment" stays a phase's or an event's), the phase's own
      text "the phase text" (the Now tab's note; "dispatch" was the code's word on screen), the sources sheet "Accuracy and sources" (its
      button, its name; its heading is SOURCE_NOTE.title, data) */
+  card:{recon:"It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.", key:"Show the key"},   /* decision 276 (a) */
+  nowOff:{hidden:"The phase text is hidden.", opening:"The phase text is hidden during the opening: its words are in the opening's bar.",
+    tour:"The phase text is hidden during the guided tour: its words are in the tour's bar.", key:"Or press D.", show:"Show the phase text"},   /* the final audits' Stage 6 (CL-UX-12) */
   names:{themes:"The battle in ten themes", themePick:"Pick one of the ten themes above.", theme:"The theme", phaseText:"the phase text",
     sheet:"Accuracy and sources"},
   panels:{button:"Panels", title:"Show or hide the panels: the order of battle, analysis, command and plans tabs, and the sources (below 1080 px wide)"},
@@ -6855,7 +6872,8 @@ var LABELS={
      2026); "Playback speed" and "Phases" are the build's own names for the speeds' group and the phases' group */
   phone:{speed:"Playback speed", speedTitle:"Playback speed: each press the next of \u00bd\u00d7, 1\u00d7, 2\u00d7 and 4\u00d7",
     menu:"Menu", menuTitle:"The tools: the opening, the tour, layers, panels, the vantages and the presentation",
-    grip:"The phase text in full", phases:"Phases", closePanels:"Close the panels"},
+    grip:"The phase text in full", phases:"Phases", closePanels:"Close the panels",
+    phase:"Phase text", phaseTitle:"The phase text, the narrative of the phase at the clock, opened over the map"},   /* the final audits' Stage 6 (CL-UX-01, decision 305 (a)) */
   eyesBack:"Whose eyes? Back to %r (a model reading).",
   /* roadmap step 5 (question 172): a focused map item that leaves the map (the clock moved it off, or it ended) hands the focus on, and says so */
   mapLeft:"%n has left the view; the focus is on %m.", mapLeftLayer:"the map",   /* the review of 22c77ac: "the view" (the clock, a pan or a zoom) */
@@ -6879,6 +6897,7 @@ function applyLabels(){
   var spb=document.getElementById("speedbtn"); if(spb){ spb.title=LABELS.phone.speedTitle; paintSpeedBtn(); }   /* roadmap step 6 item 3 */
   var mnb=document.getElementById("menubtn"); if(mnb){ mnb.textContent=LABELS.phone.menu; mnb.title=LABELS.phone.menuTitle; }
   var dgb=document.getElementById("dgrip"); if(dgb){ dgb.setAttribute("aria-label",LABELS.phone.grip); dgb.title=LABELS.phone.grip; }
+  var phb=document.getElementById("phasebtn"); if(phb){ phb.textContent=LABELS.phone.phase; phb.title=LABELS.phone.phaseTitle; }
   var phl=document.getElementById("phlist"); if(phl) phl.setAttribute("aria-label",LABELS.phone.phases);
   var rcl=document.getElementById("railclose"); if(rcl){ rcl.setAttribute("aria-label",LABELS.phone.closePanels); rcl.title=LABELS.phone.closePanels; }
   /* roadmap step 5 (R-3): the names, from LABELS.names (shell.html carries the same words for a page whose bundle fails, SW-1) */
@@ -7060,7 +7079,7 @@ function paintShortcuts(){
   var nb=b.querySelector("b"), ni=b.querySelector("i"); if(nb) nb.textContent=L.single; if(ni) ni.textContent=SHORTCUTS.on?L.on:L.off;
   if(d) d.textContent=L.note;
 }
-function setShortcuts(on){ SHORTCUTS.on=!!on; if(helpOpen()) buildHelp(); else paintShortcuts(); }
+function setShortcuts(on){ SHORTCUTS.on=!!on; if(helpOpen()) buildHelp(); else paintShortcuts(); paintNowOff(); }
 function setHelp(open){
   var h=document.getElementById("help"); if(!h) return;
   if(open===helpOpen()) return;
@@ -7332,6 +7351,10 @@ function buildUI(){
     if(window.ResizeObserver && _tbEl) new ResizeObserver(syncTimebarHeight).observe(_tbEl);
     window.addEventListener("resize",syncTimebarHeight);
     syncTimebarHeight();
+    _toolsEl=document.getElementById("tools");   /* CL-UX-18: the tools' lower edge, as they wrap or are shown and hidden */
+    if(window.ResizeObserver && _toolsEl) new ResizeObserver(syncToolsEdge).observe(_toolsEl);
+    window.addEventListener("resize",syncToolsEdge);
+    syncToolsEdge();
   })();
   if(window.innerWidth<1080) document.body.classList.add("rail-hidden");
   syncDock();
@@ -7339,13 +7362,16 @@ function buildUI(){
   var db=document.getElementById("drawer-back"); if(db) db.addEventListener("click",function(){ select(null,null); });
 
   var pop=document.getElementById("layerpop"), popBtn=document.getElementById("layersbtn");
-  function setPop(open){
+  /* kb: opened from the keyboard (the button's activation by a key: a click of detail 0), when the panel takes the focus on its first control,
+     the ground's (the final audits' Stage 6, WP-09, CL-UX-10: until Stage 6 the focus stayed on the button, the panel six Tabs on) */
+  function setPop(open,kb){
     var a=focusedEl(), had=!open&&!!(a&&pop.contains(a));
     pop.hidden=!open;
     popBtn.setAttribute("aria-expanded",String(open));
     if(had) focusTo(["layersbtn","play","restore"]);   /* roadmap step 3 (SW-5): its x, Esc, Watch or Clean closed it with focus inside */
+    if(open&&kb) focusTo([].slice.call(pop.querySelectorAll(".modes button")).concat(["layerclose"]));
   }
-  popBtn.addEventListener("click",function(e){ e.stopPropagation(); setPop(pop.hidden); });
+  popBtn.addEventListener("click",function(e){ e.stopPropagation(); setPop(pop.hidden,e.detail===0); });
   document.getElementById("layerclose").addEventListener("click",function(){ setPop(false); });
   pop.addEventListener("click",function(e){ e.stopPropagation(); });
   document.addEventListener("click",function(){ if(!pop.hidden) setPop(false); });
@@ -7452,7 +7478,12 @@ function paintKey(){
      roadmap step 2 (decision 127 (b); docs/FINAL_AUDIT.md H-4): its verdict on the plateau labelled as this map's reading */
   p.innerHTML="French formations are marked in "+sw("side-fr")+K["side-fr"].word+" and the Allies in "+sw("side-al")+K["side-al"].word+
     ": on their names, their counters and the ground beneath them, and on the movement arrows. "+
-    "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.";
+    "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle."+" "+
+    /* the final audits' Stage 6, WP-09 (CL-UX-11; owner decision 276 (a)): the map said nowhere on its first screen that it is a reconstruction or what
+       the letters beside names are; one sentence, and the key's grade rows one press away (the button closes the card where it stands, the key open) */
+    esc(LABELS.card.recon)+' <button class="fr-link" id="fr-grades" type="button">'+esc(LABELS.card.key)+'</button>';
+  var gb=document.getElementById("fr-grades"); if(gb) gb.addEventListener("click",function(){ closeFirst("explore"); ML.legendOpen=true; requestRender(2);
+    var t=document.getElementById("lg-toggle"); if(t) focusTo([t,"play"]); });
 }
 /* the final audits' Stage 5, WP-08 (CL-MAP-08): the key's samples of the event glyphs, the objective, the place marker and the counter's arm marks,
    drawn by the map's own drawers (EVG, objGlyph, armGlyphSVG) in the theme's text colour (the map draws the event glyphs in the side's colour, which
@@ -7701,7 +7732,8 @@ function paintSituation(){
   var derH=(der?'<span class="sep der-sep">&middot;</span>'+der:"")+(cutH?'<span class="sep der-sep">&middot;</span>'+cutH:"");
   c+=derFirst?derH+evH:evH+derH;
   if(cap){ cap.innerHTML=c; cap.title=capTitle(cap); fitCaption(); }
-  if(host) host.innerHTML=der+cutH+(top?'<span class="ev">'+esc(top.n+evNote(top))+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
+  /* the final audits' Stage 6, WP-09 (CL-UX-08): in the Now tab each derived reading followed by its note as text (in the caption it stays its title) */
+  if(host) host.innerHTML=(der?der+'<span class="der-note">'+esc(FLAT_NOTE)+'</span>':"")+(cutH?cutH+'<span class="der-note">'+esc(SEP_NOTE)+'</span>':"")+(top?'<span class="ev">'+esc(top.n+evNote(top))+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
 }
 /* the caption's title (its whole text, also what fitCaption hides): the boxes' words joined with the spaces their margins draw (the 146453d review) */
 function capTitle(cap){ var t=[]; if(!cap.children) return cap.textContent||"";
@@ -8568,7 +8600,7 @@ function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+fiel
 function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return i; return -1; }
 function sect(title,html,isDl,layer){
   var d=el("div","sect");
-  d.innerHTML='<h3>'+esc(title)+(layer?' <span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+
+  d.innerHTML=(layer?'<div class="sect-h"><h3>'+esc(title)+'</h3><span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span></div>':'<h3>'+esc(title)+'</h3>')+
     (isDl?'<dl class="kvs">'+html+'</dl>':html);
   return d;
 }
@@ -9095,6 +9127,31 @@ function dossierClaims(refs){ var h='<h3 id="claims-here">'+esc(LABELS.dossier.h
         return '<li>'+esc(refLabel(r)||r)+': <b>'+esc(CLAIM_WORDS[c.cl].w)+'</b>'+(c.cls?' '+esc("(by its kind)"):'')+claimDetail(E)+'</li>'; }).join('')+'</ul>'
       :'<p>'+esc(LABELS.dossier.none)+'</p>');
 }
+/* the final audits' Stage 6, WP-09 (CL-UX-21): every narrative statement's ref, walked over the data as tools/step4/statements.js reads them through the
+   overclaim scan (one per string a visitor reads as a statement; a pair, a timeline line, a place's fact, a Command row or a layer, one statement),
+   so that the index can count the statements not yet checked; runtime-test.js holds the two lists equal, ref for ref */
+function narrativeRefs(){
+  var R=[], S=function(ref,v){ if(typeof v==="string"&&v!=="") R.push(ref); },
+      P=function(ref,a,ix){ if(a&&ix.some(function(i){ return typeof a[i]==="string"&&a[i]!==""; })) R.push(ref); };
+  PHASES.forEach(function(Ph,i){ var h="PHASES[#"+(Ph.id!=null?Ph.id:i)+"]"; S(h+".title",Ph.title); S(h+".lede",Ph.lede); S(h+".flash",Ph.flash);
+    (Ph.events||[]).forEach(function(e,j){ P(h+".events["+j+"]",e,[0,1]); }); });
+  EVENTS.forEach(function(e){ var h="EVENTS[#"+e.id+"]"; S(h+".n",e.n); S(h+".why",e.why); S(h+".dispute",e.dispute); });
+  Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id], h="FORMATIONS."+id;
+    ["desig","commander","staff","role","note","strengthNote","mixedNote"].forEach(function(k){ S(h+"."+k,f[k]); });
+    if(f.army){ S(h+".army.men",f.army.men); S(h+".army.src",f.army.src); }
+    if(f.track) Object.keys(f.track).forEach(function(k){ var t=f.track[k]; if(!t) return; var th=h+'.track["'+k+'"]'; S(th+".act",t.act); S(th+".obj",t.obj); if(t.tm) S(th+".tm.note",t.tm.note); }); });
+  FEATURES.forEach(function(F){ var h="FEATURES[#"+F.id+"]"; S(h+".sub",F.sub); S(h+".story",F.story);
+    (F.why||[]).forEach(function(w,i){ S(h+".why["+i+"]",w); }); (F.facts||[]).forEach(function(a,i){ P(h+".facts["+i+"]",a,[0,1]); }); });
+  ANALYSIS.forEach(function(A){ S("ANALYSIS[#"+A.id+"].text",A.text); });
+  TOUR.forEach(function(T,i){ S("TOUR["+i+"].x",T.x); });
+  ACTS.forEach(function(A){ S("ACTS[#"+A.id+"].line",A.line); });
+  ["fr","al"].forEach(function(sd){ var C=COMMAND[sd]||{}; Object.keys(C).forEach(function(k){ (C[k]||[]).forEach(function(row,j){ P("COMMAND."+sd+'["'+k+'"]['+j+"]",row,[0,1,2]); }); });
+    var Pl=PLANS[sd]; if(Pl){ ["author","intent","cost"].forEach(function(k){ S("PLANS."+sd+"."+k,Pl[k]); });
+      (Pl.assumed||[]).forEach(function(a,i){ S("PLANS."+sd+".assumed["+i+"]",a); }); (Pl.cols||[]).forEach(function(c,i){ S("PLANS."+sd+".cols["+i+"].ord",c&&c.ord); }); } });
+  (SOURCE_NOTE.body||[]).forEach(function(b,i){ S("SOURCE_NOTE.body["+i+"]",b); }); (SOURCE_NOTE.refs||[]).forEach(function(b,i){ S("SOURCE_NOTE.refs["+i+"]",b); });
+  (SOURCE_NOTE.layers||[]).forEach(function(a,i){ P("SOURCE_NOTE.layers["+i+"]",a,[0,1]); });
+  return R;
+}
 function claimsIndex(){
   var K=["fact","attributed","disputed","derived","interpretation","uncertain","design"], by={}, cls={};
   Object.keys(STATEMENT_CLAIMS).forEach(function(r){ var c=STATEMENT_CLAIMS[r].cl; (by[c]=by[c]||[]).push(r); });
@@ -9118,7 +9175,9 @@ function claimsIndex(){
       h+='<ul class="bul">'+L.map(function(x){ return '<li>'+esc(x.t)+claimDetail(STATEMENT_CLAIMS[x.r])+'</li>'; }).join('')+'</ul>';   /* Stage 8, 8A: as recorded, with each side and the note */
     }
     h+='</li>'; });
-  h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>: '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement.")+'</li></ul>';
+  /* the final audits' Stage 6 (CL-UX-21): the unchecked counted, as every claimed kind is (narrativeRefs: neither a claim of its own nor its class's) */
+  var nUn=narrativeRefs().filter(function(r){ return !Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,r)&&!classOf(r); }).length;
+  h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>: '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement ("+nUn+(nUn===1?" statement":" statements")+").")+'</li></ul>';
   return h;
 }
 var _srcRefs=null;
@@ -9231,7 +9290,7 @@ function setProg(f){
 function stopPlay(){
   playing=false; dwellReset(); FOLLOW.T=null;
   var b=document.getElementById("play");
-  if(b){ b.textContent="Play"; b.setAttribute("aria-pressed","false"); }
+  if(b) b.textContent="Play";   /* the final audits' Stage 6 (CL-UX-15): its name says the state; no pressed state besides ("Pause, toggle button, pressed") */
   if(selection&&drawerKey()!==_drawerKey) paintDrawer();   /* WP-05 (CL-SIM-01): the dossier the clock's where it stops */
   paintSituation();   /* the final audits' WP-05 (CL-SIM-08): paused in a dwell's hold, the caption is the clock's at once, as after a seek (its key holds
                          playing and the dwell's events, both just changed); until WP-05 it named the dwell's events until the clock next moved */
@@ -9243,7 +9302,7 @@ function togglePlay(){
   if(clock>=T_MAX-0.5) setClock(T_MIN,{force:true});
   playing=true; dwellReset(); FOLLOW.T=null; FOLLOW.ev=null;
   var b=document.getElementById("play");
-  if(b){ b.textContent="Pause"; b.setAttribute("aria-pressed","true"); }
+  if(b) b.textContent="Pause";
   paintExaggeration();
   openingHead();   /* Stage 7D */
 }
@@ -9467,9 +9526,13 @@ function syncViewmode(){
    it or Esc closes. */
 /* the query: below 720 px wide and taller than 430 px (a phone held upright; a small phone held landscape, 667 x 375 or 640 x 360, keeps the
    layout above, as an 844 x 390 one does: the review's item 3) */
-var PHONE_Q="(max-width:720px) and (min-height:431px)", PHONE=false;
+/* the final audits' Stage 6, WP-09 (CL-UX-01; WCAG 1.4.10): also a desktop's window under 720 px wide at any height (a fine pointer: a desktop zoomed to
+   400%, 400 x 225 or 320 x 256), whose wrapped controls had covered the tools and the Panels button; a phone held landscape (a coarse pointer) keeps
+   the layout decision 226 (a) gave it */
+var PHONE_Q="(max-width:720px) and (min-height:431px), (max-width:720px) and (pointer:fine)", PHONE=false;
 function syncPhone(){
   var want=!!(typeof window!=="undefined"&&window.matchMedia&&window.matchMedia(PHONE_Q).matches);
+  if(!want&&dsheetOpen()&&!shortSheet()) setDSheet(false);   /* Stage 6 (CL-UX-01): the short screen's sheet closed where it no longer applies */
   if(want===PHONE) return;
   PHONE=want;
   if(!want){ setMenu(false); setDSheet(false); }
@@ -9478,9 +9541,12 @@ function syncPhone(){
   if(inVm&&a!==focusedEl()) focusTo([a,"menubtn","play"]);   /* SW-5: the switch moved in the DOM drops the focus (the review's item 9) */
 }
 function dsheetOpen(){ return document.body.classList.contains("dsheet-open"); }
+/* the final audits' Stage 6, WP-09 (CL-UX-01; decision 305 (a)): the sheet also at 430 px tall or less, not docked, opened by the timeline's "Phase text" */
+var SHORT_Q="(max-height:430px)";
+function shortSheet(){ return !!(typeof window!=="undefined"&&window.matchMedia&&window.matchMedia(SHORT_Q).matches)&&!(typeof docked!=="undefined"&&docked); }
 function setDSheet(open){
-  open=!!open&&PHONE;
-  var b=document.getElementById("dgrip"); document.body.classList.toggle("dsheet-open",open); if(b) b.setAttribute("aria-expanded",String(open));
+  open=!!open&&(PHONE||shortSheet());
+  var b=document.getElementById("dgrip"), pb=document.getElementById("phasebtn"); document.body.classList.toggle("dsheet-open",open); if(b) b.setAttribute("aria-expanded",String(open)); if(pb) pb.setAttribute("aria-expanded",String(open));
   toastRelayout();   /* Stage 8, 8I: the dispatch sheet raised or folded on a phone */
   if(typeof requestRender==="function") requestRender(2);
 }
@@ -9507,12 +9573,29 @@ function bindPhone(){
   /* a press outside the menu and its button closes it */
   window.addEventListener("pointerdown",function(e){ if(!menuOpen()) return; var t=e.target;
     if(t&&t.closest&&(t.closest("#tools")||t.closest("#menubtn"))) return; setMenu(false); },true);
-  if(g) g.addEventListener("click",function(){ setDSheet(!dsheetOpen()); });
+  /* the final audits' Stage 6, WP-09 (CL-UX-18): the grip, drawn as a drag handle, also takes a drag: up opens the sheet, down closes it (30 px or
+     more); a tap toggles it as before (the click a drag ends with is not taken as a tap) */
+  if(g){ var gy=null, gDrag=false;
+    g.addEventListener("pointerdown",function(e){ gy=e.clientY; gDrag=false; try{ g.setPointerCapture(e.pointerId); }catch(x){} });
+    g.addEventListener("pointerup",function(e){ if(gy===null) return; var dy=e.clientY-gy; gy=null;
+      if(Math.abs(dy)>=30){ gDrag=true; setDSheet(dy<0); } });
+    g.addEventListener("pointercancel",function(){ gy=null; });
+    g.addEventListener("click",function(){ if(gDrag){ gDrag=false; return; } setDSheet(!dsheetOpen()); }); }
+  var pbt=document.getElementById("phasebtn"); if(pbt) pbt.addEventListener("click",function(){ setDSheet(!dsheetOpen()); if(dsheetOpen()){ var gg=document.getElementById("dgrip"); if(gg) focusTo([gg]); } });
   var rc=document.getElementById("railclose"); if(rc) rc.addEventListener("click",function(){ setPanels(false); });
+  var ns=document.getElementById("now-show"); if(ns) ns.addEventListener("click",function(){ setDispatchVisible(true); focusTo(["d-title","play"]); });   /* Stage 6 (CL-UX-12) */
   syncPhone();
+}
+/* the final audits' Stage 6, WP-09 (CL-UX-12): the Now tab's hint while the phase text is hidden: until Stage 6 one sentence told a visitor to
+   press D (a key that does nothing with the single-key shortcuts off, and none for a pointer or a finger) and called the opening the guided tour */
+function paintNowOff(){
+  var t=document.getElementById("now-off-t"), b=document.getElementById("now-show"); if(!t) return;
+  var L=LABELS.nowOff; t.textContent=(OPENING.on?L.opening:tourStep>=0?L.tour:L.hidden)+(SHORTCUTS.on?" "+L.key:"");
+  if(b) b.textContent=L.show;
 }
 function syncVis(){
   document.body.classList.toggle("no-dispatch",hideDispatch);
+  paintNowOff();
 
   syncTimebarHeight();
   /* roadmap step 3 (the 146453d review): the caption's order follows the presentation and the dispatch at once (paintSituation's key), and
@@ -9528,6 +9611,16 @@ function showEverything(){
 }
 /* the time bar wraps at narrow widths, so its height is measured, never assumed */
 var _tbEl=null;
+/* the final audits' Stage 6, WP-09 (CL-UX-18): the tools' lower edge (0 where they are not shown), for the undocked dispatch card's height
+   (style.css: the card ends below it; at 800 x 450 with the Panels open the vantage row, wrapped to a third line, had lain over the card's top by
+   about 11 px) */
+var _toolsEl=null;
+function syncToolsEdge(){
+  if(!_toolsEl) _toolsEl=document.getElementById("tools");
+  if(!_toolsEl) return;
+  var r=_toolsEl.getBoundingClientRect(), b=(r.height>0&&r.width>0)?Math.round(r.bottom):0;
+  document.documentElement.style.setProperty("--tools-b",b+"px");
+}
 function syncTimebarHeight(){
   if(!_tbEl) _tbEl=document.querySelector(".timebar");
   if(!_tbEl) return;
@@ -9875,6 +9968,153 @@ function wp08Checks(){
     if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); endTw();
     landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc;
     if(K.sel) select(K.sel.kind,K.sel.id); requestRender(3);
+  }
+  return out;
+}
+/* the final audits' Stage 6, WP-09 (accessibility and first use): the self-test's checks of the names and structure (CL-UX-15), the phase text's hint
+   (CL-UX-12), the focus taken by a panel opened from the keyboard (CL-UX-10), the caveats shown (CL-UX-08) and the first card's sentence (CL-UX-11; decision
+   276 (a)). Each reads the page as drawn (the DOM, the computed styles, the focus); the reflow and forced colours are check:contrast's and check:visual's */
+function wp09Checks(){
+  var out=[], K={t:clock,sel:selection,pres:presentation,hide:hideDispatch,sc:SHORTCUTS.on,lg:ML.legendOpen,v:curVantage,fc:freeCam,pos:landCam.position.clone(),tgt:orbitTarget.clone(),act:document.activeElement};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function vis(e){ if(!e) return false; for(var n=e;n&&n.nodeType===1;n=n.parentElement){ if(n.hidden) return false; var c=getComputedStyle(n); if(c.display==="none"||c.visibility==="hidden") return false; } var r=e.getBoundingClientRect(); return r.width>0&&r.height>0; }
+  function finishTween(){ var n=0; if(tween) mlReset("tween ended at once"); while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
+  if(playing) stopPlay();
+  try{
+  if(presentation!=="study") setPresentation("study");
+  /* CL-UX-15: the rail a complementary region named "Panels", its tablist "Panels"; one h1, outside the rail; the key's toggle drawing its sign with
+     no text for its name; no layer tag inside a section's heading (a formation's full dossier); Play's pressed state not set */
+  guard("names and structure (WP-09, CL-UX-15)",function(){
+    var bad=[], rail=document.getElementById("rail"), tl=document.querySelector(".tabs[role=tablist]"), H1=document.querySelectorAll("h1");
+    if(!rail||rail.tagName!=="ASIDE"||rail.getAttribute("aria-label")!=="Panels") bad.push("the rail "+(rail?rail.tagName+" "+rail.getAttribute("aria-label"):"missing"));
+    if(!tl||tl.getAttribute("aria-label")!=="Panels") bad.push("the tablist named "+(tl&&tl.getAttribute("aria-label")));
+    if(H1.length!==1||rail.contains(H1[0])) bad.push(H1.length+" h1"+(H1.length===1?" inside the rail":""));
+    var tools=document.getElementById("tools"); if(!tools||tools.getAttribute("role")!=="region"||!tools.getAttribute("aria-label")) bad.push("the tools not a named region");
+    var af=getComputedStyle(document.getElementById("lg-toggle"),"::after").content; if(!/\/\s*""$/.test(af)) bad.push("the key's sign read into its name ("+af+")");
+    select("f","sthilaire"); dossierExpanded=true; paintDrawer();
+    var hs=[].slice.call(document.querySelectorAll("#drawer h3")), inH=hs.filter(function(h){ return h.querySelector(".ltag"); });
+    if(!hs.length) bad.push("no section heading in the full dossier"); if(inH.length) bad.push(inH.length+" headings carrying their tag ("+inH[0].textContent.trim()+")");
+    dossierExpanded=false; select(null,null);
+    var PB=document.getElementById("play"); togglePlay(); var pp=PB.textContent+"/"+PB.hasAttribute("aria-pressed"); stopPlay(); var pp2=PB.textContent+"/"+PB.hasAttribute("aria-pressed");
+    if(pp!=="Pause/false"||pp2!=="Play/false") bad.push("Play's name and pressed state "+pp+", "+pp2);
+    ck("names and structure (WP-09, CL-UX-15): the rail the complementary region and tablist “Panels”, the tools a named region, one h1 outside the rail, the key's sign not in its name, no layer tag inside a heading, Play with no pressed state",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):hs.length+" section headings in the full dossier, none with its tag");
+  });
+  /* CL-UX-12: the phase text hidden, the Now tab's hint names D only while the single-key shortcuts are on, tells the opening from the tour, and its
+     button shows the text */
+  guard("the phase text's hint (WP-09, CL-UX-12)",function(){
+    var bad=[], t=document.getElementById("now-off-t"), b=document.getElementById("now-show");
+    setDispatchVisible(false); setShortcuts(true); var a1=t.textContent; setShortcuts(false); var a2=t.textContent;
+    if(a1.indexOf("D")<0||/press D/i.test(a2)||/ D\b/.test(a2)) bad.push("the key named "+(a1.indexOf("D")<0?"not with the shortcuts on":"with them off")+": “"+a2+"”");
+    if(/guided tour/i.test(a2)) bad.push("the tour named outside it");
+    if(!b||!/Show the phase text/.test(b.textContent)) bad.push("no button to show it"); else { b.click(); if(hideDispatch) bad.push("its button left the text hidden"); }
+    setShortcuts(K.sc); setDispatchVisible(!K.hide);
+    ck("the phase text's hint (WP-09, CL-UX-12): its key named only while the single-key shortcuts are on, the opening and the tour told apart, a button that shows the text",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"with the shortcuts on “"+a1+"”; off “"+a2+"”; the button shows the text");
+  });
+  /* CL-UX-10: the Layers panel opened by a key (a click of detail 0) takes the focus on a ground button; a formation's map item activated by Enter
+     opens its dossier with the focus on its heading, and closing the dossier gives the focus back to the item */
+  guard("the focus to an opened panel (WP-09, CL-UX-10)",function(){
+    var bad=[], lb=document.getElementById("layersbtn"), pop=document.getElementById("layerpop");
+    lb.focus(); lb.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true,detail:0}));
+    var f1=document.activeElement; if(pop.hidden||!pop.contains(f1)||!f1.closest(".modes")) bad.push("Layers by a key: the focus on "+(f1&&(f1.id||f1.textContent.trim().slice(0,20))));
+    setLayerPop(false); if(document.activeElement!==lb) bad.push("Layers closed: the focus not back on its button");
+    lb.focus(); lb.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true,detail:1})); if(pop.contains(document.activeElement)) bad.push("Layers by a pointer took the focus"); setLayerPop(false);
+    AUSTERLITZ_DEBUG.settle(4,true); mlLayout();
+    var it=null; for(var k in ML.items){ var q=ML.items[k]; if(q.pick&&q.pick.kind==="f"&&q.focusable&&vis(q.el)){ it=q; break; } }
+    if(!it) bad.push("no formation's item to activate");
+    else { it.el.focus(); it.el.dispatchEvent(new KeyboardEvent("keydown",{key:"Enter",bubbles:true,cancelable:true}));
+      var h=document.activeElement; if(!(h&&h.tagName==="H2"&&document.getElementById("drawer").contains(h))) bad.push("Enter on "+it.pick.id+"'s item: the focus on "+(h&&h.tagName));
+      select(null,null); if(document.activeElement!==it.el) bad.push("the dossier closed: the focus not back on the item"); }
+    ck("the focus to an opened panel (WP-09, CL-UX-10): Layers opened by a key takes it on a ground button, not by a pointer; a map item's Enter puts it on the dossier's heading, and back on the item when closed",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"Layers and "+(it&&it.pick.id)+"'s dossier");
+  });
+  /* CL-UX-08: in the Now tab each derived reading's note shown as text (09:00, the plateau reading); the Zuran vantage's caveat shown under the
+     vantages while it is pressed, none at the Field's */
+  guard("the caveats shown (WP-09, CL-UX-08)",function(){
+    var bad=[];
+    setClock(540,{instant:true,force:true,camera:false}); paintSituation();
+    var host=document.getElementById("situation"), dn=host?host.querySelectorAll(".der-note"):[];
+    if(!host||!host.querySelector(".der")||!dn.length||(dn[0].textContent||"")!==FLAT_NOTE) bad.push("the plateau reading's note not shown as text in the Now tab");
+    document.querySelector('.van-btn[data-v="zuran"]').click(); syncFollow(); var vn=document.getElementById("van-note"), z=vn.textContent, zs=vis(vn);
+    if(!zs||!/not what he saw/.test(z)) bad.push("the Zuran vantage's caveat not shown (“"+z+"”)");
+    document.querySelector('.van-btn[data-v="field"]').click(); syncFollow(); if(vis(vn)) bad.push("a caveat shown at the Field vantage");
+    finishTween();
+    ck("the caveats shown (WP-09, CL-UX-08): each derived reading's note as text in the Now tab; the Zuran and Allied vantages' “not what he saw” under the vantages while pressed",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"the plateau's note shown; at the Zuran “"+z+"”");
+  });
+  /* CL-UX-11 (decision 276 (a)): the first card says the map is a reconstruction graded A to C, and its "Show the key" closes the card with the key open */
+  guard("the first card's reconstruction (WP-09, CL-UX-11)",function(){
+    var bad=[]; document.getElementById("firstrun").hidden=false; openFirstRun(); var fk=document.getElementById("fr-key"), txt=(fk.textContent||"").replace(/\s+/g," "), gb=document.getElementById("fr-grades");
+    if(txt.indexOf("a reconstruction from the sources, its certainty graded A to C")<0) bad.push("the sentence missing: “"+txt.slice(-140)+"”");
+    if(!gb||!vis(gb)) bad.push("no Show the key"); else { ML.legendOpen=false; gb.click(); if(firstRunOpen) bad.push("the card stayed open"); if(!ML.legendOpen) bad.push("the key not opened"); }
+    if(firstRunOpen) closeFirst(null);
+    ck("the first card's reconstruction (WP-09, CL-UX-11; decision 276 (a)): the card says it is a reconstruction from the sources, graded A to C, and its key's button opens the key",
+      !bad.length, bad.length?"WRONG: "+bad.join("; "):"“"+LABELS.card.recon+"”; the key opened");
+  });
+  } finally {
+    ML.legendOpen=K.lg; if(firstRunOpen) closeFirst(null); if(presentation!==K.pres) setPresentation(K.pres); setShortcuts(K.sc); setDispatchVisible(!K.hide);
+    select(K.sel?K.sel.kind:null,K.sel?K.sel.id:null); setClock(K.t,{instant:true,force:true,camera:false}); finishTween();
+    landCam.position.copy(K.pos); orbitTarget.copy(K.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=K.fc; curVantage=K.v; syncFollow();
+    if(K.act&&K.act.focus) K.act.focus(); requestRender(3);
+  }
+  return out;
+}
+/* the final audits' Stage 6, WP-10 (the rendered picture): the self-test's checks of the meres (CL-VIS-01, CL-VIS-02). Each reads the scene as drawn
+   and judges it against the ice's own discs (their meshes' places, radii and heights), not against iceTop or inMereDisc, the code under test */
+function wp10Checks(){
+  var out=[], K={t:clock,f:DISPLAY.factor,mode:mode,pres:presentation};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function shownUp(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }
+  function discs(){ return world.water.filter(function(m){ return m.userData.mere; }).map(function(m){ var q=m.userData.mere; return {c:q[0],rx:q[1],rz:q[2],y:m.position.y,name:q[0]===SATS?"Satschan":"Menitz"}; }); }
+  function inside(d,x,z,r){ var dx=(x-d.c[0])/d.rx, dz=(z-d.c[1])/d.rz; return dx*dx+dz*dz<r*r; }
+  if(playing) stopPlay();
+  try{
+  if(mode!=="terrain") setMode("terrain"); if(presentation!=="study") setPresentation("study");
+  /* CL-VIS-01: at 4x and 10.33x, at three clocks with blocks on or by the Satschan mere (06:30, Kienmayer's riders on their phase-1 via; 12:00,
+     Dokhturov; 16:40, the ponds' phase), every instance of a block (its men, horses, pieces, limbers, wheels, tents and standards) whose place lies
+     inside a mere's drawn disc stands no lower than that disc's ice (0.01 units); and where the drawn ground lies under the ice all round a figure
+     (2.5 units, beyond a horse's reach), the gait's slopes about it (aSl, taken by the block's own layout) are level */
+  guard("the meres (WP-10, CL-VIS-01)",function(){
+    var m=new THREE.Matrix4(), v=new THREE.Vector3(), n=0, under=0, worst=0, at="", nSl=0, slBad=0, slWorst=0, perF=[], nMesh=0;
+    [4,10.33].forEach(function(F){ setDisplayFactor(F); var D=discs(), nF=0, uF=0;
+      [390,720,1000].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); updateVisibility();
+        Object.keys(units).forEach(function(id){ var b=units[id].block, u=b&&b.userData; if(!b||!shownUp(b)) return;
+          if(!D.some(function(d){ return inside(d,b.position.x,b.position.z,1.6); })) return;
+          if(u&&u.layout) u.layout(u.sw,u.sd,true);   /* the slopes taken, as the gait draws a block it animates */
+          b.updateMatrixWorld(true);
+          b.traverse(function(o){ if(o.isMesh&&!o.isInstancedMesh&&shownUp(o)&&o.geometry){   /* a block's own meshes (the headquarters' marquee): their lowest point */
+              if(!o.geometry.boundingBox) o.geometry.computeBoundingBox(); var bb=o.geometry.boundingBox.clone().applyMatrix4(o.matrixWorld), cx=(bb.min.x+bb.max.x)/2, cz=(bb.min.z+bb.max.z)/2;
+              D.forEach(function(d){ if(!inside(d,cx,cz,1)) return; n++; nF++; nMesh++; var dep=d.y-bb.min.y;
+                if(dep>0.05){ under++; uF++; if(dep>worst){ worst=dep; at=id+"'s "+(o.geometry===GEO.tent?"marquee":"mesh")+" at "+fmtClock(t)+", x"+F+" ("+d.name+")"; } } }); }
+            if(!o.isInstancedMesh||!shownUp(o)) return; var SA=o.geometry.attributes.aSl;
+            for(var i=0;i<o.count;i++){ o.getMatrixAt(i,m); v.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);
+              D.forEach(function(d){ if(!inside(d,v.x,v.z,1)) return; n++; nF++; var dep=d.y-v.y;
+                if(dep>0.01){ under++; uF++; if(dep>worst){ worst=dep; at=id+" at "+fmtClock(t)+", x"+F+" ("+d.name+")"; } }
+                if(SA&&i*2+1<SA.array.length&&inside(d,v.x,v.z,0.8)){ var level=true;
+                  for(var k=0;k<8&&level;k++){ var a=k*Math.PI/4, x=v.x+2.5*Math.cos(a), z=v.z+2.5*Math.sin(a); if(!inside(d,x,z,1)||groundY(x,z)>d.y-0.01) level=false; }
+                  if(level){ nSl++; var s=Math.max(Math.abs(SA.array[i*2]),Math.abs(SA.array[i*2+1])); if(s>1e-4){ slBad++; slWorst=Math.max(slWorst,s); } } } }); } }); }); });
+      perF.push("x"+F+": "+nF+" inside, "+uF+" under");
+    });
+    ck("the meres (WP-10, CL-VIS-01): every man, horse, piece and tent inside a mere's drawn disc stands on its ice (a block's own mesh, the marquee, its lowest point), at 4x and 10.33x, and the gait's slopes on the ice are level",
+      n>1000&&nMesh>0&&!under&&nSl>100&&!slBad, n+" instances and meshes inside a disc ("+perF.join("; ")+"; "+nMesh+" a block's own mesh, its lowest point)"+(under?"; WRONG: "+under+" below the ice, up to "+worst.toFixed(3)+" units ("+at+")":"")+
+      "; "+nSl+" figures with the ice under them all round"+(slBad?", WRONG: "+slBad+" with a slope (up to "+slWorst.toFixed(4)+")":", their slopes level")+(n>1000&&nSl>100?"":"; too few to judge"));
+  });
+  /* CL-VIS-02: no tree or bush (the deciduous trees, the conifers, the scrub, by their instances' own matrices) inside a mere's drawn disc */
+  guard("the meres (WP-10, CL-VIS-02)",function(){
+    var D=discs(), m=new THREE.Matrix4(), v=new THREE.Vector3(), n=0, bad=[];
+    treeMesh.children.concat(coniferMesh.children,[scrubMesh]).forEach(function(im){ var kinds=im.userData.kinds||[];
+      for(var i=0;i<im.count;i++){ im.getMatrixAt(i,m); v.setFromMatrixPosition(m); n++;
+        D.forEach(function(d){ if(inside(d,v.x,v.z,1)) bad.push((kinds[i]||"?")+" on the "+d.name+" mere"); }); } });
+    ck("the meres (WP-10, CL-VIS-02): no tree or bush inside a mere's drawn disc",
+      n>1000&&!bad.length, n+" trees and bushes, "+(bad.length?"WRONG: "+bad.length+" on the ice ("+bad.slice(0,6).join(", ")+")":"none inside a disc"));
+  });
+  } finally {
+    if(DISPLAY.factor!==K.f) setDisplayFactor(K.f);
+    if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres);
+    setClock(K.t,{instant:true,force:true,camera:false}); requestRender(3);
   }
   return out;
 }
@@ -10351,7 +10591,8 @@ var AUSTERLITZ_DEBUG=(function(){
     return true;
   }
   function visibleUp(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }
-  /* every visible man and horse (the figure kit), and the foot of every standard, against groundY */
+  /* every visible man and horse (the figure kit), and the foot of every standard, against groundY (since the final audits' Stage 6, CL-VIS-01:
+     against the surface drawn there, a mere's ice where it lies above the drawn ground, iceTop) */
   function figureError(){
     var geos=kitGeos(), m=new THREE.Matrix4(), p=new THREE.Vector3();   /* Stage 6C: every class's geometry */
     var worst=0, where="", n=0;
@@ -10362,13 +10603,13 @@ var AUSTERLITZ_DEBUG=(function(){
         if(!o.isInstancedMesh||geos.indexOf(o.geometry)<0||!visibleUp(o)) return;
         for(var i=0;i<o.count;i++){
           o.getMatrixAt(i,m); p.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);
-          var e=Math.abs(p.y-groundY(p.x,p.z)); n++; if(e>worst){ worst=e; where=id; }
+          var e=Math.abs(p.y-iceTop(groundY(p.x,p.z),p.x,p.z)); n++; if(e>worst){ worst=e; where=id; }
         }
       });
       var u=b.userData;
       if(u&&u.poles&&visibleUp(u.poles)) for(var j=0;j<u.poles.count;j++){
         u.poles.getMatrixAt(j,m); p.set(0,-2.6,0).applyMatrix4(m).applyMatrix4(u.poles.matrixWorld);
-        var e2=Math.abs(p.y-groundY(p.x,p.z)); if(e2>worst){ worst=e2; where=id+" (standard)"; }
+        var e2=Math.abs(p.y-iceTop(groundY(p.x,p.z),p.x,p.z)); if(e2>worst){ worst=e2; where=id+" (standard)"; }
       }
     });
     return {worst:worst,where:where,n:n};
@@ -12391,9 +12632,10 @@ var AUSTERLITZ_DEBUG=(function(){
       var mids=_evTicks.map(function(o){ return o.t; }); for(var k=1;k<mids.length;k++) if(mids[k]<mids[k-1]) grp.push("event markers not in time order");
       M[3].click(); if(!selection||selection.kind!=="e"||Math.abs(clock-_evTicks[3].t)>1e-6) grp.push("a marker's click did not select its event at its clock");
       select(null,null);
-      togglePlay(); var pp=document.getElementById("play").getAttribute("aria-pressed"); stopPlay(); var pp2=document.getElementById("play").getAttribute("aria-pressed");
-      if(pp!=="true"||pp2!=="false") grp.push("Play's aria-pressed "+pp+"/"+pp2);
-      ck("timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play pressed while playing",
+      /* since the final audits' Stage 6 (CL-UX-15): Play named by its state, Pause while playing, with no pressed state besides */
+      var PB=document.getElementById("play"); togglePlay(); var pp=PB.textContent+"/"+PB.hasAttribute("aria-pressed"); stopPlay(); var pp2=PB.textContent+"/"+PB.hasAttribute("aria-pressed");
+      if(pp!=="Pause/false"||pp2!=="Play/false") grp.push("Play's name and pressed state "+pp+", "+pp2);
+      ck("timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play named Pause while playing, with no pressed state (WP-09, CL-UX-15)",
         !grp.length, grp.length?grp.join("; "):M.length+" event markers in time order, each named; the clock unmoved by the groups' keys");
       /* Watch: the presentation switch in the control row at full opacity; the caption carries the derived readings */
       setClock(570,{instant:true,camera:false}); finishTween(); setPresentation("watch"); var vm=document.getElementById("viewmode"), d=document.querySelector("#tb-cap .der");
@@ -12669,10 +12911,11 @@ var AUSTERLITZ_DEBUG=(function(){
       [["role","dialog"],["aria-modal","true"],["aria-labelledby","fr-title"],["aria-describedby","fr-key"]].forEach(function(a){
         if(fr.getAttribute(a[0])!==a[1]) bad.push("the card's "+a[0]+" is "+fr.getAttribute(a[0])); });
       var B=frButtons().map(function(b){ return b.textContent; });
-      if(B.join("|")!==LABELS.firstRun.primary+"|"+LABELS.firstRun.stay) bad.push("the card's buttons are "+B.join(", "));
+      /* since the final audits' Stage 6 (decision 276 (a)): the key's "Show the key" in the card's sentence, before its two actions */
+      if(B.join("|")!==LABELS.card.key+"|"+LABELS.firstRun.primary+"|"+LABELS.firstRun.stay) bad.push("the card's buttons are "+B.join(", "));
       if(aid()!=="fr-tour") bad.push("focus on "+aid()+" when the card opens, not its primary action");
       key("Tab"); said.push(aid()); key("Tab"); said.push(aid()); key("Tab",true); said.push(aid());
-      if(said.join(",")!=="fr-close,fr-tour,fr-close") bad.push("Tab, Tab, Shift+Tab went to "+said.join(", "));
+      if(said.join(",")!=="fr-close,fr-grades,fr-close") bad.push("Tab, Tab, Shift+Tab went to "+said.join(", "));   /* the third button wraps to the first, kept inside */
       var der=[].filter.call(document.querySelectorAll("small"),function(e){ return /derived/.test(e.textContent)&&e.getBoundingClientRect().width>0&&!(e.closest&&e.closest("#maplayer")); }).length;
       if(docked){ var dp=document.querySelector(".dispatch"), rl=document.querySelector(".rail"), db=box(dp), cb=box(fr), rb=box(rl);
         if(tabNow!=="now") bad.push("the rail shows the "+tabNow+" tab under the card (decision 113)");
@@ -13457,7 +13700,7 @@ var AUSTERLITZ_DEBUG=(function(){
       function first(ff){ var m=/^\s*(?:"([^"]+)"|'([^']+)'|([^,]+))/.exec(ff||""); return m?(m[1]||m[2]||m[3]).trim():""; }
       var want={sans:first(TOKENS.type.sans),serif:first(TOKENS.type.serif)}, bad=[], seen=[];
       if(want.sans!=="Austerlitz Sans"||want.serif!=="Austerlitz Serif") bad.push("the tokens name "+want.sans+" and "+want.serif+" first");
-      [["body","sans"],["#tb-cap","sans"],[".tb-icon","sans"],[".brand h1","serif"],["#fr-title","serif"],["#maplayer .mln","serif"]].forEach(function(p){
+      [["body","sans"],["#tb-cap","sans"],[".tb-icon","sans"],[".brand .brand-t","serif"],["#fr-title","serif"],["#maplayer .mln","serif"]].forEach(function(p){
         var e=document.querySelector(p[0]); if(!e){ bad.push(p[0]+" is not in the page"); return; }
         var f=first(getComputedStyle(e).fontFamily); seen.push(p[0]+" "+f);
         if(f!==want[p[1]]) bad.push(p[0]+" is set in "+f+", not "+want[p[1]]); });
@@ -14292,11 +14535,18 @@ var AUSTERLITZ_DEBUG=(function(){
            none to 20, "10.33|men|drawn|fresh|rich" 21 to 33, "10.33|men|drawn|fresh|simple" 14 to 23, "10.33|men|drawn|motion|rich" 1 to 19,
            "10.33|men|edges|fresh|rich" 20 to 32, "10.33|men|edges|fresh|simple" 11 to 19, "10.33|men|edges|motion|rich" none to 12; every other count,
            H_TOL and the proposed bounds unchanged (no case beyond its bound: the worst 0.2466 against 0.2711, the grenadiers at 09:05) */
-        var H_CASES={"4|men|edges|fresh|rich":29, "4|men|edges|fresh|simple":13, "4|men|drawn|fresh|rich":38, "4|men|drawn|fresh|simple":19,
+        /* the final audits' Stage 6, WP-10 (CL-VIS-01; owner decision 314 (a), 9 November 2026): twelve fresh groups re-baselined at the counts
+           measured with the figures on the Satschan mere standing on its ice (iceTop), where until Stage 6 they were seated on the drawn bed under it,
+           sunk up to 0.875 units at 4x and 2.338 at 10.33x: the ice's waterline, where the flat ice meets the rising shore, is a crease the chords
+           cannot follow, as the ground's own creases. Was (on main) and is: 4x men edges rich 29 to 43, simple 13 to 22, drawn rich 38 to 50, simple
+           19 to 26; 4x horses edges 35 to 36 (both kits), drawn rich 33 to 34, simple 32 to 33; 10.33x men drawn rich 33 to 47, simple 23 to 34,
+           edges rich 32 to 37, simple 19 to 21. Every case added is Dokhturov's or Kienmayer's at the Satschan shore, each within its group's
+           proposed bound (tools/final-stage6/gait-cases.js; docs/final-stage6-evidence/wp10/gait-cases.json); H_TOL and every bound unchanged */
+        var H_CASES={"4|men|edges|fresh|rich":43, "4|men|edges|fresh|simple":22, "4|men|drawn|fresh|rich":50, "4|men|drawn|fresh|simple":26,
           "4|men|edges|motion|rich":20, "4|men|drawn|motion|rich":21,
-          "4|horses|edges|fresh|rich":35, "4|horses|edges|fresh|simple":35, "4|horses|drawn|fresh|rich":33, "4|horses|drawn|fresh|simple":32, "4|horses|drawn|motion|rich":1,
+          "4|horses|edges|fresh|rich":36, "4|horses|edges|fresh|simple":36, "4|horses|drawn|fresh|rich":34, "4|horses|drawn|fresh|simple":33, "4|horses|drawn|motion|rich":1,
           "4|horses|edges|motion|rich":3,
-          "10.33|men|edges|fresh|rich":32, "10.33|men|edges|fresh|simple":19, "10.33|men|drawn|fresh|rich":33, "10.33|men|drawn|fresh|simple":23, "10.33|men|drawn|motion|rich":19,
+          "10.33|men|edges|fresh|rich":37, "10.33|men|edges|fresh|simple":21, "10.33|men|drawn|fresh|rich":47, "10.33|men|drawn|fresh|simple":34, "10.33|men|drawn|motion|rich":19,
           "10.33|men|edges|motion|rich":12,
           /* the final audits' Stage 4, WP-04b (owner decision 295 (a), 7 November 2026, extending 293 (a)): the simple kit in motion at 4x and
              10.33x, none to 1 each: CI's check:visual on 0d7212d found 1 pose beyond H_TOL in each (Drouet's division, #20, at 08:46 playing; at
@@ -14315,7 +14565,7 @@ var AUSTERLITZ_DEBUG=(function(){
           else [[rich?13:1,-FXL],[rich?14:2,FXL]].forEach(function(q){ [rich?MA.HEEL:MA.HEEL0,rich?MA.TOE:MA.TOE0].forEach(function(z){ out.push([q[0],q[1],MA.FOOT,z]); }); });
           return out; }
         /* the points' offsets from the drawn ground posed at (ph, amp), through Mw */
-        function hOffs(pts,ph,amp,sl,knee,trot,out){ for(var j=0;j<pts.length;j++){ var q=pts[j]; animAt(q[0],q[1],q[2],q[3],ph,amp,hO,{slope:sl,knee:knee,trot:trot}); V.set(hO[0],hO[1],hO[2]).applyMatrix4(Mw); out[j]=V.y-groundY(V.x,V.z); } out.length=pts.length; return out; }
+        function hOffs(pts,ph,amp,sl,knee,trot,out){ for(var j=0;j<pts.length;j++){ var q=pts[j]; animAt(q[0],q[1],q[2],q[3],ph,amp,hO,{slope:sl,knee:knee,trot:trot}); V.set(hO[0],hO[1],hO[2]).applyMatrix4(Mw); out[j]=V.y-iceTop(groundY(V.x,V.z),V.x,V.z); } out.length=pts.length; return out; }
         /* [error, the raised point's lift over it, the largest resting offset] of a posed instance against its rest (r0: its rest offsets) */
         function hErr(pts,r0,ph,amp,sl,knee,trot){ hOffs(pts,ph,amp,sl,knee,trot,hP1); var e=1e9, mx=-1e9, rs=0;
           for(var j=0;j<pts.length;j++){ var d=hP1[j]-r0[j]; if(d<e) e=d; if(d>mx) mx=d; if(Math.abs(r0[j])>rs) rs=Math.abs(r0[j]); } return [e,mx-e,rs]; }
@@ -14779,7 +15029,9 @@ var AUSTERLITZ_DEBUG=(function(){
            the bank scrub kept clear of the buildings; 8K: the wood above Holubitz dropped): read on each build (tools/stage8/woods-bldg-8j.js;
            docs/stage8-evidence/8j/woods-bldg-8j.json, 8k/woods-bldg-8k.json); until 8J 8E's {wood:634, village:184, conifer:376, edge:354,
            stream:202}, in 8J {wood:409, village:184, conifer:287, edge:244, stream:229, garden:12}. The triangles a tree stay 8E's (KIT8E) */
-        var WOODS8E={wood:357, village:184, conifer:229, edge:205, stream:222, garden:12}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
+        /* the final audits' Stage 6, WP-10 (CL-VIS-02; owner decision 313, 9 November 2026): village 184 to 180 and stream 222 to 205, the four village trees
+           and seventeen bank bushes inside the Satschan mere's drawn disc no longer drawn (every other tree and bush as before) */
+        var WOODS8E={wood:357, village:180, conifer:229, edge:205, stream:205, garden:12}, KIT8E={broad:[560,380,560,380], conifer:[62,41], scrub:360};
         var dBad=[], kit=treeKit(), tri=function(g){ return (g.index?g.index.count:g.attributes.position.count)/3; }, K={wood:0,village:0,edge:0,stream:0,conifer:0,garden:0};
         world.trees.children.forEach(function(im){ (im.userData.kinds||[]).forEach(function(k){ K[k]++; }); if(im.material.side!==THREE.DoubleSide) dBad.push("a deciduous habit not drawn on both faces"); if(!im.castShadow) dBad.push("a deciduous habit casts no shadow"); });
         world.conifers.children.forEach(function(im){ K.conifer+=(im.userData.kinds||[]).length; });
@@ -15136,6 +15388,8 @@ var AUSTERLITZ_DEBUG=(function(){
     wp07Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-07 */
     wp08cChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08's lettering and landmarks */
     wp08Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 5, WP-08 */
+    wp09Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-09 (names, focus, caveats, the first card) */
+    wp10Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the meres) */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();

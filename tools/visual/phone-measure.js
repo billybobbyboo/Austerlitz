@@ -91,7 +91,9 @@
      in place of; Study what Watch does not show (decision 60: Watch is the battlefield and the timeline): the Menu and the dispatch below 720 px,
      the tools and the dispatch above */
   var B=function(c){ return document.body.classList.contains(c); }, PH=function(){ return typeof PHONE!=="undefined"&&PHONE===true; };
-  var OPENER=[["#tools","#menubtn",PH],["#phlist","#dgrip"],[".rail","#panelsbtn"],
+  /* the final audits' Stage 6, WP-09 (CL-UX-01; decision 305 (a)): on a short window the sheet, hidden until opened, by the timeline's "Phase text" */
+  var SHORT=function(){ return typeof shortSheet==="function"&&shortSheet(); };
+  var OPENER=[["#tools","#menubtn",PH],["#phlist","#dgrip"],["#phlist,.dispatch","#phasebtn",SHORT],[".rail","#panelsbtn"],
     ["#now","#tab-now"],["#oob","#tab-oob"],["#analysis","#tab-analysis"],["#command","#tab-command"],["#plans","#tab-plans"],[".dispatch,#tools","#fr-close",function(){ return B("firstrun-on"); }],
     [".dispatch","#drawer-close",function(){ return B("drawer-open"); }],
     [".dispatch","#railclose",function(){ return PH()&&!B("rail-hidden"); }],

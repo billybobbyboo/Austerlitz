@@ -1,5 +1,138 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, 2 of 3): names, focus, caveats and the first card (CL-UX-08, -10, -11, -12, -15, -18, -21)
+
+**Status: on `claude/dreamy-johnson-uadkqa-focus`, stacked on the reflow PR (WP-09, 1 of 3; a draft PR into its branch until it merges, then into
+`main`; for review, not merged).** Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
+`archive/stage5wp08-572b0935.html`). Owner decision applied: 276 (a), the first card's sentence (`docs/final-stage6-evidence/questions.md`).
+`austerlitz-command-map.html` is now 2,992,468 bytes, md5 `19d7105fcfb262f80b08579417723d84` (was the reflow PR's 2,971,888, `646b1c4f...`); `check:baseline` moves to it.
+*Reconciled with the reflow PR's branch after it took `main` (PR #94, WP-10's meres; merged in, not rebased):* the self-test's two blocks kept side by
+side (`wp09Checks`, `wp10Checks`); the merged build is 3,002,963 bytes, md5 `df4b428b0a3f5124c4d8e0c1170952a5`, and `check:baseline` moves to it. On it, here:
+`npm test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (342 checks, every one passing) pass; the manifest regenerated from that run,
+337 (`main`'s) to 342. On CI (run 42922195200 on `b58b7b2`, the build `df4b428b...`): passed, every job, `check:visual` with decision 315's
+limits (4 h 16 min). `main` merged in again after PR #98 (`a7f8763`; its records only, the build unchanged).
+
+### What changed, and why
+
+- **Names and structure (CL-UX-15).** *Was:* the rail a navigation landmark named "The rail" holding the narrative, its tablist "The rail"; the page's
+  one h1 inside the rail, so below 1080 px (the rail hidden) the page had none; the tools no region; the key's toggle read its "+" or "\u2212" into its
+  name; a section's layer tag inside its heading ("How many record"); Play a toggle button announced "Pause, toggle button, pressed". *Is:* the rail an
+  `<aside>` named "Panels", its tablist "Panels"; one h1 outside the rail at every width (visually hidden; the rail's brand kept as text, hidden from
+  the accessibility tree); the tools a region "Tools"; the key's sign drawn by CSS with an empty alternative (`content:"+" / ""`); the tag beside its
+  heading; Play named by its state, no pressed state.
+- **Focus (CL-UX-10).** *Was:* "Layers\u2026" opened by a key left the focus on its button (the panel six Tabs on); a formation's map item activated by
+  Enter opened the dossier with the focus left on the item. *Is:* a panel opened from the keyboard (a click of detail 0) takes the focus on its first
+  ground button; the dossier takes it on its heading; each closes back to its opener.
+- **Caveats as text (CL-UX-08).** *Was:* each derived reading's note, the vantages' "a preset view, not what he saw" and the relief control's reason
+  when disabled were tooltips only. *Is:* in the Now tab each derived reading is followed by its note as text; the pressed vantage's caveat is shown
+  under the vantages and announced once (a polite live region); the disabled relief control's row says why.
+- **The first card (CL-UX-11; decision 276 (a)).** *Is:* the card's key ends "It is a reconstruction from the sources, its certainty graded A to C: the
+  letter beside a name is its position's grade." followed by "Show the key", a button drawn as a link (at least 24 px high) that closes the card with
+  the key open and the focus on its toggle (`LABELS.card`).
+- **The phase text's hint (CL-UX-12).** *Was:* with the phase text hidden, the Now tab said "press D" also with the single-key shortcuts off, and
+  "guided tour" during the opening. *Is:* the hint names D only while the shortcuts are on, tells the opening from the tour, and is followed by a
+  "Show the phase text" button that shows it with the focus on its title (`LABELS.nowOff`, `paintNowOff`).
+- **The grip dragged (CL-UX-18, its last part).** *Was:* the dispatch sheet's grip, drawn as a drag handle, took only a tap. *Is:* a drag of 30 px or
+  more up opens the sheet and down closes it; a tap as before.
+- **The unchecked counted (CL-UX-21).** *Was:* the sources sheet's claims index counted each claimed kind but not the statements unchecked. *Is:* its last
+  row "Not yet checked: ... Every other statement (463 statements)." (`narrativeRefs`, every narrative statement's ref walked over the data as
+  `tools/step4/statements.js` reads them; `runtime-test.js` holds the two equal, ref for ref, and the count).
+
+- **The first screens' limits (decision 315, the owner's word of 10 November 2026).** Decision 276 (a)'s sentence makes the first card about two lines
+  taller (it is inline in the key's paragraph; no spacing to give back). `check:visual` on CI (run 42778177074 on `65f1db8`, build `19d7105f...`) failed only
+  there: `first-run`'s unobstructed map 0.6076 against its 0.625 (at 1280 x 720 0.4788 against 0.506), `first-run-laptop`'s 0.5214 against 0.546 (0.4788),
+  `phone-390-first`'s 0.5356 against 0.591 and its framing 13 of 15 items against 16. *Is:* set at those measures, rounded down as before: [0.607, 0.478],
+  [0.521, 0.478], 0.535, 13 (`thresholds.js`, each with its was). CI's report judged again with them (`check-report.js`): the three cases pass.
+
+### Checks added, each failing without its fix
+
+- The self-test's `wp09Checks` (5 checks): the names and structure; the phase text's hint; the focus by keyboard; the caveats as text; the first card
+  and its key. The timeline's Play check renamed for Play's state ("named by its state, Pause while playing, with no pressed state besides"). The
+  manifest regenerated from a run: 335 to 340 (the five `wp09Checks`; the timeline's check under its new name, the old one removed).
+- Negative controls (`tools/final-stage6/mutate-wp09.js`: each fix put back on a copy, the block run alone, `run-block.js`), on the final build `19d7105f...`: 9 of 9 fail their own checks, the build as it is passing
+  (`docs/final-stage6-evidence/wp09/mutate-wp09.json`).
+- `runtime-test.js`: `narrativeRefs` equal to `tools/step4/statements.js`'s refs, and the unchecked count.
+
+- **Found by the self-test and fixed.** (1) The first card's check expected its two buttons; decision 276 (a) put "Show the key" before them in the
+  card's sentence. The check now holds the three in document order and Tab, Tab, Shift+Tab from the primary action going to "Explore on my own", "Show
+  the key" (the wrap kept inside the card) and back. (2) The motion block's finger pan at 390 px drew formations in 249 of its 696 formation-frames, its
+  baseline 257 (`MOTION.VIS`, fewer drawn fails): the derived readings' notes (CL-UX-08) had grown the phone's closed sheet head, so the map's free
+  rectangle shrank. *Is:* the notes in the phone's sheet and the short screen's only when the sheet is opened, as its `.why` (they stay in the Now tab
+  and the undocked card). The motion block alone (`tools/stage8/motion-8h.js --selftest`) on the build before and after: 249 and 257 of 696, every
+  other run as before.
+
+### Verified
+
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 errors). `check:baseline`:
+  passes.
+- `check:selftest` (here, the pinned Chromium 141, alone on the machine): 340 checks, every one passing; the manifest regenerated from this run.
+- `check:contrast` and `check:visual` (CI): __CI__
+
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, 1 of 3): reflow, short screens and forced colours (CL-UX-01, CL-UX-09, CL-UX-18)
+
+**Status: on `claude/dreamy-johnson-uadkqa-reflow` (draft PR into `main`, for review, not merged).** WP-09's reflow part. Presentation and the suite
+only: no data file and no guarded declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b0935.html`). Owner decisions applied:
+305 (a), the phase text from the timeline on short screens; 306, the two new `check:visual` cases' limits as measured (`docs/final-stage6-evidence/questions.md`).
+`austerlitz-command-map.html` is now 2,971,888 bytes, md5 `646b1c4f4869d76c5dddcf5c2e67ea5c` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+*Reconciled with `main` after PR #94 (WP-10's meres, `dc04a02`; merged in, not rebased):* no conflict but `package.json`'s baseline line; the
+merged build is 2,982,383 bytes, md5 `d3fdd0ff49dac05681792a570f62d222`, and `check:baseline` moves to it. The self-test's manifest is `main`'s (337: this PR
+adds no self-test check). On the merged build: `npm test`, `check:data` (143 identical) and `check:chronology` pass here; `check:selftest`,
+`check:contrast` and `check:visual` run again on CI: passed, every job (run 42814196635 on `c422983`, the merged build `d3fdd0ff...`, 4 h 20 min;
+`check:selftest` 337 checks). The results below are the unmerged build's.
+
+### What changed, and why
+
+- **Short screens (CL-UX-01; WCAG 1.4.10).** *Was:* at 430 px tall or less, where the dispatch card gives way, its text (the phase's narrative,
+  its events, its changes) had no other way in below 1080 px wide; at 400% zoom on a 1600 x 900 screen (400 x 225) or WCAG's reflow width (320 x 256)
+  the timeline's controls wrapped over the tools and the Panels button, the rail had 0 px for its tabs' content, and the Layers panel 70 px. *Is:*
+  a "Phase text" button in the timeline's control row (decision 305 (a); its words from `LABELS.phone`) opens the card as a sheet over the map, scrolling
+  inside, with the grip, the lede, the events, the changes and the phase list, focus on its grip (`app.js` `SHORT_Q`, `shortSheet`, `setDSheet`); the first
+  card, the tools, the rail, the dossier and the Layers panel take the screen's height and scroll inside it; the control row wraps. A desktop's
+  window under 720 px wide takes the phone layout at any height (`PHONE_Q`'s second clause, `(max-width:720px) and (pointer:fine)`), its timeline's
+  controls at 32 px (a mouse; above the 24 px floor); a phone held landscape (a coarse pointer) keeps decision 226 (a)'s layout.
+- **Forced colours (CL-UX-09; WCAG 1.4.1, 1.4.11).** *Was:* under Windows High Contrast every pressed or selected state drawn by a background alone
+  vanished (the presentation, the ground, the speeds, the vantages, Follow, the layers' rows, the current phase), 22 of 25 event markers vanished, the
+  key's swatches and the side marks before names became identical squares. *Is:* the states drawn in the user's own Highlight and HighlightText
+  (`!important` inside the block: every control's own pressed rule is more specific than an attribute selector, and a first version lost to them,
+  found by its check), the tabs underlined, the side colours (content: the nation) kept with a CanvasText edge.
+- **The card under the tools (CL-UX-18, its 800 x 450 part).** *Was:* at 800 x 450 with the Panels open, the vantage row (wrapped to a third line)
+  lay over the dispatch card's top by 11 px (the tools ending at 119 px, the card starting at 108). *Is:* the tools' lower edge kept as `--tools-b`
+  (`app.js` `syncToolsEdge`, by a ResizeObserver and the resize), the undocked card's height capped to end below it (the card now starts at 129 px).
+  CL-UX-18's other parts: the caption's orphan separators are held since WP-08 (CL-MAP-06's caption reads); the grip's drag is WP-09's focus PR's.
+
+### Checks added, each failing without its fix
+
+- `check:contrast` (`tools/visual/contrast.js`): a third page at 320 x 256, density 4, a desktop's (`REFLOW_STATES`: the first card, the screen after it,
+  the phase text's sheet scrolled to its lede, the Panels, the sources sheet, a dossier, the keys overlay, the Layers panel; each only with what it
+  opens on the screen or scrolling in its own box, and no horizontal scroll; every text at AA) and a fourth in forced colours (`FC_STATES`: the pressed
+  presentation, vantage, speed and phase each drawn in the theme's Highlight and its neighbour not; the event markers drawn, the two sides apart; the
+  key's swatches apart; the layers' rows). Negative controls (`tools/final-stage6/contrast-states.js`, the states alone): on `main`'s build
+  `reflow-explore`, `reflow-phase` (no "Phase text") and `reflow-panels` are not reached, nor any of the four forced-colours states (`docs/final-stage6-evidence/wp09/reflow-controls.txt`); on the branch's previous build, without the `!important`, `fc-explore` is not reached (the pressed buttons keep the app's accent, not Highlight).
+- `check:visual`: two cases (decision 306), `zoom-320x256-explore` and `zoom-400x225-explore`, a desktop's browser at 400% (`harness.js`
+  `PHONE_DEVICES.zoom`: density 4, a mouse, the browser's own agent; reached by clicks), judged by the phone cases' measures: no press target under 24 px,
+  no text cut, nothing off the screen, no panels overlapping, every feature on the screen or one control away but the phone's allowances (the sources,
+  "Whose eyes?"), the phases one press away by "Phase text" (`phone-measure.js`'s openers). Their limits as measured (`thresholds.js`): unobstructed
+  0.453 and 0.386, drops 4 and 6, the timeline 141 px, framing 1 and 0 items of 3 in the free rectangle. A first run of them found the short window's
+  timeline track at 30 px, the hour numerals cut and the clock's rail 6 px off the screen: fixed (the phone's 36 px), not allowed.
+- `check:visual`'s and `check:selftest`'s `narrow` live block: at 800 x 450 in Study with the Panels open, the tools and the card both shown and not
+  overlapping (`thresholds.js` `checkLive`). Negative control (`tools/final-stage6/ux18.js`, the step alone with the block's rule): `main`'s build fails
+  (the card at 108 px under the tools' 119), this build passes (129).
+
+### Verified
+
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 movement findings, 0 errors).
+  `check:baseline`: passes.
+- `check:contrast` (here, the pinned Chromium 141): 9,119 text elements, 120 distinct pairs, 0 below AA, 0 under 10.5 px; 0 font failures; 57 states
+  of 57 reached (12 new: 8 at 320 x 256, 4 in forced colours); the 8 start-up cases pass.
+- On CI (run 42758980065 on `17bbcfb`, `checks.yml`, `visual: true`; the build `646b1c4f...`, the branch's head's): passed, every job: `npm test`,
+  `check:data`, `check:chronology`, `check:selftest` (335 checks, the manifest unchanged), `check:contrast` and `check:visual` (its 41 cases, the two zoom
+  cases within their limits; the run 3 h 42 min).
+
+### Not verified here
+
+- A real screen at 400% and a real Windows High Contrast theme: the cases emulate them (Chromium's density 4 and its forced-colours emulation). The
+  screen-reader session's forced-colours items (F1-F4, `docs/final-stage6-evidence/sr-session.md`, WP-09's script PR) are for the owner.
+
 ## 2026-11 · CI: the jobs pinned to Ubuntu 24.04
 
 GitHub's `ubuntu-latest` image moved to Ubuntu 26.04 on 10 November 2026, and Playwright 1.56 (the project's pin, Chromium 141.0.7390.37,
@@ -91,6 +224,98 @@ Presentation, not data (`app.js`):
 
 - "Interpolated", "derived" and "the text layer" (two claim notes on Czartoryski and Davout's report) are kept: each is explained where it is shown
   or names a reading method; not part of decision 310's words.
+
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 1): the meres (figures on the ice, no trees on it)
+
+**Status: on `claude/dreamy-johnson-uadkqa-meres` (draft PR into `main`, for review, not merged).** Part of WP-10 of
+`docs/ROADMAP_FINAL_AUDIT.md`: CL-VIS-01 and CL-VIS-02; CL-VIS-06 re-verified (closed by WP-08's lettering, decision 282 (a)). Presentation only:
+no data file and no guarded declaration changes (`check:data`: all 143 data declarations identical to `archive/stage5wp08-572b0935.html`).
+The owner's decisions of 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`): **313**, the self-test's woods
+pinned at the counts measured; **314 (a)**, the gait check's kept-open counts at the counts measured. `austerlitz-command-map.html` is now 2,974,489 bytes, md5 `250b0e32f2ccce671463f0078453a17c`
+(was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **CL-VIS-01, figures sunk through the frozen mere (`world.js` `MERE_ICE`, `iceTop`; `app.js` `seatLocal`, `slopes`, `afterSeat`, `settleBlock`,
+  the blocks' places in `updateVisibility`, `figureError`).** The ice is a flat disc at its mere's level (`mereLevel`), and the drawn ground
+  under it lies up to 0.875 units below at 4x and 2.338 at 10.33x; every figure was seated on the drawn ground, so Kienmayer's riders on their
+  phase-1 via, Dokhturov's men and Buxhowden's camp in the ponds' phase were drawn cut at the thigh, horses legless: a visual claim of the
+  drowning story the narrative keeps disputed. *Is:* inside a mere's drawn disc, where its ice lies above the drawn ground, a man, a horse, a
+  piece's wheel, a block (its tilt and the marquee on it) and a standard stand on the ice's own level as drawn at the factor (`iceTop`); the
+  gait's two chords about a figure read the same surface. No position, track or level changes: a figure's place is the model's, its seat the
+  surface drawn there. `figureError` (the readout's seating check) judges against the same surface.
+- **CL-VIS-02, trees and bushes on the ice (`world.js` `inMereDisc`, `buildWoods`).** 21 stood inside the Satschan mere's drawn disc (4 village
+  trees, 17 bank bushes along the Littawa; none by Menitz). *Is:* a tree or a bush whose trunk is inside a mere's drawn disc is not drawn; its
+  draws are still taken from the sequence and every other keeps its variant, turn, size and colour, so every other tree and bush is drawn
+  exactly as before (measured, below), and nothing planned changes (the buildings are planned before the woods are drawn).
+- **CL-VIS-06** (the omitted chapels' misreading) was closed by WP-08's lettering (decision 282 (a): St Anthony's chapel's cross, the Santon's
+  chapel's site sign, the dossiers' "Not drawn here"); its checks (`wp08cChecks`) pass on this build.
+
+### Measured (`tools/final-stage6/meres.js`, every 10 minutes 05:00-17:00 at 1x, 4x and 10.33x; `docs/final-stage6-evidence/wp10/`)
+
+- The instances of the blocks inside a mere's drawn disc below its ice (more than 0.01 units): 4x 13,413 of 17,370 on `main`, 0 of 17,364 here; 10.33x
+  11,433 of 15,792, 0 of 15,758 (at 1x the formations are footprints, decision 34: none). `main`'s deepest 0.875 units at 4x and 2.338 at 10.33x
+  (Dokhturov at 11:20 and 12:20); the formations under the ice on `main` Kienmayer (05:20-17:00), Dokhturov (08:10-17:00), Buxhowden (15:30-17:00),
+  Legrand (16:30-17:00), Friant (16:50-17:00) and Saint-Hilaire (17:00), all by Satschan.
+- The trees and bushes: 1,209 drawn on `main`, 1,188 here; the 21 removed exactly those inside the disc (4 village trees, 17 bank bushes); every one
+  of the other 1,188 drawn with the same matrix and colour, compared instance by instance (`meres-6e.json`'s `compare`).
+
+### The owner's decisions, measured first
+
+- **313** (the self-test's woods, `WOODS8E`, and `css-test.js`'s copy of the pin): village 184 to 180, stream 222 to 205; every other count, and
+  every habit's triangles, unchanged.
+- **314 (a)** (the gait on the ground, `H_CASES`): with the figures on the ice, the check found more cases beyond `H_TOL` in twelve fresh groups. The
+  cases were listed on `main` and on this branch (`tools/final-stage6/gait-cases.js`, `gait-cases.json`): `main`'s counts are `H_CASES` exactly; 90
+  cases are added and 12 gone here, every one Dokhturov's (80) or Kienmayer's (10) at the Satschan shore, each within its group's proposed bound and
+  none larger than the worst elsewhere on the field (10.33x 0.170 against 0.247; 4x 0.050 against 0.096); every other formation identical. The
+  cause: the ice's waterline, where the flat ice meets the rising shore, is a crease the gait's two chords cannot follow (as the ground's own creases,
+  the cases already kept open); on `main` those men were judged against the bed they were drawn sunk into. Was and is: 4x men edges rich 29 to 43,
+  simple 13 to 22, drawn rich 38 to 50, simple 19 to 26; 4x horses edges 35 to 36 (both kits), drawn rich 33 to 34, simple 32 to 33; 10.33x men drawn
+  rich 33 to 47, simple 23 to 34, edges rich 32 to 37, simple 19 to 21. `H_TOL` and every bound unchanged. A smoothed waterline was not built:
+  rounding the crease either floats the figures over the ice or, on the steep shores, spreads it over too short a run to help.
+- The gait check's reference surface (`hOffs`): the offsets from the surface the figure stands on (`iceTop`), as `figureError` (on `main`: the drawn
+  ground, which under the ice is the bed the figures no longer stand on: 215 false cases in the first run).
+
+### Checks added, each failing without its fix (`tools/final-stage6/mutate.js wp10m`, `mutate-wp10m.json`)
+
+- `wp10Checks`, "the meres (WP-10, CL-VIS-01)": at 4x and 10.33x, at 06:30, 12:00 and 16:40, every instance of a block inside a mere's drawn disc no
+  lower than the disc's ice (its mesh's own height), a block's own meshes (the marquee) by their lowest point, and where the drawn ground lies under
+  the ice all round a figure (2.5 units) the gait's slopes level; judged against the discs, not `iceTop`. "the meres (WP-10, CL-VIS-02)": no tree or
+  bush inside a disc, by the instances' own matrices. Negative controls, each failing its own check alone, the build passing both: the men seated on
+  the bed again; the chords reading the bed; the block (its marquee) placed on the bed; the trees on the ice drawn again (5 of 5 as expected).
+- The self-test 335 to **337** checks (the two above), the manifest regenerated from the run (`check-report.js --write-manifest`).
+
+### Verified
+
+All here, on this branch's final build `250b0e32...` (Chromium 141.0.7390.37, the pinned browser, software WebGL), but `check:visual` (CI):
+
+- `npm test`: the nine suites and the height guard pass (the height guard classifies `wp10Checks`' ground reads as a test's).
+- `npm run check:data`: all 143 data declarations identical to `archive/stage5wp08-572b0935.html`. `check:chronology`: 0 errors.
+  `check:baseline`: passes on this build.
+- `npm run check:selftest`: 337 checks, every one passing (the two new among them); the run's only failing lines were the manifest's (337 against
+  335, the two names), so the manifest is written from it (`check-report.js --write-manifest`: added 2, removed 0). The motion block's 16 at 227
+  jumps, 959 pops, 105 level-of-detail switches and 12 flickers, `main`'s own counts exactly; every run's line and the long Play runs' bar passing.
+- `npm run check:contrast`: 7,473 text elements, 0 below AA, 0 under 10.5 px, 0 font failures; 45 of 45 states (10 as a phone); 0 console
+  messages; the boot cases 8 of 8.
+- The negative controls (`tools/final-stage6/mutate.js wp10m`): 5 of 5 as expected.
+- `check:visual` on CI, first run (42737308150 on `7938e86`, build `250b0e32...`): failed, 48 failures in 24 cases, every one the harness's own
+  ground-contact measure (`tools/visual/measure.js` `figures`, `standards`): "a figure is 0.8746 units off the drawn ground (kienmayer floats 0.87)"
+  (2.337 at 10.33x), its standards' feet likewise. The measure read the drawn ground alone, the mere's bed, under the figures this PR stands on the
+  ice; the self-test's own figure check had learned the ice (`iceTop`), the harness's had not. *Is:* the measure reads a mere's ice where its disc lies
+  above the drawn ground (`onIce`, the app's `iceTop`: the drawn discs' own heights inside their own outlines; a build without it, or a point off every
+  disc, against the drawn ground as before). Re-run here on `overview-field`, `pratzen-low-10x` and `phone-390-explore`: the figures' and the
+  standards' largest error 0 (was 0.8746, 2.337, 0.8746), each case passing `check-report.js`. The failed run is the negative control: the same build
+  judged by the measure without the ice. Every other measure of that run passed (the motion block, culling in motion, the census, the live blocks).
+- `check:visual` on CI, second run (42770857135 on `1bb13f2`, `checks.yml`, `visual: true`; the build `250b0e32...`, the merged head's): passed,
+  every job (the run 4 h 13 min; every case's figures and standards on the drawn ground or a mere's ice). PR #94 was merged (`dc04a02`) before the run
+  ended; this line is recorded with the reflow PR's reconciliation.
+
+### What remains uncertain, and what is handed on
+
+- The ice's outline and level are 4E's, schematic (decision 27); a figure inside the disc stands on the ice as drawn, whatever the mere's real extent
+  on the day. Nothing here says the ice held or broke: the drowning story stays disputed in the narrative (data.js, analysis.js).
+- The rest of WP-10 is the following PRs: the facings, the camp, the streams and the low tier (CL-VIS-03, -07, -05, -09); the crowns and the
+  buildings (CL-VIS-08, -04; decisions 307, 308).
 
 ## 2026-11 · Final audits' roadmap, Stage 6: the owner's questions (records only)
 
