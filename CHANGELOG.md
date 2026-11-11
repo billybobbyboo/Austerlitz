@@ -76,7 +76,8 @@ only: no data file and no guarded declaration changes (`check:data`: all 143 ide
 *Reconciled with `main` after PR #94 (WP-10's meres, `dc04a02`; merged in, not rebased):* no conflict but `package.json`'s baseline line; the
 merged build is 2,982,383 bytes, md5 `d3fdd0ff49dac05681792a570f62d222`, and `check:baseline` moves to it. The self-test's manifest is `main`'s (337: this PR
 adds no self-test check). On the merged build: `npm test`, `check:data` (143 identical) and `check:chronology` pass here; `check:selftest`,
-`check:contrast` and `check:visual` run again on CI (the results below are the unmerged build's).
+`check:contrast` and `check:visual` run again on CI: passed, every job (run 42814196635 on `c422983`, the merged build `d3fdd0ff...`, 4 h 20 min;
+`check:selftest` 337 checks). The results below are the unmerged build's.
 
 ### What changed, and why
 
