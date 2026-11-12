@@ -1,5 +1,50 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6: what "Whose eyes?" withholds (owner decision 312 (a))
+
+**Status: on `claude/dreamy-johnson-uadkqa-reading` (draft PR into `main`, for review, not merged).** The three reading-scope items Stage 3 handed on
+(its CHANGELOG entry, "Not done"), placed by the plan in WP-09 but found to be decision 251 (a)'s reach (WP-05's area), put to the owner as question 312 and
+decided (a) on 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`). Presentation only: no data file and no guarded
+declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now 2,965,080 bytes, md5
+`402d1b278679e836c313ca62210ccfff` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+
+*Reconciled (11 November 2026; merged in, not rebased) with the crowns PR's branch, which holds `main` after PRs #94 and #98 and the focus, visitor-words,
+picture and crowns PRs:* conflicts in `CHANGELOG.md` and `package.json` only. The merged build is 3,025,956 bytes, md5 `dcc65319b445c119b005f7e5c25a29fc`,
+and `check:baseline` moves to it. On it, here: `npm test` (this PR's runtime-test block among them), `check:data` (143 identical), `check:chronology` and
+`check:selftest` (348 checks, every one passing, the manifest unchanged) pass. On CI (run 42989164373 on `04ce06f`, the build `dcc65319...`): passed, every job (`check:visual` 3 h 30 min).
+`main` merged in after PR #96 (`9f7c1b0`), the build unchanged.
+
+### What changed, and why
+
+- **The full dossier's earlier act (`dossierFormation`).** Under a headquarters' reading that does not know a formation, its "What it was doing" said what
+  it had done in the phase before (where it had been), while "now" and "next" said the reading's sentence since WP-05 (CL-SIM-05). *Is:* the earlier act
+  says the reading's sentence too ("Not known to ... at ..."); "No earlier action recorded" where there is none.
+- **Its "Historical event" links.** The names of the live events it is part of (some of them places) said where it was. *Is:* under such a reading the
+  section says the reading's sentence in place of its links (the links' buttons `linkb evlink`, so a check can find them).
+- **The arrows the reading does not filter.** The plans' ordered routes, the objectives and the groups' arrows bind no formation's present place and are
+  labelled interpretation; they stay drawn under every reading, and the sources sheet now says so (the list of layers: "\u201cWhose eyes?\u201d (a model
+  reading) hides the formations a headquarters does not know, their arrows and their places in the dossiers; the plans' routes, their objectives and the
+  groups' arrows are interpretation, bound to no formation's present place, and stay drawn under every reading").
+
+### Checks added, each failing without its fix
+
+- `runtime-test.js`, WP-05's "Doing now under a reading (CL-SIM-05)", extended: under each headquarters' reading every 20 minutes, a formation it does not
+  know has its full dossier's earlier act as the reading's sentence and no event link (652 formation-clocks, 51 of them in a live event), and the sources
+  sheet says what the reading does not filter. Negative controls, each on a copy with one fix put back and the suite run: the earlier act shown again
+  (fails at 07:00 under Napoleon's reading, Kutuzov's headquarters at Krzenowitz); the events' links shown again (fails at 07:00, Kienmayer's two). A first
+  version of the links' check could not see them (the suite's stub document does not write children into a parent's markup): found by its control, which
+  passed, and replaced by the count of the links' own buttons.
+
+### Verified
+
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:baseline`: passes.
+- On CI (run 42758127581 on `cd7e27e`, the pinned Chromium 141, the build `402d1b27...`): `npm test`, `check:data`, `check:chronology`, `check:selftest`
+  (42 min; 335 checks, the manifest unchanged: this PR adds no self-test check) and `check:contrast` pass. A local self-test run stopped at a harness
+  click's 30 s timeout (the phase's message block, Study to Watch at 1600 x 900) while three other browser jobs shared the machine's four cores; CI's
+  run is the verdict.
+- `check:visual` on CI (run 42756043037 on `7f5cf43`, `checks.yml`, `visual: true`; the build `402d1b27...`, the branch's head's): passed, every
+  job (the run 3 h 27 min).
+
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 3): the crowns near the eye, the blocks among the buildings
 
 **Status: on `claude/dreamy-johnson-uadkqa-crowns` (draft PR into `main`, for review, not merged).** The rest of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
