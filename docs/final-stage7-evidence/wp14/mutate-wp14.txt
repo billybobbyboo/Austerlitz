@@ -1,0 +1,8 @@
+as expected none (the build as it is): failed []
+as expected CL-ROB-02 put back: the frame asks only GL.lost, set by the loss's event: failed [context-play]
+as expected CL-ROB-04 put back: the lost context's dispose listeners kept at a restore: failed [context-heap; context-loss]
+as expected CL-ROB-11 put back: esc() leaves both quotes: failed [runtime-test.js]
+as expected CL-ROB-11 put back in part: esc() leaves the single quote: failed [runtime-test.js]
+as expected CL-ROB-10 put back: gaitDist named in the gait's comment again: failed [tools/final-stage7/dead-code.js]
+as expected CL-ROB-10 put back: v8Near defined again and called by nothing: failed [tools/final-stage7/dead-code.js]
+every mutation as expected

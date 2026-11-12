@@ -1,0 +1,114 @@
+{
+ "set": "wp14",
+ "build": "eabe076a629bb4b3ca7884359e8bf764",
+ "bytes": 3028969,
+ "mutations": [
+  {
+   "name": "none (the build as it is)",
+   "kind": "build",
+   "applied": true,
+   "expected": [],
+   "failed": [],
+   "ok": true,
+   "lines": [
+    "  ok context-loss: the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored, idle with no warning, then a clock step drawn, disposing 71 of the 476 geometries drawn before the loss; 0 “does not belong to this context” warnings (none allowed since WP-14)",
+    "  ok context-play: the context lost while the clock plays: a frame before the loss's event compiles nothing and throws nothing, then three cycles lost and restored while playing, frames drawn after each, no page error",
+    "  ok context-heap: 5 idle restores: the heap 15.45, 14.94, 15.10, 15.19, 15.33, 15.51 MB (0.14 MB a restore after the first; at most 0.50), at most 1 dispose listener an object (665, 575, 575, 575, 575, 575 in all)"
+   ]
+  },
+  {
+   "name": "CL-ROB-02 put back: the frame asks only GL.lost, set by the loss's event",
+   "kind": "build",
+   "applied": true,
+   "expected": [
+    "context-play"
+   ],
+   "failed": [
+    "context-play"
+   ],
+   "ok": true,
+   "lines": [
+    "  FAIL context-play: a frame in the lost context before its event threw: Cannot read properties of null (reading 'trim'); unexpected pageerror: Cannot read properties of null (reading 'trim')"
+   ]
+  },
+  {
+   "name": "CL-ROB-04 put back: the lost context's dispose listeners kept at a restore",
+   "kind": "build",
+   "applied": true,
+   "expected": [
+    "context-heap",
+    "context-loss"
+   ],
+   "failed": [
+    "context-heap",
+    "context-loss"
+   ],
+   "ok": true,
+   "lines": [
+    "  FAIL context-loss: expected 0 warning /^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/ (WP-14: none (until WP-14: three r128 after a restored context: a geometry made before the loss and disposed after it keeps the old context's dispose listener, which deletes buffers and a vertex array of the lost context; the browser ignores them (avoiding it would mea",
+    "  FAIL context-heap: the heap after each restore 15.46, 17.79, 20.39, 22.98, 25.64, 28.29 MB: 2.62 MB a restore over the last 4 (at most 0.50); an object holds 6 dispose listeners after 5 restores (1, 2, 3, 4, 5, 6)"
+   ]
+  },
+  {
+   "name": "CL-ROB-11 put back: esc() leaves both quotes",
+   "kind": "src",
+   "applied": true,
+   "expected": [
+    "runtime-test.js"
+   ],
+   "failed": [
+    "runtime-test.js"
+   ],
+   "ok": true,
+   "lines": [
+    "  E DRIVE: esc() leaves \"a\\\"b'c&lt;d&gt;e&amp;f\""
+   ]
+  },
+  {
+   "name": "CL-ROB-11 put back in part: esc() leaves the single quote",
+   "kind": "src",
+   "applied": true,
+   "expected": [
+    "runtime-test.js"
+   ],
+   "failed": [
+    "runtime-test.js"
+   ],
+   "ok": true,
+   "lines": [
+    "  E DRIVE: esc() leaves \"a&quot;b'c&lt;d&gt;e&amp;f\""
+   ]
+  },
+  {
+   "name": "CL-ROB-10 put back: gaitDist named in the gait's comment again",
+   "kind": "src",
+   "applied": true,
+   "expected": [
+    "tools/final-stage7/dead-code.js"
+   ],
+   "failed": [
+    "tools/final-stage7/dead-code.js"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL a comment in app.js names a function the code does not have: gaitDist (name it right, or give its kind in GHOSTS)"
+   ]
+  },
+  {
+   "name": "CL-ROB-10 put back: v8Near defined again and called by nothing",
+   "kind": "src",
+   "applied": true,
+   "expected": [
+    "tools/final-stage7/dead-code.js"
+   ],
+   "failed": [
+    "tools/final-stage7/dead-code.js"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL v8Near (world.js) is a top-level function never called: remove it, or name its reason in UNCALLED"
+   ]
+  }
+ ],
+ "allAsExpected": true
+}

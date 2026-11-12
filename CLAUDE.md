@@ -820,4 +820,6 @@ not done); decision 312 (a), what "Whose eyes?" withholds (#97, `72e50d0`); and 
 `docs/final-stage6-evidence/sr-session.md`: #101 had merged it into #100's branch after that branch reached `main`). The session is the owner's to run;
 nothing in it is recorded. Stage 6 is merged; `main`'s build is `dcc65319...` (3,025,956 bytes), its self-test 348 checks, `check:visual` 41 cases.
 Stage 7 ("Performance and robustness": WP-16, WP-12 and WP-14, with WP-11's rule alongside) is next; its owner questions are numbered from 317 and
-recorded in `docs/final-stage7-evidence/questions.md`; the closing re-verification pass follows it.
+recorded in `docs/final-stage7-evidence/questions.md`; the closing re-verification pass follows it. Its first pass, WP-14's robustness residuals (CL-ROB-02, -04,
+-05, -10, -11, -12; decisions 317 (a), 318 (b), 319 (a), 320 (a) under the owner's "Go with recommendations for all owner questions" of 12 November
+2026), is on `claude/admiring-dirac-m1syqs-robustness`, a draft PR stacked on the Stage 6 records PR (#104).
