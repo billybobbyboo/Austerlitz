@@ -7,10 +7,14 @@
    - "no-webgl": Chromium launched with --disable-3d-apis --disable-gpu (three.js loads; no WebGL context);
    - "slow": three.js answered after 21 s: the status line says so at 20 s, and the page then starts as usual (no failure, nothing inert);
    - "context-loss": a normal start, then the context lost (WEBGL_lose_context) and restored with the page idle (no warning yet), then a step
-     of the clock (decision 212 (b)) that disposes geometries made before the loss: at least one warning, at most CTX_DELETES;
+     of the clock (decision 212 (b)) that disposes geometries made before the loss: until the final audits' Stage 7 at least one warning,
+     at most CTX_DELETES; since its WP-14 (CL-ROB-04, owner question 320 (a)) the disposals of those geometries counted and no warning;
    - "context-depth" (Stage 8, 8C): the ground's depth drawn again across a loss with the eye still;
    - "context-gait" (Stage 8, 8E): a marching division mid-stride, close and rich, across a loss: the kit's programs compiled again with the
-     hook, the frame and the sun's depth map drawn with the pose (below).
+     hook, the frame and the sun's depth map drawn with the pose (below);
+   - "context-play" (the final audits' Stage 7, WP-14, CL-ROB-02): the context lost while the clock plays, a frame before the loss's event
+     and three cycles: no page error;
+   - "context-heap" (WP-14, CL-ROB-04): five idle restores keep at most HEAP_PER_RESTORE of the heap each, no object two dispose listeners.
    A failure case passes only if, within 15 s of the page's load: the alert dialog #boot-fail is shown with the reason for its kind and no
    other, focus is on Reload and stays there through Tab and Shift+Tab, every other child of the body is inert, the first-run card is
    hidden, a key behind the dialog does nothing, its text meets WCAG AA (4.5:1) against its own background, and the page's messages are
@@ -43,16 +47,30 @@ const EXPECT={
   "error":[["error",GUARD("error"),"the guard's one console line"],
     ["pageerror",/^injected start-up fault$/,"the case's fault, rethrown by boot() after the guard reported it"]],
   "slow":[],
+  /* the final audits' Stage 7, WP-14 (owner question 320 (a)): the warning below came from three r128's lost-context dispose listeners, which
+     the restore now clears (CL-ROB-04, glPruneDispose): 248 on each run until then (decision 212 (b)), 0 since. The dispose-after-restore
+     path is proved by the disposals counted (below), and the warning held at 0 here */
   "context-loss":[["warning",/^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/,
-    "three r128 after a restored context: a geometry made before the loss and disposed after it keeps the old context's dispose listener, which deletes buffers and a vertex array of the lost context; the browser ignores them (avoiding it would mean rebuilding the renderer or leaking the geometry). Bound: CTX_DELETES",0,"CTX"]],
+    "WP-14: none (until WP-14: three r128 after a restored context: a geometry made before the loss and disposed after it keeps the old context's dispose listener, which deletes buffers and a vertex array of the lost context; the browser ignores them (avoiding it would mean rebuilding the renderer or leaking the geometry). Bound: CTX_DELETES until WP-14)",0,0]],
   /* Stage 8, implementation PR 8C (the audit of 8B, finding A): the same warning, should the case's view dispose anything after the restore
      (none was seen: the view is held still) */
   "context-depth":[["warning",/^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/,
     "as in context-loss (three r128's dispose listener of the lost context); bound CTX_DELETES",0,"CTX"]],
   /* Stage 8, implementation PR 8E: the same, should the view dispose anything after the restore */
   "context-gait":[["warning",/^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/,
+    "as in context-loss (three r128's dispose listener of the lost context); bound CTX_DELETES",0,"CTX"]],
+  /* the final audits' Stage 7, WP-14: no page error of any kind (CL-ROB-02's "reading 'trim'" among them); the same warning, should a played
+     clock dispose a geometry made before a loss */
+  "context-play":[["warning",/^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/,
+    "as in context-loss (three r128's dispose listener of the lost context); bound CTX_DELETES",0,"CTX"],
+    ["warning",/^WebGL: too many errors, no more errors will be reported to the console for this context\.$/,"the browser's own cap on those warnings",0,1]],
+  "context-heap":[["warning",/^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/,
     "as in context-loss (three r128's dispose listener of the lost context); bound CTX_DELETES",0,"CTX"]]
 };
+/* the final audits' Stage 7, WP-14 (CL-ROB-04): the heap a restore may keep, after two forced collections, over the last HEAP_CYCLES-1 of
+   HEAP_CYCLES idle restores (the first restore's own growth, programs compiled again, not judged); a design bound set from the measures
+   recorded in docs/final-stage7-evidence/ (before the fix 2.6 MB a restore) */
+const HEAP_CYCLES=5, HEAP_PER_RESTORE=0.5e6;
 async function page(browser,label,route){
   const p=await browser.newPage({viewport:{width:1366,height:768},deviceScaleFactor:1});
   const log=[]; const rec=(t,x)=>log.push({type:t,text:String(x).slice(0,300)});
@@ -168,6 +186,11 @@ async function runBootCases(html,only){
           while(performance.now()-t0<120000){ await new Promise(z=>setTimeout(z,100)); if(DEV.state==="idle"){ if(!s) s=performance.now(); else if(performance.now()-s>=500) return true; } else s=0; }
           return false; };
         const settled0=await settle();
+        /* the final audits' Stage 7, WP-14 (owner question 320 (a)): the geometries the scene draws before the loss, so that the clock step's
+           disposals of them after the restore (the path decision 212 (b) added the step for) are counted directly; the case's own
+           instrument, a wrapper on BufferGeometry's dispose that only counts */
+        window.__pre=new Set(); scene.traverse(o=>{ if(o.geometry) window.__pre.add(o.geometry); }); window.__preDisposed=0;
+        { const d=THREE.BufferGeometry.prototype.dispose; THREE.BufferGeometry.prototype.dispose=function(){ if(window.__pre.has(this)) window.__preDisposed++; return d.apply(this,arguments); }; }
         ext.loseContext(); await new Promise(z=>setTimeout(z,400));
         const n=document.getElementById("glnotice"), r={lost:GL.lost,role:n.getAttribute("role"),text:n.textContent,button:!!n.querySelector("button"),vis:n.getBoundingClientRect().height>0};
         /* the notice's text and button against their own backgrounds, at AA */
@@ -190,7 +213,7 @@ async function runBootCases(html,only){
         const f0=DEV.frames; setClock(PHASES[3].t0,{force:true}); await new Promise(z=>setTimeout(z,300));
         const t1=performance.now(); while(DEV.frames===f0&&performance.now()-t1<120000) await new Promise(z=>setTimeout(z,100));
         const ok=await settle();
-        return {settled:ok,frames:DEV.frames-f0,clock:clock,lost:GL.lost,firstMs:Math.round(performance.now()-t1)}; }); }
+        return {settled:ok,frames:DEV.frames-f0,clock:clock,lost:GL.lost,firstMs:Math.round(performance.now()-t1),preDisposed:window.__preDisposed,pre:window.__pre.size}; }); }
       if(a.noExt) bad.push("no WEBGL_lose_context");
       else { if(!a.lost||a.role!=="alert"||!a.vis||!a.button||a.text.indexOf("The 3D view has stopped")!==0||a.low.length) bad.push("lost: "+JSON.stringify(a));
         if(a.after.lost||a.after.text||!(a.after.frames>0)) bad.push("restored: "+JSON.stringify(a.after));
@@ -201,8 +224,10 @@ async function runBootCases(html,only){
       const nd=countOf(log,EXPECT["context-loss"][0][1]);
       /* the review of decision 212 (b): the clock step must run the path it was added for (at least one warning after it), not only stay
          under the bound */
-      if(st&&!(nd-nIdle>0)) bad.push("no \u201cdoes not belong to this context\u201d warning after the clock step (the dispose-after-restore path not run)");
-      R.push({name:"context-loss",ok:!bad.length,line:"context-loss: "+(bad.length?bad.join("; "):"the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored, idle with no warning, then a clock step drawn")+"; "+nd+" “does not belong to this context” warnings (at most "+CTX_DELETES+")"});
+      /* the final audits' Stage 7, WP-14 (owner question 320 (a)): that path proved by the geometries made before the loss and disposed after
+         the restore, counted, since its warnings are gone with their cause (CL-ROB-04) */
+      if(st&&!(st.preDisposed>0)) bad.push("the clock step after the restore disposed none of the "+st.pre+" geometries drawn before the loss (the dispose-after-restore path not run)");
+      R.push({name:"context-loss",ok:!bad.length,line:"context-loss: "+(bad.length?bad.join("; "):"the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored, idle with no warning, then a clock step drawn, disposing "+(st?st.preDisposed:"-")+" of the "+(st?st.pre:"-")+" geometries drawn before the loss")+"; "+nd+" “does not belong to this context” warnings (none allowed since WP-14)"});
     } finally { await browser.close(); } }
   /* Stage 8, implementation PR 8C (the audit of 8B, finding A): the frame after a restore, the eye and the window unchanged, is the frame before
      the loss. Until 8C the ground's depth for the overlays (GDEPTH) was drawn again only when its key changed, so with the eye still the overlays
@@ -301,6 +326,72 @@ async function runBootCases(html,only){
           else if(!(a.afterShadow<a.poseShadow)) bad.push("after the restore the depth map differs from the posed one by "+a.afterShadow+" texels, the rest pose by "+a.poseShadow); } }
       bad.push.apply(bad,judgeLog("context-gait",log));
       R.push({name:"context-gait",ok:!bad.length,line:"context-gait: "+(bad.length?bad.join("; "):"a marching division mid-stride across a loss and a restore: the kit's programs compiled again with the hook ("+a.built.join(" -> ")+" materials, "+a.depth.join(" -> ")+" depth materials), still rich at full swing; the frame "+a.after+" pixels from the pose before the loss (the rest pose "+a.pose+"), "+(a.shadow?"the sun's depth map "+a.afterShadow+" texels (the rest pose "+a.poseShadow+")":"no shadow on this tier"))});
+    } finally { await browser.close(); } }
+  /* the final audits' Stage 7, WP-14 (CL-ROB-02): the context lost while the clock plays. three r128 and the app learn of a loss from
+     "webglcontextlost", dispatched after the context is already lost; a frame drawn in between that compiles a program read its info log
+     (null on a lost context) and threw. (1) Deterministic: Play on, the context lost by WEBGL_lose_context, and at once, before the event, one
+     frame of the app's own loop with a program to compile (a define added to the ground's material): no throw, nothing drawn. (2) Three cycles
+     lost and restored while playing (the race the audit measured: 2 page errors in 3 cycles), frames drawn after each. No page error at all */
+  if(want("context-play")){ const browser=await launch({args:BASE_ARGS}), bad=[];
+    try{ const {p,log}=await page(browser,"context-play",pg=>TR.routeThree(pg));
+      await p.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:60000});
+      await TR.waitBoot(p,240000);
+      const a=await p.evaluate(async()=>{ const ext=renderer.getContext().getExtension("WEBGL_lose_context"); if(!ext) return {noExt:true};
+        const wait=ms=>new Promise(z=>setTimeout(z,ms));
+        if(typeof closeFirst==="function") closeFirst(null);
+        if(!playing) togglePlay(); await wait(1500);
+        const m=groundMesh.material, d0=m.defines; m.defines=Object.assign({},d0||{},{AUS_CTX_PLAY:1}); m.needsUpdate=true;
+        const r={playing:playing}; ext.loseContext();
+        const raf=window.requestAnimationFrame, f0=DEV.frames; window.requestAnimationFrame=function(){ return 0; };
+        try{ loop(); r.sync="no throw"; }catch(e){ r.sync="threw: "+String(e&&e.message||e).slice(0,120); } finally{ window.requestAnimationFrame=raf; }
+        r.syncDrawn=DEV.frames-f0; m.defines=d0; m.needsUpdate=true;
+        await wait(400); r.lost=GL.lost; ext.restoreContext(); await wait(300);
+        const t1=performance.now(), f1=DEV.frames; while(DEV.frames===f1&&performance.now()-t1<120000) await wait(100); r.after0=DEV.frames-f1;
+        r.cycles=[];
+        for(let c=0;c<3;c++){ if(!playing) togglePlay(); await wait(800); ext.loseContext(); await wait(400); const lost=GL.lost; ext.restoreContext(); await wait(300);
+          const t2=performance.now(), f2=DEV.frames; while(DEV.frames===f2&&performance.now()-t2<120000) await wait(100);
+          r.cycles.push({lost:lost, frames:DEV.frames-f2, playing:playing, after:GL.lost}); }
+        stopPlay(); return r; });
+      if(a.noExt) bad.push("no WEBGL_lose_context");
+      else { if(!a.playing) bad.push("Play was not on");
+        if(a.sync!=="no throw") bad.push("a frame in the lost context before its event "+a.sync);
+        if(a.syncDrawn) bad.push("a frame drawn in the lost context ("+a.syncDrawn+")");
+        if(!a.lost||!(a.after0>0)) bad.push("the deterministic loss: lost "+a.lost+", frames after the restore "+a.after0);
+        a.cycles.forEach((c,i)=>{ if(!c.lost||!(c.frames>0)||c.after) bad.push("cycle "+(i+1)+" while playing: "+JSON.stringify(c)); }); }
+      bad.push.apply(bad,judgeLog("context-play",log));
+      R.push({name:"context-play",ok:!bad.length,line:"context-play: "+(bad.length?bad.join("; "):"the context lost while the clock plays: a frame before the loss's event compiles nothing and throws nothing, then three cycles lost and restored while playing, frames drawn after each, no page error")});
+    } finally { await browser.close(); } }
+  /* the final audits' Stage 7, WP-14 (CL-ROB-04; owner decision 317 (a)): idle restores keep no more of the heap than HEAP_PER_RESTORE each
+     (two forced collections before each read, over the last HEAP_CYCLES-1 restores), and no object holds more than one dispose listener */
+  if(want("context-heap")){ const browser=await launch({args:BASE_ARGS}), bad=[];
+    try{ const {p,log}=await page(browser,"context-heap",pg=>TR.routeThree(pg));
+      await p.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:60000});
+      await TR.waitBoot(p,240000);
+      const cdp=await p.context().newCDPSession(p); await cdp.send("Performance.enable");
+      const heap=async()=>{ for(let i=0;i<2;i++){ await cdp.send("HeapProfiler.collectGarbage"); await p.waitForTimeout(250); }
+        const m=(await cdp.send("Performance.getMetrics")).metrics.find(x=>x.name==="JSHeapUsedSize"); return m.value; };
+      const settle=()=>p.evaluate(async()=>{ const t0=performance.now(); let s=0;
+        while(performance.now()-t0<120000){ await new Promise(z=>setTimeout(z,100)); if(DEV.state==="idle"){ if(!s) s=performance.now(); else if(performance.now()-s>=500) return true; } else s=0; }
+        return false; });
+      const listeners=()=>p.evaluate(()=>{ const seen=new Set(); let mx=0, n=0;
+        const L=x=>{ if(!x||seen.has(x)) return; seen.add(x); const k=(x._listeners&&x._listeners.dispose)?x._listeners.dispose.length:0; n+=k; if(k>mx) mx=k; };
+        scene.traverse(o=>{ if(o.isInstancedMesh) L(o); if(o.geometry) L(o.geometry); (Array.isArray(o.material)?o.material:[o.material]).forEach(m=>{ if(!m) return; Object.keys(m).forEach(k=>{ if(m[k]&&m[k].isTexture) L(m[k]); });
+          if(m.uniforms) Object.keys(m.uniforms).forEach(k=>{ const v=m.uniforms[k]&&m.uniforms[k].value; if(v&&v.isTexture) L(v); }); });
+          if(o.shadow&&o.shadow.map) L(o.shadow.map); });
+        return {max:mx, n:n, objects:seen.size}; });
+      await p.evaluate(()=>{ if(typeof closeFirst==="function") closeFirst(null); }); await settle();
+      await p.evaluate(()=>setClock(PHASES[3].t0,{force:true})); await p.waitForTimeout(300); await settle();
+      const H=[await heap()], Ls=[await listeners()];
+      for(let c=0;c<HEAP_CYCLES;c++){
+        const ok=await p.evaluate(async()=>{ const ext=renderer.getContext().getExtension("WEBGL_lose_context"); if(!ext) return false; ext.loseContext(); await new Promise(z=>setTimeout(z,400));
+          const f0=DEV.frames; ext.restoreContext(); await new Promise(z=>setTimeout(z,300)); const t=performance.now(); while(DEV.frames===f0&&performance.now()-t<120000) await new Promise(z=>setTimeout(z,100)); return DEV.frames>f0; });
+        if(!ok){ bad.push("cycle "+(c+1)+": no frame after the restore"); break; }
+        await settle(); H.push(await heap()); Ls.push(await listeners()); }
+      const per=H.length>2?(H[H.length-1]-H[1])/(H.length-2):NaN, mb=x=>(x/1e6).toFixed(2);
+      if(!(per<=HEAP_PER_RESTORE)) bad.push("the heap after each restore "+H.map(mb).join(", ")+" MB: "+mb(per)+" MB a restore over the last "+(H.length-2)+" (at most "+mb(HEAP_PER_RESTORE)+")");
+      const lmax=Math.max.apply(null,Ls.map(x=>x.max)); if(lmax>1) bad.push("an object holds "+lmax+" dispose listeners after "+HEAP_CYCLES+" restores ("+Ls.map(x=>x.max).join(", ")+")");
+      bad.push.apply(bad,judgeLog("context-heap",log));
+      R.push({name:"context-heap",ok:!bad.length,line:"context-heap: "+(bad.length?bad.join("; "):HEAP_CYCLES+" idle restores: the heap "+H.map(mb).join(", ")+" MB ("+mb(per)+" MB a restore after the first; at most "+mb(HEAP_PER_RESTORE)+"), at most "+lmax+" dispose listener an object ("+Ls.map(x=>x.n).join(", ")+" in all)")});
     } finally { await browser.close(); } }
   return R;
 }

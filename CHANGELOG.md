@@ -1,5 +1,84 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 7 (WP-14): robustness residuals (CL-ROB-02, -04, -05, -10, -11, -12)
+
+**Status: on `claude/admiring-dirac-m1syqs-robustness`, stacked on the Stage 6 records PR (#104; merge #104 first), a draft PR into `main`, for
+review, not merged.** WP-14 of `docs/ROADMAP_FINAL_AUDIT.md`, with WP-11's rule alongside. The owner's instruction with the stage's brief (12 November
+2026): "Go with recommendations for all owner questions"; this pass puts 317-320 (`docs/final-stage7-evidence/questions.md`), each measured
+first and decided as recommended under that instruction: **317 (a)**, **318 (b)**, **319 (a)**, **320 (a)**. Presentation and robustness only: no data
+file and no guarded declaration changes (`check:data`: all identical to `archive/stage6wp09w-45d29cc5.html`). `austerlitz-command-map.html` is now
+3,028,969 bytes, md5 `eabe076a629bb4b3ca7884359e8bf764` (was 3,025,956, `dcc65319...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **CL-ROB-02, no throw on a context loss while playing (`app.js` `glLostNow`, `loop`).** The app and three r128 learn of a loss from
+  "webglcontextlost", which the browser dispatches after the context is already lost; a frame drawn in between that compiles a program read
+  three's info logs (null on a lost context) and threw "Cannot read properties of null (reading 'trim')". *Was:* the loop skipped a frame only on
+  `GL.lost`. *Is:* it also asks the context itself, synchronously (`isContextLost()`).
+- **CL-ROB-04, the restore's retained heap bounded (`glTrackDispose`, `glPruneDispose`, `glRestored`; decision 317 (a)).** three r128 rebuilds
+  its geometries', textures', render targets' and instanced meshes' bookkeeping on a restore, and each new structure adds its own "dispose"
+  listener to every object beside the lost context's. Each old listener holds the lost context's structures. *Was:* 2.57 MB of heap kept a
+  restore, one more listener an object a restore. *Is:* the app records the objects three gives a dispose listener (a weak reference each, so
+  a disposed object is not kept). At a restore, after three's own handler and before anything is drawn, it clears those listeners, all of them the lost
+  context's (the app adds none of its own). three adds its new one as each object is next used. three's source is untouched; the app reads its
+  EventDispatcher's listener lists. A consequence: the "does not belong to this context" warnings came from those old listeners deleting the
+  lost context's buffers, and they are gone (decision 320 (a), below).
+- **CL-ROB-11, `esc()` escapes both quotes.** Double-quoted attributes (`aria-label`, `title`) take its output. *Was:* `&`, `<`, `>` only, which
+  relied on no data string holding a quote. *Is:* `"` and `'` too (`&quot;`, `&#39;`). A browser decodes them in attributes and text alike, so
+  the page reads the same.
+- **CL-ROB-10, the dead code.** `gaitDist` (`app.js`) and `v8Near` (`world.js`) were defined and called by nothing. Both are removed. The
+  gait's comment and `CLAUDE.md` now name `gaitDistOf`, `world.js`'s comment `v8NearAll`. `css-test.js`'s list of the planner's seeded
+  functions drops `v8Near`, which no longer exists; its check on the others is unchanged.
+- **CL-ROB-05, the offline dependence stated (`README.md`).** The map needs `cdnjs.cloudflare.com` once, at start-up; offline, or where that
+  address is blocked, it cannot start and says so. Decision 133 (a) keeps three.js on the CDN; embedding it (about 600 KB) would remove the
+  dependence. Nothing changes in the build.
+- **CL-ROB-12, the idle page's animation frames (decision 318 (b)): kept.** Measured (`tools/final-stage7/idle.js`, 60 s idle at 04:00,
+  software WebGL): 57.7 callbacks a second, 0 frames drawn, 0.86% of one core in tasks, 0.30% in script (`main`'s build 0.83%). Stopping the
+  requests would gain under 1% of a core. Every path that wants a frame would then have to restart them, and a missed one leaves the map frozen.
+  Battery on a phone is not measurable here.
+
+### Checks added, each failing without its fix (`tools/final-stage7/mutate.js wp14`; `docs/final-stage7-evidence/wp14/`)
+
+- `check:contrast`'s start-up cases (`tools/visual/boot-check.js`), two new:
+  - `context-play` (CL-ROB-02): Play on; the context lost; at once, before the event, one frame of the app's own loop, with a program to compile
+    (a define added to the ground's material); then three cycles lost and restored while playing; no page error. On `main`'s build: the frame
+    threw "reading 'trim'", and a page error came in the cycles.
+  - `context-heap` (CL-ROB-04): five idle restores, two forced collections before each read. At most 0.5 MB of heap a restore after the first (a
+    design bound), and no object with two dispose listeners. On `main`'s build: 15.46, 18.23, 20.80, 23.35, 25.96, 28.52 MB (2.57 MB a restore),
+    up to 6 listeners on one object. On this build: 16.88, 15.14, 15.32, 15.41, 15.52, 15.64 MB (0.13 MB a restore), at most 1.
+- `context-loss` (decision 320 (a)). *Was:* at least one "does not belong to this context" warning after its clock step, at most 248 (decision
+  212 (b)); the warning was the proof that the step disposes geometries made before the loss. *Is:* the proof is direct, the geometries drawn before
+  the loss that the step disposes after the restore, counted by the case's own wrapper on `dispose` (71 of 476 on this build). The warning is held at
+  0 in that case. On `main`'s build: 197 warnings, so it fails.
+- `runtime-test.js`: `esc()` of a string with both quotes, angle brackets and an ampersand. The claims-on-screen block reads each tag's `data-ref` decoded,
+  as a browser reads the attribute (its stub document does not decode); the comparison is unchanged.
+- `npm test` runs `tools/final-stage7/dead-code.js` (CL-ROB-10). Every top-level function of the bundle's sources is called by some identifier in
+  the code, except `posOf` (test-only, held by `check:data`'s model list). Every camelCase name a comment uses is in the code, except ten
+  named by kind (data fields, tools' and three's functions, history).
+- The negative controls, each a copy with one fix put back and its check run alone: the frame asking `GL.lost` alone (`context-play` fails); the
+  listeners kept (`context-heap` and `context-loss` fail); `esc()` without both quotes, or without the single quote (`runtime-test.js` fails);
+  `gaitDist` named in the comment again, or `v8Near` defined again (`dead-code.js` fails); the build as it is (every check passes).
+
+### Verified
+
+- Here, on the build `eabe076a...` (Chromium 141's headless shell, Playwright 1.56, the pinned browser): `npm test` passes, with the nine suites,
+  the height guard and the dead-code check (`docs/final-stage7-evidence/wp14/npm-test.txt`). `check:data`: all 143 data declarations identical.
+  `check:chronology`: errors 0. `check:contrast` passes, its 10 start-up cases among them (`context-heap` on that run 0.14 MB a restore;
+  `context-loss` disposing 74 of the pre-loss geometries, 0 warnings; `check-contrast.txt`). The negative controls: 7 of 7 as expected, on two
+  runs (`mutate-wp14.txt`, `.json`). `check:baseline` passes.
+- On `main`'s build `dcc65319...` the same cases (`boot-main-dcc65319.txt`): `context-play` fails, "reading 'trim'" from the frame before the event
+  and a page error in the cycles; `context-heap` fails, 2.57 MB a restore, 6 listeners; `context-loss` fails, 197 warnings.
+- Idle (`idle-wp14.json`, `idle-main-dcc65319.json`, a second run): 57.3 and 57.1 callbacks a second, 0 frames drawn, 0.85% and 0.84% of a core.
+- `check:selftest` was not run to its end here: it was stopped to free the machine's four cores for WP-16's measurements. CI's run is the verdict;
+  this PR adds no self-test check, so the manifest stays at 348.
+
+### What remains uncertain, and what is handed on
+
+- The 0.5 MB bound is a design value. The heap is read after forced collections on software WebGL; a device's GPU-side memory is not measured.
+- The restore's prune reads three r128's `_listeners`, an internal field. It holds only while three.js stays at r128 (CLAUDE.md: kept unless agreed).
+- CL-ROB-12 is not changed (decision 318 (b)).
+- WP-16 (targeted performance) and WP-12 (the device evidence) are the next PRs of this stage.
+
 ## 2026-11 · Final audits' roadmap, Stage 6 merged; Stage 7 next (records only)
 
 **Status: on `claude/admiring-dirac-m1syqs` (draft PR into `main`, for review, not merged).** Records only: no source, data or build change.

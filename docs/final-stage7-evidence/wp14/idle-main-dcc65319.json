@@ -1,0 +1,16 @@
+{
+ "build": "main-dcc65319.html",
+ "secs": 60,
+ "idleReached": true,
+ "rafCallbacks": 3429,
+ "perSecond": 57.1,
+ "framesDrawn": 0,
+ "skipped": 3430,
+ "timeouts": 0,
+ "intervals": 0,
+ "taskS": 0.504,
+ "scriptS": 0.166,
+ "taskShare": 0.0084,
+ "state": "idle",
+ "errors": []
+}

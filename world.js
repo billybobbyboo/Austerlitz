@@ -1773,7 +1773,6 @@ function v8Margin(R,ctx){ var m=Infinity, O=ctx.segs;
 /* a place near a point for a footprint (mk(x,z) makes it): the point itself if the footprint stands clear there (why(R) null), else the
    least move, a quarter unit at a time on 24 bearings, that clears it; of the places clear at that distance the one standing farthest clear
    (v8Margin). No bearing is preferred: the move is the least the drawn roads and streams ask, not a correction toward another place */
-function v8Near(cc,mk,why,ctx,maxR){ var all=v8NearAll(cc,mk,why,ctx,maxR,1); return all.length?all[0]:null; }
 /* every place clear within maxR, the nearest first and, at one distance, the farthest clear first; with cap, the rings out to the one that
    brings the places found to cap (the first cap places the same as without it) */
 function v8NearAll(cc,mk,why,ctx,maxR,cap){ var out=[];
@@ -1782,7 +1781,7 @@ function v8NearAll(cc,mk,why,ctx,maxR,cap){ var out=[];
   return out.sort(function(a,b){ return (a.off-b.off)||(b.m-a.m); }); }
 /* a village's church or chapel (CHURCHES, CHAPELS): the build's silhouette at the village's point, as before 8G, where it stands clear there;
    the build's churches stood at their villages' points, on the roads and streams drawn through them (at Telnitz in the Goldbach), so most are
-   moved the least step that clears them (v8Near), in the village's place. Austerlitz's the temple (templeParts8g) on its north-south axis;
+   moved the least step that clears them (v8NearAll), in the village's place. Austerlitz's the temple (templeParts8g) on its north-south axis;
    Holubitz's a chapel, the build's silhouette at CHAPEL8G of its size; Telnitz's with its churchyard's wall about it */
 var CHAPEL8G=0.5;
 var V8CANDS=24;   /* the church's places tried for its village's plan, the nearest first */

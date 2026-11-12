@@ -9,6 +9,12 @@ where they can, and every statement says how far it is sourced (its claim word, 
 "How this is sourced" and the sheet "Accuracy and sources" show what rests on which reading, where the sources disagree, and what is this
 map's own reading.
 
+**It needs the network once, at start-up** (the final audits' Stage 7, CL-ROB-05; decision 133 (a)): three.js r128 comes from
+`cdnjs.cloudflare.com`, checked against its integrity hash. Offline, or where that address is blocked, the page cannot start and says so
+(its start-up dialog: "could not be loaded from cdnjs.cloudflare.com ... The map needs a network connection that can reach that address").
+A saved copy of the file has the same dependence. Embedding three.js (about 600 KB) would remove the
+dependence; decision 133 (a) keeps it on the CDN.
+
 ## Working on it
 Edit the sources, then `npm run build` (or `python3 build.py`; on Windows `py build.py`). Never edit the built HTML by hand.
 - Presentation and software: `app.js`, `world.js`, `symbols.js`, `shell.html`, `style.css`, and `tokens.js` (the one source of interface and
