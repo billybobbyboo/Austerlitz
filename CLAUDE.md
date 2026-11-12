@@ -215,7 +215,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   clock step proved by the geometries made before the loss and disposed after it, counted, with no "does not belong to this context" warning
   (owner question 320 (a): the restore now clears the lost context's dispose listeners, the warnings' cause; 248 until then).
 - `npm run check:selftest` (since step 1, decision 132; the CI job): the in-app self-test on one fresh 1366 x 768 page, every check by name
-  against `tools/visual/selftest-manifest.json` (348 since the final audits' Stage 6 as merged (#94, #100, #99, #102): the meres' two, `wp10Checks`; WP-09's five,
+  against `tools/visual/selftest-manifest.json` (350 since the final audits' Stage 7, WP-16's first PR: the label pass's lights and the free
+  rectangle kept, `wp16Checks`; 348 since the final audits' Stage 6 as merged (#94, #100, #99, #102): the meres' two, `wp10Checks`; WP-09's five,
   `wp09Checks`; the picture's four, `wp10pChecks`; the crowns' and the buildings' two, `wp10gChecks`; 335 since #90's reconciliation with WP-07 and WP-08's lettering: WP-08's furniture's five checks, `wp08Checks`, beside
   the lettering's four; 330 since the final audits' Stage 5, WP-08's lettering: the arrows' labels and names, the Plans view, the
   chapels and the landmarks' outlines, `wp08cChecks`; 326 since the final audits' Stage 5, WP-07: the corps/division band, `wp07Checks`, and two of 8C's checks renamed for decision 301 (a); 325 since the final audits' Stage 3: the eight checks of WP-05's and WP-06's fixes, `wp56Checks`; 317 since the follow-up 8I: the far formation names' lighter plate in the low view, selected, focused, under a reading and on the paper map; the woods' check named "as pinned" since 8J, its counts the woods' data tasks', and the landmarks' check holding the castle covering its own site, at one size with its farm; 316 since Stage 8 implementation PR 8H: the blocks' pose at a pause, a seek and a resume, A-6 (one main
@@ -492,8 +493,9 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   `derivedModel`: at 14:40 neither derived reading applies and the caption shows none; at 14:20, in the same view, the caption shows the centre
   separation; every other Watch case as before).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of the final audits' Stage 7, WP-14's robustness residuals (md5 `eabe076a...`, 3,028,969
-  bytes, its data the archived `45d29cc5...`'s, `CHANGELOG.md`); re-baselined from the build of Stage 6 as merged into `main` (#103's merge, `187231c`: md5 `dcc65319...`,
+- `npm run check:baseline` passes only on the unmodified build of the final audits' Stage 7, WP-16's first PR (md5 `07c186de...`, 3,035,557 bytes, its
+  data the archived `45d29cc5...`'s, `CHANGELOG.md`); re-baselined from WP-14's robustness residuals (md5 `eabe076a...`, 3,028,969
+  bytes, `CHANGELOG.md`); re-baselined from the build of Stage 6 as merged into `main` (#103's merge, `187231c`: md5 `dcc65319...`,
   3,025,956 bytes, `CHANGELOG.md`; re-baselined from Stage 6's PRs' builds as each was reconciled, the last before it
   WP-09's visitor words reconciled with WP-10's meres and WP-09's reflow and focus (md5 `ff86079e...`, 3,003,455 bytes; its data the archived `45d29cc5...`'s, `CHANGELOG.md`; before it WP-09's visitor words alone, md5 `858db534...`,
   2,964,486 bytes, and WP-10's meres, md5 `250b0e32...`, 2,974,489 bytes,
@@ -822,4 +824,6 @@ nothing in it is recorded. Stage 6 is merged; `main`'s build is `dcc65319...` (3
 Stage 7 ("Performance and robustness": WP-16, WP-12 and WP-14, with WP-11's rule alongside) is next; its owner questions are numbered from 317 and
 recorded in `docs/final-stage7-evidence/questions.md`; the closing re-verification pass follows it. Its first pass, WP-14's robustness residuals (CL-ROB-02, -04,
 -05, -10, -11, -12; decisions 317 (a), 318 (b), 319 (a), 320 (a) under the owner's "Go with recommendations for all owner questions" of 12 November
-2026), is on `claude/admiring-dirac-m1syqs-robustness`, a draft PR stacked on the Stage 6 records PR (#104).
+2026), is on `claude/admiring-dirac-m1syqs-robustness` (#105), a draft PR stacked on the Stage 6 records PR (#104). WP-16's first PR (CL-PERF-14, the label
+pass's lights; CL-PERF-13, `MAPCAM.freeRect` kept by its inputs; each pixel- and shadow-identical, 12.6-16.9% and 24.4-28.7% of the frame's CPU on the
+matched protocol here) is on `claude/admiring-dirac-m1syqs-perf`, stacked on #105; question 321 (a), CL-PERF-12, is a PR of its own after it.

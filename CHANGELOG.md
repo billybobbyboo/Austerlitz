@@ -55,7 +55,16 @@ of its own; the phone's figure and standard workload (CL-PERF-15) needs the phon
 
 ### Verified
 
-VERIFY7B
+- Here, on the build `07c186de...` (Chromium 141's headless shell): `npm test` passes, with the nine suites, the height guard and the dead-code
+  check (`wp16/npm-test.txt`). `check:data`: all 143 identical. `check:chronology`: errors 0. `check:contrast` passes, with all 10 start-up cases
+  (`wp16/check-contrast.txt`). `check:baseline` passes.
+- `check:selftest`: 350 checks run, every one passing, the motion block among them (`phone-long` 292 of 945, as on Stage 6's final build). Its only
+  failures were the manifest's three lines (350 against 348, the two new names), so the manifest is written from that run (`check-report.js
+  --write-manifest`: 348 to 350, two added, none removed).
+- The negative controls: 5 of 5 as expected (`wp16/mutate-wp16.*`). Before C3, 972 programs were looked up again in three still frames (324 a
+  frame; the audit counted 318). Without the shadow hold, the shadow map is drawn twice a frame.
+- The measured candidate builds were WP-14's build with each change alone, before the self-test's block and the search counter it reads were
+  added. The final build differs from them by those alone: the block runs only in the self-test, and the counter is one increment a search.
 
 ### What remains uncertain, and what is handed on
 
