@@ -57,7 +57,8 @@ moves to it.
 visitor-words PR and the picture PR:* the self-test's blocks kept side by side (`wp09Checks`, `wp10Checks`, `wp10pChecks`, `wp10gChecks`), the height
 guard's sites likewise. The merged build is 3,024,870 bytes, md5 `5245ec4178a3420ea4d6c60bc51d6b1e`, and `check:baseline` moves to it. On it, here: `npm
 test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (348 checks, every one passing) pass; the manifest regenerated from that run,
-346 to 348. `check:contrast` and `check:visual` run again on CI.
+346 to 348. On CI (run 42984402496 on `9f10657`, the build `5245ec41...`): passed, every job (`check:visual` 3 h 29 min). `main` merged in after
+PR #96 (`9f7c1b0`), the build unchanged.
 
 ### What changed, and why
 
@@ -103,7 +104,8 @@ gait-on-the-ground check's kept-open counts at 10.33x (horses, fresh) were passe
 the ground; re-baselined at the merged build's counts on the owner's word (decision 316, `docs/final-stage6-evidence/questions.md`): 38 to 49, 38 to 49,
 40 to 47, 38 to 46, `H_TOL` and every bound unchanged. The merged build is 3,017,777 bytes, md5 `1f731ae829a66c778bf0586d5b5d6444`, and `check:baseline` moves to it. On it, here: `npm
 test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (346 checks, every one passing) pass; the manifest regenerated from that run, 342
-to 346. `check:contrast` and `check:visual` run again on CI.
+to 346. On CI (run 42991045298 on `051177f`, the build `1f731ae8...`): passed, every job (`check:visual` 4 h 14 min). `main` merged in after PR #96
+(`9f7c1b0`), the build unchanged.
 
 ### What changed, and why
 
