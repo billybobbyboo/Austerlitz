@@ -780,7 +780,7 @@ if(cerrs) process.exitCode=1;
   if((plan.match(/wall="stone"|wall:"stone"/g)||[]).length!==1||!/churchyard8g\(ch,cc\)\.forEach\(function\(q\)\{ q\.village=v\[0\]; q\.wall="stone";/.test(plan)) gerr.push("a stone wall drawn other than Telnitz's churchyard's");
   if(!/if\(v\[0\]==="Telnitz"\) churchyard8g/.test(plan)) gerr.push("the churchyard's wall not Telnitz's alone");
   /* the plan deterministic */
-  ["v8PlanAt","villagePlan8g","churchPlan8g","castlePlan8g","chateauPlan8g","fences8g","planBuildings8g","v8Near","v8NearAll","v8Settle"].forEach(f=>{ const b=wfn(f); if(!b) gerr.push(f+" missing"); else if(/Math\.random/.test(b)) gerr.push(f+" draws Math.random (the plan is seeded)"); });
+  ["v8PlanAt","villagePlan8g","churchPlan8g","castlePlan8g","chateauPlan8g","fences8g","planBuildings8g","v8NearAll","v8Settle"].forEach(f=>{ const b=wfn(f); if(!b) gerr.push(f+" missing"); else if(/Math\.random/.test(b)) gerr.push(f+" draws Math.random (the plan is seeded)"); });
   /* on the drawn ground, read exactly; laid again when it changes */
   const bg=wfn("bldGround");
   if(!/\[\[ax,bx\],\[az,bz\],\[ax\+az,bx\+bz\]\]/.test(bg)||!/if\(v8BoxPt\(R,gx,gz\)===0\) rd\(gx,gz\);/.test(bg)) gerr.push("the ground under a building not read exactly (its edges' crossings of the grid and the cells' diagonals, the grid's vertices inside)");

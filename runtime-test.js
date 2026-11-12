@@ -443,6 +443,11 @@ try{
   setMode("terrain"); select(null,null); updateVisibility();
   if(selRing.visible) throw new Error("ring outlived the selection");
   console.log("selection ring OK");
+  /* the final audits' Stage 7, WP-14 (CL-ROB-11): esc() escapes both quotes (double-quoted attributes take its output); a name with a quote
+     in an aria-label stays one attribute */
+  { const e=esc('a"b\'c<d>e&f'); if(e!=="a&quot;b&#39;c&lt;d&gt;e&amp;f") throw new Error("esc() leaves "+JSON.stringify(e));
+    if(esc(null)!==""||esc(0)!=="0") throw new Error("esc() of null or 0: "+JSON.stringify([esc(null),esc(0)]));
+    console.log("esc(): quotes, angle brackets and ampersands escaped OK"); }
 
   /* event jumping must not drag the camera when the moment is already in view, and centres it when it is not (goToEventAt).
      T-6 (roadmap step 1): until step 1 the camera's position was kept and never compared, and all three jumps here centred, so the
@@ -640,7 +645,7 @@ try{
     try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
       [T_MIN,525,600,700,880].forEach(t=>{ setClock(t);
         Object.keys(FORMATIONS).forEach(id=>{ made=[]; dossierFormation(id); nV++; const f=FORMATIONS[id];
-          const h=made.map(x=>x.innerHTML||"").join("\n"), T=[...h.matchAll(/<span class="ltag claim" data-claim="(\w+)" data-ref='([^']+)'><span class="sr-only">Claim: <\/span>([^<]*)<\/span>/g)], refs=T.map(m=>m[2]);
+          const h=made.map(x=>x.innerHTML||"").join("\n"), T=[...h.matchAll(/<span class="ltag claim" data-claim="(\w+)" data-ref='([^']+)'><span class="sr-only">Claim: <\/span>([^<]*)<\/span>/g)].map(m=>{ m[2]=m[2].replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&'); return m; }), refs=T.map(m=>m[2]);
           T.forEach(m=>{ nT++; byCl[m[1]]=(byCl[m[1]]||0)+1;
             if(!live.has(m[2])) bad.push(id+" at "+fmtClock(t)+": a claim tag on "+m[2]+", not a narrative statement");
             else if(m[1]!==want(m[2])) bad.push(id+" at "+fmtClock(t)+": "+m[2]+" tagged "+m[1]+", its claim is "+want(m[2]));
@@ -655,7 +660,9 @@ try{
        dossier does (the act now and next, the objective, the army total; an event's why and dispute; a place's facts, whys and story), and
        every drawer dossier ends with the button to the index; the index opened from a dossier lists that dossier's statements first */
     let nC=0, nB=0;
-    const tagsOf=h=>[...h.matchAll(/<span class="ltag claim" data-claim="(\w+)" data-ref='([^']+)'><span class="sr-only">Claim: <\/span>([^<]*)<\/span>/g)];
+    /* the final audits' Stage 7, WP-14 (CL-ROB-11): esc escapes quotes, so a ref's quotes stand as entities in its data-ref; each is read as a
+       browser reads the attribute, decoded (here and in the dossiers' tags above) */
+    const tagsOf=h=>[...h.matchAll(/<span class="ltag claim" data-claim="(\w+)" data-ref='([^']+)'><span class="sr-only">Claim: <\/span>([^<]*)<\/span>/g)].map(m=>{ m[2]=m[2].replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&amp;/g,'&'); return m; });
     const hasBtn=()=>made.some(x=>(x.innerHTML||"")===esc(LABELS.dossier.sourced));   /* the stub keeps each element's own HTML: the button is one with the label */
     /* the button's list is the dossier's tags, in order (srcButton watched), and no collection is left open after a dossier is built */
     const realSB=srcButton; let given=null; srcButton=function(r){ given=r.slice(); return realSB(r); };

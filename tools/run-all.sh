@@ -31,6 +31,11 @@ node tools/stage2/height-sites.js --check > "$OUT/out_height-guard.txt" 2>&1; co
 echo "=== height guard  exit=$code"
 grep -E "call sites|presentation sites|UNCLASSIFIED" "$OUT/out_height-guard.txt" | cut -c1-200
 if [ $code -ne 0 ]; then keep=1; echo "!!! height guard FAILED (full output in $OUT/out_height-guard.txt)"; failed="$failed height-guard"; fi
+# the final audits' Stage 7, WP-14 (CL-ROB-10): no dead top-level function, no comment naming a function the code does not have
+node tools/final-stage7/dead-code.js > "$OUT/out_dead-code.txt" 2>&1; code=$?
+echo "=== dead code  exit=$code"
+cut -c1-200 "$OUT/out_dead-code.txt" | tail -3
+if [ $code -ne 0 ]; then keep=1; echo "!!! dead code FAILED (full output in $OUT/out_dead-code.txt)"; failed="$failed dead-code"; fi
 for t in css-test.js test.js geo-test.js terrain-test.js audit.js sim-test.js redteam.js runtime-test.js binding-test.js; do
   timeout 600 node $t > "$OUT/out_$t.txt" 2>&1; code=$?
   echo "=== $t  exit=$code"

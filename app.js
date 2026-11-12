@@ -564,7 +564,33 @@ function liftBoot(){
    watch (AUS_BOOT.ok, in loop); after a failure the loop stops. Later, a lost context stops the frames and says so (#glnotice, an alert,
    with Reload); restored, the frames go on (three r128 makes its GL objects again as they are next used). */
 function bootFailed(){ return typeof AUS_BOOT!=="undefined"&&!!AUS_BOOT&&!!AUS_BOOT.failed; }
-var GL={lost:false};
+var GL={lost:false, disp:[], pruned:0};
+/* the final audits' Stage 7, WP-14 (CL-ROB-02): the context is lost at once (a GPU reset, a phone dropping it, WEBGL_lose_context), but
+   "webglcontextlost", which sets GL.lost and three's own guard, is dispatched later; a frame drawn in between that compiles a program read
+   three r128's info logs, null on a lost context, and threw ("reading 'trim'", seen while the clock played). The frame now asks the context
+   itself, synchronously, as well */
+function glLostNow(){ if(GL.lost) return true; var c=renderer&&renderer.getContext&&renderer.getContext(); return !!(c&&c.isContextLost&&c.isContextLost()); }
+/* the final audits' Stage 7, WP-14 (CL-ROB-04; owner decision 317 (a)): three r128 makes its WebGLGeometries and WebGLTextures again on a
+   restore (initGLContext), and each adds its own "dispose" listener to every geometry, texture, render target and instanced mesh (its
+   WebGLObjects) it is next given, beside
+   the lost context's: one more listener on each object a restore, each holding the lost context's structures (about 2.6 MB of heap an idle
+   restore, 3.6-4 MB one while playing, retained). The app adds no "dispose" listener of its own, so every one on those objects is three's:
+   the objects three is given one are recorded here as they get their first (a weak reference: a disposed object is not kept), and at a
+   restore, after three's own handler has made its new structures and before anything is drawn again, their listeners (all of the lost
+   context's) are cleared; three adds its new one as each object is next used. three's source is untouched; this reads its EventDispatcher's
+   listener lists, which r128 keeps on the object (_listeners) */
+function glTrackDispose(){
+  if(typeof WeakRef!=="function"||!THREE.EventDispatcher) return;
+  var ED=THREE.EventDispatcher.prototype; if(ED.__ausDisp) return; ED.__ausDisp=true; var add=ED.addEventListener;
+  ED.addEventListener=function(type,fn){
+    if(type==="dispose"&&(this.isBufferGeometry||this.isTexture||this.isWebGLRenderTarget||this.isInstancedMesh)){ var L=this._listeners&&this._listeners.dispose;
+      if(!L||!L.length){ GL.disp.push(new WeakRef(this)); if(GL.disp.length>=4096&&GL.disp.length>=2*(GL.live||0)) glDispCompact(); } }
+    return add.call(this,type,fn); };
+}
+function glDispCompact(){ GL.disp=GL.disp.filter(function(r){ var o=r.deref(); return !!(o&&o._listeners&&o._listeners.dispose&&o._listeners.dispose.length); }); GL.live=GL.disp.length; }
+function glPruneDispose(){ var n=0, seen=new Set();
+  GL.disp.forEach(function(r){ var o=r.deref(); if(!o||seen.has(o)) return; seen.add(o); var L=o._listeners&&o._listeners.dispose; if(L&&L.length){ n+=L.length; L.length=0; } });
+  GL.disp=[]; GL.live=0; GL.pruned+=n; return n; }
 function bindContextLoss(cv){
   if(!cv||!cv.addEventListener) return;
   cv.addEventListener("webglcontextlost",function(e){ e.preventDefault(); GL.lost=true;
@@ -583,6 +609,7 @@ function bindContextLoss(cv){
    are cleared so the next frame draws both again; the environment's old target is dropped, not disposed (its dispose would delete objects of
    the lost context). check:contrast's "context-depth" case holds the frame after a restore to the frame before the loss */
 function glRestored(){
+  glPruneDispose();   /* the final audits' Stage 7, WP-14 (CL-ROB-04): the lost context's dispose listeners (above) */
   GDEPTH.key=null; mlReset("context");
   envRT=null; _envKey=""; _lightKey=null;
 }
@@ -616,6 +643,7 @@ function init(){
   scene.background=lin(LIGHT_RIG.bg0);
   scene.fog=new THREE.Fog(lin(LIGHT_RIG.fog0),90,560);
 
+  glTrackDispose();   /* the final audits' Stage 7, WP-14 (CL-ROB-04): before anything is drawn */
   try{ renderer=new THREE.WebGLRenderer({antialias:true}); }
   catch(e){ e.ausKind="webgl"; throw e; }   /* roadmap step 3 (SW-1): no WebGL; boot() shows the start-up guard's message */
   TIER_MOBILE=/Android|iPhone|iPad|Mobile/i.test(navigator.userAgent||"");   /* the final audits' Stage 6 (CL-VIS-09): kept for retier */
@@ -6070,7 +6098,7 @@ var WHEEL={cav:0.085, mixed:0.062, inf:0.050, guard:0.050, art:0.028, hq:0.10};
 /* ---- Stage 8, implementation PR 8E (decision 244 (a); docs/STAGE8_SPEC.md sections 4.3 and 17): the gait, the clock's ----
    A visual convention for symbolic figures under compressed time (decision 244's words): the march is seen as a march; the feet still slide
    over the ground, by the ratio of the figures' scale to the clock's, and no footstep is matched to the ground. Every number here is DESIGN:
-   - the phase: the distance the formation's modelled track has covered at the clock (gaitDist: every leg reached in full, the current one to
+   - the phase: the distance the formation's modelled track has covered at the clock (gaitDistOf: every leg reached in full, the current one to
      the clock's fraction, in map units) over a stride (STRIDE: 6.6 map units a cycle of two steps for men, 16 for the cavalry's and the
      officers' horses, 12 for the teams; section 4.3's), so that a paused clock holds the pose, a halted formation does not step, and a clock
      shows one pose however it was reached; a formed body steps together, each horse on its own beat (aPh, fixed per horse), a rider and a
@@ -6117,7 +6145,6 @@ function clockRate(){
   return st.stage==="in"?v*(1-k):st.stage==="hold"?0:v*k;
 }
 /* the distance (map units) the formation's modelled track has covered at clock t: the legs reached in full and the current one to its fraction */
-function gaitDist(id,t){ var f=FORMATIONS[id]; return gaitDistOf(id,f&&f.track?legAt(id,t):null); }
 function gaitDistOf(id,L){
   if(!L) return 0; var f=FORMATIONS[id], A=anchorList(id), C=f._gaitCum;
   if(!C){ C=[0]; for(var i=1;i<A.length;i++){ var a=A[i-1], b=A[i]; C.push(C[i-1]+(a.p&&b.p?legPath(a,b).len:0)); } f._gaitCum=C; }
@@ -7243,7 +7270,8 @@ function bindCanvas(){
 
 /* ---------------- UI ---------------- */
 function el(tag,cls,html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; }
-function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+/* the final audits' Stage 7, WP-14 (CL-ROB-11): quotes escaped too, since double-quoted attributes (aria-label, title) take its output */
+function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;"); }
 
 function buildUI(){
   applyLabels();   /* Stage 3E */
@@ -9722,7 +9750,7 @@ function frameState(now){
 function loop(){
   if(bootFailed()) return;   /* roadmap step 3 (SW-1): nothing runs behind the start-up guard's message */
   requestAnimationFrame(loop);
-  if(GL.lost){ DEV.skipped++; return; }   /* no graphics context: nothing to draw until it is restored */
+  if(glLostNow()){ DEV.skipped++; return; }   /* no graphics context: nothing to draw until it is restored (WP-14, CL-ROB-02: asked of the context itself) */
   syncFollow();   /* Stage 3D: the Follow button and the vantages' pressed state, every animation frame */
   openingWatch();   /* Stage 7C: a pan, orbit or zoom took the camera (Follow off): the opening ends where it is */
   var now=performance.now(), state=frameState(now);
