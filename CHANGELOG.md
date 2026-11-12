@@ -1,5 +1,138 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 3): the crowns near the eye, the blocks among the buildings
+
+**Status: on `claude/dreamy-johnson-uadkqa-crowns` (draft PR into `main`, for review, not merged).** The rest of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-VIS-08 (owner decision 308) and CL-VIS-04 (owner decision 307), each measured first; CL-VIS-10 not done (decision 309 (a), the bounded convention of
+decision 265 (a) kept). Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
+`archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now 2,971,087 bytes, md5 `c50e08bc47a3f79727c4bb60e95283f1` (was 2,963,994, `3388b70b...`); `check:baseline`
+moves to it.
+
+*Reconciled (11 November 2026; merged in, not rebased) with the picture PR's branch, which holds `main` after PRs #94 and #98, the focus PR, the
+visitor-words PR and the picture PR:* the self-test's blocks kept side by side (`wp09Checks`, `wp10Checks`, `wp10pChecks`, `wp10gChecks`), the height
+guard's sites likewise. The merged build is 3,024,870 bytes, md5 `5245ec4178a3420ea4d6c60bc51d6b1e`, and `check:baseline` moves to it. On it, here: `npm
+test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (348 checks, every one passing) pass; the manifest regenerated from that run,
+346 to 348. On CI (run 42984402496 on `9f10657`, the build `5245ec41...`): passed, every job (`check:visual` 3 h 29 min). `main` merged in after
+PR #96 (`9f7c1b0`), the build unchanged.
+
+### What changed, and why
+
+- **CL-VIS-08, the crowns' facets near the eye (`world.js` `TREE6`, `treeNear`; decision 308: prototyped, measured, adopted within the budget).** 8H closes a
+  deciduous crown's perforated faces as the eye nears (`TREE8H`, 5 to 16 units), and in the closest views the closed faces showed as large faceted shards.
+  *Is:* within the same nearness each face keeps only two thin strips through its centre (`TREE6.W`, 0.035 units wide, turned by the face's own hash), the
+  rest discarded, a face at a time as the eye nears (its hash under the nearness): an alpha test in the opaque pass, nothing sorted; nothing beyond the
+  near band; the sun's depth pass keeps the faces (soft shadows). Measured (`tools/final-stage6/crowns.js`; `docs/final-stage6-evidence/wp10/`): the draw
+  calls and triangles unchanged in the audit's three close views (465 and 1,539,061; 476 and 1,542,919; 392 and 1,401,987); the frame, the two states
+  alternated 15 times each in the closest view and by the castle, 9,114 against 9,346 ms and 7,442 against 7,740 ms (`crowns-timing.json`; software
+  WebGL, a comparison only: about 3% less, within what software rendering varies, so read as no slower, not as a gain); the single medians of nine frames
+  in `crowns.json` go both ways (10.4 to 6.8, 9.0 to 11.8 and 8.6 to 10.9 ms), the noise the alternated runs were made to average out; the pairs in `slope-10x-0900-r8--pair.jpg` and `sok-castle-1500-close--pair.jpg` (above as 8H drew them,
+  below with the twigs). A design value; decision 247 (a)'s opaque crowns kept beyond the near band, and `css-test.js`'s rule now holds the near hook's
+  alpha test as decision 308's.
+- **CL-VIS-04, blocks drawn through buildings (decision 307: (a) measured first, then its fallback (c)).** Measured (`tools/final-stage6/occupy.js`,
+  `occupy-main.json`; every 10 minutes 05:00-17:00 at 4x, each block's seated extent against every building's plan): every clock has a block on a
+  building, 512 of the 630 building parts lie under a block at some clock, and Legrand's block covers Sokolnitz and Telnitz at all 73 clocks (Langeron,
+  Przybyszewski, Friant and Dokhturov the next): the blocks are drawn at their frontage, larger than the houses. Hiding or fading the parts under them,
+  option (a), would take most of Sokolnitz and Telnitz off the map where they were fought over (geographic integrity before the picture), so (a) does not
+  measure well and its fallback (c) applies: the sources sheet's "How the villages are drawn" (`buildingNotes`) says so. Opposing blocks sharing ground stay
+  as the tracks draw them (a data question, CL-HIS-04).
+
+### Checks added, each failing without its fix (`tools/final-stage6/mutate-wp10g.js`, `mutate-wp10g.json`: 4 of 4 as expected)
+
+- `wp10gChecks`: "the crowns near the eye (WP-10, CL-VIS-08; decision 308)" (the woods drawn alone on the view drawn without them: a tree 7 units off
+  covers at most 80% of the closed faces' pixels, 75% here, 100% without the twigs; the Overview the same pixels, 0 differing); "the blocks among the
+  buildings (WP-10, CL-VIS-04; decision 307 (c))". Negative controls: the twigs off; the twigs at every distance; the sentence gone.
+- `css-test.js`: `TREE6`'s values and the near hook's alpha test.
+
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 2): the facings, the camp, the streams' glint, the tier on a resize
+
+**Status: on `claude/dreamy-johnson-uadkqa-picture` (draft PR into `main`, for review, not merged).** Part of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-VIS-03, CL-VIS-05, CL-VIS-07 and CL-VIS-09. Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 data declarations
+identical to `archive/stage5wp08-572b0935.html`). Every value below is a design value, chosen from the measures. `austerlitz-command-map.html` is now
+2,977,379 bytes, md5 `f2e6cd044855db6238e3f2e828e418a4` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
+
+*Reconciled (11 November 2026; merged in, not rebased) with the visitor-words PR's branch, which holds `main` after PRs #94 and #98 and the focus PR:*
+the self-test's blocks kept side by side (`wp09Checks`, `wp10Checks`, `wp10pChecks`); `check:data`'s reference the visitor-words PR's archive. Two things
+found by the self-test on the merged build: (1) the meres' check (CL-VIS-01) required a block's own mesh on the ice, which was a headquarters' camp in the
+rout; this PR strikes the camp while a headquarters moves (CL-VIS-07), so none stood on the ice drawn and the check could not judge the marquee's seat. It
+now judges a block's camp meshes pitched or struck (they are seated with the block either way): 2 meshes on the ice, none below it. (2) Four of the
+gait-on-the-ground check's kept-open counts at 10.33x (horses, fresh) were passed by 3-7 poses, the facings turning halted blocks across other creases of
+the ground; re-baselined at the merged build's counts on the owner's word (decision 316, `docs/final-stage6-evidence/questions.md`): 38 to 49, 38 to 49,
+40 to 47, 38 to 46, `H_TOL` and every bound unchanged. The merged build is 3,017,777 bytes, md5 `1f731ae829a66c778bf0586d5b5d6444`, and `check:baseline` moves to it. On it, here: `npm
+test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (346 checks, every one passing) pass; the manifest regenerated from that run, 342
+to 346. On CI (run 42991045298 on `051177f`, the build `1f731ae8...`): passed, every job (`check:visual` 4 h 14 min). `main` merged in after PR #96
+(`9f7c1b0`), the build unchanged.
+
+### What changed, and why
+
+- **CL-VIS-03, blocks facing away from an adjacent enemy (`app.js` `faceWant`, `FACE`, `enemyBearing`, `enemyFacing`).** A block faced along its leg
+  whenever a leg was in progress, however slow, and a halted block's facing was taken once, at its phase's start or its arrival. 79.6% of the moving rows
+  were drifts under 1 km/h between plotted positions, and blocks drifted with their backs to an enemy 20-420 m off (Kamensky's brigade facing 175 degrees
+  from Saint-Hilaire at 10:10 as the event reads "Kamensky turns his brigade about"). *Is:* on a leg under the gait's floor (`GAIT.KMH`, 1 km/h: a drift,
+  not a march, decision 244 (a) and the final audits' Stage 4, CL-HIS-13) a block faces its enemy as a halted one does; a halted block's facing is taken
+  again every 10 clock minutes (`FACE.STEP`) and turned when the nearest enemy's bearing has moved more than 45 degrees (`FACE.TURN`) from the facing
+  held, walked from its phase's start, so the facing is still a function of the clock alone (S-5; the self-test's check (g) reads `faceWant`, what
+  `poseBlock` poses).
+- **CL-VIS-07, the headquarters' camp at every status (`app.js` `ud.camp`, `poseBlock`).** The marquee and its four tents stood among the moving guns
+  and on the Satschan ice in the rout. *Is:* struck while the headquarters moves (its riders alone), pitched while it is halted. A rule that struck the
+  camp only on a march at 1 km/h or more was tried and rejected: Buxhowden's headquarters in the rout drifts at 0.80 km/h, the audit's own case, and
+  would have kept its camp on the ice.
+- **CL-VIS-05, the streams saturating toward white (`world.js` `STREAM.rough` 0.30 to 0.60).** The cause established first (`tools/final-stage6/streams.js`,
+  `whites.py`; `docs/final-stage6-evidence/wp10/streams.json`; the audit's four views at 1600 x 900 in Watch, each drawn with one thing changed): the low
+  sun's specular glint at the stream material's roughness 0.30. The grazing sky term (`STREAM.sky`) adds 1 to 7 at the 99th percentile of the streams'
+  luminance (its first test did nothing: the material's program key is a constant, so it was recompiled under a key of its own), the environment's light
+  under 1, the post-processing about 20. The streams' p99 against their field's: the castle's brook at 15:00 244 against 177 (as built), 226 at 0.45,
+  215 at 0.50, 185 at 0.60; Saint-Hilaire's climb at 09:00 240 against 209, 215, 204, 179; the meres at 15:00 213 against 223, 200, 190, 170; the low
+  Pratzen view at 16:30 152 against 144, 169, 166, 149 (the mean tone kept within 7). At 0.60, the rimed ice's own roughness, the streams are no brighter
+  than their field. The audit's whites (pixels at 255) do not reproduce on `main`'s build (0 in every view; the relief's refit and Stage 5 moved the views
+  since its build), so the measure is the streams' own p99 against the field's.
+- **CL-VIS-09, the tier decided once (`app.js` `applyTier`, `retier`, `TIER_MOBILE`; `onResize`).** A desktop page opened in a window under 900 x 700 kept
+  density 1, no shadows and no near detail when enlarged. *Is:* on a resize, a page on the low tier for its window alone takes the full tier once its
+  window is 900 x 700 or more; a phone's or a tablet's agent keeps the low tier (decision 236), and nothing goes down on a shrink (a picture that worsened
+  mid-visit would surprise; the page that began large keeps what it had).
+
+### Measured
+
+- The facings (the audit's own tool, `tools/audit-post8/visual-landscape/facings.js`, every drawn block every 10 minutes 05:00-17:00, 2,051 rows;
+  `facings-main.json`, `facings-6f.json`): flag B (drifting under 1 km/h with an enemy within 1.5 km, the yaw more than 90 degrees off it) 129 to 0; C
+  (moving, fighting, more than 120 degrees off the nearest enemy) 70 to 4; D (halted, the facing more than 60 degrees off the nearest enemy now) 8 to 1;
+  the halted near an enemy within 45 degrees of it 236 of 248 to 247 of 248. The four C rows left (Kollowrat at 10:20, Caffarelli, Suchet and Nansouty
+  at 11:10) march at 1 km/h or more along their own legs: their facing is their tracks', a data question, not this rule's.
+- The camp: of 219 headquarters-clocks every 10 minutes, the camp struck in the 153 moving ones (the riders alone), pitched in the 66 halted.
+
+### Checks added, each failing without its fix (`tools/final-stage6/mutate-wp10p.js`, `mutate-wp10p.json`: 6 of 6 as expected)
+
+- `wp10pChecks`: "the facings (WP-10, CL-VIS-03)" (every 10 minutes 05:00-17:00, no block halted or drifting under 1 km/h facing more than 90 degrees from
+  the nearest enemy within 1.5 km, the nearest found by the check itself, and of the halted at least 98% within 45 degrees; 247 of 248 here, 95.2% on
+  `main`); "the headquarters' camp (WP-10, CL-VIS-07)"; "the streams' glint (WP-10, CL-VIS-05)" (two of the audit's views drawn with and without the
+  streams: the streams' p99 no more than the field's plus 15; 172 against 175 and 176 against 207 here, 244 against 177 on `main`); "the tier on a resize
+  (WP-10, CL-VIS-09)" (a real resize event through the app's handler). Negative controls: the drift facing back, the facing taken once a phase, the camp
+  at every status, the streams at 0.30, no `retier` on a resize: each failing its own check alone.
+
+### Verified
+
+- `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 errors). `check:baseline`: passes.
+- `check:selftest` (here, the pinned Chromium 141): 337 checks, every one passing; the manifest regenerated from this run, 335 to 337 (the two checks
+  above). A first local run stopped at a harness click's 30 s timeout (the phase's message block) while three other browser jobs shared the machine's four
+  cores; run again alone, it completed.
+- On CI (run 42783059380 on `e2ce290`, `checks.yml`, `visual: true`; the build `c50e08bc...`, the branch's head's): passed, every job (`npm test`,
+  `check:data`, `check:chronology`, `check:selftest`, `check:contrast`, `check:visual`; the run 3 h 29 min).
+
+### What remains uncertain, and what is handed on
+
+- `TREE6.W` and the twigs' turn are design values. The blocks' size at their frontage is the map's symbol (Stage 8); a block among houses marks the
+  formation's place, not men inside them.
+
+- `check:selftest` (here, the pinned Chromium 141): 339 checks, every one passing; the manifest regenerated from this run, 335 to 339 (the four
+  `wp10pChecks` above). Its only failures before the regeneration were the manifest's own (the four checks not yet in it).
+- On CI (run 42763709786 on `ce82be1`, `checks.yml`, `visual: true`; the build `f2e6cd04...`, the branch's head's): passed, every job (`check:visual` on
+  its second attempt, 4 h 15 min; its first had not started: the runner's apt lock held through the browser's three install tries).
+
+### What remains uncertain, and what is handed on
+
+- `FACE.STEP` (10 minutes), `FACE.TURN` (45 degrees), the camp's rule and `STREAM.rough` 0.60 are design values. The facing remains a symbol's convention:
+  no source gives a formation's facing minute by minute.
+- The crowns' facets and blocks drawn inside buildings (CL-VIS-08, -04; decisions 307, 308) are the next PR.
+
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, 2 of 3): names, focus, caveats and the first card (CL-UX-08, -10, -11, -12, -15, -18, -21)
 
 **Status: on `claude/dreamy-johnson-uadkqa-focus`, stacked on the reflow PR (WP-09, 1 of 3; a draft PR into its branch until it merges, then into
@@ -140,6 +273,98 @@ the pinned browser every measured limit and baseline was taken on) does not inst
 ubuntu26.04-x64", so every browser job (`check:selftest`, `check:contrast`, `check:visual`) failed at its install step before any check ran
 (run 42733450089 on PR #94, all three tries in 3 seconds; the node job passed). *Is:* the three jobs of `.github/workflows/checks.yml` run on
 `ubuntu-24.04`, the image they ran on until now, so the pinned browser and every limit stay as measured. No source file and no build change.
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, part 3): the words a visitor is told (CL-UX-05, CL-UX-16)
+
+**Status: on `claude/dreamy-johnson-uadkqa-words` (draft PR into `main`, for review, not merged).** Part of WP-09 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-UX-05 (internal references shown to visitors) and CL-UX-16 (the modelling vocabulary and the overloaded A/B/C letters), with the owner's decision
+**310** of 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`: "anchors" becomes "plotted positions", "Plotted
+leg" becomes "Plotted march", each grade named with its scale). **A data task, words only**: no position, timing, grade, strength, source or reading
+changes, and no claim's kind; what a statement's words say is the same, said without the project's working language. Against
+`archive/stage5wp08-572b0935.html` five data declarations change, each below; the other 138 are identical. `check:data`'s reference moves to this build,
+`archive/stage6wp09w-45d29cc5.html` (the build with every data change; the final build differs from it in the self-test's position-pill check alone, its
+data declarations identical). `austerlitz-command-map.html` is now 2,964,486 bytes, md5 `858db534c73be222ebe140ec88321c32` (was 2,963,994, `3388b70b...`);
+`check:baseline` moves to it. The history the notes carried (what the map did until roadmap step 4b) is kept here, below, as CL-UX-05's
+remedy asks.
+
+*Reconciled (11 November 2026; merged in, not rebased) with the focus PR's branch, which holds `main` after PRs #94 (WP-10's meres) and #98 (WP-09's
+reflow):* conflicts in `CHANGELOG.md`, `CLAUDE.md` and `package.json` only, both sides kept; `check:data`'s reference stays this PR's archive (no other
+PR changes a data declaration). The merged build is 3,003,455 bytes, md5 `ff86079e9fc4b4857be407aac5cf2214`, and `check:baseline` moves to it. On it,
+here: `npm test`, `check:data` (143 of 143 identical to `archive/stage6wp09w-45d29cc5.html`), `check:chronology` and `check:selftest` (342 checks, every one
+passing, the manifest unchanged) pass. On CI (run 42958975874 on `a5fc274`, the build `ff86079e...`): passed, every job (`check:visual` 2 h 06 min).
+`main` merged in after PR #100 (`1c466af`; the same tree as the focus branch merged here, no file changed).
+
+### What changed, and why (each declaration: what was, what is)
+
+- **`FORMATIONS`** (`data.js`), the tracks' timing notes, shown in the full dossier's "Dated by" row (the audit's `leaks-timing.json`):
+  - `gqg@6`: was "The arrival follows the existing 40-minute march (moveMin)"; is "The arrival follows 40 minutes later, this map's time for a
+    headquarters' move (a design value)" (the code's name out; `check:chronology`'s `MOVEMIN_DERIVED` names the same leg).
+  - `friant@1`: the sentence "Until roadmap step 4b the map moved the division from 04:00 and had the brigade at the Goldbach c. 08:00 (question
+    177)" dropped; "the anchor, short of the stream" is "the plotted position, short of the stream" (decision 310).
+  - `friant@3`: "Until roadmap step 4b this anchor was the phase-2 entry, reached at 08:30 on this map (question 177)" dropped.
+  - `bourcier@3`: "Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)" dropped.
+  - `lang@1`, `prz@1`: "Until roadmap step 4b the map moved the column from 04:00 (question 176)" dropped.
+  - `c_gren@7`: "Until roadmap step 4b the map dated the arrival at 14:00, its own, which forced the next leg toward the ceiling (question 181)" dropped.
+  - `vandamme@7`: "the next anchor, the height above Augezd" is "the next plotted position, ..."; `kollo@4`: "the arrival at this anchor" is "the
+    arrival at this plotted position" (decision 310). The military "anchor" (the Santon "the anchor of the French left", the shelf "to anchor the
+    Allied right") is kept: it is the period's word, not the model's.
+- **`SOURCE_NOTE`** (`data.js`), `layers[1][1]`: "a route between anchors" is "a route between plotted positions" (decision 310).
+- **`anchorList`** (`app.js`, the movement model): the flag's words, shown in the timing row ("flagged: ..."), "the tactical rate does not fit before
+  the next anchor" is "... before the next plotted position" (decision 310); the rule and every arrival unchanged (`check:chronology` 0 errors).
+- **`CONF_INTERP`** (`app.js`, a grade text a visitor is told): was "The formation is between two plotted anchors: this position is interpolated, and
+  graded no better than the weaker anchor."; is "The formation is between two plotted positions: this position is interpolated, and graded no better
+  than the weaker of the two." (decision 310).
+- **`STATEMENT_CLAIMS`** (`narrative.js`), five claim notes (shown in "How this is sourced" and the sources sheet's index; the audit's `leaks.json`),
+  each claim, its readings and its statement's hash unchanged:
+  - `EVENTS[#counter-march].dispute`: "is in the register (read partly on the text layer)" is "is in the sources read for this map (one of them read
+    partly from its scanned text, not the page image)".
+  - `FORMATIONS.legrand.staff`: "a reading of roadmap step 6B (docs/stage6-evidence/readings-composition.md)" is "this map's reading of the sources on
+    the army's composition".
+  - `FORMATIONS.rg_cav.strengthNote`, `FORMATIONS.rg_inf.strengthNote`: "read on the page (S5.7)" is "read on the page images"; `FORMATIONS.rg_inf.commander`:
+    "Duffy's order of battle (S5.7)" is "Duffy's order of battle". The register entry S5.7 is unchanged and still the reading cited.
+
+Presentation, not data (`app.js`):
+- `standardNotes` (the sources sheet): "Height, owner decision 106:" is "Height, as this map draws it:".
+- The labels and rows (decision 310): `LABELS.reading.leg` and `LABELS.march.drift` "Plotted leg" are "Plotted march"; the drift's note "a drift
+  between anchors, not a march" is "a drift between plotted positions rather than a formed march" (the row is now named "Plotted march", so "not a
+  march" would contradict it: a choice of words, said here); the march row's "the plotted leg's length" is "the plotted march's length"; the day-track's
+  "anchors graded A/B/C" is "plotted positions graded A/B/C"; the sources sheet's skeleton paragraph "the anchors the clock moves between" is "the
+  positions the clock moves between".
+- **The grades by their scale (`posClaimPill`, `timingPill`, `timingWord`).** The card and the dossier showed "Position: estimated", "Position B" and
+  "Timing B" side by side, three pills and two bare letters of different scales (the appearance grade a third). *Is:* one pill for the position, its
+  claim's words with its grade ("Position: estimated (B)", "(B, interpolated)" between plotted positions), and one for the timing, its grade text's own
+  word read from `TIMING_TEXT` ("Timing: dated (A)", "approximate (B)", "inferred (C)"); an event's dossier the same timing pill.
+
+`docs/step4-evidence/inventory.json` and `.md` regenerated (the timing notes are inventoried statements: 726, unchanged in number).
+
+### Checks added, each failing without its fix
+
+- `runtime-test.js`, the position pills (roadmap step 4's K2 check, extended): every card and dossier at five clocks, its claim pill POS_CLAIM's words
+  with the position's grade, no bare "Position X" or "Timing X" pill, the timing pill "Timing: dated|approximate|inferred (X)". Negative controls,
+  each on a copy with one fix put back and the suite run: the bare timing pill again, failed (the pill check); the claim pill without its grade, failed.
+- `runtime-test.js`, internal references (CL-UX-05): what a visitor is shown, read as drawn (every formation's full dossier at the day's start and
+  inside each of its 25 timed moves, its "Dated by" row, every event's dossier, the sources sheet with its index of claims, and the sheet opened from
+  each formation's dossier: 133 views), holds no roadmap step, owner question or decision by number, register entry, repository path or code name.
+  Negative controls: `main`'s `narrative.js` alone fails it (the sheet's "(S5.7)" and "roadmap step"), `main`'s `data.js` alone fails it (the dossiers'
+  "moveMin" and "roadmap step" in the moves' windows). The ten such words left in the data (`GEOREF`'s two notes, six of `DRESS`, `COLOURS_CARRIED`'s
+  headquarters note, two of `BUILDINGS`) are in notes no view draws, so the check reads the drawn text, not the strings.
+
+### Verified
+
+- `npm test`: all nine suites and the height guard pass. `check:data`: 143 of 143 identical to the new reference; against the old one exactly the five
+  above. `check:chronology`: 0 errors (L9's cited statements are not among those reworded). `check:baseline`: passes.
+- `check:selftest` (Chromium 141.0.7390.37, the pinned browser): every check passes, the manifest unchanged (335; the position-pill check held to decision
+  310's pill: until it was, its one failing line, "Position: estimated (B)" against "Position: estimated"); the motion block's 16 at 227 jumps, 959 pops,
+  105 level-of-detail switches and 12 flickers, `main`'s own counts.
+- `check:contrast`: 7,473 text elements, 0 below AA, 0 under 10.5 px, 0 font failures, 45 of 45 states, 0 console messages, the boot cases 8 of 8 (run on
+  the build before the position-pill check's change, which is self-test code alone).
+- `check:visual` on CI (run 42755772911 on `cce6543`, `checks.yml`, `visual: true`; the build `858db534...`, the branch's head's): passed, every job
+  (`npm test`, `check:data`, `check:chronology`, `check:selftest`, `check:contrast`, `check:visual`; the run 4 h 13 min).
+
+### What remains uncertain, and what is handed on
+
+- "Interpolated", "derived" and "the text layer" (two claim notes on Czartoryski and Davout's report) are kept: each is explained where it is shown
+  or names a reading method; not part of decision 310's words.
+
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 1): the meres (figures on the ice, no trees on it)
 
 **Status: on `claude/dreamy-johnson-uadkqa-meres` (draft PR into `main`, for review, not merged).** Part of WP-10 of

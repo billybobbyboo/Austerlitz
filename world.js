@@ -1475,7 +1475,11 @@ var ICE={roughness:0.32, env:0.42, rim:0.86, rimLift:0.02,
   tone:0.10,               /* the broad variation of tone, its whole span */
   sky:1.4,                 /* the sky's reflection added at a grazing view over the clear ice (its weight at the horizon) */
   band:[0.35,0.55]};       /* the shore band's opacity: up from its inner edge over 0.35 of its width, down to nothing at the shore from 0.55 */
-var STREAM={rough:0.30, env:0.40, tone:0.10, scale:1.3, sky:2.0};   /* since 8F: the landscape's streams (roughness, the environment's weight,
+/* the final audits' Stage 6, WP-10 (CL-VIS-05): rough 0.30 to 0.60. At 0.30 the low sun's specular glint saturated the streams toward white in the
+   grazing and low-sun views, the brightest thing in the frame (the brook by Sokolnitz at 15:00, p99 luminance 244 against its field's 177; Saint-Hilaire's
+   climb at 09:00, 240 against 209); the grazing sky term (sky) adds little (1 to 7 at p99), the post-processing about 20; at 0.60, the rimed ice's own
+   roughness, 185 and 179 (tools/final-stage6/streams.js, docs/final-stage6-evidence/wp10/streams.json). A design value */
+var STREAM={rough:0.60, env:0.40, tone:0.10, scale:1.3, sky:2.0};   /* since 8F: the landscape's streams (roughness, the environment's weight,
                                                                        a still variation of tone and its scale, the sky at a grazing view) */
 /* the noise the water's tones read: a value noise over the world plane, three octaves; a hash with no sine (stable at mediump) */
 var WATER_GLSL=["float wHash(vec2 p){ vec3 q=fract(vec3(p.xyx)*0.1031); q+=dot(q,q.yzx+33.33); return fract((q.x+q.y)*q.z); }",
@@ -2411,14 +2415,26 @@ function treeNearGeo(g,P,a){ var C=new Float32Array(P.length); C.set(P);
   for(var i=a;i+8<P.length;i+=9) for(var k=0;k<3;k++){ var c=(P[i+k]+P[i+3+k]+P[i+6+k])/3; C[i+k]=c; C[i+3+k]=c; C[i+6+k]=c; }
   g.setAttribute("aFC",new THREE.Float32BufferAttribute(C,3)); return g; }
 /* the hook on a crown's material: the vertex moved from its face's centre by mix(1, 1/shrink, g), g the eye's nearness (0 beyond far, 1 within near) */
+/* the final audits' Stage 6, WP-10 (CL-VIS-08; owner decision 308): near the eye the closed faces showed as large faceted shards ("broken glass");
+   within the same nearness each face keeps only thin twigs through its centre (two strips, TREE6.W wide, at a turn of the face's own hash), the rest
+   discarded, a face at a time as the eye nears (its hash under the nearness): an alpha test in the opaque pass, nothing sorted, nothing beyond far.
+   The main pass only: the sun's depth pass keeps the faces (the shadows soft). Design values */
+var TREE6={W:0.035, U:{uTwig:{value:1}}};
 function treeNear(mat,inv){
   mat.onBeforeCompile=function(sh){
     if(typeof atmoUniforms==="function") atmoUniforms(sh);   /* the atmosphere's uniforms (app.js), as every material gets them */
-    sh.uniforms.uTreeNear=TREE8H.U.uTreeNear;
-    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nattribute vec3 aFC; uniform float uTreeNear;")
+    sh.uniforms.uTreeNear=TREE8H.U.uTreeNear; sh.uniforms.uTwig=TREE6.U.uTwig;
+    sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nattribute vec3 aFC; uniform float uTreeNear; varying vec3 vTnC; varying vec3 vTnP; varying float vTnG;")
       .replace("#include <begin_vertex>","#include <begin_vertex>\n#ifdef USE_INSTANCING\nvec4 tnW=modelMatrix*instanceMatrix*vec4(aFC,1.0);\n#else\nvec4 tnW=modelMatrix*vec4(aFC,1.0);\n#endif\n"+
         "float tnG=clamp(("+glslF(TREE8H.far)+"-distance(tnW.xyz,cameraPosition))/"+glslF(TREE8H.far-TREE8H.near)+",0.0,1.0); tnG=tnG*tnG*(3.0-2.0*tnG);\n"+
-        "transformed=aFC+(transformed-aFC)*mix(1.0,"+glslF(+inv.toFixed(6))+",tnG*uTreeNear);");
+        "transformed=aFC+(transformed-aFC)*mix(1.0,"+glslF(+inv.toFixed(6))+",tnG*uTreeNear);\n"+
+        "#ifdef USE_INSTANCING\nvTnP=(modelMatrix*instanceMatrix*vec4(transformed,1.0)).xyz;\n#else\nvTnP=(modelMatrix*vec4(transformed,1.0)).xyz;\n#endif\nvTnC=tnW.xyz; vTnG=tnG*uTreeNear;");
+    sh.fragmentShader=sh.fragmentShader.replace("#include <common>","#include <common>\nuniform float uTwig; varying vec3 vTnC; varying vec3 vTnP; varying float vTnG;")
+      .replace("#include <clipping_planes_fragment>","#include <clipping_planes_fragment>\n"+
+        "if(vTnG*uTwig>0.001){ vec3 tD=vTnP-vTnC; float tH=fract(sin(dot(vTnC,vec3(12.9898,78.233,37.719)))*43758.5453);\n"+
+        "  vec3 tA=normalize(vec3(cos(tH*6.2832),0.6,sin(tH*6.2832))), tB=normalize(vec3(-sin(tH*6.2832),-0.3,cos(tH*6.2832)+0.2));\n"+
+        "  float tL=min(length(tD-tA*dot(tD,tA)),length(tD-tB*dot(tD,tB)));\n"+
+        "  if(tL>"+glslF(TREE6.W)+"&&fract(tH*7.13)<vTnG*uTwig) discard; }");
   };
   mat.customProgramCacheKey=function(){ return "tree-near-"+inv.toFixed(6); };
   return mat; }
