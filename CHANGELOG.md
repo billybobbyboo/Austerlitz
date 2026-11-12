@@ -1,8 +1,49 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6 merged; Stage 7 next (records only)
+
+**Status: on `claude/admiring-dirac-m1syqs` (draft PR into `main`, for review, not merged).** Records only: no source, data or build change.
+`austerlitz-command-map.html` is unchanged, 3,025,956 bytes, md5 `dcc65319b445c119b005f7e5c25a29fc`; `check:baseline` stays on it.
+
+- **Stage 6 is merged into `main`**: WP-10's meres (#94), CI pinned to Ubuntu 24.04 (#95), WP-09's reflow, short screens and forced colours (#98), its
+  names, focus, caveats and first card (#100), its visitor words (#96, a data task), WP-10's facings, camp, streams and tier on a resize (#99), its
+  crowns near the eye and blocks among the buildings (#102), decision 312 (a) (#97) and the screen-reader and device script (#103; #101 had merged the
+  file into #100's branch after that branch reached `main`, so #103 carries it). `main`'s build is `dcc65319...`, the self-test 348 checks, `check:visual`
+  41 cases, `check:data`'s reference `archive/stage6wp09w-45d29cc5.html`; the owner's decisions 305-316 are in `docs/final-stage6-evidence/questions.md`.
+  The Stage 6 entries' status lines below now say merged, with their PRs and merge commits.
+- `docs/ROADMAP_FINAL_AUDIT.md`'s status line and `CLAUDE.md`'s current state say so; `CLAUDE.md`'s stale sentences corrected: the self-test's count
+  (335 to 348, by block), `check:visual`'s cases (39 to 41, the two zoom cases of #98, decision 306) and `check:baseline`'s build (`ff86079e...` to
+  `dcc65319...`, `package.json` already held it).
+- **The screen-reader session** (`docs/final-stage6-evidence/sr-session.md`) is the owner's to run; nothing in it is marked recorded or passed.
+
+### Carried from decision 304 (a): the phone's event-named share during Play, measured again on Stage 6's final build
+
+The motion block's long Play run `phone-long` (`tools/visual/motion.js` `LONG`, judged by `thresholds.js` `MOTION.LONG`; the phone's share is
+reported, not judged: `EV_RUNS` names the desktop's two runs).
+
+| build | where measured | event-named drawn | longest hidden by the layout |
+|---|---|---|---|
+| WP-07's, `e5e17e64...` (decision 304 (a)'s accepted value) | `check:selftest`'s page | 292 of 945, **30.9%** | 18.18 battle minutes |
+| Stage 6's final, `dcc65319...` | `check:selftest`'s page on CI (run 42989164373, the "browser (selftest)" job, `04ce06f`, Chromium 141) | 292 of 945, **30.9%** | 18.18 battle minutes (the Allied headquarters) |
+
+**Was 30.9%, is 30.9%: unchanged**, so nothing is put to the owner. The desktop's two runs on the same page: `hybrid-long` 4,833 of 6,322 (76.4%,
+was 76.4%), `hybrid-3600` 11,788 of 16,010 (73.6%, was 74.1%), both above `EV_SHARE` 0.70.
+
+Found while measuring, recorded and not changed: **the number depends on what the page ran before it.** The same run alone on a fresh page
+(`tools/final-stage5/long-only.js`, here, the pinned Chromium 141 headless shell) gives 245 of 945 (25.9%) and Liechtenstein's 23.33 minutes on Stage 6's
+final build and on WP-07's own build alike, and 235 of 945 (24.9%) on Stage 5's final build `3388b70b...`. Between the builds the tool measures them the
+same; between the two pages it does not, since `check:selftest` runs the 16 motions first and the layer keeps state from them. Every comparison above is
+made on one page or the other, never across. A long run that starts from a fresh page in both the harness and the tools would remove the path
+dependence; it is carried into Stage 7 as a WP-11 matter (put to the owner in `docs/final-stage7-evidence/questions.md`), not changed here.
+
+### Verified
+
+- No source, data or build file changed (`git diff --stat`: `CHANGELOG.md`, `CLAUDE.md`, `docs/ROADMAP_FINAL_AUDIT.md`). `npm run build` reproduces
+  `dcc65319...`; `check:baseline` passes.
+
 ## 2026-11 · Final audits' roadmap, Stage 6: what "Whose eyes?" withholds (owner decision 312 (a))
 
-**Status: on `claude/dreamy-johnson-uadkqa-reading` (draft PR into `main`, for review, not merged).** The three reading-scope items Stage 3 handed on
+**Status: merged into `main` (#97, `72e50d0`); built on `claude/dreamy-johnson-uadkqa-reading`.** The three reading-scope items Stage 3 handed on
 (its CHANGELOG entry, "Not done"), placed by the plan in WP-09 but found to be decision 251 (a)'s reach (WP-05's area), put to the owner as question 312 and
 decided (a) on 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`). Presentation only: no data file and no guarded
 declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now 2,965,080 bytes, md5
@@ -47,7 +88,7 @@ and `check:baseline` moves to it. On it, here: `npm test` (this PR's runtime-tes
 
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 3): the crowns near the eye, the blocks among the buildings
 
-**Status: on `claude/dreamy-johnson-uadkqa-crowns` (draft PR into `main`, for review, not merged).** The rest of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
+**Status: merged into `main` (#102, `13fb73b`); built on `claude/dreamy-johnson-uadkqa-crowns`.** The rest of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
 CL-VIS-08 (owner decision 308) and CL-VIS-04 (owner decision 307), each measured first; CL-VIS-10 not done (decision 309 (a), the bounded convention of
 decision 265 (a) kept). Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
 `archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now 2,971,087 bytes, md5 `c50e08bc47a3f79727c4bb60e95283f1` (was 2,963,994, `3388b70b...`); `check:baseline`
@@ -90,7 +131,7 @@ PR #96 (`9f7c1b0`), the build unchanged.
 
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 2): the facings, the camp, the streams' glint, the tier on a resize
 
-**Status: on `claude/dreamy-johnson-uadkqa-picture` (draft PR into `main`, for review, not merged).** Part of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
+**Status: merged into `main` (#99, `89e3617`); built on `claude/dreamy-johnson-uadkqa-picture`.** Part of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
 CL-VIS-03, CL-VIS-05, CL-VIS-07 and CL-VIS-09. Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 data declarations
 identical to `archive/stage5wp08-572b0935.html`). Every value below is a design value, chosen from the measures. `austerlitz-command-map.html` is now
 2,977,379 bytes, md5 `f2e6cd044855db6238e3f2e828e418a4` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
@@ -180,8 +221,8 @@ to 346. On CI (run 42991045298 on `051177f`, the build `1f731ae8...`): passed, e
 
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, 2 of 3): names, focus, caveats and the first card (CL-UX-08, -10, -11, -12, -15, -18, -21)
 
-**Status: on `claude/dreamy-johnson-uadkqa-focus`, stacked on the reflow PR (WP-09, 1 of 3; a draft PR into its branch until it merges, then into
-`main`; for review, not merged).** Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
+**Status: merged into `main` (#100, `1c466af`), after the reflow PR (#98); built on `claude/dreamy-johnson-uadkqa-focus`. The screen-reader
+script (#101) was merged into this branch after it had reached `main`; #103 brought the file there.** Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
 `archive/stage5wp08-572b0935.html`). Owner decision applied: 276 (a), the first card's sentence (`docs/final-stage6-evidence/questions.md`).
 `austerlitz-command-map.html` is now 2,992,468 bytes, md5 `19d7105fcfb262f80b08579417723d84` (was the reflow PR's 2,971,888, `646b1c4f...`); `check:baseline` moves to it.
 *Reconciled with the reflow PR's branch after it took `main` (PR #94, WP-10's meres; merged in, not rebased):* the self-test's two blocks kept side by
@@ -248,7 +289,7 @@ limits (4 h 16 min). `main` merged in again after PR #98 (`a7f8763`; its records
 
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, 1 of 3): reflow, short screens and forced colours (CL-UX-01, CL-UX-09, CL-UX-18)
 
-**Status: on `claude/dreamy-johnson-uadkqa-reflow` (draft PR into `main`, for review, not merged).** WP-09's reflow part. Presentation and the suite
+**Status: merged into `main` (#98, `a7f8763`); built on `claude/dreamy-johnson-uadkqa-reflow`.** WP-09's reflow part. Presentation and the suite
 only: no data file and no guarded declaration changes (`check:data`: all 143 identical to `archive/stage5wp08-572b0935.html`). Owner decisions applied:
 305 (a), the phase text from the timeline on short screens; 306, the two new `check:visual` cases' limits as measured (`docs/final-stage6-evidence/questions.md`).
 `austerlitz-command-map.html` is now 2,971,888 bytes, md5 `646b1c4f4869d76c5dddcf5c2e67ea5c` (was 2,963,994, `3388b70b...`); `check:baseline` moves to it.
@@ -320,7 +361,7 @@ ubuntu26.04-x64", so every browser job (`check:selftest`, `check:contrast`, `che
 `ubuntu-24.04`, the image they ran on until now, so the pinned browser and every limit stay as measured. No source file and no build change.
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-09, part 3): the words a visitor is told (CL-UX-05, CL-UX-16)
 
-**Status: on `claude/dreamy-johnson-uadkqa-words` (draft PR into `main`, for review, not merged).** Part of WP-09 of `docs/ROADMAP_FINAL_AUDIT.md`:
+**Status: merged into `main` (#96, `9f7c1b0`); built on `claude/dreamy-johnson-uadkqa-words`.** Part of WP-09 of `docs/ROADMAP_FINAL_AUDIT.md`:
 CL-UX-05 (internal references shown to visitors) and CL-UX-16 (the modelling vocabulary and the overloaded A/B/C letters), with the owner's decision
 **310** of 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`: "anchors" becomes "plotted positions", "Plotted
 leg" becomes "Plotted march", each grade named with its scale). **A data task, words only**: no position, timing, grade, strength, source or reading
@@ -412,7 +453,7 @@ Presentation, not data (`app.js`):
 
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 1): the meres (figures on the ice, no trees on it)
 
-**Status: on `claude/dreamy-johnson-uadkqa-meres` (draft PR into `main`, for review, not merged).** Part of WP-10 of
+**Status: merged into `main` (#94, `dc04a02`); built on `claude/dreamy-johnson-uadkqa-meres`.** Part of WP-10 of
 `docs/ROADMAP_FINAL_AUDIT.md`: CL-VIS-01 and CL-VIS-02; CL-VIS-06 re-verified (closed by WP-08's lettering, decision 282 (a)). Presentation only:
 no data file and no guarded declaration changes (`check:data`: all 143 data declarations identical to `archive/stage5wp08-572b0935.html`).
 The owner's decisions of 9 November 2026 ("Your recommendations for all"; `docs/final-stage6-evidence/questions.md`): **313**, the self-test's woods
