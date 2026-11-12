@@ -63,6 +63,7 @@ const CLASS={
   "app.js:mlOccluded":"presentation","app.js:groundAt":"presentation",
   "app.js:figureError":"test","app.js:wp10Checks":"test",   /* the final audits' Stage 6, WP-10: the meres' check (the drawn ground under the ice) */
   "app.js:wp10pChecks":"test",   /* the final audits' Stage 6, WP-10: the streams' glint check's aim */
+  "app.js:wp10gChecks > aim":"test",   /* the final audits' Stage 6, WP-10: the crowns' check's aim */
   "app.js:selfTest":"test","app.js:selfTest > centreEye":"test","app.js:selfTest > atFactor":"test","app.js:factorFacts":"test",
   /* Stage 2E: on the flat paper map the drawn scale is 0, so the apron's elevation tint (a colour, as buildFaceFacts' tint)
      reads the model height directly instead of the drawn height over the drawn scale; the self-test's paper-map checks

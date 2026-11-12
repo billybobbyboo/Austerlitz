@@ -1,5 +1,48 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 3): the crowns near the eye, the blocks among the buildings
+
+**Status: on `claude/dreamy-johnson-uadkqa-crowns` (draft PR into `main`, for review, not merged).** The rest of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
+CL-VIS-08 (owner decision 308) and CL-VIS-04 (owner decision 307), each measured first; CL-VIS-10 not done (decision 309 (a), the bounded convention of
+decision 265 (a) kept). Presentation only: no data file and no guarded declaration changes (`check:data`: all 143 identical to
+`archive/stage5wp08-572b0935.html`). `austerlitz-command-map.html` is now 2,971,087 bytes, md5 `c50e08bc47a3f79727c4bb60e95283f1` (was 2,963,994, `3388b70b...`); `check:baseline`
+moves to it.
+
+*Reconciled (11 November 2026; merged in, not rebased) with the picture PR's branch, which holds `main` after PRs #94 and #98, the focus PR, the
+visitor-words PR and the picture PR:* the self-test's blocks kept side by side (`wp09Checks`, `wp10Checks`, `wp10pChecks`, `wp10gChecks`), the height
+guard's sites likewise. The merged build is 3,024,870 bytes, md5 `5245ec4178a3420ea4d6c60bc51d6b1e`, and `check:baseline` moves to it. On it, here: `npm
+test`, `check:data` (143 identical), `check:chronology` and `check:selftest` (348 checks, every one passing) pass; the manifest regenerated from that run,
+346 to 348. On CI (run 42984402496 on `9f10657`, the build `5245ec41...`): passed, every job (`check:visual` 3 h 29 min). `main` merged in after
+PR #96 (`9f7c1b0`), the build unchanged.
+
+### What changed, and why
+
+- **CL-VIS-08, the crowns' facets near the eye (`world.js` `TREE6`, `treeNear`; decision 308: prototyped, measured, adopted within the budget).** 8H closes a
+  deciduous crown's perforated faces as the eye nears (`TREE8H`, 5 to 16 units), and in the closest views the closed faces showed as large faceted shards.
+  *Is:* within the same nearness each face keeps only two thin strips through its centre (`TREE6.W`, 0.035 units wide, turned by the face's own hash), the
+  rest discarded, a face at a time as the eye nears (its hash under the nearness): an alpha test in the opaque pass, nothing sorted; nothing beyond the
+  near band; the sun's depth pass keeps the faces (soft shadows). Measured (`tools/final-stage6/crowns.js`; `docs/final-stage6-evidence/wp10/`): the draw
+  calls and triangles unchanged in the audit's three close views (465 and 1,539,061; 476 and 1,542,919; 392 and 1,401,987); the frame, the two states
+  alternated 15 times each in the closest view and by the castle, 9,114 against 9,346 ms and 7,442 against 7,740 ms (`crowns-timing.json`; software
+  WebGL, a comparison only: about 3% less, within what software rendering varies, so read as no slower, not as a gain); the single medians of nine frames
+  in `crowns.json` go both ways (10.4 to 6.8, 9.0 to 11.8 and 8.6 to 10.9 ms), the noise the alternated runs were made to average out; the pairs in `slope-10x-0900-r8--pair.jpg` and `sok-castle-1500-close--pair.jpg` (above as 8H drew them,
+  below with the twigs). A design value; decision 247 (a)'s opaque crowns kept beyond the near band, and `css-test.js`'s rule now holds the near hook's
+  alpha test as decision 308's.
+- **CL-VIS-04, blocks drawn through buildings (decision 307: (a) measured first, then its fallback (c)).** Measured (`tools/final-stage6/occupy.js`,
+  `occupy-main.json`; every 10 minutes 05:00-17:00 at 4x, each block's seated extent against every building's plan): every clock has a block on a
+  building, 512 of the 630 building parts lie under a block at some clock, and Legrand's block covers Sokolnitz and Telnitz at all 73 clocks (Langeron,
+  Przybyszewski, Friant and Dokhturov the next): the blocks are drawn at their frontage, larger than the houses. Hiding or fading the parts under them,
+  option (a), would take most of Sokolnitz and Telnitz off the map where they were fought over (geographic integrity before the picture), so (a) does not
+  measure well and its fallback (c) applies: the sources sheet's "How the villages are drawn" (`buildingNotes`) says so. Opposing blocks sharing ground stay
+  as the tracks draw them (a data question, CL-HIS-04).
+
+### Checks added, each failing without its fix (`tools/final-stage6/mutate-wp10g.js`, `mutate-wp10g.json`: 4 of 4 as expected)
+
+- `wp10gChecks`: "the crowns near the eye (WP-10, CL-VIS-08; decision 308)" (the woods drawn alone on the view drawn without them: a tree 7 units off
+  covers at most 80% of the closed faces' pixels, 75% here, 100% without the twigs; the Overview the same pixels, 0 differing); "the blocks among the
+  buildings (WP-10, CL-VIS-04; decision 307 (c))". Negative controls: the twigs off; the twigs at every distance; the sentence gone.
+- `css-test.js`: `TREE6`'s values and the near hook's alpha test.
+
 ## 2026-11 · Final audits' roadmap, Stage 6 (WP-10, part 2): the facings, the camp, the streams' glint, the tier on a resize
 
 **Status: on `claude/dreamy-johnson-uadkqa-picture` (draft PR into `main`, for review, not merged).** Part of WP-10 of `docs/ROADMAP_FINAL_AUDIT.md`:
@@ -68,6 +111,17 @@ to 346. On CI (run 42991045298 on `051177f`, the build `1f731ae8...`): passed, e
 ### Verified
 
 - `npm test`: the nine suites and the height guard pass. `check:data`: 143 of 143 identical. `check:chronology`: passes (0 errors). `check:baseline`: passes.
+- `check:selftest` (here, the pinned Chromium 141): 337 checks, every one passing; the manifest regenerated from this run, 335 to 337 (the two checks
+  above). A first local run stopped at a harness click's 30 s timeout (the phase's message block) while three other browser jobs shared the machine's four
+  cores; run again alone, it completed.
+- On CI (run 42783059380 on `e2ce290`, `checks.yml`, `visual: true`; the build `c50e08bc...`, the branch's head's): passed, every job (`npm test`,
+  `check:data`, `check:chronology`, `check:selftest`, `check:contrast`, `check:visual`; the run 3 h 29 min).
+
+### What remains uncertain, and what is handed on
+
+- `TREE6.W` and the twigs' turn are design values. The blocks' size at their frontage is the map's symbol (Stage 8); a block among houses marks the
+  formation's place, not men inside them.
+
 - `check:selftest` (here, the pinned Chromium 141): 339 checks, every one passing; the manifest regenerated from this run, 335 to 339 (the four
   `wp10pChecks` above). Its only failures before the regeneration were the manifest's own (the four checks not yet in it).
 - On CI (run 42763709786 on `ce82be1`, `checks.yml`, `visual: true`; the build `f2e6cd04...`, the branch's head's): passed, every job (`check:visual` on

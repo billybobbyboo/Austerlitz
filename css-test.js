@@ -644,6 +644,10 @@ if(cerrs) process.exitCode=1;
      with its faces' centres (treeNearGeo, from the shells' first float) and drawn with the near hook (treeNear), which grows a face about its own
      centre by mix(1, 1/shrink, the eye's nearness) and chains the atmosphere's uniforms; its one uniform shared, 1 as built */
   if(!/^var TREE8H=\{near:5, far:16, U:\{uTreeNear:\{value:1\}\}\};/m.test(wsrc)) ferr.push("TREE8H's values changed (near 5, far 16; its uniform 1 as built)");
+  /* the final audits' Stage 6 (CL-VIS-08; decision 308): inside the near band each face kept as twigs (TREE6.W wide, the rest discarded, a face at a time
+     by its hash under the nearness): an alpha test in the near hook alone, its uniform 1 as built; nothing sorted (no transparency on the woods) */
+  if(!/^var TREE6=\{W:0\.035, U:\{uTwig:\{value:1\}\}\};/m.test(wsrc)) ferr.push("TREE6's values changed (the twigs 0.035 wide; its uniform 1 as built)");
+  { const tn6=wfn("treeNear"); if(!/if\(tL>"\+glslF\(TREE6\.W\)\+"&&fract\(tH\*7\.13\)<vTnG\*uTwig\) discard;/.test(tn6)) ferr.push("the crowns' twigs near the eye not the near hook's alpha test (decision 308)"); }
   { const tn=wfn("treeNear"), tg=wfn("treeNearGeo");
     if(!/treeNear\(im\.material,1\/TREE8F\.shrink\);/.test(bwd)||!/treeNear\(scrubMesh\.material,1\/TREE8F\.scrubShrink\);/.test(bwd)) ferr.push("a crown drawn without the near hook (treeNear)");
     if((tk.match(/treeNearGeo\(treeGeo\(P\),P,a\)/g)||[]).length!==2) ferr.push("a crown made without its faces' centres (treeNearGeo)");
