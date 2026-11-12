@@ -1700,22 +1700,28 @@ try{
       } finally { paintDrawerBody=pdb; select(null,null); dossierExpanded=false; } });
     /* CL-SIM-05: under a reading that does not know a formation, its card's "Doing now" and "From" and the full dossier's now and next say the
        reading's sentence, never its act */
-    wp("Doing now under a reading (CL-SIM-05)",()=>{ const mk=document.createElement; let made=[], nH=0, nK=0; const html=()=>made.map(x=>x.innerHTML||"").join("\n");
+    wp("Doing now under a reading (CL-SIM-05)",()=>{ const mk=document.createElement; let made=[], nH=0, nK=0, nP=0, nE=0; const html=()=>made.map(x=>x.innerHTML||"").join("\n");
       try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
         ["fr","al"].forEach(cv=>{ setCommandView(cv);
           for(let t=T_MIN;t<=T_MAX;t+=20){ setClock(t,{instant:true,camera:false});
             Object.keys(units).filter(id=>sideOfNation(FORMATIONS[id].nation)!==cv&&posNow(id)).forEach(id=>{
               const s2=stateAt(id,textPhase(id,clock)); if(!s2||!s2.act) return; const U=esc(readUnknown());
-              made=[]; compactCard(id); const hc=html(); made=[]; dossierFormation(id); const hf=html();
+              made=[]; compactCard(id); const hc=html(); made=[]; dossierFormation(id); const hf=html(), nLinks=made.filter(x=>x.className==="linkb evlink").length;
               if(readHidden(id)){ nH++;
                 if(hc.indexOf("<dt>Doing now</dt><dd>"+U+"</dd>")<0) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s card says what it does: "+(hc.match(/<dt>Doing now<\/dt><dd>[^<]{0,60}/)||[""])[0]);
                 if(/<dt>From \d\d:\d\d<\/dt><dd>(?!Not known)/.test(hc)) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s card says what it does next");
                 if(hf.indexOf('<li class="now"><b>'+esc(PHASES[curPhase].clock)+'</b><span>'+U+'</span>')<0) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s dossier says what it does now");
-                if(hf.indexOf(esc(s2.act))>=0&&hf.indexOf('<li class="past">')<0) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s act in its dossier"); }
+                if(hf.indexOf(esc(s2.act))>=0&&hf.indexOf('<li class="past">')<0) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s act in its dossier");
+                /* the final audits' Stage 6 (decision 312 (a)): its earlier act and its events' links say the reading's sentence too */
+                const pm=hf.match(/<li class="past"><b>[^<]*<\/b><span>([\s\S]*?)<\/span><\/li>/); if(pm&&pm[1]!=="No earlier action recorded."&&pm[1]!==U) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s earlier act shown: "+pm[1].slice(0,60));
+                if(nLinks) throw new Error(cv+" "+fmtClock(t)+": "+id+"'s events' links shown ("+nLinks+")"); nP++; if(liveEvents(clock).some(x=>x.e.forms.indexOf(id)>=0)) nE++; }
               else { nK++; if(hc.indexOf("<dt>Doing now</dt><dd>"+esc(s2.act))<0) throw new Error(cv+" "+fmtClock(t)+": "+id+" known, but its act withheld"); } }); } });
       } finally { document.createElement=mk; setCommandView("none"); }
-      if(!nH||!nK) throw new Error(nH+" hidden, "+nK+" known: a case never met");
-      return nH+" formation-clocks withheld (the card's Doing now and From, the dossier's now and next), "+nK+" known with their acts"; });
+      if(!nH||!nK||!nE) throw new Error(nH+" hidden, "+nK+" known, "+nE+" hidden in a live event: a case never met");
+      /* decision 312 (a): the sources sheet says what the reading does not filter */
+      const mb=document.getElementById("modal-body"); openSources(); const okS=/the plans\u2019? routes, their objectives and the groups\u2019? arrows are interpretation|the plans' routes, their objectives and the groups' arrows are interpretation/.test(mb.innerHTML.replace(/&#39;/g,"'")); closeSources();
+      if(!okS) throw new Error("the sources sheet does not say what Whose eyes? does not filter (decision 312 (a))");
+      return nH+" formation-clocks withheld (the card's Doing now and From, the dossier's earlier act, now, next and its events' links, "+nE+" of them in a live event), "+nK+" known with their acts; the sources sheet says what the reading does not filter"; });
     /* CL-SIM-02: the bound arrows follow the reading; the derived readings are the known formations' */
     wp("arrows and derived readings under a reading (CL-SIM-02)",()=>{ let hid=0, n=0, pl=0;
       ["fr","al","none"].forEach(cv=>{ setCommandView(cv);
