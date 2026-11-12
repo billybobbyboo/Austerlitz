@@ -210,7 +210,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   and on the rich kit, the context lost and restored: the kit's programs compiled again with the hook, the block still rich at full swing, the
   frame and the sun's depth map drawn with the pose (each nearer the pose before the loss than the rest pose is).
 - `npm run check:selftest` (since step 1, decision 132; the CI job): the in-app self-test on one fresh 1366 x 768 page, every check by name
-  against `tools/visual/selftest-manifest.json` (335 since #90's reconciliation with WP-07 and WP-08's lettering: WP-08's furniture's five checks, `wp08Checks`, beside
+  against `tools/visual/selftest-manifest.json` (348 since the final audits' Stage 6 as merged (#94, #100, #99, #102): the meres' two, `wp10Checks`; WP-09's five,
+  `wp09Checks`; the picture's four, `wp10pChecks`; the crowns' and the buildings' two, `wp10gChecks`; 335 since #90's reconciliation with WP-07 and WP-08's lettering: WP-08's furniture's five checks, `wp08Checks`, beside
   the lettering's four; 330 since the final audits' Stage 5, WP-08's lettering: the arrows' labels and names, the Plans view, the
   chapels and the landmarks' outlines, `wp08cChecks`; 326 since the final audits' Stage 5, WP-07: the corps/division band, `wp07Checks`, and two of 8C's checks renamed for decision 301 (a); 325 since the final audits' Stage 3: the eight checks of WP-05's and WP-06's fixes, `wp56Checks`; 317 since the follow-up 8I: the far formation names' lighter plate in the low view, selected, focused, under a reading and on the paper map; the woods' check named "as pinned" since 8J, its counts the woods' data tasks', and the landmarks' check holding the castle covering its own site, at one size with its farm; 316 since Stage 8 implementation PR 8H: the blocks' pose at a pause, a seek and a resume, A-6 (one main
   landmark, the timeline a region, no heading level skipped, the 2 px ring), the crowns closing near the eye, and 8G's landmarks check renamed for the
@@ -222,7 +223,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   every console message judged; about 15 minutes until 8C, about 30 on CI since (21-30 minutes on 8D's commit, its 8D block about two of them;
   19-38 on 8E's; 21-43 on 8F's; 41-43 on 8G's; the browser jobs' limit 60 minutes since 8D). `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run
   check:remeasure` is decision 141's one re-measure tool (`tools/visual/remeasure.js`).
-- `npm run check:visual`: 39 fixed views (since roadmap step 6 item 1, decisions 237 (a) and 238 (a), two more phone cases: `phone-402x714-explore`,
+- `npm run check:visual`: 41 fixed views (since the final audits' Stage 6, WP-09's reflow, #98, decision 306: two zoom cases, `zoom-320x256-explore` and
+  `zoom-400x225-explore`, WCAG's reflow width and a 1600 x 900 screen at 400%, density 4, their limits as measured; before them 39: since roadmap step 6 item 1, decisions 237 (a) and 238 (a), two more phone cases: `phone-402x714-explore`,
   the owner's iPhone at the viewport its report gave, and `phone-390-paper`, the paper map entered by its taps, the whole field in the free
   area (`FRAMED`); their limits as measured; before them 37: since roadmap step 6 item 3 Part B, decision 228 (a), eight phone cases, each a fresh page with a
   device (density 3, touch, a phone's user agent) reached by real taps, judged by `tools/visual/phone-measure.js`'s measures against four
@@ -485,8 +487,9 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   `derivedModel`: at 14:40 neither derived reading applies and the caption shows none; at 14:20, in the same view, the caption shows the centre
   separation; every other Watch case as before).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of the final audits' Stage 6, WP-09's visitor words reconciled with WP-10's meres and WP-09's
-  reflow and focus (md5 `ff86079e...`, 3,003,455 bytes; its data the archived `45d29cc5...`'s, `CHANGELOG.md`; before it WP-09's visitor words alone, md5 `858db534...`,
+- `npm run check:baseline` passes only on the unmodified build of the final audits' Stage 6 as merged into `main` (#103's merge, `187231c`: md5 `dcc65319...`,
+  3,025,956 bytes, its data the archived `45d29cc5...`'s, `CHANGELOG.md`; re-baselined from Stage 6's PRs' builds as each was reconciled, the last before it
+  WP-09's visitor words reconciled with WP-10's meres and WP-09's reflow and focus (md5 `ff86079e...`, 3,003,455 bytes; its data the archived `45d29cc5...`'s, `CHANGELOG.md`; before it WP-09's visitor words alone, md5 `858db534...`,
   2,964,486 bytes, and WP-10's meres, md5 `250b0e32...`, 2,974,489 bytes,
   `CHANGELOG.md`; re-baselined from the build of the final audits' Stage 5, WP-08's furniture reconciled with WP-07 and WP-08's lettering
   (md5 `3388b70b...`, 2,963,994 bytes, `CHANGELOG.md`; re-baselined from the build of WP-08's furniture alone, md5 `30d75a75...`, 2,932,581 bytes,
@@ -798,5 +801,17 @@ names re-measured, decision 284 (b); the flicker ceiling 12, decision 303 (a)); 
 PR #90, reconciled with `main` after #89 and #92, merged, `496086c`: the caption's ordered fill, the event glyphs, the key's rows, the key in the "?"
 overlay, one north rose wherever the timeline stands, the selection's edge, the card giving way below 1080 px; decisions 296-298; `check:visual` on
 CI passed on the reconciled build, run 42556903824 on `ecfb91a`, 4 h 11 min). Stage 5 is merged (#89, #90, #91, #92); `main`'s build is
-`3388b70b...` (2,963,994 bytes), its self-test 335 checks. Stage 6 (WP-09, WP-10, with WP-11's rule alongside) is next; its owner questions (276, 280, 281 and 305-314) were decided as recommended on 9 November
-2026 ("Your recommendations for all"), recorded in `docs/final-stage6-evidence/questions.md`. WP-10's meres (CL-VIS-01, -02; decisions 313, 314 (a); the self-test 337 checks) on `claude/dreamy-johnson-uadkqa-meres`, a draft PR.
+`3388b70b...` (2,963,994 bytes), its self-test 335 checks. Stage 6 (WP-09, WP-10, with WP-11's rule alongside; `docs/final-stage6-evidence/questions.md`): its owner questions 276, 280, 281 and 305-314
+decided as recommended on 9 November 2026 ("Your recommendations for all"), 315 (the first screens' baselines re-measured at CI's measures) and 316
+(four gait counts at 10.33x re-baselined at the merged build's) on 10 and 11 November. Merged into `main`: WP-10's meres (#94, `dc04a02`: the figures on
+the Satschan mere stand on its ice, no tree or bush on it; decisions 313 and 314 (a)); CI's jobs pinned to Ubuntu 24.04 (#95, `470fdf4`); WP-09's reflow,
+short screens and forced colours (#98, `a7f8763`: decisions 305 (a), the phase text reachable at every height, and 306, the two zoom cases' limits as
+measured); its names, focus, caveats and first card (#100, `1c466af`: decision 276 (a), the card's sentence; decision 315); its visitor words (#96,
+`9f7c1b0`, a data task: decision 310's words, `check:data`'s reference moved to `archive/stage6wp09w-45d29cc5.html`; decision 311 (a), `t-small` kept);
+WP-10's facings toward the enemy, the headquarters camp, the streams' glint and the tier on a resize (#99, `89e3617`: CL-VIS-03, -05, -07, -09;
+decision 316; decisions 280 (a), no uniform facings, and 281 (a), the drivers as built, needed nothing built); its crowns near the eye and the blocks among the buildings (#102, `13fb73b`: decisions 307 (a) and 308, measured first; 309 (a), CL-VIS-10
+not done); decision 312 (a), what "Whose eyes?" withholds (#97, `72e50d0`); and the screen-reader and device script (#103, `187231c`, which carries
+`docs/final-stage6-evidence/sr-session.md`: #101 had merged it into #100's branch after that branch reached `main`). The session is the owner's to run;
+nothing in it is recorded. Stage 6 is merged; `main`'s build is `dcc65319...` (3,025,956 bytes), its self-test 348 checks, `check:visual` 41 cases.
+Stage 7 ("Performance and robustness": WP-16, WP-12 and WP-14, with WP-11's rule alongside) is next; its owner questions are numbered from 317 and
+recorded in `docs/final-stage7-evidence/questions.md`; the closing re-verification pass follows it.
