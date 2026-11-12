@@ -125,7 +125,16 @@ file and no guarded declaration changes (`check:data`: all identical to `archive
 
 ### Verified
 
-VERIFY_PLACEHOLDER
+- Here, on the build `eabe076a...` (Chromium 141's headless shell, Playwright 1.56, the pinned browser): `npm test` passes, with the nine suites,
+  the height guard and the dead-code check (`docs/final-stage7-evidence/wp14/npm-test.txt`). `check:data`: all 143 data declarations identical.
+  `check:chronology`: errors 0. `check:contrast` passes, its 10 start-up cases among them (`context-heap` on that run 0.14 MB a restore;
+  `context-loss` disposing 74 of the pre-loss geometries, 0 warnings; `check-contrast.txt`). The negative controls: 7 of 7 as expected, on two
+  runs (`mutate-wp14.txt`, `.json`). `check:baseline` passes.
+- On `main`'s build `dcc65319...` the same cases (`boot-main-dcc65319.txt`): `context-play` fails, "reading 'trim'" from the frame before the event
+  and a page error in the cycles; `context-heap` fails, 2.57 MB a restore, 6 listeners; `context-loss` fails, 197 warnings.
+- Idle (`idle-wp14.json`, `idle-main-dcc65319.json`, a second run): 57.3 and 57.1 callbacks a second, 0 frames drawn, 0.85% and 0.84% of a core.
+- `check:selftest` was not run to its end here: it was stopped to free the machine's four cores for WP-16's measurements. CI's run is the verdict;
+  this PR adds no self-test check, so the manifest stays at 348.
 
 ### What remains uncertain, and what is handed on
 

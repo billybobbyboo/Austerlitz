@@ -1,0 +1,16 @@
+{
+ "build": "austerlitz-command-map.html",
+ "secs": 60,
+ "idleReached": true,
+ "rafCallbacks": 3439,
+ "perSecond": 57.3,
+ "framesDrawn": 0,
+ "skipped": 3440,
+ "timeouts": 0,
+ "intervals": 0,
+ "taskS": 0.513,
+ "scriptS": 0.182,
+ "taskShare": 0.0085,
+ "state": "idle",
+ "errors": []
+}
