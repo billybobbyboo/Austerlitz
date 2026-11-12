@@ -1,0 +1,77 @@
+{
+ "set": "wp16",
+ "build": "07c186de677988b23b72fe72441b8618",
+ "bytes": 3035557,
+ "mutations": [
+  {
+   "name": "none (the build as it is)",
+   "kind": "block",
+   "applied": true,
+   "expected": [],
+   "failed": [],
+   "ok": true,
+   "lines": []
+  },
+  {
+   "name": "CL-PERF-14 put back: the lights not on the label layer",
+   "kind": "block",
+   "applied": true,
+   "expected": [
+    "the label pass keeps the lights (WP-16, CL-PERF-14)"
+   ],
+   "failed": [
+    "the label pass keeps the lights (WP-16, CL-PERF-14)"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL the label pass keeps the lights (WP-16, CL-PERF-14): 3 frames with nothing changed: 972 programs looked up again (362 lit materials of 686; want 0), the shadow map drawn 3 times (want 3: once a frame, by the world pass)"
+   ]
+  },
+  {
+   "name": "CL-PERF-14 in part: the shadow map not held for the label pass",
+   "kind": "block",
+   "applied": true,
+   "expected": [
+    "the label pass keeps the lights (WP-16, CL-PERF-14)"
+   ],
+   "failed": [
+    "the label pass keeps the lights (WP-16, CL-PERF-14)"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL the label pass keeps the lights (WP-16, CL-PERF-14): 3 frames with nothing changed: 0 programs looked up again (362 lit materials of 686; want 0), the shadow map drawn 6 times (want 3: once a frame, by the world pass)"
+   ]
+  },
+  {
+   "name": "CL-PERF-13 put back: the search run on every call",
+   "kind": "block",
+   "applied": true,
+   "expected": [
+    "the free rectangle kept by its inputs (WP-16, CL-PERF-13)"
+   ],
+   "failed": [
+    "the free rectangle kept by its inputs (WP-16, CL-PERF-13)"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL the free rectangle kept by its inputs (WP-16, CL-PERF-13): case 0: searched again for inputs already seen; case 1: searched again for inputs already seen; case 2: searched again for inputs already seen; case 3: searched again for inputs already seen; case 4: searched again for inputs already seen"
+   ]
+  },
+  {
+   "name": "CL-PERF-13 in part: the kept rectangle handed out itself",
+   "kind": "block",
+   "applied": true,
+   "expected": [
+    "the free rectangle kept by its inputs (WP-16, CL-PERF-13)"
+   ],
+   "failed": [
+    "the free rectangle kept by its inputs (WP-16, CL-PERF-13)"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL the free rectangle kept by its inputs (WP-16, CL-PERF-13): case 0: a caller's change reached the next call"
+   ]
+  }
+ ],
+ "allAsExpected": true
+}

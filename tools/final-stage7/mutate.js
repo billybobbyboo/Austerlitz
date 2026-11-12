@@ -5,7 +5,9 @@
    - "src": the replacements on a copy of the source tree (git ls-files, without docs/ and archive/; node_modules linked), built there
      (python3 build.py), then the named suite run there (its exit status; a failing suite must print the expected words).
    Each replacement must apply exactly once.
-   node tools/final-stage7/mutate.js <set> [--json out.json] [--only name,name]   (sets: wp14)
+   - "block": the replacements on a copy of the build, then one of the self-test's blocks alone on a fresh page (tools/final-stage6/run-block.js);
+     the checks named must fail and every other check of the block pass.
+   node tools/final-stage7/mutate.js <set> [--json out.json] [--only name,name]   (sets: wp14, wp16)
    Measurement only; nothing is written to a source file of this tree. */
 "use strict";
 const fs=require("fs"), path=require("path"), os=require("os"), crypto=require("crypto"), cp=require("child_process");
@@ -28,6 +30,18 @@ const SETS={
       rep:[["world.js","function v8NearAll(cc,mk,why,ctx,maxR,cap){","function v8Near(cc,mk,why,ctx,maxR){ var all=v8NearAll(cc,mk,why,ctx,maxR,1); return all.length?all[0]:null; }\nfunction v8NearAll(cc,mk,why,ctx,maxR,cap){"]]}
   ]
 };
+const P14="the label pass keeps the lights (WP-16, CL-PERF-14)", P13="the free rectangle kept by its inputs (WP-16, CL-PERF-13)";
+SETS.wp16=[
+  {name:"none (the build as it is)", kind:"block", block:"wp16Checks", rep:[], fails:[]},
+  {name:"CL-PERF-14 put back: the lights not on the label layer", kind:"block", block:"wp16Checks", fails:[P14],
+    rep:[["  if(!FX.lightsLabel){ FX.lightsLabel=true; scene.traverse(function(o){ if(o.isLight) o.layers.enable(LAYER_LABEL); }); }\n",""]]},
+  {name:"CL-PERF-14 in part: the shadow map not held for the label pass", kind:"block", block:"wp16Checks", fails:[P14],
+    rep:[["  renderer.shadowMap.autoUpdate=false;\n  renderer.render(scene,camera);","  renderer.render(scene,camera);"]]},
+  {name:"CL-PERF-13 put back: the search run on every call", kind:"block", block:"wp16Checks", fails:[P13],
+    rep:[["    if(got) return got.slice();\n","    if(false&&got) return got.slice();\n"]]},
+  {name:"CL-PERF-13 in part: the kept rectangle handed out itself", kind:"block", block:"wp16Checks", fails:[P13],
+    rep:[["    if(got) return got.slice();\n","    if(got) return got;\n"]]}
+];
 const S=SETS[argv[0]]; if(!S){ console.error("unknown set "+argv[0]+"; one of "+Object.keys(SETS).join(", ")); process.exit(2); }
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),"mutate-s7-")), html=path.join(ROOT,"austerlitz-command-map.html"), src=fs.readFileSync(html,"utf8");
 const res={set:argv[0], build:crypto.createHash("md5").update(src).digest("hex"), bytes:Buffer.byteLength(src), mutations:[]};
@@ -38,7 +52,14 @@ function srcTree(){ const t=path.join(dir,"tree-"+Date.now()); fs.mkdirSync(t,{r
 for(const m of S){
   if(ONLY&&!ONLY.some(o=>m.name.indexOf(o)>=0)) continue;
   let applied=true, failed=[], out="";
-  if(m.kind==="build"){
+  if(m.kind==="block"){
+    let s=src; for(const [a,b] of m.rep){ const n=s.split(a).length-1; if(n!==1){ applied=false; console.log("NOT APPLIED ("+n+"x): "+m.name); break; } s=s.replace(a,()=>b); }
+    const f=path.join(dir,"m.html"), jf=path.join(dir,"r.json"); fs.writeFileSync(f,s); try{ fs.unlinkSync(jf); }catch(e){}
+    try{ cp.execFileSync("node",[path.join(ROOT,"tools","final-stage6","run-block.js"),m.block,f,"--json",jf],{stdio:"ignore",timeout:1800000}); }catch(e){}
+    let checks=[]; try{ checks=JSON.parse(fs.readFileSync(jf,"utf8")).checks; }catch(e){}
+    failed=checks.filter(c=>!c.ok).map(c=>c.name); out=checks.map(c=>(c.ok?"ok ":"FAIL ")+c.name+": "+String(c.detail).slice(0,300)).join("\n");
+    if(!checks.length){ failed=["(no checks read)"]; }
+  } else if(m.kind==="build"){
     let s=src; for(const [a,b] of m.rep){ const n=s.split(a).length-1; if(n!==1){ applied=false; console.log("NOT APPLIED ("+n+"x): "+m.name); break; } s=s.replace(a,()=>b); }
     const f=path.join(dir,"m.html"); fs.writeFileSync(f,s);
     try{ out=cp.execFileSync("node",[path.join(ROOT,"tools","visual","boot-check.js"),f,m.cases.join(",")],{encoding:"utf8",timeout:3600000}); }catch(e){ out=String(e.stdout||"")+String(e.stderr||""); }
