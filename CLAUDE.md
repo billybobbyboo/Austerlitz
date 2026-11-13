@@ -838,5 +838,5 @@ device route's version 4 with the raw intervals and the missed-refresh share, `t
 `docs/final-stage7-evidence/device-protocol.md`; question 323 (b); no build change; the owner's desktop runs of Stage 7's build of 13 November 2026 filed
 in `docs/final-stage7-evidence/device/` and read in `docs/STAGE8_SPEC.md` section 27.1: within section 8.3's budget and CPU line and section 8.5's rule,
 decision 268 (a)'s excess gone on that desktop; the owner's iPhone runs of the same morning in section 27.2: the phone budget within, the frames a
-second P5's like for like, section 8.5's long-frame clause failing in phase 8's Overview orbiting, question 324 open; an integrated GPU still to run), the stage's last pass, is on `claude/admiring-dirac-m1syqs-device`,
+second P5's like for like, section 8.5's long-frame clause failing in phase 8's Overview orbiting, accepted as measured by decision 324 (a) and carried into the closing pass; an integrated GPU still to run), the stage's last pass, is on `claude/admiring-dirac-m1syqs-device`,
 a draft PR. The closing re-verification pass follows.

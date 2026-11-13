@@ -6,7 +6,7 @@
 pass of Stage 7, with WP-11's rule alongside. Records, the device route and the protocol for the owner's runs. No source of the build, no data
 and no build changes: `austerlitz-command-map.html` is unchanged, 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`, and `check:baseline`
 stays on it. **The device results are the owner's:** the desktop's and the iPhone's two runs each of Stage 7's build (13 November 2026), filed verbatim
-and read below, with question 324; none was run here, and no other is filled in.
+and read below, with decision 324 (a); none was run here, and no other is filled in.
 
 ### The records corrected (`docs/STAGE8_SPEC.md` section 27)
 
@@ -94,7 +94,7 @@ integrity hash), named on the page by `?src=`. Until the runs come, their absenc
   CPU cuts fit it, but that is an inference without Stage 6's build on the same desktop. The machine has a discrete GPU, so the integrated GPU stays
   unmeasured.
 
-### The owner's phone runs of Stage 7's build (13 November 2026; `docs/STAGE8_SPEC.md` section 27.2; question 324, open)
+### The owner's phone runs of Stage 7's build (13 November 2026; `docs/STAGE8_SPEC.md` section 27.2; decision 324 (a))
 
 - **The runs**: the ordinary route twice (07:48 and 07:54 UTC) on the iPhone 17 Pro of P1-P5 (iOS 18.7, Safari 26.6.1, `lowTier`), Stage 7's build:
   decision 269 (b)'s measurement. Filed verbatim as `device/phone-S7-1`, `-2`; each `.txt` its `.json`'s `format()`, each passing `route-check.js`. The
@@ -105,14 +105,17 @@ integrity hash), named on the page by `?src=`. Until the runs come, their absenc
   while its frames a second (47 to 48/47) and median (22 ms) match P5's. Every other segment holds.
 - **Like for like**: Play at half speed 53 to 53.1/52.9 frames a second; every light view 60. Section 27's cross-route slowdown (18%, 13%) is not present
   in Stage 7's build on the ordinary route; Stage 8's own build was never run on it.
-- **Question 324** (open; the standing instruction not applied, since it decides whether a rule's failure is accepted): (a) accept as measured, the
-  rule unchanged, 322 stays (b); (b) prototype 322 (a)'s low-tier conventions; (c) run P5's build again the same day first. Recommended (a), or (c).
+- **Question 324** (put without the standing instruction, since it decides whether a rule's failure is accepted): (a) accept as measured, the
+  rule unchanged, 322 stays (b); (b) prototype 322 (a)'s low-tier conventions; (c) run P5's build again the same day first. **Decided (a)** by the
+  owner (13 November 2026, "A"): the phone accepted as measured, the clause's failure recorded and carried into the closing re-verification pass,
+  section 8.5's rule unchanged, 322 stays (b); nothing built.
 - `tools/final-stage7/device-desk.js` renamed `device-runs.js` (it reads both devices now); its output `wp12/device-runs.*`, the checks
   `wp12/route-check-device.txt`.
 
 ### What remains uncertain, and what is handed on
 
-- Question 324 is the owner's. The integrated GPU is unmeasured. Stage 7's own before and after on a device (Stage 6's build) and P5's build on the
+- Decision 324 (a) accepts the phone as measured; the long-frame clause's failure in phase 8's Overview orbiting goes into the closing
+  re-verification pass. The integrated GPU is unmeasured. Stage 7's own before and after on a device (Stage 6's build) and P5's build on the
   phone the same day were not run. Until then, Stage 7's
   performance changes are shown on matched protocols in this container only, as CPU-side measures on software WebGL.
 - Stage 7 is complete once this PR is merged; the closing re-verification pass follows (`docs/ROADMAP_FINAL_AUDIT.md`).

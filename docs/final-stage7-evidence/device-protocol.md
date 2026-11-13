@@ -71,7 +71,7 @@ share reported beside it. Section 8.5's rule is not changed; that is the owner's
   was not run again; P5 (23 October 2026, the same phone, iOS and Safari) is the comparison. Read in `docs/STAGE8_SPEC.md` section 27.2: section 8.3's
   phone budget within (1,395,047 triangles at most); Play at half speed 53.1/52.9 frames a second against P5's 53, phase 8's Overview orbiting 48/47
   against 47; section 8.5's rule fails in one segment's long-frame clause (phase 8's Overview orbiting, 2.7% to 8.9%/15.6%), put to the owner as
-  question 324.
+  question 324 and decided (a): accepted as measured, carried into the closing re-verification pass.
 
 ## Until then
 

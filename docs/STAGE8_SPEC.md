@@ -5842,7 +5842,7 @@ What the runs show beyond the rules (fact, from the reports; one phone, one sess
 - **Script time** (js50, whole milliseconds on this phone): the same as P5's in the heavy segments (5 in phase 8's Overview orbiting, 6 in Play at half
   speed); at the eye level 8 and 7 in P5, 4 now.
 
-**Question 324** (for the owner; nothing changed): section 8.5's long-frame clause fails in phase 8's Overview orbiting (2.7% to 8.9% and 15.6%) while
+**Question 324** (put to the owner; decided (a) below): section 8.5's long-frame clause fails in phase 8's Overview orbiting (2.7% to 8.9% and 15.6%) while
 its frames a second and median interval match P5's, P5 is one run, and this segment's share moved by tens of points between the two runs of its
 neighbours. (a) Accept as measured: the phone's frames a second and medians hold like for like, the clause's failure recorded and carried into the
 closing re-verification pass, section 8.5's rule unchanged; question 322 stays (b), no low-tier figure convention. (b) Treat it as a regression of
@@ -5850,3 +5850,8 @@ Stage 7's build: prototype question 322 (a)'s low-tier conventions (fewer figure
 measure each on the phone. (c) Ask for P5's build to be run again on the phone the same day (the protocol's second pair), so that the clause is
 judged against a before of the same day before deciding. Recommended: (a), or (c) if the owner can run it; the clause's failure is in the tail (the
 share of frames over 25.5 ms, a bound this segment's intervals of 21-27 ms straddle), not in the rate or the median.
+
+**Decision 324 (a)** (the owner, 13 November 2026: "A"): the phone is accepted as measured on Stage 7's build: section 8.3's phone budget within, its
+frames a second and median intervals P5's like for like; section 8.5's long-frame clause failing in phase 8's Overview orbiting (2.7% to 8.9% and 15.6%)
+is recorded and carried into the closing re-verification pass; section 8.5's rule is unchanged; question 322 stays (b). It accepts the measurement, not
+the clause's failure as resolved. Nothing is built.

@@ -40,3 +40,8 @@ failure is accepted; the owner decides.
 | question | what it asks | recommended | where it is recorded |
 |---|---|---|---|
 | **324** | Section 8.5's rule on the phone, Stage 7's build against P5 (decision 269 (b)'s comparison): its long-frame clause fails in one segment, phase 8's Overview orbiting, 2.7% in P5 to 8.9% and 15.6% in the two runs (frames over 25.5 ms), while its frames a second (47 to 48/47) and median interval (22 ms in all three) match P5's; every other segment holds; P5 is one run, three weeks old, and neighbouring heavy segments moved by tens of points between the two runs. (a) accept as measured, the failure recorded and carried into the closing re-verification pass, the rule unchanged, 322 stays (b); (b) treat it as a regression and prototype 322 (a)'s low-tier conventions on the phone; (c) run P5's build again on the phone the same day before deciding | **(a)**, or **(c)** if the owner can run it | `docs/STAGE8_SPEC.md` section 27.2; `device/phone-S7-*`; `wp12/device-runs.*` |
+
+**The owner's answer (13 November 2026), after the phone runs were filed: "A".** Question 324 is decided **(a)**: the phone accepted as measured
+(its frames a second and median intervals P5's like for like), section 8.5's long-frame clause failing in phase 8's Overview orbiting (2.7% to 8.9%
+and 15.6%) recorded and carried into the closing re-verification pass, section 8.5's rule unchanged, question 322 kept at (b) (no low-tier figure
+convention). Nothing is built.
