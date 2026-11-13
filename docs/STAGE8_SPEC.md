@@ -5779,8 +5779,8 @@ start and at the end, the page 2,560 x 1,305 at density 1, effects on, the wake 
 SHA-256 `2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d`**, Stage 7's build (md5 `8c0d383e...`, `main` after #107; the same hash computed
 here from `austerlitz-command-map.html` and from `docs/final-stage7-evidence/device/builds/austerlitz-8c0d383e-stage7.html`). The reports, verbatim:
 `docs/final-stage7-evidence/device/desk-S7-*.txt`, their JSON lines as `.json`; each `.txt` is the route's own `format()` of its `.json` character for
-character, and each passes `route-check.js` (`tools/final-stage7/device-desk.js`, its output `docs/final-stage7-evidence/wp12/device-desk.*`;
-`wp12/route-check-desk.txt`). Stage 6's build was not run (not available to the owner), so these runs compare Stage 7's build with Stage 8's accepted
+character, and each passes `route-check.js` (`tools/final-stage7/device-runs.js`, its output `docs/final-stage7-evidence/wp12/device-runs.*`;
+`wp12/route-check-device.txt`). Stage 6's build was not run (not available to the owner), so these runs compare Stage 7's build with Stage 8's accepted
 build (D1, D2) and with L3, not Stage 7's work alone.
 
 Judged by the rules stated before them:
@@ -5804,3 +5804,49 @@ pass's lights) and 24.4-28.7% (the free rectangle kept; `CHANGELOG.md`, software
 same desktop that attribution is an inference. The GPU's medians in the heavy segments, 2.1-4.9 ms, fall where D1/D2's did (section 24.2: near 2.2-2.6 or
 near 3.8-4.6 ms, moving between blocks; inference, the GPU's clock states). One desktop, one session, a discrete GPU; **the integrated
 GPU stays unmeasured** (decision 278 (b)), and the phone's runs are to come.
+
+### 27.2 The owner's phone runs of Stage 7's build (13 November 2026); question 324
+
+**The runs** (the owner, 13 November 2026, minutes after the desktop's): the ordinary route twice (07:48 and 07:54 UTC; `step6-perf-route 4`) on the
+iPhone 17 Pro of P1-P5 and R1-R2, iOS 18.7 and Safari 26.6.1 by the user agent, the viewport 402 x 714 at density 3 drawn at density 1 (`lowTier`, no
+shadow), effects on, the refresh 17 ms at the start and at the end, the wake lock held. Both name Stage 7's build (SHA-256 `22756380...a547d`). Filed
+verbatim as `docs/final-stage7-evidence/device/phone-S7-*`; each `.txt` the route's `format()` of its `.json`, each passing `route-check.js`
+(`wp12/device-runs.*`, `wp12/route-check-device.txt`). **This is decision 269 (b)'s measurement:** the ordinary route on the phone. Its comparison is P5
+(`docs/step6-evidence/perf-P5-iphone.json`, 23 October 2026: the same phone, the same iOS and Safari, the same route; Stage 8's starting build,
+`c4793156...`), one session; P5's build was not run again (the protocol's second pair), so the before is three weeks old.
+
+Judged by the rules stated before them:
+- **Section 8.3, phone: within.** The heaviest frame of any segment 1,395,047 triangles (Play at half speed), against 1.62 million; every segment's
+  median calls at or below P5's (the largest 542, the Overview's orbit; P5 543). The heavy views draw fewer triangles than P5's: the Overview's orbit
+  1,481,051 to 1,311,323 (-11.5%), phase 8's Overview orbiting 1,469,185 to 1,305,401 (-11.1%), Play at half speed 1,464,345 to 1,347,193 (-8.0%), Play
+  at 4x 1,466,559 to 1,214,625 (-17.2%), the low Pratzen view at 4x orbiting 1,450,322 to 855,776 (-41.0%; calls 442 to 206: 8D's culling).
+- **Section 8.5's rule against P5: fails in one clause of one segment, in both runs.** Phase 8's Overview orbiting: its long-frame share (frames over
+  25.5 ms) 2.7% in P5, 8.9% and 15.6% now, above 5% where it was under. Its median interval is 22 ms in all three and its frames a second 47 in P5, 48
+  and 47 now; its 95th percentile 25 in P5, 26 and 27 now. Every other segment holds both clauses: every median within one refresh, no other share
+  crossing 5% (the two others over 5%, phase 8's Overview orbiting with the figures hidden and with the effects off, were over it in P5 too).
+- **Like for like, the frames a second** (P5 to runs 1/2): Play at half speed 53 to 53.1/52.9, Play at 4x 60 to 60/60, phase 8's Overview orbiting 47 to
+  48/47, with the figures hidden 45.9 to 38.5/47.3, with the effects off 28.1 to 30.3/34.3; every other segment 60 in all three.
+
+What the runs show beyond the rules (fact, from the reports; one phone, one session each):
+- **Section 27's cross-route reading is not borne out like for like on Stage 7's build.** It read P5's ordinary route against Stage 8's phone route
+  as a slowdown of about 18% (Play at half speed, 53 to 43.35) and 13% (the Overview's orbit, 47 to 40.8). On the same route Stage 7's build gives what
+  P5 gave (53.1/52.9 and 48/47). Stage 8's own build was never run on this route, so whether it was slower is still unknown; what the reports allow is
+  that the gap section 25 measured is not present in Stage 7's build on the ordinary route.
+- **The phone's state between runs.** Six minutes apart, phase 8's Overview orbiting with the figures hidden ran at 38.5 (62.8% long, js50 10 ms) and
+  47.3 frames a second (6.8%, js50 4), and with the effects off at 30.3 and 34.3 (js50 13 and 5): the same build, the same segment. A single run's
+  long-frame share in these heavy segments moves by tens of points; P5 is one run.
+- **The missed-refresh share is not comparable with P5's estimate here.** The route's own share (from the raw intervals, each rounded to whole
+  refreshes) counts an interval of 21-25 ms as one refresh, while 1 - fps x R counts the frames a second: for phase 8's Overview orbiting 8.2% and 13.5%
+  by the first, 18.4% and 20.1% by the second, against P5's 20.1% by the second. The intervals of 21-25 ms, not multiples of 17 ms, suggest a display
+  that does not hold 60 Hz (the iPhone 17 Pro's adaptive refresh; inference, not measured). The frames a second are the like-for-like measure.
+- **Script time** (js50, whole milliseconds on this phone): the same as P5's in the heavy segments (5 in phase 8's Overview orbiting, 6 in Play at half
+  speed); at the eye level 8 and 7 in P5, 4 now.
+
+**Question 324** (for the owner; nothing changed): section 8.5's long-frame clause fails in phase 8's Overview orbiting (2.7% to 8.9% and 15.6%) while
+its frames a second and median interval match P5's, P5 is one run, and this segment's share moved by tens of points between the two runs of its
+neighbours. (a) Accept as measured: the phone's frames a second and medians hold like for like, the clause's failure recorded and carried into the
+closing re-verification pass, section 8.5's rule unchanged; question 322 stays (b), no low-tier figure convention. (b) Treat it as a regression of
+Stage 7's build: prototype question 322 (a)'s low-tier conventions (fewer figures, the simple kit only, standards dropped beyond a distance) and
+measure each on the phone. (c) Ask for P5's build to be run again on the phone the same day (the protocol's second pair), so that the clause is
+judged against a before of the same day before deciding. Recommended: (a), or (c) if the owner can run it; the clause's failure is in the tail (the
+share of frames over 25.5 ms, a bound this segment's intervals of 21-27 ms straddle), not in the rate or the median.

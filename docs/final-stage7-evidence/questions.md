@@ -33,3 +33,10 @@ WP-16's second PR.
 | question | what it asks | decided | where it is applied |
 |---|---|---|---|
 | **323** | The phone's 329 ms frame in its first effects-off block (CL-PERF-10). Measured at the phone's tier here: the first switch to effects off compiles 22 programs (32 to 54), its first frame 2.6 s on software WebGL; later switches compile none (frames 5-15 ms); three r128 compiles a material's program when it is first drawn, so an orbit compiles more as materials come into view (the 329 ms frame fits that; an inference). (a) compile the effects-off programs at the switch (`renderer.compile`), one pause at the press instead of later stalls, or at start on the low tier (every phone's start pays for a switch few press); (b) record it, nothing changed | **(b)**: the path is the F key alone, once a session, and on the phone effects off was not the faster (`docs/STAGE8_SPEC.md` section 25.2) | recorded (`docs/STAGE8_SPEC.md` section 27; `wp12/fx-off-probe.json`) |
+
+**Put with the owner's phone runs (13 November 2026), open:** the standing instruction is not applied to it, because it decides whether a rule's
+failure is accepted; the owner decides.
+
+| question | what it asks | recommended | where it is recorded |
+|---|---|---|---|
+| **324** | Section 8.5's rule on the phone, Stage 7's build against P5 (decision 269 (b)'s comparison): its long-frame clause fails in one segment, phase 8's Overview orbiting, 2.7% in P5 to 8.9% and 15.6% in the two runs (frames over 25.5 ms), while its frames a second (47 to 48/47) and median interval (22 ms in all three) match P5's; every other segment holds; P5 is one run, three weeks old, and neighbouring heavy segments moved by tens of points between the two runs. (a) accept as measured, the failure recorded and carried into the closing re-verification pass, the rule unchanged, 322 stays (b); (b) treat it as a regression and prototype 322 (a)'s low-tier conventions on the phone; (c) run P5's build again on the phone the same day before deciding | **(a)**, or **(c)** if the owner can run it | `docs/STAGE8_SPEC.md` section 27.2; `device/phone-S7-*`; `wp12/device-runs.*` |

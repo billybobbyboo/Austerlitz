@@ -67,9 +67,14 @@ share reported beside it. Section 8.5's rule is not changed; that is the owner's
   `docs/STAGE8_SPEC.md` section 27.1: section 8.3's budget within (843 calls, 2,317,741 triangles at most), section 8.5's rule holds, section 8.3's CPU line
   met in every segment (decision 268 (a)'s excess gone on this desktop: Play at half speed 7.6 to 4.9/5.1 ms against L3's 6.1), Play's missed refreshes
   0.1-0.2% (D1/D2 about 14-17%).
+- **13 November 2026, the owner's iPhone 17 Pro**: the ordinary route twice on Stage 7's build (`device/phone-S7-1`, `-2`; decision 269 (b)). P5's build
+  was not run again; P5 (23 October 2026, the same phone, iOS and Safari) is the comparison. Read in `docs/STAGE8_SPEC.md` section 27.2: section 8.3's
+  phone budget within (1,395,047 triangles at most); Play at half speed 53.1/52.9 frames a second against P5's 53, phase 8's Overview orbiting 48/47
+  against 47; section 8.5's rule fails in one segment's long-frame clause (phase 8's Overview orbiting, 2.7% to 8.9%/15.6%), put to the owner as
+  question 324.
 
 ## Until then
 
-The records state the limit: the integrated GPU is unmeasured, the phone has no like-for-like before-and-after for Stage 8 or Stage 7, and
+The records state the limit: the integrated GPU is unmeasured, the phone's like-for-like comparison is Stage 7's build against P5's, not Stage 8's own build (never run on the ordinary route), and
 Stage 7's work has no before-and-after of its own on a device (Stage 6's build not run; `docs/STAGE8_SPEC.md` section 27; `CHANGELOG.md`). Stage 7's performance changes are shown on matched protocols in this container only, as
 CPU-side measures on software WebGL (WP-16, `wp16/`, `wp16b/`).

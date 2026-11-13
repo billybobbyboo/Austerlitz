@@ -5,8 +5,8 @@
 **Status: on `claude/admiring-dirac-m1syqs-device`, a draft PR into `main`, for review, not merged.** WP-12 of `docs/ROADMAP_FINAL_AUDIT.md`, the last
 pass of Stage 7, with WP-11's rule alongside. Records, the device route and the protocol for the owner's runs. No source of the build, no data
 and no build changes: `austerlitz-command-map.html` is unchanged, 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`, and `check:baseline`
-stays on it. **The device results are the owner's:** the desktop's two runs of Stage 7's build (13 November 2026), filed verbatim and read below; none
-was run here, and no other is filled in.
+stays on it. **The device results are the owner's:** the desktop's and the iPhone's two runs each of Stage 7's build (13 November 2026), filed verbatim
+and read below, with question 324; none was run here, and no other is filled in.
 
 ### The records corrected (`docs/STAGE8_SPEC.md` section 27)
 
@@ -81,8 +81,8 @@ integrity hash), named on the page by `?src=`. Until the runs come, their absenc
 - **The runs**: the ordinary route (version 4) twice, 07:26 and 07:36 UTC, on the desktop of L3, D1 and D2 (Chrome 156, an RTX 4070, 144 Hz, 2,560 x
   1,305 at density 1). Both name the build measured: 3,037,848 bytes, SHA-256 `2275638094e3...a547d`, Stage 7's (`8c0d383e...`). Filed verbatim in
   `docs/final-stage7-evidence/device/` (`desk-S7-1`, `-2`, `.txt` and `.json`, with a `README.md`). Stage 6's build was not available to the owner, so it was not run.
-- **Checked**: each `.txt` is the route's own `format()` of its `.json`, character for character (`tools/final-stage7/device-desk.js`, new; a one-character
-  change to a filed report fails it); both pass `route-check.js` (`wp12/route-check-desk.txt`).
+- **Checked**: each `.txt` is the route's own `format()` of its `.json`, character for character (`tools/final-stage7/device-runs.js`, new; a one-character
+  change to a filed report fails it); both pass `route-check.js` (`wp12/route-check-device.txt`).
 - **Section 8.3, desktop: within** on the per-frame maxima: 843 calls and 2,317,741 triangles at most (Play at 4x), against 900 and 2.8 million.
 - **Section 8.5's rule: holds** in every segment against D1/D2 and L3: every median 6.9 ms, no frame over 25 ms (the longest 20.9 ms), long frames 0%.
 - **Section 8.3's CPU line: met in every segment**, each below L3 by 0.4 to 1.9 ms. Decision 268 (a)'s excess no longer shows on this desktop. Like for
@@ -94,10 +94,26 @@ integrity hash), named on the page by `?src=`. Until the runs come, their absenc
   CPU cuts fit it, but that is an inference without Stage 6's build on the same desktop. The machine has a discrete GPU, so the integrated GPU stays
   unmeasured.
 
+### The owner's phone runs of Stage 7's build (13 November 2026; `docs/STAGE8_SPEC.md` section 27.2; question 324, open)
+
+- **The runs**: the ordinary route twice (07:48 and 07:54 UTC) on the iPhone 17 Pro of P1-P5 (iOS 18.7, Safari 26.6.1, `lowTier`), Stage 7's build:
+  decision 269 (b)'s measurement. Filed verbatim as `device/phone-S7-1`, `-2`; each `.txt` its `.json`'s `format()`, each passing `route-check.js`. The
+  comparison is P5 (23 October 2026, the same phone, iOS, Safari and route; Stage 8's starting build), one run; P5's build was not run again.
+- **Section 8.3, phone: within**: 1,395,047 triangles at most (1.62 million); every median of calls at or below P5's; the heavy views 8-17% fewer
+  triangles than P5's, the low view at 4x 41% fewer.
+- **Section 8.5's rule: fails in one clause of one segment**, both runs: phase 8's Overview orbiting, its long-frame share 2.7% to 8.9% and 15.6%,
+  while its frames a second (47 to 48/47) and median (22 ms) match P5's. Every other segment holds.
+- **Like for like**: Play at half speed 53 to 53.1/52.9 frames a second; every light view 60. Section 27's cross-route slowdown (18%, 13%) is not present
+  in Stage 7's build on the ordinary route; Stage 8's own build was never run on it.
+- **Question 324** (open; the standing instruction not applied, since it decides whether a rule's failure is accepted): (a) accept as measured, the
+  rule unchanged, 322 stays (b); (b) prototype 322 (a)'s low-tier conventions; (c) run P5's build again the same day first. Recommended (a), or (c).
+- `tools/final-stage7/device-desk.js` renamed `device-runs.js` (it reads both devices now); its output `wp12/device-runs.*`, the checks
+  `wp12/route-check-device.txt`.
+
 ### What remains uncertain, and what is handed on
 
-- The device readings still to come are the owner's to make: the iPhone's ordinary route on Stage 7's build (decision 269 (b)), the integrated GPU,
-  and the phone's like-for-like before and after (P5's build). Stage 7's own before and after on a device (Stage 6's build) was not run. Until then, Stage 7's
+- Question 324 is the owner's. The integrated GPU is unmeasured. Stage 7's own before and after on a device (Stage 6's build) and P5's build on the
+  phone the same day were not run. Until then, Stage 7's
   performance changes are shown on matched protocols in this container only, as CPU-side measures on software WebGL.
 - Stage 7 is complete once this PR is merged; the closing re-verification pass follows (`docs/ROADMAP_FINAL_AUDIT.md`).
 
