@@ -1,5 +1,78 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 7 (WP-16, 1 of 2): the label pass's lights and the free rectangle kept (CL-PERF-14, CL-PERF-13)
+
+**Status: on `claude/admiring-dirac-m1syqs-perf`, stacked on WP-14's PR (#105, itself on #104; merge #104, then #105, then this), a draft PR into
+`main`, for review, not merged.** Part of WP-16 of `docs/ROADMAP_FINAL_AUDIT.md`: only measured improvements, each shown on one matched
+protocol (the same motions, the build pair side by side), the picture pixel-identical and the shadow map texel-identical. Presentation only:
+no data file and no guarded declaration changes. `austerlitz-command-map.html` is now 3,035,557 bytes, md5 `07c186de677988b23b72fe72441b8618`
+(was WP-14's 3,028,969, `eabe076a...`); `check:baseline` moves to it. CL-PERF-12 (packing the kit's attributes) is put as question 321 (a), a PR
+of its own; the phone's figure and standard workload (CL-PERF-15) needs the phone: it is in WP-12's protocol.
+
+### What changed, and why
+
+- **CL-PERF-14, the label pass sees the lights (`renderFX`).** three r128 keys a scene's lights state by the lights the camera's layers see.
+  The label pass (layer 1) saw none, so the state changed between the two passes every frame, and three re-derived every lit material's
+  program in the next world pass (the audit counted 318 a frame). *Is:* the lights are enabled on the label layer too, once. The labels'
+  materials are unlit and draw the same (two of their programs compile once with the lights in their key: 36 to 38 programs). The shadow map
+  is held for the label pass (`shadowMap.autoUpdate` off while it draws), so that only the world pass draws it, once a frame, as before.
+- **CL-PERF-13, `MAPCAM.freeRect` kept by its inputs.** The free-rectangle search (an 8 px grid over the whole viewport against every panel)
+  ran about three times a frame, the largest app function in every profile. *Is:* its result is kept by its inputs (the viewport, the panels'
+  rectangles, the extent, the margin; at most 64 kept), and a call with inputs seen before returns a copy of that result without searching.
+  The panels are still read each call; only the search is saved.
+
+### Measured, on one matched protocol (`docs/final-stage7-evidence/wp16/`)
+
+- **The picture and the shadow map** (`tools/final-stage7/pair-pixels.js`: 8D's two-build frame comparison with the sun's shadow map read back;
+  six views, two fresh pages of each build, every page drawn from one eye): against WP-14's build, each change alone, **0 pixels** differ in
+  every view, with 0 unstable, and **0 of the shadow map's 16,777,216 texels** (`pixels-c3.json`, `pixels-c2.json`).
+- **The frame's CPU** (`tools/audit-post8/perf-attribution/paired.js`, the device route's motions at 2,560 x 1,305, one page a build kept open, the
+  blocks in palindrome order, two palindromes, the draws made no-ops so the CPU is not the software rasteriser's; `paired.json`, `paired.md`). Each
+  change alone against WP-14's build, the median of each build's four blocks and the change against its neighbouring reference blocks:
+
+| motion | WP-14's build | the label pass's lights (C3) | the free rectangle kept (C2) |
+|---|---|---|---|
+| Play at half speed | 18.82 ms | 16.92 ms (-14.6%; -3.6% to -23.9%) | 13.86 ms (-27.5%; -5.5% to -38.2%) |
+| the Overview held | 15.14 | 12.45 (-12.6%; -3.3% to -20.1%) | 11.21 (-24.4%; -17.8% to -26.8%) |
+| the Overview's route | 16.89 | 14.68 (-14.3%; -11.7% to -16.7%) | 12.18 (-27.9%; -20.1% to -32.4%) |
+| the Overview dragged | 18.02 | 14.66 (-16.9%; -11.7% to -21.5%) | 12.38 (-28.7%; -25.7% to -36.2%) |
+| phase 8's Overview dragged | 15.33 | 12.99 (-14.2%; -8.9% to -18.4%) | 10.98 (-26.5%; -23.3% to -32.1%) |
+
+  Every one of the 40 adjacent comparisons is faster. C3 shows in three's render (its median 8.2-9.5 ms to 6.3-7.15); C2 in the visibility
+  update (2.45-3.30 ms to 1.20-2.05) and the view offset. Draw calls are unchanged. GL calls a frame: C2 the same (within 1); C3 8 to 39 more (the
+  label materials' light uniforms). This machine's numbers are software WebGL's CPU side; a device's gain is for WP-12's runs (the builds paired there).
+
+### Checks added, each failing without its change (`tools/final-stage7/mutate.js wp16`)
+
+- The self-test's block `wp16Checks` (348 to 350 checks):
+  - "the label pass keeps the lights (WP-16, CL-PERF-14)": three frames with nothing changed. No lit material's program is looked up again,
+    counted by its `customProgramCacheKey`, which three calls only when it derives a program (want 0), and the shadow map is drawn once a frame
+    (`shadowMap.render` counted).
+  - "the free rectangle kept by its inputs (WP-16, CL-PERF-13)": over five inputs and a new one, each result is the search's own rectangle;
+    the search runs once for inputs already seen and again for new ones; a caller's change to a returned rectangle does not reach the next call.
+- The negative controls: the lights off the label layer; the shadow map not held; the search run on every call; the kept rectangle handed out
+  itself. Each fails its check; the build as it is passes both.
+
+### Verified
+
+- Here, on the build `07c186de...` (Chromium 141's headless shell): `npm test` passes, with the nine suites, the height guard and the dead-code
+  check (`wp16/npm-test.txt`). `check:data`: all 143 identical. `check:chronology`: errors 0. `check:contrast` passes, with all 10 start-up cases
+  (`wp16/check-contrast.txt`). `check:baseline` passes.
+- `check:selftest`: 350 checks run, every one passing, the motion block among them (`phone-long` 292 of 945, as on Stage 6's final build). Its only
+  failures were the manifest's three lines (350 against 348, the two new names), so the manifest is written from that run (`check-report.js
+  --write-manifest`: 348 to 350, two added, none removed).
+- The negative controls: 5 of 5 as expected (`wp16/mutate-wp16.*`). Before C3, 972 programs were looked up again in three still frames (324 a
+  frame; the audit counted 318). Without the shadow hold, the shadow map is drawn twice a frame.
+- The measured candidate builds were WP-14's build with each change alone, before the self-test's block and the search counter it reads were
+  added. The final build differs from them by those alone: the block runs only in the self-test, and the counter is one increment a search.
+
+### What remains uncertain, and what is handed on
+
+- The gains are this container's, software WebGL with the draws made no-ops. They are CPU-side; a device's frame may be bound elsewhere (the
+  phone's by its GPU, CL-PERF-15). WP-12's protocol pairs this build with WP-14's on the owner's devices.
+- C3 relies on three r128's lights state being keyed by the camera's layers. It holds while three.js stays at r128.
+- CL-PERF-12 (question 321 (a)) and the phone's workload (CL-PERF-15) are next.
+
 ## 2026-11 · Final audits' roadmap, Stage 7 (WP-14): robustness residuals (CL-ROB-02, -04, -05, -10, -11, -12)
 
 **Status: on `claude/admiring-dirac-m1syqs-robustness`, stacked on the Stage 6 records PR (#104; merge #104 first), a draft PR into `main`, for

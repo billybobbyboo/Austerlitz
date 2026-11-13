@@ -3880,10 +3880,18 @@ function renderFX(){
      autoClear (WebGLBackground.render, line 51). With the background left in
      place this pass wiped the composite to sky-blue and drew labels on it. */
   camera.layers.set(LAYER_LABEL);
-  var ac=renderer.autoClear, bg=scene.background;
+  /* the final audits' Stage 7, WP-16 (CL-PERF-14): the label pass sees the world's lights too. three r128 keys a scene's lights state by the
+     lights the camera's layers see; with none on the label layer that state changed between the two passes every frame, and three then
+     re-derived every lit material's program in the next world pass (318 calls of getProgram a frame). The labels' materials are unlit, so
+     they draw the same; the shadow map is held for this pass (autoUpdate off while it draws), so it is drawn once a frame, by the world pass,
+     as before */
+  if(!FX.lightsLabel){ FX.lightsLabel=true; scene.traverse(function(o){ if(o.isLight) o.layers.enable(LAYER_LABEL); }); }
+  var ac=renderer.autoClear, bg=scene.background, sau=renderer.shadowMap.autoUpdate;
   renderer.autoClear=false;
   scene.background=null;
+  renderer.shadowMap.autoUpdate=false;
   renderer.render(scene,camera);
+  renderer.shadowMap.autoUpdate=sau;
   scene.background=bg;
   renderer.autoClear=ac;
   camera.layers.enableAll();
@@ -5102,8 +5110,17 @@ var MAPCAM=(function(){
      (docs/STAGE3_SPEC.md section B.4): given the extent of what is to be framed (ext, ground units along east and north),
      the free rectangle in which it is drawn largest instead, the larger area breaking a tie: with the legend closed the
      largest rectangle is wide and short, and the about square field was drawn 15-19% smaller in it than it need be */
+  /* the final audits' Stage 7, WP-16 (CL-PERF-13): the search's result kept by its inputs (the viewport, the panels' rectangles, the extent
+     and MARGIN), so a call with the same inputs as one before returns that call's rectangle without searching again (it ran three times a
+     frame over the whole viewport, the largest app function in every profile); the result is the search's own, a copy each time */
+  var frMemo=new Map(), frStats={searches:0};
   function freeRect(ext,P0){   /* P0: a panel list instead of the app's (Stage 3D: the landscape's, without the first-run card) */
-    var v=vp(), G=8, nx=Math.floor(v[0]/G), ny=Math.floor(v[1]/G), P=P0||env.panels(), h=new Int32Array(nx), best=[0,0,v[0],v[1]], bA=-1, bS=-1;
+    var v=vp(), P=P0||env.panels(), key=v[0]+","+v[1]+"|"+MARGIN+"|"+(ext?ext[0]+","+ext[1]:"-")+"|"+P.map(function(q){ return q[0]+","+q[1]+","+q[2]+","+q[3]; }).join(";"), got=frMemo.get(key);
+    if(got) return got.slice();
+    var r=freeRectSearch(ext,P,v); frStats.searches++; if(frMemo.size>=64) frMemo.clear(); frMemo.set(key,r); return r.slice();
+  }
+  function freeRectSearch(ext,P,v){
+    var G=8, nx=Math.floor(v[0]/G), ny=Math.floor(v[1]/G), h=new Int32Array(nx), best=[0,0,v[0],v[1]], bA=-1, bS=-1;
     for(var j=0;j<ny;j++){
       var y0=j*G, y1=y0+G;
       for(var i=0;i<nx;i++){ var x0=i*G, x1=x0+G, bad=x0<MARGIN||y0<MARGIN||x1>v[0]-MARGIN||y1>v[1]-MARGIN;
@@ -5143,6 +5160,7 @@ var MAPCAM=(function(){
   function frameField(instant){ moved=false; pkey=panelsKey(); showField(fieldState(),instant); }
   return {
     init:init, apply:apply, toGround:toGround, toScreen:toScreen, pan:pan, zoomAt:zoomAt, freeRect:freeRect, stop:stop,
+    frStats:frStats, freeRectSearch:function(ext,P0){ return freeRectSearch(ext,P0||env.panels(),vp()); },   /* the final audits' Stage 7, WP-16: for the self-test */
     frameField:frameField,
     framed:function(){ return framed; },
     /* roadmap step 6, decision 238: while the field is shown as framed (the visitor has not panned or zoomed it), a panel's change that gives
@@ -10061,6 +10079,53 @@ function wp08Checks(){
 /* the final audits' Stage 6, WP-10 (part 3): the self-test's checks of the crowns near the eye (CL-VIS-08; decision 308) and of the blocks among the
    buildings said in the sources sheet (CL-VIS-04; decision 307's fallback (c)). The crowns are judged on renders of the woods alone, with the twigs on and
    off (TREE6.U.uTwig): near the eye they cover markedly less (the closed faces broken into twigs), beyond the near band the same pixels */
+/* the final audits' Stage 7, WP-16: the self-test's checks of the measured performance changes, each a property of the frame or the function,
+   not of the code's text. (1) CL-PERF-14: with nothing changed between frames, no lit material's program is looked up again (three r128 calls a
+   material's customProgramCacheKey only when it derives that material's program: 318 a frame before WP-16, every lit material of the world pass,
+   since the label pass saw no lights), and the shadow map is drawn once a frame (the label pass sees the lights now, so it must not draw it
+   again). (2) CL-PERF-13: MAPCAM.freeRect returns the search's own rectangle, searches once for inputs it has seen, again for new inputs, and a
+   caller's change to a returned rectangle does not reach the next call */
+function wp16Checks(){
+  var out=[];
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  var K={t:clock,mode:mode,pres:presentation};
+  if(playing) stopPlay();
+  try{
+    if(mode!=="terrain") setMode("terrain"); if(presentation!=="watch") setPresentation("watch");
+    guard("the label pass keeps the lights (WP-16, CL-PERF-14)",function(){
+      if(!FX.on){ ck("the label pass keeps the lights (WP-16, CL-PERF-14)",true,"effects off on this tier: one pass, nothing to judge"); return; }
+      setClock(570,{instant:true,force:true,camera:false}); updateVisibility(); renderFrame(); renderFrame();
+      var mats=[], seen=new Set(), calls=0, sm=renderer.shadowMap, smr=sm.render, shadowRuns=0, N=3;
+      scene.traverse(function(o){ (Array.isArray(o.material)?o.material:[o.material]).forEach(function(m){ if(m&&!seen.has(m)){ seen.add(m); mats.push(m); } }); });
+      var lit=mats.filter(function(m){ return m.isMeshStandardMaterial||m.isMeshLambertMaterial||m.isMeshPhongMaterial||m.lights===true; });
+      var orig=mats.map(function(m){ var f=m.customProgramCacheKey; m.customProgramCacheKey=function(){ calls++; return f.apply(this,arguments); }; return f; });
+      /* a draw of the shadow map: three r128 calls render(lights, scene, camera) on every renderer.render and returns at once unless it is
+         enabled, an update is due and some light casts; those calls alone are counted */
+      sm.render=function(L){ if(sm.enabled&&(sm.autoUpdate||sm.needsUpdate)&&L&&L.length) shadowRuns++; return smr.apply(this,arguments); };
+      try{ for(var i=0;i<N;i++) renderFrame(); }
+      finally{ mats.forEach(function(m,i){ m.customProgramCacheKey=orig[i]; }); sm.render=smr; }
+      var drawn=sun.castShadow&&sm.enabled, want=drawn?N:0;
+      ck("the label pass keeps the lights (WP-16, CL-PERF-14)",calls===0&&shadowRuns===want&&lit.length>0,
+        N+" frames with nothing changed: "+calls+" programs looked up again ("+lit.length+" lit materials of "+mats.length+"; want 0), the shadow map drawn "+shadowRuns+" times (want "+want+": once a frame, by the world pass)");
+    });
+    guard("the free rectangle kept by its inputs (WP-16, CL-PERF-13)",function(){
+      var S=MAPCAM.frStats, bad=[], eq=function(a,b){ return a.length===4&&b.length===4&&a.every(function(x,i){ return x===b[i]; }); };
+      var cases=[[null,null],[[1,1],null],[[3,1],null],[null,[[0,0,300,200]]],[[1,2],[[100,100,500,400],[900,0,1366,120]]]];
+      cases.forEach(function(c,i){ var s0=S.searches, a=MAPCAM.freeRect(c[0],c[1]), s1=S.searches, b=MAPCAM.freeRect(c[0],c[1]), s2=S.searches, ref=MAPCAM.freeRectSearch(c[0],c[1]);
+        if(!eq(a,ref)) bad.push("case "+i+": "+a.join(",")+" against the search's "+ref.join(","));
+        if(!eq(b,ref)) bad.push("case "+i+" repeated: "+b.join(","));
+        if(s2!==s1) bad.push("case "+i+": searched again for inputs already seen");
+        a[0]=-999; var c2=MAPCAM.freeRect(c[0],c[1]); if(!eq(c2,ref)) bad.push("case "+i+": a caller's change reached the next call"); });
+      var s3=S.searches, n=MAPCAM.freeRect([7,5],[[13,17,401,333]]); if(S.searches!==s3+1) bad.push("new inputs not searched ("+(S.searches-s3)+" searches)");
+      if(!eq(n,MAPCAM.freeRectSearch([7,5],[[13,17,401,333]]))) bad.push("new inputs: "+n.join(","));
+      ck("the free rectangle kept by its inputs (WP-16, CL-PERF-13)",!bad.length,bad.length?bad.join("; "):cases.length+" inputs and a new one: each the search's own rectangle, searched once for inputs seen, again for new ones, a returned rectangle the caller's own");
+    });
+  } finally {
+    if(mode!==K.mode) setMode(K.mode); setPresentation(K.pres); setClock(K.t,{instant:true,force:true,camera:false}); endTweens();
+  }
+  return out;
+}
 function wp10gChecks(){
   var out=[], K={t:clock,mode:mode,pres:presentation,f:DISPLAY.factor,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,v:curVantage};
   function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
@@ -15617,6 +15682,7 @@ var AUSTERLITZ_DEBUG=(function(){
     wp10Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the meres) */
     wp10pChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the facings, the camp, the tier) */
     wp10gChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the crowns, the blocks among the buildings) */
+    wp16Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 7, WP-16 (the label pass's lights, the free rectangle kept) */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();

@@ -1,0 +1,6 @@
+as expected none (the build as it is): failed []
+as expected CL-PERF-14 put back: the lights not on the label layer: failed [the label pass keeps the lights (WP-16, CL-PERF-14)]
+as expected CL-PERF-14 in part: the shadow map not held for the label pass: failed [the label pass keeps the lights (WP-16, CL-PERF-14)]
+as expected CL-PERF-13 put back: the search run on every call: failed [the free rectangle kept by its inputs (WP-16, CL-PERF-13)]
+as expected CL-PERF-13 in part: the kept rectangle handed out itself: failed [the free rectangle kept by its inputs (WP-16, CL-PERF-13)]
+every mutation as expected
