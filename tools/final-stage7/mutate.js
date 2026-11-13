@@ -7,7 +7,7 @@
    Each replacement must apply exactly once.
    - "block": the replacements on a copy of the build, then one of the self-test's blocks alone on a fresh page (tools/final-stage6/run-block.js);
      the checks named must fail and every other check of the block pass.
-   node tools/final-stage7/mutate.js <set> [--json out.json] [--only name,name]   (sets: wp14, wp16)
+   node tools/final-stage7/mutate.js <set> [--json out.json] [--only name,name]   (sets: wp14, wp16, wp16b)
    Measurement only; nothing is written to a source file of this tree. */
 "use strict";
 const fs=require("fs"), path=require("path"), os=require("os"), crypto=require("crypto"), cp=require("child_process");
@@ -41,6 +41,18 @@ SETS.wp16=[
     rep:[["    if(got) return got.slice();\n","    if(false&&got) return got.slice();\n"]]},
   {name:"CL-PERF-13 in part: the kept rectangle handed out itself", kind:"block", block:"wp16Checks", fails:[P13],
     rep:[["    if(got) return got.slice();\n","    if(got) return got;\n"]]}
+];
+const P12="each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)";
+SETS.wp16b=[
+  {name:"none (the build as it is)", kind:"block", block:"wp16Checks", rep:[], fails:[]},
+  {name:"CL-PERF-12: the phases not copied into aSl", kind:"block", block:"wp16Checks", fails:[P12],
+    rep:[["    if(P) for(var i=0;i<n&&i<P.length;i++) S.array[i*3+2]=P[i];","    if(false) for(var i=0;i<n&&i<P.length;i++) S.array[i*3+2]=P[i];"]]},
+  {name:"CL-PERF-12: the phases into a slope's place", kind:"block", block:"wp16Checks", fails:[P12],
+    rep:[["    if(P) for(var i=0;i<n&&i<P.length;i++) S.array[i*3+2]=P[i];","    if(P) for(var i=0;i<n&&i<P.length;i++) S.array[i*3+1]=P[i];"]]},
+  {name:"CL-PERF-12: the layout's slopes copied two a figure over the phases", kind:"block", block:"wp16Checks", fails:[P12],
+    rep:[["Sn=Math.min(c.Sl.length>>1,SAa.length/3); for(var q2=0;q2<Sn;q2++){ SAa[q2*3]=c.Sl[q2*2]; SAa[q2*3+1]=c.Sl[q2*2+1]; }","Sn=Math.min(c.Sl.length,SAa.length); for(var q2=0;q2<Sn;q2++){ SAa[q2]=c.Sl[q2]; }"]]},
+  {name:"CL-PERF-12: the phase's own attribute declared again", kind:"src", suite:"css-test.js", expect:"not one attribute a figure",
+    rep:[["app.js",'ANIM.decl=["attribute float aPart;","attribute vec3 aSl;",','ANIM.decl=["attribute float aPart;","attribute float aPh;","attribute vec3 aSl;",']]}
 ];
 const S=SETS[argv[0]]; if(!S){ console.error("unknown set "+argv[0]+"; one of "+Object.keys(SETS).join(", ")); process.exit(2); }
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),"mutate-s7-")), html=path.join(ROOT,"austerlitz-command-map.html"), src=fs.readFileSync(html,"utf8");

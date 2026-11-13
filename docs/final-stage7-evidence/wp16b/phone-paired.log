@@ -1,0 +1,49 @@
+02:51:18 P booted: firstFrame 7391 ms, bootGone 11069, init 5331.7 ms; held
+02:51:33 Hstd booted: firstFrame 7510 ms, bootGone 10864, init 5538.5 ms; held
+02:51:47 Hfig booted: firstFrame 6995 ms, bootGone 10191, init 5403.8 ms; held
+02:51:54 play-half #0 P: cpu 9.418 wait 0.066 | loop p50 9.2 | upd 2.7 ml 0.9 three 4 | calls 497 | clock 513.1-525.0 | load 2.46 3.21 3.56
+02:52:00 play-half #1 Hstd: cpu 8.685 wait 0.018 | loop p50 8.5 | upd 2.6 ml 0.8 three 3.4 | calls 426 | clock 513.1-525.0 | load 2.23 3.13 3.54
+02:52:05 play-half #2 Hfig: cpu 6.732 wait 0.02 | loop p50 6.7 | upd 2.5 ml 0.8 three 1.8 | calls 227 | clock 513.1-525.0 | load 2.14 3.1 3.52
+02:52:10 play-half #3 Hfig: cpu 6.656 wait 0.011 | loop p50 6.5 | upd 2.5 ml 0.8 three 1.8 | calls 227 | clock 513.1-525.0 | load 2.04 3.06 3.51
+02:52:16 play-half #4 Hstd: cpu 8.866 wait 0.012 | loop p50 8.5 | upd 2.7 ml 0.8 three 3.5 | calls 426 | clock 513.1-525.0 | load 1.96 3.03 3.49
+02:52:23 play-half #5 P: cpu 9.402 wait 0.012 | loop p50 9.1 | upd 2.6 ml 0.8 three 4.1 | calls 497 | clock 513.1-525.0 | load 1.88 2.99 3.48
+02:52:29 play-half #6 P: cpu 9.181 wait 0.022 | loop p50 8.9 | upd 2.7 ml 0.8 three 3.9 | calls 497 | clock 513.1-525.0 | load 1.81 2.96 3.47
+02:52:35 play-half #7 Hstd: cpu 8.692 wait 0.009 | loop p50 8.4 | upd 2.7 ml 0.8 three 3.4 | calls 426 | clock 513.1-525.0 | load 2.2 3.01 3.48
+02:52:40 play-half #8 Hfig: cpu 6.866 wait 0.014 | loop p50 6.9 | upd 2.7 ml 0.8 three 1.8 | calls 227 | clock 513.1-525.0 | load 2.11 2.98 3.46
+02:52:45 play-half #9 Hfig: cpu 7.049 wait 0.037 | loop p50 6.6 | upd 2.6 ml 0.8 three 1.8 | calls 227 | clock 513.1-525.0 | load 2.02 2.94 3.45
+02:52:51 play-half #10 Hstd: cpu 8.456 wait 0.016 | loop p50 8.2 | upd 2.6 ml 0.8 three 3.4 | calls 426 | clock 513.1-525.0 | load 2.1 2.94 3.45
+02:52:57 play-half #11 P: cpu 8.939 wait 0.005 | loop p50 8.7 | upd 2.6 ml 0.8 three 3.9 | calls 497 | clock 513.1-525.0 | load 2.01 2.91 3.43
+02:53:00 play-half count P: GL calls/frame 6682.75, bytes/frame 790965, draws 479
+02:53:03 play-half count Hstd: GL calls/frame 5340.79, bytes/frame 782495, draws 413
+02:53:05 play-half count Hfig: GL calls/frame 1306.23, bytes/frame 645859, draws 223
+02:53:08 overview-route #0 P: cpu 7.636 wait 0.007 | loop p50 7.2 | upd 1.3 ml 0.8 three 4.3 | calls 542 | clock 570.0-570.0 | load 2.15 2.91 3.43
+02:53:11 overview-route #1 Hstd: cpu 6.813 wait 0.008 | loop p50 6.4 | upd 1.3 ml 0.8 three 3.6 | calls 471 | clock 570.0-570.0 | load 2.06 2.88 3.42
+02:53:13 overview-route #2 Hfig: cpu 4.808 wait 0.008 | loop p50 4.5 | upd 1.2 ml 0.8 three 1.7 | calls 244 | clock 570.0-570.0 | load 2.06 2.88 3.42
+02:53:14 overview-route #3 Hfig: cpu 4.754 wait 0.002 | loop p50 4.4 | upd 1.2 ml 0.8 three 1.7 | calls 244 | clock 570.0-570.0 | load 2.06 2.88 3.42
+02:53:17 overview-route #4 Hstd: cpu 6.815 wait 0.004 | loop p50 6.4 | upd 1.2 ml 0.8 three 3.6 | calls 471 | clock 570.0-570.0 | load 1.97 2.85 3.4
+02:53:20 overview-route #5 P: cpu 7.298 wait 0.011 | loop p50 6.8 | upd 1.2 ml 0.8 three 4.1 | calls 542 | clock 570.0-570.0 | load 1.89 2.82 3.39
+02:53:23 overview-route #6 P: cpu 7.593 wait 0.026 | loop p50 6.9 | upd 1.2 ml 0.8 three 4.2 | calls 542 | clock 570.0-570.0 | load 1.89 2.82 3.39
+02:53:25 overview-route #7 Hstd: cpu 7.48 wait 0.009 | loop p50 6.5 | upd 1.2 ml 0.8 three 3.7 | calls 471 | clock 570.0-570.0 | load 1.82 2.79 3.38
+02:53:27 overview-route #8 Hfig: cpu 4.665 wait 0.009 | loop p50 4.4 | upd 1.2 ml 0.8 three 1.7 | calls 244 | clock 570.0-570.0 | load 1.82 2.79 3.38
+02:53:29 overview-route #9 Hfig: cpu 4.886 wait 0.003 | loop p50 4.4 | upd 1.2 ml 0.8 three 1.7 | calls 244 | clock 570.0-570.0 | load 1.82 2.79 3.38
+02:53:32 overview-route #10 Hstd: cpu 6.783 wait 0.005 | loop p50 6.3 | upd 1.2 ml 0.8 three 3.6 | calls 471 | clock 570.0-570.0 | load 1.75 2.76 3.36
+02:53:34 overview-route #11 P: cpu 7.36 wait 0.005 | loop p50 6.8 | upd 1.2 ml 0.8 three 4.1 | calls 542 | clock 570.0-570.0 | load 1.75 2.76 3.36
+02:53:36 overview-route count P: GL calls/frame 7197.66, bytes/frame 158, draws 542
+02:53:38 overview-route count Hstd: GL calls/frame 5788.65, bytes/frame 158, draws 471
+02:53:39 overview-route count Hfig: GL calls/frame 1173.02, bytes/frame 158, draws 244
+02:53:42 ph8-drag #0 P: cpu 7.126 wait 0.002 | loop p50 6.6 | upd 1.2 ml 0.6 three 4 | calls 524 | clock 880.0-880.0 | load 1.64 2.7 3.34
+02:53:44 ph8-drag #1 Hstd: cpu 6.288 wait 0.003 | loop p50 6 | upd 1.2 ml 0.6 three 3.4 | calls 453 | clock 880.0-880.0 | load 1.64 2.7 3.34
+02:53:46 ph8-drag #2 Hfig: cpu 4.787 wait 0.006 | loop p50 4.2 | upd 1.2 ml 0.6 three 1.6 | calls 233 | clock 880.0-880.0 | load 1.99 2.76 3.35
+02:53:48 ph8-drag #3 Hfig: cpu 4.556 wait 0.006 | loop p50 4.2 | upd 1.3 ml 0.6 three 1.6 | calls 233 | clock 880.0-880.0 | load 1.99 2.76 3.35
+02:53:50 ph8-drag #4 Hstd: cpu 6.407 wait 0.011 | loop p50 6 | upd 1.2 ml 0.6 three 3.4 | calls 453 | clock 880.0-880.0 | load 1.99 2.74 3.35
+02:53:53 ph8-drag #5 P: cpu 7.132 wait 0.011 | loop p50 6.6 | upd 1.2 ml 0.6 three 4 | calls 524 | clock 880.0-880.0 | load 1.99 2.74 3.35
+02:53:56 ph8-drag #6 P: cpu 7.392 wait 0.004 | loop p50 6.7 | upd 1.3 ml 0.6 three 4.1 | calls 524 | clock 880.0-880.0 | load 1.91 2.71 3.33
+02:53:59 ph8-drag #7 Hstd: cpu 7.609 wait 0.008 | loop p50 6.6 | upd 1.3 ml 0.6 three 3.8 | calls 453 | clock 880.0-880.0 | load 1.91 2.71 3.33
+02:54:01 ph8-drag #8 Hfig: cpu 5.076 wait 0.019 | loop p50 4.3 | upd 1.3 ml 0.6 three 1.7 | calls 233 | clock 880.0-880.0 | load 1.84 2.69 3.32
+02:54:02 ph8-drag #9 Hfig: cpu 4.471 wait 0.004 | loop p50 4.1 | upd 1.2 ml 0.6 three 1.6 | calls 233 | clock 880.0-880.0 | load 1.84 2.69 3.32
+02:54:06 ph8-drag #10 Hstd: cpu 8.821 wait 0.056 | loop p50 8.4 | upd 1.3 ml 0.7 three 4.8 | calls 453 | clock 880.0-880.0 | load 1.77 2.66 3.31
+02:54:09 ph8-drag #11 P: cpu 8.863 wait 0.012 | loop p50 8.1 | upd 1.3 ml 0.7 three 4.5 | calls 524 | clock 880.0-880.0 | load 1.77 2.66 3.31
+02:54:11 ph8-drag count P: GL calls/frame 7014.99, bytes/frame 0, draws 524
+02:54:13 ph8-drag count Hstd: GL calls/frame 5607.99, bytes/frame 0, draws 453
+02:54:14 ph8-drag count Hfig: GL calls/frame 1131.93, bytes/frame 0, draws 233
+02:54:14 wrote docs/final-stage7-evidence/wp16b/phone-paired.json

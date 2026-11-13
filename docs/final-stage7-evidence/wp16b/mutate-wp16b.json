@@ -1,0 +1,75 @@
+{
+ "set": "wp16b",
+ "build": "8c0d383eb45a6f2a5522d04863824b7b",
+ "bytes": 3037848,
+ "mutations": [
+  {
+   "name": "none (the build as it is)",
+   "kind": "block",
+   "applied": true,
+   "expected": [],
+   "failed": [],
+   "ok": true,
+   "lines": []
+  },
+  {
+   "name": "CL-PERF-12: the phases not copied into aSl",
+   "kind": "block",
+   "applied": true,
+   "expected": [
+    "each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)"
+   ],
+   "failed": [
+    "each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL each figure's beat in its slopes' attribute (WP-16, CL-PERF-12): gqg horse #0: phase 0, its beat 0.18291635811328888; gqg coat #0: phase 0, its beat 0.18291635811328888; gqg fixed #0: phase 0, its beat 0.18291635811328888; sthilaire horse #0: phase 0, its beat 0.18291635811328888; sthilaire coat #0: phase 0, its beat 0.18291635811328888; sthilaire fixed #0: phase"
+   ]
+  },
+  {
+   "name": "CL-PERF-12: the phases into a slope's place",
+   "kind": "block",
+   "applied": true,
+   "expected": [
+    "each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)"
+   ],
+   "failed": [
+    "each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL each figure's beat in its slopes' attribute (WP-16, CL-PERF-12): gqg horse #0: phase 0, its beat 0.18291635811328888; gqg coat #0: phase 0, its beat 0.18291635811328888; gqg fixed #0: phase 0, its beat 0.18291635811328888; sthilaire horse #0: phase 0, its beat 0.18291635811328888; sthilaire coat #0: phase 0, its beat 0.18291635811328888; sthilaire fixed #0: phase"
+   ]
+  },
+  {
+   "name": "CL-PERF-12: the layout's slopes copied two a figure over the phases",
+   "kind": "block",
+   "applied": true,
+   "expected": [
+    "each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)"
+   ],
+   "failed": [
+    "each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL each figure's beat in its slopes' attribute (WP-16, CL-PERF-12): drouet coat #0: phase 0.09440072625875473, its beat 0; drouet fixed #0: phase 0.09440072625875473, its beat 0; drouet coat #0: phase 0.06541971862316132, its beat 0; drouet fixed #0: phase 0.06541971862316132, its beat 0; drouet horse #0: phase 0.11258353292942047, its beat 0.18291635811328888; drou"
+   ]
+  },
+  {
+   "name": "CL-PERF-12: the phase's own attribute declared again",
+   "kind": "src",
+   "applied": true,
+   "expected": [
+    "css-test.js"
+   ],
+   "failed": [
+    "css-test.js"
+   ],
+   "ok": true,
+   "lines": []
+  }
+ ],
+ "allAsExpected": true
+}

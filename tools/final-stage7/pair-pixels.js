@@ -30,9 +30,10 @@ const md5=f=>crypto.createHash("md5").update(fs.readFileSync(f)).digest("hex");
         var gl=renderer.getContext(), w=gl.drawingBufferWidth, h=gl.drawingBufferHeight; renderFrame(); var b=new Uint8Array(w*h*4); gl.readPixels(0,0,w,h,gl.RGBA,gl.UNSIGNED_BYTE,b);
         var s=""; for(var i=0;i<b.length;i+=4) s+=String.fromCharCode(b[i],b[i+1],b[i+2]);
         var sm=sun&&sun.castShadow&&sun.shadow&&sun.shadow.map, sh=null; if(sm){ var sw=sm.width, shh=sm.height, sb=new Uint8Array(sw*shh*4); renderer.readRenderTargetPixels(sm,0,0,sw,shh,sb); var t=""; for(var j=0;j<sb.length;j++) t+=String.fromCharCode(sb[j]); sh={w:sw,h:shh,px:btoa(t)}; }
-        return {w:w,h:h,px:btoa(s),programs:renderer.info.programs.length,own:own,off:off,shadow:sh}; },eye);
+        var amp=0, swing=0; Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; (u&&u.lod||[]).forEach(function(m){ var A=m.userData.anim; if(A&&A.uAnimAmp){ amp=Math.max(amp,A.uAnimAmp.value); if(A.uAnimAmp.value>0&&m.visible) swing++; } }); });
+        return {w:w,h:h,px:btoa(s),programs:renderer.info.programs.length,own:own,off:off,shadow:sh,amp:amp,swing:swing}; },eye);
       if(!eye&&r.own) eye=r.own;
-      return {w:r.w, h:r.h, buf:Buffer.from(r.px,"base64"), programs:r.programs, off:r.off, sh:r.shadow?Buffer.from(r.shadow.px,"base64"):null, shSize:r.shadow?[r.shadow.w,r.shadow.h]:null}; }
+      return {w:r.w, h:r.h, buf:Buffer.from(r.px,"base64"), programs:r.programs, off:r.off, amp:r.amp, swing:r.swing, sh:r.shadow?Buffer.from(r.shadow.px,"base64"):null, shSize:r.shadow?[r.shadow.w,r.shadow.h]:null}; }
     finally{ await page.close(); } }
   for(const v of VIEWS){ const c=L.byName(v); if(!c){ console.log(v+": no such case"); continue; }
     const F=[[],[]]; eye=null;
@@ -50,7 +51,7 @@ const md5=f=>crypto.createHash("md5").update(fs.readFileSync(f)).digest("hex");
     if(!shNone){ shN=F[0][0].sh.length/4; for(let p=0;p<shN;p++){ const eq=(A,B)=>A[p*4]===B[p*4]&&A[p*4+1]===B[p*4+1]&&A[p*4+2]===B[p*4+2]&&A[p*4+3]===B[p*4+3];
       let u=false; for(let b=0;b<2;b++) for(let k=1;k<K;k++) if(!eq(F[b][0].sh,F[b][k].sh)) u=true;
       if(u) shUnst++; else if(!eq(F[0][0].sh,F[1][0].sh)) shCons++; } }
-    const R=res.views[v]={shadow:shNone?"no shadow map on this tier or view":{texels:shN, size:F[0][0].shSize, unstable:shUnst, shadowConsistent:shCons}, size:[F[0][0].w,F[0][0].h], unstableBefore:uA, unstableAfter:uB, unstableEither:uU, differingBetweenBuilds:cross, outsideUnstable:outside, consistentChange:consistent, where:where,
+    const R=res.views[v]={gait:{amp:[F[0][0].amp,F[1][0].amp], swingingMeshes:[F[0][0].swing,F[1][0].swing]}, shadow:shNone?"no shadow map on this tier or view":{texels:shN, size:F[0][0].shSize, unstable:shUnst, shadowConsistent:shCons}, size:[F[0][0].w,F[0][0].h], unstableBefore:uA, unstableAfter:uB, unstableEither:uU, differingBetweenBuilds:cross, outsideUnstable:outside, consistentChange:consistent, where:where,
       programs:[F[0].map(x=>x.programs),F[1].map(x=>x.programs)], eyeOff:[F[0].map(x=>x.off),F[1].map(x=>x.off)]};
     console.log(v.padEnd(22)+JSON.stringify(R));
     if(OUT){ fs.mkdirSync(path.dirname(OUT),{recursive:true}); fs.writeFileSync(OUT,JSON.stringify(res,null,1)); } }

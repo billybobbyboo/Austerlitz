@@ -15,3 +15,11 @@ Stage 7 of `docs/ROADMAP_FINAL_AUDIT.md` ("Performance and robustness": WP-16, W
     <out.json> <rawdir> A=<A> C3=<C3> C2=<C2>`; `node tools/audit-post8/perf-attribution/analyse-paired.js paired.json A > paired.md`).
   - `mutate-wp16.*`: the negative controls of the self-test's `wp16Checks` (`node tools/final-stage7/mutate.js wp16 --json ...`).
   - `npm-test.txt`, `check-contrast.txt`: the suites on this PR's build.
+- `wp16b/`: WP-16's second PR (CL-PERF-12, decision 321 (a); CL-PERF-15 profiled, question 322). `A` is `main`'s build `07c186de...`; `P` the packed
+  build `084863c7...`, before the self-test's third WP-16 check was added (the final build differs from it by that check alone).
+  - `pixels-packed.*`: the picture, the shadow map and the gait's amplitude in six views (`node tools/final-stage7/pair-pixels.js <A> <P> --pages 2 --json ...`).
+  - `paired.*`: the matched protocol, two palindromes; `paired-drags.*`: the two drags again over three (`PA_MOTIONS=overview-drag,ph8-drag PA_REPS=3`).
+  - `phone-paired.*`: the phone's tier (`PA_VP=402x714`): `P` against two measurement copies, the standards hidden (`Hstd`) and the figures and
+    standards hidden (`Hfig`), made by a line put into `renderFrameNow` that hides each block's `std` (and `body`); never shipped.
+  - `phone-census.*`: empty: `tools/step6/census.js` skips cases that need a fresh page, the phone cases among them (recorded, not used).
+  - `mutate-wp16b.*`: the negative controls (`node tools/final-stage7/mutate.js wp16b --json ...`); `npm-test.txt`, `check-contrast.txt`.
