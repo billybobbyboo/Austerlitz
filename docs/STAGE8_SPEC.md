@@ -5698,3 +5698,75 @@ this specification's carried lists that do not hold as written. They are correct
   on build `e8fed44b` in Chromium 153. On the audited build (md5 `f10fe585...`) in CI's Chromium 141, the same probe (`tools/stage8/ice-8h.js`,
   `--clear 0.20`) gives 5.90% (ChatGPT's audit, CG-F10; `docs/final-audit-chatgpt-evidence/ice-current/`). The cause of the difference is
   not established, and the bright sheen is still visible. Decision 264 (a) is unchanged (`CL-REC-10`).
+
+## 27. Corrections from the final audits' Stage 7, WP-12 (13 November 2026)
+
+The final audit after Stage 8 (`docs/FINAL_AUDIT_POST_STAGE8.md`, `CL-PERF-01` to `-11`) found the device records of sections 24 and 25 reading more
+into the reports than they hold, in places. Each correction below was checked against the reports' JSON as committed
+(`docs/stage8-evidence/device/*.json`; `tools/final-stage7/device-reread.js`, its output `docs/final-stage7-evidence/wp12/device-reread.*`). As in
+section 26, the sections above are left as they were written; where they and this section differ, this section holds. Decisions 268 (a) and 269 (a)
+are unchanged: what they accepted is the same measurements, read as below.
+
+- **"As it warms", "after warming", "after the phone warms"** (section 25's "What the route measures", 25.3, 25.4 and decision 269 (a)'s carried text;
+  `CL-PERF-01`). No report records the phone's temperature or throttling, and a page cannot read either. *Read instead:* "in the blocks after the 45 s
+  warm-up (the steady state)". Play's series is flat: its 24 A blocks ran at 42.8-43.8 frames a second from the first block after the warm-up to the
+  last, in both runs. The warm-ups that ran faster (45.2 and 45.7) drew lighter content (the audit's reading: median 428 calls and 1,203,643
+  triangles, against 517 and about 1,364,000 in the As). The Overview's slow blocks (27.2-32.0) recovered within one or two blocks, with no
+  steady decline. Whether the phone throttled is unknown.
+- **The browser** (section 24's "the same desktop as step 6's L1-L3: Chrome 156"; `CL-PERF-04`). L1-L3 ran Chrome 155 and D1 and D2 Chrome 156 (the
+  reports' user agents): the desktop's before and after span a browser update. The audit reproduced the script's rise on one fixed browser and placed
+  it between step 6's build and 8E (`CL-PERF-12`), so the update is not needed to explain decision 268 (a)'s excess; it was not recorded, and is now.
+- **"The heaviest frame"** (sections 24.1 and 25.1; `CL-PERF-05`). The route recorded each segment's median calls and triangles, not their maxima. *Read
+  instead:* "the largest segment median": on the desktop 839 calls (the Overview's orbit) and 2,289,649 triangles (Play at 4x); on the phone
+  1,364,249 triangles in the build's own blocks (section 25.1's 1,364,901 is a gait-at-rest block's, `CL-PERF-09`). A frame above a median was not
+  recorded. The route records per-frame maxima from version 4 (WP-12).
+- **The long-frame share** (sections 24 and 25 throughout; `CL-PERF-03`). It is the share of delivered frames longer than max(1.5 refreshes, 25 ms),
+  25 ms on the desktop (3.6 refreshes at 144 Hz) and 25.5 ms on the phone. It is not a dropped-frame rate. Beside it, the share of refreshes that
+  brought no new frame, estimated as 1 - (frames a second x refresh) from each segment's own figures (the reports kept no raw intervals; the
+  phone's refresh as reported, 17 ms):
+
+| report | segment | frames a second | long frames | refreshes with no new frame |
+|---|---|---|---|---|
+| desktop D1, D2 | Play at half speed | 120.8, 120.2 | 0%, 0% | 16.6%, 17.1% |
+| desktop D1, D2 | Play at 4x | 124.3, 123.0 | 0%, 0% | 14.2%, 15.1% |
+| desktop D1, D2 | the Overview's orbit | 143.5, 142.9 | 0%, 0% | 1.0%, 1.4% |
+| phone R1, R2 | phase 8's Overview, the As (median of 12 each) | 40.55, 41.55 | 20.25%, 16.6% | 31.1%, 29.4% |
+| phone R1, R2 | Play at half speed, the As | 43.2, 43.5 | 9.35%, 7.2% | 26.6%, 26.1% |
+| phone R1, R2 | Play, the figures hidden (2 blocks each) | 58.8, 59.45 | 0%, 0% | 0.3%, 0% |
+
+  On the desktop Play's long-frame share is 0% while about one refresh in six brings no new frame; on the phone about three refreshes in ten in
+  the Overview and one in four in Play. The route records this share itself from version 4 (`missedPct`, with the raw intervals).
+- **Over-readings** (`CL-PERF-08`). Section 25.1's "the figures and standards are what a phone's frame waits on" reads as the one cause: *read instead:*
+  hiding them raised Play from about 43 to about 59 frames a second and the Overview from about 41 to about 48, the latter still with up to 11.1% long
+  frames; they are the largest measured cost, not the only one. Section 24.1's "the gait adds none": *read instead:* its cost was not measurable on the
+  desktop (the script's median 7.2-7.4 ms with it, 7.2-7.3 at rest; the GPU's 4.5-4.6 on both sides, the better evidence) or on the phone (43.0
+  against 43.3 frames a second); at rest its per-frame checks and the vertex hook's branch remain.
+- **Small inaccuracies** (`CL-PERF-09`). (1) The largest rise in calls against L3 among the build's own 4x segments is +1.4% (phase 8's Overview
+  orbiting 809 to 820, Play at half speed 794 to 805), not +0.8%. (2) The nine long frames are those after each segment's first 0.5 s: four desktop
+  segments hold a frame over 25 ms inside it (D2's Overview held, 34.9 ms; the culling, effects and gait routes' warm-ups, 76.5, 34.7 and 41.7 ms).
+  (3) As above, 1,364,249. (4) The medians 43.35 and 18.15 were printed 43.3 and 18.1, and the culling warm-up's 59.9 printed 60. (5) "Checked by
+  script": no checking script had been committed; `tools/audit-post8/perf/reconcile.js` (the audit's) and `tools/final-stage7/device-reread.js` (this
+  section's) now are.
+- **The 329 ms frame** (the phone's first effects-off block, "fx B AB 1.1", 56.7 frames a second, one interval of 329 ms; `CL-PERF-10`; not in section
+  25.2). Measured here (`tools/final-stage7/fx-off-probe.js`, `docs/final-stage7-evidence/wp12/fx-off-probe.json`):
+  a page at the phone's tier (402 x 714, an iPhone's user agent: `lowTier`, density 1, no shadow), the low Pratzen view at 4x, the effects switched
+  off, on, off and on, each followed by twelve frames on animation frames of their own. The first switch to effects off compiles 22 programs (32 to 54):
+  the standard path draws with another output encoding and tone mapping, so every material needs a program of its own there. Its first frame took
+  2.6 s on this machine's software WebGL (6.5-6.7 s when the frames ran back to back). The later switches compile none, and their frames take 5-15
+  ms. The route samples a block from 0.3 s after its switch and drops its first 0.5 s, and three r128 compiles a material's program when the material
+  is first drawn, so an orbit that brings other materials into view compiles theirs later. That the 329 ms frame was such a compile is an inference
+  (it fits the block it fell in, the first effects-off block, at least 0.8 s after the switch, and no later block); the phone's own compile times are
+  not measured. Put to the owner as question 323 and decided (b) under the owner's instruction: recorded, nothing changed (the effects-off path is
+  the visitor's F key alone, once a session, and on the phone it was not the faster, section 25.2).
+- **The two phone readings are not equally strong** (section 25.1's "Two readings" and decision 269 (a); `CL-PERF-06`). P5 measured Stage 8's own
+  starting build (`c4793156...`) by the ordinary route: Play at half speed 53 frames a second, the Overview's orbit 47. This build's phone route gives
+  43.35 and 40.8. Read across routes, that is a slowdown of about 18% and 13%, one session each. The P3/P4 proxy, the other reading, is dominated by the
+  phone's state then (its As at 21.0 and 27.1, all long). P5's reading is the stronger of the two, and one session. Decision 269 (b), the ordinary route
+  run twice on this build, is the measurement that settles it: it is in the device protocol of the final audits' Stage 7
+  (`docs/final-stage7-evidence/device-protocol.md`), at the owner's convenience (decision 278 (a)).
+- **Section 8.5's rule** (`CL-PERF-11`). It is weak at both refresh rates: its median clause allows one refresh (6.9 ms at 144 Hz, from 144 to about
+  72 frames a second; 17 ms at 60 Hz, from 60 to 30), and its long-frame clause has a 25 ms floor. The rule is decision 250 (b)'s, unchanged; the
+  route now reports the missed-refresh share beside it, from which a clause such as "1 - fps x R rising by more than 5 points" could be judged if the
+  owner revisits it.
+- **The integrated GPU** (section 24.1; `CL-PERF-02`). Not measured, as before. Its absence stands as a limit (decision 278 (b)) until the owner runs
+  the protocol on such a machine.

@@ -7,7 +7,7 @@
    Each replacement must apply exactly once.
    - "block": the replacements on a copy of the build, then one of the self-test's blocks alone on a fresh page (tools/final-stage6/run-block.js);
      the checks named must fail and every other check of the block pass.
-   node tools/final-stage7/mutate.js <set> [--json out.json] [--only name,name]   (sets: wp14, wp16, wp16b)
+   node tools/final-stage7/mutate.js <set> [--json out.json] [--only name,name]   (sets: wp14, wp16, wp16b, wp12)
    Measurement only; nothing is written to a source file of this tree. */
 "use strict";
 const fs=require("fs"), path=require("path"), os=require("os"), crypto=require("crypto"), cp=require("child_process");
@@ -54,6 +54,14 @@ SETS.wp16b=[
   {name:"CL-PERF-12: the phase's own attribute declared again", kind:"src", suite:"css-test.js", expect:"not one attribute a figure",
     rep:[["app.js",'ANIM.decl=["attribute float aPart;","attribute vec3 aSl;",','ANIM.decl=["attribute float aPart;","attribute float aPh;","attribute vec3 aSl;",']]}
 ];
+const RS="tools/final-stage7/route-selfcheck.js", RP="tools/step6/perf-route.js";
+SETS.wp12=[
+  {name:"none (the route as it is)", kind:"src", suite:RS, expect:"__never__", rep:[], fails:[], pass:true},
+  {name:"WP-12: the raw intervals not kept", kind:"src", suite:RS, expect:"intervals for", rep:[[RP,"    o.iv=dt.map(function(d){ return Math.round(d*10)/10; });","    o.iv=[];"]]},
+  {name:"WP-12: the missed refreshes counted by floor", kind:"src", suite:RS, expect:"missedPct", rep:[[RP,"var k=Math.max(1,Math.round(d/R)); miss+=k-1;","var k=Math.max(1,Math.floor(d/R)); miss+=k-1;"]]},
+  {name:"WP-12: the maxima not recorded", kind:"src", suite:RS, expect:"under the median", rep:[[RP,"      o.callsMax=C.length?Math.max.apply(null,C):null; o.trisMax=T.length?Math.max.apply(null,T):null;\n",""]]},
+  {name:"WP-12: the refresh not measured again at the end", kind:"src", suite:RS, expect:"no refreshEndMs", rep:[[RP," out.refreshEndMs=dt.length>=20?r1(pct(dt,0.5)):null;"," void 0;"]]}
+];
 const S=SETS[argv[0]]; if(!S){ console.error("unknown set "+argv[0]+"; one of "+Object.keys(SETS).join(", ")); process.exit(2); }
 const dir=fs.mkdtempSync(path.join(os.tmpdir(),"mutate-s7-")), html=path.join(ROOT,"austerlitz-command-map.html"), src=fs.readFileSync(html,"utf8");
 const res={set:argv[0], build:crypto.createHash("md5").update(src).digest("hex"), bytes:Buffer.byteLength(src), mutations:[]};
@@ -81,8 +89,8 @@ for(const m of S){
     for(const [file,a,b] of m.rep){ const p=path.join(t,file), s=fs.readFileSync(p,"utf8"), n=s.split(a).length-1; if(n!==1){ applied=false; console.log("NOT APPLIED ("+n+"x): "+m.name); break; } fs.writeFileSync(p,s.replace(a,()=>b)); }
     let code=0; try{ cp.execFileSync("python3",["build.py"],{cwd:t,stdio:"ignore"}); out=cp.execFileSync("node",[m.suite],{cwd:t,encoding:"utf8",timeout:1800000,maxBuffer:1<<28}); }
     catch(e){ code=e.status||1; out=String(e.stdout||"")+String(e.stderr||""); }
-    if(code!==0&&out.indexOf(m.expect)>=0) failed.push(m.suite);
-    m.fails=[m.suite];
+    if(m.pass){ if(code!==0) failed.push(m.suite); m.fails=[]; }
+    else { if(code!==0&&out.indexOf(m.expect)>=0) failed.push(m.suite); m.fails=[m.suite]; }
     fs.rmSync(t,{recursive:true,force:true});
   }
   const ok=applied&&m.fails.every(x=>failed.indexOf(x)>=0)&&failed.every(x=>m.fails.indexOf(x)>=0);

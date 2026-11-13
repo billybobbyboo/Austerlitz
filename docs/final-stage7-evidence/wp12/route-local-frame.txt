@@ -1,0 +1,33 @@
+started in 20505 ms; the panel: The build has started (17 s). Press Start.
+Austerlitz step 6 frame-time route (step6-perf-route 4), 2026-11-13T06:37:29.277Z
+device: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36
+GPU: Google Inc. (Google) / ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); WebGL2 true; cores 4; memory 8 GB
+screen 1600x900, viewport 1600x900, devicePixelRatio 1, drawn at 1 (1600x900), lowTier false, effects true (scale 1.3), in a frame true
+load: DOM ready 20415 ms, load event 20415 ms, 3038148 bytes transferred
+build: 3037848 bytes, sha256 2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d; refresh 16.7 ms (at the end -); long frame > 25 ms; miss% the share of refreshes that brought no new frame; wake lock requested, not granted
+NOTE: the refresh could not be measured (0 idle frames): 16.7 ms assumed
+         segment             kind frames   fps     p50     p95     p99     max  long%  miss%    warm    js50    js95   gpu50   gpu95 calls     tris
+            idle             idle      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+        overview             held      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+        overview            orbit      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+        overview   orbit -figures      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+        overview   orbit -effects      1     5     200     200     200     200    100   91.7       -    16.6    16.6       -       -   820  2127472
+  pratzen-low-4x             held      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+  pratzen-low-4x            orbit      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+  pratzen-low-4x   orbit -figures      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+  pratzen-low-4x   orbit -effects      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+  pratzen-low-1x             held      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+  pratzen-low-1x            orbit      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+ pratzen-low-10x             held      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+ pratzen-low-10x            orbit      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+    ph8-overview             held      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+    ph8-overview            orbit      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+    ph8-overview   orbit -figures      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+    ph8-overview   orbit -effects      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+           paper             held      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+           paper              pan      0     -       -       -       -       -      -      -    16.7       -       -       -       -     -        -
+             eye             held      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+             eye             look      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+         play-4x           played      1    30    33.3    33.3    33.3    33.3    100     50       -  7004.8  7004.8       -       -   785  2184721
+       play-half           played      2   0.5  4249.9  4249.9  4249.9  4249.9    100   99.2       -    29.1    29.1       -       -   785  2184907
+console warnings and errors: 0 

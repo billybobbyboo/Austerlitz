@@ -1,0 +1,103 @@
+as expected none (the route as it is): failed []
+node:child_process:955
+    throw err;
+    ^
+
+Error: Command failed: node /tmp/mutate-s7-QEU69n/tree-1794550954971/tools/final-stage7/route-check.js /tmp/route-j9q205/r.json
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at Object.execFileSync (node:child_process:952:15)
+    at Object.<anonymous> (/tmp/mutate-s7-QEU69n/tree-1794550954971/tools/final-stage7/route-selfcheck.js:10:4)
+    at Module._compile (node:internal/modules/cjs/loader:1781:14)
+    at Object..js (node:internal/modules/cjs/loader:1913:10)
+    at Module.load (node:internal/modules/cjs/loader:1505:32)
+    at Function._load (node:internal/modules/cjs/loader:1309:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 3926,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v22.23.4
+as expected WP-12: the raw intervals not kept: failed [tools/final-stage7/route-selfcheck.js]
+node:child_process:955
+    throw err;
+    ^
+
+Error: Command failed: node /tmp/mutate-s7-QEU69n/tree-1794551071717/tools/final-stage7/route-check.js /tmp/route-EPRhfN/r.json
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at Object.execFileSync (node:child_process:952:15)
+    at Object.<anonymous> (/tmp/mutate-s7-QEU69n/tree-1794551071717/tools/final-stage7/route-selfcheck.js:10:4)
+    at Module._compile (node:internal/modules/cjs/loader:1781:14)
+    at Object..js (node:internal/modules/cjs/loader:1913:10)
+    at Module.load (node:internal/modules/cjs/loader:1505:32)
+    at Function._load (node:internal/modules/cjs/loader:1309:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 4050,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v22.23.4
+as expected WP-12: the missed refreshes counted by floor: failed [tools/final-stage7/route-selfcheck.js]
+node:child_process:955
+    throw err;
+    ^
+
+Error: Command failed: node /tmp/mutate-s7-QEU69n/tree-1794551188303/tools/final-stage7/route-check.js /tmp/route-0x7uLw/r.json
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at Object.execFileSync (node:child_process:952:15)
+    at Object.<anonymous> (/tmp/mutate-s7-QEU69n/tree-1794551188303/tools/final-stage7/route-selfcheck.js:10:4)
+    at Module._compile (node:internal/modules/cjs/loader:1781:14)
+    at Object..js (node:internal/modules/cjs/loader:1913:10)
+    at Module.load (node:internal/modules/cjs/loader:1505:32)
+    at Function._load (node:internal/modules/cjs/loader:1309:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 4175,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v22.23.4
+as expected WP-12: the maxima not recorded: failed [tools/final-stage7/route-selfcheck.js]
+node:child_process:955
+    throw err;
+    ^
+
+Error: Command failed: node /tmp/mutate-s7-QEU69n/tree-1794551307854/tools/final-stage7/route-check.js /tmp/route-NrjKdC/r.json
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at Object.execFileSync (node:child_process:952:15)
+    at Object.<anonymous> (/tmp/mutate-s7-QEU69n/tree-1794551307854/tools/final-stage7/route-selfcheck.js:10:4)
+    at Module._compile (node:internal/modules/cjs/loader:1781:14)
+    at Object..js (node:internal/modules/cjs/loader:1913:10)
+    at Module.load (node:internal/modules/cjs/loader:1505:32)
+    at Function._load (node:internal/modules/cjs/loader:1309:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 4299,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v22.23.4
+as expected WP-12: the refresh not measured again at the end: failed [tools/final-stage7/route-selfcheck.js]
+every mutation as expected
+done

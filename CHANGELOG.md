@@ -1,8 +1,89 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 7 (WP-12): the device evidence (CL-PERF-01 to -11)
+
+**Status: on `claude/admiring-dirac-m1syqs-device`, a draft PR into `main`, for review, not merged.** WP-12 of `docs/ROADMAP_FINAL_AUDIT.md`, the last
+pass of Stage 7, with WP-11's rule alongside. Records, the device route and the protocol for the owner's runs. No source of the build, no data
+and no build changes: `austerlitz-command-map.html` is unchanged, 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`, and `check:baseline`
+stays on it. **No device result is filled in:** none was run here, and none was given.
+
+### The records corrected (`docs/STAGE8_SPEC.md` section 27)
+
+Section 26's convention is kept: sections 24 and 25 are left as written, and section 27 says what holds. Each correction was checked against the
+reports' JSON as committed (`tools/final-stage7/device-reread.js`, `docs/final-stage7-evidence/wp12/device-reread.*`):
+- **"after the phone warms"** (`CL-PERF-01`): *was* stated, in four places and in the text carried by decision 269 (a); *is* "in the blocks after the 45 s
+  warm-up". No report records temperature or throttling. Play's 24 A blocks ran at 42.8-43.8 frames a second throughout; whether the phone throttled
+  is unknown. `CLAUDE.md` and `docs/ROADMAP.md` corrected in place.
+- **The browser** (`CL-PERF-04`): *was* "the same desktop as step 6's L1-L3: Chrome 156"; *is* L1-L3 on Chrome 155, D1 and D2 on Chrome 156, read
+  from the reports' user agents.
+- **Medians called medians** (`CL-PERF-05`, `-09`): *was* "the heaviest frame"; *is* "the largest segment median" (the route recorded no
+  maxima). The phone's figure is 1,364,249 triangles in the build's own blocks, where section 25.1 printed 1,364,901, a gait-at-rest block's.
+- **The long-frame share beside a refresh-based measure** (`CL-PERF-03`): the long-frame share is the share of delivered frames over max(1.5
+  refreshes, 25 ms), not a dropped-frame rate. Beside it, the share of refreshes with no new frame, 1 - fps x R, from each segment's own figures:
+  desktop Play 16.6-17.1% at half speed and 14.2-15.1% at 4x, against long frames of 0%; phone Overview 29.4-31.1%, against 16.6-20.25%; phone Play
+  26.1-26.6%, against 7.2-9.35%.
+- **Over-readings** (`CL-PERF-08`): "what a phone's frame waits on" becomes the largest measured cost, not the only one; "the gait adds none" becomes
+  not measurable on either device.
+- **The small inaccuracies** (`CL-PERF-09`): the largest call rise against L3 is +1.4%, not +0.8%. Four desktop segments hold a frame over 25 ms
+  inside their uncounted first 0.5 s. Medians that were rounded in print now carry their exact values. The checking scripts are now committed.
+- **The 329 ms frame** (`CL-PERF-10`, question 323 (b)): measured here at the phone's tier (`tools/final-stage7/fx-off-probe.js`). The first switch
+  to effects off compiles 22 programs, its first frame 2.6 s on software WebGL; later switches compile none. That the phone's 329 ms frame was such
+  a compile is an inference. Recorded; nothing changed.
+- **The phone's two readings** (`CL-PERF-06`): P5's, Play 53 to 43.35 and the Overview 47 to 40.8 across routes, is the stronger, and one session.
+  Section 8.5's rule (`CL-PERF-11`) is recorded as weak at both refresh rates and is unchanged. The integrated GPU (`CL-PERF-02`) is unmeasured:
+  a limit (decision 278 (b)).
+
+### The device route, version 4 (`CL-PERF-03`, `-05`, `-07`; `tools/step6/perf-route.js`, `perf-run.html`)
+
+Every earlier field is kept as it was (`phone-rule.js` and the earlier reports read them). Each segment now also records:
+- the raw frame intervals (`iv`, 0.1 ms, after the warm-up) and a 1 ms histogram;
+- the share of refreshes that brought no new frame (`missedPct`), and the shares over 1.2 and 1.5 refreshes with no floor;
+- its largest calls and triangles of any frame, beside the medians;
+- the effects, culling and sun's shadow it ran with, and the clock it covered (now for the phone's and the brackets' played blocks too).
+
+Each report also records the refresh measured again at the end and the wake lock's result. The printed table has a `miss%` column. The versions:
+`step6-perf-route 4`, `step6-phone-route 2`, the brackets' `2`.
+
+### The protocol for the owner's runs (`docs/final-stage7-evidence/device-protocol.md`; decision 278 (a))
+
+- An integrated-GPU desktop or laptop: the ordinary route twice on Stage 7's build, and twice on Stage 6's final build.
+- The iPhone: the ordinary route twice on Stage 7's build (decision 269 (b)), and twice on P5's build, Stage 8's starting build, for the
+  like-for-like comparison P5 lacked.
+
+The three builds are in `docs/final-stage7-evidence/device/builds/` (`8c0d383e...`, `dcc65319...`, `c4793156...`; each loads three.js with its
+integrity hash), named on the page by `?src=`. Until the runs come, their absence stands as a limit, decision 278 (b).
+
+### Checks added, each failing without its change
+
+- `tools/final-stage7/route-check.js`: a route report holds what it says. Each segment's intervals match its frames, its histogram sums to them, and
+  its refresh shares are recomputed from its intervals; the maxima are at least the medians; the settings are recorded; every played block's clock
+  moves forward; the end refresh and the wake lock are present. It passes on the three local reports (`wp12/route-local-*.json`).
+- The negative controls (`tools/final-stage7/mutate.js wp12`; each a copy of the tree with one change put back, the route run quick through
+  `tools/final-stage7/route-selfcheck.js` and its report checked): 5 of 5 as expected (`wp12/mutate-wp12.*`). Four mutations each fail it: the raw intervals not
+  kept; the missed refreshes counted by floor (caught by the check's own run of the route's arithmetic on known intervals, `route-check.js --unit`:
+  on software WebGL every interval spans dozens of refreshes, and a recomputation from them alone could not tell floor from rounding, as the first
+  run of the controls showed); the maxima not recorded; the refresh not measured again at the end. The route as it is passes.
+
+### Verified
+
+- Here: `npm test` passes, with the nine suites, the height guard and the dead-code check (`wp12/npm-test.txt`). `check:data`: all 143 identical.
+  `check:chronology`: errors 0. `check:baseline` passes on `8c0d383e...`, unchanged.
+- The route, version 4, run end to end here three ways (`tools/step6/perf-local.js --quick`: the console way, the wrapper page, the phone route on an
+  iPhone's emulation): no console warning or error, each report passing `route-check.js` (`wp12/route-local-*.json`, `wp12/route-check.txt`). Their
+  times are software WebGL's and decide nothing. The refresh is not measured here (too few idle frames on software WebGL), so the end refresh reads
+  "not measured" as the start's does.
+- `check:selftest`, `check:contrast` and `check:visual` read the build, which this PR does not change. CI runs the first two on the PR; `check:visual`
+  is not needed.
+
+### What remains uncertain, and what is handed on
+
+- Every device reading is the owner's to make: the integrated GPU, and the phone's like-for-like before and after. Until then, Stage 7's
+  performance changes are shown on matched protocols in this container only, as CPU-side measures on software WebGL.
+- Stage 7 is complete once this PR is merged; the closing re-verification pass follows (`docs/ROADMAP_FINAL_AUDIT.md`).
+
 ## 2026-11 · Final audits' roadmap, Stage 7 (WP-16, 2 of 2): the kit's phase packed into its slopes (CL-PERF-12), the phone's workload profiled (CL-PERF-15)
 
-**Status: on `claude/admiring-dirac-m1syqs-perf2`, a draft PR into `main`, for review, not merged.** The rest of WP-16 of `docs/ROADMAP_FINAL_AUDIT.md`:
+**Status: merged into `main` (#107, `0268f29`); built on `claude/admiring-dirac-m1syqs-perf2`.** The rest of WP-16 of `docs/ROADMAP_FINAL_AUDIT.md`:
 decision 321 (a) (prototyped, measured on the same matched protocol as WP-16's first PR, adopted because its gain shows) and CL-PERF-15 measured.
 The owner's answer of 13 November 2026, "Your recommendations for all", confirms decisions 278, 283 and 317-321 as recorded
 (`docs/final-stage7-evidence/questions.md`), 320 (a) among them. Presentation only: no data file and no guarded declaration changes.

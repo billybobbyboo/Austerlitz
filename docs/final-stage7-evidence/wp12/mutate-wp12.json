@@ -1,0 +1,94 @@
+{
+ "set": "wp12",
+ "build": "8c0d383eb45a6f2a5522d04863824b7b",
+ "bytes": 3037848,
+ "mutations": [
+  {
+   "name": "none (the route as it is)",
+   "kind": "src",
+   "applied": true,
+   "expected": [],
+   "failed": [],
+   "ok": true,
+   "lines": []
+  },
+  {
+   "name": "WP-12: the raw intervals not kept",
+   "kind": "src",
+   "applied": true,
+   "expected": [
+    "tools/final-stage7/route-selfcheck.js"
+   ],
+   "failed": [
+    "tools/final-stage7/route-selfcheck.js"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL refreshStats' intervals ",
+    "FAIL overview orbit -effects: 0 intervals for 1 frames",
+    "FAIL overview orbit -effects: over12R 100, its intervals give NaN",
+    "FAIL overview orbit -effects: over15R 100, its intervals give NaN",
+    "Error: Command failed: node /tmp/mutate-s7-QEU69n/tree-1794550954971/tools/final-stage7/route-check.js /tmp/route-j9q205/r.json",
+    "    at genericNodeError (node:internal/errors:983:15)"
+   ]
+  },
+  {
+   "name": "WP-12: the missed refreshes counted by floor",
+   "kind": "src",
+   "applied": true,
+   "expected": [
+    "tools/final-stage7/route-selfcheck.js"
+   ],
+   "failed": [
+    "tools/final-stage7/route-selfcheck.js"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL refreshStats on known intervals: missedPct 30, want 36.4",
+    "FAIL overview orbit -effects: missedPct 90.9, its intervals give 91.7",
+    "Error: Command failed: node /tmp/mutate-s7-QEU69n/tree-1794551071717/tools/final-stage7/route-check.js /tmp/route-EPRhfN/r.json",
+    "    at genericNodeError (node:internal/errors:983:15)",
+    "    at checkExecSyncError (node:child_process:916:11)"
+   ]
+  },
+  {
+   "name": "WP-12: the maxima not recorded",
+   "kind": "src",
+   "applied": true,
+   "expected": [
+    "tools/final-stage7/route-selfcheck.js"
+   ],
+   "failed": [
+    "tools/final-stage7/route-selfcheck.js"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL overview orbit -effects: callsMax undefined under the median 820",
+    "FAIL overview orbit -effects: trisMax undefined under the median 2127430",
+    "FAIL play-half played: callsMax undefined under the median 783",
+    "FAIL play-half played: trisMax undefined under the median 2183497",
+    "Error: Command failed: node /tmp/mutate-s7-QEU69n/tree-1794551188303/tools/final-stage7/route-check.js /tmp/route-0x7uLw/r.json",
+    "    at genericNodeError (node:internal/errors:983:15)"
+   ]
+  },
+  {
+   "name": "WP-12: the refresh not measured again at the end",
+   "kind": "src",
+   "applied": true,
+   "expected": [
+    "tools/final-stage7/route-selfcheck.js"
+   ],
+   "failed": [
+    "tools/final-stage7/route-selfcheck.js"
+   ],
+   "ok": true,
+   "lines": [
+    "FAIL no refreshEndMs (the refresh measured again at the end)",
+    "Error: Command failed: node /tmp/mutate-s7-QEU69n/tree-1794551307854/tools/final-stage7/route-check.js /tmp/route-NrjKdC/r.json",
+    "    at genericNodeError (node:internal/errors:983:15)",
+    "    at checkExecSyncError (node:child_process:916:11)"
+   ]
+  }
+ ],
+ "allAsExpected": true
+}

@@ -24,7 +24,7 @@
    The developer readout's "frames drawn/s" (the ` key) is not a frame rate: the app renders on demand and idles; it is not used. */
 (function(root){
   "use strict";
-  var VERSION="step6-perf-route 3";
+  var VERSION="step6-perf-route 4";   /* 4: the final audits' Stage 7, WP-12 (CL-PERF-03, -05, -07; below) */
   /* the route: the views of the brief, with the harness's own camera for each (tools/visual/cases.js) */
   var OV=[-27,272,41,-27,0,9], FIELD=[-195,92,156,-33,4,-2];
   var PRATZEN={map:[285,289], dir:[-1.0,0.13,0.18], r:70};
@@ -46,7 +46,7 @@
   var SECS={idle:3, held:4, move:6, played:12, warm:0.5};
   /* decision 236's phone route (docs/STEP6_SPEC.md section 14): its version, the candidates in the order the rule reads them (the reference,
      the figures hidden, last), the warm-up and each block's seconds (design values), and the rounds */
-  var PHONE_VERSION="step6-phone-route 1";
+  var PHONE_VERSION="step6-phone-route 2";
   var PHONE={order:["figShadow","shadowPass","density1","density1Pass","figures"], warm:45, secs:6, rounds:2};
   /* Stage 8, implementation PR 8D (decisions 249 (a), 250 (b); docs/STAGE8_SPEC.md sections 8.5 and 16): the bracketed routes, one switch of a
      build compared with itself: ?route=cull in perf-run.html (or run(w,{cull:true})): culling on and off; ?route=fx (run(w,{fx:true})): the visual
@@ -59,7 +59,7 @@
      neighbouring Bs': "culling faster", "effects off slower"), the slower when every one says the opposite ("culling slower", "effects off
      faster"), else not shown. A build without the switch (before 8D, for culling) runs A alone and says so. The warm-up, the blocks' seconds and
      the rest are design values (a phone's as the phone route's: a 45 s warm-up, a 3-minute rest) */
-  var CULL_VERSION="stage8-cull-route 1", FX_VERSION="stage8-fx-route 1", GAIT_VERSION="stage8-gait-route 1";
+  var CULL_VERSION="stage8-cull-route 2", FX_VERSION="stage8-fx-route 2", GAIT_VERSION="stage8-gait-route 2";
   /* Stage 8, implementation PR 8E (decision 244 (a); docs/STAGE8_SPEC.md section 17): ?route=gait (run(w,{gait:true})): the gait on and at rest,
      with the clock played, so that its cost is separated from the richer kit's (the kit and its level of detail the same in A and B). Block A
      the build as it is (Play at half speed under Follow from 08:30 at the Field vantage, as the played segment play-half: the formations marching
@@ -83,6 +83,17 @@
       on:function(G){ return G("GAIT.KMH")<1e9; }, A:"the gait as built (Play at half speed)", B:"the gait at rest (every amplitude 0, no slope written)",
       faster:"the gait costs nothing (A faster)", slower:"the gait costs", none:"this build has no gait (before Stage 8's 8E): block A only, nothing compared"}};
 
+  /* WP-12: the refresh measures of a segment's intervals dt against the refresh R (ms), pure, so that a check can run it on known intervals
+     (tools/final-stage7/route-check.js --unit): over12R, over15R and missedPct in percent (none without R), iv (0.1 ms) and hist (1 ms) */
+  function refreshStats(dt,R){
+    var o={};
+    if(R){ var over12=0, over15=0, miss=0, span=0;
+      dt.forEach(function(d){ if(d>R*1.2) over12++; if(d>1.5*R) over15++; var k=Math.max(1,Math.round(d/R)); miss+=k-1; span+=k; });
+      o.over12R=dt.length?r1(100*over12/dt.length):null; o.over15R=dt.length?r1(100*over15/dt.length):null; o.missedPct=span?r1(100*miss/span):null; }
+    o.iv=dt.map(function(d){ return Math.round(d*10)/10; });
+    var h={}; dt.forEach(function(d){ var b=d>=100?"100+":String(Math.floor(d)); h[b]=(h[b]||0)+1; }); o.hist=h;
+    return o;
+  }
   function pct(a,p){ if(!a.length) return null; var s=a.slice().sort(function(x,y){ return x-y; }); return s[Math.min(s.length-1,Math.floor(p*(s.length-1)+0.5))]; }
   function r1(v){ return v==null?null:Math.round(v*10)/10; }
   function wait(w,ms){ return new Promise(function(res){ w.setTimeout(res,ms); }); }
@@ -136,6 +147,7 @@
       if(S.last){
         var ri=renderer.info.render;
         S.rows.push({t:ts-S.t0, dt:ts-S.last, drew:app.drew, js:app.drew?app.js:null, calls:app.drew?ri.calls:null, tris:app.drew?ri.triangles:null});
+        if(ts-S.t0>=SECS.warm*1000){ var ck=G("clock"); if(S.c0==null) S.c0=ck; S.c1=ck; }   /* WP-12: the clock the block covered */
       }
       S.last=ts; app.drew=false; pollQ();
       if(S.step) S.step((ts-S.t0)/1000);
@@ -148,15 +160,35 @@
       return new Promise(function(res){
         S.hidden=w.document.visibilityState!=="visible";
         var gen=++S.gen;
-        S.rows=[]; S.gpu=[]; S.last=0; S.step=step||null; S.keep=!!keep; S.on=true;
+        S.rows=[]; S.gpu=[]; S.last=0; S.step=step||null; S.keep=!!keep; S.on=true; S.c0=null; S.c1=null;
         w.requestAnimationFrame(function(ts){ if(gen!==S.gen) return; S.t0=ts; S.last=0; w.requestAnimationFrame(function(t){ tick(t,gen); }); });
-        w.setTimeout(function(){ S.on=false; S.step=null; S.keep=false; var r=S.rows.slice(); r.gpu=S.gpu.slice(); r.hidden=S.hidden; res(r); }, secs*1000+100);
+        w.setTimeout(function(){ S.on=false; S.step=null; S.keep=false; var r=S.rows.slice(); r.gpu=S.gpu.slice(); r.hidden=S.hidden; r.c0=S.c0; r.c1=S.c1; res(r); }, secs*1000+100);
       });
     }
     var refresh=null;
     /* a long frame: above 1.5 refresh intervals (a missed refresh), and never under 25 ms, so that a display faster than 60 Hz does not make a
        steady 60 frames a second a run of long frames */
     function longMs(){ return Math.max(1.5*refresh,25); }
+    /* the final audits' Stage 7, WP-12 (docs/FINAL_AUDIT_POST_STAGE8.md CL-PERF-03, -05, -07), beside the measures above, which are kept as
+       they were (phone-rule.js and the earlier reports read them):
+       - refreshes: the share of intervals above 1.2 refreshes (over12R: a refresh's jitter aside) and above 1.5 refreshes without the 25 ms floor (over15R), in percent; the
+         missed refreshes (each interval of k refreshes, k = its length over the refresh rounded, misses k-1) over all the refreshes the
+         segment spanned, missedPct, the share of refreshes that brought no new frame; longPct is the share of frames longer than longMs, not a
+         drop rate;
+       - the frame intervals themselves (iv, in 0.1 ms, after the warm-up) and a 1 ms histogram (hist: {ms: count}, 100 and over in "100+");
+       - the counts' maxima over the drawn frames beside their medians (callsMax, trisMax: calls and tris are medians);
+       - what the block ran with, read as it ends: the effects (fx), culling (cull), the sun casting a shadow (sunShadow), and the battle clock
+         at its first and last sampled frame (clockFrom, clockTo; a played block's clock covered) */
+    function refreshMeasures(dt,drawn,rows){
+      var o=refreshStats(dt,refresh);
+      var C=drawn.map(function(r){ return r.calls; }).filter(function(x){ return x!=null; }), T=drawn.map(function(r){ return r.tris; }).filter(function(x){ return x!=null; });
+      o.callsMax=C.length?Math.max.apply(null,C):null; o.trisMax=T.length?Math.max.apply(null,T):null;
+      try{ o.fx=!!G("FX.on"); }catch(e){ o.fx=null; }
+      try{ o.cull=!!G("typeof CULL!=='undefined'&&CULL.on"); }catch(e){ o.cull=null; }
+      try{ o.sunShadow=!!G("sun&&sun.castShadow&&renderer.shadowMap.enabled"); }catch(e){ o.sunShadow=null; }
+      if(rows.c0!=null) o.clockFrom=r1(rows.c0); if(rows.c1!=null) o.clockTo=r1(rows.c1);
+      return o;
+    }
     function summarise(id,kind,rows,extra){
       var warm=rows.filter(function(r){ return r.t<SECS.warm*1000; }), R=rows.filter(function(r){ return r.t>=SECS.warm*1000; });
       var dt=R.map(function(r){ return r.dt; }), drawn=R.filter(function(r){ return r.drew; });
@@ -167,7 +199,7 @@
         long:long, longPct:long==null||!dt.length?null:r1(100*long/dt.length),
         warmMax:r1(warm.length?Math.max.apply(null,warm.map(function(r){ return r.dt; })):null),
         js50:r1(pct(js,0.5)), js95:r1(pct(js,0.95)), gpu50:rows.gpu&&rows.gpu.length?r1(pct(rows.gpu,0.5)):null, gpu95:rows.gpu&&rows.gpu.length?r1(pct(rows.gpu,0.95)):null, gpuN:rows.gpu?rows.gpu.length:0,
-        calls:pct(drawn.map(function(r){ return r.calls; }),0.5), tris:pct(drawn.map(function(r){ return r.tris; }),0.5), hidden:!!rows.hidden}, extra||{});
+        calls:pct(drawn.map(function(r){ return r.calls; }),0.5), tris:pct(drawn.map(function(r){ return r.tris; }),0.5), hidden:!!rows.hidden}, refreshMeasures(dt,drawn,rows), extra||{});
     }
     /* ---- the moves: the camera written each frame through the app's own camera and clamp (no pointer events) ---- */
     function orbitStep(){
@@ -318,7 +350,12 @@
       });
       then(function(){ if(G("FX.on")!==fxWas) w.setFXEnabled(fxWas); out.bracketVerdict=has?bracketVerdict(out.segments,B):null; if(B===BRACKETS.cull) out.cullVerdict=out.bracketVerdict; });
     }
-    return seq.then(function(){ pendQ.forEach(function(P){ gl.deleteQuery(P.q); }); pendQ=[]; w.document.removeEventListener("visibilitychange",onVis); w.loop=origLoop; w.renderFrame=origRF; out.finished=new Date().toISOString(); out.text=format(out); return out; },
+    /* the final audits' Stage 7, WP-12 (CL-PERF-07): the refresh measured again at the end, the app's loop paused as at the start (a
+       display that changed its rate during the run, a phone's Low Power Mode or a laptop's battery saver, shows here) */
+    then(function(){ log("refresh again"); app.paused=true; return wait(w,1500).then(function(){ return sample(SECS.idle*scale); }).then(function(rows){ app.paused=false; w.requestRender(2);
+      var dt=rows.map(function(r){ return r.dt; }); out.refreshEndMs=dt.length>=20?r1(pct(dt,0.5)):null;
+      if(out.refreshEndMs&&out.refreshMs&&Math.abs(out.refreshEndMs-out.refreshMs)>1) out.notes.push("the refresh moved during the run: "+out.refreshMs+" ms at the start, "+out.refreshEndMs+" ms at the end"); }); });
+    return seq.then(function(){ pendQ.forEach(function(P){ gl.deleteQuery(P.q); }); pendQ=[]; w.document.removeEventListener("visibilitychange",onVis); w.loop=origLoop; w.renderFrame=origRF; out.finished=new Date().toISOString(); try{ out.wakeLock=o.wakeLock?String(o.wakeLock()):null; }catch(e){ out.wakeLock=null; } out.text=format(out); return out; },
       function(e){ app.paused=false; w.loop=origLoop; w.renderFrame=origRF; S.on=false; w.document.removeEventListener("visibilitychange",onVis);
         try{ figuresHidden(false); }catch(x){} try{ if(!G("FX.on")) w.setFXEnabled(true); }catch(x){}
         try{ renderer.shadowMap.autoUpdate=true; renderer.shadowMap.needsUpdate=true; kitMeshes().forEach(function(m){ if(m._cs!==undefined){ m.castShadow=m._cs; delete m._cs; } });
@@ -350,17 +387,18 @@
     L.push("screen "+(d.screen||[]).join("x")+", viewport "+(d.viewport||[]).join("x")+", devicePixelRatio "+d.dpr+", drawn at "+d.pixelRatio+" ("+(d.buffer||[]).join("x")+
       "), lowTier "+d.lowTier+", effects "+d.fx+" (scale "+d.fxScale+"), in a frame "+d.inFrame);
     if(d.load) L.push("load: DOM ready "+d.load.domReadyMs+" ms, load event "+d.load.loadMs+" ms, "+d.load.transferBytes+" bytes transferred");
-    L.push("build: "+(r.build?r.build.bytes+" bytes, sha256 "+r.build.sha256:"not read")+"; refresh "+r.refreshMs+" ms; long frame > "+(r.longMs||"-")+" ms");
+    L.push("build: "+(r.build?r.build.bytes+" bytes, sha256 "+r.build.sha256:"not read")+"; refresh "+r.refreshMs+" ms (at the end "+(r.refreshEndMs||"-")+"); long frame > "+(r.longMs||"-")+" ms; miss% the share of refreshes that brought no new frame; wake lock "+(r.wakeLock||"not reported"));
     r.notes.forEach(function(n){ L.push("NOTE: "+n); });
     r.segments.forEach(function(s){ if(s.hidden) L.push("NOTE: the page was hidden during "+s.id+" "+s.kind+": its numbers do not stand"); });
-    L.push(pad("segment",16)+pad("kind",17)+pad("frames",7)+pad("fps",6)+pad("p50",8)+pad("p95",8)+pad("p99",8)+pad("max",8)+pad("long%",7)+pad("warm",8)+pad("js50",8)+pad("js95",8)+pad("gpu50",8)+pad("gpu95",8)+pad("calls",6)+pad("tris",9));
-    r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)+
+    L.push(pad("segment",16)+pad("kind",17)+pad("frames",7)+pad("fps",6)+pad("p50",8)+pad("p95",8)+pad("p99",8)+pad("max",8)+pad("long%",7)+pad("miss%",7)+pad("warm",8)+pad("js50",8)+pad("js95",8)+pad("gpu50",8)+pad("gpu95",8)+pad("calls",6)+pad("tris",9));
+    r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.missedPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)+
       (s.set?"  density "+s.set.density+", shadow pass "+(s.set.shadowPass?"on":"off")+", figures casting "+s.set.figCast+"/"+s.set.fig+", shown "+s.set.figShown+"/"+s.set.fig:"")); });
     if(r.bracketVerdict) Object.keys(r.bracketVerdict).forEach(function(id){ var X=r.bracketVerdict[id]; L.push((r.route==="fx"?"EFFECTS ":r.route==="gait"?"GAIT ":"CULLING ")+id+": "+X.verdict+" ("+X.faster+" comparisons with A the faster, "+X.slower+" with A the slower, "+X.neither+" neither, "+X.missing+" missing)"); });
     L.push("AUS_PERF_JSON "+JSON.stringify(r,function(k,v){ return k==="text"?undefined:v; }));
     return L.join("\n");
   }
   var API={run:run, format:format, VERSION:VERSION, PHONE_VERSION:PHONE_VERSION, PHONE:PHONE, CULL_VERSION:CULL_VERSION, FX_VERSION:FX_VERSION, GAIT_VERSION:GAIT_VERSION, CULLR:CULLR, BRACKETS:BRACKETS, cullVerdict:cullVerdict, bracketVerdict:bracketVerdict, VIEWS:VIEWS, DIAG:DIAG, PLAYED:PLAYED, SECS:SECS, last:null};
+  API.refreshStats=refreshStats;   /* WP-12: for route-check.js --unit */
   root.AUS_PERF=API;
   /* pasted into the console of the build's own page: run there at once */
   if(root.AUSTERLITZ_DEBUG&&root.AUSTERLITZ_DEBUG.applyCase&&!root.AUS_PERF_NO_AUTORUN){
