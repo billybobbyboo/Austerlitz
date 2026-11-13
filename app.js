@@ -981,9 +981,9 @@ function kitPart(geo,p,s,rot,col,part){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot
    since implementation PR 8E (decision 244 (a); docs/STAGE8_SPEC.md sections 4.3 and 17) the gait they draw ----
    Every vertex of the figure kit's geometries (a man's coat and fixed parts, a rider's, a horse; since 8E the guns and limbers too) carries the
    part it belongs to, aPart (one float a vertex, in the geometry: the figure's own frame, feet at y 0, facing +z, in kit units, before the
-   instance's matrix), and since 8E each instance its own phase offset, aPh (a fraction of a cycle: a horse's own beat, fixed per instance and
+   instance's matrix), and since 8E each instance its own phase offset, aSl's third component (a fraction of a cycle: a horse's own beat, fixed per instance and
    set once, its rider's or its driver's the same; a man's 0, a formed body stepping together), in the geometry each mesh draws (kitWrap: the
-   kit's shared attributes and the mesh's own aPh). The hook (ANIM.body, after three's begin_vertex, in the kit's material and in its depth
+   kit's shared attributes and the mesh's own aSl). The hook (ANIM.body, after three's begin_vertex, in the kit's material and in its depth
    material, so that the shadow casts the pose drawn) moves a vertex by the mesh's uniforms: uAnimPhase (radians, the formation's distance along
    its modelled track over the stride: gaitStep), uAnimAmp (0 to 1: 0 draws the rest pose exactly, the branch not taken), uAnimTrot (0 to 1),
    uAnimRollG and uAnimRollL
@@ -1047,7 +1047,7 @@ function animHorseRoot(F,sf,sh){ var H=ANIM.HORSE, g=-1e9;
   for(var i=0;i<4;i++){ var Z=i<2?H.ZF:H.ZH, sl=i<2?sf:sh; for(var e=-1;e<=1;e+=2){ animRot(H.HIP-H.L,Z+e*H.HZ,H.HIP,Z,-F[i],_anU); g=Math.max(g,sl*(_anU[1]-Z-e*H.HZ)-(_anU[0]-(H.HIP-H.L))); } }
   return g; }
 var _anF=[0,0,0,0];
-/* where a vertex of part k stands (the hook's arithmetic in JavaScript): ph the instance's phase (the mesh's plus 2 pi x its aPh), amp, and o
+/* where a vertex of part k stands (the hook's arithmetic in JavaScript): ph the instance's phase (the mesh's plus 2 pi x its phase, aSl.z), amp, and o
    {trot, slope, rollG, rollL, knee} the mesh's other uniforms and the instance's slopes (its aSl: a man's [ahead, behind], a horse's [fore,
    hind]; or one number for both; clamped to ANIM.SLOPE), knee 1 where omitted */
 function animAt(k,x,y,z,ph,amp,out,o){
@@ -1273,13 +1273,16 @@ function kitGeo(kind,o,rich){
 function kitRiderFixedD(leg,head){ var G=kitShapes(), M=KIT.mat, P=kitPart, B=kitBox;
   return kitMerge([P(G.head,[0,1.68,0],null,null,M.skin)].concat(kitHat(head,1.745)).concat([
     P(B(0.11,0.34,0.14),[-0.14,0.98,0.05],null,[0.5,0,0],leg), P(B(0.11,0.34,0.14),[0.14,0.98,0.05],null,[0.5,0,0],leg)]),12); }
-/* a mesh's own geometry: the kit's shared attributes (position, normal, colour, part), its instances' own phase offsets (aPh, a fraction of a
+/* a mesh's own geometry: the kit's shared attributes (position, normal, colour, part), its instances' own phase offsets (aSl's third component since WP-16, a fraction of a
    cycle each) and their slopes ahead (aSl: the drawn ground's rise per unit along the way each faces, under a man, under a horse's fore and
    hind hooves, written at each seating of a formation the gait animates: layoutFigs). A formation's mutable state is never written into a
-   shared geometry: two meshes of one class share the attributes, not aPh or aSl */
-function kitWrap(g,ph,sl,gear){
+   shared geometry: two meshes of one class share the attributes, not aSl */
+/* the final audits' Stage 7, WP-16 (CL-PERF-12; owner decision 321 (a)): the instance's phase is aSl's third component, not an attribute of its
+   own ("aPh" until then): one instanced attribute fewer bound on every kit draw. aSl is [ahead, behind, phase] a figure; the slopes are the
+   layout's, the phase set once at the mesh's making and never written again */
+function kitWrap(g,sl,gear){
   var w=new THREE.BufferGeometry(); ["position","normal","color","aPart"].forEach(function(k){ if(g.attributes[k]) w.setAttribute(k,g.attributes[k]); });
-  w.setAttribute("aPh",ph); w.setAttribute("aSl",sl); w.userData=Object.assign({},g.userData,{src:g}); (gear?GEAR_ALL:KIT_ALL).push(w); return w; }
+  w.setAttribute("aSl",sl); w.userData=Object.assign({},g.userData,{src:g}); (gear?GEAR_ALL:KIT_ALL).push(w); return w; }
 /* a fixed phase per instance (0..1), set once from its index: a horse's own beat that never depends on where the block seats it */
 function kitPh(i){ var x=Math.sin(i*12.9898+78.233)*43758.5453; return x-Math.floor(x); }
 function figKit(){
@@ -1394,9 +1397,9 @@ function makeBlock(f,id){
      geometry of the mesh's own (kitWrap: the shared attributes and its instances' phase offsets, one attribute for both levels, so that a
      switch keeps every instance's beat); it starts at the simple level and kitLod switches the block's meshes together */
   ud.lod=[]; ud.lodRich=false;
-  function lodPair(m,pair,ph,gear){ var A=ph&&ph.isBufferAttribute?ph:new THREE.InstancedBufferAttribute(ph||new Float32Array(Math.max(1,m.count)),1),
-      S=new THREE.InstancedBufferAttribute(new Float32Array(2*Math.max(1,m.count)),2);
-    m.userData.lod={s:kitWrap(pair.s,A,S,gear), r:kitWrap(pair.r,A,S,gear)}; m.geometry=m.userData.lod.s; ud.lod.push(m); return m; }
+  function lodPair(m,pair,ph,gear){ var n=Math.max(1,m.count), P=ph&&ph.isBufferAttribute?ph.array:ph, S=new THREE.InstancedBufferAttribute(new Float32Array(3*n),3);
+    if(P) for(var i=0;i<n&&i<P.length;i++) S.array[i*3+2]=P[i];   /* WP-16 (CL-PERF-12): the phases into aSl's third component (a rider's his horse's, copied) */
+    m.userData.lod={s:kitWrap(pair.s,S,gear), r:kitWrap(pair.r,S,gear)}; m.geometry=m.userData.lod.s; ud.lod.push(m); return m; }
   /* the phase offsets of n instances: a horse's own beat (kitPh of its index, or of the index map gives: a driver takes his horse's), a man's 0 */
   function phases(n,horse,map){ var a=new Float32Array(Math.max(1,n)); if(horse) for(var i=0;i<n;i++) a[i]=kitPh(map?map(i):i); return new THREE.InstancedBufferAttribute(a,1); }
   function pairOf(kind,o){ return {s:kitGeo(kind,o,false), r:kitGeo(kind,o,true)}; }
@@ -1530,7 +1533,7 @@ function makeBlock(f,id){
           if(Sl) slopes(fg.rs[i],fg.rc[i],fg.horse,Sl,i*2); }
         cache.set(fg.src,c={L:L,Sl:Sl});
       }
-      L=c.L; var SA=fg.mesh.geometry.attributes.aSl; if(SA&&c.Sl){ var SAa=SA.array, Sn=Math.min(c.Sl.length,SAa.length); for(var q2=0;q2<Sn;q2++) SAa[q2]=c.Sl[q2]; SA.needsUpdate=true; }
+      L=c.L; var SA=fg.mesh.geometry.attributes.aSl; if(SA&&c.Sl){ var SAa=SA.array, Sn=Math.min(c.Sl.length>>1,SAa.length/3); for(var q2=0;q2<Sn;q2++){ SAa[q2*3]=c.Sl[q2*2]; SAa[q2*3+1]=c.Sl[q2*2+1]; } SA.needsUpdate=true; }   /* WP-16: three a figure, its phase kept */
       for(var j=0;j<fg.n;j++){
         _qa.setFromAxisAngle(_up0,fg.rots[j]).premultiply(C);
         _pv0.set(L[j*3], L[j*3+1]+fg.base[j*3+1], L[j*3+2]);
@@ -1545,7 +1548,7 @@ function makeBlock(f,id){
       for(var i=0;i<st.n;i++){
         var lx=st.shape?st.P[i*3]*sw:st.P[i*3], lz=st.shape?st.P[i*3+2]*sd:st.P[i*3+2];
         seatLocal(lx,lz,_gl);
-        if(SA&&i*2+1<SA.array.length) slopes(st.rs[i],st.rc[i],horse,SA.array,i*2);
+        if(SA&&i*3+2<SA.array.length) slopes(st.rs[i],st.rc[i],horse,SA.array,i*3);   /* WP-16: three a figure, the phase the third */
         _pv0.set(_gl.x, _gl.y+st.P[i*3+1], _gl.z);
         if(_pv0.x<X[0]) X[0]=_pv0.x; if(_pv0.x>X[1]) X[1]=_pv0.x; if(_pv0.z<X[2]) X[2]=_pv0.z; if(_pv0.z>X[3]) X[3]=_pv0.z; if(_pv0.y<X[4]) X[4]=_pv0.y; if(_pv0.y>X[5]) X[5]=_pv0.y;
         _qa.set(st.R[i*4],st.R[i*4+1],st.R[i*4+2],st.R[i*4+3]);
@@ -1896,7 +1899,7 @@ function placeStandards(g,sw,tilt){
    so that no vertex leaves the envelope animEnv gives the culling bounds). With uAnimAmp 0 the branch is not taken and the vertex is exactly
    three's own: the pose, the light, the fog and the shadow as before 8D (the self-test holds the frame to the frame without the hook). The
    uniforms belong to the mesh (m.userData.anim), shared by its two materials. Since 8E (decision 244 (a)) the hook also reads each instance's
-   phase offset (aPh) and the drawn ground's slopes under it (aSl, layoutFigs), and four uniforms more: the trot (uAnimTrot), the wheels' angles
+   phase offset (aSl.z) and the drawn ground's slopes under it (aSl, layoutFigs), and four uniforms more: the trot (uAnimTrot), the wheels' angles
    (uAnimRollG, uAnimRollL) and the knee (uAnimKnee, the rich kit's); gaitStep writes the gait's (the one writer), kitLodSet the knee, and the
    self-test's checks set them only on meshes they restore. The atmosphere's uniforms are given first, as every material's own hook gives
    them (atmoUniforms); the hook is one function, so every kit material shares one program and every kit depth material another (two programs
@@ -1905,8 +1908,8 @@ function animGLSL(){
   var f=function(v){ return (+v).toFixed(5); }, M=ANIM.MAN, H=ANIM.HORSE, W=ANIM.WHEEL;
   var v4=function(a){ return "vec4("+a.map(f).join(",")+")"; };
   return ["if(uAnimAmp>0.0&&aPart>0.5){",
-    "  float anK=floor(aPart+0.5), anA=min(uAnimAmp,1.0), anP=uAnimPhase+6.2831853*aPh;",
-    "  vec2 anSl=clamp(aSl,vec2(-"+f(ANIM.SLOPE)+"),vec2("+f(ANIM.SLOPE)+"));",   /* aSl: the drawn ground's slopes under this instance (a man's ahead and behind; a horse's fore and hind hooves) */
+    "  float anK=floor(aPart+0.5), anA=min(uAnimAmp,1.0), anP=uAnimPhase+6.2831853*aSl.z;",
+    "  vec2 anSl=clamp(aSl.xy,vec2(-"+f(ANIM.SLOPE)+"),vec2("+f(ANIM.SLOPE)+"));",   /* aSl: the drawn ground's slopes under this instance (a man's ahead and behind; a horse's fore and hind hooves) */
     "  vec2 anQ=transformed.yz; float anD=0.0;",
     "  if(anK>19.5&&anK<21.5){",   /* a wheel (20 the gun's, 21 the limber's), about its axle */
     "    anQ=anK<20.5?anRot(anQ,vec2("+f(W[20].r)+",0.0),uAnimRollG):anRot(anQ,vec2("+f(W[21].r)+",0.0),uAnimRollL);",
@@ -1931,7 +1934,7 @@ function animGLSL(){
     "  transformed.y=anQ.x+anD; transformed.z=anQ.y;",
     "}"].join("\n");
 }
-ANIM.decl=["attribute float aPart;","attribute float aPh;","attribute vec2 aSl;","uniform float uAnimPhase;","uniform float uAnimAmp;","uniform float uAnimTrot;",
+ANIM.decl=["attribute float aPart;","attribute vec3 aSl;","uniform float uAnimPhase;","uniform float uAnimAmp;","uniform float uAnimTrot;",
   "uniform float uAnimRollG;","uniform float uAnimRollL;","uniform float uAnimKnee;",
   "vec2 anRot(vec2 p,vec2 o,float a){ vec2 q=p-o; float c=cos(a), s=sin(a); return o+vec2(q.x*c-q.y*s,q.x*s+q.y*c); }"].join("\n");
 ANIM.body=animGLSL();
@@ -6119,7 +6122,7 @@ var WHEEL={cav:0.085, mixed:0.062, inf:0.050, guard:0.050, art:0.028, hq:0.10};
    - the phase: the distance the formation's modelled track has covered at the clock (gaitDistOf: every leg reached in full, the current one to
      the clock's fraction, in map units) over a stride (STRIDE: 6.6 map units a cycle of two steps for men, 16 for the cavalry's and the
      officers' horses, 12 for the teams; section 4.3's), so that a paused clock holds the pose, a halted formation does not step, and a clock
-     shows one pose however it was reached; a formed body steps together, each horse on its own beat (aPh, fixed per horse), a rider and a
+     shows one pose however it was reached; a formed body steps together, each horse on its own beat (aSl.z, fixed per horse), a rider and a
      driver on his horse's;
    - the wheels: turned by the teams' distance, ROLL spoke intervals of the gun's wheel a cycle, the limber's by the two wheels' sourced
      heights (so the two roll together; much slower than rolling without slip, as the feet slide), drawn within one spoke's interval (each
@@ -10109,6 +10112,19 @@ function wp16Checks(){
       ck("the label pass keeps the lights (WP-16, CL-PERF-14)",calls===0&&shadowRuns===want&&lit.length>0,
         N+" frames with nothing changed: "+calls+" programs looked up again ("+lit.length+" lit materials of "+mats.length+"; want 0), the shadow map drawn "+shadowRuns+" times (want "+want+": once a frame, by the world pass)");
     });
+    /* (3) CL-PERF-12 (decision 321 (a)): the phase is aSl's third component, so each figure's beat is the value its mesh was made with: a horse
+       kitPh of its index, its rider and his coat on the same beat (one table for the three), a man on foot 0; one attribute for both levels */
+    guard("each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)",function(){
+      var bad=[], n=0, meshes=0;
+      Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.dress) return;
+        u.dress.forEach(function(rec){ (rec.meshes||[]).forEach(function(m){ var L=m.userData.lod, SA=m.geometry.attributes.aSl; meshes++;
+          if(!SA||SA.itemSize!==3){ bad.push(id+": "+(SA?"aSl "+SA.itemSize+" a figure":"no aSl")); return; }
+          if(m.geometry.attributes.aPh) bad.push(id+": a phase attribute of its own still bound");
+          if(L&&(L.s.attributes.aSl!==SA||L.r.attributes.aSl!==SA)) bad.push(id+": the two levels not on one attribute");
+          for(var i=0;i<m.count;i++){ n++; var want=rec.mounted?Math.fround(kitPh(i)):0, got=SA.array[i*3+2];
+            if(got!==want){ if(bad.length<6) bad.push(id+" "+(m.userData.kit&&m.userData.kit.part)+" #"+i+": phase "+got+", its beat "+want); else bad.push("..."); break; } } }); }); });
+      ck("each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)",!bad.length&&n>0,bad.length?bad.slice(0,7).join("; "):n+" figures in "+meshes+" meshes, each at its beat (a horse, its rider and his coat kitPh of their index, a man on foot 0), both levels on one attribute");
+    });
     guard("the free rectangle kept by its inputs (WP-16, CL-PERF-13)",function(){
       var S=MAPCAM.frStats, bad=[], eq=function(a,b){ return a.length===4&&b.length===4&&a.every(function(x,i){ return x===b[i]; }); };
       var cases=[[null,null],[[1,1],null],[[3,1],null],[null,[[0,0,300,200]]],[[1,2],[[100,100,500,400],[900,0,1366,120]]]];
@@ -10378,9 +10394,9 @@ function wp10Checks(){
             for(var i=0;i<o.count;i++){ o.getMatrixAt(i,m); v.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);
               D.forEach(function(d){ if(!inside(d,v.x,v.z,1)) return; n++; nF++; var dep=d.y-v.y;
                 if(dep>0.01){ under++; uF++; if(dep>worst){ worst=dep; at=id+" at "+fmtClock(t)+", x"+F+" ("+d.name+")"; } }
-                if(SA&&i*2+1<SA.array.length&&inside(d,v.x,v.z,0.8)){ var level=true;
+                if(SA&&i*3+1<SA.array.length&&inside(d,v.x,v.z,0.8)){ var level=true;
                   for(var k=0;k<8&&level;k++){ var a=k*Math.PI/4, x=v.x+2.5*Math.cos(a), z=v.z+2.5*Math.sin(a); if(!inside(d,x,z,1)||groundY(x,z)>d.y-0.01) level=false; }
-                  if(level){ nSl++; var s=Math.max(Math.abs(SA.array[i*2]),Math.abs(SA.array[i*2+1])); if(s>1e-4){ slBad++; slWorst=Math.max(slWorst,s); } } } }); } }); }); });
+                  if(level){ nSl++; var s=Math.max(Math.abs(SA.array[i*3]),Math.abs(SA.array[i*3+1])); if(s>1e-4){ slBad++; slWorst=Math.max(slWorst,s); } } } }); } }); }); });
       perF.push("x"+F+": "+nF+" inside, "+uF+" under");
     });
     ck("the meres (WP-10, CL-VIS-01): every man, horse, piece and tent inside a mere's drawn disc stands on its ice (a block's own mesh, the marquee, its lowest point), at 4x and 10.33x, and the gait's slopes on the ice are level",
@@ -14359,7 +14375,7 @@ var AUSTERLITZ_DEBUG=(function(){
       /* the gait's state of every kit mesh of the blocks shown: their uniforms */
       function pose(){ var o={}; shown().forEach(function(id){ var G=units[id].block.userData.gait; if(!G) return;
         var u=units[id].block.userData; G.meshes.forEach(function(m,j){ var U=m.userData.anim, SA=m.geometry.attributes.aSl;
-          o[id+"#"+j]=[U.uAnimAmp.value,U.uAnimPhase.value,U.uAnimTrot.value,U.uAnimRollG.value,U.uAnimRollL.value,U.uAnimKnee.value,(SA&&u.slopeSeat&&U.uAnimAmp.value>0)?Array.prototype.slice.call(SA.array,0,2*m.count):null]; }); });
+          o[id+"#"+j]=[U.uAnimAmp.value,U.uAnimPhase.value,U.uAnimTrot.value,U.uAnimRollG.value,U.uAnimRollL.value,U.uAnimKnee.value,(SA&&u.slopeSeat&&U.uAnimAmp.value>0)?Array.prototype.slice.call(SA.array,0,3*m.count):null]; }); });
         return o; }
       /* field by field, exactly; the instances' slopes (the seventh, where the gait draws them) within STOL: the seating follows the block's tilt,
          turn and shape, which ease to the clock's within their thresholds, and the slopes are the smooth gradient's under each figure there; the
@@ -14507,8 +14523,8 @@ var AUSTERLITZ_DEBUG=(function(){
         var dBad=[], own=new Set(), nM=0, srcs=[], sums=new Map();
         Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.lod) return;
           u.lod.forEach(function(m){ nM++; var L=m.userData.lod; [L.s,L.r].forEach(function(w){ if(own.has(w)) dBad.push(id+": a mesh's own geometry drawn by another"); own.add(w); var s=w.userData.src;
-            if(!s) dBad.push(id+": a mesh drawing a shared geometry itself"); else { ["position","normal","color","aPart"].forEach(function(k){ if(s.attributes[k]&&w.attributes[k]!==s.attributes[k]) dBad.push(id+": "+k+" copied, not shared"); }); if(s.attributes.aPh) dBad.push("a shared geometry carries phases"); if(srcs.indexOf(s)<0) srcs.push(s); } });
-            if(L.s.attributes.aPh!==L.r.attributes.aPh) dBad.push(id+": the two levels' phases not one attribute"); }); });
+            if(!s) dBad.push(id+": a mesh drawing a shared geometry itself"); else { ["position","normal","color","aPart"].forEach(function(k){ if(s.attributes[k]&&w.attributes[k]!==s.attributes[k]) dBad.push(id+": "+k+" copied, not shared"); }); if(s.attributes.aSl) dBad.push("a shared geometry carries phases or slopes"); if(srcs.indexOf(s)<0) srcs.push(s); } });
+            if(L.s.attributes.aSl!==L.r.attributes.aSl) dBad.push(id+": the two levels' phases and slopes not one attribute"); }); });
         var sum=function(a){ var x=0; for(var i=0;i<a.length;i+=7) x+=a[i]*((i%13)+1); return x; };
         srcs.forEach(function(s){ sums.set(s,[sum(s.attributes.position.array),s.attributes.position.version,s.attributes.aPart?s.attributes.aPart.version:-1]); });
         [600,720,830,905].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); settle(4,true); });
@@ -14549,10 +14565,10 @@ var AUSTERLITZ_DEBUG=(function(){
         /* each animated block's slopes against a fresh seating at the pose they were taken at (the block's turn and place, slSig: the seating
            itself, as before 8E, re-seats a block only once it has moved past its thresholds), then the block put back as it was */
         shown().forEach(function(id){ var b=units[id].block, bu=b.userData, G=bu.gait, S9=bu.slSig; if(!G||!(G.amp>0)||!S9) return; if(bu.slopeStale) pBad++;
-          var got=G.meshes.map(function(m){ var SA=m.geometry.attributes.aSl; return SA?Array.prototype.slice.call(SA.array,0,2*m.count):null; });
+          var got=G.meshes.map(function(m){ var SA=m.geometry.attributes.aSl; return SA?Array.prototype.slice.call(SA.array,0,3*m.count):null; });
           pP.copy(b.position); pQ.copy(b.quaternion); b.position.x=S9[0]; b.position.z=S9[1]; b.quaternion.set(S9[2],S9[3],S9[4],S9[5]); bu.layout(bu.sw,bu.sd,true);
           G.meshes.forEach(function(m,j){ var SA=m.geometry.attributes.aSl; if(!SA||!got[j]) return; pN++;
-            for(var q=0;q<got[j].length;q++) if(Math.abs(SA.array[q]-got[j][q])>1e-6){ pBad++; eBad.push("paused after Play: "+id+"'s slopes not the clock's (instance "+(q>>1)+": "+got[j][q]+" against "+SA.array[q]+")"); return; } });
+            for(var q=0;q<got[j].length;q++) if(Math.abs(SA.array[q]-got[j][q])>1e-6){ pBad++; eBad.push("paused after Play: "+id+"'s slopes not the clock's (instance "+Math.floor(q/3)+": "+got[j][q]+" against "+SA.array[q]+")"); return; } });
           b.position.copy(pP); b.quaternion.copy(pQ); bu.layout(bu.sw,bu.sd); });
         eT.push("Play at half speed for 24 steps and four slow ones: "+sSeat+" seatings, "+sWant+" of animated formations, "+sTook+" of them taking the slopes ("+stale+" blocks left behind at the last step); paused: "+pN+" meshes' slopes exactly the clock's");
         if(!(sTook<sWant)) eBad.push("while the clock played every animated formation's seating took the slopes ("+sTook+" of "+sWant+": no step rule)");
@@ -14859,7 +14875,8 @@ var AUSTERLITZ_DEBUG=(function(){
         /* [error, the raised point's lift over it, the largest resting offset] of a posed instance against its rest (r0: its rest offsets) */
         function hErr(pts,r0,ph,amp,sl,knee,trot){ hOffs(pts,ph,amp,sl,knee,trot,hP1); var e=1e9, mx=-1e9, rs=0;
           for(var j=0;j<pts.length;j++){ var d=hP1[j]-r0[j]; if(d<e) e=d; if(d>mx) mx=d; if(Math.abs(r0[j])>rs) rs=Math.abs(r0[j]); } return [e,mx-e,rs]; }
-        function hSl(m,i){ var SA=m.geometry.attributes.aSl.array; return [SA[i*2],SA[i*2+1]]; }
+        function hSl(m,i){ var SA=m.geometry.attributes.aSl.array; return [SA[i*3],SA[i*3+1]]; }
+        function hPh(m,i){ return m.geometry.attributes.aSl.array[i*3+2]; }   /* WP-16 (CL-PERF-12): the instance's phase, aSl's third */
         function hMeshes(G){ return G.meshes.filter(function(m){ var k=m.userData.gaitKind, part=m.userData.kit&&m.userData.kit.part; if(!(k==="man"&&part==="fixed")&&!(k!=="gear"&&part==="horse")) return false;
           for(var a=m;a;a=a.parent) if(!a.visible) return false; return true; }); }
         /* the simple kit's error in CSS pixels at its largest size on the screen (a man KLOD.IN px tall, his block's scale sc) */
@@ -14879,11 +14896,11 @@ var AUSTERLITZ_DEBUG=(function(){
           [545,640,830].forEach(function(t){ at(t,"terrain","watch"); settle(24,true);
             shown().forEach(function(id){ var b=units[id].block, G=b.userData.gait, bu=b.userData; if(!G) return;
               bu.layout(bu.sw,bu.sd,true); b.updateMatrixWorld(true);   /* the slopes as the gait draws a block it animates */
-              hMeshes(G).forEach(function(m){ var horse=m.userData.kit.part==="horse", ph=m.geometry.attributes.aPh, step=Math.max(1,Math.floor(m.count/24)), sc=b.scale.x||1, trot=m.userData.anim.uAnimTrot.value;   /* the horse's own gait */
+              hMeshes(G).forEach(function(m){ var horse=m.userData.kit.part==="horse", ph=true, step=Math.max(1,Math.floor(m.count/24)), sc=b.scale.x||1, trot=m.userData.anim.uAnimTrot.value;   /* the horse's own gait */
                 [["simple",0],["rich",1]].forEach(function(LV){ var S2=[["drawn",hSoles(LV[1]?m.userData.lod.r:m.userData.lod.s,horse)],["edges",hEdges(horse,LV[1]===1)]];
                   for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=hSl(m,i);
                     S2.forEach(function(S){ var r0=hOffs(S[1],0,0,sl,LV[1],trot,[]);
-                      for(var pi=0;pi<8;pi++){ var phv=pi/8*2*Math.PI+2*Math.PI*(ph?ph.array[i]:0), r=hErr(S[1],r0,phv,1,sl,LV[1],trot);
+                      for(var pi=0;pi<8;pi++){ var phv=pi/8*2*Math.PI+2*Math.PI*hPh(m,i), r=hErr(S[1],r0,phv,1,sl,LV[1],trot);
                         hRec(F+"|"+(horse?"horses":"men")+"|"+S[0]+"|fresh|"+LV[0],r,id+" #"+i+" ("+LV[0]+") at "+fmtClock(t)+", phase "+phv.toFixed(2),LV[1]?undefined:hSimplePx(r[0],sc)); } }); } }); }); }); }); });
         setDisplayFactor(keepE.f);
         /* in motion, through the app's own loop at 4x and 10.33x */
@@ -14894,10 +14911,10 @@ var AUSTERLITZ_DEBUG=(function(){
         function hPx(e){ _hp.set(V.x,V.y,V.z).project(camera); if(!(Math.abs(_hp.x)<=1&&Math.abs(_hp.y)<=1&&_hp.z>-1&&_hp.z<1)) return undefined;
           _hq.set(V.x,V.y+e,V.z).project(camera); return Math.hypot((_hp.x-_hq.x)*hW/2,(_hp.y-_hq.y)*hH/2); }
         function hJudge(F,tag){ Object.keys(units).forEach(function(id){ var b=units[id].block, G=b&&b.userData.gait; if(!b||!b.visible||!G||!(G.amp>0)) return; b.updateMatrixWorld(true);
-            hMeshes(G).forEach(function(m){ var horse=m.userData.kit.part==="horse", U=m.userData.anim, ph=m.geometry.attributes.aPh, rich=U.uAnimKnee.value===1, step=Math.max(1,Math.floor(m.count/12));
+            hMeshes(G).forEach(function(m){ var horse=m.userData.kit.part==="horse", U=m.userData.anim, ph=true, rich=U.uAnimKnee.value===1, step=Math.max(1,Math.floor(m.count/12));
               if(rich!==!!b.userData.lodRich) hBad.push(id+": its knee not its level's");
               var S2=[["drawn",hSoles(m.geometry,horse)],["edges",hEdges(horse,rich)]];
-              for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=hSl(m,i), phv=U.uAnimPhase.value+2*Math.PI*(ph?ph.array[i]:0);
+              for(var i=0;i<m.count;i+=step){ m.getMatrixAt(i,Mi); Mw.multiplyMatrices(m.matrixWorld,Mi); var sl=hSl(m,i), phv=U.uAnimPhase.value+2*Math.PI*hPh(m,i);
                 S2.forEach(function(S){ var r0=hOffs(S[1],0,0,sl,U.uAnimKnee.value,U.uAnimTrot.value,[]), r=hErr(S[1],r0,phv,U.uAnimAmp.value,sl,U.uAnimKnee.value,U.uAnimTrot.value);
                   hOffs(S[1],phv,U.uAnimAmp.value,sl,U.uAnimKnee.value,U.uAnimTrot.value,hP1);   /* V: the last point posed, for its pixels */
                   hRec(F+"|"+(horse?"horses":"men")+"|"+S[0]+"|motion|"+(rich?"rich":"simple"),r,id+" #"+i+" ("+(rich?"rich":"simple")+") at "+fmtClock(clock)+" "+tag,hPx(Math.abs(r[0]))); }); } }); }); }

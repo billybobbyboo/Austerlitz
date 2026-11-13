@@ -1,0 +1,6 @@
+as expected none (the build as it is): failed []
+as expected CL-PERF-12: the phases not copied into aSl: failed [each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)]
+as expected CL-PERF-12: the phases into a slope's place: failed [each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)]
+as expected CL-PERF-12: the layout's slopes copied two a figure over the phases: failed [each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)]
+as expected CL-PERF-12: the phase's own attribute declared again: failed [css-test.js]
+every mutation as expected

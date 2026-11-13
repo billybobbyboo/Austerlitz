@@ -1,0 +1,53 @@
+01:44:43 A booted: firstFrame 8484 ms, bootGone 17470, init 5891.1 ms; held
+01:45:04 P booted: firstFrame 8335 ms, bootGone 16712, init 5701.6 ms; held
+01:45:12 play-half #0 A: cpu 11.027 wait 0.028 | loop p50 10.7 | upd 2.1 ml 1.1 three 5.9 | calls 785 | clock 513.1-525.0 | load 2.86 3.17 2.78
+01:45:20 play-half #1 P: cpu 10.191 wait 0.045 | loop p50 10 | upd 1.9 ml 1.1 three 5.6 | calls 785 | clock 513.1-525.0 | load 2.72 3.13 2.77
+01:45:27 play-half #2 P: cpu 9.907 wait 0.045 | loop p50 9.8 | upd 1.9 ml 1 three 5.5 | calls 785 | clock 513.1-525.0 | load 2.53 3.08 2.75
+01:45:35 play-half #3 A: cpu 10.668 wait 0.026 | loop p50 10.3 | upd 2 ml 1.1 three 5.8 | calls 785 | clock 513.1-525.0 | load 2.41 3.04 2.74
+01:45:42 play-half #4 A: cpu 10.497 wait 0.052 | loop p50 10.2 | upd 2 ml 1.1 three 5.7 | calls 785 | clock 513.1-525.0 | load 2.49 3.04 2.74
+01:45:50 play-half #5 P: cpu 10.402 wait 0.023 | loop p50 10.2 | upd 2 ml 1.1 three 5.6 | calls 785 | clock 513.1-525.0 | load 2.37 3 2.73
+01:45:57 play-half #6 P: cpu 10.356 wait 0.03 | loop p50 9.9 | upd 2 ml 1.1 three 5.5 | calls 785 | clock 513.1-525.0 | load 2.38 2.99 2.73
+01:46:05 play-half #7 A: cpu 12.001 wait 0.04 | loop p50 10.5 | upd 2 ml 1.1 three 6 | calls 785 | clock 513.1-525.0 | load 2.59 3.02 2.74
+01:46:09 play-half count A: GL calls/frame 13201.35, bytes/frame 345498, draws 785
+01:46:12 play-half count P: GL calls/frame 12357.35, bytes/frame 345576, draws 785
+01:46:15 overview-held #0 A: cpu 8.494 wait 0.01 | loop p50 7.9 | upd 1.1 ml 0.6 three 6 | calls 825 | clock 570.0-570.0 | load 2.35 2.95 2.72
+01:46:17 overview-held #1 P: cpu 8.052 wait 0.01 | loop p50 7.7 | upd 1.1 ml 0.6 three 5.8 | calls 825 | clock 570.0-570.0 | load 2.24 2.92 2.71
+01:46:19 overview-held #2 P: cpu 8.004 wait 0.002 | loop p50 7.7 | upd 1.1 ml 0.6 three 5.7 | calls 825 | clock 570.0-570.0 | load 2.24 2.92 2.71
+01:46:21 overview-held #3 A: cpu 8.491 wait 0.001 | loop p50 7.8 | upd 1.1 ml 0.6 three 5.9 | calls 825 | clock 570.0-570.0 | load 2.14 2.89 2.71
+01:46:24 overview-held #4 A: cpu 8.608 wait 0.024 | loop p50 8.1 | upd 1.1 ml 0.6 three 6.2 | calls 825 | clock 570.0-570.0 | load 2.14 2.89 2.71
+01:46:26 overview-held #5 P: cpu 8.087 wait 0.012 | loop p50 7.8 | upd 1.1 ml 0.6 three 5.8 | calls 825 | clock 570.0-570.0 | load 2.14 2.89 2.71
+01:46:28 overview-held #6 P: cpu 8.212 wait 0.015 | loop p50 7.6 | upd 1.1 ml 0.6 three 5.7 | calls 825 | clock 570.0-570.0 | load 2.21 2.89 2.71
+01:46:30 overview-held #7 A: cpu 8.069 wait 0.045 | loop p50 7.7 | upd 1.1 ml 0.6 three 5.8 | calls 825 | clock 570.0-570.0 | load 2.21 2.89 2.71
+01:46:32 overview-held count A: GL calls/frame 13218, bytes/frame 0, draws 825
+01:46:34 overview-held count P: GL calls/frame 12326, bytes/frame 0, draws 825
+01:46:38 overview-route #0 A: cpu 9.043 wait 0.077 | loop p50 8.6 | upd 1.1 ml 0.7 three 6.2 | calls 827 | clock 570.0-570.0 | load 2.02 2.83 2.69
+01:46:41 overview-route #1 P: cpu 8.699 wait 0.053 | loop p50 8.3 | upd 1.1 ml 0.7 three 5.9 | calls 827 | clock 570.0-570.0 | load 2.02 2.83 2.69
+01:46:44 overview-route #2 P: cpu 9.002 wait 0.046 | loop p50 8.3 | upd 1.1 ml 0.7 three 5.9 | calls 827 | clock 570.0-570.0 | load 1.94 2.8 2.68
+01:46:48 overview-route #3 A: cpu 9.051 wait 0.025 | loop p50 8.3 | upd 1.1 ml 0.7 three 6 | calls 827 | clock 570.0-570.0 | load 1.87 2.77 2.67
+01:46:51 overview-route #4 A: cpu 9.065 wait 0.096 | loop p50 8.4 | upd 1.1 ml 0.7 three 6 | calls 827 | clock 570.0-570.0 | load 1.87 2.77 2.67
+01:46:54 overview-route #5 P: cpu 8.723 wait 0.052 | loop p50 8.3 | upd 1.1 ml 0.7 three 5.9 | calls 827 | clock 570.0-570.0 | load 2.12 2.8 2.68
+01:46:58 overview-route #6 P: cpu 9.255 wait 0.049 | loop p50 8.4 | upd 1.1 ml 0.7 three 6 | calls 827 | clock 570.0-570.0 | load 2.19 2.81 2.68
+01:47:01 overview-route #7 A: cpu 9.41 wait 0.037 | loop p50 8.7 | upd 1.1 ml 0.7 three 6.2 | calls 827 | clock 570.0-570.0 | load 2.19 2.81 2.68
+01:47:04 overview-route count A: GL calls/frame 13361.12, bytes/frame 363, draws 827
+01:47:06 overview-route count P: GL calls/frame 12469.61, bytes/frame 363, draws 827
+01:47:10 overview-drag #0 A: cpu 8.84 wait 0.048 | loop p50 8.4 | upd 1.1 ml 0.7 three 6 | calls 827 | clock 570.0-570.0 | load 2.91 2.95 2.73
+01:47:13 overview-drag #1 P: cpu 9.08 wait 0.009 | loop p50 8.4 | upd 1.1 ml 0.7 three 5.9 | calls 827 | clock 570.0-570.0 | load 2.76 2.91 2.72
+01:47:16 overview-drag #2 P: cpu 9.168 wait 0.087 | loop p50 8.3 | upd 1.1 ml 0.7 three 6 | calls 827 | clock 570.0-570.0 | load 2.78 2.91 2.72
+01:47:20 overview-drag #3 A: cpu 9.225 wait 0.022 | loop p50 8.6 | upd 1.1 ml 0.7 three 6.2 | calls 827 | clock 570.0-570.0 | load 2.78 2.91 2.72
+01:47:23 overview-drag #4 A: cpu 9.048 wait 0.067 | loop p50 8.4 | upd 1.1 ml 0.7 three 6 | calls 827 | clock 570.0-570.0 | load 2.64 2.88 2.71
+01:47:27 overview-drag #5 P: cpu 8.858 wait 0.008 | loop p50 8.3 | upd 1.1 ml 0.7 three 6 | calls 827 | clock 570.0-570.0 | load 2.51 2.85 2.71
+01:47:30 overview-drag #6 P: cpu 9.284 wait 0.029 | loop p50 8.5 | upd 1.1 ml 0.7 three 6 | calls 827 | clock 570.0-570.0 | load 2.51 2.85 2.71
+01:47:34 overview-drag #7 A: cpu 8.915 wait 0.054 | loop p50 8.3 | upd 1.1 ml 0.7 three 6 | calls 827 | clock 570.0-570.0 | load 2.55 2.85 2.71
+01:47:36 overview-drag count A: GL calls/frame 13354.63, bytes/frame 363, draws 827
+01:47:39 overview-drag count P: GL calls/frame 12463.27, bytes/frame 363, draws 827
+01:47:42 ph8-drag #0 A: cpu 8.882 wait 0.059 | loop p50 8.3 | upd 1.1 ml 0.6 three 5.9 | calls 801 | clock 880.0-880.0 | load 3.04 2.96 2.74
+01:47:46 ph8-drag #1 P: cpu 8.89 wait 0.001 | loop p50 8.1 | upd 1.2 ml 0.6 three 5.8 | calls 801 | clock 880.0-880.0 | load 3.04 2.96 2.74
+01:47:49 ph8-drag #2 P: cpu 8.66 wait 0.098 | loop p50 8.2 | upd 1.2 ml 0.6 three 5.7 | calls 801 | clock 880.0-880.0 | load 2.88 2.92 2.73
+01:47:52 ph8-drag #3 A: cpu 8.868 wait 0.032 | loop p50 8.2 | upd 1.1 ml 0.6 three 5.8 | calls 801 | clock 880.0-880.0 | load 2.73 2.89 2.72
+01:47:56 ph8-drag #4 A: cpu 8.876 wait 0.029 | loop p50 8.3 | upd 1.2 ml 0.6 three 5.9 | calls 801 | clock 880.0-880.0 | load 2.73 2.89 2.72
+01:47:59 ph8-drag #5 P: cpu 9.199 wait 0.044 | loop p50 8.6 | upd 1.2 ml 0.6 three 6.1 | calls 801 | clock 880.0-880.0 | load 2.67 2.88 2.72
+01:48:03 ph8-drag #6 P: cpu 8.961 wait 0.061 | loop p50 8.4 | upd 1.1 ml 0.6 three 6 | calls 801 | clock 880.0-880.0 | load 2.62 2.86 2.72
+01:48:06 ph8-drag #7 A: cpu 9.176 wait 0.059 | loop p50 8.6 | upd 1.1 ml 0.7 three 6.2 | calls 801 | clock 880.0-880.0 | load 2.62 2.86 2.72
+01:48:09 ph8-drag count A: GL calls/frame 12995.79, bytes/frame 295, draws 801
+01:48:11 ph8-drag count P: GL calls/frame 12123.48, bytes/frame 295, draws 801
+01:48:12 wrote docs/final-stage7-evidence/wp16b/paired.json

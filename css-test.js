@@ -580,7 +580,11 @@ if(cerrs) process.exitCode=1;
     else { if(/groundY\(|displayHeight\(|height\(|hAt\(/.test(sl)) eerr.push("the slopes read the ground other than through groundYFast on the compact heights");
       if((sl.match(/groundYFast\(GH,/g)||[]).length!==4) eerr.push("the slopes are not 8E's two chords a figure (four lookups in all: a man's two, a horse's two)"); }
     if(!/_gH=groundHeights\(\); \}/.test(src)) eerr.push("the seating does not take the drawn ground's compact heights (seatPrep)");
-    if(!/"attribute vec2 aSl;"/.test(src)) eerr.push("the hook's slopes are not 8E's two a figure (aSl, a vec2)");
+    /* the final audits' Stage 7, WP-16 (owner decision 321 (a)): 8E's two slopes a figure and its phase packed in one attribute, [ahead, behind,
+       phase]: the slopes its first two components, the phase its third, no attribute of the phase's own (8E's form, "attribute vec2 aSl;" and
+       "attribute float aPh;", until then) */
+    if(!/"attribute vec3 aSl;"/.test(src)||/attribute float aPh;/.test(src)) eerr.push("the hook's slopes and phase are not one attribute a figure (aSl, a vec3: two slopes and the phase)");
+    if(!/vec2 anSl=clamp\(aSl\.xy,/.test(src)||!/anP=uAnimPhase\+6\.2831853\*aSl\.z;/.test(src)) eerr.push("the hook does not read its slopes from aSl.xy and its phase from aSl.z");
     if(!/float anZe=anE==0\?mix\("\+f\(M\.HEEL0\)\+","\+f\(M\.HEEL\)\+",anKn\):mix\("\+f\(M\.TOE0\)\+","\+f\(M\.TOE\)\+",anKn\);/.test(src)||!/function animManRoot\(f,kL,kR,sa,sb,kn\)\{ var M=ANIM\.MAN, g=-1e9, k=kn===undefined\?1:kn;/.test(src)||
        !/\[M\.HEEL0\+\(M\.HEEL-M\.HEEL0\)\*k,M\.TOE0\+\(M\.TOE-M\.TOE0\)\*k\]\.forEach/.test(src)||!/out\[1\]=y\+animManRoot\(f,kL,kR,sl,sh,kn\);/.test(src))
       eerr.push("the hook or its mirror does not plant the kit's own soles (the simple kit's HEEL0 and TOE0, the rich kit's HEEL and TOE)");

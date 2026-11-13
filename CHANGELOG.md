@@ -1,9 +1,96 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, Stage 7 (WP-16, 2 of 2): the kit's phase packed into its slopes (CL-PERF-12), the phone's workload profiled (CL-PERF-15)
+
+**Status: on `claude/admiring-dirac-m1syqs-perf2`, a draft PR into `main`, for review, not merged.** The rest of WP-16 of `docs/ROADMAP_FINAL_AUDIT.md`:
+decision 321 (a) (prototyped, measured on the same matched protocol as WP-16's first PR, adopted because its gain shows) and CL-PERF-15 measured.
+The owner's answer of 13 November 2026, "Your recommendations for all", confirms decisions 278, 283 and 317-321 as recorded
+(`docs/final-stage7-evidence/questions.md`), 320 (a) among them. Presentation only: no data file and no guarded declaration changes.
+`austerlitz-command-map.html` is now 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b` (was `main`'s 3,035,557, `07c186de...`); `check:baseline` moves to it.
+
+### What changed, and why
+
+- **CL-PERF-12, the instance's phase in `aSl` (decision 321 (a)).** Each instanced kit draw bound three per-figure attributes, 8D's and 8E's `aPart`
+  (shared), `aPh` (the phase) and `aSl` (two slopes). *Is:* `aSl` holds three a figure, `[ahead, behind, phase]`, and `aPh` is gone. The hook reads
+  its slopes from `aSl.xy` and its phase from `aSl.z`. The phase is copied into the third component when the mesh is made: for a rider and his
+  coat it is his horse's table, as before; for a man on foot it is 0. The layout writes the two slopes and leaves the phase as it is. Both levels
+  of detail still share one attribute. The self-test's readers of the slopes read three a figure (`hSl`, `hPh`). `css-test.js`'s form check is
+  re-stated as decided: *was* `"attribute vec2 aSl;"`, "8E's two a figure"; *is* `"attribute vec3 aSl;"` with no `aPh`, the slopes read from `.xy`
+  and the phase from `.z`.
+
+### Measured (`docs/final-stage7-evidence/wp16b/`), against `main`'s build `07c186de...`
+
+- **The picture** (`tools/final-stage7/pair-pixels.js`, six views, two fresh pages a build, now also reading the gait's amplitude): **0 pixels**
+  differ in every view, and **0 of 16,777,216 shadow-map texels**. The gait is at full swing (amplitude 1) in five of the six, with 12 to 46
+  meshes swinging; the sixth, the eye level, is still (`pixels-packed.json`).
+- **GL calls a frame** (`paired.js`'s count blocks, load-independent): 844 to 892 fewer in every motion (13,201 to 12,357 in Play; the audit
+  predicted about 860). Draw calls unchanged.
+- **The frame's CPU** (`paired.js`, the device route's motions, the draws no-ops, two palindromes; the two drags again over three, since the first
+  session's were mixed):
+
+| motion | `main` | packed | the packed build's blocks against their neighbours |
+|---|---|---|---|
+| Play at half speed | 10.85 ms | 10.27 (-7.4%) | 4 of 4 faster |
+| the Overview held | 8.49 | 8.07 (-5.5%) | 3 of 4 |
+| the Overview's route | 9.06 | 8.86 (-2.7%) | 4 of 4 |
+| the Overview dragged (three palindromes) | 9.38 | 8.40 (-11.2%) | 5 of 6 (the first session's two: +1.0%, mixed) |
+| phase 8's Overview dragged (three palindromes) | 8.97 | 8.39 (-8.0%) | 6 of 6 (the first session's: -1.1%, mixed) |
+
+  `main`'s frame here is about 9-11 ms, against 15-19 ms on WP-14's build in WP-16's first PR, whose two changes are in `main` now. The machine's
+  load differs between sessions, so each comparison holds only within its own session.
+
+### CL-PERF-15, the phone's figure and standard workload, profiled (measured; nothing changed by it)
+
+On the phone's own tier: 402 x 714, the viewport of the owner's iPhone report, below 900 x 700 so `lowTier` (density 1, no shadow). The same
+protocol and motions; this PR's build against two measurement copies of it, never shipped: the figures and standards hidden (each block's
+`body` and `std` not drawn), and the standards alone hidden (`phone-paired.json`, `.log`, `.md`). CPU and counts only; a page here cannot
+measure a phone's GPU.
+
+| motion | draws a frame | GL calls a frame | triangles a frame | CPU a frame |
+|---|---|---|---|---|
+| Play at half speed: as built / standards hidden / figures and standards hidden | 479 / 413 / 223 | 6,683 / 5,341 / 1,306 | 1,339,109 / 1,332,177 / 727,021 | 9.29 / 8.69 (-5.6%) / 6.80 ms (-26.9%) |
+| the Overview's route | 542 / 471 / 244 | 7,198 / 5,789 / 1,173 | 1,311,877 / 1,304,945 / 673,173 | 7.48 / 6.81 (-7.2%) / 4.78 (-35.9%) |
+| phase 8's Overview dragged | 524 / 453 / 233 | 7,015 / 5,608 / 1,132 | 1,305,401 / 1,298,469 / 676,613 | 7.26 / 7.01 (-5.3%) / 4.67 (-34.5%) |
+
+- The figures and standards are 52-56% of the phone tier's draw calls, 80-84% of its GL calls, 46-49% of its triangles, and 27-36% of its CPU
+  here. The device report found the same lever: hiding them raised Play from about 43 to about 59 frames a second (CL-PERF-15).
+- The standards alone: 66-71 draws, about 1,400 GL calls, 6,932 triangles (0.5%), 5-7% of the CPU. They are already instanced per block (a pole
+  mesh, one flag mesh per painting, a finial mesh), so their cost is three or four draws a block. Merging them across blocks would redesign how
+  blocks are drawn.
+- No reduction of this workload is left that keeps the picture pixel-identical; CL-PERF-12's packing is in this build. Every remaining lever
+  changes what the phone draws: fewer figures a formation on the low tier, the simple kit only, standards dropped beyond a distance. That is put
+  to the owner as question 322 and decided (b) under the owner's instruction: none until the phone's ordinary-route run of this stage's build
+  (WP-12, question 278) shows whether the phone still falls short; this profile is the evidence for that choice.
+
+### Checks added, each failing without its change (`tools/final-stage7/mutate.js wp16b`)
+
+- The self-test's `wp16Checks`, a third check (350 to 351): "each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)". Every figure of
+  every class's meshes is at its beat: a horse, its rider and his coat at `kitPh` of their index, a man on foot at 0. Both levels sit on one
+  three-a-figure attribute, and no attribute of the phase's own remains. No check held the phases' values before: a lost beat would have gone
+  unseen, with packing or without.
+- `css-test.js`: the form check re-stated (above).
+- The negative controls: 5 of 5 as expected (`wp16b/mutate-wp16b.*`): the phases not copied, copied into a slope's place, or overwritten by the
+  layout's slopes copied two a figure (each fails the self-test's new check); the phase's own attribute declared again (fails `css-test.js`); the
+  build as it is (every check passes).
+
+### Verified
+
+- Here, on the build `8c0d383e...` (Chromium 141's headless shell): `npm test` passes, with the nine suites, the height guard and the dead-code
+  check (`wp16b/npm-test.txt`). `check:data`: all 143 identical. `check:chronology`: errors 0. `check:contrast` passes, with all 10 start-up cases
+  (`wp16b/check-contrast.txt`). `check:baseline` passes.
+- `check:selftest`: 351 checks run, every one passing, the gait's and culling's checks among them (`phone-long` 292 of 945, as before). Its only
+  failures were the manifest's lines, so the manifest is written from that run (350 to 351, one added, none removed). The packed build without the
+  new check (`084863c7...`) also passed the full self-test, all 350 checks.
+
+### What remains uncertain, and what is handed on
+
+- The gains are CPU-side, on this machine's software WebGL; a device's frame may be bound elsewhere. WP-12's protocol pairs the builds on the owner's devices.
+- WP-12 (the device evidence) is Stage 7's last pass.
+
 ## 2026-11 · Final audits' roadmap, Stage 7 (WP-16, 1 of 2): the label pass's lights and the free rectangle kept (CL-PERF-14, CL-PERF-13)
 
-**Status: on `claude/admiring-dirac-m1syqs-perf`, stacked on WP-14's PR (#105, itself on #104; merge #104, then #105, then this), a draft PR into
-`main`, for review, not merged.** Part of WP-16 of `docs/ROADMAP_FINAL_AUDIT.md`: only measured improvements, each shown on one matched
+**Status: merged into `main` (#106, `bb4e09f`), after #104 and #105; built on `claude/admiring-dirac-m1syqs-perf`. `check:visual` on CI passed (run
+43193450228 on `60d8799`, the owner's report of 13 November 2026).** Part of WP-16 of `docs/ROADMAP_FINAL_AUDIT.md`: only measured improvements, each shown on one matched
 protocol (the same motions, the build pair side by side), the picture pixel-identical and the shadow map texel-identical. Presentation only:
 no data file and no guarded declaration changes. `austerlitz-command-map.html` is now 3,035,557 bytes, md5 `07c186de677988b23b72fe72441b8618`
 (was WP-14's 3,028,969, `eabe076a...`); `check:baseline` moves to it. CL-PERF-12 (packing the kit's attributes) is put as question 321 (a), a PR
@@ -75,8 +162,8 @@ of its own; the phone's figure and standard workload (CL-PERF-15) needs the phon
 
 ## 2026-11 · Final audits' roadmap, Stage 7 (WP-14): robustness residuals (CL-ROB-02, -04, -05, -10, -11, -12)
 
-**Status: on `claude/admiring-dirac-m1syqs-robustness`, stacked on the Stage 6 records PR (#104; merge #104 first), a draft PR into `main`, for
-review, not merged.** WP-14 of `docs/ROADMAP_FINAL_AUDIT.md`, with WP-11's rule alongside. The owner's instruction with the stage's brief (12 November
+**Status: merged into `main` (#105, `b7990e7`), after #104; built on `claude/admiring-dirac-m1syqs-robustness`. `check:visual` on CI passed (run
+43177681312 on `51baec8`, the owner's report of 13 November 2026); decision 320 (a) confirmed by the owner the same day.** WP-14 of `docs/ROADMAP_FINAL_AUDIT.md`, with WP-11's rule alongside. The owner's instruction with the stage's brief (12 November
 2026): "Go with recommendations for all owner questions"; this pass puts 317-320 (`docs/final-stage7-evidence/questions.md`), each measured
 first and decided as recommended under that instruction: **317 (a)**, **318 (b)**, **319 (a)**, **320 (a)**. Presentation and robustness only: no data
 file and no guarded declaration changes (`check:data`: all identical to `archive/stage6wp09w-45d29cc5.html`). `austerlitz-command-map.html` is now
@@ -154,7 +241,7 @@ file and no guarded declaration changes (`check:data`: all identical to `archive
 
 ## 2026-11 · Final audits' roadmap, Stage 6 merged; Stage 7 next (records only)
 
-**Status: on `claude/admiring-dirac-m1syqs` (draft PR into `main`, for review, not merged).** Records only: no source, data or build change.
+**Status: merged into `main` (#104, `c2b4d77`).** Records only: no source, data or build change.
 `austerlitz-command-map.html` is unchanged, 3,025,956 bytes, md5 `dcc65319b445c119b005f7e5c25a29fc`; `check:baseline` stays on it.
 
 - **Stage 6 is merged into `main`**: WP-10's meres (#94), CI pinned to Ubuntu 24.04 (#95), WP-09's reflow, short screens and forced colours (#98), its

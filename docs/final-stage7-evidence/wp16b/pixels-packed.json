@@ -1,0 +1,329 @@
+{
+ "note": "the WebGL frame, fresh pages, pixels differing in any channel",
+ "chromium": "141.0.7390.37",
+ "pages": 2,
+ "builds": [
+  {
+   "file": "A-main.html",
+   "md5": "07c186de677988b23b72fe72441b8618"
+  },
+  {
+   "file": "P-packed.html",
+   "md5": "084863c70fc6e1d0626274064a379a41"
+  }
+ ],
+ "views": {
+  "pratzen-low": {
+   "gait": {
+    "amp": [
+     1,
+     1
+    ],
+    "swingingMeshes": [
+     46,
+     46
+    ]
+   },
+   "shadow": {
+    "texels": 16777216,
+    "size": [
+     4096,
+     4096
+    ],
+    "unstable": 0,
+    "shadowConsistent": 0
+   },
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 0,
+   "unstableAfter": 0,
+   "unstableEither": 0,
+   "differingBetweenBuilds": 0,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     38,
+     38
+    ],
+    [
+     38,
+     38
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  },
+  "close-sokolnitz": {
+   "gait": {
+    "amp": [
+     1,
+     1
+    ],
+    "swingingMeshes": [
+     12,
+     12
+    ]
+   },
+   "shadow": {
+    "texels": 16777216,
+    "size": [
+     4096,
+     4096
+    ],
+    "unstable": 0,
+    "shadowConsistent": 0
+   },
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 0,
+   "unstableAfter": 0,
+   "unstableEither": 0,
+   "differingBetweenBuilds": 0,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     38,
+     38
+    ],
+    [
+     38,
+     38
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  },
+  "selected-formation": {
+   "gait": {
+    "amp": [
+     1,
+     1
+    ],
+    "swingingMeshes": [
+     16,
+     16
+    ]
+   },
+   "shadow": {
+    "texels": 16777216,
+    "size": [
+     4096,
+     4096
+    ],
+    "unstable": 0,
+    "shadowConsistent": 0
+   },
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 0,
+   "unstableAfter": 0,
+   "unstableEither": 0,
+   "differingBetweenBuilds": 0,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     38,
+     38
+    ],
+    [
+     38,
+     38
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  },
+  "overview-field": {
+   "gait": {
+    "amp": [
+     1,
+     1
+    ],
+    "swingingMeshes": [
+     16,
+     16
+    ]
+   },
+   "shadow": {
+    "texels": 16777216,
+    "size": [
+     4096,
+     4096
+    ],
+    "unstable": 0,
+    "shadowConsistent": 0
+   },
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 0,
+   "unstableAfter": 0,
+   "unstableEither": 0,
+   "differingBetweenBuilds": 0,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     38,
+     38
+    ],
+    [
+     38,
+     38
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  },
+  "eye-zuran": {
+   "gait": {
+    "amp": [
+     0,
+     0
+    ],
+    "swingingMeshes": [
+     0,
+     0
+    ]
+   },
+   "shadow": {
+    "texels": 16777216,
+    "size": [
+     4096,
+     4096
+    ],
+    "unstable": 0,
+    "shadowConsistent": 0
+   },
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 0,
+   "unstableAfter": 0,
+   "unstableEither": 0,
+   "differingBetweenBuilds": 0,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     39,
+     39
+    ],
+    [
+     39,
+     39
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  },
+  "ph8-overview-watch": {
+   "gait": {
+    "amp": [
+     1,
+     1
+    ],
+    "swingingMeshes": [
+     32,
+     32
+    ]
+   },
+   "shadow": {
+    "texels": 16777216,
+    "size": [
+     4096,
+     4096
+    ],
+    "unstable": 0,
+    "shadowConsistent": 0
+   },
+   "size": [
+    1600,
+    900
+   ],
+   "unstableBefore": 0,
+   "unstableAfter": 0,
+   "unstableEither": 0,
+   "differingBetweenBuilds": 0,
+   "outsideUnstable": 0,
+   "consistentChange": 0,
+   "where": [],
+   "programs": [
+    [
+     37,
+     37
+    ],
+    [
+     37,
+     37
+    ]
+   ],
+   "eyeOff": [
+    [
+     null,
+     0
+    ],
+    [
+     0,
+     0
+    ]
+   ]
+  }
+ }
+}
