@@ -1,0 +1,62 @@
+
+desk-S7-1.json (step6-perf-route 4, 2026-11-13T07:26:15.187Z; R 6.9 ms, at the end 6.9; wake lock held)
+  build 3037848 bytes, sha256 2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d
+  the .txt is the route's format() of the .json: yes
+  section 8.3, desktop: the largest frame 843 calls (play-4x|played), 2317629 triangles (play-4x|played): within 900 and 2.8 million
+  section 8.5 against L3 and D1/D2: holds in every segment
+  section 8.3's CPU line (js50 not above L3's by more than 1 ms): met in every segment
+  frames over 25 ms 0; the longest interval 20.9 ms (play-half|played)
+  segment                       fps (D1/D2 -> now)      miss% (D est. -> now)   js50 L3 | D1/D2 -> now      vs L3
+  overview|held                 142.9/142.9 -> 144      1.4/1.4 -> 0            4.2 | 5/5.1 -> 3.2          -1
+  overview|orbit                143.5/142.9 -> 144      1/1.4 -> 0              4.8 | 5.8/5.9 -> 3.4        -1.4
+  overview|orbit -figures       143.7/144 -> 144        0.8/0.6 -> 0            3 | 3.5/3.6 -> 2            -1
+  overview|orbit -effects       143.5/143.5 -> 144      1/1 -> 0                4 | 5.1/5.1 -> 3.3          -0.7
+  pratzen-low-4x|held           143.2/144 -> 144        1.2/0.6 -> 0            4.5 | 4.3/4.3 -> 2.7        -1.8
+  pratzen-low-4x|orbit          143.5/142.9 -> 144      1/1.4 -> 0              5.1 | 5.3/5.2 -> 3.3        -1.8
+  pratzen-low-4x|orbit -figures 144/144 -> 144          0.6/0.6 -> 0            3.3 | 3.9/3.9 -> 2.3        -1
+  pratzen-low-4x|orbit -effects 143.5/143.5 -> 144      1/1 -> 0                4.3 | 4.7/4.7 -> 3.1        -1.2
+  pratzen-low-1x|held           144/144 -> 144          0.6/0.6 -> 0            2.5 | 2.6/2.6 -> 1.6        -0.9
+  pratzen-low-1x|orbit          144/143.7 -> 144        0.6/0.8 -> 0            3.1 | 3.4/3.4 -> 1.8        -1.3
+  pratzen-low-10x|held          144/142.9 -> 144        0.6/1.4 -> 0            4.5 | 4.3/4.4 -> 2.8        -1.7
+  pratzen-low-10x|orbit         142.9/143.5 -> 144      1.4/1 -> 0              5.2 | 5.2/5.3 -> 3.3        -1.9
+  ph8-overview|held             144/144 -> 144          0.6/0.6 -> 0            4.6 | 5/5 -> 3.1            -1.5
+  ph8-overview|orbit            142.8/142.9 -> 144      1.5/1.4 -> 0            5.3 | 5.8/5.8 -> 3.4        -1.9
+  ph8-overview|orbit -figures   143.7/143.7 -> 144      0.8/0.8 -> 0            3.4 | 3.5/3.6 -> 2          -1.4
+  ph8-overview|orbit -effects   143.5/143.5 -> 144      1/1 -> 0                4.4 | 5/5 -> 3.4            -1
+  paper|held                    144/144 -> 144          0.6/0.6 -> 0            2 | 2.1/2.1 -> 1.5          -0.5
+  paper|pan                     143.8/143.8 -> 144      0.8/0.8 -> 0            2.1 | 2.3/2.4 -> 1.7        -0.4
+  eye|held                      144/144 -> 144          0.6/0.6 -> 0            2.8 | 3/3 -> 2.3            -0.5
+  eye|look                      144/144 -> 144          0.6/0.6 -> 0            3.1 | 3.2/3.2 -> 2.2        -0.9
+  play-4x|played                124.3/123 -> 143.9      14.2/15.1 -> 0.1        6 | 6.9/7 -> 4.3            -1.7
+  play-half|played              120.8/120.2 -> 143.7    16.6/17.1 -> 0.2        6.1 | 7.6/7.6 -> 4.9        -1.2
+
+desk-S7-2.json (step6-perf-route 4, 2026-11-13T07:36:43.018Z; R 6.9 ms, at the end 6.9; wake lock held)
+  build 3037848 bytes, sha256 2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d
+  the .txt is the route's format() of the .json: yes
+  section 8.3, desktop: the largest frame 843 calls (play-4x|played), 2317741 triangles (play-4x|played): within 900 and 2.8 million
+  section 8.5 against L3 and D1/D2: holds in every segment
+  section 8.3's CPU line (js50 not above L3's by more than 1 ms): met in every segment
+  frames over 25 ms 0; the longest interval 20.7 ms (ph8-overview|orbit -effects)
+  segment                       fps (D1/D2 -> now)      miss% (D est. -> now)   js50 L3 | D1/D2 -> now      vs L3
+  overview|held                 142.9/142.9 -> 144      1.4/1.4 -> 0            4.2 | 5/5.1 -> 3.1          -1.1
+  overview|orbit                143.5/142.9 -> 144      1/1.4 -> 0              4.8 | 5.8/5.9 -> 3.5        -1.3
+  overview|orbit -figures       143.7/144 -> 144        0.8/0.6 -> 0            3 | 3.5/3.6 -> 2            -1
+  overview|orbit -effects       143.5/143.5 -> 144      1/1 -> 0                4 | 5.1/5.1 -> 3.4          -0.6
+  pratzen-low-4x|held           143.2/144 -> 144        1.2/0.6 -> 0            4.5 | 4.3/4.3 -> 2.9        -1.6
+  pratzen-low-4x|orbit          143.5/142.9 -> 144      1/1.4 -> 0              5.1 | 5.3/5.2 -> 3.3        -1.8
+  pratzen-low-4x|orbit -figures 144/144 -> 144          0.6/0.6 -> 0            3.3 | 3.9/3.9 -> 2.3        -1
+  pratzen-low-4x|orbit -effects 143.5/143.5 -> 144      1/1 -> 0                4.3 | 4.7/4.7 -> 3.1        -1.2
+  pratzen-low-1x|held           144/144 -> 144          0.6/0.6 -> 0            2.5 | 2.6/2.6 -> 1.8        -0.7
+  pratzen-low-1x|orbit          144/143.7 -> 144        0.6/0.8 -> 0            3.1 | 3.4/3.4 -> 1.9        -1.2
+  pratzen-low-10x|held          144/142.9 -> 144        0.6/1.4 -> 0            4.5 | 4.3/4.4 -> 2.8        -1.7
+  pratzen-low-10x|orbit         142.9/143.5 -> 144      1.4/1 -> 0              5.2 | 5.2/5.3 -> 3.3        -1.9
+  ph8-overview|held             144/144 -> 144          0.6/0.6 -> 0            4.6 | 5/5 -> 3.1            -1.5
+  ph8-overview|orbit            142.8/142.9 -> 144      1.5/1.4 -> 0            5.3 | 5.8/5.8 -> 3.5        -1.8
+  ph8-overview|orbit -figures   143.7/143.7 -> 144      0.8/0.8 -> 0            3.4 | 3.5/3.6 -> 2          -1.4
+  ph8-overview|orbit -effects   143.5/143.5 -> 143.7    1/1 -> 0.2              4.4 | 5/5 -> 3.4            -1
+  paper|held                    144/144 -> 144          0.6/0.6 -> 0            2 | 2.1/2.1 -> 1.6          -0.4
+  paper|pan                     143.8/143.8 -> 144      0.8/0.8 -> 0            2.1 | 2.3/2.4 -> 1.7        -0.4
+  eye|held                      144/144 -> 144          0.6/0.6 -> 0            2.8 | 3/3 -> 2.3            -0.5
+  eye|look                      144/144 -> 144          0.6/0.6 -> 0            3.1 | 3.2/3.2 -> 2.3        -0.8
+  play-4x|played                124.3/123 -> 143.8      14.2/15.1 -> 0.1        6 | 6.9/7 -> 4.3            -1.7
+  play-half|played              120.8/120.2 -> 143.8    16.6/17.1 -> 0.2        6.1 | 7.6/7.6 -> 5.1        -1

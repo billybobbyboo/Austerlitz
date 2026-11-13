@@ -5,7 +5,8 @@
 **Status: on `claude/admiring-dirac-m1syqs-device`, a draft PR into `main`, for review, not merged.** WP-12 of `docs/ROADMAP_FINAL_AUDIT.md`, the last
 pass of Stage 7, with WP-11's rule alongside. Records, the device route and the protocol for the owner's runs. No source of the build, no data
 and no build changes: `austerlitz-command-map.html` is unchanged, 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`, and `check:baseline`
-stays on it. **No device result is filled in:** none was run here, and none was given.
+stays on it. **The device results are the owner's:** the desktop's two runs of Stage 7's build (13 November 2026), filed verbatim and read below; none
+was run here, and no other is filled in.
 
 ### The records corrected (`docs/STAGE8_SPEC.md` section 27)
 
@@ -75,9 +76,28 @@ integrity hash), named on the page by `?src=`. Until the runs come, their absenc
 - `check:selftest`, `check:contrast` and `check:visual` read the build, which this PR does not change. CI runs the first two on the PR; `check:visual`
   is not needed.
 
+### The owner's desktop runs of Stage 7's build (13 November 2026; `docs/STAGE8_SPEC.md` section 27.1)
+
+- **The runs**: the ordinary route (version 4) twice, 07:26 and 07:36 UTC, on the desktop of L3, D1 and D2 (Chrome 156, an RTX 4070, 144 Hz, 2,560 x
+  1,305 at density 1). Both name the build measured: 3,037,848 bytes, SHA-256 `2275638094e3...a547d`, Stage 7's (`8c0d383e...`). Filed verbatim in
+  `docs/final-stage7-evidence/device/` (`desk-S7-1`, `-2`, `.txt` and `.json`, with a `README.md`). Stage 6's build was not available to the owner, so it was not run.
+- **Checked**: each `.txt` is the route's own `format()` of its `.json`, character for character (`tools/final-stage7/device-desk.js`, new; a one-character
+  change to a filed report fails it); both pass `route-check.js` (`wp12/route-check-desk.txt`).
+- **Section 8.3, desktop: within** on the per-frame maxima: 843 calls and 2,317,741 triangles at most (Play at 4x), against 900 and 2.8 million.
+- **Section 8.5's rule: holds** in every segment against D1/D2 and L3: every median 6.9 ms, no frame over 25 ms (the longest 20.9 ms), long frames 0%.
+- **Section 8.3's CPU line: met in every segment**, each below L3 by 0.4 to 1.9 ms. Decision 268 (a)'s excess no longer shows on this desktop. Like for
+  like against D1/D2, js50: Play at half speed 7.6 to 4.9/5.1 ms (L3 6.1); the Overview's orbit 5.8/5.9 to 3.4/3.5 (L3 4.8); Play at 4x 6.9/7.0 to
+  4.3/4.3 (L3 6.0).
+- **Play's frames**: 120-124 to 143.7-143.9 frames a second; missed refreshes 0.1-0.2% (the route's own, from the raw intervals) where D1/D2's estimate was
+  14.2-17.1%; the script's 95th percentile 5.8-6.2 ms, inside a 144 Hz frame (D1/D2 8.4-9.0).
+- **Not shown**: which change brought the script down. The final audits' Stages 1 to 7 lie between D1/D2's build and this one; WP-16's measured
+  CPU cuts fit it, but that is an inference without Stage 6's build on the same desktop. The machine has a discrete GPU, so the integrated GPU stays
+  unmeasured.
+
 ### What remains uncertain, and what is handed on
 
-- Every device reading is the owner's to make: the integrated GPU, and the phone's like-for-like before and after. Until then, Stage 7's
+- The device readings still to come are the owner's to make: the iPhone's ordinary route on Stage 7's build (decision 269 (b)), the integrated GPU,
+  and the phone's like-for-like before and after (P5's build). Stage 7's own before and after on a device (Stage 6's build) was not run. Until then, Stage 7's
   performance changes are shown on matched protocols in this container only, as CPU-side measures on software WebGL.
 - Stage 7 is complete once this PR is merged; the closing re-verification pass follows (`docs/ROADMAP_FINAL_AUDIT.md`).
 

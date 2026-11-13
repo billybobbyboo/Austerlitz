@@ -5770,3 +5770,37 @@ are unchanged: what they accepted is the same measurements, read as below.
   owner revisits it.
 - **The integrated GPU** (section 24.1; `CL-PERF-02`). Not measured, as before. Its absence stands as a limit (decision 278 (b)) until the owner runs
   the protocol on such a machine.
+
+### 27.1 The owner's desktop runs of Stage 7's build (13 November 2026)
+
+**The runs** (the owner, 13 November 2026, the PR's branch published on GitHub Pages): the ordinary route twice (07:26 and 07:36 UTC; `step6-perf-route
+4`), on the same desktop as L3, D1 and D2 (Chrome 156 by the user agent, an NVIDIA GeForce RTX 4070, 2,560 x 1,440 at 144 Hz, the refresh 6.9 ms at the
+start and at the end, the page 2,560 x 1,305 at density 1, effects on, the wake lock held). **Both reports name the build they measured: 3,037,848 bytes,
+SHA-256 `2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d`**, Stage 7's build (md5 `8c0d383e...`, `main` after #107; the same hash computed
+here from `austerlitz-command-map.html` and from `docs/final-stage7-evidence/device/builds/austerlitz-8c0d383e-stage7.html`). The reports, verbatim:
+`docs/final-stage7-evidence/device/desk-S7-*.txt`, their JSON lines as `.json`; each `.txt` is the route's own `format()` of its `.json` character for
+character, and each passes `route-check.js` (`tools/final-stage7/device-desk.js`, its output `docs/final-stage7-evidence/wp12/device-desk.*`;
+`wp12/route-check-desk.txt`). Stage 6's build was not run (not available to the owner), so these runs compare Stage 7's build with Stage 8's accepted
+build (D1, D2) and with L3, not Stage 7's work alone.
+
+Judged by the rules stated before them:
+- **Section 8.3, desktop (discrete GPU): within**, now on the per-frame maxima that version 4 records: the largest frame 843 calls and 2,317,741
+  triangles (both in Play at 4x), against 900 and 2.8 million. The largest segment median 827 calls (the Overview's orbit) and 2,294,687 triangles
+  (Play at 4x), against D1's 839 and 2,289,649.
+- **Section 8.5's rule: holds** in every segment of both runs, against D1/D2 and against L3: every median interval 6.9 ms (the refresh), no frame over
+  25 ms (the longest interval 20.9 ms, in run 1's Play at half speed), every long-frame share 0%.
+- **Section 8.3's CPU line (js50 not above L3's by more than 1 ms): met in every segment**, every one now below L3 (by 0.4 to 1.9 ms). Decision 268
+  (a)'s excess no longer stands on this desktop: Play at half speed 7.6/7.6 ms in D1/D2 (L3 6.1) to 4.9/5.1; the Overview's orbit 5.8/5.9 (L3 4.8) to
+  3.4/3.5; Play at 4x 6.9/7.0 (L3 6.0) to 4.3/4.3; the Overview's orbit with the effects off 5.1/5.1 (L3 4.0) to 3.3/3.4.
+- **The missed-refresh share** (version 4's own, from the raw intervals): Play 0.1% at 4x and 0.2% at half speed, where D1/D2's estimate (1 - fps x R)
+  was 14.2-15.1% and 16.6-17.1%; Play's frames a second 120.2-124.3 to 143.7-143.9, its 95th-percentile interval one refresh (7.0-7.1 ms) where it was two
+  (13.9), and the script's 95th percentile 5.8-6.2 ms, inside the 6.9 ms a 144 Hz frame allows (D1/D2 8.4-9.0). Every other segment 0%, but run 2's
+  phase 8 Overview orbiting with the effects off, 0.2% (one interval of 20.7 ms). D1/D2's estimates of the other segments, 0.6-1.5%, sit at the
+  estimate's own floor (144 x 6.9 ms is 0.994 of a second).
+
+What the runs do not show: which change brought the script down. Between D1/D2's build (`f10fe585...`) and this one lie the final audits' Stages 1 to 7;
+WP-16's first PR's two changes were measured in this container, each alone on a matched protocol, as cutting the frame's CPU by 12.6-16.9% (the label
+pass's lights) and 24.4-28.7% (the free rectangle kept; `CHANGELOG.md`, software WebGL's CPU side), which fits the drop, but without Stage 6's build on the
+same desktop that attribution is an inference. The GPU's medians in the heavy segments, 2.1-4.9 ms, fall where D1/D2's did (section 24.2: near 2.2-2.6 or
+near 3.8-4.6 ms, moving between blocks; inference, the GPU's clock states). One desktop, one session, a discrete GPU; **the integrated
+GPU stays unmeasured** (decision 278 (b)), and the phone's runs are to come.

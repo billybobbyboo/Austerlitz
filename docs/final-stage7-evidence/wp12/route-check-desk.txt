@@ -1,0 +1,2 @@
+desk-S7-1: route report (step6-perf-route 4): 22 segments with frames, 2 played; every segment's intervals, histogram, refresh shares, maxima and settings as recorded OK
+desk-S7-2: route report (step6-perf-route 4): 22 segments with frames, 2 played; every segment's intervals, histogram, refresh shares, maxima and settings as recorded OK

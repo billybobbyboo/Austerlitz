@@ -62,7 +62,7 @@ for the motions it can drive, each run from the state an idle page reaches so th
 `final-stage4-wp04b/` (WP-04b's `mutate.js`; the relief's measures `relief-measure.js`, `deadground.js`, `sights.js`, `consequences.js`, the geometry
 search `geometry/`; `limber-probe.js`; `gait-ground.js`; not bundled); since its Stage 7 `final-stage7/` (`mutate.js`, the negative controls of WP-14,
 WP-16 and WP-12 by set; `dead-code.js`, run by `npm test`; `idle.js`; `pair-pixels.js`, two builds' frames and shadow maps; `device-reread.js`, Stage 8's
-device reports read again; `fx-off-probe.js`; `route-check.js` and `route-selfcheck.js`, a device route report checked; not bundled) and the device
+device reports read again; `fx-off-probe.js`; `route-check.js` and `route-selfcheck.js`, a device route report checked; `device-desk.js`, the owner's desktop runs of Stage 7's build read; not bundled) and the device
 route's version 4 (`tools/step6/perf-route.js`: the raw intervals, the missed-refresh share, the maxima, `refreshStats`), with `tools/relief-dem.js`, `relief-dem.json` and `relief-tolerance.js`, the
 DEM points and tolerance lines terrain-test reads; and history (see `docs/SUITE_RECOVERY.md`) |
 | `archive/` | frozen reference builds: `stage5wp08-572b0935.html` (the `check:data` reference since the final audits' Stage 5, WP-08's lettering: `BUILDINGS`'s
@@ -835,5 +835,7 @@ kit's phase packed into `aSl`, pixel- and shadow-identical with the gait at full
 phone's tier, question 322 (b): no picture-changing lever until the phone's ordinary-route run; the self-test 351 checks) is on
 `claude/admiring-dirac-m1syqs-perf2`, merged (#107, `0268f29`). WP-12, the device evidence (`docs/STAGE8_SPEC.md` section 27's corrections, the
 device route's version 4 with the raw intervals and the missed-refresh share, `tools/final-stage7/route-check.js`, and the owner's protocol
-`docs/final-stage7-evidence/device-protocol.md`; question 323 (b); no build change), the stage's last pass, is on `claude/admiring-dirac-m1syqs-device`,
+`docs/final-stage7-evidence/device-protocol.md`; question 323 (b); no build change; the owner's desktop runs of Stage 7's build of 13 November 2026 filed
+in `docs/final-stage7-evidence/device/` and read in `docs/STAGE8_SPEC.md` section 27.1: within section 8.3's budget and CPU line and section 8.5's rule,
+decision 268 (a)'s excess gone on that desktop; the iPhone and an integrated GPU still to run), the stage's last pass, is on `claude/admiring-dirac-m1syqs-device`,
 a draft PR. The closing re-verification pass follows.
