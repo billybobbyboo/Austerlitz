@@ -1,0 +1,1424 @@
+[
+ {
+  "id": "CL-ROB-01",
+  "wp": "WP-00",
+  "sev": "S1",
+  "kind": "confirmed defect",
+  "title": "The device route's ?src= runs a visitor-supplied URL in the public site's origin (DOM XSS on GitHub Pages)",
+  "claimed": "fixed",
+  "basis": "WP-00: ?src= accepted only as a same-origin http(s) path"
+ },
+ {
+  "id": "CL-GEO-01",
+  "wp": "WP-04",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "The relief model is 30-80 m too low over the southern Pratzen plateau and the chapel knoll and about 45 m too high at Slapanice, while the visitor is told it is fitted to surveyed elevations",
+  "claimed": "fixed",
+  "basis": "WP-04a disclosure; WP-04b refit between anchors (decision 273 (a)), within terrain-test's tolerance lines"
+ },
+ {
+  "id": "CL-SRC-01",
+  "wp": "WP-02",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "Order-of-battle figures attributed to Duffy (1977) that Duffy does not print",
+  "claimed": "fixed",
+  "basis": "WP-02: each figure attributed or labelled a derivation; headline strengths tagged"
+ },
+ {
+  "id": "CL-HIS-01",
+  "wp": "WP-01",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "The face-about event contradicts itself and the sources: its pill says Fact ('Attested in the standard accounts'), its own text calls the order 'this map's reading' because 'no account read gives the order', yet the project's own reading of Schonhals p. 162 gives Kutuzov's order, and Stutterheim pp. 63-64 a competing account of who gave it",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-HIS-03",
+  "wp": "WP-03",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "The Russian Guard's plotted approach takes one side of a divided register without saying so: its morning positions are graded A though the project's readings contest them (the disposition and Stutterheim against the official report's 'ordered height of Krzenowitz'); the plan text misstates the disposition; nobody is drawn at Blasowitz when it falls 'from the Russian Guard'",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-HIS-04",
+  "wp": "WP-03",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "New in 8J: Legrand's division marker walks through the Sokolnitz castle and the III Column holding it",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-HIS-05",
+  "wp": "WP-03",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "Russian Guard, Liechtenstein and Miloradovich drawn walking away from the enemy while shown Counter-attacking/Charging",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-MAP-01",
+  "wp": "WP-07",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "Landscape with counters: during Play five to eight formations' counters are hidden most of the time, up to 28-37 s at a stretch (36.6 s for the French Guard cavalry, about 11:02-13:15, in ChatGPT's continuous run); the cavalry's starvation is inherited, Stage 8 lowered the share drawn (78% to 68% over the morning) and lengthened the gaps; the benchmark's 4,033 ms is only its window",
+  "claimed": "fixed",
+  "basis": "WP-07: aging and the event-named rise, the band, the long-gap measures"
+ },
+ {
+  "id": "CL-MAP-03",
+  "wp": "WP-08",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "No symbol key at all between 720 and 1079 px wide or on a phone held upright, so the integrity encodings (the B and C grades, '?', the dashed intended routes) go unexplained there; Watch, Clean and a phone held landscape hide it by recorded design or decision",
+  "claimed": "fixed",
+  "basis": "WP-08's furniture (decisions 296-298)"
+ },
+ {
+  "id": "CL-SIM-01",
+  "wp": "WP-05",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "The open dossier goes stale while the clock moves within a phase: 'Position at 12:03' still shown at 12:37, a place's 'Formations nearby now' wrong in 86 of 240 place-phases",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-SIM-02",
+  "wp": "WP-05",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "'Whose eyes?' still draws the movement arrows, arrow labels and plateau count of formations the reading does not know",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-UX-01",
+  "wp": "WP-09",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "At 400% browser zoom and at WCAG's 320 px reflow width the interface loses content and functions (the card's start, the phase text, the caption, the key, the panels, the sources)",
+  "claimed": "fixed",
+  "basis": "WP-09 (1 of 3): reflow, short screens, forced colours, the grip's drag"
+ },
+ {
+  "id": "CL-UX-02",
+  "wp": "WP-06",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "On the landscape, a pan, zoom or keyboard pan during a camera glide is undone: the glide carries the camera on to its destination (the paper map's MAPCAM already stops its glide)",
+  "claimed": "fixed",
+  "basis": "WP-06 (CL-UX-04 by precedence: the tip yields to a control under the pointer)"
+ },
+ {
+  "id": "CL-UX-03",
+  "wp": "WP-06",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "Event markers' hit areas take presses meant for the time rail: on a phone about two thirds of the rail, so a finger's drag there does nothing and a tap jumps to an event; on a desktop the playhead itself at an event start",
+  "claimed": "fixed",
+  "basis": "WP-06 (CL-UX-04 by precedence: the tip yields to a control under the pointer)"
+ },
+ {
+  "id": "CL-VIS-01",
+  "wp": "WP-10",
+  "sev": "S2",
+  "kind": "confirmed defect",
+  "title": "Figure blocks are drawn sunk into the frozen Satschan mere: in the ponds phase, and wherever a leg's path crosses the drawn disc (at 06:30, 136 of Kienmayer's 222 instances on his phase-1 via are below the ice)",
+  "claimed": "fixed",
+  "basis": "WP-10 (part 1): figures on the mere's ice, no trees on it"
+ },
+ {
+  "id": "CL-HIS-02",
+  "wp": "WP-03",
+  "sev": "S2",
+  "kind": "probable problem",
+  "title": "44 of 88 A position grades are carried forward unreviewed from an earlier anchor: on moved anchors with no act (Caffarelli @6-@9 among them) a visitor reads 'Position documented in the sources' with nothing in the data placing the formation there, where 8K graded the adjacent Suchet pursuit C",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-GEO-02",
+  "wp": "WP-01",
+  "sev": "S3",
+  "kind": "unresolved historical question",
+  "title": "'Walled castle' and 'pheasantry enclosure' are stated as fact in the 08:00 dispatch, against the project's own records",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-GEO-03",
+  "wp": "WP-04",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Outside Sokolnitz the hydrography is schematic and unlabelled: the Bosenitz brook and the Ricka through Slapanice are not drawn, and the upper Goldbach runs where no stream runs today",
+  "claimed": "partly",
+  "basis": "WP-04b: labelled schematic (the quick remedy); re-tracing the streams handed on"
+ },
+ {
+  "id": "CL-HIS-06",
+  "wp": "WP-01",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Four events whose hours the sources dispute are not labelled disputed: three whose own texts say so, and the Pratzen climb, shown as Fact at 08:45-09:15 while the accounts read put it from about 08:00 to about 09:00",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-MAP-06",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "The caption shrinks the act and phase to a letter or nothing with orphan separators, and in Watch at 1280 px its readings and event give way entirely",
+  "claimed": "fixed",
+  "basis": "WP-08's furniture (decisions 296-298)"
+ },
+ {
+  "id": "CL-PERF-01",
+  "wp": "WP-12",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "'After the phone warms' is asserted without temperature or throttling evidence, and the reports contradict a warming trend for Play",
+  "claimed": "fixed",
+  "basis": "WP-12: STAGE8_SPEC section 27; the route's version 4"
+ },
+ {
+  "id": "CL-PERF-02",
+  "wp": "WP-12",
+  "sev": "S3",
+  "kind": "untested area",
+  "title": "No integrated-GPU run: performance on the machine decision 138 and section 8.3 name is unknown",
+  "claimed": "owner",
+  "basis": "the integrated-GPU run: decision 278, at the owner's convenience"
+ },
+ {
+  "id": "CL-PERF-16",
+  "wp": "WP-13",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "The phone intervention rule accepts empty measurement sets: two empty reports both 'stand', both kinds are 'tested', every candidate 'cures' with gain NaN, and the rule recommends figShadow (exit 0)",
+  "claimed": "fixed",
+  "basis": "WP-13: phone-rule.js refuses an incomplete report"
+ },
+ {
+  "id": "CL-REC-02",
+  "wp": "WP-13",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "README.md describes the checks wrongly again and calls the file self-contained (the prior audit's R-1 recurred)",
+  "claimed": "fixed",
+  "basis": "WP-13: README.md links the map, states reconstruction and evidence, cdnjs"
+ },
+ {
+  "id": "CL-REC-03",
+  "wp": "WP-13",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Merged pull requests are recorded as drafts in CHANGELOG.md, docs/ROADMAP.md and CLAUDE.md, which contradict one another for #77 and #78 (the prior audit's R-2 recurred)",
+  "claimed": "fixed",
+  "basis": "WP-13: stale status lines, the carried checklist, CLAUDE.md's table and heading"
+ },
+ {
+  "id": "CL-SIM-03",
+  "wp": "WP-05",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "A theme chosen while the clock plays does not stop it: the clock runs on and Follow takes the camera from the theme's view within seconds",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-SIM-04",
+  "wp": "WP-05",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "The overlays' fade draws the outgoing phase's arrows when it should not: with the Movement layer off every phase change flashes them at about 0.87 opacity, and a phase change that interrupts a fade pops them back to 0.9 (stepping through phases quickly flashes each skipped phase's arrows)",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-SRC-10",
+  "wp": "WP-15",
+  "sev": "S3",
+  "kind": "untested area",
+  "title": "Source verification is incomplete: 481 of 704 inventoried statements carry no claim, and no pass has yet prioritised the prominent ones (the opening, the tour, the phase ledes, the Command explanations, the headline strengths)",
+  "claimed": "partly",
+  "basis": "WP-15: the first batch only (the prominent claims); later batches handed on"
+ },
+ {
+  "id": "CL-TEST-02",
+  "wp": "WP-07",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "No check can see long gaps: the motion benchmark's longest-hidden measure saturates at its own 121-frame window, and the one check that plays the whole day counts drops, not how long a formation stays hidden",
+  "claimed": "fixed",
+  "basis": "WP-07: aging and the event-named rise, the band, the long-gap measures"
+ },
+ {
+  "id": "CL-UX-04",
+  "wp": "WP-06",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "The timeline's tooltip covers the control row and swallows a press on Play reached from the timeline",
+  "claimed": "fixed",
+  "basis": "WP-06 (CL-UX-04 by precedence: the tip yields to a control under the pointer)"
+ },
+ {
+  "id": "CL-UX-05",
+  "wp": "WP-09",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Internal project references are shown to visitors: 'owner decision 106', register ids '(S5.7)', 'roadmap step 6B (docs/stage6-evidence/readings-composition.md)', 'the register (read partly on the text layer)', and in the full dossier's 'Dated by' rows 'Until roadmap step 4b ... (question 177)', '(moveMin)'",
+  "claimed": "fixed",
+  "basis": "WP-09 (3 of 3): the words a visitor is told (decision 310)"
+ },
+ {
+  "id": "CL-UX-07",
+  "wp": "WP-05",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "On a phone a 'Whose eyes?' reading leaves no sign on screen once the Panels close",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-GEO-04",
+  "wp": "WP-04",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Between Girzikowitz and Sokolnitz the drawn Goldbach departs up to about 300 m from today's channel and puts Girzikowitz and Kobelnitz on the opposite bank",
+  "claimed": "partly",
+  "basis": "WP-04b: labelled schematic (the quick remedy); re-tracing the streams handed on"
+ },
+ {
+  "id": "CL-GEO-05",
+  "wp": "WP-04",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Sokolnitz, Telnitz and Kobelnitz are drawn standing in marsh: marsh ellipses cover their centres and the cover classifier ranks marsh above village",
+  "claimed": "fixed",
+  "basis": "WP-04b: the villages on their own ground, no marsh at their centres"
+ },
+ {
+  "id": "CL-GEO-06",
+  "wp": "WP-01",
+  "sev": "S3",
+  "kind": "unresolved historical question",
+  "title": "The Goldbach bottom's marshiness, an open question, is drawn and told as settled, the opening's first step included; the movement audit never tests stream crossings and exempts marsh within 695 m of any village",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-GEO-07",
+  "wp": "WP-04",
+  "sev": "S3",
+  "kind": "unresolved historical question",
+  "title": "Krug is drawn 1.67 km south of where the 1836-52 survey and today's map put it, and the visitor is told no source read fixes it",
+  "claimed": "fixed",
+  "basis": "WP-04b: Krug at the Kruh tract"
+ },
+ {
+  "id": "CL-HIS-07",
+  "wp": "WP-03",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Kamensky's named conflict: the turn is drawn from 08:00, before the French climb, not 'in the 08:45 phase' as disclosed; it lifts the derived plateau reading",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-HIS-08",
+  "wp": "WP-03",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Kienmayer 'Holding west of the Goldbach' is drawn 0.9 km east of the brook (since Stage 0)",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-HIS-09",
+  "wp": "WP-03",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Caffarelli's objective 'Push Bagration off the highway' shown 12:45-17:00 while 1.5-2.2 km from the highway and moving away; separation misstated in records",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-HIS-10",
+  "wp": "WP-03",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Interpolated legs pass through enemies and across the Litava; the movement audit tests neither",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-HIS-11",
+  "wp": "WP-03",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Sokolnitz village drawn empty 09:00-13:15 although the texts have it taken and retaken and defended by Legrand, then Friant",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-HIS-12",
+  "wp": "WP-01",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Command tab: DOCUMENTED on 31 rows the claims register calls 'Not yet checked'; a phase-5 row anticipates Blasowitz's fall; a 'Could see' row holds a historiographical dispute",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-HIS-13",
+  "wp": "WP-03",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Dossier says 'Marching' beside 'In reserve'/'Concealed' on 63 slow drift legs",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-MAP-02",
+  "wp": "WP-07",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "The formations a live event names are hidden while their event's label is drawn (the Guard cavalry clash 0-16%; Miloradovich at the face-about 0-40%)",
+  "claimed": "fixed",
+  "basis": "WP-07: aging and the event-named rise, the band, the long-gap measures"
+ },
+ {
+  "id": "CL-MAP-04",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "The only north indicator is the rose inside the legend's toggle, so phones, layouts below 1080 px, Watch and Clean show no compass",
+  "claimed": "fixed",
+  "basis": "WP-08's furniture (decisions 296-298)"
+ },
+ {
+  "id": "CL-MAP-05",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "optional improvement",
+  "title": "The paper map as entered draws none of the 12 place names at 1600, 1280 and 1024 px",
+  "claimed": "kept",
+  "basis": "WP-08: the paper map's lettering as it is, decision 302 (b)"
+ },
+ {
+  "id": "CL-MAP-07",
+  "wp": "WP-07",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Phone in Landscape with counters: half the formation-frames drawn; Liechtenstein's Fifth Column never drawn from 09:00 to 12:00",
+  "claimed": "fixed",
+  "basis": "WP-07: aging and the event-named rise, the band, the long-gap measures"
+ },
+ {
+  "id": "CL-MAP-08",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "The legend omits several encodings it draws, against its own one-row-per-encoding rule",
+  "claimed": "fixed",
+  "basis": "WP-08's furniture (decisions 296-298)"
+ },
+ {
+  "id": "CL-MAP-09",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Arrow labels repeat formation names in the same plate style as the formations' own names",
+  "claimed": "fixed",
+  "basis": "WP-08's lettering and landmarks"
+ },
+ {
+  "id": "CL-MAP-10",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "On the landscape the selection is barely distinguished on the map",
+  "claimed": "fixed",
+  "basis": "WP-08's furniture (decisions 296-298)"
+ },
+ {
+  "id": "CL-MAP-11",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "The Plans view mixes about 40 serif labels of the plans and the current phase, and at 1280 px drops plan labels",
+  "claimed": "fixed",
+  "basis": "WP-08's lettering and landmarks"
+ },
+ {
+  "id": "CL-MAP-12",
+  "wp": "WP-07",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "In Landscape with counters the Field vantage sits 3% inside the corps threshold, so a short pan ends with every division counter replaced",
+  "claimed": "fixed",
+  "basis": "WP-07: aging and the event-named rise, the band, the long-gap measures"
+ },
+ {
+  "id": "CL-MAP-13",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Between 720 and 1079 px a selection leaves a 209 px strip of map between the dispatch card and the dossier",
+  "claimed": "fixed",
+  "basis": "WP-08's furniture (decisions 296-298)"
+ },
+ {
+  "id": "CL-MAP-15",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "accepted compromise",
+  "title": "The low views' wall of formation names remains (decision 255 left it open)",
+  "claimed": "kept",
+  "basis": "WP-08: the wall of names as decided, decision 284 (b), re-measured"
+ },
+ {
+  "id": "CL-PERF-03",
+  "wp": "WP-12",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "The long-frame share, the device acceptance metric, is not a dropped-frame measure and is unstable at the phone's operating point",
+  "claimed": "fixed",
+  "basis": "WP-12: STAGE8_SPEC section 27; the route's version 4"
+ },
+ {
+  "id": "CL-PERF-04",
+  "wp": "WP-12",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "The desktop before/after spans a browser update (Chrome 155 to 156) that section 24 does not record; the accepted CPU excess cannot be attributed to Stage 8 alone",
+  "claimed": "fixed",
+  "basis": "WP-12: STAGE8_SPEC section 27; the route's version 4"
+ },
+ {
+  "id": "CL-PERF-05",
+  "wp": "WP-12",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "The 'heaviest frame' figures in sections 24-25 are segment medians, and the census maxima are below what the route drew in Play and in phase 8's Overview",
+  "claimed": "fixed",
+  "basis": "WP-12: STAGE8_SPEC section 27; the route's version 4"
+ },
+ {
+  "id": "CL-PERF-06",
+  "wp": "WP-12",
+  "sev": "S3",
+  "kind": "accepted compromise",
+  "title": "The two phone readings are not equally strong: P5 (Stage 8's own starting build) points to a Play slowdown from 53 to 43 fps; the P3/P4 proxy is dominated by device state",
+  "claimed": "fixed",
+  "basis": "WP-12: the ordinary route on the phone, 13 November 2026 (section 27.2, decision 324 (a))"
+ },
+ {
+  "id": "CL-PERF-15",
+  "wp": "WP-16",
+  "sev": "S3",
+  "kind": "accepted compromise",
+  "title": "Accepted: the warmed phone's Overview and Play run at about 41 and 43 fps, never 60; hiding the figures and standards raises Play to about 59 fps, so their combined workload is the lever for any optimisation",
+  "claimed": "kept",
+  "basis": "decisions 322 (b), 324 (a): accepted as measured"
+ },
+ {
+  "id": "CL-REC-05",
+  "wp": "WP-09",
+  "sev": "S3",
+  "kind": "untested area",
+  "title": "Two items \"recorded complete on the owner's word\" carry no results: the screen-reader session (decision 175) and the human second reading (decision 189)",
+  "claimed": "partly",
+  "basis": "Stage 6 records: the second reading's wording corrected; the screen-reader session's results are the owner's (sr-session.md)"
+ },
+ {
+  "id": "CL-ROB-02",
+  "wp": "WP-14",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "A context loss while the clock plays can throw an uncaught TypeError from three r128 (\"reading 'trim'\")",
+  "claimed": "fixed",
+  "basis": "WP-14 (decisions 317 (a), 320 (a))"
+ },
+ {
+  "id": "CL-ROB-03",
+  "wp": "WP-13",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "The documents an agent must read have outgrown a context: CLAUDE.md 130,902 bytes, CHANGELOG.md 1,283,488 bytes",
+  "claimed": "deferred",
+  "basis": "WP-13: splitting CLAUDE.md needs the owner's word"
+ },
+ {
+  "id": "CL-SIM-05",
+  "wp": "WP-05",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Under a reading that does not know a formation, its card's 'Doing now' still names where it is",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-SRC-02",
+  "wp": "WP-02",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "The III Corps detachment and the IV Column are drawn below every figure in the sources read; the notes of the detachment, Friant, Bourcier and the IV Column omit Sokolov's and Schonhals's figures (Miloradovich's note gives Schonhals's 6,965)",
+  "claimed": "fixed",
+  "basis": "WP-02: each figure attributed or labelled a derivation; headline strengths tagged"
+ },
+ {
+  "id": "CL-SRC-03",
+  "wp": "WP-01",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "'Kologrivov's command on 2 December is in Sokolov alone' is contradicted by Sch\u00f6nhals p. 178 and by the project's own stage 6B reading",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-SRC-04",
+  "wp": "WP-02",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "SOURCE_NOTE illustrates disagreement among 'reputable orders of battle' with an I Column range whose low end (7,750) no source read gives (the three read give 12,730-14,000); the figure's origin is not established",
+  "claimed": "fixed",
+  "basis": "WP-02: each figure attributed or labelled a derivation; headline strengths tagged"
+ },
+ {
+  "id": "CL-SRC-05",
+  "wp": "WP-02",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Seven formations show a working strength with no note; six exceed the 22 November returns the project reads elsewhere",
+  "claimed": "fixed",
+  "basis": "WP-02: each figure attributed or labelled a derivation; headline strengths tagged"
+ },
+ {
+  "id": "CL-SRC-06",
+  "wp": "WP-02",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Headline strength and gun figures carry no claim tag; the compact card shows strength with neither note nor tag",
+  "claimed": "fixed",
+  "basis": "WP-02: each figure attributed or labelled a derivation; headline strengths tagged"
+ },
+ {
+  "id": "CL-TEST-01",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Only the node job is a required check on main: the browser checks run on every push but gate no merge, and check:visual runs only on dispatch (the one red merge, #77, was the owner's knowing merge over question 267's line)",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-03",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "untested area",
+  "title": "Historical values a data task may change are held only by change detectors that the task itself resets: a strength, a later anchor's grade, a position, a village, the order of battle's hierarchy and a claim's reading fail no check of the property",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-04",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "untested area",
+  "title": "No check covers interpenetration, rivers, motion vs status, act sides of the stream, event pill vs statement claim, or carried-forward grades",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-05",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Presentation code can rewrite a guarded datum at run time and every check passes, check:data included",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-06",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "No check reads the formation dossier's strength against the data",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-08",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "untested area",
+  "title": "The gait's drawn shader and its JavaScript mirror are never compared: the feet-on-ground, contact and culling-envelope checks verify the mirror",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-10",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "untested area",
+  "title": "Interface colours typed into style.css are read by no check",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-11",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "optional improvement",
+  "title": "geo-test.js holds the surveyed villages to 0.5 km of ground truth while the worst is 20 m",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-12",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "The statement inventory is a whitelist with no completeness check: timing bases and plan labels a visitor reads are outside it and outside its own exclusion note",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-13",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "check:chronology judges clock-shaped hours only; 45 inventoried statements give hours in words it does not read",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-14",
+  "wp": "WP-07",
+  "sev": "S3",
+  "kind": "accepted compromise",
+  "title": "The motion benchmark's ceilings and visibility baselines equal the build's own counts: they detect change, not quality; Play now accepts a formation hidden for 4,033 ms",
+  "claimed": "partly",
+  "basis": "WP-07: an absolute long-gap bar (MOTION.LONG, decision 299 (D)); the 16 motions' ceilings still the build's counts"
+ },
+ {
+  "id": "CL-UX-08",
+  "wp": "WP-09",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "On the main screen the derived readings' qualifiers, the Zuran and Allied vantages' 'not what he saw' and the relief's and key's disabled reasons are given only in hover tooltips; the derived caveats are also in the sources sheet, the vantages' caveat nowhere else",
+  "claimed": "fixed",
+  "basis": "WP-09 (2 of 3): names, focus, caveats, the first card"
+ },
+ {
+  "id": "CL-UX-09",
+  "wp": "WP-09",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Forced colours (high contrast): the app has no forced-colors handling; the Layers panel's on/off rows and ground buttons, the speed, Follow and the current phase lose their state, 22 of 25 event markers vanish, and the key's swatches and the side marks before names become identical white squares",
+  "claimed": "fixed",
+  "basis": "WP-09 (1 of 3): reflow, short screens, forced colours, the grip's drag"
+ },
+ {
+  "id": "CL-UX-10",
+  "wp": "WP-09",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Panels opened from the keyboard do not take the focus or announce themselves: Layers (role=dialog) is reached only on the sixth Tab after its button, and a dossier opened by Enter on a map item leaves focus on the item, about 30 Tabs from the dossier (or Shift+Tab back past the earlier map items and the map group)",
+  "claimed": "fixed",
+  "basis": "WP-09 (2 of 3): names, focus, caveats, the first card"
+ },
+ {
+  "id": "CL-UX-11",
+  "wp": "WP-09",
+  "sev": "S3",
+  "kind": "accepted compromise",
+  "title": "First use: neither the card nor the opening says the map is a reconstruction or what the A/B/C letters beside names mean; the key starts closed",
+  "claimed": "fixed",
+  "basis": "WP-09 (2 of 3): names, focus, caveats, the first card"
+ },
+ {
+  "id": "CL-VIS-02",
+  "wp": "WP-10",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Trees and bushes stand on the frozen Satschan mere",
+  "claimed": "fixed",
+  "basis": "WP-10 (part 1): figures on the mere's ice, no trees on it"
+ },
+ {
+  "id": "CL-VIS-03",
+  "wp": "WP-10",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Blocks face along slow drifts and keep stale facings, so some face away from an adjacent enemy",
+  "claimed": "fixed",
+  "basis": "WP-10 (part 2): facings, streams' glint, the camp, the tier on a resize"
+ },
+ {
+  "id": "CL-VIS-04",
+  "wp": "WP-10",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Formation blocks interpenetrate buildings and each other",
+  "claimed": "kept",
+  "basis": "WP-10 (part 3): decision 307 (c), measured; the sources sheet says the blocks are drawn at their frontage"
+ },
+ {
+  "id": "CL-VIS-10",
+  "wp": "WP-10",
+  "sev": "S3",
+  "kind": "accepted compromise",
+  "title": "The original every-foot-on-the-ground criterion remains unmet: at 4x a few dozen of 39,136 sampled poses per kit are off their resting seat (worst 0.8 px simple, 4.8 px rich), and at 10.33x the rich kit's worst reaches about 12 px for men and 10 px for horses",
+  "claimed": "kept",
+  "basis": "decision 309 (a): decision 265 (a)'s bounded convention kept"
+ },
+ {
+  "id": "CL-VIS-11",
+  "wp": "WP-08",
+  "sev": "S3",
+  "kind": "probable problem",
+  "title": "Landmark roles are not communicated at symbolic scale: the Sokolnitz castle reads smaller than the farmhouses and the III Column's figures hide it entirely at 10:00; the Austerlitz garden is not discernible at the Overview and has no paper-map sign",
+  "claimed": "fixed",
+  "basis": "WP-08's lettering and landmarks"
+ },
+ {
+  "id": "CL-PERF-12",
+  "wp": "WP-16",
+  "sev": "S3",
+  "kind": "accepted compromise",
+  "title": "Decision 268 (a)'s desktop script excess: the +30% GL calls a frame are 8D's and 8E's three kit attributes re-bound on every instanced kit draw (3 x 430 = 1,290 a frame, measured), but that re-binding is about 13-21% of the profiled script rise; Stage 8's own per-frame app work about 20-32%; about a third (three.js JavaScript) unattributed",
+  "claimed": "fixed",
+  "basis": "WP-16 (decision 321 (a)), pixel- and shadow-identical"
+ },
+ {
+  "id": "CL-ROB-04",
+  "wp": "WP-14",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "Each context restore keeps about 2.6-4 MB of heap and one more dispose listener per geometry and texture (three r128)",
+  "claimed": "fixed",
+  "basis": "WP-14 (decisions 317 (a), 320 (a))"
+ },
+ {
+  "id": "CL-ROB-05",
+  "wp": "WP-14",
+  "sev": "S3",
+  "kind": "accepted compromise",
+  "title": "The single file needs cdnjs: offline, or where cdnjs is blocked, the map cannot start",
+  "claimed": "kept",
+  "basis": "WP-14: the offline dependence stated in README.md (an accepted compromise)"
+ },
+ {
+  "id": "CL-TEST-16",
+  "wp": "WP-11",
+  "sev": "S3",
+  "kind": "confirmed defect",
+  "title": "test.js's 'objective off map' reads the objective's x only",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-PERF-13",
+  "wp": "WP-16",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "freeRect, the free-rectangle search, runs three times a frame over the whole viewport and is the largest app function in every profile (inherited)",
+  "claimed": "fixed",
+  "basis": "WP-16 (decision 321 (a)), pixel- and shadow-identical"
+ },
+ {
+  "id": "CL-MAP-16",
+  "wp": "WP-08",
+  "sev": "S4",
+  "kind": "probable problem",
+  "title": "The default event glyph reads as a north arrow on the paper map, and the 'capture' glyph as the objective marker",
+  "claimed": "fixed",
+  "basis": "WP-08's furniture (decisions 296-298)"
+ },
+ {
+  "id": "CL-PERF-07",
+  "wp": "WP-12",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Instrument limits of the device route: no raw intervals, median counts, flags rather than effects, no clock for played blocks, one refresh measurement",
+  "claimed": "fixed",
+  "basis": "WP-12: STAGE8_SPEC section 27; the route's version 4"
+ },
+ {
+  "id": "CL-PERF-14",
+  "wp": "WP-16",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "three r128 re-derives every lit material's program each frame (getParameters, getProgramCacheKey, uniform wiring) because the label pass sees no lights and bumps the lights' state version (313 a frame in L3, 318 now; 0 with the lights also on the label layer)",
+  "claimed": "fixed",
+  "basis": "WP-16 (decision 321 (a)), pixel- and shadow-identical"
+ },
+ {
+  "id": "CL-REC-01",
+  "wp": "WP-13",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "The published site's root page is the developer README: no link to the map and nothing for a visitor on evidence and reconstruction",
+  "claimed": "fixed",
+  "basis": "WP-13: README.md links the map, states reconstruction and evidence, cdnjs"
+ },
+ {
+  "id": "CL-REC-06",
+  "wp": "WP-03",
+  "sev": "S4",
+  "kind": "unresolved historical question",
+  "title": "G-3 (Miloradovich at dawn) is the one finding of the prior audit never taken up: no step, no decision, no record since",
+  "claimed": "fixed",
+  "basis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))"
+ },
+ {
+  "id": "CL-ROB-13",
+  "wp": "WP-13",
+  "sev": "S4",
+  "kind": "untested area",
+  "title": "The terms of use of about 460 third-party archive images that Pages publishes (the Moravian Land Archive's cadastre tiles and 8G's cadastre sheets) were not checked; before this entry the gap was recorded only in the robustness README",
+  "claimed": "deferred",
+  "basis": "WP-13: the archive images' terms"
+ },
+ {
+  "id": "CL-SIM-06",
+  "wp": "WP-05",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "The reading ('Whose eyes?') is cached for the clock's minute at the first instant asked, so it depends on the path: 29 and 38 formation-minutes differ by route",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-SRC-07",
+  "wp": "WP-02",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "Army-total notes omit figures the project read and credit Duffy with a total he does not give",
+  "claimed": "fixed",
+  "basis": "WP-02: each figure attributed or labelled a derivation; headline strengths tagged"
+ },
+ {
+  "id": "CL-SRC-09",
+  "wp": "WP-01",
+  "sev": "S4",
+  "kind": "unresolved historical question",
+  "title": "A January 1806 letter by Buxhowden naming Langeron as having sent Kamensky back is missing from the Kamensky dispute and the registers",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-TEST-21",
+  "wp": "WP-11",
+  "sev": "S4",
+  "kind": "untested area",
+  "title": "Parts of the application no area examined: smoke, the opening's played stretches in real time, reduced motion across sequences with frames drawn, the sources sheet's claims index, the dossier's Dress section and the village dossiers, and the woods' re-plan where a wood changed",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-UX-06",
+  "wp": "WP-09",
+  "sev": "S4",
+  "kind": "untested area",
+  "title": "The map's two-finger pinch has never been driven by browser-level touch input (the self-test's pinch is synthetic); the audit's emulated pinches landed on the open event dossier and the timeline, not the map, so they show no fault",
+  "claimed": "owner",
+  "basis": "the owner's device script (docs/final-stage6-evidence/sr-session.md, D1-D4, S1-S3)"
+ },
+ {
+  "id": "CL-UX-12",
+  "wp": "WP-09",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "The Now tab's hint 'The phase text is hidden: press D to show it. During the guided tour...' names a key that does nothing with the single-key shortcuts off, offers no pointer or touch way, and says 'guided tour' during the opening",
+  "claimed": "fixed",
+  "basis": "WP-09 (2 of 3): names, focus, caveats, the first card"
+ },
+ {
+  "id": "CL-GEO-08",
+  "wp": "WP-01",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "The Pratzen church is drawn 161 m from its read site while the sources sheet says it is drawn at its own site",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-GEO-09",
+  "wp": "WP-01",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "The sources sheet reads 'Terrain relief is exaggerated about 1 times' at 1x",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-GEO-10",
+  "wp": "WP-01",
+  "sev": "S4",
+  "kind": "unresolved historical question",
+  "title": "Two carried geographic questions are not visible to a visitor: the Goldbach's channel north of the castle and the highway's course in 1805",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-GEO-11",
+  "wp": "WP-04",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "The Sokolnitz castle's site falls on the drawn track class: the quadrangle stands on a track's surface (13 of 16 points within 25 m are 'track')",
+  "claimed": "fixed",
+  "basis": "WP-04b: the castle's own ground (CASTLE_GROUND)"
+ },
+ {
+  "id": "CL-HIS-14",
+  "wp": "WP-01",
+  "sev": "S4",
+  "kind": "unresolved historical question",
+  "title": "Bellowitz is drawn at its legacy place with the open question only in SOURCE_NOTE, and the Russian Guard cavalry's commander is shown without a claim tag (Krug's place, drawn the same way, is CL-GEO-07; the note behind the commander is CL-SRC-03)",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-HIS-15",
+  "wp": "WP-01",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "Smaller internal inconsistencies in texts and fields",
+  "claimed": "fixed",
+  "basis": "WP-01: a data task (claims, disputed hours, the Command tab, open questions told as open, smaller fixes)"
+ },
+ {
+  "id": "CL-HIS-16",
+  "wp": "WP-03",
+  "sev": "S4",
+  "kind": "accepted compromise",
+  "title": "Accepted: the Russian Guard corps shown at 10,500 above its drawn 7,330",
+  "claimed": "kept",
+  "basis": "WP-03: the accepted compromises kept as they are"
+ },
+ {
+  "id": "CL-HIS-17",
+  "wp": "WP-03",
+  "sev": "S4",
+  "kind": "accepted compromise",
+  "title": "Accepted: Bagration drawn toward Rausnitz at nightfall while his role says toward Austerlitz",
+  "claimed": "kept",
+  "basis": "WP-03: the accepted compromises kept as they are"
+ },
+ {
+  "id": "CL-MAP-14",
+  "wp": "WP-07",
+  "sev": "S4",
+  "kind": "accepted compromise",
+  "title": "At rest after Play the kept places leave up to three formations hidden that a fresh view would draw, until the next discontinuity",
+  "claimed": "kept",
+  "basis": "WP-07: measured and kept as accepted"
+ },
+ {
+  "id": "CL-MAP-17",
+  "wp": "WP-07",
+  "sev": "S4",
+  "kind": "accepted compromise",
+  "title": "The Landscape's formation names blink during Play: 10.6% of in-view frames hidden in 0.6 s episodes, about one per name every 6 s",
+  "claimed": "kept",
+  "basis": "WP-07: measured and kept as accepted"
+ },
+ {
+  "id": "CL-MAP-18",
+  "wp": "WP-08",
+  "sev": "S4",
+  "kind": "accepted compromise",
+  "title": "The Littawa's name is dropped in the Plans view (section 22.4), and at 1280 px too",
+  "claimed": "kept",
+  "basis": "WP-08: the Littawa dropped at 1280 px, kept as accepted (section 22.4)"
+ },
+ {
+  "id": "CL-MAP-19",
+  "wp": "WP-08",
+  "sev": "S4",
+  "kind": "accepted compromise",
+  "title": "Paper-map arrows grow without a cap when zoomed in",
+  "claimed": "kept",
+  "basis": "WP-08: decision 298 (the paper map's arrows uncapped; no single 1805 naming convention)"
+ },
+ {
+  "id": "CL-MAP-20",
+  "wp": "WP-08",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "The map's place names mix German period forms with Czech forms (Stare Vinohrady, Zuran, Litava) under no stated convention",
+  "claimed": "kept",
+  "basis": "WP-08: decision 298 (the paper map's arrows uncapped; no single 1805 naming convention)"
+ },
+ {
+  "id": "CL-PERF-08",
+  "wp": "WP-12",
+  "sev": "S4",
+  "kind": "probable problem",
+  "title": "Over-readings in the records: 'the figures and standards are what a phone's frame waits on' and 'the gait adds none'",
+  "claimed": "fixed",
+  "basis": "WP-12: STAGE8_SPEC section 27; the route's version 4"
+ },
+ {
+  "id": "CL-PERF-09",
+  "wp": "WP-12",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "Small numeric and wording inaccuracies in sections 24-25",
+  "claimed": "fixed",
+  "basis": "WP-12: STAGE8_SPEC section 27; the route's version 4"
+ },
+ {
+  "id": "CL-PERF-10",
+  "wp": "WP-12",
+  "sev": "S4",
+  "kind": "untested area",
+  "title": "A 329 ms frame in the phone's first effects-off block: counted, unexplained, and not in section 25.2",
+  "claimed": "kept",
+  "basis": "decision 323 (b): recorded"
+ },
+ {
+  "id": "CL-PERF-11",
+  "wp": "WP-12",
+  "sev": "S4",
+  "kind": "accepted compromise",
+  "title": "Section 8.5's acceptance rule is weak at both refresh rates, and the per-PR before/after was replaced by one end-of-stage comparison",
+  "claimed": "kept",
+  "basis": "WP-12: section 8.5's rule unchanged, the missed-refresh share reported beside it"
+ },
+ {
+  "id": "CL-REC-04",
+  "wp": "WP-13",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "The carried checklist misstates two of its own items: kienmayer@7's contradiction of its own act since Stage 0 filed as an 8J offset, and Caffarelli's separation given as 2.5-2.9 km where the build draws 2.13-2.64 km",
+  "claimed": "fixed",
+  "basis": "WP-13: stale status lines, the carried checklist, CLAUDE.md's table and heading"
+ },
+ {
+  "id": "CL-REC-08",
+  "wp": "WP-13",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "CLAUDE.md's file table and heading lag the tree: the claims' counts before 8K and \"Current state (October 2026)\"",
+  "claimed": "fixed",
+  "basis": "WP-13: stale status lines, the carried checklist, CLAUDE.md's table and heading"
+ },
+ {
+  "id": "CL-REC-09",
+  "wp": "WP-13",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "build.py prints the build's character count as 'bytes' (2,801,357) where the file is 2,810,630 bytes",
+  "claimed": "fixed",
+  "basis": "WP-13: build.py prints bytes, characters beside them"
+ },
+ {
+  "id": "CL-REC-10",
+  "wp": "WP-13",
+  "sev": "S4",
+  "kind": "probable problem",
+  "title": "The carried low-sun glare figure (43.5% at 15:00) is not a current measurement: on the audited build and CI's browser the same probe gives 5.90%",
+  "claimed": "fixed",
+  "basis": "WP-13: the glare figure annotated (STAGE8_SPEC section 26)"
+ },
+ {
+  "id": "CL-ROB-06",
+  "wp": "WP-00",
+  "sev": "S4",
+  "kind": "probable problem",
+  "title": "Seven archived builds on the same Pages origin load three.js without integrity",
+  "claimed": "kept",
+  "basis": "WP-00: the page frozen inside the archives left as it is, decision 270 (b)"
+ },
+ {
+  "id": "CL-ROB-07",
+  "wp": "WP-11",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Assurance tools CI never runs have started to rot: 5 of Stage 8's 189 mutations no longer apply; check:visual runs only on dispatch",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-ROB-08",
+  "wp": "WP-13",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "The project has no licence",
+  "claimed": "deferred",
+  "basis": "WP-13: the licence, owner question 279"
+ },
+ {
+  "id": "CL-ROB-09",
+  "wp": "WP-13",
+  "sev": "S4",
+  "kind": "accepted compromise",
+  "title": "Decision 140's premise has moved: the self-test is 21.7% of the file (12.8% when decided), +277,502 bytes in Stage 8",
+  "claimed": "kept",
+  "basis": "WP-13: the shipped self-test kept, question 283 (a)"
+ },
+ {
+  "id": "CL-ROB-10",
+  "wp": "WP-14",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Small dead code: gaitDist is never called though the gait's comment and CLAUDE.md name it",
+  "claimed": "fixed",
+  "basis": "WP-14 (decisions 317 (a), 320 (a))"
+ },
+ {
+  "id": "CL-ROB-11",
+  "wp": "WP-14",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "esc() leaves quotes, and double-quoted attributes take its output",
+  "claimed": "fixed",
+  "basis": "WP-14 (decisions 317 (a), 320 (a))"
+ },
+ {
+  "id": "CL-ROB-12",
+  "wp": "WP-14",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "The frame loop requests an animation frame at the display's rate while nothing is drawn",
+  "claimed": "kept",
+  "basis": "decision 318 (b): recorded, not changed"
+ },
+ {
+  "id": "CL-SIM-07",
+  "wp": "WP-05",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "The first Play frame after the page went idle advances 120 ms of play (0.6 clock min at 1/2x, 3.6 at 4x)",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-SIM-08",
+  "wp": "WP-05",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "Pausing in a dwell's hold leaves the caption naming the dwell's events; the same clock reached by a seek names one",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-SRC-08",
+  "wp": "WP-02",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Stronger or earlier sources uncredited, and two locator slips (Kamensky's 'about 2,000 each' is printed by Schonhals p. 177, which also braces Kursk into the brigade, not by Sokolov p. 195, which gives battalions only)",
+  "claimed": "partly",
+  "basis": "WP-02: most credits; three left to later passes (the 30th Bulletin, Fieffe's locator, Viskovatov pp. 229-230)"
+ },
+ {
+  "id": "CL-TEST-07",
+  "wp": "WP-11",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "The harness's figure-on-ground and standard-foot checks pass when nothing is measured",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-09",
+  "wp": "WP-11",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "Checks take their bounds from the code under test: a 20% looser infantry march-rate ceiling passes every movement check, and the self-test checks decided values against the code's own constants",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-15",
+  "wp": "WP-11",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "css-test.js holds source text, not behaviour: its march-row pin passed a march row stripped of its 'derived' tag",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-17",
+  "wp": "WP-11",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "CTX_DELETES allows 248 context warnings where the case has measured 193 since 8C",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-18",
+  "wp": "WP-11",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "The self-test manifest holds names and a count, not conditions",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-19",
+  "wp": "WP-11",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Several 'caught' results come from change detectors that a mechanical regeneration clears: the suites' semantic coverage is narrower than their failure count",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-TEST-20",
+  "wp": "WP-11",
+  "sev": "S4",
+  "kind": "probable problem",
+  "title": "Wall-clock limits make the suites load-sensitive: runtime-test.js's 30 s font watchdog fired under load in this audit, and run-all.sh kills a suite at 600 s",
+  "claimed": "open",
+  "basis": "WP-11: not taken up by name in the records"
+ },
+ {
+  "id": "CL-UX-13",
+  "wp": "WP-06",
+  "sev": "S4",
+  "kind": "probable problem",
+  "title": "The time rail seeks on any mouse button and has no cancel path: a right or middle press on the rail moves the clock and stops Play; where a context menu swallows the release (platform-dependent, unverified), hovering the rail then scrubs until the next click",
+  "claimed": "fixed",
+  "basis": "WP-06 (CL-UX-04 by precedence: the tip yields to a control under the pointer)"
+ },
+ {
+  "id": "CL-UX-14",
+  "wp": "WP-05",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "The event jumps' 1.5-minute margin skips a start the clock stands just before (20 of 21 starts from one minute before)",
+  "claimed": "fixed",
+  "basis": "WP-05 (CL-SIM-05 extended by decision 312 (a))"
+ },
+ {
+  "id": "CL-UX-15",
+  "wp": "WP-09",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "Accessible names and structure: the tablist is named 'The rail', the key's toggle is read 'Key plus/minus', Play becomes 'Pause' while also pressed, the full dossier's headings carry their tag word ('How many record', 'Where reconstruction'), the narrative sits inside the navigation landmark and the tools outside any landmark, and below 1080 px the page has no h1",
+  "claimed": "fixed",
+  "basis": "WP-09 (2 of 3): names, focus, caveats, the first card"
+ },
+ {
+  "id": "CL-UX-16",
+  "wp": "WP-09",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Visitor-facing jargon and overloaded letters: 'anchors', 'Plotted leg', 'interpolated', 'G.Q.G.', and three different A/B/C scales (position, timing, appearance) shown side by side ('Position B \u00b7 Timing B')",
+  "claimed": "fixed",
+  "basis": "WP-09 (3 of 3): the words a visitor is told (decision 310)"
+ },
+ {
+  "id": "CL-UX-17",
+  "wp": "WP-09",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Small type: 42-47% of visible texts on the main screens are 10.5-11.5 px (controls, tabs, timeline labels, tags), all at or above the project's 10.5 px floor",
+  "claimed": "kept",
+  "basis": "decision 311 (a): t-small kept at 11.5 px"
+ },
+ {
+  "id": "CL-UX-18",
+  "wp": "WP-09",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Polish: the phone caption shows two orphan separators when the act and phase shrink to 0 px; at 800 x 450 with the Panels open the vantage row overlaps the dispatch card's top edge by about 10 px; the dispatch sheet's grip looks like a drag handle but only a tap works",
+  "claimed": "fixed",
+  "basis": "WP-09 (1 of 3): reflow, short screens, forced colours, the grip's drag"
+ },
+ {
+  "id": "CL-UX-19",
+  "wp": "WP-06",
+  "sev": "S4",
+  "kind": "probable problem",
+  "title": "A modal sheet opened mid-drag does not end the drag: the map pans under the '?' sheet",
+  "claimed": "fixed",
+  "basis": "WP-06 (CL-UX-04 by precedence: the tip yields to a control under the pointer)"
+ },
+ {
+  "id": "CL-UX-20",
+  "wp": "WP-06",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Focus falls to the page when a resize hides the focused control",
+  "claimed": "fixed",
+  "basis": "WP-06 (CL-UX-04 by precedence: the tip yields to a control under the pointer)"
+ },
+ {
+  "id": "CL-UX-21",
+  "wp": "WP-09",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "The claims index counts every claimed kind but not the unchecked: 481 of 704 statements are 'Every other statement', with no number",
+  "claimed": "fixed",
+  "basis": "WP-09 (2 of 3): names, focus, caveats, the first card"
+ },
+ {
+  "id": "CL-UX-22",
+  "wp": "WP-09",
+  "sev": "S4",
+  "kind": "untested area",
+  "title": "Safari's handling of the embedded faces' metric overrides is untested, and every italic is synthesized (no italic face is embedded)",
+  "claimed": "owner",
+  "basis": "the owner's device script (docs/final-stage6-evidence/sr-session.md, D1-D4, S1-S3)"
+ },
+ {
+  "id": "CL-VIS-05",
+  "wp": "WP-10",
+  "sev": "S4",
+  "kind": "probable problem",
+  "title": "Streams saturate to white in grazing and low-sun views",
+  "claimed": "fixed",
+  "basis": "WP-10 (part 2): facings, streams' glint, the camp, the tier on a resize"
+ },
+ {
+  "id": "CL-VIS-06",
+  "wp": "WP-10",
+  "sev": "S4",
+  "kind": "unresolved historical question",
+  "title": "Omitted chapels invite a misreading: Bosenitz's church appears to crown the Santon; St Anthony's name stands beside Augezd's church",
+  "claimed": "fixed",
+  "basis": "WP-08's lettering (decision 282 (a)), re-verified by WP-10 part 1"
+ },
+ {
+  "id": "CL-VIS-07",
+  "wp": "WP-10",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "Headquarters drawn as a pitched camp at every status",
+  "claimed": "fixed",
+  "basis": "WP-10 (part 2): facings, streams' glint, the camp, the tier on a resize"
+ },
+ {
+  "id": "CL-VIS-08",
+  "wp": "WP-10",
+  "sev": "S4",
+  "kind": "confirmed defect",
+  "title": "Deciduous crowns near the eye show large faceted shards",
+  "claimed": "fixed",
+  "basis": "WP-10 (part 3): the crowns near the eye (decision 308)"
+ },
+ {
+  "id": "CL-VIS-09",
+  "wp": "WP-10",
+  "sev": "S4",
+  "kind": "optional improvement",
+  "title": "The low tier is decided once at start: a desktop page opened in a small window keeps density 1, no shadows and no near detail when enlarged",
+  "claimed": "fixed",
+  "basis": "WP-10 (part 2): facings, streams' glint, the camp, the tier on a resize"
+ }
+]

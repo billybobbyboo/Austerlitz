@@ -1,0 +1,228 @@
+{
+ "generated": "2026-11-13T23:00:35.352Z",
+ "scripts": [
+  {
+   "script": "mutate-8c.js",
+   "mutations": 10,
+   "applies": 10,
+   "appliesWithRepeats": 0,
+   "notApplicable": 0,
+   "notLiteral": 0,
+   "notApplicableList": [],
+   "layout": "id, what it breaks, [[from, to], ...]",
+   "defaultFile": "austerlitz-command-map.html"
+  },
+  {
+   "script": "mutate-8d.js",
+   "mutations": 8,
+   "applies": 7,
+   "appliesWithRepeats": 0,
+   "notApplicable": 1,
+   "notLiteral": 0,
+   "notApplicableList": [
+    {
+     "id": "stale",
+     "file": "austerlitz-command-map.html",
+     "missing": [
+      "if(cl.ver!==o.instanceMatrix.version||cl.n!==o.count||cl.g!==o.geometry) cullRefresh(o,cl);"
+     ]
+    }
+   ],
+   "layout": "id, what it breaks, the block it is judged by, [[from, to], ...]",
+   "defaultFile": "austerlitz-command-map.html"
+  },
+  {
+   "script": "mutate-8e.js",
+   "mutations": 33,
+   "applies": 30,
+   "appliesWithRepeats": 0,
+   "notApplicable": 3,
+   "notLiteral": 0,
+   "notApplicableList": [
+    {
+     "id": "shared",
+     "file": "austerlitz-command-map.html",
+     "missing": [
+      "w.setAttribute(\"aPh\",ph); w.setAttribute(\"aSl\",sl); w.userData="
+     ]
+    },
+    {
+     "id": "s5",
+     "file": "austerlitz-command-map.html",
+     "missing": [
+      "var tc=faceClock(id,clock), key=tc+\"|\"+id;"
+     ]
+    },
+    {
+     "id": "contact",
+     "file": "austerlitz-command-map.html",
+     "missing": [
+      "\"  vec2 anSl=clamp(aSl,vec2(-\"+f(ANIM.SLOPE)+\"),vec2(\"+f(ANIM.SLOPE)+\"));\""
+     ]
+    }
+   ],
+   "layout": "id, what it breaks, the block it is judged by, [[from, to], ...]",
+   "defaultFile": "austerlitz-command-map.html"
+  },
+  {
+   "script": "mutate-8f.js",
+   "mutations": 17,
+   "applies": 16,
+   "appliesWithRepeats": 0,
+   "notApplicable": 1,
+   "notLiteral": 0,
+   "notApplicableList": [
+    {
+     "id": "treetris",
+     "file": "austerlitz-command-map.html",
+     "missing": [
+      "broad:HAB.map(function(h,vi){ var P=[]; treeLimbs(P,h,vi); h.cr.forEach(function(C){ treeShell(P,C[0"
+     ]
+    }
+   ],
+   "layout": "id, what it breaks, [[from, to], ...]",
+   "defaultFile": "austerlitz-command-map.html"
+  },
+  {
+   "script": "mutate-8g.js",
+   "mutations": 9,
+   "applies": 9,
+   "appliesWithRepeats": 0,
+   "notApplicable": 0,
+   "notLiteral": 0,
+   "notApplicableList": [],
+   "layout": "id, the block, what it breaks, [[from, to], ...]",
+   "defaultFile": "austerlitz-command-map.html"
+  },
+  {
+   "script": "mutate-8h.js",
+   "mutations": 13,
+   "applies": 12,
+   "appliesWithRepeats": 0,
+   "notApplicable": 1,
+   "notLiteral": 0,
+   "notApplicableList": [
+    {
+     "id": "nonear",
+     "file": "austerlitz-command-map.html",
+     "missing": [
+      "\",tnG*uTreeNear);\");"
+     ]
+    }
+   ],
+   "layout": "id, the block, what it breaks, [[from, to], ...]",
+   "defaultFile": "austerlitz-command-map.html"
+  },
+  {
+   "script": "mutate-css-8d.js",
+   "mutations": 8,
+   "applies": 8,
+   "appliesWithRepeats": 1,
+   "notApplicable": 0,
+   "notLiteral": 0,
+   "notApplicableList": [],
+   "layout": "id, what it breaks, from, to",
+   "defaultFile": "app.js"
+  },
+  {
+   "script": "mutate-css-8e.js",
+   "mutations": 27,
+   "applies": 25,
+   "appliesWithRepeats": 0,
+   "notApplicable": 2,
+   "notLiteral": 0,
+   "notApplicableList": [
+    {
+     "id": "slopeground",
+     "file": "app.js",
+     "missing": [
+      "out[o]=(groundYFast(GH,x+fx*a,z+fz*a)-y)/a;"
+     ]
+    },
+    {
+     "id": "slopemore",
+     "file": "app.js",
+     "missing": [
+      "out[o+1]=(y-groundYFast(GH,x-fx*a,z-fz*a))/a; return; }"
+     ]
+    }
+   ],
+   "layout": "id, what it breaks, from, to, the file (app.js unless named)",
+   "defaultFile": "app.js"
+  },
+  {
+   "script": "mutate-css-8f.js",
+   "mutations": 27,
+   "applies": 26,
+   "appliesWithRepeats": 1,
+   "notApplicable": 1,
+   "notLiteral": 0,
+   "notApplicableList": [
+    {
+     "id": "woods8e",
+     "file": "app.js",
+     "missing": [
+      "var WOODS8E={wood:634, village:184,"
+     ]
+    }
+   ],
+   "layout": "id, what it breaks, from, to, the file (world.js unless named)",
+   "defaultFile": "world.js"
+  },
+  {
+   "script": "mutate-css-8g.js",
+   "mutations": 8,
+   "applies": 6,
+   "appliesWithRepeats": 0,
+   "notApplicable": 2,
+   "notLiteral": 0,
+   "notApplicableList": [
+    {
+     "id": "shape",
+     "file": "app.js",
+     "missing": [
+      "if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002){ settling=true; u.sw += (sh[0]-u.sw)*rate"
+     ]
+    },
+    {
+     "id": "tilt",
+     "file": "app.js",
+     "missing": [
+      "if(Math.abs(lowered-(u.tilt||0))>0.002){ settling=true; u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))"
+     ]
+    }
+   ],
+   "layout": "id, what it breaks, from, to, the file (app.js unless named), the block's line",
+   "defaultFile": "app.js"
+  },
+  {
+   "script": "mutate-css-8h.js",
+   "mutations": 17,
+   "applies": 17,
+   "appliesWithRepeats": 0,
+   "notApplicable": 0,
+   "notLiteral": 0,
+   "notApplicableList": [],
+   "layout": "id, the rule's line, what it breaks, from, to, the file (world.js unless named)",
+   "defaultFile": "world.js"
+  },
+  {
+   "script": "mutate-test-8g.js",
+   "mutations": 12,
+   "applies": 12,
+   "appliesWithRepeats": 0,
+   "notApplicable": 0,
+   "notLiteral": 0,
+   "notApplicableList": [],
+   "layout": "id, what it breaks, file, from, to, the error's words (a regular expression)",
+   "defaultFile": "austerlitz-command-map.html"
+  }
+ ],
+ "total": {
+  "mutations": 189,
+  "applies": 178,
+  "appliesWithRepeats": 2,
+  "notApplicable": 11,
+  "notLiteral": 0
+ }
+}

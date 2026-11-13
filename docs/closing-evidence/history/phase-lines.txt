@@ -1,0 +1,60 @@
+== timeline lines and their phases ==
+ph0 [04:00-07:00] line 0 "c. 01:00"  <-- OUTSIDE the phase window: Weyrother reads the dispositions at Allied headquarters, Krzenowitz. Kutuzov reportedly dozes.
+ph0 [04:00-07:00] line 1 "c. 04:00": The disposition orders the Allied columns to march at seven; Thiébault records reports through the night of th
+ph0 [04:00-07:00] line 2 "before dawn" (no clock): Napoleon mounted at one in the morning to ride round his posts (the 30th Bulletin), and Thiébault has him on h
+ph1 [07:00-08:00] line 0 "c. 07:00": Kienmayer's advance guard attacks Telnitz. According to Stutterheim the musket fire there grew very murderous,
+ph1 [07:00-08:00] line 1 "c. 07:00": Dokhturov's I Column leaves its camp as the disposition ordered; Kutuzov's report has it force the enemy back 
+ph2 [08:00-08:45] line 0 "c. 08:00": Langeron attacks Sokolnitz; Przybyszewski goes for the castle and pheasantry.
+ph2 [08:00-08:45] line 1 "c. 08:30": Napoleon asks Soult how long he needs to reach the heights. Twenty minutes at most, Soult answers in Thiébault
+ph3 [08:45-09:30] line 0 "c. 08:45": Soult's divisions advance. The mist lifts off the heights.
+ph3 [08:45-09:30] line 1 "c. 09:00": Friant's leading brigade comes up to the Goldbach near Telnitz: about nine in Stutterheim and the Moniteur's r
+ph3 [08:45-09:30] line 2 "c. 09:00": Thiébault's brigade clears Pratzen village; the 10e Légère pushes on for the Pratzeberg.
+ph3 [08:45-09:30] line 3 "c. 09:15": Kutuzov orders the 4th Column to face about, in this map's reading: Schönhals has him order its Austrian briga
+ph3 [08:45-09:30] line 4 "c. 09:30": Friant's leading troops retake Telnitz, then lose it again in the fog: Davout's report has the village in Fren
+ph4 [09:30-10:30] line 0 "c. 09:30": Lannes advances along the highway. Bagration counter-attacks. The two battles now run in parallel.
+ph4 [09:30-10:30] line 1 "c. 09:45": Kamensky turns his brigade about and drives the 10e Légère off the crest. No account read gives the hour of th
+ph4 [09:30-10:30] line 2 "c. 10:15": Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity. No sour
+ph4 [09:30-10:30] line 3 "c. 10:30": Langeron rides back and sends reinforcements up the slope; they arrive as the position is lost. The Kursk regi
+ph5 [10:30-11:15] line 0 "c. 10:40": The cavalry collision west of Blasowitz. Kellermann falls back through his infantry and reforms.
+ph5 [10:30-11:15] line 1 "c. 11:00": The Pratzeberg is firmly in French hands.
+ph5 [10:30-11:15] line 2 "c. 11:15": Blasowitz falls; no source read gives the hour, and the accounts differ on its order: the Allied report printe
+ph6 [11:15-12:45] line 0 "after 11:00"  <-- OUTSIDE the phase window: The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The hour is disputed: before one by the orde
+ph6 [11:15-12:45] line 1 "after 11:15": Bessières and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured. The hour is disputed
+ph6 [11:15-12:45] line 2 "c. 12:00": Napoleon moves forward from the Zuran to Stare Vinohrady.
+ph6 [11:15-12:45] line 3 "c. 12:00": Buxhowden, on the Allied left, is still unaware of the collapse behind him.
+ph6 [11:15-12:45] line 4 "c. 12:30": Davout regroups and attacks; Langeron is forced back toward Sokolnitz, in this map's reading, which no account
+ph7 [12:45-14:30] line 0 "c. 13:00-14:00": Soult and Davout launch the converging assault on the Allied left.
+ph7 [12:45-14:30] line 1 "c. 14:00": Sokolnitz falls. Przybyszewski's column is broken up and largely captured.
+ph8 [14:30-17:00] line 0 "c. 14:30": Vandamme takes the height above Augezd; the causeway comes under fire.
+ph8 [14:30-17:00] line 1 "c. 15:00": French artillery fires on the ice of the Satschan mere. The accounts differ on the hour: Schönhals has the who
+ph8 [14:30-17:00] line 2 "c. 16:30": Organised resistance ends, by this map's reckoning after Sokolov's end of the firing in the north; the account
+ph9 [17:00-18:00] line 0 "2 Dec" (no clock): Allied army effectively destroyed as a field force; Russia begins withdrawing east.
+ph9 [17:00-18:00] line 1 "26 Dec" (no clock): Treaty of Pressburg: Austria cedes Venetia, Istria, Dalmatia, Tyrol and Vorarlberg.
+ph9 [17:00-18:00] line 2 "6 Aug 1806" (no clock): Francis II abdicates as Holy Roman Emperor.
+
+== events: start, the phase it falls in, and that phase's lines with the same start ==
+columns-move     07:00-08:00 in ph1 (07:00 - 08:00)  lines at that start: "c. 07:00", "c. 07:00"
+counter-march    04:15-08:00 in ph0 (04:00 - 07:00)  lines at that start: NONE
+telnitz          07:00 in ph1 (07:00 - 08:00)  lines at that start: "c. 07:00", "c. 07:00"
+raigern          04:00-04:45 in ph0 (04:00 - 07:00)  lines at that start: "c. 04:00"
+davout           08:45-09:15 in ph3 (08:45 - 09:30)  lines at that start: "c. 08:45"
+sokolnitz        08:00 in ph2 (08:00 - 08:45)  lines at that start: "c. 08:00"
+telnitz-retaken  09:30 in ph4 (09:30 - 10:30)  lines at that start: "c. 09:30"
+decision         08:25-08:45 in ph2 (08:00 - 08:45)  lines at that start: NONE
+soult            08:45-09:15 in ph3 (08:45 - 09:30)  lines at that start: "c. 08:45"
+pratzen-village  09:00 in ph3 (08:45 - 09:30)  lines at that start: "c. 09:00", "c. 09:00"
+face-about       09:15 in ph3 (08:45 - 09:30)  lines at that start: "c. 09:15"
+kamensky         09:45 in ph4 (09:30 - 10:30)  lines at that start: "c. 09:45"
+kursk            10:30 in ph5 (10:30 - 11:15)  lines at that start: NONE
+pratzeberg       11:00 in ph5 (10:30 - 11:15)  lines at that start: "c. 11:00"
+blasowitz        11:15 in ph6 (11:15 - 12:45)  lines at that start: "after 11:15"
+guard-attack     11:00-13:00 in ph5 (10:30 - 11:15)  lines at that start: "c. 11:00"
+guard-broken     11:15-13:15 in ph6 (11:15 - 12:45)  lines at that start: "after 11:15"
+hq-forward       12:00-12:40 in ph6 (11:15 - 12:45)  lines at that start: "c. 12:00", "c. 12:00"
+buxhowden-blind  11:40-12:40 in ph6 (11:15 - 12:45)  lines at that start: NONE
+davout-resumes   12:30 in ph6 (11:15 - 12:45)  lines at that start: "c. 12:30"
+wheel            13:00-14:00 in ph7 (12:45 - 14:30)  lines at that start: "c. 13:00-14:00"
+sokolnitz-falls  14:00 in ph7 (12:45 - 14:30)  lines at that start: "c. 14:00"
+augezd           14:30 in ph8 (14:30 - 17:00)  lines at that start: "c. 14:30"
+ice              15:00 in ph8 (14:30 - 17:00)  lines at that start: "c. 15:00"
+end              16:30 in ph8 (14:30 - 17:00)  lines at that start: "c. 16:30"

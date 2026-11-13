@@ -1,0 +1,6 @@
+== opposing formations closer than 0.35 km (5-minute samples) ==
+legrand x lang: 4 samples, first 08:00 255m legrand:engaged lang:attacking, last 08:15 329m legrand:engaged(moving) lang:attacking(moving)
+sthilaire x kamensky: 18 samples, first 09:25 228m sthilaire:attacking(moving) kamensky:countermarch(moving), last 10:50 312m sthilaire:holding(moving) kamensky:engaged(moving)
+friant x lang: 10 samples, first 10:20 276m friant:counterattack(moving) lang:engaged(moving), last 11:05 346m friant:engaged(moving) lang:engaged(moving)
+dhautpoul x lich: 1 samples, first 11:15 347m dhautpoul:charging(moving) lich:repulsed, last 11:15 347m dhautpoul:charging(moving) lich:repulsed
+suchet x bag: 3 samples, first 11:25 320m suchet:advancing(moving) bag:holding(moving), last 11:35 326m suchet:advancing(moving) bag:holding(moving)

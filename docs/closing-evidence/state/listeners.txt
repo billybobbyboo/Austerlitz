@@ -1,0 +1,190 @@
+# listeners and timers by enclosing chain (line kind event chain)
+535	setTimeout		fontsReady > <anon@534>
+557	requestAnimationFrame		liftBoot
+558	setTimeout		liftBoot
+596	listen	webglcontextlost	bindContextLoss
+599	listen	click	bindContextLoss > <anon@596>
+600	listen	webglcontextrestored	bindContextLoss
+2561	listen	click	dayTrackEl > <anon@2559>
+2561	listen	keydown	dayTrackEl > <anon@2559>
+2631	listen	click	bindExaggeration > <anon@2630>
+4398	listen	click	paintChapterText > <anon@4397>
+5234	listen	keydown	mlInit
+5244	listen	loadingdone	mlInit
+5265	listen	focus	mlItem
+5266	listen	blur	mlItem
+5271	listen	keydown	mlItem
+5275	listen	click	mlItem
+7191	listen	click	bindHelp > <anon@7191>
+7192	listen	click	bindHelp
+7193	listen	click	bindHelp
+7194	listen	click	bindHelp
+7196	listen	click	bindHelp
+7197	listen	click	bindHelp
+7200	listen	keydown	bindSheetKeys
+7240	listen	contextmenu	bindCanvas
+7244	listen	pointerdown	bindCanvas
+7252	listen	pointermove	bindCanvas
+7266	listen	pointerup	bindCanvas
+7276	listen	pointercancel	bindCanvas
+7277	listen	pointerleave	bindCanvas
+7278	listen	dblclick	bindCanvas
+7279	listen	wheel	bindCanvas
+7305	listen	click	buildUI > <anon@7304>
+7310	listen	click	buildUI > <anon@7309>
+7313	listen	keydown	buildUI
+7329	listen	click	buildUI > <anon@7325>
+7335	listen	click	buildUI > <anon@7334>
+7338	listen	click	buildUI > <anon@7337>
+7340	listen	click	buildUI
+7343	listen	click	buildUI > <anon@7342>
+7351	listen	click	buildUI > <anon@7350>
+7359	listen	click	buildUI
+7360	listen	click	buildUI
+7363	listen	click	buildUI
+7367	listen	click	buildUI
+7369	listen	click	buildUI
+7371	listen	click	buildUI
+7372	listen	click	buildUI
+7373	listen	click	buildUI
+7374	listen	click	buildUI
+7376	listen	click	buildUI
+7377	listen	click	buildUI
+7378	listen	click	buildUI
+7380	listen	click	buildUI > <anon@7379>
+7383	listen	click	buildUI
+7384	listen	click	buildUI
+7389	listen	click	buildUI
+7390	listen	click	buildUI
+7391	listen	click	buildUI
+7392	listen	click	buildUI
+7393	listen	click	buildUI
+7394	listen	keydown	buildUI
+7400	listen	keydown	buildUI
+7410	listen	pointerdown	buildUI
+7418	listen	click	buildUI
+7424	listen	click	buildUI
+7427	listen	click	buildUI
+7428	listen	click	buildUI
+7430	listen	keydown	buildUI
+7436	listen	pointerdown	buildUI
+7438	listen	click	buildUI
+7439	listen	click	buildUI
+7441	listen	click	buildUI > <anon@7440>
+7447	listen	resize	buildUI > <anon@7444>
+7451	listen	resize	buildUI > <anon@7444>
+7457	listen	click	buildUI
+7469	listen	click	buildUI
+7470	listen	click	buildUI
+7471	listen	click	buildUI
+7472	listen	click	buildUI
+7474	listen	click	buildUI
+7480	listen	click	buildUI
+7484	listen	click	buildUI
+7485	listen	click	buildUI
+7487	listen	keydown	buildUI
+7491	listen	<expr>	buildUI > <anon@7490>
+7492	listen	pointermove	buildUI
+7494	listen	<expr>	buildUI > <anon@7494>
+7495	listen	transitionend	buildUI
+7515	listen	resize	buildUI
+7516	listen	orientationchange	buildUI
+7517	listen	change	buildUI
+7521	listen	change	buildUI > watchDensity
+7581	listen	click	paintKey
+7648	requestAnimationFrame		resizeFocus
+7651	listen	focusin	
+7652	listen	focusout	
+7731	listen	click	buildOOB > <anon@7721> > <anon@7724>
+7739	listen	click	buildOOB > <anon@7721> > <anon@7724> > <anon@7733>
+7747	listen	click	buildOOB > <anon@7721> > <anon@7724> > <anon@7733> > <anon@7741>
+7897	listen	keydown	rovingGroup
+7931	setTimeout		tipHide
+7944	listen	pointerover	bindTimeTips
+7945	listen	pointerout	bindTimeTips
+7949	listen	pointerdown	bindTimeTips
+7950	listen	focusin	bindTimeTips
+7952	listen	focusout	bindTimeTips
+7955	listen	click	bindTimeTips
+7956	listen	pointerover	bindTimeTips
+7957	listen	pointerout	bindTimeTips
+7964	listen	pointermove	bindTimeTips
+7965	listen	pointerdown	bindTimeTips
+7967	listen	keydown	bindTimeTips
+7978	listen	click	buildTimeline > <anon@7973>
+7990	listen	click	buildTimeline > <anon@7985>
+8014	listen	click	buildTimeline > <anon@8010>
+8030	listen	pointerdown	buildTimeline
+8031	listen	pointermove	buildTimeline
+8032	listen	pointerup	buildTimeline
+8033	listen	pointercancel	buildTimeline
+8034	listen	lostpointercapture	buildTimeline
+8040	listen	pointerdown	buildTimeline
+8042	listen	pointermove	buildTimeline
+8048	listen	pointerup	buildTimeline
+8049	listen	pointercancel	buildTimeline
+8051	listen	click	buildTimeline
+8053	listen	keydown	buildTimeline
+8075	listen	click	buildActs > <anon@8068>
+8273	setTimeout		paintDrawerBody
+8381	listen	click	compactCard
+8608	listen	click	dossierFormation > <anon@8605>
+8625	listen	click	dossierFormation > <anon@8622>
+8640	listen	click	dossierFormation
+8647	listen	click	dossierFormation > <anon@8646>
+8699	listen	click	srcButton
+8821	listen	click	dossierFeature > <anon@8818>
+8828	listen	click	dossierFeature
+8832	listen	click	dossierFeature
+8898	listen	click	dossierEvent > <anon@8894>
+8907	listen	click	dossierEvent > <anon@8907>
+8913	listen	click	dossierEvent
+8945	listen	click	dossierAnalysis
+9385	setTimeout		toastRelayout > <anon@9385>
+9392	setTimeout		flash
+9675	listen	click	bindPhone
+9677	listen	click	bindPhone
+9680	setTimeout		bindPhone > <anon@9677>
+9682	listen	pointerdown	bindPhone
+9687	listen	pointerdown	bindPhone
+9688	listen	pointerup	bindPhone
+9690	listen	pointercancel	bindPhone
+9691	listen	click	bindPhone
+9692	listen	click	bindPhone
+9693	listen	click	bindPhone
+9694	listen	click	bindPhone
+9773	requestAnimationFrame		loop
+
+# callers of each enclosing top-level function (call lines)
+	
+bindCanvas	7299
+bindContextLoss	659
+bindExaggeration	7422
+bindHelp	7488
+bindPhone	7456
+bindSheetKeys	7397
+bindTimeTips	7302
+buildActs	7992
+buildOOB	7522
+buildTimeline	7302
+buildUI	697
+compactCard	8284,9842,12478
+dayTrackEl	8563
+dossierAnalysis	8285,13927
+dossierEvent	8284
+dossierFeature	8285,9842,10520,10946,13924,15654
+dossierFormation	8284,9842,12478,13055
+flash	3599
+fontsReady	715
+liftBoot	716
+loop	712,14624,14737,14908,14990,15297
+mlInit	698
+mlItem	5343,5359,5371,5406
+paintChapterText	4364,4378,7332
+paintDrawerBody	8264
+paintKey	7422
+resizeFocus	7513
+rovingGroup	2562,7980,8016,8078
+srcButton	8361,8384,8523,8644,8789,8842,8884,8917,8932,8948
+tipHide	7938,7963,7967,13112,13118,13123
+toastRelayout	5049,7166,7495,7512,7516,9582,9658,9671,9712

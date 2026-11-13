@@ -1,0 +1,114 @@
+{
+ "data.js": {
+  "dq": 0,
+  "lt": 0,
+  "amp": 0,
+  "dqKeys": [],
+  "ltSample": [],
+  "ampSample": [],
+  "dqSample": []
+ },
+ "analysis.js": {
+  "dq": 0,
+  "lt": 0,
+  "amp": 0,
+  "dqKeys": [],
+  "ltSample": [],
+  "ampSample": [],
+  "dqSample": []
+ },
+ "appearance.js": {
+  "dq": 0,
+  "lt": 0,
+  "amp": 0,
+  "dqKeys": [],
+  "ltSample": [],
+  "ampSample": [],
+  "dqSample": []
+ },
+ "narrative.js": {
+  "dq": 51,
+  "lt": 0,
+  "amp": 0,
+  "dqKeys": [
+   "re",
+   null
+  ],
+  "ltSample": [],
+  "ampSample": [],
+  "dqSample": [
+   [
+    32,
+    "re",
+    "^FORMATIONS\\.\\w+\\.track\\[\"\\d+\"\\]\\.obj$"
+   ],
+   [
+    52,
+    null,
+    "FORMATIONS.bourcier.track[\"3\"].act"
+   ],
+   [
+    86,
+    null,
+    "FORMATIONS.sthilaire.track[\"4\"].act"
+   ],
+   [
+    88,
+    null,
+    "FORMATIONS.legrand.track[\"4\"].act"
+   ],
+   [
+    122,
+    null,
+    "FORMATIONS.rg_cav.track[\"6\"].act"
+   ],
+   [
+    188,
+    null,
+    "FORMATIONS.dok.track[\"1\"].act"
+   ],
+   [
+    205,
+    null,
+    "FORMATIONS.kamensky.track[\"3\"].act"
+   ],
+   [
+    209,
+    null,
+    "COMMAND.al[\"4\"][0]"
+   ]
+  ]
+ },
+ "geo.js": {
+  "dq": 0,
+  "lt": 0,
+  "amp": 0,
+  "dqKeys": [],
+  "ltSample": [],
+  "ampSample": [],
+  "dqSample": []
+ },
+ "tokens.js": {
+  "dq": 2,
+  "lt": 0,
+  "amp": 0,
+  "dqKeys": [
+   "serif",
+   "sans"
+  ],
+  "ltSample": [],
+  "ampSample": [],
+  "dqSample": [
+   [
+    53,
+    "serif",
+    "\"Austerlitz Serif\",\"Iowan Old Style\",\"Palatino Linotype\",Palatino,\"Book Antiqua\",Georgia,s"
+   ],
+   [
+    54,
+    "sans",
+    "\"Austerlitz Sans\",ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,sans-s"
+   ]
+  ]
+ }
+}

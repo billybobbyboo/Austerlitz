@@ -1,0 +1,74 @@
+{
+ "sinks": {
+  "total": 61,
+  "byFile": {
+   "app.js": 61
+  },
+  "clears": 14,
+  "withNonEscapedOther": 34,
+  "escInAttr": []
+ },
+ "sources": [
+  "app.js:9 location.search",
+  "app.js:599 location.reload",
+  "app.js:3960 location.search",
+  "shell.html:473 location.reload",
+  "tools/step6/perf-run.html:43 new URLSearchParams",
+  "tools/step6/perf-run.html:43 location.search",
+  "tools/step6/perf-run.html:44 location.href",
+  "tools/step6/perf-run.html:44 location.protocol",
+  "tools/step6/perf-run.html:44 location.origin"
+ ],
+ "dead": 0,
+ "deadBytes": 0,
+ "testOnly": 1,
+ "testOnlyBytes": 43,
+ "selfTest": {
+  "bytes": 621686,
+  "lines": [
+   10547,
+   15721
+  ]
+ },
+ "globals": {
+  "var": 334,
+  "let": 0,
+  "const": 0
+ },
+ "reassigned": 112,
+ "fns": 663,
+ "mirrors": {
+  "animGLSL_animAt": {
+   "decl": [
+    "app.js:1053",
+    "app.js:1907"
+   ],
+   "suites": [
+    "css-test.js:604",
+    "runtime-test.js:1309",
+    "runtime-test.js:1462",
+    "runtime-test.js:1483",
+    "runtime-test.js:1486",
+    "runtime-test.js:1491",
+    "runtime-test.js:1492"
+   ],
+   "selftest": 5
+  },
+  "groundY_groundYFast": {
+   "decl": [
+    "world.js:549",
+    "world.js:575"
+   ],
+   "suites": [
+    "css-test.js:576",
+    "css-test.js:580",
+    "css-test.js:581",
+    "runtime-test.js:1459",
+    "runtime-test.js:1474",
+    "runtime-test.js:1476",
+    "runtime-test.js:1478",
+    "runtime-test.js:1497"
+   ]
+  }
+ }
+}
