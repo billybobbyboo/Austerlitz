@@ -580,7 +580,7 @@ audit, no application change).
 
 **Decision 268 (a)** (the owner, 1 November 2026): the desktop's excess accepted as measured, carried into the final audit. **The phone runs**
 (the same day; §25): section 8.3's phone budget holds; section 8.5's rule not evaluable like for like (no ordinary-route run of this build on the
-phone; the two readings across routes disagree); after warming, phase 8's Overview at about 41 frames a second and Play at half speed at about 43,
+phone; the two readings across routes disagree); in the blocks after the 45 s warm-up ("after warming" until the final audits' Stage 7, WP-12, which found no evidence of warming: `docs/STAGE8_SPEC.md` section 27), phase 8's Overview at about 41 frames a second and Play at half speed at about 43,
 with 9-18% long frames; question 269, decided **(a)** by the owner the same day: the phone accepted as measured, its long frames carried into the
 final audit (the ordinary route not run again).
 

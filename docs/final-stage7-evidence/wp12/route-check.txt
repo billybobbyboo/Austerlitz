@@ -1,0 +1,3 @@
+route report (step6-perf-route 4): 3 segments with frames, 2 played; every segment's intervals, histogram, refresh shares, maxima and settings as recorded OK
+route report (step6-perf-route 4): 3 segments with frames, 2 played; every segment's intervals, histogram, refresh shares, maxima and settings as recorded OK
+route report (step6-phone-route 2): 26 segments with frames, 23 played; every segment's intervals, histogram, refresh shares, maxima and settings as recorded OK

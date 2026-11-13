@@ -23,3 +23,11 @@ Stage 7 of `docs/ROADMAP_FINAL_AUDIT.md` ("Performance and robustness": WP-16, W
     standards hidden (`Hfig`), made by a line put into `renderFrameNow` that hides each block's `std` (and `body`); never shipped.
   - `phone-census.*`: empty: `tools/step6/census.js` skips cases that need a fresh page, the phone cases among them (recorded, not used).
   - `mutate-wp16b.*`: the negative controls (`node tools/final-stage7/mutate.js wp16b --json ...`); `npm-test.txt`, `check-contrast.txt`.
+- `device-protocol.md`: the device runs the records lack, prepared for the owner (decision 278 (a)); `device/builds/`: the three builds it names.
+- `wp12/`: WP-12, the device evidence.
+  - `device-reread.*`: Stage 8's device reports read again from their JSON (`node tools/final-stage7/device-reread.js --json ...`): the missed-refresh
+    share beside the long-frame share, the largest segment medians.
+  - `route-local-paste.*`, `route-local-frame.*`, `route-local-phone.*`: the route (version 4) run end to end here, the console way, the wrapper page,
+    and the phone route on an iPhone's emulation (`node tools/step6/perf-local.js --quick ...`); software WebGL, its times decide nothing.
+  - `fx-off-probe.json`: the first switch to effects off at the phone's tier (`node tools/final-stage7/fx-off-probe.js --json ...`), CL-PERF-10.
+  - `mutate-wp12.*`: the negative controls of `tools/final-stage7/route-check.js` (`node tools/final-stage7/mutate.js wp12 --json ...`).

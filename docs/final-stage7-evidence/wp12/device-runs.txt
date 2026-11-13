@@ -1,0 +1,122 @@
+
+desk-S7-1.json (step6-perf-route 4, 2026-11-13T07:26:15.187Z; R 6.9 ms, at the end 6.9; wake lock held; lowTier false)
+  build 3037848 bytes, sha256 2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d
+  the .txt is the route's format() of the .json: yes
+  section 8.3 (at most 900 calls and 2.8 million triangles): within; the heaviest frame 843 calls (play-4x|played), 2317629 triangles (play-4x|played)
+  section 8.5 against L3/D1/D2: holds in every segment
+  section 8.3's CPU line (js50 not above L3's by more than 1 ms): met in every segment
+  frames over the long bound (25 ms) 0; the longest interval 20.9 ms (play-half|played)
+  segment                       fps (L3/D1/D2 -> now)     p50           long% (L3/D1/D2 -> now) miss% (est. -> now)   js50
+  overview|held                 144/142.9/142.9 -> 144    6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/1.4/1.4 -> 0      4.2/5/5.1 -> 3.2
+  overview|orbit                143.5/143.5/142.9 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1/1.4 -> 0          4.8/5.8/5.9 -> 3.4
+  overview|orbit -figures       144/143.7/144 -> 144      6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.8/0.6 -> 0      3/3.5/3.6 -> 2
+  overview|orbit -effects       144/143.5/143.5 -> 144    6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/1/1 -> 0          4/5.1/5.1 -> 3.3
+  pratzen-low-4x|held           143.5/143.2/144 -> 144    6.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1.2/0.6 -> 0        4.5/4.3/4.3 -> 2.7
+  pratzen-low-4x|orbit          142.9/143.5/142.9 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1.4/1/1.4 -> 0        5.1/5.3/5.2 -> 3.3
+  pratzen-low-4x|orbit -figures 144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      3.3/3.9/3.9 -> 2.3
+  pratzen-low-4x|orbit -effects 143.5/143.5/143.5 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1/1 -> 0            4.3/4.7/4.7 -> 3.1
+  pratzen-low-1x|held           144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      2.5/2.6/2.6 -> 1.6
+  pratzen-low-1x|orbit          144/144/143.7 -> 144      6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.8 -> 0      3.1/3.4/3.4 -> 1.8
+  pratzen-low-10x|held          143.5/144/142.9 -> 144    6.9/6.9/6.9 -> 6.90/0/0.2 -> 0            1/0.6/1.4 -> 0        4.5/4.3/4.4 -> 2.8
+  pratzen-low-10x|orbit         143.3/142.9/143.5 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1.1/1.4/1 -> 0        5.2/5.2/5.3 -> 3.3
+  ph8-overview|held             144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      4.6/5/5 -> 3.1
+  ph8-overview|orbit            143.5/142.8/142.9 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1.5/1.4 -> 0        5.3/5.8/5.8 -> 3.4
+  ph8-overview|orbit -figures   144/143.7/143.7 -> 144    6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.8/0.8 -> 0      3.4/3.5/3.6 -> 2
+  ph8-overview|orbit -effects   143.5/143.5/143.5 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1/1 -> 0            4.4/5/5 -> 3.4
+  paper|held                    144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      2/2.1/2.1 -> 1.5
+  paper|pan                     143.8/143.8/143.8 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.8/0.8/0.8 -> 0      2.1/2.3/2.4 -> 1.7
+  eye|held                      144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      2.8/3/3 -> 2.3
+  eye|look                      144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      3.1/3.2/3.2 -> 2.2
+  play-4x|played                139/124.3/123 -> 143.9    6.9/7/7 -> 6.90.1/0/0 -> 0            4.1/14.2/15.1 -> 0.1  6/6.9/7 -> 4.3
+  play-half|played              139.7/120.8/120.2 -> 143.76.9/7/7 -> 6.90.1/0/0 -> 0            3.6/16.6/17.1 -> 0.2  6.1/7.6/7.6 -> 4.9
+
+desk-S7-2.json (step6-perf-route 4, 2026-11-13T07:36:43.018Z; R 6.9 ms, at the end 6.9; wake lock held; lowTier false)
+  build 3037848 bytes, sha256 2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d
+  the .txt is the route's format() of the .json: yes
+  section 8.3 (at most 900 calls and 2.8 million triangles): within; the heaviest frame 843 calls (play-4x|played), 2317741 triangles (play-4x|played)
+  section 8.5 against L3/D1/D2: holds in every segment
+  section 8.3's CPU line (js50 not above L3's by more than 1 ms): met in every segment
+  frames over the long bound (25 ms) 0; the longest interval 20.7 ms (ph8-overview|orbit -effects)
+  segment                       fps (L3/D1/D2 -> now)     p50           long% (L3/D1/D2 -> now) miss% (est. -> now)   js50
+  overview|held                 144/142.9/142.9 -> 144    6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/1.4/1.4 -> 0      4.2/5/5.1 -> 3.1
+  overview|orbit                143.5/143.5/142.9 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1/1.4 -> 0          4.8/5.8/5.9 -> 3.5
+  overview|orbit -figures       144/143.7/144 -> 144      6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.8/0.6 -> 0      3/3.5/3.6 -> 2
+  overview|orbit -effects       144/143.5/143.5 -> 144    6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/1/1 -> 0          4/5.1/5.1 -> 3.4
+  pratzen-low-4x|held           143.5/143.2/144 -> 144    6.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1.2/0.6 -> 0        4.5/4.3/4.3 -> 2.9
+  pratzen-low-4x|orbit          142.9/143.5/142.9 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1.4/1/1.4 -> 0        5.1/5.3/5.2 -> 3.3
+  pratzen-low-4x|orbit -figures 144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      3.3/3.9/3.9 -> 2.3
+  pratzen-low-4x|orbit -effects 143.5/143.5/143.5 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1/1 -> 0            4.3/4.7/4.7 -> 3.1
+  pratzen-low-1x|held           144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      2.5/2.6/2.6 -> 1.8
+  pratzen-low-1x|orbit          144/144/143.7 -> 144      6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.8 -> 0      3.1/3.4/3.4 -> 1.9
+  pratzen-low-10x|held          143.5/144/142.9 -> 144    6.9/6.9/6.9 -> 6.90/0/0.2 -> 0            1/0.6/1.4 -> 0        4.5/4.3/4.4 -> 2.8
+  pratzen-low-10x|orbit         143.3/142.9/143.5 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1.1/1.4/1 -> 0        5.2/5.2/5.3 -> 3.3
+  ph8-overview|held             144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      4.6/5/5 -> 3.1
+  ph8-overview|orbit            143.5/142.8/142.9 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1.5/1.4 -> 0        5.3/5.8/5.8 -> 3.5
+  ph8-overview|orbit -figures   144/143.7/143.7 -> 144    6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.8/0.8 -> 0      3.4/3.5/3.6 -> 2
+  ph8-overview|orbit -effects   143.5/143.5/143.5 -> 143.76.9/6.9/6.9 -> 6.90/0/0 -> 0              1/1/1 -> 0.2          4.4/5/5 -> 3.4
+  paper|held                    144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      2/2.1/2.1 -> 1.6
+  paper|pan                     143.8/143.8/143.8 -> 144  6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.8/0.8/0.8 -> 0      2.1/2.3/2.4 -> 1.7
+  eye|held                      144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      2.8/3/3 -> 2.3
+  eye|look                      144/144/144 -> 144        6.9/6.9/6.9 -> 6.90/0/0 -> 0              0.6/0.6/0.6 -> 0      3.1/3.2/3.2 -> 2.3
+  play-4x|played                139/124.3/123 -> 143.8    6.9/7/7 -> 6.90.1/0/0 -> 0            4.1/14.2/15.1 -> 0.1  6/6.9/7 -> 4.3
+  play-half|played              139.7/120.8/120.2 -> 143.86.9/7/7 -> 6.90.1/0/0 -> 0            3.6/16.6/17.1 -> 0.2  6.1/7.6/7.6 -> 5.1
+
+phone-S7-1.json (step6-perf-route 4, 2026-11-13T07:48:47.229Z; R 17 ms, at the end 17; wake lock held; lowTier true)
+  build 3037848 bytes, sha256 2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d
+  the .txt is the route's format() of the .json: yes
+  section 8.3 (the heaviest frame at most 1.62 million triangles; segment medians of calls at most 10% above P5's): within; the heaviest frame 542 calls (overview|orbit), 1395047 triangles (play-half|played)
+  section 8.5 against P5: FAILS at ph8-overview|orbit (P5: long 2.7% to 8.9%)
+  frames over the long bound (25.5 ms) 325; the longest interval 41 ms (ph8-overview|orbit -effects)
+  segment                       fps (P5 -> now)           p50           long% (P5 -> now)       miss% (est. -> now)   js50
+  overview|held                 60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 4
+  overview|orbit                60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 5
+  overview|orbit -figures       60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                3 -> 4
+  overview|orbit -effects       60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 3
+  pratzen-low-4x|held           60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 4
+  pratzen-low-4x|orbit          60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 5
+  pratzen-low-4x|orbit -figures 60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 4
+  pratzen-low-4x|orbit -effects 60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 5
+  pratzen-low-1x|held           60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 3
+  pratzen-low-1x|orbit          60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 4
+  pratzen-low-10x|held          60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 4
+  pratzen-low-10x|orbit         60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 5
+  ph8-overview|held             60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 5
+  ph8-overview|orbit            47 -> 48                  22 -> 22      2.7 -> 8.9              20.1 -> 8.2           5 -> 5
+  ph8-overview|orbit -figures   45.9 -> 38.5              20 -> 26      10.1 -> 62.8            22 -> 38.6            4 -> 10
+  ph8-overview|orbit -effects   28.1 -> 30.3              36 -> 36      100 -> 89.4             52.2 -> 47.2          12 -> 13
+  paper|held                    60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 4
+  paper|pan                     60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                3 -> 4
+  eye|held                      60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                8 -> 4
+  eye|look                      60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                7 -> 4
+  play-4x|played                60 -> 60                  17 -> 17      0 -> 0.1                0 -> 0.1              5 -> 5
+  play-half|played              53 -> 53.1                17 -> 17      1.6 -> 2.1              9.9 -> 2.1            6 -> 6
+
+phone-S7-2.json (step6-perf-route 4, 2026-11-13T07:54:11.567Z; R 17 ms, at the end 17; wake lock held; lowTier true)
+  build 3037848 bytes, sha256 2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d
+  the .txt is the route's format() of the .json: yes
+  section 8.3 (the heaviest frame at most 1.62 million triangles; segment medians of calls at most 10% above P5's): within; the heaviest frame 542 calls (overview|orbit), 1395047 triangles (play-half|played)
+  section 8.5 against P5: FAILS at ph8-overview|orbit (P5: long 2.7% to 15.6%)
+  frames over the long bound (25.5 ms) 229; the longest interval 40 ms (ph8-overview|orbit -figures)
+  segment                       fps (P5 -> now)           p50           long% (P5 -> now)       miss% (est. -> now)   js50
+  overview|held                 60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 4
+  overview|orbit                60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 5
+  overview|orbit -figures       60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                3 -> 4
+  overview|orbit -effects       60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 4
+  pratzen-low-4x|held           60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 4
+  pratzen-low-4x|orbit          60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 5
+  pratzen-low-4x|orbit -figures 60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 4
+  pratzen-low-4x|orbit -effects 60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 4
+  pratzen-low-1x|held           60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 3
+  pratzen-low-1x|orbit          60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 4
+  pratzen-low-10x|held          60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 4
+  pratzen-low-10x|orbit         60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 5
+  ph8-overview|held             60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 4
+  ph8-overview|orbit            47 -> 47                  22 -> 22      2.7 -> 15.6             20.1 -> 13.5          5 -> 5
+  ph8-overview|orbit -figures   45.9 -> 47.3              20 -> 21      10.1 -> 6.8             22 -> 6.4             4 -> 4
+  ph8-overview|orbit -effects   28.1 -> 34.3              36 -> 27      100 -> 79.7             52.2 -> 44.3          12 -> 5
+  paper|held                    60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                4 -> 4
+  paper|pan                     60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                3 -> 4
+  eye|held                      60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                8 -> 4
+  eye|look                      60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                7 -> 4
+  play-4x|played                60 -> 60                  17 -> 17      0 -> 0                  0 -> 0                5 -> 5
+  play-half|played              53 -> 52.9                17 -> 17      1.6 -> 2.8              9.9 -> 2.7            6 -> 6

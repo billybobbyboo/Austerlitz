@@ -1,0 +1,3743 @@
+{
+ "note": "the owner's runs of Stage 7's build read by sections 8.3 and 8.5; nothing here is measured in this container",
+ "reports": {
+  "desk-S7-1.json": {
+   "started": "2026-11-13T07:26:15.187Z",
+   "version": "step6-perf-route 4",
+   "build": {
+    "bytes": 3037848,
+    "sha256": "2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d"
+   },
+   "refreshMs": 6.9,
+   "refreshEndMs": 6.9,
+   "wakeLock": "held",
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+   "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+   "load": {
+    "domReadyMs": 4254,
+    "loadMs": 4359,
+    "transferBytes": 1289590,
+    "bodyBytes": 3037848
+   },
+   "lowTier": false,
+   "txtIsFormat": true,
+   "budget83": {
+    "callsMax": {
+     "v": 843,
+     "at": "play-4x|played"
+    },
+    "trisMax": {
+     "v": 2317629,
+     "at": "play-4x|played"
+    },
+    "within": true,
+    "rule": "at most 900 calls and 2.8 million triangles"
+   },
+   "rule85Fails": [],
+   "cpuOverRefByMoreThan1ms": [],
+   "longFrames": 0,
+   "largestMax": {
+    "v": 20.9,
+    "at": "play-half|played"
+   },
+   "rows": [
+    {
+     "seg": "overview|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.2,
+     "calls": 825,
+     "callsMax": 825,
+     "trisMax": 1977737,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.2,
+       "calls": 832,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 837,
+       "missedEst": 1.4
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.1,
+       "calls": 837,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1
+    },
+    {
+     "seg": "overview|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.4,
+     "calls": 827,
+     "callsMax": 827,
+     "trisMax": 2124847,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.8,
+       "calls": 832,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.8,
+       "calls": 839,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.9,
+       "calls": 839,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.4
+    },
+    {
+     "seg": "overview|orbit -figures",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2,
+     "calls": 258,
+     "callsMax": 258,
+     "trisMax": 850239,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 247,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 143.7,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.5,
+       "calls": 258,
+       "missedEst": 0.8
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.6,
+       "calls": 258,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1
+    },
+    {
+     "seg": "overview|orbit -effects",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.3,
+     "calls": 820,
+     "callsMax": 820,
+     "trisMax": 2124840,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 825,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.1,
+       "calls": 832,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.1,
+       "calls": 832,
+       "missedEst": 1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.7
+    },
+    {
+     "seg": "pratzen-low-4x|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.7,
+     "calls": 570,
+     "callsMax": 570,
+     "trisMax": 1690237,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.5,
+       "calls": 761,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 143.2,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.3,
+       "calls": 592,
+       "missedEst": 1.2
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.3,
+       "calls": 592,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.8
+    },
+    {
+     "seg": "pratzen-low-4x|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.3,
+     "calls": 590,
+     "callsMax": 633,
+     "trisMax": 1976613,
+     "base": {
+      "L3": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.1,
+       "calls": 775,
+       "missedEst": 1.4
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.3,
+       "calls": 600,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.2,
+       "calls": 598,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.8
+    },
+    {
+     "seg": "pratzen-low-4x|orbit -figures",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.3,
+     "calls": 221,
+     "callsMax": 227,
+     "trisMax": 844065,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.3,
+       "calls": 211,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.9,
+       "calls": 223,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.9,
+       "calls": 222,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1
+    },
+    {
+     "seg": "pratzen-low-4x|orbit -effects",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.1,
+     "calls": 583,
+     "callsMax": 626,
+     "trisMax": 1976606,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.3,
+       "calls": 768,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.7,
+       "calls": 590,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.7,
+       "calls": 592,
+       "missedEst": 1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.2
+    },
+    {
+     "seg": "pratzen-low-1x|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 1.6,
+     "calls": 158,
+     "callsMax": 158,
+     "trisMax": 234003,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.5,
+       "calls": 161,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.6,
+       "calls": 160,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.6,
+       "calls": 161,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.9
+    },
+    {
+     "seg": "pratzen-low-1x|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 1.8,
+     "calls": 175,
+     "callsMax": 180,
+     "trisMax": 386513,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.1,
+       "calls": 173,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.4,
+       "calls": 175,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 143.7,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.4,
+       "calls": 175,
+       "missedEst": 0.8
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.3
+    },
+    {
+     "seg": "pratzen-low-10x|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.8,
+     "calls": 583,
+     "callsMax": 583,
+     "trisMax": 1689487,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.5,
+       "calls": 760,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.3,
+       "calls": 607,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0.2,
+       "js50": 4.4,
+       "calls": 607,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.7
+    },
+    {
+     "seg": "pratzen-low-10x|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.3,
+     "calls": 617,
+     "callsMax": 631,
+     "trisMax": 1955685,
+     "base": {
+      "L3": {
+       "fps": 143.3,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.2,
+       "calls": 776,
+       "missedEst": 1.1
+      },
+      "D1": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.2,
+       "calls": 624,
+       "missedEst": 1.4
+      },
+      "D2": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.3,
+       "calls": 624,
+       "missedEst": 1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.9
+    },
+    {
+     "seg": "ph8-overview|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.1,
+     "calls": 800,
+     "callsMax": 800,
+     "trisMax": 1959263,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.6,
+       "calls": 809,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 818,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 818,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.5
+    },
+    {
+     "seg": "ph8-overview|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.4,
+     "calls": 802,
+     "callsMax": 802,
+     "trisMax": 2106487,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.3,
+       "calls": 809,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 142.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.8,
+       "calls": 820,
+       "missedEst": 1.5
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.8,
+       "calls": 820,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.9
+    },
+    {
+     "seg": "ph8-overview|orbit -figures",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2,
+     "calls": 247,
+     "callsMax": 247,
+     "trisMax": 851711,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.4,
+       "calls": 234,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 143.7,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.5,
+       "calls": 245,
+       "missedEst": 0.8
+      },
+      "D2": {
+       "fps": 143.7,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.6,
+       "calls": 245,
+       "missedEst": 0.8
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.4
+    },
+    {
+     "seg": "ph8-overview|orbit -effects",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.4,
+     "calls": 795,
+     "callsMax": 795,
+     "trisMax": 2106480,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.4,
+       "calls": 802,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 813,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 813,
+       "missedEst": 1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1
+    },
+    {
+     "seg": "paper|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 1.5,
+     "calls": 158,
+     "callsMax": 158,
+     "trisMax": 245711,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2,
+       "calls": 156,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.1,
+       "calls": 156,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.1,
+       "calls": 156,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.5
+    },
+    {
+     "seg": "paper|pan",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 1.7,
+     "calls": 158,
+     "callsMax": 158,
+     "trisMax": 245711,
+     "base": {
+      "L3": {
+       "fps": 143.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.1,
+       "calls": 156,
+       "missedEst": 0.8
+      },
+      "D1": {
+       "fps": 143.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.3,
+       "calls": 156,
+       "missedEst": 0.8
+      },
+      "D2": {
+       "fps": 143.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.4,
+       "calls": 156,
+       "missedEst": 0.8
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.4
+    },
+    {
+     "seg": "eye|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.3,
+     "calls": 193,
+     "callsMax": 193,
+     "trisMax": 454617,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.8,
+       "calls": 208,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 199,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 199,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.5
+    },
+    {
+     "seg": "eye|look",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.2,
+     "calls": 84,
+     "callsMax": 175,
+     "trisMax": 546717,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.1,
+       "calls": 128,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.2,
+       "calls": 86,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.2,
+       "calls": 86,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.9
+    },
+    {
+     "seg": "play-4x|played",
+     "fps": 143.9,
+     "p50": 6.9,
+     "max": 13.9,
+     "longPct": 0,
+     "missedPct": 0.1,
+     "js50": 4.3,
+     "calls": 823,
+     "callsMax": 843,
+     "trisMax": 2317629,
+     "base": {
+      "L3": {
+       "fps": 139,
+       "p50": 6.9,
+       "longPct": 0.1,
+       "js50": 6,
+       "calls": 825,
+       "missedEst": 4.1
+      },
+      "D1": {
+       "fps": 124.3,
+       "p50": 7,
+       "longPct": 0,
+       "js50": 6.9,
+       "calls": 833,
+       "missedEst": 14.2
+      },
+      "D2": {
+       "fps": 123,
+       "p50": 7,
+       "longPct": 0,
+       "js50": 7,
+       "calls": 833,
+       "missedEst": 15.1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.7
+    },
+    {
+     "seg": "play-half|played",
+     "fps": 143.7,
+     "p50": 6.9,
+     "max": 20.9,
+     "longPct": 0,
+     "missedPct": 0.2,
+     "js50": 4.9,
+     "calls": 789,
+     "callsMax": 827,
+     "trisMax": 2273009,
+     "base": {
+      "L3": {
+       "fps": 139.7,
+       "p50": 6.9,
+       "longPct": 0.1,
+       "js50": 6.1,
+       "calls": 794,
+       "missedEst": 3.6
+      },
+      "D1": {
+       "fps": 120.8,
+       "p50": 7,
+       "longPct": 0,
+       "js50": 7.6,
+       "calls": 805,
+       "missedEst": 16.6
+      },
+      "D2": {
+       "fps": 120.2,
+       "p50": 7,
+       "longPct": 0,
+       "js50": 7.6,
+       "calls": 805,
+       "missedEst": 17.1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.2
+    }
+   ]
+  },
+  "desk-S7-2.json": {
+   "started": "2026-11-13T07:36:43.018Z",
+   "version": "step6-perf-route 4",
+   "build": {
+    "bytes": 3037848,
+    "sha256": "2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d"
+   },
+   "refreshMs": 6.9,
+   "refreshEndMs": 6.9,
+   "wakeLock": "held",
+   "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+   "gl": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+   "load": {
+    "domReadyMs": 5157,
+    "loadMs": 5237,
+    "transferBytes": 300,
+    "bodyBytes": 3037848
+   },
+   "lowTier": false,
+   "txtIsFormat": true,
+   "budget83": {
+    "callsMax": {
+     "v": 843,
+     "at": "play-4x|played"
+    },
+    "trisMax": {
+     "v": 2317741,
+     "at": "play-4x|played"
+    },
+    "within": true,
+    "rule": "at most 900 calls and 2.8 million triangles"
+   },
+   "rule85Fails": [],
+   "cpuOverRefByMoreThan1ms": [],
+   "longFrames": 0,
+   "largestMax": {
+    "v": 20.7,
+    "at": "ph8-overview|orbit -effects"
+   },
+   "rows": [
+    {
+     "seg": "overview|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.1,
+     "calls": 825,
+     "callsMax": 825,
+     "trisMax": 1977737,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.2,
+       "calls": 832,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 837,
+       "missedEst": 1.4
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.1,
+       "calls": 837,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.1
+    },
+    {
+     "seg": "overview|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.5,
+     "calls": 827,
+     "callsMax": 827,
+     "trisMax": 2124847,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.8,
+       "calls": 832,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.8,
+       "calls": 839,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.9,
+       "calls": 839,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.3
+    },
+    {
+     "seg": "overview|orbit -figures",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2,
+     "calls": 258,
+     "callsMax": 258,
+     "trisMax": 850239,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 247,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 143.7,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.5,
+       "calls": 258,
+       "missedEst": 0.8
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.6,
+       "calls": 258,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1
+    },
+    {
+     "seg": "overview|orbit -effects",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.5,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.4,
+     "calls": 820,
+     "callsMax": 820,
+     "trisMax": 2124840,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 825,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.1,
+       "calls": 832,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.1,
+       "calls": 832,
+       "missedEst": 1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.6
+    },
+    {
+     "seg": "pratzen-low-4x|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.9,
+     "calls": 570,
+     "callsMax": 570,
+     "trisMax": 1690237,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.5,
+       "calls": 761,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 143.2,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.3,
+       "calls": 592,
+       "missedEst": 1.2
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.3,
+       "calls": 592,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.6
+    },
+    {
+     "seg": "pratzen-low-4x|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.3,
+     "calls": 590,
+     "callsMax": 633,
+     "trisMax": 1976613,
+     "base": {
+      "L3": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.1,
+       "calls": 775,
+       "missedEst": 1.4
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.3,
+       "calls": 600,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.2,
+       "calls": 598,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.8
+    },
+    {
+     "seg": "pratzen-low-4x|orbit -figures",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.3,
+     "calls": 221,
+     "callsMax": 227,
+     "trisMax": 844065,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.3,
+       "calls": 211,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.9,
+       "calls": 223,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.9,
+       "calls": 222,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1
+    },
+    {
+     "seg": "pratzen-low-4x|orbit -effects",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.1,
+     "calls": 583,
+     "callsMax": 626,
+     "trisMax": 1976606,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.3,
+       "calls": 768,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.7,
+       "calls": 590,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.7,
+       "calls": 592,
+       "missedEst": 1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.2
+    },
+    {
+     "seg": "pratzen-low-1x|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 1.8,
+     "calls": 158,
+     "callsMax": 158,
+     "trisMax": 234003,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.5,
+       "calls": 161,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.6,
+       "calls": 160,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.6,
+       "calls": 161,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.7
+    },
+    {
+     "seg": "pratzen-low-1x|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 1.9,
+     "calls": 175,
+     "callsMax": 180,
+     "trisMax": 386513,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.1,
+       "calls": 173,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.4,
+       "calls": 175,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 143.7,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.4,
+       "calls": 175,
+       "missedEst": 0.8
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.2
+    },
+    {
+     "seg": "pratzen-low-10x|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.8,
+     "calls": 583,
+     "callsMax": 583,
+     "trisMax": 1689487,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.5,
+       "calls": 760,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.3,
+       "calls": 607,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0.2,
+       "js50": 4.4,
+       "calls": 607,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.7
+    },
+    {
+     "seg": "pratzen-low-10x|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.3,
+     "calls": 617,
+     "callsMax": 631,
+     "trisMax": 1955685,
+     "base": {
+      "L3": {
+       "fps": 143.3,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.2,
+       "calls": 776,
+       "missedEst": 1.1
+      },
+      "D1": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.2,
+       "calls": 624,
+       "missedEst": 1.4
+      },
+      "D2": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.3,
+       "calls": 624,
+       "missedEst": 1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.9
+    },
+    {
+     "seg": "ph8-overview|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.1,
+     "calls": 800,
+     "callsMax": 800,
+     "trisMax": 1959263,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.6,
+       "calls": 809,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 818,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 818,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.5
+    },
+    {
+     "seg": "ph8-overview|orbit",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3.5,
+     "calls": 802,
+     "callsMax": 802,
+     "trisMax": 2106487,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.3,
+       "calls": 809,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 142.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.8,
+       "calls": 820,
+       "missedEst": 1.5
+      },
+      "D2": {
+       "fps": 142.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5.8,
+       "calls": 820,
+       "missedEst": 1.4
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.8
+    },
+    {
+     "seg": "ph8-overview|orbit -figures",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2,
+     "calls": 247,
+     "callsMax": 247,
+     "trisMax": 851711,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.4,
+       "calls": 234,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 143.7,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.5,
+       "calls": 245,
+       "missedEst": 0.8
+      },
+      "D2": {
+       "fps": 143.7,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.6,
+       "calls": 245,
+       "missedEst": 0.8
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.4
+    },
+    {
+     "seg": "ph8-overview|orbit -effects",
+     "fps": 143.7,
+     "p50": 6.9,
+     "max": 20.7,
+     "longPct": 0,
+     "missedPct": 0.2,
+     "js50": 3.4,
+     "calls": 795,
+     "callsMax": 795,
+     "trisMax": 2106480,
+     "base": {
+      "L3": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 4.4,
+       "calls": 802,
+       "missedEst": 1
+      },
+      "D1": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 813,
+       "missedEst": 1
+      },
+      "D2": {
+       "fps": 143.5,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 813,
+       "missedEst": 1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1
+    },
+    {
+     "seg": "paper|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 1.6,
+     "calls": 158,
+     "callsMax": 158,
+     "trisMax": 245711,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2,
+       "calls": 156,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.1,
+       "calls": 156,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.1,
+       "calls": 156,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.4
+    },
+    {
+     "seg": "paper|pan",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 1.7,
+     "calls": 158,
+     "callsMax": 158,
+     "trisMax": 245711,
+     "base": {
+      "L3": {
+       "fps": 143.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.1,
+       "calls": 156,
+       "missedEst": 0.8
+      },
+      "D1": {
+       "fps": 143.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.3,
+       "calls": 156,
+       "missedEst": 0.8
+      },
+      "D2": {
+       "fps": 143.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.4,
+       "calls": 156,
+       "missedEst": 0.8
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.4
+    },
+    {
+     "seg": "eye|held",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.1,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.3,
+     "calls": 193,
+     "callsMax": 193,
+     "trisMax": 454617,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 2.8,
+       "calls": 208,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 199,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 199,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.5
+    },
+    {
+     "seg": "eye|look",
+     "fps": 144,
+     "p50": 6.9,
+     "max": 7.2,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 2.3,
+     "calls": 84,
+     "callsMax": 175,
+     "trisMax": 546717,
+     "base": {
+      "L3": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.1,
+       "calls": 128,
+       "missedEst": 0.6
+      },
+      "D1": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.2,
+       "calls": 86,
+       "missedEst": 0.6
+      },
+      "D2": {
+       "fps": 144,
+       "p50": 6.9,
+       "longPct": 0,
+       "js50": 3.2,
+       "calls": 86,
+       "missedEst": 0.6
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -0.8
+    },
+    {
+     "seg": "play-4x|played",
+     "fps": 143.8,
+     "p50": 6.9,
+     "max": 13.9,
+     "longPct": 0,
+     "missedPct": 0.1,
+     "js50": 4.3,
+     "calls": 823,
+     "callsMax": 843,
+     "trisMax": 2317741,
+     "base": {
+      "L3": {
+       "fps": 139,
+       "p50": 6.9,
+       "longPct": 0.1,
+       "js50": 6,
+       "calls": 825,
+       "missedEst": 4.1
+      },
+      "D1": {
+       "fps": 124.3,
+       "p50": 7,
+       "longPct": 0,
+       "js50": 6.9,
+       "calls": 833,
+       "missedEst": 14.2
+      },
+      "D2": {
+       "fps": 123,
+       "p50": 7,
+       "longPct": 0,
+       "js50": 7,
+       "calls": 833,
+       "missedEst": 15.1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1.7
+    },
+    {
+     "seg": "play-half|played",
+     "fps": 143.8,
+     "p50": 6.9,
+     "max": 13.9,
+     "longPct": 0,
+     "missedPct": 0.2,
+     "js50": 5.1,
+     "calls": 789,
+     "callsMax": 827,
+     "trisMax": 2273009,
+     "base": {
+      "L3": {
+       "fps": 139.7,
+       "p50": 6.9,
+       "longPct": 0.1,
+       "js50": 6.1,
+       "calls": 794,
+       "missedEst": 3.6
+      },
+      "D1": {
+       "fps": 120.8,
+       "p50": 7,
+       "longPct": 0,
+       "js50": 7.6,
+       "calls": 805,
+       "missedEst": 16.6
+      },
+      "D2": {
+       "fps": 120.2,
+       "p50": 7,
+       "longPct": 0,
+       "js50": 7.6,
+       "calls": 805,
+       "missedEst": 17.1
+      }
+     },
+     "rule85": {
+      "L3": {
+       "median": true,
+       "long": true
+      },
+      "D1": {
+       "median": true,
+       "long": true
+      },
+      "D2": {
+       "median": true,
+       "long": true
+      }
+     },
+     "cpuOverRef": -1
+    }
+   ]
+  },
+  "phone-S7-1.json": {
+   "started": "2026-11-13T07:48:47.229Z",
+   "version": "step6-perf-route 4",
+   "build": {
+    "bytes": 3037848,
+    "sha256": "2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d"
+   },
+   "refreshMs": 17,
+   "refreshEndMs": 17,
+   "wakeLock": "held",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1",
+   "gl": "Apple GPU",
+   "load": {
+    "domReadyMs": 3849,
+    "loadMs": 3941,
+    "transferBytes": 1290301,
+    "bodyBytes": 4086424
+   },
+   "lowTier": true,
+   "txtIsFormat": true,
+   "budget83": {
+    "trisMax": {
+     "v": 1395047,
+     "at": "play-half|played"
+    },
+    "callsMax": {
+     "v": 542,
+     "at": "overview|orbit"
+    },
+    "callsOverP5By10pct": [],
+    "within": true,
+    "rule": "the heaviest frame at most 1.62 million triangles; segment medians of calls at most 10% above P5's"
+   },
+   "rule85Fails": [
+    "ph8-overview|orbit (P5: long 2.7% to 8.9%)"
+   ],
+   "cpuOverRefByMoreThan1ms": null,
+   "longFrames": 325,
+   "largestMax": {
+    "v": 41,
+    "at": "ph8-overview|orbit -effects"
+   },
+   "rows": [
+    {
+     "seg": "overview|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 19,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 540,
+     "callsMax": 540,
+     "trisMax": 1164903,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 543,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "overview|orbit",
+     "fps": 60,
+     "p50": 17,
+     "max": 18,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 5,
+     "calls": 542,
+     "callsMax": 542,
+     "trisMax": 1311877,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 543,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "overview|orbit -figures",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 244,
+     "callsMax": 244,
+     "trisMax": 673173,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 237,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "overview|orbit -effects",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3,
+     "calls": 535,
+     "callsMax": 535,
+     "trisMax": 1311870,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 536,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-4x|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 19,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 215,
+     "callsMax": 215,
+     "trisMax": 711113,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 447,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-4x|orbit",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 5,
+     "calls": 206,
+     "callsMax": 369,
+     "trisMax": 1067057,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 442,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-4x|orbit -figures",
+     "fps": 60,
+     "p50": 17,
+     "max": 18,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 153,
+     "callsMax": 207,
+     "trisMax": 660453,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 148,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-4x|orbit -effects",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 5,
+     "calls": 199,
+     "callsMax": 362,
+     "trisMax": 1067050,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 435,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-1x|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3,
+     "calls": 132,
+     "callsMax": 132,
+     "trisMax": 228035,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 133,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-1x|orbit",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 130,
+     "callsMax": 175,
+     "trisMax": 385415,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 129,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-10x|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 216,
+     "callsMax": 216,
+     "trisMax": 710763,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 447,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-10x|orbit",
+     "fps": 60,
+     "p50": 17,
+     "max": 18,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 5,
+     "calls": 205,
+     "callsMax": 368,
+     "trisMax": 1074789,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 443,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "ph8-overview|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 19,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 5,
+     "calls": 522,
+     "callsMax": 522,
+     "trisMax": 1157837,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 525,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "ph8-overview|orbit",
+     "fps": 48,
+     "p50": 22,
+     "max": 28,
+     "longPct": 8.9,
+     "missedPct": 8.2,
+     "js50": 5,
+     "calls": 524,
+     "callsMax": 524,
+     "trisMax": 1306173,
+     "base": {
+      "P5": {
+       "fps": 47,
+       "p50": 22,
+       "longPct": 2.7,
+       "js50": 5,
+       "calls": 525,
+       "missedEst": 20.1
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": false
+      }
+     }
+    },
+    {
+     "seg": "ph8-overview|orbit -figures",
+     "fps": 38.5,
+     "p50": 26,
+     "max": 33,
+     "longPct": 62.8,
+     "missedPct": 38.6,
+     "js50": 10,
+     "calls": 233,
+     "callsMax": 233,
+     "trisMax": 677425,
+     "base": {
+      "P5": {
+       "fps": 45.9,
+       "p50": 20,
+       "longPct": 10.1,
+       "js50": 4,
+       "calls": 224,
+       "missedEst": 22
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "ph8-overview|orbit -effects",
+     "fps": 30.3,
+     "p50": 36,
+     "max": 41,
+     "longPct": 89.4,
+     "missedPct": 47.2,
+     "js50": 13,
+     "calls": 517,
+     "callsMax": 517,
+     "trisMax": 1306206,
+     "base": {
+      "P5": {
+       "fps": 28.1,
+       "p50": 36,
+       "longPct": 100,
+       "js50": 12,
+       "calls": 518,
+       "missedEst": 52.2
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "paper|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 22,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 158,
+     "callsMax": 158,
+     "trisMax": 245711,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 156,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "paper|pan",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 157,
+     "callsMax": 158,
+     "trisMax": 245711,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 156,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "eye|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 135,
+     "callsMax": 135,
+     "trisMax": 277077,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 8,
+       "calls": 154,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "eye|look",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 47,
+     "callsMax": 136,
+     "trisMax": 423375,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 7,
+       "calls": 83,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "play-4x|played",
+     "fps": 60,
+     "p50": 17,
+     "max": 29,
+     "longPct": 0.1,
+     "missedPct": 0.1,
+     "js50": 5,
+     "calls": 430,
+     "callsMax": 525,
+     "trisMax": 1367081,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 506,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "play-half|played",
+     "fps": 53.1,
+     "p50": 17,
+     "max": 29,
+     "longPct": 2.1,
+     "missedPct": 2.1,
+     "js50": 6,
+     "calls": 481,
+     "callsMax": 528,
+     "trisMax": 1395047,
+     "base": {
+      "P5": {
+       "fps": 53,
+       "p50": 17,
+       "longPct": 1.6,
+       "js50": 6,
+       "calls": 508,
+       "missedEst": 9.9
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    }
+   ]
+  },
+  "phone-S7-2.json": {
+   "started": "2026-11-13T07:54:11.567Z",
+   "version": "step6-perf-route 4",
+   "build": {
+    "bytes": 3037848,
+    "sha256": "2275638094e38473fc413e858c5a2f0a93b2bc202e917353e89709daf9ea547d"
+   },
+   "refreshMs": 17,
+   "refreshEndMs": 17,
+   "wakeLock": "held",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1",
+   "gl": "Apple GPU",
+   "load": {
+    "domReadyMs": 2220,
+    "loadMs": 2288,
+    "transferBytes": 0,
+    "bodyBytes": null
+   },
+   "lowTier": true,
+   "txtIsFormat": true,
+   "budget83": {
+    "trisMax": {
+     "v": 1395047,
+     "at": "play-half|played"
+    },
+    "callsMax": {
+     "v": 542,
+     "at": "overview|orbit"
+    },
+    "callsOverP5By10pct": [],
+    "within": true,
+    "rule": "the heaviest frame at most 1.62 million triangles; segment medians of calls at most 10% above P5's"
+   },
+   "rule85Fails": [
+    "ph8-overview|orbit (P5: long 2.7% to 15.6%)"
+   ],
+   "cpuOverRefByMoreThan1ms": null,
+   "longFrames": 229,
+   "largestMax": {
+    "v": 40,
+    "at": "ph8-overview|orbit -figures"
+   },
+   "rows": [
+    {
+     "seg": "overview|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 19,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 540,
+     "callsMax": 540,
+     "trisMax": 1164903,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 543,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "overview|orbit",
+     "fps": 60,
+     "p50": 17,
+     "max": 19,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 5,
+     "calls": 542,
+     "callsMax": 542,
+     "trisMax": 1311877,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 543,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "overview|orbit -figures",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 244,
+     "callsMax": 244,
+     "trisMax": 673173,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 237,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "overview|orbit -effects",
+     "fps": 60,
+     "p50": 17,
+     "max": 18,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 535,
+     "callsMax": 535,
+     "trisMax": 1311870,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 536,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-4x|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 19,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 215,
+     "callsMax": 215,
+     "trisMax": 711113,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 447,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-4x|orbit",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 5,
+     "calls": 206,
+     "callsMax": 369,
+     "trisMax": 1067057,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 442,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-4x|orbit -figures",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 153,
+     "callsMax": 207,
+     "trisMax": 660455,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 148,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-4x|orbit -effects",
+     "fps": 60,
+     "p50": 17,
+     "max": 19,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 199,
+     "callsMax": 362,
+     "trisMax": 1067050,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 435,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-1x|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 3,
+     "calls": 132,
+     "callsMax": 132,
+     "trisMax": 228035,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 133,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-1x|orbit",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 130,
+     "callsMax": 175,
+     "trisMax": 385415,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 129,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-10x|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 19,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 216,
+     "callsMax": 216,
+     "trisMax": 710763,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 447,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "pratzen-low-10x|orbit",
+     "fps": 60,
+     "p50": 17,
+     "max": 18,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 5,
+     "calls": 205,
+     "callsMax": 368,
+     "trisMax": 1074789,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 443,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "ph8-overview|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 18,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 522,
+     "callsMax": 522,
+     "trisMax": 1157837,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 525,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "ph8-overview|orbit",
+     "fps": 47,
+     "p50": 22,
+     "max": 29,
+     "longPct": 15.6,
+     "missedPct": 13.5,
+     "js50": 5,
+     "calls": 524,
+     "callsMax": 524,
+     "trisMax": 1306173,
+     "base": {
+      "P5": {
+       "fps": 47,
+       "p50": 22,
+       "longPct": 2.7,
+       "js50": 5,
+       "calls": 525,
+       "missedEst": 20.1
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": false
+      }
+     }
+    },
+    {
+     "seg": "ph8-overview|orbit -figures",
+     "fps": 47.3,
+     "p50": 21,
+     "max": 40,
+     "longPct": 6.8,
+     "missedPct": 6.4,
+     "js50": 4,
+     "calls": 233,
+     "callsMax": 233,
+     "trisMax": 677425,
+     "base": {
+      "P5": {
+       "fps": 45.9,
+       "p50": 20,
+       "longPct": 10.1,
+       "js50": 4,
+       "calls": 224,
+       "missedEst": 22
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "ph8-overview|orbit -effects",
+     "fps": 34.3,
+     "p50": 27,
+     "max": 40,
+     "longPct": 79.7,
+     "missedPct": 44.3,
+     "js50": 5,
+     "calls": 517,
+     "callsMax": 517,
+     "trisMax": 1306206,
+     "base": {
+      "P5": {
+       "fps": 28.1,
+       "p50": 36,
+       "longPct": 100,
+       "js50": 12,
+       "calls": 518,
+       "missedEst": 52.2
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "paper|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 158,
+     "callsMax": 158,
+     "trisMax": 245711,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 4,
+       "calls": 156,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "paper|pan",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 157,
+     "callsMax": 158,
+     "trisMax": 245711,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 3,
+       "calls": 156,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "eye|held",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 135,
+     "callsMax": 135,
+     "trisMax": 277077,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 8,
+       "calls": 154,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "eye|look",
+     "fps": 60,
+     "p50": 17,
+     "max": 17,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 4,
+     "calls": 47,
+     "callsMax": 136,
+     "trisMax": 423375,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 7,
+       "calls": 83,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "play-4x|played",
+     "fps": 60,
+     "p50": 17,
+     "max": 24,
+     "longPct": 0,
+     "missedPct": 0,
+     "js50": 5,
+     "calls": 430,
+     "callsMax": 525,
+     "trisMax": 1367081,
+     "base": {
+      "P5": {
+       "fps": 60,
+       "p50": 17,
+       "longPct": 0,
+       "js50": 5,
+       "calls": 506,
+       "missedEst": 0
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    },
+    {
+     "seg": "play-half|played",
+     "fps": 52.9,
+     "p50": 17,
+     "max": 32,
+     "longPct": 2.8,
+     "missedPct": 2.7,
+     "js50": 6,
+     "calls": 481,
+     "callsMax": 528,
+     "trisMax": 1395047,
+     "base": {
+      "P5": {
+       "fps": 53,
+       "p50": 17,
+       "longPct": 1.6,
+       "js50": 6,
+       "calls": 508,
+       "missedEst": 9.9
+      }
+     },
+     "rule85": {
+      "P5": {
+       "median": true,
+       "long": true
+      }
+     }
+    }
+   ]
+  }
+ }
+}
