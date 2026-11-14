@@ -1,0 +1,2783 @@
+{
+ "desk-study": [
+  {
+   "t": 510,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": -0.12,
+     "fy": 0.32,
+     "inFree": false
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 22
+   },
+   "bbox": [
+    335,
+    200,
+    1114,
+    627
+   ],
+   "bboxShare": 0.486,
+   "bboxCy": 0.48,
+   "labels": 43,
+   "labelCover": 0.157,
+   "labelCoverInAction": 0.234,
+   "dist": 130,
+   "cap": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Napoleon rel",
+   "capCut": 2
+  },
+  {
+   "t": 513,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.01,
+     "fy": 0.27,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.14,
+     "fx": 0.68,
+     "fy": 0.72,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.14,
+     "fx": 0.45,
+     "fy": 0.34,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    319,
+    190,
+    1149,
+    688
+   ],
+   "bboxShare": 0.605,
+   "bboxCy": 0.52,
+   "labels": 41,
+   "labelCover": 0.156,
+   "labelCoverInAction": 0.184,
+   "dist": 163,
+   "cap": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Napoleon rel",
+   "capCut": 2
+  },
+  {
+   "t": 516,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.11,
+     "fy": 0.32,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.36,
+     "fx": 0.74,
+     "fy": 0.72,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.36,
+     "fx": 0.51,
+     "fy": 0.38,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    430,
+    216,
+    1195,
+    662
+   ],
+   "bboxShare": 0.498,
+   "bboxCy": 0.52,
+   "labels": 41,
+   "labelCover": 0.159,
+   "labelCoverInAction": 0.219,
+   "dist": 190,
+   "cap": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Napoleon rel",
+   "capCut": 2
+  },
+  {
+   "t": 519,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.18,
+     "fy": 0.35,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.57,
+     "fx": 0.78,
+     "fy": 0.72,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.57,
+     "fx": 0.56,
+     "fy": 0.4,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    514,
+    234,
+    1233,
+    644
+   ],
+   "bboxShare": 0.431,
+   "bboxCy": 0.52,
+   "labels": 39,
+   "labelCover": 0.165,
+   "labelCoverInAction": 0.257,
+   "dist": 214,
+   "cap": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Napoleon rel",
+   "capCut": 2
+  },
+  {
+   "t": 522,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.22,
+     "fy": 0.36,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.79,
+     "fx": 0.79,
+     "fy": 0.71,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.79,
+     "fx": 0.57,
+     "fy": 0.41,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    553,
+    245,
+    1236,
+    628
+   ],
+   "bboxShare": 0.382,
+   "bboxCy": 0.51,
+   "labels": 39,
+   "labelCover": 0.167,
+   "labelCoverInAction": 0.278,
+   "dist": 230,
+   "cap": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Napoleon rel",
+   "capCut": 2
+  },
+  {
+   "t": 524.7,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.23,
+     "fy": 0.37,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.98,
+     "fx": 0.78,
+     "fy": 0.7,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.98,
+     "fx": 0.57,
+     "fy": 0.42,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    569,
+    251,
+    1226,
+    616
+   ],
+   "bboxShare": 0.35,
+   "bboxCy": 0.51,
+   "labels": 38,
+   "labelCover": 0.167,
+   "labelCoverInAction": 0.292,
+   "dist": 240,
+   "cap": "interval Friant's leading brigade reaches the Goldbach ; hour disputed Saint-Hilaire and V",
+   "capCut": 2
+  },
+  {
+   "t": 525,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.8,
+     "fy": 0.67,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.56,
+     "fy": 0.42,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.22,
+     "fy": 0.39,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    553,
+    260,
+    1235,
+    592
+   ],
+   "bboxShare": 0.331,
+   "bboxCy": 0.5,
+   "labels": 31,
+   "labelCover": 0.135,
+   "labelCoverInAction": 0.269,
+   "dist": 246,
+   "cap": "interval Friant's leading brigade reaches the Goldbach ; hour disputed Saint-Hilaire and V",
+   "capCut": 2
+  },
+  {
+   "t": 525,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.81,
+     "fy": 0.63,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.55,
+     "fy": 0.42,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.2,
+     "fy": 0.41,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    525,
+    273,
+    1263,
+    564
+   ],
+   "bboxShare": 0.313,
+   "bboxCy": 0.48,
+   "labels": 33,
+   "labelCover": 0.152,
+   "labelCoverInAction": 0.281,
+   "dist": 251,
+   "cap": "interval Friant's leading brigade reaches the Goldbach ; hour disputed Saint-Hilaire and V",
+   "capCut": 2
+  },
+  {
+   "t": 525.1,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.82,
+     "fy": 0.61,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.54,
+     "fy": 0.42,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.99,
+     "fx": 0.19,
+     "fy": 0.43,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    499,
+    285,
+    1277,
+    541
+   ],
+   "bboxShare": 0.29,
+   "bboxCy": 0.48,
+   "labels": 33,
+   "labelCover": 0.147,
+   "labelCoverInAction": 0.28,
+   "dist": 254,
+   "cap": "interval Friant's leading brigade reaches the Goldbach ; hour disputed Saint-Hilaire and V",
+   "capCut": 2
+  },
+  {
+   "t": 527.6,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.82,
+     "fy": 0.59,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.53,
+     "fy": 0.42,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.9,
+     "fx": 0.18,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.11,
+     "fx": 0.5,
+     "fy": 0.4,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    484,
+    293,
+    1281,
+    527
+   ],
+   "bboxShare": 0.273,
+   "bboxCy": 0.47,
+   "labels": 34,
+   "labelCover": 0.155,
+   "labelCoverInAction": 0.303,
+   "dist": 255,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches ",
+   "capCut": 2
+  },
+  {
+   "t": 531.2,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.82,
+     "fy": 0.59,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.52,
+     "fy": 0.43,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.76,
+     "fx": 0.17,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.37,
+     "fx": 0.49,
+     "fy": 0.41,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    462,
+    299,
+    1283,
+    520
+   ],
+   "bboxShare": 0.265,
+   "bboxCy": 0.47,
+   "labels": 35,
+   "labelCover": 0.158,
+   "labelCoverInAction": 0.32,
+   "dist": 253,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches ",
+   "capCut": 2
+  },
+  {
+   "t": 534.8,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.82,
+     "fy": 0.59,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.51,
+     "fy": 0.43,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.63,
+     "fx": 0.48,
+     "fy": 0.42,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.62,
+     "fx": 0.15,
+     "fy": 0.47,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    438,
+    304,
+    1285,
+    520
+   ],
+   "bboxShare": 0.267,
+   "bboxCy": 0.47,
+   "labels": 32,
+   "labelCover": 0.151,
+   "labelCoverInAction": 0.316,
+   "dist": 249,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches ",
+   "capCut": 2
+  },
+  {
+   "t": 538.4,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.82,
+     "fy": 0.6,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.5,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.89,
+     "fx": 0.46,
+     "fy": 0.42,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.48,
+     "fx": 0.13,
+     "fy": 0.48,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    412,
+    308,
+    1288,
+    525
+   ],
+   "bboxShare": 0.277,
+   "bboxCy": 0.48,
+   "labels": 33,
+   "labelCover": 0.152,
+   "labelCoverInAction": 0.295,
+   "dist": 244,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches ",
+   "capCut": 2
+  },
+  {
+   "t": 540,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 1,
+     "fx": 0.45,
+     "fy": 0.43,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.83,
+     "fy": 0.61,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.49,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.42,
+     "fx": 0.1,
+     "fy": 0.49,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    387,
+    311,
+    1290,
+    531
+   ],
+   "bboxShare": 0.29,
+   "bboxCy": 0.49,
+   "labels": 35,
+   "labelCover": 0.153,
+   "labelCoverInAction": 0.307,
+   "dist": 238,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "capCut": 0
+  },
+  {
+   "t": 540,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 1,
+     "fx": 0.45,
+     "fy": 0.43,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.83,
+     "fy": 0.62,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.48,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.42,
+     "fx": 0.09,
+     "fy": 0.49,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    371,
+    313,
+    1292,
+    536
+   ],
+   "bboxShare": 0.3,
+   "bboxCy": 0.49,
+   "labels": 35,
+   "labelCover": 0.153,
+   "labelCoverInAction": 0.298,
+   "dist": 235,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "capCut": 0
+  },
+  {
+   "t": 540,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.83,
+     "fy": 0.62,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.48,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 1,
+     "fx": 0.44,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.42,
+     "fx": 0.08,
+     "fy": 0.5,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    360,
+    314,
+    1293,
+    539
+   ],
+   "bboxShare": 0.307,
+   "bboxCy": 0.5,
+   "labels": 34,
+   "labelCover": 0.148,
+   "labelCoverInAction": 0.285,
+   "dist": 233,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "capCut": 0
+  },
+  {
+   "t": 542.8,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.82,
+     "fy": 0.62,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.47,
+     "fy": 0.46,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.89,
+     "fx": 0.44,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.32,
+     "fx": 0.07,
+     "fy": 0.5,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    350,
+    314,
+    1290,
+    537
+   ],
+   "bboxShare": 0.306,
+   "bboxCy": 0.5,
+   "labels": 35,
+   "labelCover": 0.154,
+   "labelCoverInAction": 0.287,
+   "dist": 232,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches ",
+   "capCut": 2
+  },
+  {
+   "t": 546.4,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.82,
+     "fy": 0.63,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.46,
+     "fy": 0.46,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.75,
+     "fx": 0.43,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Kutuzov orders the 4th Column ",
+     "w": 0.39,
+     "fx": 0.43,
+     "fy": 0.42,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    337,
+    315,
+    1282,
+    536
+   ],
+   "bboxShare": 0.304,
+   "bboxCy": 0.5,
+   "labels": 34,
+   "labelCover": 0.148,
+   "labelCoverInAction": 0.287,
+   "dist": 231,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches ",
+   "capCut": 2
+  },
+  {
+   "t": 550,
+   "free": [
+    312,
+    120,
+    1424,
+    736
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.81,
+     "fy": 0.63,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.45,
+     "fy": 0.46,
+     "inFree": true
+    },
+    {
+     "n": "Kutuzov orders the 4th Column ",
+     "w": 0.64,
+     "fx": 0.41,
+     "fy": 0.43,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.62,
+     "fx": 0.42,
+     "fy": 0.44,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    322,
+    317,
+    1271,
+    534
+   ],
+   "bboxShare": 0.301,
+   "bboxCy": 0.5,
+   "labels": 30,
+   "labelCover": 0.145,
+   "labelCoverInAction": 0.279,
+   "dist": 231,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches ",
+   "capCut": 2
+  }
+ ],
+ "desk-study-0900": {
+  "t": 540,
+  "free": [
+   312,
+   120,
+   1424,
+   736
+  ],
+  "events": [
+   {
+    "n": "Thiébault's brigade clears Pra",
+    "w": 1,
+    "fx": 0.43,
+    "fy": 0.72,
+    "inFree": true
+   },
+   {
+    "n": "Friant's leading brigade reach",
+    "w": 1,
+    "fx": 1.65,
+    "fy": 1.54,
+    "inFree": false
+   },
+   {
+    "n": "Saint-Hilaire and Vandamme cli",
+    "w": 1,
+    "fx": 0.5,
+    "fy": 0.78,
+    "inFree": true
+   },
+   {
+    "n": "Napoleon releases Soult agains",
+    "w": 0.42,
+    "fx": -0.53,
+    "fy": 0.99,
+    "inFree": false
+   }
+  ],
+  "formations": {
+   "onField": 31,
+   "inFree": 9
+  },
+  "bbox": [
+   433,
+   389,
+   1092,
+   658
+  ],
+  "bboxShare": 0.259,
+  "bboxCy": 0.66,
+  "labels": 21,
+  "labelCover": 0.076,
+  "labelCoverInAction": 0.165,
+  "dist": 141,
+  "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+  "capCut": 0
+ },
+ "desk-watch": [
+  {
+   "t": 510,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.01,
+     "fy": 0.35,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 30
+   },
+   "bbox": [
+    32,
+    173,
+    966,
+    783
+   ],
+   "bboxShare": 0.521,
+   "bboxCy": 0.6,
+   "labels": 51,
+   "labelCover": 0.124,
+   "labelCoverInAction": 0.184,
+   "dist": 130,
+   "cap": "derived on the heights: Allied ≈ 21,515 · hour disputed Napoleon releases Soult against th",
+   "capCut": 1
+  },
+  {
+   "t": 513.6,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.13,
+     "fy": 0.33,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.19,
+     "fx": 0.65,
+     "fy": 0.68,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.19,
+     "fx": 0.47,
+     "fy": 0.38,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    194,
+    171,
+    1011,
+    658
+   ],
+   "bboxShare": 0.365,
+   "bboxCy": 0.51,
+   "labels": 47,
+   "labelCover": 0.113,
+   "labelCoverInAction": 0.193,
+   "dist": 168,
+   "cap": "derived on the heights: Allied ≈ 21,515 · hour disputed Napoleon releases Soult against th",
+   "capCut": 1
+  },
+  {
+   "t": 517.2,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.22,
+     "fy": 0.37,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.44,
+     "fx": 0.71,
+     "fy": 0.68,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.44,
+     "fx": 0.52,
+     "fy": 0.41,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    322,
+    201,
+    1067,
+    633
+   ],
+   "bboxShare": 0.294,
+   "bboxCy": 0.52,
+   "labels": 39,
+   "labelCover": 0.096,
+   "labelCoverInAction": 0.208,
+   "dist": 201,
+   "cap": "THE ALLIED ADVANCE · derived on the heights: Allied ≈ 21,515",
+   "capCut": 1
+  },
+  {
+   "t": 520.8,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.27,
+     "fy": 0.38,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.7,
+     "fx": 0.73,
+     "fy": 0.67,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.7,
+     "fx": 0.55,
+     "fy": 0.43,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    393,
+    217,
+    1090,
+    610
+   ],
+   "bboxShare": 0.25,
+   "bboxCy": 0.51,
+   "labels": 37,
+   "labelCover": 0.103,
+   "labelCoverInAction": 0.244,
+   "dist": 224,
+   "cap": "THE ALLIED ADVANCE · derived on the heights: Allied ≈ 21,515",
+   "capCut": 1
+  },
+  {
+   "t": 524.3,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.29,
+     "fy": 0.39,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.95,
+     "fx": 0.72,
+     "fy": 0.66,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.95,
+     "fx": 0.56,
+     "fy": 0.44,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    419,
+    226,
+    1080,
+    594
+   ],
+   "bboxShare": 0.223,
+   "bboxCy": 0.51,
+   "labels": 36,
+   "labelCover": 0.104,
+   "labelCoverInAction": 0.286,
+   "dist": 238,
+   "cap": "THE ALLIED ADVANCE · derived on the heights: Allied ≈ 21,515",
+   "capCut": 0
+  },
+  {
+   "t": 525,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.73,
+     "fy": 0.64,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.55,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.28,
+     "fy": 0.41,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    410,
+    233,
+    1081,
+    575
+   ],
+   "bboxShare": 0.21,
+   "bboxCy": 0.5,
+   "labels": 26,
+   "labelCover": 0.077,
+   "labelCoverInAction": 0.215,
+   "dist": 245,
+   "cap": "THE PRATZEN STRIKE · derived on the heights: Allied ≈ 21,515",
+   "capCut": 0
+  },
+  {
+   "t": 525,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.75,
+     "fy": 0.61,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.54,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.26,
+     "fy": 0.43,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    377,
+    249,
+    1115,
+    540
+   ],
+   "bboxShare": 0.196,
+   "bboxCy": 0.49,
+   "labels": 33,
+   "labelCover": 0.093,
+   "labelCoverInAction": 0.274,
+   "dist": 251,
+   "cap": "THE PRATZEN STRIKE · derived on the heights: Allied ≈ 21,515",
+   "capCut": 0
+  },
+  {
+   "t": 525.1,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.75,
+     "fy": 0.58,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.53,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.99,
+     "fx": 0.25,
+     "fy": 0.45,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    351,
+    261,
+    1129,
+    517
+   ],
+   "bboxShare": 0.182,
+   "bboxCy": 0.48,
+   "labels": 34,
+   "labelCover": 0.096,
+   "labelCoverInAction": 0.274,
+   "dist": 254,
+   "cap": "THE PRATZEN STRIKE · derived on the heights: Allied ≈ 21,515",
+   "capCut": 0
+  },
+  {
+   "t": 528.2,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.76,
+     "fy": 0.57,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.52,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.88,
+     "fx": 0.25,
+     "fy": 0.46,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.16,
+     "fx": 0.5,
+     "fy": 0.42,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    332,
+    270,
+    1133,
+    502
+   ],
+   "bboxShare": 0.17,
+   "bboxCy": 0.48,
+   "labels": 36,
+   "labelCover": 0.101,
+   "labelCoverInAction": 0.307,
+   "dist": 255,
+   "cap": "derived on the heights: Allied ≈ 21,515 · interval Friant's leading brigade reaches the Go",
+   "capCut": 1
+  },
+  {
+   "t": 531.8,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.76,
+     "fy": 0.57,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.51,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.74,
+     "fx": 0.24,
+     "fy": 0.47,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.41,
+     "fx": 0.49,
+     "fy": 0.43,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    310,
+    276,
+    1135,
+    496
+   ],
+   "bboxShare": 0.166,
+   "bboxCy": 0.48,
+   "labels": 34,
+   "labelCover": 0.095,
+   "labelCoverInAction": 0.297,
+   "dist": 253,
+   "cap": "derived on the heights: Allied ≈ 25,765 · interval Friant's leading brigade reaches the Go",
+   "capCut": 1
+  },
+  {
+   "t": 535.4,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.76,
+     "fy": 0.57,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.5,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.67,
+     "fx": 0.48,
+     "fy": 0.43,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.6,
+     "fx": 0.22,
+     "fy": 0.47,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    286,
+    281,
+    1137,
+    497
+   ],
+   "bboxShare": 0.168,
+   "bboxCy": 0.48,
+   "labels": 32,
+   "labelCover": 0.094,
+   "labelCoverInAction": 0.3,
+   "dist": 248,
+   "cap": "derived on the heights: Allied ≈ 25,765 · interval Friant's leading brigade reaches the Go",
+   "capCut": 1
+  },
+  {
+   "t": 539,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.76,
+     "fy": 0.58,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.5,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.93,
+     "fx": 0.47,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.46,
+     "fx": 0.2,
+     "fy": 0.48,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    259,
+    285,
+    1140,
+    502
+   ],
+   "bboxShare": 0.175,
+   "bboxCy": 0.49,
+   "labels": 34,
+   "labelCover": 0.1,
+   "labelCoverInAction": 0.305,
+   "dist": 243,
+   "cap": "derived on the heights: Allied ≈ 25,765 · Thiébault's brigade clears Pratzen village",
+   "capCut": 1
+  },
+  {
+   "t": 540,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 1,
+     "fx": 0.46,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.76,
+     "fy": 0.59,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.49,
+     "fy": 0.46,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.42,
+     "fx": 0.19,
+     "fy": 0.49,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    236,
+    287,
+    1143,
+    508
+   ],
+   "bboxShare": 0.183,
+   "bboxCy": 0.49,
+   "labels": 34,
+   "labelCover": 0.096,
+   "labelCoverInAction": 0.294,
+   "dist": 238,
+   "cap": "derived on the heights: Allied ≈ 25,765 · Thiébault's brigade clears Pratzen village",
+   "capCut": 1
+  },
+  {
+   "t": 540,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 1,
+     "fx": 0.46,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.76,
+     "fy": 0.59,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.48,
+     "fy": 0.46,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.42,
+     "fx": 0.17,
+     "fy": 0.5,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    220,
+    289,
+    1144,
+    513
+   ],
+   "bboxShare": 0.189,
+   "bboxCy": 0.5,
+   "labels": 34,
+   "labelCover": 0.095,
+   "labelCoverInAction": 0.286,
+   "dist": 235,
+   "cap": "derived on the heights: Allied ≈ 25,765 · Thiébault's brigade clears Pratzen village",
+   "capCut": 1
+  },
+  {
+   "t": 540.2,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.76,
+     "fy": 0.6,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.48,
+     "fy": 0.46,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.99,
+     "fx": 0.45,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.41,
+     "fx": 0.17,
+     "fy": 0.5,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    211,
+    290,
+    1145,
+    515
+   ],
+   "bboxShare": 0.193,
+   "bboxCy": 0.5,
+   "labels": 34,
+   "labelCover": 0.095,
+   "labelCoverInAction": 0.293,
+   "dist": 233,
+   "cap": "derived on the heights: Allied ≈ 25,765 · Thiébault's brigade clears Pratzen village",
+   "capCut": 1
+  },
+  {
+   "t": 543.4,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.75,
+     "fy": 0.6,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.48,
+     "fy": 0.46,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.87,
+     "fx": 0.45,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.29,
+     "fx": 0.16,
+     "fy": 0.5,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    200,
+    291,
+    1141,
+    513
+   ],
+   "bboxShare": 0.192,
+   "bboxCy": 0.5,
+   "labels": 33,
+   "labelCover": 0.094,
+   "labelCoverInAction": 0.281,
+   "dist": 232,
+   "cap": "derived on the heights: Allied ≈ 25,765 · interval Friant's leading brigade reaches the Go",
+   "capCut": 1
+  },
+  {
+   "t": 547,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.75,
+     "fy": 0.6,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.47,
+     "fy": 0.47,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.73,
+     "fx": 0.44,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Kutuzov orders the 4th Column ",
+     "w": 0.43,
+     "fx": 0.44,
+     "fy": 0.44,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    187,
+    292,
+    1133,
+    511
+   ],
+   "bboxShare": 0.19,
+   "bboxCy": 0.5,
+   "labels": 34,
+   "labelCover": 0.095,
+   "labelCoverInAction": 0.299,
+   "dist": 231,
+   "cap": "derived on the heights: Allied ≈ 20,365 · interval Friant's leading brigade reaches the Go",
+   "capCut": 1
+  },
+  {
+   "t": 550.6,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.74,
+     "fy": 0.61,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.46,
+     "fy": 0.47,
+     "inFree": true
+    },
+    {
+     "n": "Kutuzov orders the 4th Column ",
+     "w": 0.69,
+     "fx": 0.43,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.59,
+     "fx": 0.43,
+     "fy": 0.46,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    171,
+    293,
+    1121,
+    510
+   ],
+   "bboxShare": 0.189,
+   "bboxCy": 0.5,
+   "labels": 33,
+   "labelCover": 0.097,
+   "labelCoverInAction": 0.288,
+   "dist": 231,
+   "cap": "derived on the heights: Allied ≈ 20,365 · interval Friant's leading brigade reaches the Go",
+   "capCut": 1
+  },
+  {
+   "t": 553.6,
+   "free": [
+    16,
+    16,
+    1424,
+    792
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.73,
+     "fy": 0.61,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.45,
+     "fy": 0.47,
+     "inFree": true
+    },
+    {
+     "n": "Kutuzov orders the 4th Column ",
+     "w": 0.9,
+     "fx": 0.43,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.48,
+     "fx": 0.43,
+     "fy": 0.46,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 31
+   },
+   "bbox": [
+    160,
+    294,
+    1114,
+    509
+   ],
+   "bboxShare": 0.188,
+   "bboxCy": 0.5,
+   "labels": 35,
+   "labelCover": 0.103,
+   "labelCoverInAction": 0.316,
+   "dist": 230,
+   "cap": "derived on the heights: Allied ≈ 20,365 · interval Friant's leading brigade reaches the Go",
+   "capCut": 1
+  }
+ ],
+ "desk-watch-0900": {
+  "t": 540,
+  "free": [
+   16,
+   16,
+   1424,
+   792
+  ],
+  "events": [
+   {
+    "n": "Thiébault's brigade clears Pra",
+    "w": 1,
+    "fx": 0.44,
+    "fy": 0.67,
+    "inFree": true
+   },
+   {
+    "n": "Friant's leading brigade reach",
+    "w": 1,
+    "fx": 1.41,
+    "fy": 1.33,
+    "inFree": false
+   },
+   {
+    "n": "Saint-Hilaire and Vandamme cli",
+    "w": 1,
+    "fx": 0.5,
+    "fy": 0.72,
+    "inFree": true
+   },
+   {
+    "n": "Napoleon releases Soult agains",
+    "w": 0.42,
+    "fx": -0.32,
+    "fy": 0.89,
+    "inFree": false
+   }
+  ],
+  "formations": {
+   "onField": 31,
+   "inFree": 14
+  },
+  "bbox": [
+   72,
+   348,
+   1315,
+   634
+  ],
+  "bboxShare": 0.326,
+  "bboxCy": 0.61,
+  "labels": 31,
+  "labelCover": 0.076,
+  "labelCoverInAction": 0.15,
+  "dist": 141,
+  "cap": "derived on the heights: Allied ≈ 25,765 · Thiébault's brigade clears Pratzen village",
+  "capCut": 1
+ },
+ "phone": [
+  {
+   "t": 510,
+   "free": [
+    16,
+    64,
+    376,
+    520
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": -0.66,
+     "fy": 0.35,
+     "inFree": false
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 15
+   },
+   "bbox": [
+    110,
+    173,
+    321,
+    483
+   ],
+   "bboxShare": 0.4,
+   "bboxCy": 0.58,
+   "labels": 23,
+   "labelCover": 0.366,
+   "labelCoverInAction": 0.467,
+   "dist": 228,
+   "cap": "hour disputed Napoleon releases Soult against the heights",
+   "capCut": 1
+  },
+  {
+   "t": 518.1,
+   "free": [
+    16,
+    64,
+    376,
+    520
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": -0.02,
+     "fy": 0.39,
+     "inFree": false
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.51,
+     "fx": 1.02,
+     "fy": 0.66,
+     "inFree": false
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.51,
+     "fx": 0.66,
+     "fy": 0.43,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 26
+   },
+   "bbox": [
+    19,
+    169,
+    354,
+    400
+   ],
+   "bboxShare": 0.471,
+   "bboxCy": 0.48,
+   "labels": 11,
+   "labelCover": 0.279,
+   "labelCoverInAction": 0.399,
+   "dist": 363,
+   "cap": "hour disputed Napoleon releases Soult against the heights",
+   "capCut": 1
+  },
+  {
+   "t": 524.5,
+   "free": [
+    16,
+    64,
+    376,
+    520
+   ],
+   "events": [
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0.06,
+     "fy": 0.4,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.97,
+     "fx": 0.96,
+     "fy": 0.64,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.97,
+     "fx": 0.66,
+     "fy": 0.45,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 29
+   },
+   "bbox": [
+    37,
+    183,
+    371,
+    382
+   ],
+   "bboxShare": 0.405,
+   "bboxCy": 0.48,
+   "labels": 15,
+   "labelCover": 0.349,
+   "labelCoverInAction": 0.393,
+   "dist": 419,
+   "cap": "interval Friant's leading brigade reaches the Goldbach ; hour disputed Saint-Hilaire and V",
+   "capCut": 2
+  },
+  {
+   "t": 525,
+   "free": [
+    16,
+    64,
+    376,
+    520
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 1.01,
+     "fy": 0.58,
+     "inFree": false
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.59,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 1,
+     "fx": 0,
+     "fy": 0.44,
+     "inFree": false
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 25
+   },
+   "bbox": [
+    26,
+    200,
+    347,
+    319
+   ],
+   "bboxShare": 0.233,
+   "bboxCy": 0.43,
+   "labels": 14,
+   "labelCover": 0.312,
+   "labelCoverInAction": 0.63,
+   "dist": 441,
+   "cap": "interval Friant's leading brigade reaches the Goldbach ; hour disputed Saint-Hilaire and V",
+   "capCut": 2
+  },
+  {
+   "t": 528.5,
+   "free": [
+    16,
+    64,
+    376,
+    520
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 1.01,
+     "fy": 0.56,
+     "inFree": false
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.55,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.87,
+     "fx": -0.03,
+     "fy": 0.46,
+     "inFree": false
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.18,
+     "fx": 0.5,
+     "fy": 0.43,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 24
+   },
+   "bbox": [
+    23,
+    212,
+    336,
+    312
+   ],
+   "bboxShare": 0.191,
+   "bboxCy": 0.43,
+   "labels": 14,
+   "labelCover": 0.307,
+   "labelCoverInAction": 0.377,
+   "dist": 447,
+   "cap": "interval Friant's leading brigade reaches the Goldbach",
+   "capCut": 1
+  },
+  {
+   "t": 534.5,
+   "free": [
+    16,
+    64,
+    376,
+    536
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 1.01,
+     "fy": 0.56,
+     "inFree": false
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.52,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.63,
+     "fx": -0.07,
+     "fy": 0.48,
+     "inFree": false
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.61,
+     "fx": 0.46,
+     "fy": 0.44,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 21
+   },
+   "bbox": [
+    16,
+    232,
+    332,
+    321
+   ],
+   "bboxShare": 0.166,
+   "bboxCy": 0.45,
+   "labels": 13,
+   "labelCover": 0.266,
+   "labelCoverInAction": 0.48,
+   "dist": 437,
+   "cap": "interval Friant's leading brigade reaches the Goldbach",
+   "capCut": 1
+  },
+  {
+   "t": 540,
+   "free": [
+    16,
+    64,
+    376,
+    560
+   ],
+   "events": [
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 1,
+     "fx": 0.41,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 1.01,
+     "fy": 0.57,
+     "inFree": false
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.47,
+     "fy": 0.47,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.42,
+     "fx": -0.17,
+     "fy": 0.5,
+     "inFree": false
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 18
+   },
+   "bbox": [
+    17,
+    249,
+    325,
+    342
+   ],
+   "bboxShare": 0.161,
+   "bboxCy": 0.47,
+   "labels": 13,
+   "labelCover": 0.242,
+   "labelCoverInAction": 0.381,
+   "dist": 413,
+   "cap": "THE PRATZEN STRIKE · Thiébault's brigade clears Pratzen village",
+   "capCut": 1
+  },
+  {
+   "t": 543,
+   "free": [
+    16,
+    64,
+    376,
+    512
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 1,
+     "fy": 0.59,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.45,
+     "fy": 0.47,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.89,
+     "fx": 0.39,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Napoleon releases Soult agains",
+     "w": 0.31,
+     "fx": -0.2,
+     "fy": 0.5,
+     "inFree": false
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 15
+   },
+   "bbox": [
+    19,
+    227,
+    322,
+    321
+   ],
+   "bboxShare": 0.177,
+   "bboxCy": 0.47,
+   "labels": 12,
+   "labelCover": 0.257,
+   "labelCoverInAction": 0.331,
+   "dist": 406,
+   "cap": "interval Friant's leading brigade reaches the Goldbach",
+   "capCut": 1
+  },
+  {
+   "t": 551.4,
+   "free": [
+    16,
+    64,
+    376,
+    512
+   ],
+   "events": [
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.96,
+     "fy": 0.59,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.41,
+     "fy": 0.47,
+     "inFree": true
+    },
+    {
+     "n": "Kutuzov orders the 4th Column ",
+     "w": 0.74,
+     "fx": 0.34,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.56,
+     "fx": 0.35,
+     "fy": 0.46,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 17
+   },
+   "bbox": [
+    24,
+    228,
+    368,
+    339
+   ],
+   "bboxShare": 0.239,
+   "bboxCy": 0.49,
+   "labels": 13,
+   "labelCover": 0.283,
+   "labelCoverInAction": 0.403,
+   "dist": 404,
+   "cap": "interval Friant's leading brigade reaches the Goldbach",
+   "capCut": 1
+  },
+  {
+   "t": 555,
+   "free": [
+    16,
+    64,
+    376,
+    512
+   ],
+   "events": [
+    {
+     "n": "Kutuzov orders the 4th Column ",
+     "w": 1,
+     "fx": 0.32,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 1,
+     "fx": 0.95,
+     "fy": 0.6,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 1,
+     "fx": 0.39,
+     "fy": 0.48,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.42,
+     "fx": 0.33,
+     "fy": 0.46,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 17
+   },
+   "bbox": [
+    24,
+    230,
+    362,
+    341
+   ],
+   "bboxShare": 0.233,
+   "bboxCy": 0.49,
+   "labels": 13,
+   "labelCover": 0.291,
+   "labelCoverInAction": 0.274,
+   "dist": 403,
+   "cap": "reconstruction Kutuzov orders the 4th Column to face about",
+   "capCut": 1
+  },
+  {
+   "t": 557,
+   "free": [
+    16,
+    64,
+    376,
+    512
+   ],
+   "events": [
+    {
+     "n": "Kutuzov orders the 4th Column ",
+     "w": 0.92,
+     "fx": 0.32,
+     "fy": 0.45,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.92,
+     "fx": 0.94,
+     "fy": 0.6,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.92,
+     "fx": 0.38,
+     "fy": 0.48,
+     "inFree": true
+    },
+    {
+     "n": "Thiébault's brigade clears Pra",
+     "w": 0.35,
+     "fx": 0.32,
+     "fy": 0.46,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 17
+   },
+   "bbox": [
+    26,
+    230,
+    360,
+    341
+   ],
+   "bboxShare": 0.228,
+   "bboxCy": 0.49,
+   "labels": 13,
+   "labelCover": 0.296,
+   "labelCoverInAction": 0.309,
+   "dist": 403,
+   "cap": "reconstruction Kutuzov orders the 4th Column to face about",
+   "capCut": 1
+  },
+  {
+   "t": 568.3,
+   "free": [
+    16,
+    64,
+    376,
+    536
+   ],
+   "events": [
+    {
+     "n": "Friant retakes Telnitz, then l",
+     "w": 0.88,
+     "fx": 0.86,
+     "fy": 0.57,
+     "inFree": true
+    },
+    {
+     "n": "Kutuzov orders the 4th Column ",
+     "w": 0.49,
+     "fx": 0.24,
+     "fy": 0.44,
+     "inFree": true
+    },
+    {
+     "n": "Friant's leading brigade reach",
+     "w": 0.49,
+     "fx": 0.83,
+     "fy": 0.58,
+     "inFree": true
+    },
+    {
+     "n": "Saint-Hilaire and Vandamme cli",
+     "w": 0.49,
+     "fx": 0.3,
+     "fy": 0.47,
+     "inFree": true
+    }
+   ],
+   "formations": {
+    "onField": 31,
+    "inFree": 17
+   },
+   "bbox": [
+    29,
+    237,
+    342,
+    344
+   ],
+   "bboxShare": 0.198,
+   "bboxCy": 0.48,
+   "labels": 10,
+   "labelCover": 0.255,
+   "labelCoverInAction": 0.309,
+   "dist": 404,
+   "cap": "THE PRATZEN STRIKE · Friant retakes Telnitz, then loses it again",
+   "capCut": 1
+  }
+ ]
+}

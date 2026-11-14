@@ -1,0 +1,673 @@
+[
+ [
+  "after rail click 08:30",
+  {
+   "hhmm": "08:30",
+   "clock": 510,
+   "playing": false,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Napoleon releases Soult against the heights",
+   "active": "timerail",
+   "cam": [
+    -74.5,
+    418.9,
+    176.1
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play clicked",
+  {
+   "hhmm": "08:30",
+   "clock": 510,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Napoleon releases Soult against the heights",
+   "active": "play",
+   "cam": [
+    -144,
+    53.3,
+    130
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+9s",
+  {
+   "hhmm": "08:34",
+   "clock": 514.2,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Napoleon releases Soult against the heights",
+   "active": "play",
+   "cam": [
+    -176.7,
+    60.6,
+    144.4
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+18s",
+  {
+   "hhmm": "08:38",
+   "clock": 518.4,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Napoleon releases Soult against the heights",
+   "active": "play",
+   "cam": [
+    -204.6,
+    73.2,
+    151.3
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+27s",
+  {
+   "hhmm": "08:44",
+   "clock": 524.92,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "interval Friant's leading brigade reaches the Goldbach ; hour disputed Saint-Hilaire and Vandamme climb the slope",
+   "active": "play",
+   "cam": [
+    -227.3,
+    84.1,
+    164.1
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+36s",
+  {
+   "hhmm": "08:45",
+   "clock": 525,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "interval Friant's leading brigade reaches the Goldbach ; hour disputed Saint-Hilaire and Vandamme climb the slope",
+   "active": "play",
+   "cam": [
+    -261,
+    83.5,
+    134.4
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+45s",
+  {
+   "hhmm": "08:45",
+   "clock": 525.84,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "interval Friant's leading brigade reaches the Goldbach ; hour disputed Saint-Hilaire and Vandamme climb the slope",
+   "active": "play",
+   "cam": [
+    -286.4,
+    79.7,
+    101.3
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+54s",
+  {
+   "hhmm": "08:50",
+   "clock": 530,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach",
+   "active": "play",
+   "cam": [
+    -290.9,
+    77.2,
+    88.7
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+63s",
+  {
+   "hhmm": "08:56",
+   "clock": 536.6,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach",
+   "active": "play",
+   "cam": [
+    -284.2,
+    73.5,
+    78.3
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+72s",
+  {
+   "hhmm": "08:59",
+   "clock": 539.96,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "active": "play",
+   "cam": [
+    -276.4,
+    71.4,
+    75.2
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+81s",
+  {
+   "hhmm": "09:00",
+   "clock": 540,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "active": "play",
+   "cam": [
+    -269.3,
+    69.5,
+    72.9
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+90s",
+  {
+   "hhmm": "09:01",
+   "clock": 541.01,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "active": "play",
+   "cam": [
+    -267.3,
+    69,
+    72.4
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+99s",
+  {
+   "hhmm": "09:07",
+   "clock": 547.24,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach",
+   "active": "play",
+   "cam": [
+    -263.9,
+    68.5,
+    73.7
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+108s",
+  {
+   "hhmm": "09:10",
+   "clock": 550.84,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach",
+   "active": "play",
+   "cam": [
+    -261.7,
+    68.4,
+    75.2
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+117s",
+  {
+   "hhmm": "09:15",
+   "clock": 555,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about",
+   "active": "play",
+   "cam": [
+    -258.7,
+    68.3,
+    76.5
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play ½× t+126s",
+  {
+   "hhmm": "09:15",
+   "clock": 555,
+   "playing": true,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about",
+   "active": "play",
+   "cam": [
+    -257.4,
+    68.3,
+    76.8
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "paused by Space",
+  {
+   "hhmm": "09:15",
+   "clock": 555.02,
+   "playing": false,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about",
+   "active": "play",
+   "cam": [
+    -257,
+    68.3,
+    76.9
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "scrub mid-drag",
+  {
+   "hhmm": "10:00",
+   "clock": 600,
+   "playing": false,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · hour disputed Kamensky turns his brigade about and drives the French off the crest",
+   "active": "ev-mark dec al",
+   "cam": [
+    -75,
+    37.9,
+    42
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "after scrub to 10:00",
+  {
+   "hhmm": "10:00",
+   "clock": 600,
+   "playing": false,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · hour disputed Kamensky turns his brigade about and drives the French off the crest",
+   "active": "ev-mark dec al",
+   "cam": [
+    -75,
+    37.9,
+    42
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "4× play from 08:45",
+  {
+   "hhmm": "08:45",
+   "clock": 525,
+   "playing": true,
+   "speed": 4,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach",
+   "active": "play",
+   "cam": [
+    -136,
+    46.1,
+    31
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play 4× t+6s",
+  {
+   "hhmm": "08:59",
+   "clock": 539.64,
+   "playing": true,
+   "speed": 4,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "active": "play",
+   "cam": [
+    -168.2,
+    50.2,
+    40.1
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play 4× t+12s",
+  {
+   "hhmm": "09:00",
+   "clock": 540,
+   "playing": true,
+   "speed": 4,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "active": "play",
+   "cam": [
+    -198.2,
+    56.1,
+    49.7
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play 4× t+18s",
+  {
+   "hhmm": "09:00",
+   "clock": 540,
+   "playing": true,
+   "speed": 4,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "active": "play",
+   "cam": [
+    -230,
+    62.4,
+    60.1
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play 4× t+24s",
+  {
+   "hhmm": "09:13",
+   "clock": 553.86,
+   "playing": true,
+   "speed": 4,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about",
+   "active": "play",
+   "cam": [
+    -239.7,
+    64.3,
+    65.3
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play 4× t+30s",
+  {
+   "hhmm": "09:15",
+   "clock": 555,
+   "playing": true,
+   "speed": 4,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about",
+   "active": "play",
+   "cam": [
+    -248.1,
+    66.3,
+    71.4
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "play 4× t+36s",
+  {
+   "hhmm": "09:15",
+   "clock": 555.06,
+   "playing": true,
+   "speed": 4,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about",
+   "active": "play",
+   "cam": [
+    -250.7,
+    67,
+    73.3
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "paused by button",
+  {
+   "hhmm": "09:30",
+   "clock": 570,
+   "playing": false,
+   "speed": 4,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · Friant retakes Telnitz, then loses it again",
+   "active": "play",
+   "cam": [
+    -255,
+    67.6,
+    85.8
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "follow toggled",
+  {
+   "hhmm": "09:00",
+   "clock": 540,
+   "playing": false,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village",
+   "active": "follow",
+   "cam": [
+    -136,
+    46.1,
+    31
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "played 15 s without follow",
+  {
+   "c0": [
+    -239.3,
+    68.1,
+    73.8
+   ],
+   "s": {
+    "hhmm": "09:08",
+    "clock": 548.4,
+    "playing": false,
+    "speed": 0.5,
+    "sel": null,
+    "drawer": true,
+    "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach",
+    "active": "play",
+    "cam": [
+     -136,
+     46.1,
+     31
+    ],
+    "labels": 0
+   }
+  }
+ ],
+ [
+  "follow on again",
+  {
+   "hhmm": "09:08",
+   "clock": 548.4,
+   "playing": false,
+   "speed": 0.5,
+   "sel": null,
+   "drawer": true,
+   "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach",
+   "active": "follow",
+   "cam": [
+    -136,
+    46.1,
+    31
+   ],
+   "labels": 0
+  }
+ ],
+ [
+  "markers",
+  "36 [{\"x\":51.8203125,\"y\":878,\"w\":75.640625,\"h\":2,\"tag\":\"I\",\"cls\":\"ev-bar fr\",\"label\":\"\",\"t\":\"\"},{\"x\":228.3046875,\"y\":880.5,\"w\":378.203125,\"h\":2,\"tag\":\"I\",\"cls\":\"ev-bar al\",\"label\":\"\",\"t\":\"\"},{\"x\":366.984375,\"y\":878,\"w\":100.84375,\"h\":2,\"tag\":\"I\",\"cls\":\"ev-bar al\",\"label\":\"\",\"t\":\"\"},{\"x\":476.2421875,\"y\":878,\"w\":33.609375,\"h\":2,\"tag\":\"I\",\"cls\":\"ev-bar fr\",\"label\":\"\",\"t\":\"\"},{\"x\":518.2734375,\"y\":880.5,\"w\":50.421875,\"h\":2,\"tag\":\"I\",\"cls\":\"ev-bar fr on\",\"label\":\"\",\"t\":\"\"},{\"x\":518.2734375,\"y\":883,\"w\":50.421875,\"h\":2,\"tag\":\"I\",\"cls\":\"ev-bar fr on\",\"label\":\"\",\"t\":\"\"}]"
+ ],
+ [
+  "event marker click ERROR",
+  "TypeError: Cannot set properties of undefined (setting 'marker')"
+ ],
+ [
+  "quick drag from marker ",
+  {
+   "before": {
+    "hhmm": "09:08",
+    "clock": 548.4,
+    "playing": false,
+    "speed": 0.5,
+    "sel": null,
+    "drawer": true,
+    "cap": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach",
+    "active": "follow",
+    "cam": [
+     -136,
+     46.1,
+     31
+    ],
+    "labels": 0
+   },
+   "after": {
+    "hhmm": "13:45",
+    "clock": 825.18,
+    "playing": false,
+    "speed": 0.5,
+    "sel": null,
+    "drawer": true,
+    "cap": "THE COLLAPSE · The centre turns south · interval The French centre turns south",
+    "active": "timerail",
+    "cam": [
+     -165.1,
+     107.3,
+     -52.7
+    ],
+    "labels": 0
+   }
+  }
+ ],
+ [
+  "slow drag from marker",
+  {
+   "before": {
+    "hhmm": "13:45",
+    "clock": 825.18,
+    "playing": false,
+    "speed": 0.5,
+    "sel": null,
+    "drawer": true,
+    "cap": "THE COLLAPSE · The centre turns south · interval The French centre turns south",
+    "active": "timerail",
+    "cam": [
+     -160,
+     110.4,
+     -55
+    ],
+    "labels": 0
+   },
+   "after": {
+    "hhmm": "12:19",
+    "clock": 739.51,
+    "playing": false,
+    "speed": 0.5,
+    "sel": null,
+    "drawer": true,
+    "cap": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · interval Napoleon moves forward to Stare Vinohrady",
+    "active": "timerail",
+    "cam": [
+     -76,
+     36.5,
+     -1
+    ],
+    "labels": 0
+   }
+  }
+ ],
+ [
+  "map items",
+  "0 []"
+ ],
+ [
+  "no formation label found",
+  ""
+ ],
+ [
+  "console",
+  []
+ ]
+]
