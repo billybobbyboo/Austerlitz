@@ -40,7 +40,8 @@ v("CL-HIS-10", "fixed", E+"history/closest-approach.txt (opposing centres: 13 m 
   "pairs); history/legs-water.txt (Litava crossings 5 -> 2, both at Augezd)", "sim-test.js's fight register (MELEE)")
 v("CL-HIS-11", "fixed", E+"history/sokolnitz-defence.txt (Legrand within 0.51 km to 10:00, Friant on the village from 10:30; the audit empty 09:00-13:15)",
   "sim-test.js's Sokolnitz rule (WP-03)")
-v("CL-HIS-13", "fixed", "runtime-test.js 'the march row ... a drift named Plotted ... never Marching' (npm test, "+E+"checks/npm-test.txt)",
+v("CL-HIS-13", "fixed", "runtime-test.js 'derived tags: 699 march rows tagged derived (438 drifts under 1 km/h named \"Plotted march\", none \"Marching\")' "
+  "(npm test, "+E+"checks/suite-out/out_runtime-test.js.txt)",
   "runtime-test.js (WP-03 M3)", "the audit's drift-legs.txt reads marchRate().moving, a model value the fix leaves as it is (56 drifts, 63 at the audit)")
 v("CL-REC-06", "fixed", E+"history: milo@0 B, its act 'In two lines behind the III Column ...'", "test.js (claims)")
 v("CL-HIS-16 CL-HIS-17", "kept", "CHANGELOG (WP-03: kept as they are)", "", "accepted compromises")
@@ -111,7 +112,8 @@ v("CL-UX-18", "fixed", "the narrow block at 800 x 450 (the tools and the card no
   "check:visual's and check:selftest's narrow block")
 v("CL-UX-08 CL-UX-10 CL-UX-11 CL-UX-12 CL-UX-15", "fixed", "the self-test's wp09Checks (names and structure, the phase text's hint, the focus by keyboard, "
   "the caveats as text, the first card)", "the self-test (wp09Checks; 9 negative controls)")
-v("CL-UX-21", "fixed", "runtime-test.js: narrativeRefs equal to statements.js's refs and the unchecked count shown (npm test)", "runtime-test.js")
+v("CL-UX-21", "fixed", "the sources sheet's last row 'Not yet checked: ... (463 statements)'; runtime-test.js 'the claims on screen': every one of 726 statements "
+  "placed in the index's words (npm test, "+E+"checks/suite-out/out_runtime-test.js.txt)", "runtime-test.js (narrativeRefs ref for ref against tools/step4/statements.js, and the count)")
 v("CL-UX-05", "fixed", "runtime-test.js: 133 drawn views hold no roadmap step, decision number, register entry, path or code name (npm test)",
   "runtime-test.js (internal references; negative controls on main's narrative.js and data.js)")
 v("CL-UX-16", "fixed", "decision 310's words (a data task); runtime-test.js's position pills", "runtime-test.js (the pills)")
@@ -230,11 +232,12 @@ v("CL-MAP-01", "carried", VC+": Landscape with counters 08:30-11:30, the longest
   "60 to 18.3, the day at 4x 119.8 to 30.0; share drawn 67.6% to 69.2%; the motion block's long runs on CI (run 43524457649: hybrid-long and hybrid-3600 "
   "18.33 battle minutes at worst); "+E+"chatgpt/extended-playback.log (ChatGPT's 3,600-frame protocol)", "thresholds.js MOTION.LONG (every formation in view "
   "hidden at most 30 battle minutes, in check:selftest and check:visual)", "in part: the gaps are bounded, the roadmap's other done-when, no formation under 50% "
-  "over the long runs, is not met (08:30-11:30: 6 formations under half drawn, d'Hautpoul 41.5%, Walther 37.8%, the Guard cavalry 39.9%; the audit 7), as WP-07 "
+  "over the long runs, is not met (08:30-11:30: 6 formations under half drawn, d'Hautpoul 41.5%, Walther 37.8%, the Imperial Guard cavalry 39.9%; the audit 7), as WP-07 "
   "recorded")
 v("CL-MAP-02", "carried", VC+": the formations a live event names drawn while their event is live 59.0% to 76.4% (08:30-11:30), 66.2% to 77.0% (12:00-15:00), "
   "53.8% to 72.5% (the day at 4x)", "thresholds.js MOTION.LONG (EV_SHARE 0.70 in the desktop's two long runs)", "in part: the finding's own instance remains, the "
-  "Russian Guard cavalry at the guard-broken event drawn 12.7% (the audit 0-16%), Miloradovich's column at the face-about 28.0%; on the phone the share fell, "
+  "Russian Guard cavalry drawn 12.7% while 'Rapp's counter-charge breaks the Chevalier Guard' is live (the audit 0-16%); at the face-about Miloradovich 54.9% "
+  "(the audit 0-40%) and the IV Column's Austrian wing 28.0%; on the phone the share fell, "
   "40.2% to 24.9%, accepted as measured by decision 304 (a)")
 v("CL-MAP-07", "carried", VC+": the phone with counters 09:00-12:00, drawn 51.7% to 46.2%; Liechtenstein never drawn to 32.5%, its longest gap 90 to 23.3 battle "
   "minutes; 8 formations under half drawn (the audit 6)", "thresholds.js MOTION.LONG (phone-long: the 30-minute bar; its event-named share reported, not judged)",

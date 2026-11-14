@@ -117,7 +117,7 @@
   "verdict": "carried",
   "evidence": "docs/closing-evidence/visibility/compare.txt (tools/audit-post8/visibility/long-play.js and analyse.js on this build against the audit's tables): Landscape with counters 08:30-11:30, the longest hidden by the layout 99.8 battle minutes (27.7 s) to 18.3 (5.7 s), 12:00-15:00 60 to 18.3, the day at 4x 119.8 to 30.0; share drawn 67.6% to 69.2%; the motion block's long runs on CI (run 43524457649: hybrid-long and hybrid-3600 18.33 battle minutes at worst); docs/closing-evidence/chatgpt/extended-playback.log (ChatGPT's 3,600-frame protocol)",
   "held": "thresholds.js MOTION.LONG (every formation in view hidden at most 30 battle minutes, in check:selftest and check:visual)",
-  "note": "in part: the gaps are bounded, the roadmap's other done-when, no formation under 50% over the long runs, is not met (08:30-11:30: 6 formations under half drawn, d'Hautpoul 41.5%, Walther 37.8%, the Guard cavalry 39.9%; the audit 7), as WP-07 recorded"
+  "note": "in part: the gaps are bounded, the roadmap's other done-when, no formation under 50% over the long runs, is not met (08:30-11:30: 6 formations under half drawn, d'Hautpoul 41.5%, Walther 37.8%, the Imperial Guard cavalry 39.9%; the audit 7), as WP-07 recorded"
  },
  {
   "id": "CL-MAP-03",
@@ -640,7 +640,7 @@
   "claimed": "fixed",
   "claimedBasis": "WP-03: a data task (decisions 272 (a), 285 (a)-288 (a), 290 (a))",
   "verdict": "fixed",
-  "evidence": "runtime-test.js 'the march row ... a drift named Plotted ... never Marching' (npm test, docs/closing-evidence/checks/npm-test.txt)",
+  "evidence": "runtime-test.js 'derived tags: 699 march rows tagged derived (438 drifts under 1 km/h named \"Plotted march\", none \"Marching\")' (npm test, docs/closing-evidence/checks/suite-out/out_runtime-test.js.txt)",
   "held": "runtime-test.js (WP-03 M3)",
   "note": "the audit's drift-legs.txt reads marchRate().moving, a model value the fix leaves as it is (56 drifts, 63 at the audit)"
  },
@@ -657,7 +657,7 @@
   "verdict": "carried",
   "evidence": "docs/closing-evidence/visibility/compare.txt (tools/audit-post8/visibility/long-play.js and analyse.js on this build against the audit's tables): the formations a live event names drawn while their event is live 59.0% to 76.4% (08:30-11:30), 66.2% to 77.0% (12:00-15:00), 53.8% to 72.5% (the day at 4x)",
   "held": "thresholds.js MOTION.LONG (EV_SHARE 0.70 in the desktop's two long runs)",
-  "note": "in part: the finding's own instance remains, the Russian Guard cavalry at the guard-broken event drawn 12.7% (the audit 0-16%), Miloradovich's column at the face-about 28.0%; on the phone the share fell, 40.2% to 24.9%, accepted as measured by decision 304 (a)"
+  "note": "in part: the finding's own instance remains, the Russian Guard cavalry drawn 12.7% while 'Rapp's counter-charge breaks the Chevalier Guard' is live (the audit 0-16%); at the face-about Miloradovich 54.9% (the audit 0-40%) and the IV Column's Austrian wing 28.0%; on the phone the share fell, 40.2% to 24.9%, accepted as measured by decision 304 (a)"
  },
  {
   "id": "CL-MAP-04",
@@ -2275,8 +2275,8 @@
   "claimed": "fixed",
   "claimedBasis": "WP-09 (2 of 3): names, focus, caveats, the first card",
   "verdict": "fixed",
-  "evidence": "runtime-test.js: narrativeRefs equal to statements.js's refs and the unchecked count shown (npm test)",
-  "held": "runtime-test.js",
+  "evidence": "the sources sheet's last row 'Not yet checked: ... (463 statements)'; runtime-test.js 'the claims on screen': every one of 726 statements placed in the index's words (npm test, docs/closing-evidence/checks/suite-out/out_runtime-test.js.txt)",
+  "held": "runtime-test.js (narrativeRefs ref for ref against tools/step4/statements.js, and the count)",
   "note": ""
  },
  {
