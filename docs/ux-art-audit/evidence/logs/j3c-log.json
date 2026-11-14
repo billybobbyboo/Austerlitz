@@ -1,0 +1,329 @@
+[
+ [
+  "items",
+  [
+   "THE PRATZEN · derived: Allied ≈ 25,765",
+   "Pratzeberg",
+   "Stare Vinohrady",
+   "Saint-Hilaire and Vandamme climb the slope (hour disputed)",
+   "Thiébault's brigade clears Pratzen village",
+   "Allied Headquarters B",
+   "Fifth Column (cavalry) C",
+   "Kollowrat's Austrians C",
+   "Miloradovich's Russians B",
+   "Vandamme C",
+   "Saint-Hilaire B",
+   "Guard Infantry C",
+   "Guard Cavalry B",
+   "Kamensky",
+   "Pratzeberg",
+   "Litava river",
+   "Austerlitz",
+   "Kobelnitz",
+   "Puntowitz",
+   "Blasowitz",
+   "Krzenowitz"
+  ]
+ ],
+ [
+  "clicked 'Saint-Hilaire B'",
+  {
+   "hhmm": "09:00",
+   "clock": 540,
+   "playing": false,
+   "drawer": {
+    "on": true,
+    "head": "Saint-Hilaire's Division",
+    "scroll": 0
+   },
+   "modal": false,
+   "active": ".docked pm-study drawer-open<BODY>Study\nWatch\nClean\nAusterlitz, 2 December 1805: a c",
+   "activeVisible": null,
+   "cam": [
+    -136,
+    46.1,
+    31
+   ]
+  }
+ ],
+ [
+  "drawer text",
+  "1re Div., IV Corps · France\n\nSaint-Hilaire's Division\n\nGen. de division Louis Vincent de Saint-Hilaire\n\nAttacking\nPosition: estimated (B, interpolated)\nTiming: inferred (C)\nHow this is sourced\nStrength\n≈ 6,600 men (this map's working figure)\nUnder\nNicolas Soult · IV Corps\nDoing now\nClimbs the western slope; Thiébault clears Pratzen village, the 10e Légère pushes for the summit \nClaim:\nNot yet checked\nObjective\nSeize the Pratzeberg \nClaim:\nThis map's reading\nWhere\n1.2 km south-east of Puntowitz\nFull dossier: role, movement, sources\nHow this is sourced"
+ ],
+ [
+  "drawer buttons",
+  [
+   "‹ Back to Now@10",
+   "×@10",
+   "How this is sourced@228",
+   "Full dossier: role, movement, sources@692",
+   "How this is sourced@733"
+  ]
+ ],
+ [
+  "full-dossier button",
+  "Full dossier: role, movement, sources"
+ ],
+ [
+  "full dossier",
+  {
+   "hhmm": "09:00",
+   "clock": 540,
+   "playing": false,
+   "drawer": {
+    "on": true,
+    "head": "Saint-Hilaire's Division",
+    "scroll": 0
+   },
+   "modal": false,
+   "active": ".<H2>Saint-Hilaire's Division",
+   "activeVisible": true,
+   "cam": [
+    -136,
+    46.1,
+    31
+   ]
+  }
+ ],
+ [
+  "dossier length chars",
+  6253
+ ],
+ [
+  "dossier text head",
+  "1re Div., IV Corps · France\n\nSaint-Hilaire's Division\n\nGen. de division Louis Vincent de Saint-Hilaire\n\nAttacking\nPosition: estimated (B, interpolated)\nTiming: inferred (C)\nHow this is sourced\nWho\nrecord\nCommander\nGen. de division Louis Vincent de Saint-Hilaire \nClaim:\nNot yet checked\nComposition\nBrigades: Morand · Thiébault · Varé \nClaim:\nNot yet checked\nHigher formation\nIV Corps\nArm\nInfantry\nEchelon\nDivision\nHow many\nrecord\nApproximate strength\n≈ 6,600 men (this map's working figure)\nOn the figures\nabout 6,600, this map's working figure, not from a source read; Sokolov counts 8,128 present on 22 November, Varé's brigade (the 43e and 55e) within it. This map also lists that brigade with Vandamme, as attached from Saint-Hilaire \nClaim:\nAs a source tells it\nDress\nrecord\nFrench light infantry\n2 battalions (10e légère (2 bataillons)) · 2 drawn battalions\nCoat: blue habit-veste, pointed lapels and cuffs, turnbacks piped white (B, fact; E. Fieffé, 1854, t. II, pp. 28-29, footnote) · drawn dark blue\nLegwear: blue trousers (B, fact; E. Fieffé, 1854, t. II, pp. 28-29) · drawn dark blue\nHeadgear: the shako (B, fact; É.-A. Bardin, 1850, article 'Schako d'infanterie', p. 4789) · drawn shako (its shape)\nGreatcoat: may have been worn; the sources read do not settle it: disputed: aucun corps n'a encore reçu ses capotes (A, fact; P.-C. Alombert and J. Colin, 1908, p. 321 (Vandamme's division, which held the 24e légère); dated 1805-10-30) / J'ai ici des capotes plus qu'il ne m'en faut (A, fa"
+ ],
+ [
+  "day-track element",
+  {
+   "cls": "daytrack",
+   "x": 22,
+   "y": 304.015625,
+   "w": 249,
+   "h": 236.03125
+  }
+ ],
+ [
+  "anchors",
+  [
+   {
+    "x": 125.3108024597168,
+    "y": 319.4230499267578,
+    "w": 14,
+    "h": 14,
+    "label": "04:00, position A; then 08:00, position B (plotted)"
+   },
+   {
+    "x": 157.34671783447266,
+    "y": 367.5952911376953,
+    "w": 14,
+    "h": 16,
+    "label": "09:15, position A, an explicit time (plotted)"
+   },
+   {
+    "x": 165.34284210205078,
+    "y": 379.3270568847656,
+    "w": 14,
+    "h": 14,
+    "label": "09:30, position A; then 10:30, position B (plotted)"
+   },
+   {
+    "x": 171.68212127685547,
+    "y": 370.5591125488281,
+    "w": 14,
+    "h": 14,
+    "label": "11:15, position B (plotted)"
+   },
+   {
+    "x": 159.06533813476562,
+    "y": 403.2845458984375,
+    "w": 14,
+    "h": 16,
+    "label": "14:00, position A, an explicit time (plotted)"
+   },
+   {
+    "x": 121.3178825378418,
+    "y": 412.1450958251953,
+    "w": 14,
+    "h": 14,
+    "label": "14:30, position B (plotted)"
+   },
+   {
+    "x": 125.93854522705078,
+    "y": 440.8570251464844,
+    "w": 14,
+    "h": 14,
+    "label": "17:00, position B (plotted)"
+   }
+  ]
+ ],
+ [
+  "anchor '09:30, position A; then 10:30, position B (plotted)' clicked while paused",
+  {
+   "before": {
+    "hhmm": "09:00",
+    "clock": 540,
+    "playing": false,
+    "drawer": {
+     "on": true,
+     "head": "Saint-Hilaire's Division",
+     "scroll": 5302
+    },
+    "modal": false,
+    "active": ".<H2>Saint-Hilaire's Division",
+    "activeVisible": false,
+    "cam": [
+     -136,
+     46.1,
+     31
+    ]
+   },
+   "after": {
+    "hhmm": "09:30",
+    "clock": 570,
+    "playing": false,
+    "drawer": {
+     "on": true,
+     "head": "Saint-Hilaire's Division",
+     "scroll": 4496
+    },
+    "modal": false,
+    "active": ".dt-a<g>09:30, position A; then 10:30, position B (plotted",
+    "activeVisible": true,
+    "cam": [
+     -135.9,
+     46.6,
+     32.2
+    ]
+   }
+  }
+ ],
+ [
+  "anchors while playing",
+  {
+   "n": 7,
+   "inView": 7,
+   "drawerScroll": 4496
+  }
+ ],
+ [
+  "anchor '04:00, position A; then 08:00, position B (plotted)' clicked while playing",
+  {
+   "before": {
+    "hhmm": "09:32",
+    "clock": 572.4,
+    "playing": true,
+    "drawer": {
+     "on": true,
+     "head": "Saint-Hilaire's Division",
+     "scroll": 4496
+    },
+    "modal": false,
+    "active": "#play.t tb-play<BUTTON>Pause",
+    "activeVisible": true,
+    "cam": [
+     -113.7,
+     39.7,
+     57.4
+    ]
+   },
+   "after": {
+    "hhmm": "04:00",
+    "clock": 240,
+    "playing": false,
+    "drawer": {
+     "on": true,
+     "head": "Saint-Hilaire's Division",
+     "scroll": 4496
+    },
+    "modal": false,
+    "active": ".dt-a<g>04:00, position A; then 08:00, position B (plotted",
+    "activeVisible": true,
+    "cam": [
+     -230,
+     134.8,
+     211
+    ]
+   }
+  }
+ ],
+ [
+  "4 s later",
+  {
+   "hhmm": "04:00",
+   "clock": 240,
+   "playing": false,
+   "drawer": {
+    "on": true,
+    "head": "Saint-Hilaire's Division",
+    "scroll": 4496
+   },
+   "modal": false,
+   "active": ".dt-a<g>04:00, position A; then 08:00, position B (plotted",
+   "activeVisible": true,
+   "cam": [
+    -230,
+    134.8,
+    211
+   ]
+  }
+ ],
+ [
+  "sources opened",
+  {
+   "hhmm": "04:00",
+   "clock": 240,
+   "playing": false,
+   "drawer": {
+    "on": true,
+    "head": "Saint-Hilaire's Division",
+    "scroll": 0
+   },
+   "modal": true,
+   "active": "#modal-close.<BUTTON>×",
+   "activeVisible": true,
+   "cam": [
+    -230,
+    134.8,
+    211
+   ]
+  }
+ ],
+ [
+  "sheet head",
+  "On accuracy and uncertainty\nTagged in this dossier\nSaint-Hilaire's Division (France), its commander: Not yet checked\nSaint-Hilaire's Division (France), its composition: Not yet checked\nSaint-Hilaire's Division (France), its figures: As a source tells it (О. В. Соколов, t. II, pp. 186-187)\nThe working figure is this map's, not from a source read.\nSaint-Hilaire's Division (France), 04:00 - 07:00: Not yet checked\nSaint-Hilaire's Division (France), 08:00 - 08:45: Not yet checked\nSaint-Hilaire's Division (France), 04:00 - 07:00, its objective: This map's reading (by its kind)\nSaint-Hilaire's Division (France), its role: Not yet checked\nSaint-Hilaire's Division (France), After dark: Not yet checked\n\nPositions here are reconstructed from standard accounts of the battle. Village-level locations and the sequence of attacks follow the accounts; the hours are partly dated in the sources read, partly disputed between them, and mostly this map's own, as each move's timing grade, and each event's timing and dispute, say. Exact frontages, the spacing between formations and the precise placement of cavalry reserves are not — a Napoleonic corps occupied a shifting area of ground, not a point.\n\nEver"
+ ],
+ [
+  "sheet metrics",
+  {
+   "w": 543,
+   "h": 38972,
+   "scrollH": 38972,
+   "chars": 104457
+  }
+ ],
+ [
+  "after Esc from sources",
+  {
+   "scrollBefore": 0,
+   "after": {
+    "hhmm": "04:00",
+    "clock": 240,
+    "playing": false,
+    "drawer": {
+     "on": true,
+     "head": "Saint-Hilaire's Division",
+     "scroll": 0
+    },
+    "modal": false,
+    "active": ".t<BUTTON>How this is sourced",
+    "activeVisible": true,
+    "cam": [
+     -230,
+     134.8,
+     211
+    ]
+   }
+  }
+ ]
+]

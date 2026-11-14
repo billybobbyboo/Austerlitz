@@ -1,5 +1,21 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Independent UI/UX, cartographic and art-direction audit
+
+**Status: a draft PR into `main`, for review, not merged.** An independent audit of the experience a visitor sees, on the Stage 7 closeout build
+(commit `5382a60`, the merge of #109): `docs/UX_ART_AUDIT.md`, with its figures, captures, mockups, logs and probes in `docs/ux-art-audit/`.
+**No build, source or data changes:** `austerlitz-command-map.html` is unchanged, 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`
+(SHA-256 `22756380...`), and `check:baseline` stays on it. The probes are the audit's own, kept as evidence; none is in the suite and none is bundled.
+
+- **What it holds:** a design verdict, 22 findings (UA-01 to UA-22: confirmed defects, tested design changes, unverified leads), two visual
+  directions prototyped on matched scenes at run time (nothing shipped), a recommended direction and a nine-step roadmap with acceptance checks.
+- **What was verified (numbers in `docs/ux-art-audit/evidence/logs/measurements.md`):** five journeys at 1440 x 900, 1280 x 720, 800 x 450 and
+  390 x 844 (emulated), a 320 px reflow check, a keyboard-only journey, reduced motion and forced colours; no console error in any session.
+- **What was not:** rendering was software WebGL (1 to 5 frames a second), so no frame rate or real-time pacing; no physical iPhone, VoiceOver or
+  NVDA; the report's section 9 lists the runs that would settle each open choice.
+- **Not run for this PR:** the suites and the browser checks (documents and evidence only; no file they read changes).
+- **Open, the owner's:** eight choices, most of them reopening earlier decisions (284 (b), 263 (a), 78, 302 (b), 113, 74, 311 (a)); nothing is decided.
+
 ## 2026-11 · Final audits' roadmap, closing: the re-verification pass
 
 **Status: on `claude/admiring-dirac-m1syqs`, a draft PR into `main`, for review, not merged.** The last pass of `docs/ROADMAP_FINAL_AUDIT.md`

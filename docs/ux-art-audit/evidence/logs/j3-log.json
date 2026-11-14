@@ -1,0 +1,261 @@
+[
+ [
+  "event markers",
+  {
+   "n": 25,
+   "sizes": [
+    "11x11",
+    "14x14"
+   ],
+   "first": [
+    {
+     "x": 14,
+     "y": 882,
+     "w": 11.313709259033203,
+     "h": 11.313720703125,
+     "label": "04:00 to 04:45, Friant's division at Raigern since the night (an interval, not a timestamp)",
+     "cls": "ev-mark fr"
+    },
+    {
+     "x": 39.203125,
+     "y": 882,
+     "w": 11.313705444335938,
+     "h": 11.313720703125,
+     "label": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (the hour is disputed)",
+     "cls": "ev-mark al"
+    },
+    {
+     "x": 316.5625,
+     "y": 882,
+     "w": 11.313720703125,
+     "h": 11.313720703125,
+     "label": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+     "cls": "ev-mark al"
+    },
+    {
+     "x": 316.5625,
+     "y": 882,
+     "w": 11.313720703125,
+     "h": 11.313720703125,
+     "label": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+     "cls": "ev-mark al"
+    }
+   ]
+  }
+ ],
+ [
+  "tooltip",
+  {
+   "text": "08:45 - 09:15: Saint-Hilaire and Vandamme climb the slope (the hour is disputed)",
+   "vis": "visible/1/true"
+  }
+ ],
+ [
+  "clicked marker 08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (the hour i",
+  {
+   "hhmm": "08:45",
+   "clock": 525,
+   "playing": false,
+   "sel": null,
+   "drawer": {
+    "cls": "drawer on",
+    "x": 0,
+    "w": 300,
+    "h": 809,
+    "head": "Saint-Hilaire and Vandamme climb the slope"
+   },
+   "modal": false,
+   "active": ".ev-mark fr on<BUTTON>",
+   "cam": [
+    -136,
+    46.1,
+    31
+   ]
+  }
+ ],
+ [
+  "drawer text",
+  "Attack · French\n\nSaint-Hilaire and Vandamme climb the slope\n\n08:45 - 09:15 (the hour is disputed)\n\nDisputed\nTiming: inferred (C)\nInterval, not a timestamp\nHow this is sourced\nWhy it matters\n\nTwo divisions that had been standing in fog, invisible from the crest, climb onto a plateau the 4th Column has not yet left (Stutterheim; Schönhals; Thiébault). \nClaim:\nAs a source tells it\n\nWhen it happened: disputed\n\nWhen the two divisions climbed: 08:45-09:15 on this map; Ségur has them appear at 08:00, Thiébault the signal given on an aide's report at 08:30, Stutterheim the French columns moving and Schönhals the order to attack about 09:00. \nClaim:\nThe sources disagree\n\nFormations concerned\nSaint-Hilaire's Division\nVandamme's Division\nStarting at the same minute\nFriant's leading brigade reaches the Goldbach (an interval, not a timestamp)\n\nThe event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's timing, or give none while this map's own texts differ; each is named, and the map keeps its timing.\n\nGo to this moment\nHow this is sourced"
+ ],
+ [
+  "quick drag from marker '09:15, Kutuzov orders the 4th Column to face about' +120px",
+  {
+   "before": {
+    "clock": 525,
+    "drawer": "Saint-Hilaire and Vandamme climb the slope"
+   },
+   "after": {
+    "hhmm": "10:26",
+    "clock": 626.39,
+    "playing": false,
+    "sel": null,
+    "drawer": {
+     "cls": "drawer on",
+     "x": 0,
+     "w": 300,
+     "h": 809,
+     "head": "Saint-Hilaire and Vandamme climb the slope"
+    },
+    "modal": false,
+    "active": ".ev-mark dec al<BUTTON>",
+    "cam": [
+     -75,
+     37.9,
+     42
+    ]
+   },
+   "railTimeUnderRelease": 626.4
+  }
+ ],
+ [
+  "slow drag from marker '09:00, Thiébault's brigade clears Pratzen village' +120px",
+  {
+   "before": 626.39,
+   "mid": 611.39,
+   "after": 611.39
+  }
+ ],
+ [
+  "press with 3px jitter on '09:45, Kamensky turns his brigade about and drives'",
+  {
+   "before": 611.39,
+   "after": {
+    "hhmm": "09:45",
+    "clock": 585,
+    "playing": false,
+    "sel": null,
+    "drawer": {
+     "cls": "drawer on",
+     "x": 0,
+     "w": 300,
+     "h": 809,
+     "head": "Kamensky turns his brigade about and drives the French off the crest"
+    },
+    "modal": false,
+    "active": ".ev-mark al on<BUTTON>",
+    "cam": [
+     -75,
+     37.9,
+     42
+    ]
+   }
+  }
+ ],
+ [
+  "map items at 09:00",
+  {
+   "n": 21,
+   "names": [
+    "THE PRATZEN · derived: Allied ≈ 25,765",
+    "Pratzeberg",
+    "Stare Vinohrady",
+    "Saint-Hilaire and Vandamme climb the slope (hour disputed)",
+    "Thiébault's brigade clears Pratzen village",
+    "Allied Headquarters B",
+    "Fifth Column (cavalry) C",
+    "Kollowrat's Austrians C",
+    "Miloradovich's Russians B",
+    "Vandamme C",
+    "Saint-Hilaire B",
+    "Guard Infantry C",
+    "Guard Cavalry B",
+    "Kamensky",
+    "Stare Vinohrady",
+    "Pratzeberg",
+    "Litava river",
+    "Austerlitz",
+    "Kobelnitz",
+    "Puntowitz",
+    "Krzenowitz"
+   ]
+  }
+ ],
+ [
+  "clicked label Saint-Hilaire and Vandamme climb the slope (hour disputed)",
+  {
+   "hhmm": "09:00",
+   "clock": 540,
+   "playing": false,
+   "sel": null,
+   "drawer": {
+    "cls": "drawer on",
+    "x": 0,
+    "w": 300,
+    "h": 809,
+    "head": "Saint-Hilaire and Vandamme climb the slope"
+   },
+   "modal": false,
+   "active": ".docked pm-study drawer-open<BODY>Study\nWatch\nClean\nAusterlitz, 2 December",
+   "cam": [
+    -136,
+    46.1,
+    31
+   ]
+  }
+ ],
+ [
+  "drawer text",
+  "Attack · French\n\nSaint-Hilaire and Vandamme climb the slope\n\n08:45 - 09:15 (the hour is disputed)\n\nDisputed\nTiming: inferred (C)\nInterval, not a timestamp\nHow this is sourced\nWhy it matters\n\nTwo divisions that had been standing in fog, invisible from the crest, climb onto a plateau the 4th Column has not yet left (Stutterheim; Schönhals; Thiébault). \nClaim:\nAs a source tells it\n\nWhen it happened: disputed\n\nWhen the two divisions climbed: 08:45-09:15 on this map; Ségur has them appear at 08:00, Thiébault the signal given on an aide's report at 08:30, Stutterheim the French columns moving and Schönhals the order to attack about 09:00. \nClaim:\nThe sources disagree\n\nFormations concerned\nSaint-Hilaire's Division\nVandamme's Division\nStarting at the same minute\nFriant's leading brigade reaches the Goldbach (an interval, not a timestamp)\n\nThe event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's timing, or give none while this map's own texts differ; each is named, and the map keeps its timing.\n\nGo to this moment\nHow this is sourced"
+ ],
+ [
+  "drawer buttons",
+  [
+   {
+    "t": "‹ Back to Now",
+    "id": "drawer-back",
+    "cls": "",
+    "y": 10,
+    "h": 25
+   },
+   {
+    "t": "×",
+    "id": "drawer-close",
+    "cls": "",
+    "y": 10,
+    "h": 25
+   },
+   {
+    "t": "How this is sourced",
+    "id": "",
+    "cls": "t",
+    "y": 233,
+    "h": 28
+   },
+   {
+    "t": "Saint-Hilaire's Division",
+    "id": "",
+    "cls": "linkb",
+    "y": 661,
+    "h": 24
+   },
+   {
+    "t": "Vandamme's Division",
+    "id": "",
+    "cls": "linkb",
+    "y": 691,
+    "h": 24
+   },
+   {
+    "t": "Friant's leading brigade reaches the Goldbach (an ",
+    "id": "",
+    "cls": "linkb",
+    "y": 761,
+    "h": 38
+   },
+   {
+    "t": "Go to this moment",
+    "id": "",
+    "cls": "t",
+    "y": 937,
+    "h": 28
+   },
+   {
+    "t": "How this is sourced",
+    "id": "",
+    "cls": "t",
+    "y": 971,
+    "h": 28
+   }
+  ]
+ ]
+]
