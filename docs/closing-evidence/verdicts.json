@@ -147,7 +147,7 @@
   "verdict": "fixed",
   "evidence": "docs/closing-evidence/state/props-bundle2.txt (C1-C3: the card and the dossier repainted 3 times within a leg, at the clock's place; place lists 0 of 240 differ, the audit 86)",
   "held": "the self-test 'dossiers (WP-05, CL-SIM-01)'; runtime-test.js",
-  "note": ""
+  "note": "the fix has a side effect found by this pass: a press in the open dossier during Play is lost when the repaint falls between the press and its release (7 of 16 at 100 ms, interaction/dossier-click-driven-05.json); carried as a new finding in the report"
  },
  {
   "id": "CL-SIM-02",
@@ -1300,9 +1300,9 @@
   "claimed": "kept",
   "claimedBasis": "decision 309 (a): decision 265 (a)'s bounded convention kept",
   "verdict": "kept",
-  "evidence": "decision 309 (a): decision 265 (a)'s bounded convention; the gait's kept-open counts held by the self-test (check (h))",
-  "held": "",
-  "note": ""
+  "evidence": "decision 309 (a): decision 265 (a)'s bounded convention; docs/closing-evidence/chatgpt/contact.log (ChatGPT's T18, contact-8f.js on the same build both sides, adapted to WP-16's aSl as tools/closing/contact.js: 17-58 instances an arm beyond the tolerance, ChatGPT 5-13 on the audited build); docs/closing-evidence/chatgpt/contact-stage6.log (Stage 6's data build: 7-22) and contact-wp16a.log (WP-16's first PR, read by the original code path: identical instance by instance)",
+  "held": "the self-test's gait-on-the-ground check (h), its kept-open counts (H_CASES)",
+  "note": "worse since the audit, twice on the owner's word: the relief's refit (decision 293 (a)) and the facings turning halted blocks across other creases of the ground (decision 316)"
  },
  {
   "id": "CL-VIS-11",
