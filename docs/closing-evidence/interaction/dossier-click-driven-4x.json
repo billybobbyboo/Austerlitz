@@ -1,0 +1,161 @@
+{
+ "hold": 100,
+ "speed": 4,
+ "frameMs": 16.666666666666668,
+ "res": [
+  {
+   "k": 0,
+   "pressedAt": 433.333,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 438.667,
+   "playing": true
+  },
+  {
+   "k": 1,
+   "pressedAt": 434,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 439.333,
+   "playing": true
+  },
+  {
+   "k": 2,
+   "pressedAt": 434.667,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 440,
+   "playing": true
+  },
+  {
+   "k": 3,
+   "pressedAt": 435.333,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 440.667,
+   "playing": true
+  },
+  {
+   "k": 4,
+   "pressedAt": 436,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 441.333,
+   "playing": true
+  },
+  {
+   "k": 5,
+   "pressedAt": 436.667,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 442,
+   "playing": true
+  },
+  {
+   "k": 6,
+   "pressedAt": 437.333,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 7,
+   "pressedAt": 438,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 8,
+   "pressedAt": 438.667,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 9,
+   "pressedAt": 439.333,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 10,
+   "pressedAt": 440,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 11,
+   "pressedAt": 440.667,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 12,
+   "pressedAt": 441.333,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 13,
+   "pressedAt": 442,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 14,
+   "pressedAt": 442.667,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 15,
+   "pressedAt": 443.333,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 448.667,
+   "playing": true
+  }
+ ],
+ "fullDossier": true,
+ "anchors": 7,
+ "summary": {
+  "presses": 16,
+  "taken": 9,
+  "repaintedDuringPress": 7,
+  "lostWhenRepainted": 7,
+  "lostOtherwise": 0
+ },
+ "md5": "8c0d383eb45a6f2a5522d04863824b7b"
+}

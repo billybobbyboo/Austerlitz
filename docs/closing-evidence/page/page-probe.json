@@ -1,0 +1,22 @@
+{
+ "command": {
+  "rows": 51,
+  "documented": 4,
+  "documentedUnread": 0,
+  "readNotDocumented": 0,
+  "tagged": 34,
+  "examples": []
+ },
+ "strength": {
+  "rows": 74,
+  "tagged": 74,
+  "untagged": [],
+  "kinds": {
+   "working": 71,
+   "working (range)": 3
+  }
+ },
+ "build": "austerlitz-command-map.html",
+ "md5": "8c0d383eb45a6f2a5522d04863824b7b",
+ "errors": []
+}

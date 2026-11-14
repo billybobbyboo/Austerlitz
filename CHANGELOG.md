@@ -2,7 +2,7 @@
 
 ## 2026-11 · Final audits' roadmap, Stage 7 (WP-12): the device evidence (CL-PERF-01 to -11)
 
-**Status: on `claude/admiring-dirac-m1syqs-device`, a draft PR into `main`, for review, not merged.** WP-12 of `docs/ROADMAP_FINAL_AUDIT.md`, the last
+**Status: merged into `main` (#108, `a8720b9`); built on `claude/admiring-dirac-m1syqs-device`.** WP-12 of `docs/ROADMAP_FINAL_AUDIT.md`, the last
 pass of Stage 7, with WP-11's rule alongside. Records, the device route and the protocol for the owner's runs. No source of the build, no data
 and no build changes: `austerlitz-command-map.html` is unchanged, 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`, and `check:baseline`
 stays on it. **The device results are the owner's:** the desktop's and the iPhone's two runs each of Stage 7's build (13 November 2026), filed verbatim

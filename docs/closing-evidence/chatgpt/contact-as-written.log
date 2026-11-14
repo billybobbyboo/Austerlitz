@@ -1,0 +1,49 @@
+before 4     simple       edges men     poses 39456, half within 0.003, 99 in 100 0.0687, worst 0.2483 (sthilaire #9 13:50), beyond 2638 (tol 0.0300); px at its largest: worst 2.14, 99 in 100 0.59; the legacy seat 0.875
+before 4     simple       edges horses  poses 7224, half within 0.0103, 99 in 100 0.2083, worst 0.2262 (gqg #5 09:05), beyond 2757 (tol 0.0300); px at its largest: worst 1.95, 99 in 100 1.79; the legacy seat 0.875
+before 4     simple       drawn men     poses 39456, half within 0.0031, 99 in 100 0.0715, worst 0.2441 (sthilaire #9 13:50), beyond 2714 (tol 0.0300); px at its largest: worst 2.10, 99 in 100 0.62; the legacy seat 0.875
+before 4     simple       drawn horses  poses 7224, half within 0.0101, 99 in 100 0.2083, worst 0.2262 (gqg #5 09:05), beyond 2759 (tol 0.0300); px at its largest: worst 1.95, 99 in 100 1.79; the legacy seat 0.875
+before 4     rich         edges men     poses 39456, half within 0.0058, 99 in 100 0.0812, worst 0.3095 (sthilaire #9 13:50), beyond 4065 (tol 0.0300); px at its largest: worst 17.34, 99 in 100 4.55; the legacy seat 0.875
+before 4     rich         edges horses  poses 7224, half within 0.0103, 99 in 100 0.2083, worst 0.2262 (gqg #5 09:05), beyond 2757 (tol 0.0300); px at its largest: worst 12.67, 99 in 100 11.67; the legacy seat 0.875
+before 4     rich         drawn men     poses 39456, half within 0.0058, 99 in 100 0.0821, worst 0.306 (sthilaire #9 13:50), beyond 4125 (tol 0.0300); px at its largest: worst 17.15, 99 in 100 4.60; the legacy seat 0.875
+before 4     rich         drawn horses  poses 7224, half within 0.0113, 99 in 100 0.2083, worst 0.2262 (gqg #5 09:05), beyond 2869 (tol 0.0300); px at its largest: worst 12.67, 99 in 100 11.67; the legacy seat 0.875
+before 10.33 simple       edges men     poses 39456, half within 0.0079, 99 in 100 0.1756, worst 0.5477 (sthilaire #9 13:50), beyond 2786 (tol 0.0774); px at its largest: worst 4.72, 99 in 100 1.51; the legacy seat 2.337
+before 10.33 simple       edges horses  poses 7224, half within 0.0165, 99 in 100 0.2584, worst 0.6075 (gqg #5 09:05), beyond 1803 (tol 0.0774); px at its largest: worst 5.23, 99 in 100 2.23; the legacy seat 2.337
+before 10.33 simple       drawn men     poses 39456, half within 0.0081, 99 in 100 0.1765, worst 0.5487 (sthilaire #9 13:50), beyond 2880 (tol 0.0774); px at its largest: worst 4.72, 99 in 100 1.52; the legacy seat 2.337
+before 10.33 simple       drawn horses  poses 7224, half within 0.0167, 99 in 100 0.2584, worst 0.6045 (gqg #5 09:05), beyond 1801 (tol 0.0774); px at its largest: worst 5.21, 99 in 100 2.23; the legacy seat 2.337
+before 10.33 rich         edges men     poses 39456, half within 0.0133, 99 in 100 0.2062, worst 0.6836 (sthilaire #9 13:50), beyond 4086 (tol 0.0774); px at its largest: worst 38.31, 99 in 100 11.55; the legacy seat 2.337
+before 10.33 rich         edges horses  poses 7224, half within 0.0165, 99 in 100 0.2584, worst 0.6075 (gqg #5 09:05), beyond 1803 (tol 0.0774); px at its largest: worst 34.04, 99 in 100 14.48; the legacy seat 2.337
+before 10.33 rich         drawn men     poses 39456, half within 0.0134, 99 in 100 0.2095, worst 0.6843 (sthilaire #9 13:50), beyond 4161 (tol 0.0774); px at its largest: worst 38.34, 99 in 100 11.74; the legacy seat 2.337
+before 10.33 rich         drawn horses  poses 7224, half within 0.0169, 99 in 100 0.2521, worst 0.6134 (gqg #5 09:05), beyond 1858 (tol 0.0774); px at its largest: worst 34.37, 99 in 100 14.13; the legacy seat 2.337
+after  4     simple       edges men     poses 39456, half within 0.003, 99 in 100 0.0687, worst 0.2483 (sthilaire #9 13:50), beyond 2638 (tol 0.0300); px at its largest: worst 2.14, 99 in 100 0.59; the legacy seat 0.875
+after  4     simple       edges horses  poses 7224, half within 0.0103, 99 in 100 0.2083, worst 0.2262 (gqg #5 09:05), beyond 2757 (tol 0.0300); px at its largest: worst 1.95, 99 in 100 1.79; the legacy seat 0.875
+after  4     simple       drawn men     poses 39456, half within 0.0031, 99 in 100 0.0715, worst 0.2441 (sthilaire #9 13:50), beyond 2714 (tol 0.0300); px at its largest: worst 2.10, 99 in 100 0.62; the legacy seat 0.875
+after  4     simple       drawn horses  poses 7224, half within 0.0101, 99 in 100 0.2083, worst 0.2262 (gqg #5 09:05), beyond 2759 (tol 0.0300); px at its largest: worst 1.95, 99 in 100 1.79; the legacy seat 0.875
+after  4     rich         edges men     poses 39456, half within 0.0058, 99 in 100 0.0812, worst 0.3095 (sthilaire #9 13:50), beyond 4065 (tol 0.0300); px at its largest: worst 17.34, 99 in 100 4.55; the legacy seat 0.875
+after  4     rich         edges horses  poses 7224, half within 0.0103, 99 in 100 0.2083, worst 0.2262 (gqg #5 09:05), beyond 2757 (tol 0.0300); px at its largest: worst 12.67, 99 in 100 11.67; the legacy seat 0.875
+after  4     rich         drawn men     poses 39456, half within 0.0058, 99 in 100 0.0821, worst 0.306 (sthilaire #9 13:50), beyond 4125 (tol 0.0300); px at its largest: worst 17.15, 99 in 100 4.60; the legacy seat 0.875
+after  4     rich         drawn horses  poses 7224, half within 0.0113, 99 in 100 0.2083, worst 0.2262 (gqg #5 09:05), beyond 2869 (tol 0.0300); px at its largest: worst 12.67, 99 in 100 11.67; the legacy seat 0.875
+after  10.33 simple       edges men     poses 39456, half within 0.0079, 99 in 100 0.1756, worst 0.5477 (sthilaire #9 13:50), beyond 2786 (tol 0.0774); px at its largest: worst 4.72, 99 in 100 1.51; the legacy seat 2.337
+after  10.33 simple       edges horses  poses 7224, half within 0.0165, 99 in 100 0.2584, worst 0.6075 (gqg #5 09:05), beyond 1803 (tol 0.0774); px at its largest: worst 5.23, 99 in 100 2.23; the legacy seat 2.337
+after  10.33 simple       drawn men     poses 39456, half within 0.0081, 99 in 100 0.1765, worst 0.5487 (sthilaire #9 13:50), beyond 2880 (tol 0.0774); px at its largest: worst 4.72, 99 in 100 1.52; the legacy seat 2.337
+after  10.33 simple       drawn horses  poses 7224, half within 0.0167, 99 in 100 0.2584, worst 0.6045 (gqg #5 09:05), beyond 1801 (tol 0.0774); px at its largest: worst 5.21, 99 in 100 2.23; the legacy seat 2.337
+after  10.33 rich         edges men     poses 39456, half within 0.0133, 99 in 100 0.2062, worst 0.6836 (sthilaire #9 13:50), beyond 4086 (tol 0.0774); px at its largest: worst 38.31, 99 in 100 11.55; the legacy seat 2.337
+after  10.33 rich         edges horses  poses 7224, half within 0.0165, 99 in 100 0.2584, worst 0.6075 (gqg #5 09:05), beyond 1803 (tol 0.0774); px at its largest: worst 34.04, 99 in 100 14.48; the legacy seat 2.337
+after  10.33 rich         drawn men     poses 39456, half within 0.0134, 99 in 100 0.2095, worst 0.6843 (sthilaire #9 13:50), beyond 4161 (tol 0.0774); px at its largest: worst 38.34, 99 in 100 11.74; the legacy seat 2.337
+after  10.33 rich         drawn horses  poses 7224, half within 0.0169, 99 in 100 0.2521, worst 0.6134 (gqg #5 09:05), beyond 1858 (tol 0.0774); px at its largest: worst 34.37, 99 in 100 14.13; the legacy seat 2.337
+each instance 4     simple       edges men     3460 instances: beyond tol 637 before, 637 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 4     simple       edges horses  612 instances: beyond tol 329 before, 329 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 4     simple       drawn men     3460 instances: beyond tol 652 before, 652 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 4     simple       drawn horses  612 instances: beyond tol 330 before, 330 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 4     rich         edges men     3460 instances: beyond tol 814 before, 814 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 4     rich         edges horses  612 instances: beyond tol 329 before, 329 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 4     rich         drawn men     3460 instances: beyond tol 812 before, 812 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 4     rich         drawn horses  612 instances: beyond tol 351 before, 351 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 10.33 simple       edges men     3460 instances: beyond tol 659 before, 659 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 10.33 simple       edges horses  612 instances: beyond tol 258 before, 258 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 10.33 simple       drawn men     3460 instances: beyond tol 664 before, 664 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 10.33 simple       drawn horses  612 instances: beyond tol 259 before, 259 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 10.33 rich         edges men     3460 instances: beyond tol 793 before, 793 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 10.33 rich         edges horses  612 instances: beyond tol 258 before, 258 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 10.33 rich         drawn men     3460 instances: beyond tol 798 before, 798 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+each instance 10.33 rich         drawn horses  612 instances: beyond tol 262 before, 262 after (0 newly, 0 cleared); worse by over 0.001 0 (by over a third of tol 0), better 0
+written docs/closing-evidence/chatgpt/contact/contact.json

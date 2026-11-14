@@ -1,0 +1,2522 @@
+{
+ "generated": "2026-11-13T23:39:31.169Z",
+ "isolatedCopy": "/tmp/claude-0/-home-user-Austerlitz/bd1c237e-5adb-5982-a9bf-fb3ff5f86d64/scratchpad/iso-mut",
+ "auditedBuildMd5": "8c0d383eb45a6f2a5522d04863824b7b",
+ "fails": "^(CSS ERRORS|ERRORS|errors|findings): *[1-9]|VIOLATIONS \\([1-9]|, [1-9][0-9]* failed$|: [1-9][0-9]* disagreements|^  (!|E|FAIL|✗) |BROKEN|  FLOATS$|: DISAGREE$|<-- outside|^console\\.warn unique: *[1-9]",
+ "results": [
+  {
+   "id": "M01",
+   "title": "a march rate over the ceiling: Saint-Hilaire's wheel (sthilaire@7) given 10 minutes instead of 60",
+   "claim": "audit.js MARCH RATE VIOLATIONS (auditMovement: a leg over its arm's ceiling); check:chronology M1 (the movement audit); sim-test.js continuity",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -194,7 +194,7 @@\n     4:{p:[283,287],st:\"engaged\",cf:\"A\",obj:\"Hold the Pratzeberg\",act:\"Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiébault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried their part of the heights\"},\n     5:{p:[287,282],cf:\"B\",st:\"holding\",act:\"Consolidating on the summit with Levasseur's brigade attached\"},\n     6:{p:[288,272],cf:\"B\",st:\"holding\",obj:\"Cover the right of the plateau\",act:\"Faces east while Vandamme is attacked to the north\"},\n-    7:{tm:{dep:780,at:840,gr:\"B\",basis:\"app narrative, unsourced\",ev:[\"Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau\",\"Soult and Davout launch the converging assault on the Allied left.\"],note:\"the wheel is dated as a range, and the move is shown across all of it\"},\n+    7:{tm:{dep:780,at:790,gr:\"B\",basis:\"app narrative, unsourced\",ev:[\"Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau\",\"Soult and Davout launch the converging assault on the Allied left.\"],note:\"the wheel is dated as a range, and the move is shown across all of it\"},\n        p:[285,324],st:\"advancing\",cf:\"A\",obj:\"Take Buxhowden's columns in the rear\",act:\"Wheels south off the heights toward Sokolnitz and Telnitz\"},\n     8:{p:[236,352],st:\"attacking\",cf:\"B\",act:\"Closes on Sokolnitz from the east while Davout presses from the west\"},\n     9:{p:[255,390],st:\"pursuing\",act:\"Holds the ground between Telnitz and Augezd\"}}},\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.9,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.6,
+     "lines": [
+      "findings: 2",
+      "  ✗ warning: not acknowledged in KNOWN_WARN: movement: cavalry mean rate 1.12 is not above infantry 1.54",
+      "  ✗ warning: acknowledged but no longer raised (remove it from KNOWN_WARN): movement: cavalry mean rate 1.12 is not above infantry 1.47"
+     ]
+    },
+    "sim": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.5,
+     "lines": [
+      "ERRORS: 5 ",
+      "  ! sthilaire moved at 9.9 km/h at 13:02",
+      "  ! sthilaire moved at 9.9 km/h at 13:04",
+      "  ! sthilaire moved at 9.9 km/h at 13:06",
+      "  ! sthilaire moved at 9.9 km/h at 13:08",
+      "  ! sthilaire moved at 9.9 km/h at 13:10"
+     ]
+    },
+    "audit": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.6,
+     "lines": [
+      "=== MARCH RATE VIOLATIONS (1) ===",
+      "  ! continuity: sthilaire moves 823 m in 5 minutes at 13:05 (9.88 km/h), over its 5 km/h ceiling",
+      "errors: 1"
+     ]
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 33.3,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 4.2,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.2,
+     "lines": []
+    },
+    "chron": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.6,
+     "lines": [
+      "errors: 3",
+      "  ! sthilaire@7 is early by 50 min (engine 13:00-13:10)",
+      "  ! F2 sthilaire@7: at 198% of its ceiling, named nowhere (CEILING_FLAGGED, FORCED_DATED, NEAR_CEILING)",
+      "  ! M1 movement audit: sthilaire 6->7 rate (9.88 km/h over 5)"
+     ]
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.1,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "redteam",
+    "sim",
+    "audit",
+    "chron",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "redteam",
+    "sim",
+    "audit"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M02",
+   "title": "a formation's parent changed (Saint-Hilaire's division under V Corps), the children lists left as they were",
+   "claim": "redteam.js section 4 (COMMAND: parent and children agree); test.js checks only that the parent exists",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -183,7 +183,7 @@\n \n sthilaire:{ ech:\"div\", nation:\"fr\", arm:\"inf\", desig:\"1re Div., IV Corps\",\n   name:\"Saint-Hilaire's Division\", commander:\"Gen. de division Louis Vincent de Saint-Hilaire\",\n-  staff:\"Brigades: Morand · Thiébault · Varé\", parent:\"c_iv\",\n+  staff:\"Brigades: Morand · Thiébault · Varé\", parent:\"c_v\",\n   strength:6600, strengthNote:\"about 6,600, this map's working figure, not from a source read; Sokolov counts 8,128 present on 22 November, Varé's brigade (the 43e and 55e) within it. This map also lists that brigade with Vandamme, as attached from Saint-Hilaire\", guns:null,\n   role:\"Right-hand assault division against the Pratzeberg; later the hinge of the wheel south.\",\n   track:{\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.9,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.6,
+     "lines": [
+      "findings: 2",
+      "  ✗ command: c_iv lists sthilaire as a child, but sthilaire's parent is c_v",
+      "  ✗ command: sthilaire claims c_v as parent, but c_v does not list it as a child"
+     ]
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.9,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.7,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 31.8,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.9,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.3,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.2,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    },
+    "runtime": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 345.4,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "redteam",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "redteam"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M03",
+   "title": "a formation moved to another corps consistently (parent and both children lists), historically wrong",
+   "claim": "no suite claims the order of battle's hierarchy beyond consistency; test.js's strength sums (D-3) and KNOWN_WARN; check:data (FORMATIONS guarded)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -164,7 +164,7 @@\n   name:\"IV Corps\", commander:\"Marshal Nicolas Soult\", parent:null,\n   strength:23600, strengthNote:\"23,600 is Sokolov's estimate for 2 December from the returns of 22 November, when he counts 24,690 present: Saint-Hilaire 8,128 (Varé's brigade within it), Vandamme 7,913, Legrand 7,361, Margaron's light cavalry 953, the park 307 and the staff 28. The three divisions' working figures here (6,600, 6,700 and 7,000, summing to 20,300) are not from a source read. No gun count for 2 December is read; at the Rhine crossing Sokolov's tables give the corps 36 guns\",\n   role:\"The centre assault. Two divisions storm the Pratzen; the third holds the lower Goldbach.\",\n-  children:[\"sthilaire\",\"vandamme\",\"legrand\",\"heightguns\"]},\n+  children:[\"vandamme\",\"legrand\",\"heightguns\"]},\n \n heightguns:{ ech:\"bde\", nation:\"fr\", arm:\"art\", desig:\"Batteries on the plateau\",\n   name:\"French guns on the heights\", commander:\"Corps and Guard artillery\", parent:\"c_iv\",\n@@ -183,7 +183,7 @@\n \n sthilaire:{ ech:\"div\", nation:\"fr\", arm:\"inf\", desig:\"1re Div., IV Corps\",\n   name:\"Saint-Hilaire's Division\", commander:\"Gen. de division Louis Vincent de Saint-Hilaire\",\n-  staff:\"Brigades: Morand · Thiébault · Varé\", parent:\"c_iv\",\n+  staff:\"Brigades: Morand · Thiébault · Varé\", parent:\"c_v\",\n   strength:6600, strengthNote:\"about 6,600, this map's working figure, not from a source read; Sokolov counts 8,128 present on 22 November, Varé's brigade (the 43e and 55e) within it. This map also lists that brigade with Vandamme, as attached from Saint-Hilaire\", guns:null,\n   role:\"Right-hand assault division against the Pratzeberg; later the hinge of the wheel south.\",\n   track:{\n@@ -283,7 +283,7 @@\n   name:\"V Corps\", commander:\"Marshal Jean Lannes\", parent:null,\n   strength:12700, strengthNote:\"about 12,700 with 20 guns, as Duffy's order of battle prints them (1977, p. 181); Sokolov presumes 13,800 for Lannes on 2 December (13,673 on 22 November)\",\n   role:\"Holds and then advances along the Brünn–Olmütz highway; forbidden to press too hard early.\",\n-  children:[\"caffarelli\",\"suchet\"]},\n+  children:[\"caffarelli\",\"suchet\",\"sthilaire\"]},\n \n caffarelli:{ ech:\"div\", nation:\"fr\", arm:\"inf\", desig:\"1re Div., III Corps, with V Corps\",\n   name:\"Caffarelli's Division\", commander:\"Gen. de division Marie-François de Caffarelli du Falga\",\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.6,
+     "lines": [
+      "ERRORS: 3",
+      "  ! c_v: its formations (19300) exceed its declared strength (12700): a detachment counted beside its parent, not under it (docs/FINAL_AUDIT.md D-3)",
+      "  ! warning not acknowledged in KNOWN_WARN: c_iv: declared 23600 vs children 13700",
+      "  ! warning not acknowledged in KNOWN_WARN: c_v: declared 12700 vs children 19300"
+     ]
+    },
+    "redteam": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.4,
+     "lines": [
+      "findings: 2",
+      "  ✗ warning: not acknowledged in KNOWN_WARN: command: c_iv declares 23600 but its children sum to 13700",
+      "  ✗ warning: not acknowledged in KNOWN_WARN: command: c_v declares 12700 but its children sum to 19300"
+     ]
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.6,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.7,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 32.1,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.9,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.3,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.4,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.1,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    },
+    "runtime": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 345.4,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "redteam",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test",
+    "redteam"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M04",
+   "title": "a narrative statement with its own claim reworded without its hash (bourcier@3 act)",
+   "claim": "test.js STATEMENT_CLAIMS: h is the hash of the statement's label and text; a reword fails until the claim is reviewed",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -271,7 +271,7 @@\n   track:{\n     0:{p:[22,489],st:\"march\",cf:\"C\"},\n     3:{tm:{dep:300,gr:\"B\",basis:\"source\",ev:[\"Davout's reports send the division on from Raigern at 05:00\",\"Up from Raigern with Friant's division\"],note:\"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place.\"},\n-       p:[184,420],st:\"holding\",obj:\"Cover the right of the Goldbach line\",act:\"Up from Raigern with Friant's division, as Mikhailovsky-Danilevsky has Davout come; the screen south of Telnitz is this map's\"},\n+       p:[184,420],st:\"holding\",obj:\"Cover the right of the Goldbach line\",act:\"Up from Raigern with Friant's division, as Mikhailovsky-Danilevsky has Davout come; the screen south of Telnitz is this map's own\"},\n     7:{p:[201,416],cf:\"B\",st:\"advancing\"},\n     8:{p:[201,416],cf:\"B\",st:\"attacking\",act:\"On Davout's right before Telnitz, covered by a brook; its first line charges there, two regiments sent to a defile on Friant's left (Davout's reports)\"},\n     9:{p:[201,416],cf:\"C\",st:\"holding\",act:\"Its place at nightfall is this map's: Davout's report takes his divisions through Menitz to a league beyond, and Sokolov has Bourcier move on Menitz with Friant\"}}},   /* the final\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.4,
+     "lines": [
+      "ERRORS: 2",
+      "  ! claims: STATEMENT_CLAIMS[\"FORMATIONS.bourcier.track[\\\"3\\\"].act\"]: the statement (its label and text) changed since its claim was written (h ef45d62b77ef, now a202aeb023f7): review the claim",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.2,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.5,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.5,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 32.1,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.2,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.3,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.9,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M05",
+   "title": "an unchecked narrative statement given a factual change (Saint-Hilaire's role: right-hand becomes left-hand assault division)",
+   "claim": "none in the node suites (a statement without a claim is unchecked by design, decision 130); check:data (FORMATIONS guarded)",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -185,7 +185,7 @@\n   name:\"Saint-Hilaire's Division\", commander:\"Gen. de division Louis Vincent de Saint-Hilaire\",\n   staff:\"Brigades: Morand · Thiébault · Varé\", parent:\"c_iv\",\n   strength:6600, strengthNote:\"about 6,600, this map's working figure, not from a source read; Sokolov counts 8,128 present on 22 November, Varé's brigade (the 43e and 55e) within it. This map also lists that brigade with Vandamme, as attached from Saint-Hilaire\", guns:null,\n-  role:\"Right-hand assault division against the Pratzeberg; later the hinge of the wheel south.\",\n+  role:\"Left-hand assault division against the Pratzeberg; later the hinge of the wheel south.\",\n   track:{\n     0:{p:[201,221],st:\"concealed\",cf:\"A\",obj:\"Await the signal in the Goldbach valley\",act:\"Standing in fog behind Puntowitz, which hid it from the plateau\"},\n     2:{p:[206,231],cf:\"B\",st:\"forming\",act:\"Forms in the Goldbach valley for the attack\"},\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.6,
+     "lines": [
+      "ERRORS: 1",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.6,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.4,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.4,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 30.4,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 4,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.3,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.8,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": false
+  },
+  {
+   "id": "M06",
+   "title": "a claim's reading id pointing to a reading of another source (bourcier@3 act rests on a Davout reading under Mikhailovsky's name)",
+   "claim": "test.js: every reading id a heading of a register whose source is the one named",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "narrative.js",
+     "diff": "--- a/narrative.js\n+++ b/narrative.js\n@@ -49,7 +49,7 @@\n       {src:\"stutterheim1806de\", at:\"pp. 63-64\", rd:\"stut.p63-64.jurczeck\", side:\"Kollowrath, ordered to hold the enemy, sent the Austrian brigades forward\"},\n       {src:\"mikhailovsky1844\", at:\"pp. 186-187\", rd:\"md1844.p186-187.kamensky~C1.10\", side:\"Kamensky turned his brigade on his own\"}],\n     note:\"That the whole column faced about, and its hour, are this map's reading; the recall of part of the II Column is this map's record, not checked here.\"},\n-  \"FORMATIONS.bourcier.track[\\\"3\\\"].act\": {h:\"ef45d62b77ef\", cl:\"attributed\", by:[{src:\"mikhailovsky1844\", at:\"pp. 178-179\", rd:\"md1844.p178-179.davout-telnitz\"}],\n+  \"FORMATIONS.bourcier.track[\\\"3\\\"].act\": {h:\"ef45d62b77ef\", cl:\"attributed\", by:[{src:\"mikhailovsky1844\", at:\"pp. 178-179\", rd:\"davout1885.p202-204.report-26dec\"}],\n     note:\"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry; no reading gives the dragoons' own place, so the screen is this map's.\"},\n   \"EVENTS[#telnitz].dispute\": {h:\"bf5ca2cd0451\", cl:\"disputed\", by:[{src:\"savary1828\", at:\"t. II, pp. 204-207\", rd:\"savary1828.p204-207\", side:\"the Russians debouching on Legrand about seven\"},\n       {src:\"schoenhals1873\", at:\"pp. 157-159\", rd:\"schoenhals1873.p157-159.departure\", side:\"the left wing off at half past six\"},\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.1,
+     "lines": [
+      "ERRORS: 3",
+      "  ! claims: STATEMENT_CLAIMS[\"FORMATIONS.bourcier.track[\\\"3\\\"].act\"].by[0]: reading davout1885.p202-204.report-26dec is of davout1885, not mikhailovsky1844",
+      "  ! claims: STATEMENT_CLAIMS[\"FORMATIONS.bourcier.track[\\\"3\\\"].act\"]: \"attributed\" rests on no reading read on a page image",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.4,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.6,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.5,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 30.3,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.3,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.7,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.1,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1,
+     "lines": [
+      "  CHANGED narrative claims (roadmap step 4): 3 declarations, 94,305 bytes  changed: STATEMENT_CLAIMS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M07",
+   "title": "a claim's reading id pointing to another reading of the same source, on another matter (Kamensky's turn, not Davout at Telnitz)",
+   "claim": "test.js checks the reading's register entry, source and image status, not that the reading bears on the statement",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "narrative.js",
+     "diff": "--- a/narrative.js\n+++ b/narrative.js\n@@ -49,7 +49,7 @@\n       {src:\"stutterheim1806de\", at:\"pp. 63-64\", rd:\"stut.p63-64.jurczeck\", side:\"Kollowrath, ordered to hold the enemy, sent the Austrian brigades forward\"},\n       {src:\"mikhailovsky1844\", at:\"pp. 186-187\", rd:\"md1844.p186-187.kamensky~C1.10\", side:\"Kamensky turned his brigade on his own\"}],\n     note:\"That the whole column faced about, and its hour, are this map's reading; the recall of part of the II Column is this map's record, not checked here.\"},\n-  \"FORMATIONS.bourcier.track[\\\"3\\\"].act\": {h:\"ef45d62b77ef\", cl:\"attributed\", by:[{src:\"mikhailovsky1844\", at:\"pp. 178-179\", rd:\"md1844.p178-179.davout-telnitz\"}],\n+  \"FORMATIONS.bourcier.track[\\\"3\\\"].act\": {h:\"ef45d62b77ef\", cl:\"attributed\", by:[{src:\"mikhailovsky1844\", at:\"pp. 178-179\", rd:\"md1844.p186-187.kamensky~C1.10\"}],\n     note:\"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry; no reading gives the dragoons' own place, so the screen is this map's.\"},\n   \"EVENTS[#telnitz].dispute\": {h:\"bf5ca2cd0451\", cl:\"disputed\", by:[{src:\"savary1828\", at:\"t. II, pp. 204-207\", rd:\"savary1828.p204-207\", side:\"the Russians debouching on Legrand about seven\"},\n       {src:\"schoenhals1873\", at:\"pp. 157-159\", rd:\"schoenhals1873.p157-159.departure\", side:\"the left wing off at half past six\"},\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.9,
+     "lines": [
+      "ERRORS: 2",
+      "  ! claims: STATEMENT_CLAIMS[\"FORMATIONS.bourcier.track[\\\"3\\\"].act\"]: \"attributed\" rests on no reading read on a page image",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.4,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.6,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.5,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 30.8,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 4.1,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.2,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1,
+     "lines": [
+      "  CHANGED narrative claims (roadmap step 4): 3 declarations, 94,305 bytes  changed: STATEMENT_CLAIMS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": false
+  },
+  {
+   "id": "M08",
+   "title": "the \"derived\" tag removed from a formation's march row (the dossier's Marching / Next move reading)",
+   "claim": "runtime-test.js D-6 (every march row tagged); css-test.js posRow/marchRow pin; the self-test's derivedTagChecks (browser)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -8488,7 +8488,7 @@\n     ' <span class=\"hh\">('+esc(LABELS.march.driftNote.replace(\"%k\",GAIT.KMH))+')</span>');\n   return row(mr.moving?\"Marching\":\"Next move\",\n     mr.km.toFixed(1)+\" km in \"+Math.round(mr.min)+\" min &middot; \"+mr.kmh.toFixed(1)+\" km/h\"+\n-    (mr.ice?' <span class=\"hh\">over the frozen mere</span>':'')+\" \"+derivedTag()+' <span class=\"hh\">(the plotted march\\u2019s length over its time window)</span>');\n+    (mr.ice?' <span class=\"hh\">over the frozen mere</span>':'')+' <span class=\"hh\">(the plotted march\\u2019s length over its time window)</span>');\n }\n function dossierFormation(id){\n   var f=FORMATIONS[id], cr0=claimRefsStart();\n"
+    }
+   ],
+   "suites": {
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.6,
+     "lines": []
+    },
+    "runtime": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 277.7,
+     "lines": [
+      "errors: 1",
+      "  E DRIVE: derived tags: gqg at 04:30: the march row untagged; friant at 04:30: the march row untagged; bourcier at 04:30: the march row untagged; caffarelli at 04:30: the march row untagged; rivaud at 04:30: the march row untagged; drouet at 04:30: the march row untagged (699 march rows, 438 of them drifts, 232 midpoints)"
+     ]
+    },
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.3,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "runtime"
+   ],
+   "caughtByNodeSuite": [
+    "runtime"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M09",
+   "title": "an event's time moved: the French wheel 13:00-14:00 becomes 13:20-14:20",
+   "claim": "check:chronology L3 (a cite of a retimed statement fails); redteam.js PREREQ; sim-test.js event agreement; test.js event validation",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "analysis.js",
+     "diff": "--- a/analysis.js\n+++ b/analysis.js\n@@ -337,7 +337,7 @@\n  why:\"The anvil becomes a hammer. That Langeron is pushed back onto Sokolnitz from the west is this map's reading; no account read says so.\",\n  dispute:\"When Davout resumed the offensive: 12:30 on this map; Mikhailovsky-Danilevsky has Napoleon order Davout against the first three columns at 13:00.\"},\n \n-{id:\"wheel\", t:[780,840], n:\"The French centre turns south\", side:\"fr\", kind:\"movement\",\n+{id:\"wheel\", t:[800,860], n:\"The French centre turns south\", side:\"fr\", kind:\"movement\",\n  p:[277,303], forms:[\"sthilaire\",\"vandamme\",\"c_gren\",\"guard_inf\"], cf:\"B\", claim:\"est\",\n  why:\"Ninety degrees, off the heights, into the rear of Buxhowden's three columns.\"},\n \n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.5,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.7,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.1,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.2,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 32.7,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 5.8,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.7,
+     "lines": []
+    },
+    "chron": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.7,
+     "lines": [
+      "errors: 7",
+      "  ! L3 sthilaire@7: \"event wheel\" (analysis.js:340) no longer carries 13:00-14:00 (it carries 13:20-14:20)",
+      "  ! L3 vandamme@7: \"event wheel\" (analysis.js:340) no longer carries 13:00-14:00 (it carries 13:20-14:20)",
+      "  ! L3 guard_inf@7: \"event wheel\" (analysis.js:340) no longer carries 13:00-14:00 (it carries 13:20-14:20)",
+      "  ! L3 c_gren@7: \"event wheel\" (analysis.js:340) no longer carries 13:00-14:00 (it carries 13:20-14:20)",
+      "  ! L3 c_gren@8: \"event wheel\" (analysis.js:340) no longer carries 13:00-14:00 (it carries 13:20-14:20)",
+      "  ! L9 chronology-text.json names \"event wheel @13:00-14:00\", which no row cites and no entry allows (or it no longer resolves): --rehash --write",
+      "  ! L2 analysis.js:340 \"event wheel\" @13:20-14:20: a timed statement no REVIEW row cites (REVIEW_CITES) and ALLOW_TIMED does not name"
+     ]
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.4,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: EVENTS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "chron",
+    "data"
+   ],
+   "caughtByNodeSuite": [],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M10",
+   "title": "a statement's own claim deleted (bourcier@3 act: attributed becomes unchecked)",
+   "claim": "test.js: the inventory (docs/step4-evidence/inventory.json and .md) current; check:data (STATEMENT_CLAIMS guarded)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "narrative.js",
+     "diff": "--- a/narrative.js\n+++ b/narrative.js\n@@ -49,8 +49,6 @@\n       {src:\"stutterheim1806de\", at:\"pp. 63-64\", rd:\"stut.p63-64.jurczeck\", side:\"Kollowrath, ordered to hold the enemy, sent the Austrian brigades forward\"},\n       {src:\"mikhailovsky1844\", at:\"pp. 186-187\", rd:\"md1844.p186-187.kamensky~C1.10\", side:\"Kamensky turned his brigade on his own\"}],\n     note:\"That the whole column faced about, and its hour, are this map's reading; the recall of part of the II Column is this map's record, not checked here.\"},\n-  \"FORMATIONS.bourcier.track[\\\"3\\\"].act\": {h:\"ef45d62b77ef\", cl:\"attributed\", by:[{src:\"mikhailovsky1844\", at:\"pp. 178-179\", rd:\"md1844.p178-179.davout-telnitz\"}],\n-    note:\"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry; no reading gives the dragoons' own place, so the screen is this map's.\"},\n   \"EVENTS[#telnitz].dispute\": {h:\"bf5ca2cd0451\", cl:\"disputed\", by:[{src:\"savary1828\", at:\"t. II, pp. 204-207\", rd:\"savary1828.p204-207\", side:\"the Russians debouching on Legrand about seven\"},\n       {src:\"schoenhals1873\", at:\"pp. 157-159\", rd:\"schoenhals1873.p157-159.departure\", side:\"the left wing off at half past six\"},\n       {src:\"stutterheim1806de\", at:\"pp. 49-52\", rd:\"stut1806de.p49-52.telnitz\", side:\"the hussars forward to reconnoitre between seven and eight\"},\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 3.3,
+     "lines": [
+      "ERRORS: 1",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.2,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.7,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 36.9,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 5.9,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.2,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.5,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.8,
+     "lines": [
+      "  CHANGED narrative claims (roadmap step 4): 3 declarations, 94,305 bytes  changed: STATEMENT_CLAIMS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M11",
+   "title": "a banned superlative in a visitor string (LABELS.layers.shows: \"What is drawn, the fiercest ground first\")",
+   "claim": "redteam.js section 6a (SUPERLATIVE over every visitor string, tools/lang-scan.js)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -6911,7 +6911,7 @@\n     staff:{label:\"Paper map\", title:\"A north-up plan on flat ground, with counters\"},\n     hybrid:{label:\"Landscape with counters\", title:\"The ground in relief, with the paper map's counters\"}\n   },\n-  layers:{button:\"Layers\\u2026\", heading:\"Layers\", aria:\"Layers and ground\", ground:\"Ground\", shows:\"What is drawn\"},\n+  layers:{button:\"Layers\\u2026\", heading:\"Layers\", aria:\"Layers and ground\", ground:\"Ground\", shows:\"What is drawn, the fiercest ground first\"},\n   /* roadmap step 3 (SW-1): the notice when the browser takes the graphics context away; interface words, no claim */\n   glLost:\"The 3D view has stopped: the browser lost its graphics context. It comes back if the browser restores it; if it does not, reload the page.\",\n   reload:\"Reload\",\n"
+    }
+   ],
+   "suites": {
+    "redteam": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.4,
+     "lines": [
+      "findings: 1",
+      "  ✗ language: LABELS.layers.shows (app.js:6914) gives an unlabelled superlative: \"the fiercest\""
+     ]
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 5.1,
+     "lines": []
+    },
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.2,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "redteam"
+   ],
+   "caughtByNodeSuite": [
+    "redteam"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M12",
+   "title": "a colour literal outside the palette tables in presentation code (app.js legendHint)",
+   "claim": "css-test.js Stage 4E palette: every colour literal in app.js in LIGHT, LIGHT_RIG, SPRITE_COL or KIT",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -5926,7 +5926,7 @@\n /* roadmap step 5 (docs/FINAL_AUDIT.md R-4): the legend's control hint from KEYS, the rows that carry a hint in their hint order (hi): the\n    landscape's rows (land) or the paper map's (paper), and both's; until step 5 written by hand (\"scroll\", \"right-drag or\n    Shift-drag\", where KEYS says Wheel and \"also Shift or Ctrl and drag\") */\n-function legendHint(land){\n+function legendHint(land){ var hl=\"#ff00aa\";\n   var R=KEYS.filter(function(r){ return r.hint&&(land?!r.paper:!r.land); });\n   R.sort(function(a,b){ return a.hi-b.hi; });\n   return R.map(function(r){ return r.hint; }).join(\" \\u00b7 \");\n"
+    }
+   ],
+   "suites": {
+    "css": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 4.9,
+     "lines": [
+      "  ! app.js: legendHint has colour literals outside the palette tables (#ff00aa (line 5929))",
+      "the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)): the level of detail 17.6 in, 14.5 out, in view, a block's meshes together, kitLod allocating nothing; the wheels at ORDNANCE's heights, one carriage colour for every army, the drivers only where a claim's corps holds the battery, the switch at once; the gait's phase the track's distance over its stride, its amplitude the clock rate's rule  …"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.7,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "css"
+   ],
+   "caughtByNodeSuite": [
+    "css"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M13",
+   "title": "an interface colour typed into style.css outside the tokens (#sc-clear:hover color:#ff00aa)",
+   "claim": "CLAUDE.md: tokens.js \"the only source of interface and symbology colours\"; css-test.js reads JS colour literals and the day-track inset's rules only",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "style.css",
+     "diff": "--- a/style.css\n+++ b/style.css\n@@ -793,7 +793,7 @@\n #selchip .sc-n{font-weight:400;color:var(--text-hi);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}\n #selchip .sc-s{color:var(--text-muted)}\n #sc-clear{background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);line-height:1;cursor:pointer;padding:2px 5px;min-width:24px;min-height:24px}\n-#sc-clear:hover{color:var(--text)}\n+#sc-clear:hover{color:#ff00aa}\n \n /* ---------- Stage 0: development readout (the ` key, or ?stats in the address) ---------- */\n #devstats{position:fixed;left:8px;top:8px;z-index:70;pointer-events:none;white-space:pre;\n"
+    }
+   ],
+   "suites": {
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 5,
+     "lines": []
+    },
+    "build": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.2,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.1,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [],
+   "caughtByNodeSuite": [],
+   "outcome": "missed",
+   "outcomeExcludingCheckData": "missed",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M14",
+   "title": "a dashed line added to a non-route drawer: the boundaries drawn with dashRuns",
+   "claim": "binding-test.js section 2 (dashes only in the allowed drawers; buildBoundary solid)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -3161,7 +3161,7 @@\n /* a boundary between commands: one solid thin line in the annotation colour (decision 21), explained in the legend */\n function buildBoundary(b){\n   var c=lin(hexNum(TOKENS.sym.label.dark.annotation));\n-  var r=drapedRibbon(b.pts,{w0:0.7,w1:0.7,col:c,edge:c,lift:1.6,ground:true,role:\"bound\"},overlayMesh,overlayMats);   /* Stage 8, 8B: hidden by the ground alone */\n+  var r=drapedRibbon(b.pts,{w0:0.7,w1:0.7,col:c,edge:c,lift:1.6,ground:true,role:\"bound\",runs:dashRuns(9,0.62)},overlayMesh,overlayMats);   /* Stage 8, 8B: hidden by the ground alone */\n   var q=r.curve.getPointAt(0.5);\n   if(b.label) addOverlayLabel(b.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.6,q.z));\n }\n"
+    }
+   ],
+   "suites": {
+    "binding": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1,
+     "lines": [
+      "binding-test: 401 checks, 2 failed",
+      "  ! app.js: buildBoundary draws dashed or segmented lines, and is not an allowed drawer",
+      "  ! app.js: buildBoundary is dashed or segmented"
+     ]
+    },
+    "css": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 5.6,
+     "lines": [
+      "  ! the bounds are not tested against the ground",
+      "the troops (decisions 242 (a), 243 (a), 244 (a), 245 (a)): the level of detail 17.6 in, 14.5 out, in view, a block's meshes together, kitLod allocating nothing; the wheels at ORDNANCE's heights, one carriage colour for every army, the drivers only where a claim's corps holds the battery, the switch at once; the gait's phase the track's distance over its stride, its amplitude the clock rate's rule  …"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "binding",
+    "css"
+   ],
+   "caughtByNodeSuite": [
+    "binding",
+    "css"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M15",
+   "title": "a formation's first positioned anchor without its grade (sthilaire@0 cf removed)",
+   "claim": "test.js and redteam.js D-2 (the first positioned anchor declares its grade)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -187,7 +187,7 @@\n   strength:6600, strengthNote:\"about 6,600, this map's working figure, not from a source read; Sokolov counts 8,128 present on 22 November, Varé's brigade (the 43e and 55e) within it. This map also lists that brigade with Vandamme, as attached from Saint-Hilaire\", guns:null,\n   role:\"Right-hand assault division against the Pratzeberg; later the hinge of the wheel south.\",\n   track:{\n-    0:{p:[201,221],st:\"concealed\",cf:\"A\",obj:\"Await the signal in the Goldbach valley\",act:\"Standing in fog behind Puntowitz, which hid it from the plateau\"},\n+    0:{p:[201,221],st:\"concealed\",obj:\"Await the signal in the Goldbach valley\",act:\"Standing in fog behind Puntowitz, which hid it from the plateau\"},\n     2:{p:[206,231],cf:\"B\",st:\"forming\",act:\"Forms in the Goldbach valley for the attack\"},\n     3:{tm:{dep:525,gr:\"C\",basis:\"app narrative, unsourced\",ev:[\"Soult's divisions advance. The mist lifts off the heights.\",\"At about 08:45 they climbed the western slope\",\"Thiébault's brigade clears Pratzen village; the 10e Légère pushes on for the Pratzeberg.\"],note:\"the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in Stutterheim and Schönhals), and passes Pratzen village c. 09:00; no source read dates its end, so the arrival is derived\"},\n        p:[267,275],st:\"attacking\",cf:\"A\",via:[[218,230]],obj:\"Seize the Pratzeberg\",act:\"Climbs the western slope; Thiébault clears Pratzen village, the 10e Légère pushes for the summit\"},\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.3,
+     "lines": [
+      "ERRORS: 1",
+      "  ! sthilaire ph0: the first positioned anchor declares no grade (D-2: stateAt would draw it at its default B)"
+     ]
+    },
+    "redteam": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.9,
+     "lines": [
+      "findings: 1",
+      "  ✗ grade: sthilaire first positioned anchor at phase 0 declares no grade (D-2: stateAt would draw it at its default B)"
+     ]
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.1,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.7,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.1,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.1,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 35,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 6.3,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.8,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.1,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.5,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "redteam",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test",
+    "redteam"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M16",
+   "title": "a later anchor's position grade raised without evidence (sthilaire@8 B becomes A)",
+   "claim": "none in the node suites (grades checked for form, A/B/C, and D-2 on the first anchor only); check:data (FORMATIONS guarded)",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -196,7 +196,7 @@\n     6:{p:[288,272],cf:\"B\",st:\"holding\",obj:\"Cover the right of the plateau\",act:\"Faces east while Vandamme is attacked to the north\"},\n     7:{tm:{dep:780,at:840,gr:\"B\",basis:\"app narrative, unsourced\",ev:[\"Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau\",\"Soult and Davout launch the converging assault on the Allied left.\"],note:\"the wheel is dated as a range, and the move is shown across all of it\"},\n        p:[285,324],st:\"advancing\",cf:\"A\",obj:\"Take Buxhowden's columns in the rear\",act:\"Wheels south off the heights toward Sokolnitz and Telnitz\"},\n-    8:{p:[236,352],st:\"attacking\",cf:\"B\",act:\"Closes on Sokolnitz from the east while Davout presses from the west\"},\n+    8:{p:[236,352],st:\"attacking\",cf:\"A\",act:\"Closes on Sokolnitz from the east while Davout presses from the west\"},\n     9:{p:[255,390],st:\"pursuing\",act:\"Holds the ground between Telnitz and Augezd\"}}},\n \n vandamme:{ ech:\"div\", nation:\"fr\", arm:\"inf\", desig:\"2e Div., IV Corps\",\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.7,
+     "lines": [
+      "ERRORS: 1",
+      "  ! sthilaire@9: moves 1.34 km and carries the A of an earlier anchor (decision 272 (a): declare its own grade)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.4,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.7,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.7,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.7,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 31.3,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 4,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.4,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.2,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": false
+  },
+  {
+   "id": "M17",
+   "title": "a strength changed without its note (Saint-Hilaire 6,600 becomes 8,600; the note still says about 6,600)",
+   "claim": "test.js D-3 strength sums and the OOB pins (Saint-Hilaire not pinned); sim-test.js side totals; check:data",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -184,7 +184,7 @@\n sthilaire:{ ech:\"div\", nation:\"fr\", arm:\"inf\", desig:\"1re Div., IV Corps\",\n   name:\"Saint-Hilaire's Division\", commander:\"Gen. de division Louis Vincent de Saint-Hilaire\",\n   staff:\"Brigades: Morand · Thiébault · Varé\", parent:\"c_iv\",\n-  strength:6600, strengthNote:\"about 6,600, this map's working figure, not from a source read; Sokolov counts 8,128 present on 22 November, Varé's brigade (the 43e and 55e) within it. This map also lists that brigade with Vandamme, as attached from Saint-Hilaire\", guns:null,\n+  strength:8600, strengthNote:\"about 6,600, this map's working figure, not from a source read; Sokolov counts 8,128 present on 22 November, Varé's brigade (the 43e and 55e) within it. This map also lists that brigade with Vandamme, as attached from Saint-Hilaire\", guns:null,\n   role:\"Right-hand assault division against the Pratzeberg; later the hinge of the wheel south.\",\n   track:{\n     0:{p:[201,221],st:\"concealed\",cf:\"A\",obj:\"Await the signal in the Goldbach valley\",act:\"Standing in fog behind Puntowitz, which hid it from the plateau\"},\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.6,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.8,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 31.8,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 4,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.2,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.2,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.3,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    },
+    "runtime": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 347.9,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "data"
+   ],
+   "caughtByNodeSuite": [],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "missed",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M18",
+   "title": "an anchor's position moved about 0.4 km (sthilaire@5 on the Pratzeberg, 13 map units south)",
+   "claim": "none in the node suites beyond rates, crossings and named places; check:data",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -192,7 +192,7 @@\n     3:{tm:{dep:525,gr:\"C\",basis:\"app narrative, unsourced\",ev:[\"Soult's divisions advance. The mist lifts off the heights.\",\"At about 08:45 they climbed the western slope\",\"Thiébault's brigade clears Pratzen village; the 10e Légère pushes on for the Pratzeberg.\"],note:\"the climb begins c. 08:45 on this map, inside the sources' range (about eight in Ségur, the aide's report at half past eight in Thiébault, about nine in Stutterheim and Schönhals), and passes Pratzen village c. 09:00; no source read dates its end, so the arrival is derived\"},\n        p:[267,275],st:\"attacking\",cf:\"A\",via:[[218,230]],obj:\"Seize the Pratzeberg\",act:\"Climbs the western slope; Thiébault clears Pratzen village, the 10e Légère pushes for the summit\"},\n     4:{p:[283,287],st:\"engaged\",cf:\"A\",obj:\"Hold the Pratzeberg\",act:\"Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiébault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried their part of the heights\"},\n-    5:{p:[287,282],cf:\"B\",st:\"holding\",act:\"Consolidating on the summit with Levasseur's brigade attached\"},\n+    5:{p:[287,295],cf:\"B\",st:\"holding\",act:\"Consolidating on the summit with Levasseur's brigade attached\"},\n     6:{p:[288,272],cf:\"B\",st:\"holding\",obj:\"Cover the right of the plateau\",act:\"Faces east while Vandamme is attacked to the north\"},\n     7:{tm:{dep:780,at:840,gr:\"B\",basis:\"app narrative, unsourced\",ev:[\"Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau\",\"Soult and Davout launch the converging assault on the Allied left.\"],note:\"the wheel is dated as a range, and the move is shown across all of it\"},\n        p:[285,324],st:\"advancing\",cf:\"A\",obj:\"Take Buxhowden's columns in the rear\",act:\"Wheels south off the heights toward Sokolnitz and Telnitz\"},\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.7,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.5,
+     "lines": [
+      "findings: 2",
+      "  ✗ warning: not acknowledged in KNOWN_WARN: movement: cavalry mean rate 1.12 is not above infantry 1.48",
+      "  ✗ warning: acknowledged but no longer raised (remove it from KNOWN_WARN): movement: cavalry mean rate 1.12 is not above infantry 1.47"
+     ]
+    },
+    "sim": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.3,
+     "lines": [
+      "ERRORS: 1 ",
+      "  ! MELEE[3] sthilaire x kollo 10:05-10:30: no sample within 0.5 km uses it (remove it)"
+     ]
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 30.5,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 4.1,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.9,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "redteam",
+    "sim",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "redteam",
+    "sim"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": false
+  },
+  {
+   "id": "M19",
+   "title": "a timed statement retimed: \"c. 12:00 Napoleon moves forward from the Zuran\" becomes c. 12:30",
+   "claim": "check:chronology L3 (a cite that no longer resolves to a live statement carrying its time)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -103,7 +103,7 @@\n   events:[\n     [\"after 11:00\",\"The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The hour is disputed: before one by the order of the 30th Bulletin's and Mikhailovsky-Danilevsky's narratives, by about noon in Schönhals, about 13:00 in Rapp's memoirs and Ségur's.\"],\n     [\"after 11:15\",\"Bessières and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured. The hour is disputed: the map draws the charge from 11:15; Rapp and Ségur put the Guard's last effort about 13:00.\"],\n-    [\"c. 12:00\",\"Napoleon moves forward from the Zuran to Stare Vinohrady.\"],\n+    [\"c. 12:30\",\"Napoleon moves forward from the Zuran to Stare Vinohrady.\"],\n     [\"c. 12:00\",\"Buxhowden, on the Allied left, is still unaware of the collapse behind him.\"],\n     [\"c. 12:30\",\"Davout regroups and attacks; Langeron is forced back toward Sokolnitz, in this map's reading, which no account read gives. The hour is this map's; Mikhailovsky-Danilevsky has Napoleon order the attack at one in the afternoon.\"]],\n   cam:[-76,36,-1,26,6,-31], mist:0.0 },\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 3,
+     "lines": [
+      "ERRORS: 1",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.2,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.4,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.1,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 30.1,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.5,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "chron": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.4,
+     "lines": [
+      "errors: 3",
+      "  ! L3 gqg@6: \"timeline 6: Napoleon moves forward from the Zuran to Stare …\" (data.js:106) no longer carries 12:00 (it carries 12:30)",
+      "  ! L9 chronology-text.json names \"timeline 6: Napoleon moves forward from the @12:00\", which no row cites and no entry allows (or it no longer resolves): --rehash --write",
+      "  ! L2 data.js:106 \"timeline 6: Napoleon moves forward from the Zuran to Stare Vinohrady.\" @12:30: a timed statement no REVIEW row cites (REVIEW_CITES) and ALLOW_TIMED does not name"
+     ]
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.9,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: PHASES",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "chron",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M20",
+   "title": "a timed statement reworded, its time kept: \"the causeway comes under fire\" becomes \"under heavy fire\"",
+   "claim": "check:chronology L9 (the cited statement's text hash) and --times (an explicit time's quoted evidence must be in the sources)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -118,7 +118,7 @@\n { id:8, t0:870, t1:1020, clock:\"14:30 - 17:00\", label:\"The ponds\", title:\"Augezd, the ponds and the ice\",\n   lede:\"By the afternoon a way out for the Allied left runs south over the defile at Augezd and the frozen meres beyond. This map reads it as a way left open, and the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held. French guns on the heights fire down on the ice. The 30th Bulletin claimed twenty thousand Russians drowned here; Schönhals, on the Telnitz priest's word, has sixty to at most a hundred. General Suchet's report of 16 December 1805, as Sokolov quotes it, has thirty-six guns, 138 horses and three bodies taken from the pond near Augezd when it was drained; the figures usually given, thirty-eight gun …[165 more characters]\n   events:[\n-    [\"c. 14:30\",\"Vandamme takes the height above Augezd; the causeway comes under fire.\"],\n+    [\"c. 14:30\",\"Vandamme takes the height above Augezd; the causeway comes under heavy fire.\"],\n     [\"c. 15:00\",\"French artillery fires on the ice of the Satschan mere. The accounts differ on the hour: Schönhals has the whole left wing past the Satschan dam by half past two; Thiébault puts the drowning in the last half hour of the firing, which ended about half an hour after three.\"],\n     [\"c. 16:30\",\"Organised resistance ends, by this map's reckoning after Sokolov's end of the firing in the north; the accounts end the fighting from the Bulletin's victory decided at one to Mikhailovsky-Danilevsky's last shots between five and six. Bagration holds the height toward Rausnitz, where Mikhailovsky-Danilevsky has him at dusk; Schönhals has him withdraw on Austerlitz about six; the Guard on Austerlitz.\"]],\n   cam:[-122,96,2,-18,0,68], mist:0.22 },\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.2,
+     "lines": [
+      "ERRORS: 1",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.6,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.8,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.5,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 31.1,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 5,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.2,
+     "lines": []
+    },
+    "chron": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.7,
+     "lines": [
+      "errors: 3",
+      "  ! kienmayer@8: evidence not found in the sources: Vandamme takes the height above Augezd; the causeway comes under fire.",
+      "  ! dok@8: evidence not found in the sources: Vandamme takes the height above Augezd; the causeway comes under fire.",
+      "  ! L9 \"timeline 8: Vandamme takes the height above @14:30\": its statement's text has changed since it was reviewed (review its row or entry, then --rehash --write)"
+     ]
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.4,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: PHASES",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "chron",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M21",
+   "title": "an explicit anchor time's quoted evidence altered (sthilaire@7: \"Napoleon swung his centre\" for \"turned\")",
+   "claim": "check:chronology times rule (--times: every explicit time's evidence quote found in the sources)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -194,7 +194,7 @@\n     4:{p:[283,287],st:\"engaged\",cf:\"A\",obj:\"Hold the Pratzeberg\",act:\"Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiébault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried their part of the heights\"},\n     5:{p:[287,282],cf:\"B\",st:\"holding\",act:\"Consolidating on the summit with Levasseur's brigade attached\"},\n     6:{p:[288,272],cf:\"B\",st:\"holding\",obj:\"Cover the right of the plateau\",act:\"Faces east while Vandamme is attacked to the north\"},\n-    7:{tm:{dep:780,at:840,gr:\"B\",basis:\"app narrative, unsourced\",ev:[\"Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau\",\"Soult and Davout launch the converging assault on the Allied left.\"],note:\"the wheel is dated as a range, and the move is shown across all of it\"},\n+    7:{tm:{dep:780,at:840,gr:\"B\",basis:\"app narrative, unsourced\",ev:[\"Between about 13:00 and 14:00 Napoleon swung his centre ninety degrees and brought it down off the plateau\",\"Soult and Davout launch the converging assault on the Allied left.\"],note:\"the wheel is dated as a range, and the move is shown across all of it\"},\n        p:[285,324],st:\"advancing\",cf:\"A\",obj:\"Take Buxhowden's columns in the rear\",act:\"Wheels south off the heights toward Sokolnitz and Telnitz\"},\n     8:{p:[236,352],st:\"attacking\",cf:\"B\",act:\"Closes on Sokolnitz from the east while Davout presses from the west\"},\n     9:{p:[255,390],st:\"pursuing\",act:\"Holds the ground between Telnitz and Augezd\"}}},\n"
+    }
+   ],
+   "suites": {
+    "chron": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.4,
+     "lines": [
+      "errors: 1",
+      "  ! sthilaire@7: evidence not found in the sources: Between about 13:00 and 14:00 Napoleon swung his centre ninety degrees and brought it down off the plateau"
+     ]
+    },
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.1,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.3,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "chron",
+    "data"
+   ],
+   "caughtByNodeSuite": [],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M22",
+   "title": "a tour stop's quoted derived figure changed (\"about 39,000\" becomes \"about 45,000\")",
+   "claim": "sim-test.js 2b (the tour quotes the live plateau figures within 600)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "analysis.js",
+     "diff": "--- a/analysis.js\n+++ b/analysis.js\n@@ -379,7 +379,7 @@\n {n:\"The French deception\", at:\"ph:0\", chapter:\"deception\",\n  x:\"Napoleon gave up the plateau on 1 December and camped behind the Goldbach, leaving his right so thin that a single division held five kilometres of stream. The weakness was real, which is what made it convincing.\"},\n {n:\"The Allied advance\", at:\"ph:1\", t:445, chapter:\"commitment\",\n- x:\"From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 41,000 at 04:00 to about 21,500 by 07:25, about half of it gone before a shot is fired at the plateau.\"},\n+ x:\"From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 45,000 at 04:00 to about 21,500 by 07:25, about half of it gone before a shot is fired at the plateau.\"},\n {n:\"Why the Pratzen matters\", at:\"ph:2\", feature:\"pratzen\", cam:[-136,46,31,-6,8,-3],\n  x:\"In this model's terrain an observer on the Pratzeberg summit can see about 47 per cent of the field, and one on the valley floor at Puntowitz under 3 per cent. That is a reading from the model, not a record of what anyone saw: on the morning of the battle the valley lay in fog, and it was the fog that hid Soult's divisions forming at the foot of the slope.\"},\n {n:\"The French strike\", at:\"ev:soult\", chapter:\"pratzen\",\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.9,
+     "lines": [
+      "ERRORS: 2",
+      "  ! claims: STATEMENT_CLAIMS[\"TOUR[3].x\"]: the statement (its label and text) changed since its claim was written (h 7602f8f524a7, now c73067f64c6b): review the claim",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.6,
+     "lines": []
+    },
+    "sim": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.3,
+     "lines": [
+      "  tour stop 4 quotes 45000 and 21500; live figures 40915 at 04:00 and 21515 before the attack: DISAGREE",
+      "ERRORS: 1 ",
+      "  ! tour stop 4 quotes plateau figures that no longer match the live computation"
+     ]
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.1,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 29.7,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.4,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "chron": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 2.1,
+     "lines": [
+      "errors: 3",
+      "  ! L9 \"tour 4 x @07:00\": its statement's text has changed since it was reviewed (review its row or entry, then --rehash --write)",
+      "  ! L9 \"tour 4 x @04:00\": its statement's text has changed since it was reviewed (review its row or entry, then --rehash --write)",
+      "  ! L9 \"tour 4 x @07:25\": its statement's text has changed since it was reviewed (review its row or entry, then --rehash --write)"
+     ]
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: TOUR",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "sim",
+    "chron",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test",
+    "sim"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M23",
+   "title": "the plateau reading kept one phase longer (PLATEAU_LAST 6 becomes 7)",
+   "claim": "runtime-test.js (the derived readings shown exactly where the Allied hold the heights up to phase 6, the rule written in the test); the self-test's plateauDayChecks",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -4076,7 +4076,7 @@\n var plateauRing=null;\n /* owner decision 126 (docs/FINAL_AUDIT.md H-3): the plateau reading is shown in phases 0-6 only: in the Now tab and the caption (tagged), on\n    the map (its label, marked derived in its words and its name) and its outline; from phase 7 (12:45) nowhere */\n-var PLATEAU_LAST=6;\n+var PLATEAU_LAST=7;\n function buildPlateauRing(){\n   var pts=[], P=PLATEAU_POLY.concat([PLATEAU_POLY[0]]);\n   for(var a=0;a<P.length-1;a++) for(var k=0;k<8;k++){\n"
+    }
+   ],
+   "suites": {
+    "runtime": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 235.7,
+     "lines": [
+      "errors: 1",
+      "  E DRIVE: plateau label: 13:20: the label drawn in phase 7 (seen {\"on\":6,\"off\":1})"
+     ]
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.5,
+     "lines": []
+    },
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "data": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "runtime"
+   ],
+   "caughtByNodeSuite": [
+    "runtime"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M24",
+   "title": "a presentation site reads the model height: buildBoundary's label placed with height() instead of groundY()",
+   "claim": "the height guard (tools/stage2/height-sites.js --check): no presentation site calls height()/hAt()",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -3163,7 +3163,7 @@\n   var c=lin(hexNum(TOKENS.sym.label.dark.annotation));\n   var r=drapedRibbon(b.pts,{w0:0.7,w1:0.7,col:c,edge:c,lift:1.6,ground:true,role:\"bound\"},overlayMesh,overlayMats);   /* Stage 8, 8B: hidden by the ground alone */\n   var q=r.curve.getPointAt(0.5);\n-  if(b.label) addOverlayLabel(b.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.6,q.z));\n+  if(b.label) addOverlayLabel(b.label,new THREE.Vector3(q.x,height(q.x,q.z)+1.6,q.z));\n }\n function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */\n   ovText.push({text:text,pos:pos.clone(),acl:6});   /* the map layer's label, anchored on the drawn line (2D) */\n"
+    }
+   ],
+   "suites": {
+    "height": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.3,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.5,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "height"
+   ],
+   "caughtByNodeSuite": [
+    "height"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M25",
+   "title": "the model's march-rate ceiling for infantry loosened (SPEED_CEIL.inf 5.0 becomes 6.0)",
+   "claim": "check:chronology F2 (legs at 80% of the ceiling named exactly); check:data (SPEED_CEIL guarded)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -3469,7 +3469,7 @@\n }\n \n /* ---- plausibility audit: run at load, reported to the console ---- */\n-var SPEED_CEIL={inf:5.0, guard:5.0, art:4.5, cav:12.0, mixed:8.0, hq:12.0};\n+var SPEED_CEIL={inf:6.0, guard:5.0, art:4.5, cav:12.0, mixed:8.0, hq:12.0};\n /* The tactical rate for a derived arrival of a formation in battle order (anchorList; docs/STAGE2_SPEC.md section M.13).\n    DESIGN VALUES, UNSOURCED: chosen so that a formed body moving under fire is not given the march-rate ceiling as its\n    pace; they are not historical rates and are never presented as such. Artillery and headquarters have none (their\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.1,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1,
+     "lines": [
+      "findings: 2",
+      "  ✗ warning: not acknowledged in KNOWN_WARN: movement: cavalry mean rate 1.12 is not above infantry 1.49",
+      "  ✗ warning: acknowledged but no longer raised (remove it from KNOWN_WARN): movement: cavalry mean rate 1.12 is not above infantry 1.47"
+     ]
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.4,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.4,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 28.9,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.8,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.7,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.9,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.1,
+     "lines": [
+      "  CHANGED movement, strength and confidence model: 35 declarations, 11,615 bytes  changed: SPEED_CEIL",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "redteam",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "redteam"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M26",
+   "title": "a disputed event's hour graded A (Kienmayer's attack on Telnitz)",
+   "claim": "test.js T-6 (a disputed hour graded A fails, question 143)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "analysis.js",
+     "diff": "--- a/analysis.js\n+++ b/analysis.js\n@@ -258,7 +258,7 @@\n  dispute:\"When the cavalry column crossed: from 04:15 on this map, its own reckoning; the Materialien's editor has it ordered off only at dawn, Mikhailovsky-Danilevsky has its crossing hold up the 4th Column at the set hour, and Stutterheim has the 4th Column ordered off only toward 08:00, and Miloradovich's report has him set out at 08:00; Ermolov has the army set out before dawn, the columns crossing in the dark, which may be the night move into the disposition's places rather than the columns' departure.\"},\n \n {id:\"telnitz\", t:420, n:\"Kienmayer attacks Telnitz\", side:\"al\", kind:\"attack\",\n- p:[212,408], forms:[\"kienmayer\",\"legrand\"], cf:\"B\", claim:\"disputed\",\n+ p:[212,408], forms:[\"kienmayer\",\"legrand\"], cf:\"A\", claim:\"disputed\",\n  why:\"The battle opens here, on the Allied left, after a night of outpost contact along the Goldbach: the beginning of the attack Napoleon wanted.\",\n  dispute:\"When Kienmayer attacked Telnitz: 07:00 on this map, with Savary's Russians beginning to debouch on Legrand about seven and attacking soon after; the other readings bound the hour rather than give it: Schönhals has the left wing set off at 06:30, Stutterheim the hussars sent forward to reconnoitre between seven and eight, and Davout's report Telnitz under vigorous attack by about 08:00.\"},\n \n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.3,
+     "lines": [
+      "ERRORS: 1",
+      "  ! event telnitz: a disputed hour graded A (Timing A is dated in a cited source, TIMING_TEXT; question 143)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.1,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.6,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.4,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.5,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 30.4,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.5,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.1,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.8,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: EVENTS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M27",
+   "title": "a village moved about 0.28 km (Kobelnitz, 9 map units east)",
+   "claim": "geo-test.js (every surveyed village within 0.5 km of ground truth); check:data (VILLAGES guarded)",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "world.js",
+     "diff": "--- a/world.js\n+++ b/world.js\n@@ -140,7 +140,7 @@\n                     Military Survey labels \"Kruch\"; C for 1805), [339,139], its warped legacy place, 1.58 km south-south-east of it, until then.\n                     Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as edge markers */\n  [\"Bosenitz\",236,69,7],[\"Girzikowitz\",233,162,9],[\"Puntowitz\",213,222,8],\n- [\"Kobelnitz\",205,277,9],[\"Sokolnitz\",208,365,13],[\"Telnitz\",212,408,12],\n+ [\"Kobelnitz\",214,277,9],[\"Sokolnitz\",208,365,13],[\"Telnitz\",212,408,12],\n  [\"Augezd\",297,372,9],[\"Blasowitz\",296,147,10],[\"Krug\",318,94,5],\n  [\"Holubitz\",340,89,7],[\"Pratzen\",276,243,11],[\"Bellowitz\",164,113,7],\n  [\"Schlapanitz\",163,177,9],[\"Krzenowitz\",415,196,10],[\"Austerlitz\",507,126,24],\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.4,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.5,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.5,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.5,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 29.7,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.1,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.9,
+     "lines": [
+      "  CHANGED geography and relief model: 53 declarations, 24,119 bytes  changed: VILLAGES",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "data"
+   ],
+   "caughtByNodeSuite": [],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "missed",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M28",
+   "title": "an event naming only a formation that is not yet on the field (Kienmayer's attack on Telnitz at 07:00 names the guns on the heights, which arrive at 12:45)",
+   "claim": "redteam.js section 1 (every event's named formations on the field at its mid-window); sim-test.js reports an event naming no plotted formation as not tested",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "analysis.js",
+     "diff": "--- a/analysis.js\n+++ b/analysis.js\n@@ -258,7 +258,7 @@\n  dispute:\"When the cavalry column crossed: from 04:15 on this map, its own reckoning; the Materialien's editor has it ordered off only at dawn, Mikhailovsky-Danilevsky has its crossing hold up the 4th Column at the set hour, and Stutterheim has the 4th Column ordered off only toward 08:00, and Miloradovich's report has him set out at 08:00; Ermolov has the army set out before dawn, the columns crossing in the dark, which may be the night move into the disposition's places rather than the columns' departure.\"},\n \n {id:\"telnitz\", t:420, n:\"Kienmayer attacks Telnitz\", side:\"al\", kind:\"attack\",\n- p:[212,408], forms:[\"kienmayer\",\"legrand\"], cf:\"B\", claim:\"disputed\",\n+ p:[212,408], forms:[\"heightguns\"], cf:\"B\", claim:\"disputed\",\n  why:\"The battle opens here, on the Allied left, after a night of outpost contact along the Goldbach: the beginning of the attack Napoleon wanted.\",\n  dispute:\"When Kienmayer attacked Telnitz: 07:00 on this map, with Savary's Russians beginning to debouch on Legrand about seven and attacking soon after; the other readings bound the hour rather than give it: Schönhals has the left wing set off at 06:30, Stutterheim the hussars sent forward to reconnoitre between seven and eight, and Davout's report Telnitz under vigorous attack by about 08:00.\"},\n \n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.4,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.4,
+     "lines": [
+      "findings: 1",
+      "  ✗ temporal: event \"telnitz\" names heightguns, which is not on the field at 07:00"
+     ]
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.4,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.4,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.6,
+     "lines": []
+    },
+    "geo": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.5,
+     "lines": []
+    },
+    "terrain": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 29.5,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.4,
+     "lines": []
+    },
+    "height": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.7,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: EVENTS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "redteam",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "redteam"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  }
+ ]
+}

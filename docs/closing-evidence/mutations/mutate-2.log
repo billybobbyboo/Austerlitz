@@ -1,0 +1,33 @@
+M29 runtime  passed (missed) (317.9 s)
+M29 css      passed (missed) (3.5 s)
+M29 test     passed (missed) (2.1 s)
+M29 redteam  passed (missed) (1.5 s)
+M29 sim      passed (missed) (1.3 s)
+M29 audit    passed (missed) (0.5 s)
+M29 chron    passed (missed) (1.9 s)
+M29 data     passed (missed) (1.3 s)
+M29 => missed (by nothing); restored true; build restored true
+M30 runtime  passed (missed) (308.9 s)
+M30 css      passed (missed) (3.2 s)
+M30 test     passed (missed) (1.5 s)
+M30 redteam  passed (missed) (1.3 s)
+M30 data     passed (missed) (0.8 s)
+M30 => missed (by nothing); restored true; build restored true
+M31 test     passed (missed) (1.2 s)
+M31 redteam  passed (missed) (1.1 s)
+M31 binding  passed (missed) (0.7 s)
+M31 sim      passed (missed) (1.1 s)
+M31 data     FAILED (caught) (0.6 s)
+M31 => caught (by data); restored true; build restored true
+M32 chron    passed (missed) (2.2 s)
+M32 test     FAILED (caught) (1.3 s)
+M32 redteam  passed (missed) (0.9 s)
+M32 sim      passed (missed) (0.9 s)
+M32 data     FAILED (caught) (0.6 s)
+M32 => caught (by test, data); restored true; build restored true
+M33 test     FAILED (caught) (1 s)
+M33 redteam  passed (missed) (0.9 s)
+M33 chron    passed (missed) (1.6 s)
+M33 data     FAILED (caught) (0.6 s)
+M33 => caught (by test, data); restored true; build restored true
+done: 5 mutations in 661 s

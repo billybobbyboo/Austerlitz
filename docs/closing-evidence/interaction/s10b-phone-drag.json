@@ -1,0 +1,3387 @@
+{
+ "name": "s10b-phone-drag",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 3037848,
+  "md5": "8c0d383eb45a6f2a5522d04863824b7b"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-13T23:27:34.710Z",
+ "opts": {
+  "viewport": [
+   390,
+   844
+  ],
+  "page": "phone"
+ },
+ "pages": [
+  {
+   "kind": "phone",
+   "size": [
+    390,
+    844
+   ],
+   "o": {},
+   "bootMs": 22372
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "tap 'Explore on my own'; 2 frames",
+   "at": 22716,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 16,
+     "dropped": 15
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.48,
+      104.54
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.83
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2345
+  },
+  {
+   "page": 0,
+   "label": "paused: set up; the camera before",
+   "at": 25061,
+   "ret": {
+    "pos": [
+     -38.786,
+     863.48,
+     104.54
+    ],
+    "tgt": [
+     -38.786,
+     0.431,
+     2.829
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": false,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": "plan",
+    "off": null
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 16,
+     "dropped": 15
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.79,
+      863.48,
+      104.54
+     ],
+     "tgt": [
+      -38.79,
+      0.43,
+      2.83
+     ]
+    }
+   },
+   "log": [],
+   "ms": 6
+  },
+  {
+   "page": 0,
+   "label": "paused: a one-finger pan (60, 40 px); the camera at the lift and over 60 frames",
+   "at": 25067,
+   "ret": {
+    "lift": {
+     "pos": [
+      -79.966,
+      863.48,
+      61.069
+     ],
+     "tgt": [
+      -79.966,
+      0.209,
+      -40.668
+     ],
+     "clock": 240,
+     "phase": 0,
+     "freeCam": true,
+     "playing": false,
+     "tween": false,
+     "twCam": false,
+     "twScene": false,
+     "vantage": null,
+     "off": null
+    },
+    "after": [
+     {
+      "f": 1,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 6,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 11,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 16,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 21,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 26,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 31,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 36,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 41,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 46,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 51,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 56,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 60,
+      "pos": [
+       -79.966,
+       863.48,
+       61.069
+      ],
+      "tgt": [
+       -79.966,
+       0.209,
+       -40.668
+      ],
+      "clock": 240,
+      "phase": 0,
+      "freeCam": true,
+      "playing": false,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     }
+    ]
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 18,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -79.97,
+      863.48,
+      61.07
+     ],
+     "tgt": [
+      -79.97,
+      0.21,
+      -40.67
+     ]
+    }
+   },
+   "log": [],
+   "ms": 7462
+  },
+  {
+   "page": 0,
+   "label": "Play (by state) for the next case",
+   "at": 32530,
+   "ret": {
+    "pressed": "click"
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 18,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -79.97,
+      863.48,
+      61.07
+     ],
+     "tgt": [
+      -79.97,
+      0.21,
+      -40.67
+     ]
+    }
+   },
+   "log": [],
+   "ms": 135
+  },
+  {
+   "page": 0,
+   "label": "playing: set up; the camera before",
+   "at": 32665,
+   "ret": {
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 245,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   "s": {
+    "clock": 245,
+    "clockText": "04:04",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 17,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0.021
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -79.97,
+      863.48,
+      61.07
+     ],
+     "tgt": [
+      -79.97,
+      0.21,
+      -40.67
+     ]
+    }
+   },
+   "log": [],
+   "ms": 254
+  },
+  {
+   "page": 0,
+   "label": "playing: a one-finger pan (60, 40 px); the camera at the lift and over 60 frames",
+   "at": 32919,
+   "ret": {
+    "lift": {
+     "pos": [
+      -121.165,
+      863.48,
+      33.413
+     ],
+     "tgt": [
+      -121.165,
+      1.497,
+      -68.172
+     ],
+     "clock": 246,
+     "phase": 0,
+     "freeCam": true,
+     "playing": true,
+     "tween": false,
+     "twCam": false,
+     "twScene": false,
+     "vantage": null,
+     "off": null
+    },
+    "after": [
+     {
+      "f": 1,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 246.17,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 6,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 247,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 11,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 247.83,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 16,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 248.67,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 21,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 249.5,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 26,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 250.33,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 31,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 251.17,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 36,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 252,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 41,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 252.83,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 46,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 253.67,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 51,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 254.39,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 56,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 254.83,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 60,
+      "pos": [
+       -121.165,
+       863.48,
+       33.413
+      ],
+      "tgt": [
+       -121.165,
+       1.497,
+       -68.172
+      ],
+      "clock": 254.99,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     }
+    ]
+   },
+   "s": {
+    "clock": 254.987,
+    "clockText": "04:14",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "in@255",
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 14,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0.062
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -121.16,
+      863.48,
+      33.41
+     ],
+     "tgt": [
+      -121.16,
+      1.5,
+      -68.17
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1440
+  },
+  {
+   "page": 0,
+   "label": "playing in Watch: set up; the camera before",
+   "at": 34360,
+   "ret": {
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 255,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   "s": {
+    "clock": 255,
+    "clockText": "04:15",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@255",
+    "dwellNext": 1,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 40,915 · hour disputed Liechtenstein counter-marches across the 4th Column",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.vm-btn[Watch]",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 18,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.063
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -121.16,
+      863.48,
+      33.41
+     ],
+     "tgt": [
+      -121.16,
+      1.5,
+      -68.17
+     ]
+    }
+   },
+   "log": [],
+   "ms": 887
+  },
+  {
+   "page": 0,
+   "label": "playing in Watch: a one-finger pan (60, 40 px); the camera at the lift and over 60 frames",
+   "at": 35247,
+   "ret": {
+    "lift": {
+     "pos": [
+      -162.301,
+      863.48,
+      5.799
+     ],
+     "tgt": [
+      -162.301,
+      1.776,
+      -95.754
+     ],
+     "clock": 255.03,
+     "phase": 0,
+     "freeCam": true,
+     "playing": true,
+     "tween": false,
+     "twCam": false,
+     "twScene": false,
+     "vantage": null,
+     "off": null
+    },
+    "after": [
+     {
+      "f": 1,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 255.07,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 6,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 255.4,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 11,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 256.01,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 16,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 256.83,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 21,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 257.67,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 26,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 258.5,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 31,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 259.33,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 36,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 260.17,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 41,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 261,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 46,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 261.83,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 51,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 262.67,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 56,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 263.5,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     },
+     {
+      "f": 60,
+      "pos": [
+       -162.301,
+       863.48,
+       5.799
+      ],
+      "tgt": [
+       -162.301,
+       1.776,
+       -95.754
+      ],
+      "clock": 264.17,
+      "phase": 0,
+      "freeCam": true,
+      "playing": true,
+      "tween": false,
+      "twCam": false,
+      "twScene": false,
+      "vantage": null,
+      "off": null
+     }
+    ]
+   },
+   "s": {
+    "clock": 264.167,
+    "clockText": "04:24",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 40,915 · hour disputed Liechtenstein counter-marches across the 4th Column",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.vm-btn[Watch]",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 12,
+     "dropped": 5
+    },
+    "overlays": 63,
+    "drawon": [
+     0.101
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -162.3,
+      863.48,
+      5.8
+     ],
+     "tgt": [
+      -162.3,
+      1.78,
+      -95.75
+     ]
+    }
+   },
+   "log": [],
+   "ms": 919
+  },
+  {
+   "page": 0,
+   "label": "Pause (by state)",
+   "at": 36166,
+   "ret": {
+    "pressed": "click"
+   },
+   "s": {
+    "clock": 264.167,
+    "clockText": "04:24",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "watch",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · derived on the heights: Allied ≈ 40,915 · hour disputed Liechtenstein counter-marches across the 4th Column",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      176,
+      26,
+      214,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 12,
+     "dropped": 5
+    },
+    "overlays": 63,
+    "drawon": [
+     0.101
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     390,
+     844
+    ],
+    "phone": {
+     "on": true,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -162.3,
+      863.48,
+      5.8
+     ],
+     "tgt": [
+      -162.3,
+      1.78,
+      -95.75
+     ]
+    }
+   },
+   "log": [],
+   "ms": 221
+  }
+ ],
+ "checks": [
+  {
+   "id": "held-after-lift-paused",
+   "ok": true,
+   "expected": "after the finger lifts (paused), the eye stays where it left it (Follow off)",
+   "observed": {
+    "moved": 0,
+    "panned": 59.898,
+    "lift": {
+     "pos": [
+      -79.966,
+      863.48,
+      61.069
+     ],
+     "tgt": [
+      -79.966,
+      0.209,
+      -40.668
+     ],
+     "clock": 240,
+     "phase": 0,
+     "freeCam": true,
+     "playing": false,
+     "tween": false,
+     "twCam": false,
+     "twScene": false,
+     "vantage": null,
+     "off": null
+    },
+    "last": {
+     "f": 60,
+     "pos": [
+      -79.966,
+      863.48,
+      61.069
+     ],
+     "tgt": [
+      -79.966,
+      0.209,
+      -40.668
+     ],
+     "clock": 240,
+     "phase": 0,
+     "freeCam": true,
+     "playing": false,
+     "tween": false,
+     "twCam": false,
+     "twScene": false,
+     "vantage": null,
+     "off": null
+    }
+   }
+  },
+  {
+   "id": "held-after-lift-playing",
+   "ok": true,
+   "expected": "after the finger lifts (playing), the eye stays where it left it (Follow off)",
+   "observed": {
+    "moved": 0,
+    "panned": 49.536,
+    "lift": {
+     "pos": [
+      -121.165,
+      863.48,
+      33.413
+     ],
+     "tgt": [
+      -121.165,
+      1.497,
+      -68.172
+     ],
+     "clock": 246,
+     "phase": 0,
+     "freeCam": true,
+     "playing": true,
+     "tween": false,
+     "twCam": false,
+     "twScene": false,
+     "vantage": null,
+     "off": null
+    },
+    "last": {
+     "f": 60,
+     "pos": [
+      -121.165,
+      863.48,
+      33.413
+     ],
+     "tgt": [
+      -121.165,
+      1.497,
+      -68.172
+     ],
+     "clock": 254.99,
+     "phase": 0,
+     "freeCam": true,
+     "playing": true,
+     "tween": false,
+     "twCam": false,
+     "twScene": false,
+     "vantage": null,
+     "off": null
+    }
+   }
+  },
+  {
+   "id": "held-after-lift-playing-in-Watch",
+   "ok": true,
+   "expected": "after the finger lifts (playing in Watch), the eye stays where it left it (Follow off)",
+   "observed": {
+    "moved": 0,
+    "panned": 49.527,
+    "lift": {
+     "pos": [
+      -162.301,
+      863.48,
+      5.799
+     ],
+     "tgt": [
+      -162.301,
+      1.776,
+      -95.754
+     ],
+     "clock": 255.03,
+     "phase": 0,
+     "freeCam": true,
+     "playing": true,
+     "tween": false,
+     "twCam": false,
+     "twScene": false,
+     "vantage": null,
+     "off": null
+    },
+    "last": {
+     "f": 60,
+     "pos": [
+      -162.301,
+      863.48,
+      5.799
+     ],
+     "tgt": [
+      -162.301,
+      1.776,
+      -95.754
+     ],
+     "clock": 264.17,
+     "phase": 0,
+     "freeCam": true,
+     "playing": true,
+     "tween": false,
+     "twCam": false,
+     "twScene": false,
+     "vantage": null,
+     "off": null
+    }
+   }
+  }
+ ],
+ "shots": [],
+ "notes": [],
+ "paused": {
+  "before": {
+   "pos": [
+    -38.786,
+    863.48,
+    104.54
+   ],
+   "tgt": [
+    -38.786,
+    0.431,
+    2.829
+   ],
+   "clock": 240,
+   "phase": 0,
+   "freeCam": false,
+   "playing": false,
+   "tween": false,
+   "twCam": false,
+   "twScene": false,
+   "vantage": "plan",
+   "off": null
+  },
+  "lift": {
+   "pos": [
+    -79.966,
+    863.48,
+    61.069
+   ],
+   "tgt": [
+    -79.966,
+    0.209,
+    -40.668
+   ],
+   "clock": 240,
+   "phase": 0,
+   "freeCam": true,
+   "playing": false,
+   "tween": false,
+   "twCam": false,
+   "twScene": false,
+   "vantage": null,
+   "off": null
+  },
+  "after": [
+   {
+    "f": 1,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 6,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 11,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 16,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 21,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 26,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 31,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 36,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 41,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 46,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 51,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 56,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 60,
+    "pos": [
+     -79.966,
+     863.48,
+     61.069
+    ],
+    "tgt": [
+     -79.966,
+     0.209,
+     -40.668
+    ],
+    "clock": 240,
+    "phase": 0,
+    "freeCam": true,
+    "playing": false,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   }
+  ]
+ },
+ "playing": {
+  "before": {
+   "pos": [
+    -79.966,
+    863.48,
+    61.069
+   ],
+   "tgt": [
+    -79.966,
+    0.209,
+    -40.668
+   ],
+   "clock": 245,
+   "phase": 0,
+   "freeCam": true,
+   "playing": true,
+   "tween": false,
+   "twCam": false,
+   "twScene": false,
+   "vantage": null,
+   "off": null
+  },
+  "lift": {
+   "pos": [
+    -121.165,
+    863.48,
+    33.413
+   ],
+   "tgt": [
+    -121.165,
+    1.497,
+    -68.172
+   ],
+   "clock": 246,
+   "phase": 0,
+   "freeCam": true,
+   "playing": true,
+   "tween": false,
+   "twCam": false,
+   "twScene": false,
+   "vantage": null,
+   "off": null
+  },
+  "after": [
+   {
+    "f": 1,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 246.17,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 6,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 247,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 11,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 247.83,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 16,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 248.67,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 21,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 249.5,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 26,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 250.33,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 31,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 251.17,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 36,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 252,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 41,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 252.83,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 46,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 253.67,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 51,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 254.39,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 56,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 254.83,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 60,
+    "pos": [
+     -121.165,
+     863.48,
+     33.413
+    ],
+    "tgt": [
+     -121.165,
+     1.497,
+     -68.172
+    ],
+    "clock": 254.99,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   }
+  ]
+ },
+ "playing in Watch": {
+  "before": {
+   "pos": [
+    -121.165,
+    863.48,
+    33.413
+   ],
+   "tgt": [
+    -121.165,
+    1.497,
+    -68.172
+   ],
+   "clock": 255,
+   "phase": 0,
+   "freeCam": true,
+   "playing": true,
+   "tween": false,
+   "twCam": false,
+   "twScene": false,
+   "vantage": null,
+   "off": null
+  },
+  "lift": {
+   "pos": [
+    -162.301,
+    863.48,
+    5.799
+   ],
+   "tgt": [
+    -162.301,
+    1.776,
+    -95.754
+   ],
+   "clock": 255.03,
+   "phase": 0,
+   "freeCam": true,
+   "playing": true,
+   "tween": false,
+   "twCam": false,
+   "twScene": false,
+   "vantage": null,
+   "off": null
+  },
+  "after": [
+   {
+    "f": 1,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 255.07,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 6,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 255.4,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 11,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 256.01,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 16,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 256.83,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 21,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 257.67,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 26,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 258.5,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 31,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 259.33,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 36,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 260.17,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 41,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 261,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 46,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 261.83,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 51,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 262.67,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 56,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 263.5,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   },
+   {
+    "f": 60,
+    "pos": [
+     -162.301,
+     863.48,
+     5.799
+    ],
+    "tgt": [
+     -162.301,
+     1.776,
+     -95.754
+    ],
+    "clock": 264.17,
+    "phase": 0,
+    "freeCam": true,
+    "playing": true,
+    "tween": false,
+    "twCam": false,
+    "twScene": false,
+    "vantage": null,
+    "off": null
+   }
+  ]
+ },
+ "ms": 36387,
+ "ended": "2026-11-13T23:28:11.097Z"
+}

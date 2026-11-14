@@ -1,0 +1,77 @@
+
+> test
+> sh tools/run-all.sh
+
+BUILD OK: bytes: 3037848 (characters: 3028471)  bundle 2824180 bytes, html 3037848 bytes
+=== height guard  exit=0
+height-function call sites: 149  {"localHeight":5,"regionalLevel":3,"height":11,"groundY":118,"groundYFast":7,"hAt":5}  {"model":18,"presentation":61,"test":70}
+presentation sites calling height()/hAt(): 0
+=== dead code  exit=0
+dead code (CL-ROB-10): 838 top-level functions in 10 files, each called but 1 named (posOf); 289 names in comments, each in the code but 10 named by kind OK
+=== css-test.js  exit=0
+CSS ERRORS: 0
+behaviour checks: 9/9 pass
+palette: 0 colour literals outside the tables (246 read in world.js, app.js, symbols.js; 39 white and 5 alpha-mask black and 5 GLSL luma weights exempt); the landscape's colours in their tables (light
+shortcuts switch: a toggle button in the overlay outside its list, on by default, nothing stored, its words in LABELS, a typed character muted when off
+=== test.js  exit=0
+events validated: 25 (1 naming no formation, acknowledged: end)
+appearance checks: 704/704 pass (49 dress classes, 92 sources, 32 leaf formations, 24 colours entries)
+ERRORS: 0
+warnings: 1 (1 acknowledged)
+  ~ constantine: declared 10500 vs children 7330  [acknowledged: owner decision 213 (b), 21 October 2026: the corps keeps Duffy's heading (10,530, as 10,500), its two drawn formations his rows without
+order of battle checks: 42/42 pass
+=== geo-test.js  exit=0
+geo-test: 67 passed, 0 failed
+=== terrain-test.js  exit=0
+  tour stop 5 quotes 47% and under 3%; live readings 46.8% and 2.1%: agree
+  summit ordering (Pratzeberg 25+ m above Santon/Vinohrady/Zuran > col > Pratzen village > Goldbach): OK  (the Pratzeberg 26.6 m above the highest of the three)
+  the Goldbach falls downstream, its bed by Kobelnitz >= by Sokolnitz >= by Telnitz: OK  (209.9 > 203.5 > 193.3 m; the villages' points 210.2, 210.4, 196.3 m)
+  mere: Satschan ice at 1x: level -1.072, drawn edge 48 vertices, its lowest drawn ground -1.023 (2,000 points -1.023), margin 0.0493  OK
+  mere: Satschan shore ice at 1x: level -1.052, drawn edge 48 vertices, its lowest drawn ground -1.023 (2,000 points -1.023), margin 0.0293  OK
+  mere: Menitz ice at 1x: level -0.771, drawn edge 48 vertices, its lowest drawn ground -0.723 (2,000 points -0.723), margin 0.0484  OK
+  mere: Menitz shore ice at 1x: level -0.751, drawn edge 48 vertices, its lowest drawn ground -0.723 (2,000 points -0.723), margin 0.0284  OK
+  mere: Satschan ice at 4x: level -4.140, drawn edge 48 vertices, its lowest drawn ground -4.093 (2,000 points -4.092), margin 0.0471  OK
+  mere: Satschan shore ice at 4x: level -4.120, drawn edge 48 vertices, its lowest drawn ground -4.093 (2,000 points -4.092), margin 0.0271  OK
+  mere: Menitz ice at 4x: level -3.031, drawn edge 48 vertices, its lowest drawn ground -2.890 (2,000 points -2.890), margin 0.1404  OK
+  mere: Menitz shore ice at 4x: level -3.011, drawn edge 48 vertices, its lowest drawn ground -2.890 (2,000 points -2.890), margin 0.1204  OK
+  mere: Satschan ice at 10.33x: level -10.608, drawn edge 48 vertices, its lowest drawn ground -10.566 (2,000 points -10.565), margin 0.0425  OK
+  mere: Satschan shore ice at 10.33x: level -10.588, drawn edge 48 vertices, its lowest drawn ground -10.566 (2,000 points -10.565), margin 0.0225  OK
+  mere: Menitz ice at 10.33x: level -7.824, drawn edge 48 vertices, its lowest drawn ground -7.461 (2,000 points -7.461), margin 0.3623  OK
+  mere: Menitz shore ice at 10.33x: level -7.804, drawn edge 48 vertices, its lowest drawn ground -7.461 (2,000 points -7.461), margin 0.3423  OK
+  mere: the check is not vacuous: lifted a further 0.05, 8 of 12 surfaces would float (want at least 1)
+=== audit.js  exit=0
+=== MARCH RATE VIOLATIONS (0) ===
+=== TERRAIN VIOLATIONS (0) ===
+errors: 0
+=== sim-test.js  exit=0
+  25 events checked against formation positions (true distance, 1 km default): 0 disagreements
+  worst agreement under the default tolerance: telnitz 0.82 km
+  explicit tolerance: pratzen-village 1.21 km (allowed 1.5): Thiébault’s brigade is not plotted separately: the marker is the village it cleared, and at about 09:00 the division’s plotted centre 
+  explicit tolerance: blasowitz 1.16 km (allowed 1.3): division-level: the marker is the village; Caffarelli’s plotted centre lies about 1.2 km from it, within the division’s frontage
+  explicit tolerance: ice 1.17 km (allowed 1.5): the marker is the target of a bombardment: the guns fire from the chapel height about 2 km away, and the retreating columns are converging on the ice
+  most men on the field at once: Allied 81775 of 85400, French 64600 of 73000 (naive sum of tracked Allied strengths would be 126025)
+  tour stop 4 quotes 41000 and 21500; live figures 40915 at 04:00 and 21515 before the attack: agree
+ERRORS: 0 
+warnings: 0 (0 acknowledged)
+=== redteam.js  exit=0
+overclaim scan: 12605 strings judged (3152 prose); not judged: 616 the sources' own words (appearance.js q and v), 4503 developer, 1547 in code positions
+overclaim scan: read from 11 sources (build.py's list and shell.html): assets.js, tokens.js, geo.js, data.js, appearance.js, analysis.js, narrative.js, world.js, symbols.js, app.js, shell.html
+overclaim scan: 2 allowed (LANG_ALLOW, 2 entries), 0 notes
+retired claims checked: 37 phrases across 7 sources, 0 found
+findings: 0
+warnings: 4 (4 acknowledged)
+=== runtime-test.js  exit=0
+9 tour stops forward and back OK
+first run: opened and closed by each way out (the opening, in place, a press outside) OK
+standards: 147 on the blocks as their colours entries rule, none on headquarters or batteries, a detachment's taken with its battalions OK
+the contact (8F's prerequisite 2): groundYFast is groundY at 8800 points (random, the grid's vertices, outside it) on the drawn ground's layout at two scales, its heights made again when stale; the ho
+parent/child: suchet (own battalions only), buxhowden (command post), lang (own battalions only); 57 moments: no command renders troops, no detachment drawn twice, every drawn block on the field, tota
+console.warn unique: 0
+errors: 0
+=== binding-test.js  exit=0
+binding: 37 arrows, 19 derived from the leg executed in their phase, 4 route, 3 objective, 5 group, 4 unmodelled, 1 halt, 1 unsettled (interpretive)
+unsettled, hand-authored and listed (decision 37): phase 4 "Kamensky turns about" (the unresolved Kamensky conflict (kamensky@3, kamensky@4))
+dashed or segmented drawers: app.js: routeBuild, dayTrackEl, dashRuns, buildArrow, planStaging, buildPlanLinks, updatePlanLinks; world.js: buildAnalysis; boundaries, lines, halt bars and the trail sol
+binding-test: 400 checks, 0 failed
+ALL 9 SUITES PASSED (and the height guard)
+(full outputs kept in /home/user/Austerlitz/docs/closing-evidence/checks/suite-out)

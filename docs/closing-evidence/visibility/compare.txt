@@ -1,0 +1,38 @@
+== bench-hybrid
+  drawn while in view  57.1% -> 59.0%;  longest hidden by the layout 4033 ms / 14.69 min (nansouty) -> 4033 ms / 14.69 min (dhautpoul)
+  formations under half drawn (in view 60 frames or more): 8 -> 9: vandamme 27.8%, kellermann 32.2%, nansouty 44.4%, dhautpoul 0.0%, walther 0.0%, guard_inf 32.2%, guard_cav 0.0%, kollo 43.3%, rg_cav 32.2%
+  never drawn: nansouty, walther, milo -> dhautpoul, walther, guard_cav
+  the event-named while their event is live 46.7% -> 72.0%;  worst now: face-about kollo 25.5%; soult vandamme 27.8%; face-about milo 40.4%
+  at rest after Play, hidden but drawn by a fresh view: vandamme, kellermann, rg_inf -> kellermann, guard_inf, kollo, rg_inf
+  episodes hidden 41 -> 43
+== hybrid-0830
+  drawn while in view  67.6% -> 69.2%;  longest hidden by the layout 27667 ms / 99.83 min (milo) -> 5667 ms / 18.33 min (nansouty)
+  formations under half drawn (in view 60 frames or more): 7 -> 6: nansouty 46.5%, dhautpoul 41.5%, walther 37.8%, guard_inf 45.5%, guard_cav 39.9%, rg_cav 42.6%
+  the event-named while their event is live 59.0% -> 76.4%;  worst now: guard-broken rg_cav 12.7%; face-about kollo 28.0%; guard-attack rg_cav 45.8%
+  at rest after Play, hidden but drawn by a fresh view: drouet -> vandamme, walther
+  episodes hidden 380 -> 461;  90-frame windows: share min 57.1%, over 3,000 ms 10 of 17 (audit 14 of 17)
+== hybrid-1200
+  drawn while in view  72.6% -> 72.8%;  longest hidden by the layout 15333 ms / 60 min (dhautpoul) -> 5667 ms / 18.33 min (gqg)
+  formations under half drawn (in view 60 frames or more): 5 -> 4: nansouty 42.0%, dhautpoul 48.2%, milo 46.0%, rg_inf 43.4%
+  the event-named while their event is live 66.2% -> 77.0%;  worst now: guard-attack rg_inf 43.5%
+  at rest after Play, hidden but drawn by a fresh view: none -> gqg, sthilaire
+  episodes hidden 282 -> 361;  90-frame windows: share min 58.6%, over 3,000 ms 3 of 14 (audit 6 of 14)
+== hybrid-4x-day
+  drawn while in view  65.3% -> 74.1%;  longest hidden by the layout 13000 ms / 119.79 min (guard_cav) -> 2667 ms / 29.96 min (col4)
+  formations under half drawn (in view 60 frames or more): 8 -> 0
+  the event-named while their event is live 53.8% -> 72.5%;  worst now: 
+  at rest after Play, hidden but drawn by a fresh view: none -> ahq
+  episodes hidden 598 -> 336;  90-frame windows: share min 59.5%, over 3,000 ms 0 of 20 (audit 8 of 20)
+== land-0900
+  drawn while in view  89.4% -> 88.4%;  longest hidden by the layout 1667 ms / 8.33 min (rg_cav) -> 1300 ms / 3.33 min (sthilaire)
+  formations under half drawn (in view 60 frames or more): 0 -> 0
+  the event-named while their event is live 80.2% -> 89.9%;  worst now: 
+  at rest after Play, hidden but drawn by a fresh view: none -> kellermann
+  episodes hidden 230 -> 260;  90-frame windows: share min 76.6%, over 3,000 ms 0 of 16 (audit 0 of 16)
+== phone-0900
+  drawn while in view  51.7% -> 46.2%;  longest hidden by the layout 25100 ms / 90 min (lich) -> 6667 ms / 23.33 min (lich)
+  formations under half drawn (in view 60 frames or more): 6 -> 8: c_v 16.3%, c_cav 28.5%, c_gd 31.4%, constantine 40.4%, gqg 42.1%, c_gren 37.0%, ahq 45.4%, lich 32.5%
+  never drawn: lich -> none
+  the event-named while their event is live 40.2% -> 24.9%;  worst now: buxhowden-blind buxhowden 0.0%; face-about ahq 11.9%; guard-attack constantine 35.6%
+  at rest after Play, hidden but drawn by a fresh view: c_gd -> ahq
+  episodes hidden 126 -> 177;  90-frame windows: share min 31.7%, over 3,000 ms 8 of 16 (audit 16 of 16)

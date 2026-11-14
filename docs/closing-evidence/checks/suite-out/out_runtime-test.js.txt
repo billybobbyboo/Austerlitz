@@ -1,0 +1,88 @@
+3 modes x 10 phases OK
+map layer: 30 passes in 3 modes and 10 phases, every item counted once OK
+map layer in motion (decision 240 (a)): fresh after a reset, moving under the input hold (fades off under reduced motion), at rest after it, the band 8% OK
+clock swept 04:00->18:00 in 281 steps OK
+10 analysis chapters OK
+command views OK
+dossiers: 40 formations, 24 features, 9 terrain lines OK
+40 rounds of rapid switching: after each the mode, the selection, the chapter, the clock and its phase the last calls'; play off after stopPlay OK
+visibility levels and plan overlay OK
+event layer + situation strip over 121 sampled minutes: the act and phase named at each; at the 102 with a live event the event named and its reason given, at the 19 without the act's line OK
+plan divergence links OK
+derived readings finite across the battle OK
+9 tour stops forward and back OK
+first run: opened and closed by each way out (the opening, in place, a press outside) OK
+opening: 4 steps forward (the clock played between them, 7889 ticks), back, finished, and ended by 5 ways from every step and while playing; Next and Back while playing; reduced motion's cuts; the tour after it OK
+event jumping reached both ends in 21 hops OK
+compact card then full dossier OK
+acts row covers all 10 phases OK
+selection ring OK
+esc(): quotes, angle brackets and ampersands escaped OK
+event jump camera: at each of 20 event starts, framed on its event no centring and Follow kept, framed away one centring and Follow off OK
+plan link density: far (317 units) 8 links, the leading formations on the field; near (86) all 10 OK
+derived reading wording: the plateau reading shown at 6 of 7 clocks and not at 1, the centre separation at 5 and not at 2, each with "derived" and its note OK
+the disputed hours: 1 unsettled arrows carry their mark, no other arrow in 10 phases; 15 events graded disputed show it after their clock with their dispute, the interval sentence on none of them (6 an interval) and on the 5 other intervals OK
+plateau label: drawn and marked derived, words and name, at 6 of 7 clocks (phases 0-6); not drawn at 1 OK
+position pills: an explicit claim wins over "interp" (legrand); the dossier under "Position: interpolated" says CONF_INTERP, not "documented in the sources" OK
+position pills: 400 claim pills in 400 cards and dossiers at five clocks, each POS_CLAIM's words for its key (est 228, fact 38, recon 132, interp 2), none CLAIM's; over 85 clocks posClaimOf agrees for 3316 formation-samples, 75 of 2636 leaf samples interpolated between documented anchors ("Position: interpolated") OK
+the claims on screen (decision 187): 1304 claim tags in 200 dossiers at five clocks, each its statement's claim in CLAIM_WORDS's word (unchecked 757, attributed 226, interpretation 131, disputed 180, derived 5, uncertain 5); every one of 726 statements placed in the index's words, the 187 claimed listed with their counts; decision 203: 297 tags in the cards, the events' and the places' dossiers, the button in 178 of them and every full dossier, the dossier's statements first in the index OK
+internal references (CL-UX-05): none in 133 views (every full dossier at the start and inside its 25 timed moves, every event's dossier, the sources sheet and the sheet from each dossier) OK
+notes from the table: the standards' and the troops' notes follow 10 changed values of the appearance table (a generic cloth given a size among them), the cloths drawn generic are named, the painted item's 8 typed words stand in the table's model and pattern, the cloths' item names “(Dolleczek's ratios” by surname (16 oblong cloths of his size drawn), and the light's local-time shift is SUN_DAY's (10 min) OK
+derived tags: 699 march rows tagged derived (438 drifts under 1 km/h named "Plotted march", none "Marching") and 232 aggregate midpoints tagged with their formations' number, at every half hour; no tag on an aggregate with none of its formations on the field OK
+plateau note: the same after a jump either way and played, at 76 sampled minutes; shown at the 22 where the holding has not changed for an hour, at no other OK
+sky and sun disc through 10 lighting states OK
+ground grain swaps with the map mode OK
+9-stop tour finishes cleanly OK
+terrain atlas shader and cover attribute OK
+render order: rt rt rt rt rt rt rt rt screen screen OK (the ground's depth pass first), background restored, the ground's test off after the world pass
+post chain through 10 hours, bloom 0.22-0.35 OK
+label layer: 30 map symbols on it; the counters and map text in the map layer OK
+apron: 12688 faces, all facing up OK
+mist tinted by the hour OK
+frame path: FX failure falls back to the standard path and recovers; off and on again reuses its targets OK
+start-up: boot() reports to the guard with its kind and rethrows; without a guard it rethrows OK
+vegetation: 4 bare deciduous habits, 2 conifers, scrub OK
+contact pads under all 32 formations OK
+atmosphere: cool air in every state, readable nights OK
+light table: two branches to the day's highest sun, finite and from above at every minute OK
+dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed; the toggle mid-day never sends it back OK
+spatial confidence: off at first on the landscape, 31 formations drawn as figures at 09:50 each outlined in its side's colour, none filled; on, each outlined at its grade; on at first on the paper map, 31 formations each with its grade's mark (decisions 85, 239) OK
+evidence skeleton: off by default; at 09:50 48 legs of the phase and their 77 anchors; the whole day 148 legs; none left when switched off OK
+Whose eyes: 899 readings at the clock, each the rule's afresh; reasons {"no line of sight":419,"authored limit":181,"valley fog":4}; the control cycles everyone, Napoleon, the Allied headquarters OK
+Whose eyes, plan links and the selection ring (question 170 (b)): 937 links at the reading's positions, 333 hidden with their formation; 29 rings, 34 withheld OK
+Whose eyes, the centring and the dossiers' places (decision 251): 533 formations withheld (no centring, the reading's sentence in the card and the dossier, no day drawn, 436 march rows neutral, 8 of them over the frozen mere), 366 known at their reading's position (5 over the frozen mere said); 232 corps or columns (42 at their known formations' mean); 1392 places' nearby lists; an open dossier followed the reading OK
+the claims as recorded in the sources sheet (decision 251): 138 notes and 278 works' sides in 80 disputes, in the index and a dossier's list OK
+Whose eyes, the dossier's pill: 464 corps and column readings, each its formations' reading, 102 with their count as the reason OK
+the legend's hint from KEYS (6 rows), the shell's fallback the same; the map items' short names OK
+ordered routes: off by default; 14 columns at 09:30, 10 at 04:10 (the 4 axis arrows' columns left to them), 2 for Saint-Hilaire; none left when switched off OK
+day-track: 32 formations, each its anchors in order, its legs through their vias, its scale bar within the inset OK
+figures: Saint-Hilaire 294 men in 7 draws, Nansouty 60 horse OK
+kit by class: 32 blocks, 102 class sets, 128 battalions and squadrons each a class of their composition OK
+standards: 147 on the blocks as their colours entries rule, none on headquarters or batteries, a detachment's taken with its battalions OK
+culling and the hooks: 333 instanced meshes on the blocks bounded and culled by their own bounds (333 with instances, each held), 259 kit meshes hooked on both materials, their uniforms their block's gait's; a test mesh behind the eye culled and still visible, before it drawn, its bounds refreshed by a moved instance and a count, not otherwise, culled with none to draw; since 8E's prerequisite the bounds following a geometry swapped and back, a changed definition and a part attribute's version, every animated vertex (animPoses: 64 phases, the slopes, trots and knees at their extremes) inside; the hook after begin_vertex OK
+the gait and the level of detail (8E): the gait at 4 clocks from 4 paths each: 1012 mesh poses, 30 formations marching, 4 wheel sets, identical; 780 amplitude judgments (110 full, 20 in the fade, 20 faded out, 405 drifting under 1 km/h), none under reduced motion; eased to none in 28 frames, then idle; paused in the fade and faded out by stopPlay, 494 mesh poses held for ten frames each, resumed eased on; a seek the clock's own pose at once; 960 facings at three clocks of each phase, each the same by three paths; the sources sheet's notes on the guns (3) and on the step (3) read the table and GAIT; the buildings planned headless: 636 records, the farmsteads the build's counts (Satschan at least five of seven), the churches and the chapel as CHURCHES and CHAPELS; the villages' notes (9) read BUILDINGS; kitLod along a dolly: rich at 120 units (19.1 px), simple at 170 units (13.3 px); simple with the eye turned away
+the contact (8F's prerequisite 2): groundYFast is groundY at 8800 points (random, the grid's vertices, outside it) on the drawn ground's layout at two scales, its heights made again when stale; the hook's arithmetic plants the lowest of 3600 posed edges of each kit's own soles on its chords from his middle (the worst 1.1e-16), the simple kit's own soles, not the rich kit's
+ground: 12-cell atlas, 3 photographs embedded OK
+figures re-seat on the ground when the block moves OK
+villages: 381 houses with textured walls, extruded textured gables, 131 chimneys OK
+parent/child: suchet (own battalions only), buxhowden (command post), lang (own battalions only); 57 moments: no command renders troops, no detachment drawn twice, every drawn block on the field, totals within both armies OK
+events layer: off hides it, on shows it again (study) OK
+phone layout: the Menu and the dispatch sheet only below 720 px, closed on leaving it; the portrait framing (factor 1.000 in this stub, and 1.75) keeps the target and the line of sight OK
+paper map: framed again when a panel's change gives the field room (2.293 to 0.463 units a pixel), never when a panel opens over it or after a pan OK
+appearance: 32 blocks resolve to 71 dress parts (4 by their dominant class) OK
+water and the near ground (8F): 16 water meshes (2 ice, 7 bank, 7 stream) each with its presentation's materials both ways (the paper map's 8E's, unhooked); the near detail on at this tier, its 12 cells' means made (0.776 to 0.914, of the procedural patterns: in this stub the photographs are painted after the dry runs) OK
+WP-05/06: a theme stops the clock (CL-SIM-03): 10 themes chosen while playing, each stopping the clock at its moment OK
+WP-05/06: the first Play frame (CL-SIM-07): the first frame after idle advances 0.5x 0.083, 4x 0.644 clock minutes (one 60 Hz frame's) OK
+WP-05/06: the caption after a pause in a dwell (CL-SIM-08): 7 dwells paused in their hold: the caption the seek's OK
+WP-05/06: the event keys' margin (CL-UX-14): 60 jumps from 1, 0.3 and 0.01 minutes before each of 21 starts, each to that start OK
+WP-05/06: the reading by the minute (CL-SIM-06): 560 minutes under both readings, the same by either path OK
+WP-05/06: the overlays' fade (CL-SIM-04): 7 phases stepped past mid-fade, each fading from what it had reached; none drawn with the layer off OK
+WP-05/06: dossiers follow the clock (CL-SIM-01): 84 clocks with a dossier open, each repainted to the minute; 24 places' nearby lists current (10 changed) OK
+WP-05/06: Doing now under a reading (CL-SIM-05): 652 formation-clocks withheld (the card's Doing now and From, the dossier's earlier act, now, next and its events' links, 51 of them in a live event), 525 known with their acts; the sources sheet says what the reading does not filter OK
+WP-05/06: arrows and derived readings under a reading (CL-SIM-02): 312 bound arrow-clocks, 37 withheld by the reading; the Now tab's plateau reading the known formations' at 105 clocks OK
+WP-05/06: the reading on a phone (CL-UX-07): body.reading-on with a headquarters' reading; both phone layouts show its button then OK
+embedded type: init's loader took the no-fonts path ({"loaded":[],"failed":[],"ms":0,"late":false,"timedOut":false,"none":true}); fontsReady over 6 stub face sets (loaded, rejected, never settled, throwing, already loaded, another family) and none; relayoutAfterFonts with the card open and closed OK
+photo atlas: photograph painted under the land cells OK
+
+console.warn unique: 0
+errors: 0

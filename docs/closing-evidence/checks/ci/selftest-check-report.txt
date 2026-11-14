@@ -1,0 +1,4 @@
+report ../../../tmp/claude-0/-home-user-Austerlitz/bd1c237e-5adb-5982-a9bf-fb3ff5f86d64/scratchpad/ci-st-dir/report.json: austerlitz-command-map.html  md5 8c0d383eb45a6f2a5522d04863824b7b  cases 0  mode {"test":true,"legacy":false,"selftestOnly":true,"only":null}  env {"platform":"linux","arch":"x64","chromium":"141.0.7390.37","playwright":"1.56.0","executable":"playwright"}
+in-app self-test (1099906 ms): 351 of 351 pass; the manifest has 351 checks
+console messages judged: 0
+all checks pass for this report (a --selftest-only run: the self-test, the slider, Play and the 3E keys)
