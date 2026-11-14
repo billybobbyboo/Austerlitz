@@ -1,0 +1,9 @@
+pass as measured: the self-test's block; the paper zoom by real input hovers nothing, its twin nothing
+  mutate-8l.js's mutation as written: the record unchanged (vacuous here), failures none
+  caught the twin hovering Constantine, the real run nothing -> paper-zoom by real input: its pointer hovers nothing, its twin's constantine
+  caught the real run hovering Constantine, the twin nothing -> paper-zoom by real input: its pointer hovers constantine, its twin's nothing
+pass as measured: check:visual's block; the paper zoom by real input hovers nothing, its twin nothing
+  mutate-8l.js's mutation as written: the record unchanged (vacuous here), failures none
+  caught the twin hovering Constantine, the real run nothing -> paper-zoom by real input: its pointer hovers nothing, its twin's constantine
+  caught the real run hovering Constantine, the twin nothing -> paper-zoom by real input: its pointer hovers constantine, its twin's nothing
+every record passes and every control is caught

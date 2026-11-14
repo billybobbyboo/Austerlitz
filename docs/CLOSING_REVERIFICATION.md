@@ -91,7 +91,8 @@ Four findings the records call fixed are carried. In each, part of the fix holds
    - s6's "moved under the overlay" is the orbit target's height re-seated on the ground; the eye does not move.
    - s14's fifth case had ended its glide before the input.
 
-   Stage 8's own mutation scripts are also worse: 11 of 189 no longer apply, against 5 at the audit (CL-ROB-07).
+   Stage 8's own mutation scripts are also worse: 11 of 189 no longer apply, against 5 at the audit (CL-ROB-07). And one of `mutate-8l.js`'s 15
+   controls (ChatGPT's T12) is vacuous on this build's records: the run it alters already hovers what the mutation sets (below).
 6. **CL-HIS-05's residual.** No Guard, Liechtenstein or Miloradovich leg moves away from the enemy now. But nine short cases (5-20 minutes) remain
    of a formation moving away from its nearest enemy under an offensive status. Decision 285 (a)'s rule tests legs into a retreat, not these, so
    no check holds them.
@@ -136,8 +137,8 @@ and the table.
 | contact, same build both sides | 5-13 instances beyond the tolerance an arm | as written 258-814 (the probe reads WP-16's `aSl` wrongly); adapted 17-58, read identically to the original instance by instance on WP-16's first build; Stage 6's data build 7-22. The rise came with the relief's refit and WP-10's facings, re-baselined on the owner's word (decisions 293 (a), 316) | CL-VIS-10 |
 | ice at a low sun, 15:00, the low view | glare 5.90% | 1.87% (band 1.096, margin 1.202: within the self-test's bounds) | CL-REC-10 |
 | the phone rule, two empty reports | both "stand", exit 0 | refused, exit 1; its 8 negatives refused | CL-PERF-16 |
-| T12, `mutate-8l.js` on the records | 15 of 15 caught | [T12] | |
-| T13, five mutations of the full report | 5 of 5 caught | [T13] | |
+| T12, `mutate-8l.js` on the records | 15 of 15 caught | on this build's CI reports (run 43524457649): the four records pass as measured; 14 of 15 caught. The 15th, a real-input run hovering other than its twin, is vacuous here. It sets the paper zoom's real-input run's hover to null, and on this build that run and its twin both hover nothing, so the record is unchanged (on 8L's records the twin hovered Constantine). The same intent, made both ways round, is caught on both blocks (`tools/closing/t12-hover.js`). On 8L's own records all 15 are caught, and their two motion records fail today's visibility baselines, re-measured since 8L on the owner's word. `chatgpt/t12/` | |
+| T13, five mutations of the full report | 5 of 5 caught | on this build's `check:visual` report: as measured no failure; 5 of 5 caught (a missing case, no cases, a missing self-test check, a console error, a missing motion block; `tools/closing/report-negatives.js`, `chatgpt/t13.*`) | |
 
 ## The required checks
 
@@ -149,7 +150,7 @@ and the table.
 | `npm run check:chronology` | here, and CI | passes |
 | `npm run check:contrast` | here, and CI | passes: 57 of 57 states, 10 of 10 start-up cases |
 | `npm run check:selftest` | CI (run 43524457649, the branch's head `cb01827`; again on the push run) | passes: 351 of 351, every live block; `check:report` on its report passes |
-| `npm run check:visual` | CI (run 43524457649, dispatched after the push landed, its head the branch's head `cb01827`) | [VISUAL] |
+| `npm run check:visual` | CI (run 43524457649, dispatched after the push landed, its head the branch's head `cb01827`; 2 h 33 min) | passes: 41 of 41 cases, the self-test 351 of 351 on its page, every live block, 0 console messages. The 16 motions: 227 jumps, 959 pops, 12 flickers and 105 level-of-detail switches (ceilings 251, 1,049, 12 and 130; flickers at the ceiling), the same counts as `check:selftest`'s block. `check:report` passes on its report (`checks/ci/visual-report-43524457649.json`, `visual-check-report.txt`) |
 
 The local `check:selftest` was stopped at its start to free the machine for the browser probes (`checks/summary.txt`). CI's runs are its evidence.
 

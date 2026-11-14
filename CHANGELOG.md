@@ -61,7 +61,14 @@ part: CL-MAP-01, -02, -07 and CL-UX-03. Every other carried finding is one the r
 - **Extended playback** (CG-F01, ½× from 09:00 for 3,600 frames): the longest hidden 36.6 s to 5.7 s.
 - **Ice at a low sun** (15:00, the low view): glare 5.90% to 1.87%.
 - **The phone rule:** two empty reports are refused, and so are its 8 negatives.
-- **T12 and T13:** [T12T13]
+- **T13** (`tools/closing/report-negatives.js` on this build's `check:visual` report): the report passes as measured, and 5 of 5 mutations are caught.
+- **T12** (`tools/stage8/mutate-8l.js` on this build's CI reports, cut by `tools/closing/t12-inputs.js`): the four records pass as measured, and 14 of 15
+  mutations are caught.
+  - The 15th is vacuous here. It sets the paper zoom's real-input run's hover to null, and on this build that run and its twin both hover nothing,
+    so the record is unchanged. On 8L's records the twin hovered Constantine.
+  - The same intent, made both ways round, is caught on both blocks (`tools/closing/t12-hover.js`).
+  - On 8L's own records all 15 are caught. Their motion records fail today's visibility baselines, which were re-measured since 8L on the owner's
+    word.
 
 ### Verified
 
@@ -69,7 +76,12 @@ part: CL-MAP-01, -02, -07 and CL-UX-03. Every other carried finding is one the r
 - On CI for this branch's head `cb01827`:
   - run 43524392315 (push): checks, contrast and the self-test pass.
   - run 43524457649 (dispatched after the push landed, its head the branch's head): checks, contrast and the self-test pass (351 of 351, every live
-    block; `check:report` passes on its report). [VISUAL]
+    block; `check:report` passes on its report).
+  - `check:visual` on the same run passes (2 h 33 min):
+    - 41 of 41 cases, the self-test 351 of 351 on its page, every live block, and 0 console messages;
+    - the 16 motions: 227 jumps, 959 pops, 12 flickers and 105 level-of-detail switches, against ceilings of 251, 1,049, 12 and 130 (flickers at
+      the ceiling). The counts are the same as `check:selftest`'s block;
+    - `check:report` passes on its report (`docs/closing-evidence/checks/ci/`).
 
 ### Uncertain
 
