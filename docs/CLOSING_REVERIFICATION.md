@@ -149,8 +149,8 @@ and the table.
 | `npm run check:data` | here, and CI | passes: every declaration identical to `archive/stage6wp09w-45d29cc5.html` |
 | `npm run check:chronology` | here, and CI | passes |
 | `npm run check:contrast` | here, and CI | passes: 57 of 57 states, 10 of 10 start-up cases |
-| `npm run check:selftest` | CI (run 43524457649, the branch's head `cb01827`; again on the push run) | passes: 351 of 351, every live block; `check:report` on its report passes |
-| `npm run check:visual` | CI (run 43524457649, dispatched after the push landed, its head the branch's head `cb01827`; 2 h 33 min) | passes: 41 of 41 cases, the self-test 351 of 351 on its page, every live block, 0 console messages. The 16 motions: 227 jumps, 959 pops, 12 flickers and 105 level-of-detail switches (ceilings 251, 1,049, 12 and 130; flickers at the ceiling), the same counts as `check:selftest`'s block. `check:report` passes on its report (`checks/ci/visual-report-43524457649.json`, `visual-check-report.txt`) |
+| `npm run check:selftest` | CI (run 43524457649, the branch's head `cb018272`; again on the push run) | passes: 351 of 351, every live block; `check:report` on its report passes |
+| `npm run check:visual` | CI (run 43524457649, dispatched after the push landed, its head the branch's head `cb018272`; 2 h 33 min) | passes: 41 of 41 cases, the self-test 351 of 351 on its page, every live block, 0 console messages. The 16 motions: 227 jumps, 959 pops, 12 flickers and 105 level-of-detail switches (ceilings 251, 1,049, 12 and 130; flickers at the ceiling), the same counts as `check:selftest`'s block. `check:report` passes on its report (`checks/ci/visual-report-43524457649.json`, `visual-check-report.txt`) |
 
 The local `check:selftest` was stopped at its start to free the machine for the browser probes (`checks/summary.txt`). CI's runs are its evidence.
 

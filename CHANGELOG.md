@@ -73,7 +73,7 @@ part: CL-MAP-01, -02, -07 and CL-UX-03. Every other carried finding is one the r
 ### Verified
 
 - Here: `check:baseline`, `npm test`, `check:data`, `check:chronology` and `check:contrast` pass (57 of 57 states, 10 of 10 start-up cases).
-- On CI for this branch's head `cb01827`:
+- On CI for this branch's head `cb018272`:
   - run 43524392315 (push): checks, contrast and the self-test pass.
   - run 43524457649 (dispatched after the push landed, its head the branch's head): checks, contrast and the self-test pass (351 of 351, every live
     block; `check:report` passes on its report).
