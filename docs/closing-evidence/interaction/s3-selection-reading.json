@@ -1,0 +1,2420 @@
+{
+ "name": "s3-selection-reading",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 3037848,
+  "md5": "8c0d383eb45a6f2a5522d04863824b7b"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-13T23:20:27.606Z",
+ "opts": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1600,
+    900
+   ],
+   "o": {},
+   "bootMs": 34399
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 34708,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 17,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.47,
+      61.98
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.24
+     ]
+    }
+   },
+   "log": [],
+   "ms": 68
+  },
+  {
+   "page": 0,
+   "label": "click the Order of battle tab; click Saint-Hilaire's row (real mouse; the row also centres the map)",
+   "at": 34783,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1679,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#drawer-back",
+    "focusVisible": false,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 17,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.47,
+      61.98
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.24
+     ]
+    }
+   },
+   "log": [],
+   "ms": 14560
+  },
+  {
+   "page": 0,
+   "label": "click Follow if off; click Play",
+   "at": 49345,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1679,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 17,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.47,
+      61.98
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.24
+     ]
+    }
+   },
+   "log": [],
+   "ms": 17188
+  },
+  {
+   "page": 0,
+   "label": "frames until phase 1 (07:00) + 60",
+   "at": 66533,
+   "s": {
+    "clock": 421.333,
+    "clockText": "07:01",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1770,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 47,
+     "placed": 36,
+     "dropped": 7
+    },
+    "overlays": 36,
+    "drawon": [
+     0.022,
+     0.04,
+     0.506
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -189.01,
+      89.48,
+      168.9
+     ],
+     "tgt": [
+      -32.86,
+      2.74,
+      24
+     ]
+    }
+   },
+   "log": [],
+   "ms": 10438
+  },
+  {
+   "page": 0,
+   "label": "frames until phase 2 + 30",
+   "at": 76985,
+   "s": {
+    "clock": 480,
+    "clockText": "08:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@480",
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Langeron and Przybyszewski attack Sokolnitz · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1789,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 50,
+     "placed": 41,
+     "dropped": 8
+    },
+    "overlays": 41,
+    "drawon": [
+     0,
+     0.75
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -190.1,
+      85.41,
+      162.08
+     ],
+     "tgt": [
+      -32.37,
+      2.83,
+      16.47
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s3-selection-reading-selected-playing-ph2-dom.jpg",
+   "log": [],
+   "ms": 3935
+  },
+  {
+   "page": 0,
+   "label": "click Pause; set up focus on the rail; Home, PageDown, ArrowRight x3 (07:30)",
+   "at": 80923,
+   "s": {
+    "clock": 450,
+    "clockText": "07:30",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1770,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 50,
+     "placed": 41,
+     "dropped": 8
+    },
+    "overlays": 36,
+    "drawon": [
+     0.5,
+     0.909,
+     0.625
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -190.1,
+      85.41,
+      162.08
+     ],
+     "tgt": [
+      -32.37,
+      2.83,
+      16.47
+     ]
+    }
+   },
+   "log": [],
+   "ms": 172
+  },
+  {
+   "page": 0,
+   "label": "click the Eyes button twice (everyone, Napoleon's, the Allied headquarters)",
+   "at": 81095,
+   "s": {
+    "clock": 450,
+    "clockText": "07:30",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "al",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1616,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#eyesbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 29,
+     "placed": 24,
+     "dropped": 4
+    },
+    "overlays": 36,
+    "drawon": [
+     0.5,
+     0.909,
+     0.625
+    ],
+    "smoke": 0,
+    "blocks": 13,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -190.11,
+      85.41,
+      162.08
+     ],
+     "tgt": [
+      -32.37,
+      2.83,
+      16.47
+     ]
+    }
+   },
+   "log": [],
+   "ms": 619
+  },
+  {
+   "page": 0,
+   "label": "click the card's centring control if any (expected: nothing moves while unknown)",
+   "at": 81717,
+   "ret": {
+    "button": null,
+    "moved": false
+   },
+   "s": {
+    "clock": 450,
+    "clockText": "07:30",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "al",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1616,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#eyesbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 29,
+     "placed": 24,
+     "dropped": 4
+    },
+    "overlays": 36,
+    "drawon": [
+     0.5,
+     0.909,
+     0.625
+    ],
+    "smoke": 0,
+    "blocks": 13,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -190.11,
+      85.41,
+      162.08
+     ],
+     "tgt": [
+      -32.37,
+      2.83,
+      16.47
+     ]
+    }
+   },
+   "log": [],
+   "ms": 18
+  },
+  {
+   "page": 0,
+   "label": "click Play; frames until the reading knows Saint-Hilaire or 10:00",
+   "at": 81735,
+   "ret": 578,
+   "s": {
+    "clock": 525,
+    "clockText": "08:45",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@525",
+    "dwellNext": 5,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "al",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach; hour disputed Saint-Hilaire and Vandamme climb the slope · derived on the heights: Allied ≈ 21,515 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1813,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 37,
+     "placed": 16,
+     "dropped": 19
+    },
+    "overlays": 20,
+    "drawon": [
+     0,
+     0,
+     0
+    ],
+    "smoke": 1,
+    "blocks": 18,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -241.7,
+      88.79,
+      153.42
+     ],
+     "tgt": [
+      -67.99,
+      -1.8,
+      -8.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 3899
+  },
+  {
+   "page": 0,
+   "label": "click Pause; click the Eyes button (everyone)",
+   "at": 85651,
+   "s": {
+    "clock": 525,
+    "clockText": "08:45",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 6,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach · derived on the heights: Allied ≈ 21,515 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 0.73,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1813,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#eyesbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 37,
+     "placed": 16,
+     "dropped": 19
+    },
+    "overlays": 20,
+    "drawon": [
+     0,
+     0,
+     0
+    ],
+    "smoke": 1,
+    "blocks": 18,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -241.7,
+      88.79,
+      153.42
+     ],
+     "tgt": [
+      -67.99,
+      -1.8,
+      -8.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 324
+  },
+  {
+   "page": 0,
+   "label": "Esc (selection cleared); click the Order of battle tab; click the row of Third Column",
+   "at": 85975,
+   "ret": true,
+   "s": {
+    "clock": 525,
+    "clockText": "08:45",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 6,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:prz",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach · derived on the heights: Allied ≈ 21,515 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "III Column · RussiaThird ColumnLt.-Gen. Ignacy Przybyszewski",
+     "len": 1731,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#drawer-back",
+    "focusVisible": false,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 37,
+     "placed": 16,
+     "dropped": 19
+    },
+    "overlays": 20,
+    "drawon": [
+     0,
+     0,
+     0
+    ],
+    "smoke": 1,
+    "blocks": 18,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -241.7,
+      88.79,
+      153.42
+     ],
+     "tgt": [
+      -67.99,
+      -1.8,
+      -8.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 416
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; ArrowLeft/Right to 20 min before it goes (keys); click Play; frames to 20 min after",
+   "at": 86391,
+   "ret": {
+    "clock": 1000,
+    "sel": "prz",
+    "card": "III Column · RussiaThird ColumnLt.-Gen. Ignacy PrzybyszewskiBrokenPosition: documented (A)How this is sourcedStrength≈ 7,700 men (this map's working figure)UnderFriedrich Wilhelm von Buxhowden · Left Wing CommandDoing nowAttempts to break out north toward Kobelnitz; the column disintegrates Claim: N"
+   },
+   "s": {
+    "clock": 1040,
+    "clockText": "17:20",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 21,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:prz",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 9,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · The reckoning",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "After dark. The Collapse: The reckoning.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "III Column · RussiaThird ColumnLt.-Gen. Ignacy Przybyszewski",
+     "len": 1707,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 56,
+     "placed": 15,
+     "dropped": 1
+    },
+    "overlays": 17,
+    "drawon": [],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The reckoning",
+    "cam": {
+     "pos": [
+      -109.79,
+      51.57,
+      93.65
+     ],
+     "tgt": [
+      -62.5,
+      -1.74,
+      45.5
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s3-selection-reading-gone-formation-selected-dom.jpg",
+   "log": [],
+   "ms": 2919
+  },
+  {
+   "page": 0,
+   "label": "Pause (by state); click the Eyes button (Napoleon's headquarters); click the vantage bar's 'Eye level'; 60 frames",
+   "at": 89312,
+   "ret": {
+    "cv": "fr"
+   },
+   "s": {
+    "clock": 1040,
+    "clockText": "17:20",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 21,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:prz",
+    "commandView": "fr",
+    "TOURCV": null,
+    "eye": true,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": "eye",
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 9,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · The reckoning · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0.09,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "After dark. The Collapse: The reckoning.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "III Column · RussiaThird ColumnLt.-Gen. Ignacy Przybyszewski",
+     "len": 1707,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": true,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[Eye level]",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 44,
+     "placed": 0,
+     "dropped": 0
+    },
+    "overlays": 17,
+    "drawon": [],
+    "smoke": 0,
+    "blocks": 2,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The reckoning",
+    "cam": {
+     "pos": [
+      -23,
+      0.2,
+      51
+     ],
+     "tgt": [
+      -28,
+      0.69,
+      6
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s3-selection-reading-eye-level-selected-dom.jpg",
+   "log": [],
+   "ms": 1878
+  },
+  {
+   "page": 0,
+   "label": "Play (by state); 120 frames at the eye level",
+   "at": 91190,
+   "s": {
+    "clock": 1060,
+    "clockText": "17:40",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 21,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:prz",
+    "commandView": "fr",
+    "TOURCV": null,
+    "eye": true,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": "eye",
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 9,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · The reckoning · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "After dark. The Collapse: The reckoning.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "III Column · RussiaThird ColumnLt.-Gen. Ignacy Przybyszewski",
+     "len": 1707,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": true,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 44,
+     "placed": 0,
+     "dropped": 0
+    },
+    "overlays": 17,
+    "drawon": [],
+    "smoke": 0,
+    "blocks": 2,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The reckoning",
+    "cam": {
+     "pos": [
+      -23,
+      0.2,
+      51
+     ],
+     "tgt": [
+      -28,
+      0.69,
+      6
+     ]
+    }
+   },
+   "log": [],
+   "ms": 622
+  },
+  {
+   "page": 0,
+   "label": "Esc; Esc; Esc",
+   "at": 91812,
+   "s": {
+    "clock": 1070,
+    "clockText": "17:50",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 21,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "fr",
+    "TOURCV": null,
+    "eye": true,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": "eye",
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 9,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · The reckoning · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "After dark. The Collapse: The reckoning.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": true,
+     "head": "III Column · RussiaThird ColumnLt.-Gen. Ignacy Przybyszewski",
+     "len": 1707,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": true,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 44,
+     "placed": 0,
+     "dropped": 0
+    },
+    "overlays": 17,
+    "drawon": [],
+    "smoke": 0,
+    "blocks": 2,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The reckoning",
+    "cam": {
+     "pos": [
+      -23,
+      0.2,
+      51
+     ],
+     "tgt": [
+      -28,
+      0.69,
+      6
+     ]
+    }
+   },
+   "log": [],
+   "ms": 304
+  }
+ ],
+ "checks": [
+  {
+   "id": "select",
+   "ok": true,
+   "expected": "Saint-Hilaire selected, its card open",
+   "observed": {
+    "selection": "f:sthilaire",
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1679,
+     "inert": false
+    },
+    "follow": "true"
+   }
+  },
+  {
+   "id": "across-boundary",
+   "ok": true,
+   "expected": "across 07:00 under Play: the selection and its card kept, Follow on",
+   "observed": {
+    "clock": 421.333,
+    "phase": 1,
+    "selection": "f:sthilaire",
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1770,
+     "inert": false
+    },
+    "freeCam": false,
+    "cardChanged": true
+   }
+  },
+  {
+   "id": "across-boundary-2",
+   "ok": true,
+   "expected": "across the next boundary: kept",
+   "observed": {
+    "clock": 480,
+    "phase": 2,
+    "selection": "f:sthilaire",
+    "highlight": {
+     "lit": 0,
+     "dim": 0,
+     "chapter": false
+    }
+   }
+  },
+  {
+   "id": "reading-hides",
+   "ok": true,
+   "expected": "under the Allied reading at 07:30: the selection kept; if the reading does not know Saint-Hilaire, the card says so and shows no place",
+   "observed": {
+    "commandView": "al",
+    "hidden": true,
+    "know": "unknown",
+    "items": [
+     {
+      "k": "n:sthilaire",
+      "on": false,
+      "disp": "none"
+     },
+     null
+    ],
+    "block": false,
+    "cardHead": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireConcealedPosition: estimated (B, interpolated)How this is sourcedStrength≈ 6,600 men (this map's working figure)UnderNicolas Soult · IV CorpsDoing nowNot known to Allied headquarters at 07:30ObjectiveAw"
+   }
+  },
+  {
+   "id": "no-centre-unknown",
+   "ok": true,
+   "expected": "the map does not centre on a formation the reading does not know",
+   "observed": {
+    "button": null,
+    "moved": false
+   }
+  },
+  {
+   "id": "reading-follows-clock",
+   "ok": true,
+   "expected": "when the reading comes to know it, the card shows it again (the dossier follows the reading, decision 251)",
+   "observed": {
+    "clock": 525,
+    "hidden": false,
+    "know": "seen",
+    "card": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireAttackingPosition: estimated (B)Timing: inferred (C)How this is sourcedStrength≈ 6,600 men (this map's working figure)UnderNicolas Soult · IV CorpsDoing"
+   }
+  },
+  {
+   "id": "reading-off",
+   "ok": true,
+   "expected": "everyone's reading again; selection kept",
+   "observed": {
+    "commandView": "none",
+    "selection": "f:sthilaire"
+   }
+  },
+  {
+   "id": "gone-selection",
+   "ok": true,
+   "expected": "a formation that has left the field is not drawn; its card (if kept) says it has left",
+   "observed": {
+    "formation": "prz",
+    "clock": 1040,
+    "selection": "f:prz",
+    "after": {
+     "gone": true,
+     "sel": "prz",
+     "block": false,
+     "card": "III Column · RussiaThird ColumnLt.-Gen. Ignacy PrzybyszewskiCapturedPosition: documented (A)How this is sourcedStrength≈ 7,700 men (this map's working figure)UnderFriedrich Wilhelm von Buxhowden · Left Wing CommandDoing nowSurrendered almost entire, near Kobelnitz by evening. Przybyszewski was later court-martialled. Claim: Not yet checkedObjectiveBreak out toward Kobelnitz Claim: This map's readingWhereNot on the field at this hourFull dossier: role, movement, sourcesHow this is sourced"
+    }
+   }
+  },
+  {
+   "id": "eye-with-selection",
+   "ok": true,
+   "expected": "the eye level entered with a selection",
+   "observed": {
+    "eye": true,
+    "selection": "f:prz",
+    "eyecap": true,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "III Column · RussiaThird ColumnLt.-Gen. Ignacy Przybyszewski",
+     "len": 1707,
+     "inert": false
+    }
+   }
+  },
+  {
+   "id": "eye-play",
+   "ok": true,
+   "expected": "Play at the eye level keeps the eye (Follow does not move it)",
+   "observed": {
+    "eye": true,
+    "playing": true,
+    "freeCam": true,
+    "cam": {
+     "pos": [
+      -23,
+      0.2,
+      51
+     ],
+     "tgt": [
+      -28,
+      0.69,
+      6
+     ]
+    }
+   }
+  },
+  {
+   "id": "esc-after-eye",
+   "ok": true,
+   "expected": "Esc clears the selection; the eye level and the reading as left",
+   "observed": {
+    "eye": true,
+    "commandView": "fr",
+    "selection": null,
+    "playing": true
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/interaction/s3-selection-reading-selected-playing-ph2-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s3-selection-reading-gone-formation-selected-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s3-selection-reading-eye-level-selected-dom.jpg"
+ ],
+ "notes": [
+  "formations leaving the field: [{\"id\":\"prz\",\"name\":\"Third Column\",\"goneAt\":1020,\"parent\":\"buxhowden\"}]",
+  "Saint-Hilaire's map item: null"
+ ],
+ "gone": [
+  {
+   "id": "prz",
+   "name": "Third Column",
+   "goneAt": 1020,
+   "parent": "buxhowden"
+  }
+ ],
+ "cards": {
+  "card0": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireConcealedPosition: documented (A)How this is sourcedStrength≈ 6,600 men (this map's working figure)UnderNicolas Soult · IV CorpsDoing nowStanding in fog behind Puntowitz, which hid it from the plateau Claim: Not yet checkedObjectiveAwait the signal in the Goldbach valley Claim: This map's readingWherePuntowitzFull dossier: role, movement, sourcesHow this is sourced",
+  "card1": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireConcealedPosition: estimated (B, interpolated)How this is sourcedStrength≈ 6,600 men (this map's working figure)UnderNicolas Soult · IV CorpsDoing nowStanding in fog behind Puntowitz, which hid it from the plateau Claim: Not yet checkedObjectiveAwait the signal in the Goldbach valley Claim: This map's readingWherePuntowitzFull dossier: role, movement, sourcesHow this is sourced"
+ },
+ "reading0730": {
+  "hidden": true,
+  "know": "unknown",
+  "card": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireConcealedPosition: estimated (B, interpolated)How this is sourcedStrength≈ 6,600 men (this map's working figure)UnderNicolas Soult · IV CorpsDoing nowNot known to Allied headquarters at 07:30ObjectiveAwait the signal in the Goldbach valley Claim: This map's readingWhereNot known to Allied headquarters at 07:30Full dossier: role, movement, sourcesHow this is sourced",
+  "items": [
+   {
+    "k": "n:sthilaire",
+    "on": false,
+    "disp": "none"
+   },
+   null
+  ],
+  "block": false,
+  "ring": false
+ },
+ "readingKnown": {
+  "hidden": false,
+  "know": "seen",
+  "clock": 525,
+  "card": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireAttackingPosition: estimated (B)Timing: inferred (C)How this is sourcedStrength≈ 6,600 men (this map's working figure)UnderNicolas Soult · IV CorpsDoing nowClimbs the western slope; Thiébault clears Pratzen village, the 10e Légère pushes for the summit Claim: Not yet checkedObjectiveSeize the Pratzebe"
+ },
+ "goneCase": {
+  "formation": {
+   "id": "prz",
+   "name": "Third Column",
+   "goneAt": 1020,
+   "parent": "buxhowden"
+  },
+  "before": {
+   "clock": 1000,
+   "sel": "prz",
+   "card": "III Column · RussiaThird ColumnLt.-Gen. Ignacy PrzybyszewskiBrokenPosition: documented (A)How this is sourcedStrength≈ 7,700 men (this map's working figure)UnderFriedrich Wilhelm von Buxhowden · Left Wing CommandDoing nowAttempts to break out north toward Kobelnitz; the column disintegrates Claim: N"
+  },
+  "after": {
+   "gone": true,
+   "sel": "prz",
+   "block": false,
+   "card": "III Column · RussiaThird ColumnLt.-Gen. Ignacy PrzybyszewskiCapturedPosition: documented (A)How this is sourcedStrength≈ 7,700 men (this map's working figure)UnderFriedrich Wilhelm von Buxhowden · Left Wing CommandDoing nowSurrendered almost entire, near Kobelnitz by evening. Przybyszewski was later court-martialled. Claim: Not yet checkedObjectiveBreak out toward Kobelnitz Claim: This map's readingWhereNot on the field at this hourFull dossier: role, movement, sourcesHow this is sourced"
+  }
+ },
+ "listeners": {
+  "live": 673,
+  "removed": 0,
+  "onDetached": 952,
+  "total": 1625,
+  "addCalls": 1625,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "document focusin": 1,
+   "document focusout": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 2,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail lostpointercapture": 1,
+   "#evmarks pointerdown": 1,
+   "#evmarks pointermove": 1,
+   "#evmarks pointerup": 1,
+   "#evmarks pointercancel": 1,
+   "#evmarks click (capture)": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "#tltip pointermove": 1,
+   "#tltip pointerdown": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 21,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#fr-grades click": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 3,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip pointerdown": 1,
+   "#dgrip pointerup": 1,
+   "#dgrip pointercancel": 1,
+   "#dgrip click": 1,
+   "#phasebtn click": 1,
+   "#railclose click": 1,
+   "#now-show click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 1dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 99,
+   "div.ml-item blur": 99,
+   "div.ml-item keydown": 99,
+   "div.ml-item click": 99,
+   "button.more-btn click": 1
+  },
+  "timeouts": 1,
+  "timeoutsBy": {
+   "at paintDrawerBody (austerlitz-command-map.html:16263:23) 360": 1
+  },
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 2,
+  "tSet": 11,
+  "tFired": 5,
+  "tCleared": 5,
+  "rSet": 64,
+  "rFired": 64,
+  "rCancel": 0
+ },
+ "ms": 92249,
+ "ended": "2026-11-13T23:21:59.855Z"
+}

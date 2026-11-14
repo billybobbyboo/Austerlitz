@@ -1,0 +1,13 @@
+{"mutations":189,"applies":178,"appliesWithRepeats":2,"notApplicable":11,"notLiteral":0}
+mutate-8c.js | default austerlitz-command-map.html | m 10 applies 10 (repeats 0) notApplicable 0 notLit 0 
+mutate-8d.js | default austerlitz-command-map.html | m 8 applies 7 (repeats 0) notApplicable 1 notLit 0 
+mutate-8e.js | default austerlitz-command-map.html | m 33 applies 30 (repeats 0) notApplicable 3 notLit 0 
+mutate-8f.js | default austerlitz-command-map.html | m 17 applies 16 (repeats 0) notApplicable 1 notLit 0 
+mutate-8g.js | default austerlitz-command-map.html | m 9 applies 9 (repeats 0) notApplicable 0 notLit 0 
+mutate-8h.js | default austerlitz-command-map.html | m 13 applies 12 (repeats 0) notApplicable 1 notLit 0 
+mutate-css-8d.js | default app.js | m 8 applies 8 (repeats 1) notApplicable 0 notLit 0 
+mutate-css-8e.js | default app.js | m 27 applies 25 (repeats 0) notApplicable 2 notLit 0 
+mutate-css-8f.js | default world.js | m 27 applies 26 (repeats 1) notApplicable 1 notLit 0 
+mutate-css-8g.js | default app.js | m 8 applies 6 (repeats 0) notApplicable 2 notLit 0 
+mutate-css-8h.js | default world.js | m 17 applies 17 (repeats 0) notApplicable 0 notLit 0 
+mutate-test-8g.js | default austerlitz-command-map.html | m 12 applies 12 (repeats 0) notApplicable 0 notLit 0 

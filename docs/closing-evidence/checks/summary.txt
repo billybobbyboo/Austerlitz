@@ -1,0 +1,12 @@
+=== baseline start 2026-11-13T22:46:00Z commit a8720b9 chrome playwright-default
+=== baseline exit=0 seconds=1 end 2026-11-13T22:46:01Z
+=== npm-test start 2026-11-13T22:46:01Z commit a8720b9 chrome playwright-default
+=== npm-test exit=0 seconds=391 end 2026-11-13T22:52:32Z
+=== check-data start 2026-11-13T22:52:32Z commit a8720b9 chrome playwright-default
+=== check-data exit=0 seconds=0 end 2026-11-13T22:52:32Z
+=== check-chronology start 2026-11-13T22:52:32Z commit a8720b9 chrome playwright-default
+=== check-chronology exit=0 seconds=3 end 2026-11-13T22:52:35Z
+=== check-contrast start 2026-11-13T22:52:35Z commit a8720b9 chrome playwright-default
+=== check-contrast exit=0 seconds=1350 end 2026-11-13T23:15:05Z
+=== check-selftest start 2026-11-13T23:15:05Z commit cb018272 chrome playwright-default
+=== check-selftest stopped deliberately at its start (23:15 UTC) by the closing pass, to free the machine for the browser probes; CI runs check:selftest on every push (run 43524392315, push of cb01827, and every later push) and check:visual includes the self-test (run 43524457649): their results are the evidence for it

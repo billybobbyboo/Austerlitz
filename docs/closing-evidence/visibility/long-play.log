@@ -1,0 +1,13 @@
+bench-hybrid         frames 122 (play 90, 540.167->554.687), formations drawn 2079 of 3388, longest hidden 4033 ms, episodes 43, quirk 0, wall 1.0 s, run 27 s
+   worst: dhautpoul 3000ms/14.69min share 0; walther 3000ms/14.69min share 0; guard_cav 3000ms/14.69min share 0; nansouty 1633ms/8.17min share 0.444; guard_inf 1367ms/6.52min share 0.322
+hybrid-0830          frames 1592 (play 1560, 510.167->690), formations drawn 30488 of 43914, longest hidden 5667 ms, episodes 461, quirk 0, wall 14.3 s, run 15 s
+   worst: nansouty 5667ms/18.33min share 0.465; dhautpoul 5667ms/18.1min share 0.415; walther 5667ms/18.33min share 0.378; kollo 5667ms/18.33min share 0.536; rg_cav 5367ms/16.83min share 0.426
+hybrid-1200          frames 1360 (play 1328, 720.167->900), formations drawn 23161 of 31757, longest hidden 5667 ms, episodes 361, quirk 0, wall 11.3 s, run 12 s
+   worst: milo 5667ms/18.33min share 0.46; rg_inf 5667ms/18.33min share 0.434; ahq 4333ms/14.83min share 0.746; drouet 4000ms/14.83min share 0.815; gqg 3667ms/18.33min share 0.68
+hybrid-4x-day        frames 1832 (play 1800, 241.333->1080), formations drawn 17490 of 23525, longest hidden 2667 ms, episodes 336, quirk 0, wall 14.5 s, run 15 s
+   worst: constantine 2667ms/27.28min share 0.73; lich 2600ms/23.47min share 0.532; col4 2333ms/29.96min share 0.734; walther 1000ms/0min share 0.492; kellermann 967ms/15min share 0.508
+land-0900            frames 1540 (play 1508, 540.167->720), formations drawn 34855 of 39370, longest hidden 1300 ms, episodes 260, quirk 0, wall 11.1 s, run 12 s
+   worst: sthilaire 667ms/3.33min share 0.839; vandamme 667ms/3.33min share 0.905; legrand 667ms/0min share 0.893; friant 667ms/3.33min share 0.893; bourcier 667ms/3.33min share 0.871
+phone-0900           frames 1540 (play 1508, 540.167->720), formations drawn 6552 of 14159, longest hidden 6667 ms, episodes 177, quirk 0, wall 11.3 s, run 18 s
+   worst: lich 6667ms/23.33min share 0.325; buxhowden 5800ms/20min share 0.518; col4 5667ms/17.93min share 0.504; c_cav 5567ms/17.83min share 0.285; ahq 5533ms/17.67min share 0.454
+done in 104 s

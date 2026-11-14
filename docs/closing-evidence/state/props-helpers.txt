@@ -1,0 +1,18 @@
+day 04:00-18:00 (240-1080 min), 10 phases, 32 tracked formations, 25 events
+P6 phases contiguous, phaseAt at every boundary: OK; durations (min): 180, 60, 45, 45, 60, 45, 90, 105, 150, 60
+P7 anchors: 148 legs, arrivals non-decreasing and windows ordered: OK
+P1 continuity at critical times: 776 checks; presence changes 2; non-finite 0; discontinuities 0
+P2 sweep at 1/8 min: 215072 samples; NaN 0; outside the 680x500 map frame 0
+   at 04:00 30 on the field; at 18:00 31
+P3 plateau strength al: 11 changes over the day; flickers (undone within 5 min): 0
+P3 plateau strength fr: 11 changes over the day; flickers (undone within 5 min): 0
+P3 centre separation: 2 switches: ON at 09:02 (542.625); off at 14:25 (865.250)
+   flickers (undone within 5 min): 0
+   plateau holding (al) just before the end of phase 6 (12:45): 7330; at phase 7's start: 7330
+P4 event jumps: 21 distinct starts (25 events); forward from 04:00: 21 stops, missed 0, repeated 0; back from 18:00: 21 stops, missed 0
+   starts within 1.5 min of the first minute (never a forward stop): 04:00
+   from one minute before a start, a forward jump skips that start for 20 of 21 starts (the 1.5-minute margin): e.g. 04:15, 07:00, 08:00, 08:25, 08:45, 09:00
+P5 confAt on the field at 1/4 min: 104251 samples, 0 without a grade
+P8 aggregates (8) at every minute: 6728 samples, 0 inconsistent
+
+ALL PROPERTIES HOLD

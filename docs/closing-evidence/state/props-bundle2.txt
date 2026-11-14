@@ -1,0 +1,30 @@
+loaded the bundle in 166 s; init errors 0; warnings 0
+
+=== C1 a marching formation's card and full dossier while the clock moves inside its leg
+  50 legs of 30+ minutes inside one phase and 1+ km; using the five longest
+  gqg card, leg 12:00-12:40 (4.8 km, phase 6): painted at 12:03 "Zuran mound"; repaints while the clock moved to 12:37: 3; the dossier now shows the clock of 12:37 and "Stare Vinohrady"; 12:08: model "1.0 km south-east of Zuran mound"; 12:20: model "Girzikowitz"; 12:37: model "Stare Vinohrady"
+  gqg full dossier, leg 12:00-12:40 (4.8 km, phase 6): painted at 12:03 "Zuran mound"; repaints while the clock moved to 12:37: 3; the dossier now shows the clock of 12:37 and "Stare Vinohrady"; 12:08: model "1.0 km south-east of Zuran mound"; 12:20: model "Girzikowitz"; 12:37: model "Stare Vinohrady"
+  gqg card, leg 12:45-14:30 (4.0 km, phase 7): painted at 12:48 "0.6 km north-east of Pratzen Heights"; repaints while the clock moved to 14:27: 3; the dossier now shows the clock of 14:27 and "Chapel of St Anthony"; 12:53: model "Pratzen Heights"; 13:37: model "Pratzeberg"; 14:27: model "Chapel of St Anthony"
+  gqg full dossier, leg 12:45-14:30 (4.0 km, phase 7): painted at 12:48 "0.6 km north-east of Pratzen Heights"; repaints while the clock moved to 14:27: 3; the dossier now shows the clock of 14:27 and "Chapel of St Anthony"; 12:53: model "Pratzen Heights"; 13:37: model "Pratzeberg"; 14:27: model "Chapel of St Anthony"
+  guard_cav card, leg 10:30-11:15 (3.6 km, phase 5): painted at 10:33 "0.8 km north-west of Girzikowitz"; repaints while the clock moved to 11:12: 3; the dossier now shows the clock of 11:12 and "1.0 km west of Stare Vinohrady"; 10:38: model "Girzikowitz"; 10:52: model "0.8 km south of Girzikowitz"; 11:12: model "1.0 km west of Stare Vinohrady"
+  guard_cav full dossier, leg 10:30-11:15 (3.6 km, phase 5): painted at 10:33 "0.8 km north-west of Girzikowitz"; repaints while the clock moved to 11:12: 3; the dossier now shows the clock of 11:12 and "1.0 km west of Stare Vinohrady"; 10:38: model "Girzikowitz"; 10:52: model "0.8 km south of Girzikowitz"; 11:12: model "1.0 km west of Stare Vinohrady"
+  vandamme card, leg 13:24-14:30 (3.3 km, phase 7): painted at 13:27 "Pratzen village"; repaints while the clock moved to 14:27: 3; the dossier now shows the clock of 14:27 and "0.7 km north-west of Chapel of St Anthony"; 13:32: model "0.5 km south-east of Pratzen village"; 13:57: model "Pratzeberg"; 14:27: model "0.7 km north-west of Chapel of St Anthony"
+  vandamme full dossier, leg 13:24-14:30 (3.3 km, phase 7): painted at 13:27 "Pratzen village"; repaints while the clock moved to 14:27: 3; the dossier now shows the clock of 14:27 and "0.7 km north-west of Chapel of St Anthony"; 13:32: model "0.5 km south-east of Pratzen village"; 13:57: model "Pratzeberg"; 14:27: model "0.7 km north-west of Chapel of St Anthony"
+  bag card, leg 09:30-10:30 (2.8 km, phase 4): painted at 09:33 "0.6 km west of Posoritz post house"; repaints while the clock moved to 10:27: 3; the dossier now shows the clock of 10:27 and "Brünn–Olmütz highway"; 09:38: model "0.8 km west of Posoritz post house"; 10:00: model "1.4 km east of Brünn–Olmütz highway"; 10:27: model "Brünn–Olmütz highway"
+  bag full dossier, leg 09:30-10:30 (2.8 km, phase 4): painted at 09:33 "0.6 km west of Posoritz post house"; repaints while the clock moved to 10:27: 3; the dossier now shows the clock of 10:27 and "Brünn–Olmütz highway"; 09:38: model "0.8 km west of Posoritz post house"; 10:00: model "1.4 km east of Brünn–Olmütz highway"; 10:27: model "Brünn–Olmütz highway"
+(0.5 s)
+
+=== C2 a standing formation's full dossier (its "Position at HH:MM" row and day-track caption) while the clock moves within a phase
+  gqg standing from 04:05: dossier painted at 04:05; repaints while the clock moved to 04:45: 3 (its rows "Position at 04:45" and the day-track's "at 04:45" stand while the timeline reads 04:45)
+(0.0 s)
+
+=== C3 a place's dossier, "Formations nearby now", within a phase
+  reading none: 240 place-phases; the list shown differs from the model at the phase's last minute in 0
+  reading fr: 240 place-phases; the list shown differs from the model at the phase's last minute in 0
+(11.2 s)
+
+=== C4 an aggregate's card while its formations march
+  0 aggregate-phases whose card keeps a midpoint the model has left (no repaint)
+(0.5 s)
+
+warnings 0; errors 0; total 178 s

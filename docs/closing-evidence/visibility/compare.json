@@ -1,0 +1,827 @@
+{
+ "audit": {
+  "md5": "f10fe585c46aea576f436ed51ac46f83"
+ },
+ "now": {
+  "md5": "8c0d383eb45a6f2a5522d04863824b7b"
+ },
+ "runs": {
+  "bench-hybrid": {
+   "audit": {
+    "share": 0.571,
+    "longestMs": 4033,
+    "longestClockMin": 14.69,
+    "longestWho": "nansouty",
+    "under50": [
+     "sthilaire 27.8%",
+     "kellermann 21.1%",
+     "nansouty 0.0%",
+     "dhautpoul 8.9%",
+     "walther 0.0%",
+     "guard_cav 16.7%",
+     "milo 0.0%",
+     "rg_cav 21.1%"
+    ],
+    "never60": [
+     "nansouty",
+     "walther",
+     "milo"
+    ],
+    "evShare": 0.467,
+    "evWorst": [
+     "face-about milo 0.0%",
+     "soult sthilaire 27.8%",
+     "pratzen-village sthilaire 27.9%"
+    ],
+    "restHiddenAfter": [
+     "vandamme",
+     "kellermann",
+     "nansouty",
+     "dhautpoul",
+     "walther",
+     "guard_cav",
+     "milo",
+     "rg_inf",
+     "rg_cav"
+    ],
+    "restHiddenFresh": [
+     "sthilaire",
+     "nansouty",
+     "dhautpoul",
+     "walther",
+     "guard_inf",
+     "guard_cav",
+     "milo",
+     "rg_cav"
+    ],
+    "restHiddenNotFresh": [
+     "vandamme",
+     "kellermann",
+     "rg_inf"
+    ],
+    "episodes": 41,
+    "windowsSum": null
+   },
+   "now": {
+    "share": 0.59,
+    "longestMs": 4033,
+    "longestClockMin": 14.69,
+    "longestWho": "dhautpoul",
+    "under50": [
+     "vandamme 27.8%",
+     "kellermann 32.2%",
+     "nansouty 44.4%",
+     "dhautpoul 0.0%",
+     "walther 0.0%",
+     "guard_inf 32.2%",
+     "guard_cav 0.0%",
+     "kollo 43.3%",
+     "rg_cav 32.2%"
+    ],
+    "never60": [
+     "dhautpoul",
+     "walther",
+     "guard_cav"
+    ],
+    "evShare": 0.72,
+    "evWorst": [
+     "face-about kollo 25.5%",
+     "soult vandamme 27.8%",
+     "face-about milo 40.4%"
+    ],
+    "restHiddenAfter": [
+     "kellermann",
+     "nansouty",
+     "walther",
+     "guard_inf",
+     "guard_cav",
+     "milo",
+     "kollo",
+     "rg_inf",
+     "rg_cav"
+    ],
+    "restHiddenFresh": [
+     "nansouty",
+     "dhautpoul",
+     "walther",
+     "rivaud",
+     "guard_cav",
+     "milo",
+     "rg_cav"
+    ],
+    "restHiddenNotFresh": [
+     "kellermann",
+     "guard_inf",
+     "kollo",
+     "rg_inf"
+    ],
+    "episodes": 43,
+    "windowsSum": null
+   }
+  },
+  "hybrid-0830": {
+   "audit": {
+    "share": 0.676,
+    "longestMs": 27667,
+    "longestClockMin": 99.83,
+    "longestWho": "milo",
+    "under50": [
+     "kellermann 36.6%",
+     "nansouty 46.5%",
+     "dhautpoul 9.8%",
+     "walther 16.2%",
+     "guard_cav 16.5%",
+     "milo 17.5%",
+     "rg_cav 15.8%"
+    ],
+    "never60": [],
+    "evShare": 0.59,
+    "evWorst": [
+     "guard-broken guard_cav 0.0%",
+     "guard-broken rg_cav 1.5%",
+     "guard-attack rg_cav 3.7%",
+     "face-about milo 10.9%"
+    ],
+    "restHiddenAfter": [
+     "nansouty",
+     "dhautpoul",
+     "drouet",
+     "guard_inf",
+     "guard_cav",
+     "rg_inf",
+     "rg_cav"
+    ],
+    "restHiddenFresh": [
+     "nansouty",
+     "dhautpoul",
+     "guard_inf",
+     "guard_cav",
+     "rg_inf",
+     "rg_cav"
+    ],
+    "restHiddenNotFresh": [
+     "drouet"
+    ],
+    "episodes": 380,
+    "windowsSum": {
+     "n": 17,
+     "shareMin": 0.552,
+     "shareMedian": 0.684,
+     "shareMax": 0.746,
+     "wholeWindowHidden": 14,
+     "over3000": 14
+    }
+   },
+   "now": {
+    "share": 0.692,
+    "longestMs": 5667,
+    "longestClockMin": 18.33,
+    "longestWho": "nansouty",
+    "under50": [
+     "nansouty 46.5%",
+     "dhautpoul 41.5%",
+     "walther 37.8%",
+     "guard_inf 45.5%",
+     "guard_cav 39.9%",
+     "rg_cav 42.6%"
+    ],
+    "never60": [],
+    "evShare": 0.764,
+    "evWorst": [
+     "guard-broken rg_cav 12.7%",
+     "face-about kollo 28.0%",
+     "guard-attack rg_cav 45.8%"
+    ],
+    "restHiddenAfter": [
+     "vandamme",
+     "kellermann",
+     "dhautpoul",
+     "walther",
+     "rg_cav"
+    ],
+    "restHiddenFresh": [
+     "kellermann",
+     "nansouty",
+     "dhautpoul",
+     "drouet",
+     "guard_inf",
+     "guard_cav",
+     "rg_inf",
+     "rg_cav"
+    ],
+    "restHiddenNotFresh": [
+     "vandamme",
+     "walther"
+    ],
+    "episodes": 461,
+    "windowsSum": {
+     "n": 17,
+     "shareMin": 0.571,
+     "shareMedian": 0.707,
+     "shareMax": 0.829,
+     "wholeWindowHidden": 10,
+     "over3000": 10
+    }
+   }
+  },
+  "hybrid-1200": {
+   "audit": {
+    "share": 0.726,
+    "longestMs": 15333,
+    "longestClockMin": 60,
+    "longestWho": "dhautpoul",
+    "under50": [
+     "kellermann 35.6%",
+     "dhautpoul 26.7%",
+     "guard_cav 48.0%",
+     "rg_inf 42.5%",
+     "rg_cav 24.3%"
+    ],
+    "never60": [],
+    "evShare": 0.662,
+    "evWorst": [
+     "guard-broken guard_cav 10.8%",
+     "guard-attack rg_cav 12.2%",
+     "guard-broken rg_cav 16.0%",
+     "guard-attack rg_inf 23.5%"
+    ],
+    "restHiddenAfter": [],
+    "restHiddenFresh": [
+     "bourcier"
+    ],
+    "restHiddenNotFresh": [],
+    "episodes": 282,
+    "windowsSum": {
+     "n": 14,
+     "shareMin": 0.577,
+     "shareMedian": 0.79,
+     "shareMax": 0.859,
+     "wholeWindowHidden": 6,
+     "over3000": 6
+    }
+   },
+   "now": {
+    "share": 0.728,
+    "longestMs": 5667,
+    "longestClockMin": 18.33,
+    "longestWho": "gqg",
+    "under50": [
+     "nansouty 42.0%",
+     "dhautpoul 48.2%",
+     "milo 46.0%",
+     "rg_inf 43.4%"
+    ],
+    "never60": [],
+    "evShare": 0.77,
+    "evWorst": [
+     "guard-attack rg_inf 43.5%"
+    ],
+    "restHiddenAfter": [
+     "gqg",
+     "sthilaire"
+    ],
+    "restHiddenFresh": [],
+    "restHiddenNotFresh": [
+     "gqg",
+     "sthilaire"
+    ],
+    "episodes": 361,
+    "windowsSum": {
+     "n": 14,
+     "shareMin": 0.586,
+     "shareMedian": 0.755,
+     "shareMax": 0.92,
+     "wholeWindowHidden": 3,
+     "over3000": 3
+    }
+   }
+  },
+  "hybrid-4x-day": {
+   "audit": {
+    "share": 0.653,
+    "longestMs": 13000,
+    "longestClockMin": 119.79,
+    "longestWho": "guard_cav",
+    "under50": [
+     "kellermann 43.5%",
+     "nansouty 36.0%",
+     "dhautpoul 15.7%",
+     "walther 36.1%",
+     "guard_cav 32.5%",
+     "milo 45.6%",
+     "rg_inf 47.6%",
+     "rg_cav 20.0%"
+    ],
+    "never60": [],
+    "evShare": 0.538,
+    "evWorst": [
+     "blasowitz rg_inf 0.0%",
+     "guard-broken guard_cav 4.2%",
+     "guard-broken rg_cav 4.2%",
+     "guard-attack rg_cav 4.4%"
+    ],
+    "restHiddenAfter": [
+     "kellermann",
+     "milo",
+     "rg_cav"
+    ],
+    "restHiddenFresh": [
+     "kellermann",
+     "milo",
+     "rg_inf",
+     "rg_cav"
+    ],
+    "restHiddenNotFresh": [],
+    "episodes": 598,
+    "windowsSum": {
+     "n": 20,
+     "shareMin": 0.515,
+     "shareMedian": 0.667,
+     "shareMax": 0.836,
+     "wholeWindowHidden": 8,
+     "over3000": 8
+    }
+   },
+   "now": {
+    "share": 0.741,
+    "longestMs": 2667,
+    "longestClockMin": 29.96,
+    "longestWho": "col4",
+    "under50": [],
+    "never60": [],
+    "evShare": 0.725,
+    "evWorst": [],
+    "restHiddenAfter": [
+     "ahq"
+    ],
+    "restHiddenFresh": [
+     "kellermann",
+     "rg_inf",
+     "rg_cav"
+    ],
+    "restHiddenNotFresh": [
+     "ahq"
+    ],
+    "episodes": 336,
+    "windowsSum": {
+     "n": 20,
+     "shareMin": 0.595,
+     "shareMedian": 0.752,
+     "shareMax": 0.919,
+     "wholeWindowHidden": 0,
+     "over3000": 0
+    }
+   }
+  },
+  "land-0900": {
+   "audit": {
+    "share": 0.894,
+    "longestMs": 1667,
+    "longestClockMin": 8.33,
+    "longestWho": "rg_cav",
+    "under50": [],
+    "never60": [],
+    "evShare": 0.802,
+    "evWorst": [
+     "pratzen-village sthilaire 38.4%"
+    ],
+    "restHiddenAfter": [],
+    "restHiddenFresh": [],
+    "restHiddenNotFresh": [],
+    "episodes": 230,
+    "windowsSum": {
+     "n": 16,
+     "shareMin": 0.746,
+     "shareMedian": 0.912,
+     "shareMax": 0.979,
+     "wholeWindowHidden": 0,
+     "over3000": 0
+    }
+   },
+   "now": {
+    "share": 0.884,
+    "longestMs": 1300,
+    "longestClockMin": 3.33,
+    "longestWho": "sthilaire",
+    "under50": [],
+    "never60": [],
+    "evShare": 0.899,
+    "evWorst": [],
+    "restHiddenAfter": [
+     "kellermann"
+    ],
+    "restHiddenFresh": [
+     "rg_inf"
+    ],
+    "restHiddenNotFresh": [
+     "kellermann"
+    ],
+    "episodes": 260,
+    "windowsSum": {
+     "n": 16,
+     "shareMin": 0.766,
+     "shareMedian": 0.888,
+     "shareMax": 0.96,
+     "wholeWindowHidden": 0,
+     "over3000": 0
+    }
+   }
+  },
+  "phone-0900": {
+   "audit": {
+    "share": 0.517,
+    "longestMs": 25100,
+    "longestClockMin": 90,
+    "longestWho": "lich",
+    "under50": [
+     "c_v 30.5%",
+     "c_cav 13.1%",
+     "c_gd 33.2%",
+     "constantine 21.4%",
+     "c_gren 15.5%",
+     "lich 0.0%"
+    ],
+    "never60": [
+     "lich"
+    ],
+    "evShare": 0.402,
+    "evWorst": [
+     "guard-attack constantine 15.1%"
+    ],
+    "restHiddenAfter": [
+     "c_cav",
+     "c_gd",
+     "col4",
+     "constantine",
+     "c_gren",
+     "lich"
+    ],
+    "restHiddenFresh": [
+     "c_cav",
+     "col4",
+     "constantine",
+     "c_gren",
+     "lich"
+    ],
+    "restHiddenNotFresh": [
+     "c_gd"
+    ],
+    "episodes": 126,
+    "windowsSum": {
+     "n": 16,
+     "shareMin": 0.269,
+     "shareMedian": 0.512,
+     "shareMax": 0.751,
+     "wholeWindowHidden": 16,
+     "over3000": 16
+    }
+   },
+   "now": {
+    "share": 0.462,
+    "longestMs": 6667,
+    "longestClockMin": 23.33,
+    "longestWho": "lich",
+    "under50": [
+     "c_v 16.3%",
+     "c_cav 28.5%",
+     "c_gd 31.4%",
+     "constantine 40.4%",
+     "gqg 42.1%",
+     "c_gren 37.0%",
+     "ahq 45.4%",
+     "lich 32.5%"
+    ],
+    "never60": [],
+    "evShare": 0.249,
+    "evWorst": [
+     "buxhowden-blind buxhowden 0.0%",
+     "face-about ahq 11.9%",
+     "guard-attack constantine 35.6%"
+    ],
+    "restHiddenAfter": [
+     "c_gd",
+     "constantine",
+     "c_gren",
+     "ahq",
+     "lich"
+    ],
+    "restHiddenFresh": [
+     "c_cav",
+     "c_gd",
+     "constantine",
+     "c_gren",
+     "lich"
+    ],
+    "restHiddenNotFresh": [
+     "ahq"
+    ],
+    "episodes": 177,
+    "windowsSum": {
+     "n": 16,
+     "shareMin": 0.317,
+     "shareMedian": 0.418,
+     "shareMax": 0.803,
+     "wholeWindowHidden": 8,
+     "over3000": 8
+    }
+   }
+  }
+ },
+ "benchmark": {
+  "audit": {
+   "bench": {
+    "share": 0.571,
+    "shareAll": 0.6,
+    "longestMs": 4033,
+    "longestPlayMs": 3000,
+    "starved": [
+     "nansouty",
+     "walther",
+     "milo",
+     "dhautpoul",
+     "guard_cav",
+     "kellermann",
+     "rg_cav",
+     "sthilaire"
+    ]
+   },
+   "windows90": [
+    {
+     "from": 510.167,
+     "to": 524.687,
+     "share": 0.635,
+     "longestMs": 2967,
+     "who": "guard_cav"
+    },
+    {
+     "from": 524.765,
+     "to": 530,
+     "share": 0.584,
+     "longestMs": 2033,
+     "who": "dhautpoul"
+    },
+    {
+     "from": 530.167,
+     "to": 540,
+     "share": 0.667,
+     "longestMs": 3000,
+     "who": "kellermann"
+    },
+    {
+     "from": 540,
+     "to": 550,
+     "share": 0.746,
+     "longestMs": 3000,
+     "who": "kellermann"
+    },
+    {
+     "from": 550.167,
+     "to": 555.312,
+     "share": 0.726,
+     "longestMs": 3000,
+     "who": "kellermann"
+    },
+    {
+     "from": 555.401,
+     "to": 569.687,
+     "share": 0.673,
+     "longestMs": 3000,
+     "who": "milo"
+    },
+    {
+     "from": 569.765,
+     "to": 575,
+     "share": 0.67,
+     "longestMs": 3000,
+     "who": "walther"
+    },
+    {
+     "from": 575.167,
+     "to": 585,
+     "share": 0.708,
+     "longestMs": 3000,
+     "who": "kellermann"
+    },
+    {
+     "from": 585,
+     "to": 595,
+     "share": 0.722,
+     "longestMs": 3000,
+     "who": "kellermann"
+    },
+    {
+     "from": 595.167,
+     "to": 610,
+     "share": 0.684,
+     "longestMs": 3000,
+     "who": "kellermann"
+    },
+    {
+     "from": 610.167,
+     "to": 625,
+     "share": 0.697,
+     "longestMs": 3000,
+     "who": "dhautpoul"
+    },
+    {
+     "from": 625.167,
+     "to": 630.312,
+     "share": 0.716,
+     "longestMs": 3000,
+     "who": "milo"
+    },
+    {
+     "from": 630.401,
+     "to": 645,
+     "share": 0.729,
+     "longestMs": 3000,
+     "who": "milo"
+    },
+    {
+     "from": 645.167,
+     "to": 659.687,
+     "share": 0.664,
+     "longestMs": 3000,
+     "who": "dhautpoul"
+    },
+    {
+     "from": 659.765,
+     "to": 665,
+     "share": 0.744,
+     "longestMs": 2967,
+     "who": "dhautpoul"
+    },
+    {
+     "from": 665.167,
+     "to": 675,
+     "share": 0.552,
+     "longestMs": 3000,
+     "who": "guard_cav"
+    },
+    {
+     "from": 675,
+     "to": 685,
+     "share": 0.563,
+     "longestMs": 3000,
+     "who": "guard_cav"
+    }
+   ],
+   "windowsOver3000": 14,
+   "windowsN": 17,
+   "windowShareMin": 0.552,
+   "windowShareMax": 0.746,
+   "long": {
+    "share": 0.676,
+    "longestMs": 27667
+   }
+  },
+  "now": {
+   "bench": {
+    "share": 0.59,
+    "shareAll": 0.614,
+    "longestMs": 4033,
+    "longestPlayMs": 3000,
+    "starved": [
+     "dhautpoul",
+     "walther",
+     "guard_cav",
+     "vandamme",
+     "kellermann",
+     "guard_inf",
+     "rg_cav",
+     "kollo",
+     "nansouty"
+    ]
+   },
+   "windows90": [
+    {
+     "from": 510.167,
+     "to": 524.687,
+     "share": 0.571,
+     "longestMs": 3000,
+     "who": "guard_cav"
+    },
+    {
+     "from": 524.765,
+     "to": 530,
+     "share": 0.599,
+     "longestMs": 3000,
+     "who": "dhautpoul"
+    },
+    {
+     "from": 530.167,
+     "to": 540,
+     "share": 0.631,
+     "longestMs": 3000,
+     "who": "nansouty"
+    },
+    {
+     "from": 540,
+     "to": 550,
+     "share": 0.749,
+     "longestMs": 3000,
+     "who": "guard_cav"
+    },
+    {
+     "from": 550.167,
+     "to": 555.312,
+     "share": 0.731,
+     "longestMs": 3000,
+     "who": "lich"
+    },
+    {
+     "from": 555.401,
+     "to": 569.687,
+     "share": 0.716,
+     "longestMs": 3000,
+     "who": "guard_cav"
+    },
+    {
+     "from": 569.765,
+     "to": 575,
+     "share": 0.638,
+     "longestMs": 3000,
+     "who": "dhautpoul"
+    },
+    {
+     "from": 575.167,
+     "to": 585,
+     "share": 0.619,
+     "longestMs": 2633,
+     "who": "kellermann"
+    },
+    {
+     "from": 585,
+     "to": 595,
+     "share": 0.707,
+     "longestMs": 3000,
+     "who": "nansouty"
+    },
+    {
+     "from": 595.167,
+     "to": 610,
+     "share": 0.731,
+     "longestMs": 1967,
+     "who": "caffarelli"
+    },
+    {
+     "from": 610.167,
+     "to": 625,
+     "share": 0.72,
+     "longestMs": 2367,
+     "who": "rg_inf"
+    },
+    {
+     "from": 625.167,
+     "to": 630.312,
+     "share": 0.671,
+     "longestMs": 1633,
+     "who": "guard_inf"
+    },
+    {
+     "from": 630.401,
+     "to": 645,
+     "share": 0.762,
+     "longestMs": 1367,
+     "who": "dhautpoul"
+    },
+    {
+     "from": 645.167,
+     "to": 659.687,
+     "share": 0.759,
+     "longestMs": 1533,
+     "who": "guard_cav"
+    },
+    {
+     "from": 659.765,
+     "to": 665,
+     "share": 0.829,
+     "longestMs": 3000,
+     "who": "guard_cav"
+    },
+    {
+     "from": 665.167,
+     "to": 675,
+     "share": 0.663,
+     "longestMs": 2033,
+     "who": "kollo"
+    },
+    {
+     "from": 675,
+     "to": 685,
+     "share": 0.658,
+     "longestMs": 3000,
+     "who": "kollo"
+    }
+   ],
+   "windowsOver3000": 10,
+   "windowsN": 17,
+   "windowShareMin": 0.571,
+   "windowShareMax": 0.829,
+   "long": {
+    "share": 0.692,
+    "longestMs": 5667
+   }
+  }
+ }
+}

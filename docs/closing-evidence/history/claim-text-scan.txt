@@ -1,0 +1,24 @@
+statements: 726
+  phase title     {"interpretation*":10}
+  phase lede      {"unchecked":7,"disputed":3}
+  phase line      {"unchecked":16,"attributed":5,"disputed":8,"uncertain":3}
+  phase flash     {"attributed":1}
+  formation       {"unchecked":129,"attributed":25,"disputed":18,"derived":1,"uncertain":1}
+  track objective {"interpretation*":62}
+  track act       {"attributed":27,"unchecked":81,"disputed":14}
+  timing note     {"unchecked":25}
+  place           {"unchecked":28,"disputed":3,"attributed":7}
+  place fact      {"unchecked":38,"attributed":4,"disputed":2}
+  place why       {"unchecked":22,"interpretation":5,"attributed":3}
+  method          {"unchecked":12,"attributed":3,"disputed":1}
+  theme           {"unchecked":6,"interpretation":1,"disputed":3}
+  command         {"attributed":4,"unchecked":38,"disputed":3,"interpretation":2}
+  plan            {"unchecked":8,"interpretation":2,"disputed":2}
+  plan order      {"unchecked":12,"attributed":2}
+  act             {"interpretation*":4,"attributed":1}
+  event name      {"unchecked":25}
+  event why       {"unchecked":9,"disputed":8,"attributed":6,"uncertain":1,"interpretation":1}
+  event dispute   {"disputed":14,"uncertain":1}
+  tour            {"unchecked":7,"derived":1,"disputed":1}
+
+"fact" claims whose own words reserve part of the statement as this map's or not established: 0

@@ -1,0 +1,7 @@
+as measured: no failure
+caught one missing visual case: 1 failures, e.g. case overview-field not measured (T-4)
+caught all visual cases missing: 41 failures, e.g. case first-run not measured (T-4)
+caught missing self-test check: 2 failures, e.g. the self-test ran 350 checks; the manifest has 351 (T-4)
+caught added console error: 1 failures, e.g. console error on the main page during the closing pass's control: Uncaught TypeError: the closing pass's control
+caught missing live motion block: 1 failures, e.g. live block not run: the map layer in motion: the 16 motions, the four by real input and two with a selection (Stage 8, implementation PR 8C, decision 240 (a)) (T-4, T-5)
+the report passes as measured and every mutation is caught

@@ -1,0 +1,169 @@
+{
+ "N": 12,
+ "HOLD": 100,
+ "cases": {
+  "paused": {
+   "taken": 12,
+   "of": 12,
+   "res": [
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    },
+    {
+     "taken": true,
+     "clock": 630,
+     "playing": false,
+     "anchorT": 630
+    }
+   ]
+  },
+  "playing": {
+   "taken": 0,
+   "of": 12,
+   "res": [
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    },
+    {
+     "taken": false,
+     "clock": 301.20000000000005,
+     "playing": true,
+     "anchorT": 630
+    }
+   ]
+  }
+ },
+ "fullDossier": true,
+ "anchors": 6,
+ "frames": {
+  "frames": 69
+ },
+ "md5": "8c0d383eb45a6f2a5522d04863824b7b",
+ "errors": []
+}

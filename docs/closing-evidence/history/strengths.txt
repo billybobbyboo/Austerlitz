@@ -1,0 +1,55 @@
+== 1. aggregates and parents: declared strength vs the sum of their children ==
+c_iv         declared  23600  children sthilaire=6600 + vandamme=6700 + legrand=7000 + heightguns=0 = 20300  diff 3300  (aggregate)
+     note: 23,600 is Sokolov's estimate for 2 December from the returns of 22 November, when he counts 24,690 present: Saint-Hilaire 8,128 (Varé's brigade within it), Vandamme 7,913, Legrand 7,361, Margaron's light cavalry 953, the park 307 and the staff 28. The three di
+c_iii        declared   5300  children friant=3800 + bourcier=1500 = 5300  diff 0  (aggregate)
+     note: 5,300, Sokolov's estimate for 2 December from the returns of 22 November (Friant 7,037 and Bourcier 1,900 on 22 November, presumed 3,800 and 1,500), with 12 guns; he writes that after the march Davout could have had no more than 3,500-4,000 of Friant's men and
+c_v          declared  12700  children caffarelli=6700 + suchet=6000 = 12700  diff 0  (aggregate)
+     note: about 12,700 with 20 guns, as Duffy's order of battle prints them (1977, p. 181); Sokolov presumes 13,800 for Lannes on 2 December (13,673 on 22 November)
+suchet       declared   6000  children santon=1600 = 1600  diff 4400  (tracked: the leaf rule subtracts active children)
+     note: about 6,000, including the detachment on the Santon: the 17e Légère, of this division (numbered there the 3rd of V Corps) in the French situation of 28 October 1805 (Alombert and Colin, t. IV, p. 732)
+c_cav        declared   7100  children kellermann=1500 + nansouty=1300 + dhautpoul=1100 + walther=1200 = 5100  diff 2000  (aggregate)
+     note: 7,100 sabres, Sokolov's estimate for 2 December (8,729 on 22 November); 7,400 in Duffy's order of battle (1977, p. 181), which gives the reserve no guns; its 36 guns are cited from Duffy and Smith but are not on Duffy's page. Beaumont's dragoons and Milhaud's 
+c_i          declared  11500  children rivaud=5200 + drouet=6300 = 11500  diff 0  (aggregate)
+     note: 11,500, Sokolov's estimate for 2 December (11,642 on 22 November); 13,000 with 24 guns in Duffy's order of battle (1977, p. 179). Until the final audits' Stage 2 this map drew 13,000
+c_gd         declared   5500  children guard_inf=3000 + guard_cav=1000 = 4000  diff 1500  (aggregate)
+     note: about 5,500, Sokolov's estimate for 2 December from the returns of 22 November. No return read gives its guns on the day: the 30th Bulletin puts forty guns served by the Guard's gunners in the reserve, Schönhals forty with the grenadiers, and Sokolov has 24 gu
+buxhowden    declared  40000  children kienmayer=6340 + dok=13490 + lang=11700 + prz=7700 = 39230  diff 770  (tracked: the leaf rule subtracts active children)
+     note: Columns I–III with Kienmayer's advance guard: roughly 38,000–40,000 (Schönhals's table 38,480, Sokolov's 39,520, both by addition)
+lang         declared  11700  children kamensky=4250 = 4250  diff 7450  (tracked: the leaf rule subtracts active children)
+     note: 11,700 with 30 guns, as Duffy's order of battle prints them (1977, p. 183); Schönhals's table and Sokolov give 10,840 infantry, Sokolov with 300 cavalry and 30 guns. The figure includes Kamensky's brigade, drawn on its own
+col4         declared  16115  children milo=6965 + kollo=9150 = 16115  diff 0  (aggregate)
+     note: 16,115, the recapitulation of Schönhals's table (1873, p. 178; the Russian wing 6,965, the Austrians 9,150, p. 177, whose own sum line prints 16,118), with 52 light and 24 heavy guns; Sokolov gives 15,900 infantry and 300 cavalry with 76 guns in 27 battalions.
+constantine  declared  10500  children rg_inf=4430 + rg_cav=2900 = 7330  diff 3170  (aggregate)
+     note: Duffy gives the Guard 10,530 men and 40 pieces; his rows give 6,730 infantry, the Guard grenadier regiment's 2,300 'in reserve' among them, 2,900 horse and 100 pioneers, 9,730 in all, so 800 of his total is in no row (1977, pp. 184-185). This map draws the 4,4
+
+== 2. the leaf rule: totals on the field over the day (sideOnFieldAt, every 5 min) ==
+fr: max 64600 at 04:00, min 64600 at 04:00
+al: max 81775 at 04:00, min 74075 at 17:00
+army totals shown in the HQ dossiers: French "about 73,000" (Duffy 1977, nominal; Sokolov 2006, 72,500), Allied "about 85,400" (this map's working figure; Duffy 1977, 80,000-87,000 with 278 pieces)
+fr: naive sum of tracked formations' declared strengths 66200; leaf-rule sum at 10:00 64600
+al: naive sum of tracked formations' declared strengths 86025; leaf-rule sum at 10:00 81775
+
+== 3. the plateau reading (plateauStrength, Allied) against the tour stop 4 text ==
+tour: falls from about 41,000 at 04:00 to about 21,500 by 07:25, about half of it gone before a shot is fired at the plateau.
+04:00: Allied 40915  French 0   [lang=11700, prz=7700, milo=6965, kollo=9150, lich=5400]
+07:00: Allied 40915  French 0   [lang=11700, prz=7700, milo=6965, kollo=9150, lich=5400]
+07:25: Allied 21515  French 0   [milo=6965, kollo=9150, lich=5400]
+08:00: Allied 21515  French 0   [milo=6965, kollo=9150, lich=5400]
+08:45: Allied 21515  French 0   [milo=6965, kollo=9150, lich=5400]
+09:15: Allied 20365  French 13300   [kamensky=4250, milo=6965, kollo=9150]
+09:30: Allied 20365  French 13300   [kamensky=4250, milo=6965, kollo=9150]
+10:00: Allied 20365  French 13300   [kamensky=4250, milo=6965, kollo=9150]
+10:30: Allied 23265  French 19600   [kamensky=4250, milo=6965, kollo=9150, rg_cav=2900]
+11:00: Allied 23265  French 19600   [kamensky=4250, milo=6965, kollo=9150, rg_cav=2900]
+11:15: Allied 27695  French 29300   [kamensky=4250, milo=6965, kollo=9150, rg_inf=4430, rg_cav=2900]
+
+== 4. counters: a tracked parent and its tracked child drawn at once, each with its declared strength ==
+suchet counter shows 6000, its child santon 1600; both on the field from 04:00 (845 min); the parent's own troops by the leaf rule 4400; parent note says "including": true
+buxhowden counter shows 40000, its child kienmayer 6340; both on the field from 04:00 (845 min); the parent's own troops by the leaf rule 0; parent note says "including": false
+buxhowden counter shows 40000, its child dok 13490; both on the field from 04:00 (845 min); the parent's own troops by the leaf rule 0; parent note says "including": false
+buxhowden counter shows 40000, its child lang 11700; both on the field from 04:00 (845 min); the parent's own troops by the leaf rule 0; parent note says "including": false
+buxhowden counter shows 40000, its child prz 7700; both on the field from 04:00 (780 min); the parent's own troops by the leaf rule 0; parent note says "including": false
+lang counter shows 11700, its child kamensky 4250; both on the field from 08:00 (605 min); the parent's own troops by the leaf rule 7450; parent note says "including": true
+
+== 5. HQ formations with a strength (shown on their counter and dossier) ==
+buxhowden arm hq, strength 40000, tracked true; children sum 39230; note: Columns I–III with Kienmayer's advance guard: roughly 38,000–40,000 (Schönhals's table 38,480, Sokolov's 39,520, both by addition)

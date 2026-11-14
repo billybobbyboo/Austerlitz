@@ -1,0 +1,5868 @@
+{
+ "name": "s1-seek-dwell-speed",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 3037848,
+  "md5": "8c0d383eb45a6f2a5522d04863824b7b"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-13T23:15:29.422Z",
+ "opts": {
+  "viewport": [
+   1600,
+   900
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1600,
+    900
+   ],
+   "o": {},
+   "bootMs": 45164
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card",
+   "at": 45478,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 17,
+     "dropped": 5
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.47,
+      61.98
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.24
+     ]
+    }
+   },
+   "log": [],
+   "ms": 20
+  },
+  {
+   "page": 0,
+   "label": "click Play",
+   "at": 45498,
+   "ret": {
+    "x": 129,
+    "y": 828.75,
+    "box": "100,812.8,58,32",
+    "hit": true,
+    "top": "#play",
+    "waitedMs": 17291
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 17,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.47,
+      61.98
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.24
+     ]
+    }
+   },
+   "log": [],
+   "ms": 17316
+  },
+  {
+   "page": 0,
+   "label": "frames until the first dwell's hold",
+   "at": 62814,
+   "ret": 98,
+   "s": {
+    "clock": 255,
+    "clockText": "04:15",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@255",
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 20,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0.063
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -274.67,
+      169.43,
+      255.12
+     ],
+     "tgt": [
+      -92.17,
+      -0.2,
+      59.82
+     ]
+    }
+   },
+   "log": [],
+   "ms": 937
+  },
+  {
+   "page": 0,
+   "label": "set up: focus the time rail (a visitor Tabs to it); PageDown (real key) during the hold",
+   "at": 63752,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 20,
+     "dropped": 12
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -274.67,
+      169.43,
+      255.12
+     ],
+     "tgt": [
+      -92.17,
+      -0.2,
+      59.82
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s1-seek-dwell-speed-pagedown-in-hold-dom.jpg",
+   "log": [],
+   "ms": 12475
+  },
+  {
+   "page": 0,
+   "label": "click Play",
+   "at": 76228,
+   "ret": {
+    "x": 129,
+    "y": 828.75,
+    "box": "100,812.8,58,32",
+    "hit": true,
+    "top": "#play",
+    "waitedMs": 235
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 20,
+     "dropped": 12
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -274.67,
+      169.43,
+      255.12
+     ],
+     "tgt": [
+      -92.17,
+      -0.2,
+      59.82
+     ]
+    }
+   },
+   "log": [],
+   "ms": 249
+  },
+  {
+   "page": 0,
+   "label": "after 14 s of play",
+   "at": 81348,
+   "s": {
+    "clock": 480.313,
+    "clockText": "08:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "out@480",
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Langeron and Przybyszewski attack Sokolnitz · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 50,
+     "placed": 42,
+     "dropped": 7
+    },
+    "overlays": 41,
+    "drawon": [
+     0.007,
+     0.751
+    ],
+    "smoke": 6,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -190.23,
+      84.97,
+      164.39
+     ],
+     "tgt": [
+      -33.4,
+      2.62,
+      17.73
+     ]
+    }
+   },
+   "log": [],
+   "ms": 10
+  },
+  {
+   "page": 0,
+   "label": "drag the time rail to 10:00 while playing (real mouse)",
+   "at": 81358,
+   "ret": {
+    "x": 467.72861428571423,
+    "y": 897.6,
+    "dx": 4,
+    "fy": 0.9,
+    "atCentre": "button.ev-mark"
+   },
+   "s": {
+    "clock": 480.313,
+    "clockText": "08:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "out@480",
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Langeron and Przybyszewski attack Sokolnitz · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.ev-mark",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 50,
+     "placed": 42,
+     "dropped": 7
+    },
+    "overlays": 41,
+    "drawon": [
+     0.007,
+     0.751
+    ],
+    "smoke": 6,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -190.23,
+      84.97,
+      164.39
+     ],
+     "tgt": [
+      -33.4,
+      2.62,
+      17.73
+     ]
+    }
+   },
+   "log": [],
+   "ms": 797
+  },
+  {
+   "page": 0,
+   "label": "click Play; 30 frames",
+   "at": 82155,
+   "s": {
+    "clock": 480.313,
+    "clockText": "08:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 4,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Langeron and Przybyszewski attack Sokolnitz · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 50,
+     "placed": 42,
+     "dropped": 7
+    },
+    "overlays": 41,
+    "drawon": [
+     0.007,
+     0.751
+    ],
+    "smoke": 6,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -190.23,
+      84.97,
+      164.39
+     ],
+     "tgt": [
+      -33.4,
+      2.62,
+      17.73
+     ]
+    }
+   },
+   "log": [],
+   "ms": 220
+  },
+  {
+   "page": 0,
+   "label": "set up: focus the rail; Home (real key) during Play",
+   "at": 82375,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 4,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 50,
+     "placed": 42,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 6,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -190.23,
+      84.97,
+      164.39
+     ],
+     "tgt": [
+      -33.4,
+      2.62,
+      17.73
+     ]
+    }
+   },
+   "log": [],
+   "ms": 52
+  },
+  {
+   "page": 0,
+   "label": "click Play; 30 frames; set up focus on the rail; End",
+   "at": 82428,
+   "s": {
+    "clock": 1080,
+    "clockText": "18:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 9,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · The reckoning",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "After dark. The Collapse: The reckoning.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 55,
+     "placed": 30,
+     "dropped": 22
+    },
+    "overlays": 17,
+    "drawon": [],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The reckoning",
+    "cam": {
+     "pos": [
+      -216.72,
+      104.52,
+      190.72
+     ],
+     "tgt": [
+      -32.17,
+      1.88,
+      13.92
+     ]
+    }
+   },
+   "log": [],
+   "ms": 743
+  },
+  {
+   "page": 0,
+   "label": "click Play at 18:00 (End then Play)",
+   "at": 83172,
+   "ret": {
+    "x": 129,
+    "y": 828.75,
+    "box": "100,812.8,58,32",
+    "hit": true,
+    "top": "#play",
+    "waitedMs": 214
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 55,
+     "placed": 30,
+     "dropped": 22
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -216.72,
+      104.52,
+      190.72
+     ],
+     "tgt": [
+      -32.17,
+      1.88,
+      13.92
+     ]
+    }
+   },
+   "log": [],
+   "ms": 217
+  },
+  {
+   "page": 0,
+   "label": "30 frames",
+   "at": 83389,
+   "ret": 30,
+   "s": {
+    "clock": 245,
+    "clockText": "04:05",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 55,
+     "placed": 29,
+     "dropped": 23
+    },
+    "overlays": 63,
+    "drawon": [
+     0.021
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -238.7,
+      121.83,
+      213.48
+     ],
+     "tgt": [
+      -31.22,
+      1.32,
+      10.98
+     ]
+    }
+   },
+   "log": [],
+   "ms": 253
+  },
+  {
+   "page": 0,
+   "label": "set up: focus the event markers' group (its current marker); ArrowRight x3 (real keys); Enter during Play",
+   "at": 83643,
+   "ret": {
+    "label": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+    "playing": true
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "e:columns-move",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "Movement · AlliedThe Allied columns begin to leave the plateau07:00 - 08:00 (the hour is disputed)",
+     "len": 2648,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.ev-mark",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 55,
+     "placed": 29,
+     "dropped": 23
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -238.7,
+      121.83,
+      213.48
+     ],
+     "tgt": [
+      -31.22,
+      1.32,
+      10.98
+     ]
+    }
+   },
+   "log": [],
+   "ms": 52
+  },
+  {
+   "page": 0,
+   "label": "click the first 'Formations concerned' link in the event's dossier",
+   "at": 83695,
+   "ret": {
+    "x": 112,
+    "y": 784.1875,
+    "box": "22,772.2,180,24",
+    "hit": true,
+    "top": "BUTTON.linkb",
+    "waitedMs": 629,
+    "finishedTransitions": 16
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:kienmayer",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "Advance Guard, I Column · AustriaKienmayer's Advance GuardFeldmarschall-Leutnant Michael von Kienmayer",
+     "len": 1703,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "h2.[Kienmayer's Advance Guar]",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 55,
+     "placed": 29,
+     "dropped": 23
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -238.7,
+      121.83,
+      213.48
+     ],
+     "tgt": [
+      -31.22,
+      1.32,
+      10.98
+     ]
+    }
+   },
+   "log": [],
+   "ms": 632
+  },
+  {
+   "page": 0,
+   "label": "30 frames (the centring glide)",
+   "at": 84328,
+   "ret": 30,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:kienmayer",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "Advance Guard, I Column · AustriaKienmayer's Advance GuardFeldmarschall-Leutnant Michael von Kienmayer",
+     "len": 1703,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "h2.[Kienmayer's Advance Guar]",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 15,
+     "dropped": 19
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -120.12,
+      72.11,
+      136.7
+     ],
+     "tgt": [
+      -48.92,
+      -1.41,
+      64.66
+     ]
+    }
+   },
+   "log": [],
+   "ms": 238
+  },
+  {
+   "page": 0,
+   "label": "click the card's full-dossier button",
+   "at": 84566,
+   "ret": "Full dossier: role, movement, sources",
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:kienmayer",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "Advance Guard, I Column · AustriaKienmayer's Advance GuardFeldmarschall-Leutnant Michael von Kienmayer",
+     "len": 26907,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "h2.[Kienmayer's Advance Guar]",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 15,
+     "dropped": 19
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -120.12,
+      72.11,
+      136.7
+     ],
+     "tgt": [
+      -48.92,
+      -1.41,
+      64.66
+     ]
+    }
+   },
+   "log": [],
+   "ms": 180
+  },
+  {
+   "page": 0,
+   "label": "click Play; 30 frames",
+   "at": 84750,
+   "s": {
+    "clock": 425,
+    "clockText": "07:04",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:kienmayer",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 29,215",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "Advance Guard, I Column · AustriaKienmayer's Advance GuardFeldmarschall-Leutnant Michael von Kienmayer",
+     "len": 27139,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 10,
+     "dropped": 2
+    },
+    "overlays": 36,
+    "drawon": [
+     0.083,
+     0.152,
+     0.521
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -99.29,
+      51.43,
+      122.15
+     ],
+     "tgt": [
+      -52,
+      -1.88,
+      74
+     ]
+    }
+   },
+   "log": [],
+   "ms": 462
+  },
+  {
+   "page": 0,
+   "label": "scroll the day-track's second anchor into view (set up) and click it (real mouse) during Play",
+   "at": 85212,
+   "ret": 420,
+   "s": {
+    "clock": 425,
+    "clockText": "07:04",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:kienmayer",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 29,215",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "Advance Guard, I Column · AustriaKienmayer's Advance GuardFeldmarschall-Leutnant Michael von Kienmayer",
+     "len": 27153,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 10,
+     "dropped": 2
+    },
+    "overlays": 36,
+    "drawon": [
+     0.083,
+     0.152,
+     0.521
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -99.29,
+      51.43,
+      122.15
+     ],
+     "tgt": [
+      -52,
+      -1.88,
+      74
+     ]
+    }
+   },
+   "log": [],
+   "ms": 144
+  },
+  {
+   "page": 0,
+   "label": "Esc (clear the selection)",
+   "at": 85356,
+   "s": {
+    "clock": 425,
+    "clockText": "07:04",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 29,215",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": true,
+     "head": "Advance Guard, I Column · AustriaKienmayer's Advance GuardFeldmarschall-Leutnant Michael von Kienmayer",
+     "len": 27153,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 10,
+     "dropped": 2
+    },
+    "overlays": 36,
+    "drawon": [
+     0.083,
+     0.152,
+     0.521
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -99.29,
+      51.43,
+      122.15
+     ],
+     "tgt": [
+      -52,
+      -1.88,
+      74
+     ]
+    }
+   },
+   "log": [],
+   "ms": 8
+  },
+  {
+   "page": 0,
+   "label": "click the Analysis tab",
+   "at": 85364,
+   "ret": {
+    "x": 152,
+    "y": 96.46875,
+    "box": "126,73.1,52,46.8",
+    "hit": true,
+    "top": "#tab-analysis",
+    "waitedMs": 172
+   },
+   "s": {
+    "clock": 425,
+    "clockText": "07:04",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Pause/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 29,215",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": true,
+     "head": "Advance Guard, I Column · AustriaKienmayer's Advance GuardFeldmarschall-Leutnant Michael von Kienmayer",
+     "len": 27153,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#tab-analysis",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 10,
+     "dropped": 2
+    },
+    "overlays": 36,
+    "drawon": [
+     0.083,
+     0.152,
+     0.521
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -99.29,
+      51.43,
+      122.15
+     ],
+     "tgt": [
+      -52,
+      -1.88,
+      74
+     ]
+    }
+   },
+   "log": [],
+   "ms": 175
+  },
+  {
+   "page": 0,
+   "label": "click Play; 30 frames",
+   "at": 85539,
+   "s": {
+    "clock": 425,
+    "clockText": "07:04",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 29,215",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 11,
+     "dropped": 1
+    },
+    "overlays": 36,
+    "drawon": [
+     0.083,
+     0.152,
+     0.521
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -99.29,
+      51.43,
+      122.15
+     ],
+     "tgt": [
+      -52,
+      -1.88,
+      74
+     ]
+    }
+   },
+   "log": [],
+   "ms": 453
+  },
+  {
+   "page": 0,
+   "label": "click the third theme during Play",
+   "at": 85992,
+   "ret": {
+    "id": "weakness",
+    "clock": 420,
+    "name": "07:00The apparent weakness on the right"
+   },
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": "weakness",
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.chap[07:00The apparent weakne]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 11,
+     "dropped": 1
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -99.29,
+      51.43,
+      122.15
+     ],
+     "tgt": [
+      -52,
+      -1.88,
+      74
+     ]
+    }
+   },
+   "log": [],
+   "ms": 277
+  },
+  {
+   "page": 0,
+   "label": "90 frames after the theme (3 s)",
+   "at": 86269,
+   "ret": 90,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": "weakness",
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.chap[07:00The apparent weakne]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 42,
+     "dropped": 14
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -160,
+      60.02,
+      157
+     ],
+     "tgt": [
+      -56,
+      6.75,
+      59
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s1-seek-dwell-speed-theme-during-play-3s-dom.jpg",
+   "log": [],
+   "ms": 1618
+  },
+  {
+   "page": 0,
+   "label": "click Pause; Esc (theme cleared)",
+   "at": 87887,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.chap[07:00The apparent weakne]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 42,
+     "dropped": 14
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -160,
+      60.02,
+      157
+     ],
+     "tgt": [
+      -56,
+      6.75,
+      59
+     ]
+    }
+   },
+   "log": [],
+   "ms": 11
+  },
+  {
+   "page": 0,
+   "label": "click Layers; click 'Pause briefly at events' (off); Esc",
+   "at": 87898,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": false,
+    "dwellBtn": "false",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 42,
+     "dropped": 14
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -160,
+      60.02,
+      157
+     ],
+     "tgt": [
+      -56,
+      6.75,
+      59
+     ]
+    }
+   },
+   "log": [],
+   "ms": 306
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; Home; click Play",
+   "at": 88204,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": false,
+    "dwellBtn": "false",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 42,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 1,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -160,
+      60.02,
+      157
+     ],
+     "tgt": [
+      -56,
+      6.75,
+      59
+     ]
+    }
+   },
+   "log": [],
+   "ms": 220
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; PageDown during Play (dwell off)",
+   "at": 90987,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": false,
+    "dwellBtn": "false",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 21,
+     "dropped": 11
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -273.87,
+      126.5,
+      250.52
+     ],
+     "tgt": [
+      -85.16,
+      0.02,
+      54.34
+     ]
+    }
+   },
+   "log": [],
+   "ms": 58
+  },
+  {
+   "page": 0,
+   "label": "click Play; 60 frames; click Layers; click the dwell (on) while playing; Esc",
+   "at": 91045,
+   "s": {
+    "clock": 430,
+    "clockText": "07:09",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 29,215",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 62,
+     "placed": 29,
+     "dropped": 30
+    },
+    "overlays": 36,
+    "drawon": [
+     0.167,
+     0.303,
+     0.542
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -175.39,
+      68.48,
+      168.59
+     ],
+     "tgt": [
+      -56.48,
+      5.92,
+      61.62
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1417
+  },
+  {
+   "page": 0,
+   "label": "frames until a hold; click Layers; click the dwell (off) in the hold; Esc",
+   "at": 98095,
+   "ret": 525,
+   "s": {
+    "clock": 525,
+    "clockText": "08:45",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": false,
+    "dwellBtn": "false",
+    "dwellSt": null,
+    "dwellNext": 6,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach; hour disputed Saint-Hilaire and Vandamme climb the slope · derived on the heights: Allied ≈ 21,515 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 0.99,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 47,
+     "placed": 28,
+     "dropped": 17
+    },
+    "overlays": 20,
+    "drawon": [
+     0,
+     0,
+     0
+    ],
+    "smoke": 9,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -241.7,
+      88.79,
+      153.42
+     ],
+     "tgt": [
+      -67.99,
+      -1.8,
+      -8.8
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1765
+  },
+  {
+   "page": 0,
+   "label": "click Layers; dwell on again; Esc",
+   "at": 100392,
+   "s": {
+    "clock": 530,
+    "clockText": "08:49",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 6,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · interval Friant's leading brigade reaches the Goldbach · derived on the heights: Allied ≈ 21,515 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 47,
+     "placed": 30,
+     "dropped": 15
+    },
+    "overlays": 20,
+    "drawon": [
+     0.167,
+     0.172,
+     0
+    ],
+    "smoke": 9,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -274.03,
+      83.86,
+      117.45
+     ],
+     "tgt": [
+      -64.97,
+      -1.76,
+      0.28
+     ]
+    }
+   },
+   "log": [],
+   "ms": 602
+  },
+  {
+   "page": 0,
+   "label": "frames until a hold (at ½×)",
+   "at": 100994,
+   "ret": 68,
+   "s": {
+    "clock": 540,
+    "clockText": "09:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@540",
+    "dwellNext": 6,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village · derived on the heights: Allied ≈ 25,765",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 47,
+     "placed": 33,
+     "dropped": 12
+    },
+    "overlays": 20,
+    "drawon": [
+     0.5,
+     0.518,
+     0
+    ],
+    "smoke": 9,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -273.43,
+      72.85,
+      81.19
+     ],
+     "tgt": [
+      -56.4,
+      -0.52,
+      11.27
+     ]
+    }
+   },
+   "log": [],
+   "ms": 613
+  },
+  {
+   "page": 0,
+   "label": "10 frames into the hold; click 4× (real)",
+   "at": 101608,
+   "s": {
+    "clock": 540,
+    "clockText": "09:00",
+    "playing": true,
+    "speed": 4,
+    "speedPressed": "4",
+    "speedBtn": "4×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "hold@540",
+    "dwellNext": 6,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · Thiébault's brigade clears Pratzen village · derived on the heights: Allied ≈ 25,765",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[4×]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 47,
+     "placed": 33,
+     "dropped": 12
+    },
+    "overlays": 20,
+    "drawon": [
+     0.5,
+     0.518,
+     0
+    ],
+    "smoke": 9,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -271.65,
+      71.96,
+      79.17
+     ],
+     "tgt": [
+      -55.44,
+      -0.33,
+      12.16
+     ]
+    }
+   },
+   "log": [],
+   "ms": 279
+  },
+  {
+   "page": 0,
+   "label": "frames until an ease in (at 4×); 3 frames; click ½× (real)",
+   "at": 103069,
+   "ret": [
+    [
+     579.8609,
+     "in",
+     4,
+     1
+    ],
+    [
+     580.9053,
+     "in",
+     4,
+     1
+    ],
+    [
+     581.8312,
+     "in",
+     4,
+     1
+    ]
+   ],
+   "s": {
+    "clock": 581.831,
+    "clockText": "09:41",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": "in@585",
+    "dwellNext": 9,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 4,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · hour disputed Kamensky turns his brigade about and drives the French off the crest · derived on the heights: Allied ≈ 20,365 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "09:30 - 10:30. The Pratzen Strike: The crisis on the Pratzeberg.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[½×]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 49,
+     "placed": 23,
+     "dropped": 23
+    },
+    "overlays": 48,
+    "drawon": [
+     0.197,
+     0.197,
+     0.197
+    ],
+    "smoke": 11,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The crisis on the Pratzeberg",
+    "cam": {
+     "pos": [
+      -258.13,
+      68.66,
+      112.81
+     ],
+     "tgt": [
+      -50.39,
+      -1.04,
+      42.34
+     ]
+    }
+   },
+   "log": [],
+   "ms": 556
+  },
+  {
+   "page": 0,
+   "label": "frames until an ease out (at ½×); click 2× (real); 30 frames",
+   "at": 104053,
+   "ret": {
+    "a": [
+     [
+      585.0021,
+      "out",
+      0.5,
+      1
+     ],
+     [
+      585.0058,
+      "out",
+      0.5,
+      1
+     ]
+    ],
+    "b": [
+     [
+      585.0391,
+      "out",
+      2,
+      1
+     ],
+     [
+      585.1021,
+      "out",
+      2,
+      1
+     ],
+     [
+      585.1947,
+      "out",
+      2,
+      1
+     ],
+     [
+      585.3169,
+      "out",
+      2,
+      1
+     ],
+     [
+      585.4687,
+      "out",
+      2,
+      1
+     ],
+     [
+      585.6502,
+      "out",
+      2,
+      1
+     ],
+     [
+      585.8613,
+      "out",
+      2,
+      1
+     ],
+     [
+      586.1021,
+      "out",
+      2,
+      1
+     ],
+     [
+      586.3725,
+      "out",
+      2,
+      1
+     ],
+     [
+      586.6725,
+      "out",
+      2,
+      1
+     ],
+     [
+      587.0021,
+      "out",
+      2,
+      1
+     ],
+     [
+      587.3613,
+      "out",
+      2,
+      1
+     ],
+     [
+      587.7502,
+      "out",
+      2,
+      1
+     ],
+     [
+      588.1687,
+      "out",
+      2,
+      1
+     ],
+     [
+      588.6169,
+      "out",
+      2,
+      1
+     ],
+     [
+      589.0947,
+      "out",
+      2,
+      1
+     ],
+     [
+      589.6021,
+      "out",
+      2,
+      1
+     ],
+     [
+      590.1391,
+      "out",
+      2,
+      1
+     ],
+     [
+      590.7058,
+      "out",
+      2,
+      1
+     ],
+     [
+      591.3021,
+      "out",
+      2,
+      1
+     ],
+     [
+      591.928,
+      "out",
+      2,
+      1
+     ],
+     [
+      592.5833,
+      "-",
+      2,
+      1
+     ],
+     [
+      593.25,
+      "-",
+      2,
+      1
+     ],
+     [
+      593.9167,
+      "-",
+      2,
+      1
+     ],
+     [
+      594.5833,
+      "-",
+      2,
+      1
+     ],
+     [
+      595.25,
+      "-",
+      2,
+      1
+     ],
+     [
+      595.9167,
+      "-",
+      2,
+      1
+     ],
+     [
+      596.5833,
+      "-",
+      2,
+      1
+     ],
+     [
+      597.25,
+      "-",
+      2,
+      1
+     ],
+     [
+      597.9167,
+      "-",
+      2,
+      1
+     ]
+    ]
+   },
+   "s": {
+    "clock": 597.917,
+    "clockText": "09:57",
+    "playing": true,
+    "speed": 2,
+    "speedPressed": "2",
+    "speedBtn": "2×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 10,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 4,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · hour disputed Kamensky turns his brigade about and drives the French off the crest · derived on the heights: Allied ≈ 20,365 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "09:30 - 10:30. The Pratzen Strike: The crisis on the Pratzeberg.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[2×]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 48,
+     "placed": 30,
+     "dropped": 15
+    },
+    "overlays": 48,
+    "drawon": [
+     0.465,
+     0.465,
+     0.465
+    ],
+    "smoke": 11,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The crisis on the Pratzeberg",
+    "cam": {
+     "pos": [
+      -242.58,
+      71.16,
+      109.07
+     ],
+     "tgt": [
+      -36.76,
+      1.08,
+      34.03
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1036
+  },
+  {
+   "page": 0,
+   "label": "click Pause",
+   "at": 105111,
+   "ret": {
+    "x": 129,
+    "y": 828.75,
+    "box": "100,812.8,58,32",
+    "hit": true,
+    "top": "#play",
+    "waitedMs": 191
+   },
+   "s": {
+    "clock": 597.917,
+    "clockText": "09:57",
+    "playing": false,
+    "speed": 2,
+    "speedPressed": "2",
+    "speedBtn": "2×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 10,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 4,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · The crisis on the Pratzeberg · hour disputed Kamensky turns his brigade about and drives the French off the crest · derived on the heights: Allied ≈ 20,365 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "09:30 - 10:30. The Pratzen Strike: The crisis on the Pratzeberg.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "analysis",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 48,
+     "placed": 30,
+     "dropped": 15
+    },
+    "overlays": 48,
+    "drawon": [
+     0.465,
+     0.465,
+     0.465
+    ],
+    "smoke": 11,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The crisis on the Pratzeberg",
+    "cam": {
+     "pos": [
+      -242.58,
+      71.16,
+      109.07
+     ],
+     "tgt": [
+      -36.76,
+      1.08,
+      34.03
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s1-seek-dwell-speed-end-dom.jpg",
+   "log": [],
+   "ms": 1064
+  }
+ ],
+ "checks": [
+  {
+   "id": "play-starts",
+   "ok": true,
+   "expected": "Play pressed: playing, the button says Pause",
+   "observed": {
+    "playing": true,
+    "btn": "Pause/null"
+   }
+  },
+  {
+   "id": "first-hold",
+   "ok": true,
+   "expected": "the clock holds at an event start",
+   "observed": {
+    "clock": 255,
+    "dwell": "hold@255"
+   }
+  },
+  {
+   "id": "pagedown-in-hold",
+   "ok": true,
+   "expected": "PageDown in a hold: playback stops, the clock at the next phase's start, no dwell state",
+   "observed": {
+    "clock": 420,
+    "expected": 420,
+    "playing": false,
+    "dwell": null,
+    "btn": "Play/null",
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle."
+   }
+  },
+  {
+   "id": "replay-monotonic",
+   "ok": true,
+   "expected": "after the seek, Play runs forward and dwells at the first start ahead",
+   "observed": {
+    "backSteps": 0,
+    "firstHold": 480,
+    "expectedNextStart": 480,
+    "clockStart": 420.1667,
+    "clockEnd": 480.3125
+   }
+  },
+  {
+   "id": "drag-while-playing",
+   "ok": false,
+   "expected": "a drag on the rail stops playback and puts the clock under the pointer",
+   "observed": {
+    "clock": 480.313,
+    "playing": true
+   }
+  },
+  {
+   "id": "home-during-play",
+   "ok": true,
+   "expected": "Home during Play: stopped at 04:00, phase 0",
+   "observed": {
+    "clock": 240,
+    "playing": false,
+    "phase": 0
+   }
+  },
+  {
+   "id": "end-during-play",
+   "ok": true,
+   "expected": "End during Play: stopped at 18:00",
+   "observed": {
+    "clock": 1080,
+    "playing": false,
+    "phase": 9,
+    "caption": "THE COLLAPSE · The reckoning"
+   }
+  },
+  {
+   "id": "end-then-play",
+   "ok": true,
+   "expected": "Play at the day's end starts the day again at 04:00 (togglePlay's rule)",
+   "observed": {
+    "clock": 240,
+    "playing": true
+   }
+  },
+  {
+   "id": "evmark-enter-during-play",
+   "ok": true,
+   "expected": "Enter on an event marker during Play: stopped, the clock at its start, its dossier open",
+   "observed": {
+    "marker": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+    "playingBefore": true,
+    "clock": 420,
+    "playing": false,
+    "selection": "e:columns-move",
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "Movement · AlliedThe Allied columns begin to leave the plateau07:00 - 08:00 (the hour is disputed)",
+     "len": 2648,
+     "inert": false
+    }
+   }
+  },
+  {
+   "id": "daytrack-anchor-during-play",
+   "ok": false,
+   "expected": "a day-track anchor during Play: stopped, the clock at the anchor, the selection kept",
+   "observed": {
+    "anchorT": 420,
+    "clock": 425,
+    "playing": true,
+    "selection": "f:kienmayer"
+   }
+  },
+  {
+   "id": "theme-stops-play",
+   "ok": true,
+   "expected": "a theme stops the clock (app.js's dwell comment; the spine data task: a theme opens on its principal moment)",
+   "observed": {
+    "theme": {
+     "id": "weakness",
+     "clock": 420,
+     "name": "07:00The apparent weakness on the right"
+    },
+    "clockAfterClick": 420,
+    "playing": false,
+    "chapter": "weakness"
+   }
+  },
+  {
+   "id": "theme-moment-held",
+   "ok": true,
+   "expected": "3 s after choosing a theme the clock is still at its moment",
+   "observed": {
+    "themeClock": 420,
+    "clock": 420,
+    "playing": false,
+    "chapter": "weakness",
+    "camTween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "follow": "true"
+   }
+  },
+  {
+   "id": "dwell-off",
+   "ok": true,
+   "expected": "the dwell off, its button not pressed, the panel closed",
+   "observed": {
+    "dwellOn": false,
+    "layers": false
+   }
+  },
+  {
+   "id": "dwell-off-play",
+   "ok": true,
+   "expected": "with the dwell off, Play runs at ½× (5 clock min a second) through the starts without a stop",
+   "observed": {
+    "framesInDwell": 0,
+    "backSteps": 0,
+    "rate": 5,
+    "from": 240.1667,
+    "to": 290,
+    "startsCrossed": [
+     255
+    ]
+   }
+  },
+  {
+   "id": "pagedown-dwell-off",
+   "ok": true,
+   "expected": "PageDown during Play stops at a phase start (dwell off)",
+   "observed": {
+    "clock": 420,
+    "playing": false
+   }
+  },
+  {
+   "id": "dwell-on-during-play",
+   "ok": true,
+   "expected": "the dwell turned on while playing: the clock never goes back; the first start ahead dwells (S-2 fixed)",
+   "observed": {
+    "clockAtToggle": 430,
+    "backSteps": 0,
+    "firstHold": 480,
+    "expected": 480
+   }
+  },
+  {
+   "id": "dwell-off-in-hold",
+   "ok": true,
+   "expected": "the dwell turned off in a hold: the clock leaves the start at once at ½×",
+   "observed": {
+    "holdAt": 525,
+    "after1s": 530,
+    "states": [
+     "-"
+    ]
+   }
+  },
+  {
+   "id": "speed-in-hold",
+   "ok": false,
+   "expected": "4× pressed 10 frames into a hold: the hold keeps its 1.5 s (45 frames in all), the ease out and the run after it at 4× (40 clock min a second)",
+   "observed": {
+    "holdFramesAfterPress": 34,
+    "easeOutFrames": 2,
+    "rateAfter1s": 12.916699999999992,
+    "speedPressed": "4"
+   }
+  },
+  {
+   "id": "speed-in-ease",
+   "ok": false,
+   "expected": "½× pressed in an ease in at 4×: the clock's step drops at once by the ratio and eases on into the hold (8H)",
+   "observed": {
+    "stepBefore": 0.9259,
+    "stepAfter": 0.1075,
+    "nextStep": 0.1055,
+    "reachedHold": false
+   }
+  },
+  {
+   "id": "speed-in-ease-out",
+   "ok": false,
+   "expected": "2× pressed in an ease out: no backward step; after it, 2× (20 clock min a second)",
+   "observed": {
+    "backSteps": 0,
+    "rateAfter": null,
+    "easeEndsAfterFrames": 21
+   }
+  },
+  {
+   "id": "speed-stands",
+   "ok": true,
+   "expected": "the last speed pressed stands",
+   "observed": {
+    "speed": 2,
+    "pressed": "2"
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/interaction/s1-seek-dwell-speed-pagedown-in-hold-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s1-seek-dwell-speed-theme-during-play-3s-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s1-seek-dwell-speed-end-dom.jpg"
+ ],
+ "notes": [
+  "day-track anchors in the full dossier: 6"
+ ],
+ "dwellStarts": [
+  240,
+  255,
+  420,
+  480,
+  505,
+  525,
+  540,
+  555,
+  570,
+  585,
+  630,
+  660,
+  675,
+  700,
+  720,
+  750,
+  780,
+  840,
+  870,
+  900,
+  990
+ ],
+ "phaseT0": [
+  240,
+  420,
+  480,
+  525,
+  570,
+  630,
+  675,
+  765,
+  870,
+  1020
+ ],
+ "traceAfterPageDown": [
+  [
+   420.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   421.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   422.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   423.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   424.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   425.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   426.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   427.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   428.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   429.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   430.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   431.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   432.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   433.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   434.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   435.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   436.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   437.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   438.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   439.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   440.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   441.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   442.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   443.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   444.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   445.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   446.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   447.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   448.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   449.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   450.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   451.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   452.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   453.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   454.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   455.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   456.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   457.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   458.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   459.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   460.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   461.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   462.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   463.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   464.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   465.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   466.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   467.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   468.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   469.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   470.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   471.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   472.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   473.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   474.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   475.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   476.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   477.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   478.1667,
+   "-",
+   0.5,
+   1
+  ],
+  [
+   479.1319,
+   "in",
+   0.5,
+   1
+  ],
+  [
+   479.7653,
+   "in",
+   0.5,
+   1
+  ],
+  [
+   479.9986,
+   "in",
+   0.5,
+   1
+  ],
+  [
+   480,
+   "hold",
+   0.5,
+   1
+  ],
+  [
+   480,
+   "hold",
+   0.5,
+   1
+  ],
+  [
+   480,
+   "hold",
+   0.5,
+   1
+  ],
+  [
+   480,
+   "hold",
+   0.5,
+   1
+  ],
+  [
+   480,
+   "hold",
+   0.5,
+   1
+  ],
+  [
+   480,
+   "hold",
+   0.5,
+   1
+  ],
+  [
+   480,
+   "hold",
+   0.5,
+   1
+  ],
+  [
+   480.0347,
+   "out",
+   0.5,
+   1
+  ]
+ ],
+ "listeners": {
+  "live": 670,
+  "removed": 0,
+  "onDetached": 111,
+  "total": 781,
+  "addCalls": 781,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "document focusin": 1,
+   "document focusout": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 2,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail lostpointercapture": 1,
+   "#evmarks pointerdown": 1,
+   "#evmarks pointermove": 1,
+   "#evmarks pointerup": 1,
+   "#evmarks pointercancel": 1,
+   "#evmarks click (capture)": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "#tltip pointermove": 1,
+   "#tltip pointerdown": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 19,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#fr-grades click": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 3,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip pointerdown": 1,
+   "#dgrip pointerup": 1,
+   "#dgrip pointercancel": 1,
+   "#dgrip click": 1,
+   "#phasebtn click": 1,
+   "#railclose click": 1,
+   "#now-show click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 1dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 99,
+   "div.ml-item blur": 99,
+   "div.ml-item keydown": 99,
+   "div.ml-item click": 99
+  },
+  "timeouts": 0,
+  "timeoutsBy": {},
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 2,
+  "tSet": 9,
+  "tFired": 7,
+  "tCleared": 2,
+  "rSet": 66,
+  "rFired": 66,
+  "rCancel": 0
+ },
+ "ms": 106179,
+ "ended": "2026-11-13T23:17:15.601Z"
+}

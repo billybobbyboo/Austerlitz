@@ -1,0 +1,20 @@
+pass as measured: ph8-overview-watch
+caught a derived reading shown at 14:40 -> Watch: the caption shows a derived reading (separation) where the model gives none
+caught the model giving the centre separation at 14:40 -> Watch: the model gives a derived reading at 880 (the plateau reading false, the centre separation true), where CAP_DERIVED_ABSENT expects none
+caught the model not asked at the case's clock -> Watch: the model's derived readings not measured at the case's clock (CAP_DERIVED_ABSENT: 14:40: phase 8 is past the plateau reading's last phase, and the centre separation ends at 14:30 with Bagration's corrected place (decision 260 (a)))
+caught no positive case -> Watch: the caption not measured at 860, where the model gives a derived reading (the positive case)
+caught the reading not shown at 14:20 -> Watch: at 860 the caption does not show the model's derived reading (separation; shown: none, null)
+caught the positive case covering nothing -> Watch: at 860 the model gives no derived reading either: the positive case covers nothing
+caught the clock not set back -> Watch: the case's clock not set back after the positive case
+pass as measured: plans-overview
+caught 14 dropped in plans-overview -> 14 items dropped, over the limit of 13 (what the canvas pass hid): n:ahq, n:lich, t:pratzen, t:vinohrady, t:pratzeberg, t:santon, t:zuran, t:goldbach, t:telnitz, t:sokolnitz, t:augezd, t:satschan
+pass as measured: the self-test's block
+pass as measured: check:visual's block
+caught the twins with the pointer missing -> 0 twins with the pointer for the 4 runs by real input
+MISSED a run by real input hovering other than its twin (no failure)
+caught a twin hovering nothing that differs from its 16's run -> hybrid-orbit with the pointer hovering nothing differs from the 16's run in pops
+caught a twin hovering nothing drawing fewer than its 16's run -> hybrid-orbit with the pointer hovering nothing differs from the 16's run in formations' on
+caught a run by real input 7 jumps from its twin (the tolerance 6) -> paper-zoom by real input: jumps 18, its twin with the pointer driven in the page 11 (tolerance 6)
+caught the paper zoom's twin below its visibility baseline -> paper-zoom+point: formations drawn in 851 of 1232 formation-frames, the baseline 852 of 1232 (fewer drawn)
+caught the self-test's paper zoom without its twin -> 1 twins with the pointer for the 2 runs by real input
+NOT ALL: see above

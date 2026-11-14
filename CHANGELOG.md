@@ -1,8 +1,97 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · Final audits' roadmap, closing: the re-verification pass
+
+**Status: on `claude/admiring-dirac-m1syqs`, a draft PR into `main`, for review, not merged.** The last pass of `docs/ROADMAP_FINAL_AUDIT.md`
+("Closing"): each of the merged register's 158 findings re-verified on the build the roadmap ends with, by the two audits' own probes. Then the
+audit's 33 negative controls and every required check, and the delta report, `docs/CLOSING_REVERIFICATION.md`. Its evidence is in
+`docs/closing-evidence/`, its tools in `tools/closing/`. **No build, source or data changes:** `austerlitz-command-map.html` is unchanged, 3,037,848
+bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`, and `check:baseline` stays on it. No device result is filled in. The integrated-GPU run and the
+screen-reader and device script are not run, and are carried.
+
+### The verdicts (`docs/closing-evidence/verdicts.json`, `tools/closing/verdicts.py`)
+
+**103 fixed, 19 kept, 36 carried.** The one S1 is fixed. Of the 15 S2 findings, 13 are fixed and two carried: CL-MAP-01 (the gaps bounded, the
+done-when "no formation under 50%" not met) and CL-UX-03 (below). Of the 107 findings the records called fixed, 103 hold and four are carried in
+part: CL-MAP-01, -02, -07 and CL-UX-03. Every other carried finding is one the records already said was open:
+- the six done in part;
+- the three WP-13 deferred;
+- the three that need the owner's run;
+- WP-11's 20 test findings, never taken up by name.
+
+### Found by this pass
+
+- **A press lost during Play** (`tools/closing/dossier-click-driven.js`): a side effect of WP-05's CL-SIM-01 fix.
+  - While the clock plays, the open dossier is repainted at most every 250 ms. A press whose release falls after a repaint lands on a replaced
+    element, so the browser makes no click.
+  - On the audit's driver at 60 frames a second, pressing a day-track anchor of Saint-Hilaire's full dossier lost 7 of 16 presses of 100 ms (at ½×
+    and at 4x) and 5 of 16 of 60 ms. Every lost press, and only those, had a repaint inside it.
+  - When paused, 12 of 12 were taken. The keyboard is not affected.
+  - No check holds it. It is carried as a new finding.
+- **CL-UX-03's residual** (`tools/closing/marker-drag.js`): a real mouse dragging from the marker on the playhead scrubs in moves of 2 and 8 px,
+  not in moves of 16 and 33 px. The marker's host sees a mouse's moves only while the pointer is over it. The audit's own probe still fails.
+- **Two fixes no check holds**, CL-HIS-12 and CL-SRC-06. Both are verified in the page by `tools/closing/page-probe.js`, which exits 1 on two copies
+  with each fix taken out. It is not in the suite.
+- **The audits' probes rot.** `mirror-check.js` and `contact-8f.js` read WP-16's `aSl` with the old stride and bind the gone `aPh`:
+  - Their adapted copies are `tools/closing/mirror-check.js` and `contact.js`. The mirror copy reproduces the audit's numbers exactly. The
+    contact copy reads this build exactly as the original reads WP-16's first build, `07c186de` rebuilt from `bb4e09f`: identical instance by
+    instance.
+  - `facing.js`, props-helpers P4, props-bundle B9 and five interaction checks no longer exercise what they name (the report, section 5).
+  - Stage 8's mutation scripts that no longer apply rose from 5 to 11 of 189 (CL-ROB-07).
+- **The contact probe adapted, against ChatGPT's** (CL-VIS-10, kept): 17-58 instances an arm beyond the tolerance, where ChatGPT found 5-13. Each
+  rise came with a re-baseline on the owner's word: the relief's refit (decision 293 (a)) and WP-10's facings (decision 316).
+- **ChatGPT's 4x protocol** hides the Russian Guard cavalry for 50.3 battle minutes. `MOTION.LONG`'s 30-minute bar holds only the ½× runs.
+
+### The records corrected (CL-REC-02 and CL-REC-08 recurred after WP-13)
+
+- **`README.md`'s checks table:**
+  - check:contrast: was 45 states and eight start-up cases; is 57 and ten.
+  - the self-test: was 325 checks; is 351.
+  - check:visual: was 39 views; is 41.
+  - check:data's reference: was `archive/postaudit1-a3cb40f8.html`; is `archive/stage6wp09w-45d29cc5.html`.
+- **`CLAUDE.md`'s narrative.js row** gains today's counts (463 of 726 unchecked, 187 claims of their own, 76 by class). It ended at 8K's.
+- **WP-12's status line above:** was "a draft PR ..., not merged"; is merged (#108, `a8720b9`). The same correction is made in the roadmap's status
+  and `CLAUDE.md`'s current state.
+
+### The negative controls and ChatGPT's probes
+
+- **The 33 controls** (`tools/closing/mutate.js`; M08, M18 and M22 re-targeted to the same property in today's text): 30 caught, 3 missed (M13,
+  M29, M30), as at the audit. 21 are caught by a semantic check (the audit's 19); M16 and M18 now so incidentally. 9 are caught only by change
+  detectors (11). Every restoration was checked.
+- **Extended playback** (CG-F01, ½× from 09:00 for 3,600 frames): the longest hidden 36.6 s to 5.7 s.
+- **Ice at a low sun** (15:00, the low view): glare 5.90% to 1.87%.
+- **The phone rule:** two empty reports are refused, and so are its 8 negatives.
+- **T13** (`tools/closing/report-negatives.js` on this build's `check:visual` report): the report passes as measured, and 5 of 5 mutations are caught.
+- **T12** (`tools/stage8/mutate-8l.js` on this build's CI reports, cut by `tools/closing/t12-inputs.js`): the four records pass as measured, and 14 of 15
+  mutations are caught.
+  - The 15th is vacuous here. It sets the paper zoom's real-input run's hover to null, and on this build that run and its twin both hover nothing,
+    so the record is unchanged. On 8L's records the twin hovered Constantine.
+  - The same intent, made both ways round, is caught on both blocks (`tools/closing/t12-hover.js`).
+  - On 8L's own records all 15 are caught. Their motion records fail today's visibility baselines, which were re-measured since 8L on the owner's
+    word.
+
+### Verified
+
+- Here: `check:baseline`, `npm test`, `check:data`, `check:chronology` and `check:contrast` pass (57 of 57 states, 10 of 10 start-up cases).
+- On CI for this branch's head `cb018272`:
+  - run 43524392315 (push): checks, contrast and the self-test pass.
+  - run 43524457649 (dispatched after the push landed, its head the branch's head): checks, contrast and the self-test pass (351 of 351, every live
+    block; `check:report` passes on its report).
+  - `check:visual` on the same run passes (2 h 33 min):
+    - 41 of 41 cases, the self-test 351 of 351 on its page, every live block, and 0 console messages;
+    - the 16 motions: 227 jumps, 959 pops, 12 flickers and 105 level-of-detail switches, against ceilings of 251, 1,049, 12 and 130 (flickers at
+      the ceiling). The counts are the same as `check:selftest`'s block;
+    - `check:report` passes on its report (`docs/closing-evidence/checks/ci/`).
+
+### Uncertain
+
+- The verdicts are this pass's reading of the audits' probes. Where a probe could not see a fix, the remedy's own measure stands in, and the note
+  says so. For CL-UX-07 that measure is a dry run only.
+- The contact probe's adaptation is checked against the original on WP-16's first build, not against an independent measure.
+
 ## 2026-11 · Final audits' roadmap, Stage 7 (WP-12): the device evidence (CL-PERF-01 to -11)
 
-**Status: on `claude/admiring-dirac-m1syqs-device`, a draft PR into `main`, for review, not merged.** WP-12 of `docs/ROADMAP_FINAL_AUDIT.md`, the last
+**Status: merged into `main` (#108, `a8720b9`); built on `claude/admiring-dirac-m1syqs-device`.** WP-12 of `docs/ROADMAP_FINAL_AUDIT.md`, the last
 pass of Stage 7, with WP-11's rule alongside. Records, the device route and the protocol for the owner's runs. No source of the build, no data
 and no build changes: `austerlitz-command-map.html` is unchanged, 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`, and `check:baseline`
 stays on it. **The device results are the owner's:** the desktop's and the iPhone's two runs each of Stage 7's build (13 November 2026), filed verbatim

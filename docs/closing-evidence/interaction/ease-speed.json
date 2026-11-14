@@ -1,0 +1,65 @@
+{
+ "cases": [
+  {
+   "framesIntoEase": 1,
+   "untilFound": 6,
+   "stepBefore": 1.1111,
+   "stepAfter": 0.1306,
+   "ratio": 8.508,
+   "speedAfter": 0.5,
+   "holdReachedAfterFrames": 70,
+   "stepsGrowingBeforeHold": 0,
+   "backSteps": 0,
+   "clockAtHold": 255
+  },
+  {
+   "framesIntoEase": 3,
+   "untilFound": 6,
+   "stepBefore": 0.8741,
+   "stepAfter": 0.1009,
+   "ratio": 8.663,
+   "speedAfter": 0.5,
+   "holdReachedAfterFrames": 54,
+   "stepsGrowingBeforeHold": 0,
+   "backSteps": 0,
+   "clockAtHold": 255
+  },
+  {
+   "framesIntoEase": 6,
+   "untilFound": 6,
+   "stepBefore": 0.5185,
+   "stepAfter": 0.0565,
+   "ratio": 9.177,
+   "speedAfter": 0.5,
+   "holdReachedAfterFrames": 30,
+   "stepsGrowingBeforeHold": 0,
+   "backSteps": 0,
+   "clockAtHold": 255
+  },
+  {
+   "framesIntoEase": 10,
+   "untilFound": 6,
+   "stepBefore": 0.0454,
+   "stepAfter": 0,
+   "ratio": null,
+   "speedAfter": 0.5,
+   "holdReachedAfterFrames": 0,
+   "stepsGrowingBeforeHold": 0,
+   "backSteps": 0,
+   "clockAtHold": 255
+  },
+  {
+   "framesIntoEase": 15,
+   "untilFound": 6,
+   "stepBefore": 0,
+   "stepAfter": 0,
+   "ratio": null,
+   "speedAfter": 0.5,
+   "holdReachedAfterFrames": 0,
+   "stepsGrowingBeforeHold": 0,
+   "backSteps": 0,
+   "clockAtHold": 255
+  }
+ ],
+ "md5": "8c0d383eb45a6f2a5522d04863824b7b"
+}

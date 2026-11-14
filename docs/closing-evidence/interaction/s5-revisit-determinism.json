@@ -1,0 +1,3319 @@
+{
+ "name": "s5-revisit-determinism",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 3037848,
+  "md5": "8c0d383eb45a6f2a5522d04863824b7b"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-13T23:23:30.643Z",
+ "opts": {
+  "viewport": [
+   1280,
+   720
+  ],
+  "page": "visitor"
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1280,
+    720
+   ],
+   "o": {},
+   "bootMs": 30091
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card; settle",
+   "at": 30375,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 21,
+     "dropped": 10
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.18,
+      65.63
+     ],
+     "tgt": [
+      -38.81,
+      0.51,
+      4.04
+     ]
+    }
+   },
+   "log": [],
+   "ms": 151
+  },
+  {
+   "page": 0,
+   "label": "fresh path: set up focus on the rail; PageDown (07:00); settle",
+   "at": 30533,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 34,
+     "dropped": 20
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -167,
+      64.4,
+      162
+     ],
+     "tgt": [
+      -55,
+      6.23,
+      62
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s5-revisit-determinism-A-0700-dom.jpg",
+   "log": [],
+   "ms": 13638
+  },
+  {
+   "page": 0,
+   "label": "End (18:00), settle; drag the rail to 16:00; settle",
+   "at": 44177,
+   "s": {
+    "clock": 960,
+    "clockText": "15:59",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 21,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 8,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · Augezd, the ponds and the ice",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "14:30 - 17:00. The Collapse: Augezd, the ponds and the ice.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 20,
+     "dropped": 4
+    },
+    "overlays": 29,
+    "drawon": [
+     0.6,
+     0.6
+    ],
+    "smoke": 8,
+    "blocks": 32,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Augezd, the ponds and the ice",
+    "cam": {
+     "pos": [
+      -122,
+      95.08,
+      2
+     ],
+     "tgt": [
+      -18,
+      4.25,
+      68
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1522
+  },
+  {
+   "page": 0,
+   "label": "path B: Home then PageDown (07:00); settle",
+   "at": 45740,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 37,
+     "dropped": 17
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -167,
+      64.4,
+      162
+     ],
+     "tgt": [
+      -55,
+      6.23,
+      62
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s5-revisit-determinism-B-0700-dom.jpg",
+   "log": [],
+   "ms": 1513
+  },
+  {
+   "page": 0,
+   "label": "Shift+ArrowRight x9 (16:00); settle",
+   "at": 47264,
+   "s": {
+    "clock": 960,
+    "clockText": "16:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 20,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 8,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE COLLAPSE · Augezd, the ponds and the ice",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 0.94,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "14:30 - 17:00. The Collapse: Augezd, the ponds and the ice.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 20,
+     "dropped": 4
+    },
+    "overlays": 29,
+    "drawon": [
+     0.6,
+     0.6
+    ],
+    "smoke": 8,
+    "blocks": 32,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Augezd, the ponds and the ice",
+    "cam": {
+     "pos": [
+      -122,
+      95.08,
+      2
+     ],
+     "tgt": [
+      -18,
+      4.25,
+      68
+     ]
+    }
+   },
+   "log": [],
+   "ms": 815
+  },
+  {
+   "page": 0,
+   "label": "path C: Shift+ArrowLeft x9 straight back to 07:00; settle",
+   "at": 48086,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 4,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 36,
+     "dropped": 18
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -167,
+      64.4,
+      162
+     ],
+     "tgt": [
+      -55,
+      6.23,
+      62
+     ]
+    }
+   },
+   "log": [],
+   "ms": 667
+  },
+  {
+   "page": 0,
+   "label": "path D: drag the rail from 07:00 to 17:00, release, and drag it back to 07:00; then set up focus on the rail and Home, PageDown (exact 07:00); settle",
+   "at": 48757,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 34,
+     "dropped": 20
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -167,
+      64.4,
+      162
+     ],
+     "tgt": [
+      -55,
+      6.23,
+      62
+     ]
+    }
+   },
+   "log": [],
+   "ms": 2817
+  },
+  {
+   "page": 0,
+   "label": "path E: the event key ',' from 16:00 (Shift+ArrowRight x9 first) until the clock is at or before 07:00, then PageDown/PageUp to 07:00; settle",
+   "at": 51577,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 4,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 18,
+     "dropped": 3
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -143.08,
+      72.37,
+      4.7
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1508
+  },
+  {
+   "page": 0,
+   "label": "path F: Home; the pointer moved off the timeline (its tip hidden); click Play; frames until the 07:00 dwell's hold; click Pause",
+   "at": 53088,
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0.1,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 18,
+     "dropped": 3
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -143.08,
+      72.37,
+      4.7
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 8530
+  },
+  {
+   "page": 0,
+   "label": "path G: Home (04:00) after the later states; settle",
+   "at": 61769,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 68,
+     "placed": 19,
+     "dropped": 4
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -143.08,
+      72.37,
+      4.7
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 766
+  },
+  {
+   "page": 0,
+   "label": "09:20 from 08:00: set up focus on the rail; Home; Shift+ArrowRight x4; ArrowRight x8; settle",
+   "at": 62595,
+   "s": {
+    "clock": 560,
+    "clockText": "09:20",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 7,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about · derived on the heights: Allied ≈ 20,365 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 0,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 64,
+     "placed": 16,
+     "dropped": 4
+    },
+    "overlays": 20,
+    "drawon": [
+     1,
+     1,
+     0.667
+    ],
+    "smoke": 9,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -143.08,
+      72.37,
+      4.7
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 321
+  },
+  {
+   "page": 0,
+   "label": "09:20 from 12:00: Shift+ArrowRight x3 (12:20), settle, then Shift+ArrowLeft x3 (09:20); settle",
+   "at": 62932,
+   "s": {
+    "clock": 560,
+    "clockText": "09:20",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 10,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 3,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about · derived on the heights: Allied ≈ 20,365 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      650,
+      55,
+      931,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 64,
+     "placed": 16,
+     "dropped": 4
+    },
+    "overlays": 20,
+    "drawon": [
+     1,
+     1,
+     0.667
+    ],
+    "smoke": 9,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Soult storms the heights",
+    "cam": {
+     "pos": [
+      -143.08,
+      72.37,
+      4.7
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 805
+  }
+ ],
+ "checks": [
+  {
+   "id": "same-A0700-B0700",
+   "ok": true,
+   "expected": "07:00 fresh vs after 18:00 and 16:00 (Home, PageDown): the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+   "observed": {
+    "clocks": [
+     420,
+     420
+    ],
+    "differs": [],
+    "camDiffers": false,
+    "fogDiffers": false,
+    "mlDiffers": 17,
+    "detail": []
+   }
+  },
+  {
+   "id": "same-A0700-C0700",
+   "ok": true,
+   "expected": "07:00 fresh vs straight back from 16:00 by Shift+ArrowLeft: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+   "observed": {
+    "clocks": [
+     420,
+     420
+    ],
+    "differs": [],
+    "camDiffers": false,
+    "fogDiffers": false,
+    "mlDiffers": 20,
+    "detail": []
+   }
+  },
+  {
+   "id": "same-A0700-D0700",
+   "ok": true,
+   "expected": "07:00 fresh vs after a drag to 17:00 and back: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+   "observed": {
+    "clocks": [
+     420,
+     420
+    ],
+    "differs": [],
+    "camDiffers": false,
+    "fogDiffers": false,
+    "mlDiffers": 17,
+    "detail": []
+   }
+  },
+  {
+   "id": "same-A0700-E0700",
+   "ok": true,
+   "expected": "07:00 fresh vs back by the event keys: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+   "observed": {
+    "clocks": [
+     420,
+     420
+    ],
+    "differs": [],
+    "camDiffers": true,
+    "fogDiffers": true,
+    "mlDiffers": 42,
+    "detail": []
+   }
+  },
+  {
+   "id": "same-A0700-F0700",
+   "ok": false,
+   "expected": "07:00 by a seek vs by Play (paused in the dwell): the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+   "observed": {
+    "clocks": [
+     420,
+     420
+    ],
+    "differs": [
+     "units"
+    ],
+    "camDiffers": true,
+    "fogDiffers": true,
+    "mlDiffers": 42,
+    "detail": [
+     {
+      "k": "units",
+      "n": 26,
+      "first": [
+       {
+        "id": "gqg",
+        "a": "1,-81.5,2.94,-58,1,1.25,0,0",
+        "b": "1,-81.5,2.94,-58,0.86,1.25,0,0"
+       },
+       {
+        "id": "sthilaire",
+        "a": "1,-67.62,-1.82,-10.75,1,1.25,0,0",
+        "b": "1,-67.62,-1.82,-10.75,1.3,1.25,0,0"
+       },
+       {
+        "id": "vandamme",
+        "a": "1,-60,-0.9,-35.37,1.12,1.25,0,0",
+        "b": "1,-60,-0.9,-35.37,0.85,1.25,0,0"
+       },
+       {
+        "id": "legrand",
+        "a": "1,-64.5,-2.28,64.5,0.92,1.25,1,0",
+        "b": "1,-64.5,-2.28,64.5,0.81,1.25,1,0"
+       },
+       {
+        "id": "kellermann",
+        "a": "1,-39.31,-0.2,-57.73,0.54,1.25,0,1",
+        "b": "1,-39.31,-0.2,-57.73,0.47,1.25,0,1"
+       },
+       {
+        "id": "nansouty",
+        "a": "1,-47.12,-0.97,-54.15,0.7,1.25,0,1",
+        "b": "1,-47.12,-0.97,-54.15,0.64,1.25,0,1"
+       },
+       {
+        "id": "dhautpoul",
+        "a": "1,-54.73,-0.46,-49.92,0.84,1.25,0,1",
+        "b": "1,-54.73,-0.46,-49.92,0.77,1.25,0,1"
+       },
+       {
+        "id": "walther",
+        "a": "1,-60.27,0.61,-61.81,0.78,1.25,0,1",
+        "b": "1,-60.27,0.61,-61.81,0.74,1.25,0,1"
+       },
+       {
+        "id": "rivaud",
+        "a": "1,-75.5,0.15,-43,1.14,1.25,0,0",
+        "b": "1,-75.5,0.15,-43,0.95,1.25,0,0"
+       },
+       {
+        "id": "drouet",
+        "a": "1,-80.5,0.25,-36.5,1.13,1.25,0,0",
+        "b": "1,-80.5,0.25,-36.5,1.06,1.25,0,0"
+       },
+       {
+        "id": "guard_inf",
+        "a": "1,-76.5,0.16,-50.5,1.05,1.25,0,0",
+        "b": "1,-76.5,0.16,-50.5,0.88,1.25,0,0"
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "same-fresh0400-G0400",
+   "ok": true,
+   "expected": "04:00 fresh vs Home after the later states: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+   "observed": {
+    "clocks": [
+     240,
+     240
+    ],
+    "differs": [],
+    "camDiffers": true,
+    "fogDiffers": true,
+    "mlDiffers": 37,
+    "detail": []
+   }
+  },
+  {
+   "id": "same-H0920a-H0920b",
+   "ok": true,
+   "expected": "09:20 from before vs from after: the frame's state the same by both paths (the map layer's placements and the camera compared apart)",
+   "observed": {
+    "clocks": [
+     560,
+     560
+    ],
+    "differs": [],
+    "camDiffers": false,
+    "fogDiffers": false,
+    "mlDiffers": 0,
+    "detail": []
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/interaction/s5-revisit-determinism-A-0700-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s5-revisit-determinism-B-0700-dom.jpg"
+ ],
+ "notes": [],
+ "b1600clock": 960,
+ "f0700clock": 420,
+ "diff_A0700_B0700": [
+  {
+   "k": "cam",
+   "a": {
+    "kind": "land",
+    "pos": [
+     -167,
+     64.40321291999092,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.228534862993703,
+     62
+    ]
+   },
+   "b": {
+    "kind": "land",
+    "pos": [
+     -167,
+     64.40321291999092,
+     161.99999999999997
+    ],
+    "tgt": [
+     -55,
+     6.228534862993703,
+     62
+    ]
+   }
+  },
+  {
+   "k": "ml",
+   "n": 17,
+   "first": [
+    {
+     "key": "n:lich",
+     "a": "Fifth Column (cavalry)B|567 117 742 134|1.00",
+     "b": "Fifth Column (cavalry)B|567 65 742 82|1.00"
+    },
+    {
+     "key": "n:bag",
+     "a": "Advance Guard of the RightB|315 118 516 135|1.00",
+     "b": "Advance Guard of the RightB|418 118 619 135|1.00"
+    },
+    {
+     "key": "o:Telnitz",
+     "a": "Telnitz|831 448 879 465|1.00",
+     "b": "Telnitz|855 418 903 435|1.00"
+    },
+    {
+     "key": "t:goldbach",
+     "a": "Goldbach stream|518 306 626 322|1.00",
+     "b": null
+    },
+    {
+     "key": "n:suchet",
+     "a": "SuchetB|313 150 395 167|1.00",
+     "b": "SuchetB|339 195 421 212|1.00"
+    },
+    {
+     "key": "n:walther",
+     "a": "Walther's DragoonsC|415 155 569 172|1.00",
+     "b": "Walther's DragoonsC|309 339 463 356|1.00"
+    },
+    {
+     "key": "n:rivaud",
+     "a": "RivaudB|353 356 438 373|1.00",
+     "b": "RivaudB|313 309 398 326|1.00"
+    },
+    {
+     "key": "n:drouet",
+     "a": "Drouet d'ErlonB|331 320 460 337|1.00",
+     "b": "Drouet d'ErlonB|331 153 460 170|1.00"
+    },
+    {
+     "key": "n:prz",
+     "a": "Third Column|615 254 719 271|1.00",
+     "b": "Third Column|662 117 766 134|1.00"
+    },
+    {
+     "key": "n:milo",
+     "a": "Miloradovich's RussiansB|575 80 755 97|1.00",
+     "b": "Miloradovich's RussiansB|540 282 720 299|1.00"
+    },
+    {
+     "key": "n:kollo",
+     "a": "Kollowrat's Austrians|701 50 844 67|1.00",
+     "b": "Kollowrat's Austrians|626 330 769 347|1.00"
+    },
+    {
+     "key": "n:rg_inf",
+     "a": "Guard InfantryC|769 125 898 142|1.00",
+     "b": "Guard InfantryC|686 94 815 111|1.00"
+    }
+   ]
+  }
+ ],
+ "diff_A0700_C0700": [
+  {
+   "k": "cam",
+   "a": {
+    "kind": "land",
+    "pos": [
+     -167,
+     64.40321291999092,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.228534862993703,
+     62
+    ]
+   },
+   "b": {
+    "kind": "land",
+    "pos": [
+     -167,
+     64.40321291999092,
+     161.99999999999997
+    ],
+    "tgt": [
+     -55,
+     6.228534862993703,
+     62
+    ]
+   }
+  },
+  {
+   "k": "ml",
+   "n": 20,
+   "first": [
+    {
+     "key": "n:lich",
+     "a": "Fifth Column (cavalry)B|567 117 742 134|1.00",
+     "b": "Fifth Column (cavalry)B|423 144 598 161|1.00"
+    },
+    {
+     "key": "n:bag",
+     "a": "Advance Guard of the RightB|315 118 516 135|1.00",
+     "b": "Advance Guard of the RightB|418 118 619 135|1.00"
+    },
+    {
+     "key": "p:plateau",
+     "a": "THE PRATZEN · derived: Allied ≈ 40,915|349 215 591 232|1.00",
+     "b": "THE PRATZEN · derived: Allied ≈ 40,915|344 202 586 219|1.00"
+    },
+    {
+     "key": "o:French line on the Goldbach",
+     "a": "French line on the Goldbach|336 247 503 264|1.00",
+     "b": "French line on the Goldbach|319 232 486 249|1.00"
+    },
+    {
+     "key": "o:Telnitz",
+     "a": "Telnitz|831 448 879 465|1.00",
+     "b": "Telnitz|813 444 861 461|1.00"
+    },
+    {
+     "key": "n:sthilaire",
+     "a": "Saint-HilaireB|390 289 505 306|1.00",
+     "b": "Saint-HilaireB|451 259 566 276|1.00"
+    },
+    {
+     "key": "n:vandamme",
+     "a": "VandammeC|360 268 468 285|1.00",
+     "b": "VandammeC|394 305 502 322|1.00"
+    },
+    {
+     "key": "n:legrand",
+     "a": "Legrand|722 353 792 370|1.00",
+     "b": "Legrand|685 353 755 370|1.00"
+    },
+    {
+     "key": "n:kellermann",
+     "a": "Kellermann's Light CavalryB|345 93 542 110|1.00",
+     "b": "Kellermann's Light CavalryB|345 65 542 82|1.00"
+    },
+    {
+     "key": "n:walther",
+     "a": "Walther's DragoonsC|415 155 569 172|1.00",
+     "b": "Walther's DragoonsC|315 85 469 102|1.00"
+    },
+    {
+     "key": "n:rivaud",
+     "a": "RivaudB|353 356 438 373|1.00",
+     "b": "RivaudB|324 117 409 134|1.00"
+    },
+    {
+     "key": "n:drouet",
+     "a": "Drouet d'ErlonB|331 320 460 337|1.00",
+     "b": "Drouet d'ErlonB|353 343 482 360|1.00"
+    }
+   ]
+  }
+ ],
+ "diff_A0700_D0700": [
+  {
+   "k": "cam",
+   "a": {
+    "kind": "land",
+    "pos": [
+     -167,
+     64.40321291999092,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.228534862993703,
+     62
+    ]
+   },
+   "b": {
+    "kind": "land",
+    "pos": [
+     -167,
+     64.40321291999092,
+     161.99999999999997
+    ],
+    "tgt": [
+     -55,
+     6.228534862993703,
+     62
+    ]
+   }
+  },
+  {
+   "k": "ml",
+   "n": 17,
+   "first": [
+    {
+     "key": "n:lich",
+     "a": "Fifth Column (cavalry)B|567 117 742 134|1.00",
+     "b": "Fifth Column (cavalry)B|423 144 598 161|1.00"
+    },
+    {
+     "key": "n:bag",
+     "a": "Advance Guard of the RightB|315 118 516 135|1.00",
+     "b": "Advance Guard of the RightB|418 118 619 135|1.00"
+    },
+    {
+     "key": "p:plateau",
+     "a": "THE PRATZEN · derived: Allied ≈ 40,915|349 215 591 232|1.00",
+     "b": "THE PRATZEN · derived: Allied ≈ 40,915|344 202 586 219|1.00"
+    },
+    {
+     "key": "o:French line on the Goldbach",
+     "a": "French line on the Goldbach|336 247 503 264|1.00",
+     "b": "French line on the Goldbach|319 232 486 249|1.00"
+    },
+    {
+     "key": "o:Telnitz",
+     "a": "Telnitz|831 448 879 465|1.00",
+     "b": "Telnitz|813 444 861 461|1.00"
+    },
+    {
+     "key": "n:sthilaire",
+     "a": "Saint-HilaireB|390 289 505 306|1.00",
+     "b": "Saint-HilaireB|451 259 566 276|1.00"
+    },
+    {
+     "key": "n:vandamme",
+     "a": "VandammeC|360 268 468 285|1.00",
+     "b": "VandammeC|394 305 502 322|1.00"
+    },
+    {
+     "key": "n:legrand",
+     "a": "Legrand|722 353 792 370|1.00",
+     "b": "Legrand|685 353 755 370|1.00"
+    },
+    {
+     "key": "n:walther",
+     "a": "Walther's DragoonsC|415 155 569 172|1.00",
+     "b": null
+    },
+    {
+     "key": "n:rivaud",
+     "a": "RivaudB|353 356 438 373|1.00",
+     "b": "RivaudB|325 272 410 289|1.00"
+    },
+    {
+     "key": "n:drouet",
+     "a": "Drouet d'ErlonB|331 320 460 337|1.00",
+     "b": "Drouet d'ErlonB|353 343 482 360|1.00"
+    },
+    {
+     "key": "n:dok",
+     "a": "First Column|790 304 887 321|1.00",
+     "b": "First Column|791 229 888 246|1.00"
+    }
+   ]
+  }
+ ],
+ "diff_A0700_E0700": [
+  {
+   "k": "fog",
+   "a": {
+    "uAtmoA": "4,243.1,63.1977,161.0226",
+    "uAtmoB": "0.0062,400,200,1",
+    "uAtmoC": "238.204,6,1.2361,0.55",
+    "uAtmoV": "0.1965,0.1954,0.1898"
+   },
+   "b": {
+    "uAtmoA": "4,243.1,63.1977,112",
+    "uAtmoB": "0.0062,400,200,1",
+    "uAtmoC": "238.204,6,1.2361,0.55",
+    "uAtmoV": "0.1965,0.1954,0.1898"
+   }
+  },
+  {
+   "k": "cam",
+   "a": {
+    "kind": "land",
+    "pos": [
+     -167,
+     64.40321291999092,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.228534862993703,
+     62
+    ]
+   },
+   "b": {
+    "kind": "land",
+    "pos": [
+     -143.0846057725948,
+     72.36609017352947,
+     4.704325877551085
+    ],
+    "tgt": [
+     -81.5,
+     2.9434436662407957,
+     -58
+    ]
+   }
+  },
+  {
+   "k": "ml",
+   "n": 42,
+   "first": [
+    {
+     "key": "n:ahq",
+     "a": "Allied HeadquartersB|617 150 776 167|1.00",
+     "b": null
+    },
+    {
+     "key": "n:buxhowden",
+     "a": "Left Wing CommandC|735 248 898 265|1.00",
+     "b": null
+    },
+    {
+     "key": "n:lich",
+     "a": "Fifth Column (cavalry)B|567 117 742 134|1.00",
+     "b": null
+    },
+    {
+     "key": "n:bag",
+     "a": "Advance Guard of the RightB|315 118 516 135|1.00",
+     "b": null
+    },
+    {
+     "key": "p:plateau",
+     "a": "THE PRATZEN · derived: Allied ≈ 40,915|349 215 591 232|1.00",
+     "b": null
+    },
+    {
+     "key": "o:French line on the Goldbach",
+     "a": "French line on the Goldbach|336 247 503 264|1.00",
+     "b": "French line on the Goldbach|902 228 1069 245|1.00"
+    },
+    {
+     "key": "o:Telnitz",
+     "a": "Telnitz|831 448 879 465|1.00",
+     "b": null
+    },
+    {
+     "key": "t:goldbach",
+     "a": "Goldbach stream|518 306 626 322|1.00",
+     "b": null
+    },
+    {
+     "key": "t:augezd",
+     "a": "Augezd|919 309 974 325|1.00",
+     "b": null
+    },
+    {
+     "key": "t:satschan",
+     "a": "Satschan mere|995 381 1090 397|1.00",
+     "b": null
+    },
+    {
+     "key": "e:columns-move",
+     "a": "The Allied columns begin to leave the plateau (hour disputed|708 202 1070 219|1.00",
+     "b": null
+    },
+    {
+     "key": "e:counter-march",
+     "a": "Liechtenstein counter-marches across the 4th Column (hour di|459 177 861 194|1.00",
+     "b": null
+    }
+   ]
+  }
+ ],
+ "diff_A0700_F0700": [
+  {
+   "k": "fog",
+   "a": {
+    "uAtmoA": "4,243.1,63.1977,161.0226",
+    "uAtmoB": "0.0062,400,200,1",
+    "uAtmoC": "238.204,6,1.2361,0.55",
+    "uAtmoV": "0.1965,0.1954,0.1898"
+   },
+   "b": {
+    "uAtmoA": "4,243.1,63.1977,112",
+    "uAtmoB": "0.0062,400,200,1",
+    "uAtmoC": "238.204,6,1.2361,0.55",
+    "uAtmoV": "0.1965,0.1954,0.1898"
+   }
+  },
+  {
+   "k": "cam",
+   "a": {
+    "kind": "land",
+    "pos": [
+     -167,
+     64.40321291999092,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.228534862993703,
+     62
+    ]
+   },
+   "b": {
+    "kind": "land",
+    "pos": [
+     -143.0846057725948,
+     72.36609017352947,
+     4.704325877551085
+    ],
+    "tgt": [
+     -81.5,
+     2.9434436662407957,
+     -58
+    ]
+   }
+  },
+  {
+   "k": "units",
+   "n": 26,
+   "first": [
+    {
+     "id": "gqg",
+     "a": "1,-81.5,2.94,-58,1,1.25,0,0",
+     "b": "1,-81.5,2.94,-58,0.86,1.25,0,0"
+    },
+    {
+     "id": "sthilaire",
+     "a": "1,-67.62,-1.82,-10.75,1,1.25,0,0",
+     "b": "1,-67.62,-1.82,-10.75,1.3,1.25,0,0"
+    },
+    {
+     "id": "vandamme",
+     "a": "1,-60,-0.9,-35.37,1.12,1.25,0,0",
+     "b": "1,-60,-0.9,-35.37,0.85,1.25,0,0"
+    },
+    {
+     "id": "legrand",
+     "a": "1,-64.5,-2.28,64.5,0.92,1.25,1,0",
+     "b": "1,-64.5,-2.28,64.5,0.81,1.25,1,0"
+    },
+    {
+     "id": "kellermann",
+     "a": "1,-39.31,-0.2,-57.73,0.54,1.25,0,1",
+     "b": "1,-39.31,-0.2,-57.73,0.47,1.25,0,1"
+    },
+    {
+     "id": "nansouty",
+     "a": "1,-47.12,-0.97,-54.15,0.7,1.25,0,1",
+     "b": "1,-47.12,-0.97,-54.15,0.64,1.25,0,1"
+    },
+    {
+     "id": "dhautpoul",
+     "a": "1,-54.73,-0.46,-49.92,0.84,1.25,0,1",
+     "b": "1,-54.73,-0.46,-49.92,0.77,1.25,0,1"
+    },
+    {
+     "id": "walther",
+     "a": "1,-60.27,0.61,-61.81,0.78,1.25,0,1",
+     "b": "1,-60.27,0.61,-61.81,0.74,1.25,0,1"
+    },
+    {
+     "id": "rivaud",
+     "a": "1,-75.5,0.15,-43,1.14,1.25,0,0",
+     "b": "1,-75.5,0.15,-43,0.95,1.25,0,0"
+    },
+    {
+     "id": "drouet",
+     "a": "1,-80.5,0.25,-36.5,1.13,1.25,0,0",
+     "b": "1,-80.5,0.25,-36.5,1.06,1.25,0,0"
+    },
+    {
+     "id": "guard_inf",
+     "a": "1,-76.5,0.16,-50.5,1.05,1.25,0,0",
+     "b": "1,-76.5,0.16,-50.5,0.88,1.25,0,0"
+    }
+   ]
+  },
+  {
+   "k": "ml",
+   "n": 42,
+   "first": [
+    {
+     "key": "n:ahq",
+     "a": "Allied HeadquartersB|617 150 776 167|1.00",
+     "b": null
+    },
+    {
+     "key": "n:buxhowden",
+     "a": "Left Wing CommandC|735 248 898 265|1.00",
+     "b": null
+    },
+    {
+     "key": "n:lich",
+     "a": "Fifth Column (cavalry)B|567 117 742 134|1.00",
+     "b": null
+    },
+    {
+     "key": "n:bag",
+     "a": "Advance Guard of the RightB|315 118 516 135|1.00",
+     "b": null
+    },
+    {
+     "key": "p:plateau",
+     "a": "THE PRATZEN · derived: Allied ≈ 40,915|349 215 591 232|1.00",
+     "b": null
+    },
+    {
+     "key": "o:French line on the Goldbach",
+     "a": "French line on the Goldbach|336 247 503 264|1.00",
+     "b": "French line on the Goldbach|902 228 1069 245|1.00"
+    },
+    {
+     "key": "o:Telnitz",
+     "a": "Telnitz|831 448 879 465|1.00",
+     "b": null
+    },
+    {
+     "key": "t:goldbach",
+     "a": "Goldbach stream|518 306 626 322|1.00",
+     "b": null
+    },
+    {
+     "key": "t:augezd",
+     "a": "Augezd|919 309 974 325|1.00",
+     "b": null
+    },
+    {
+     "key": "t:satschan",
+     "a": "Satschan mere|995 381 1090 397|1.00",
+     "b": null
+    },
+    {
+     "key": "e:columns-move",
+     "a": "The Allied columns begin to leave the plateau (hour disputed|708 202 1070 219|1.00",
+     "b": null
+    },
+    {
+     "key": "e:counter-march",
+     "a": "Liechtenstein counter-marches across the 4th Column (hour di|459 177 861 194|1.00",
+     "b": null
+    }
+   ]
+  }
+ ],
+ "diff_fresh0400_G0400": [
+  {
+   "k": "fog",
+   "a": {
+    "uAtmoA": "4,243.1,63.1977,526.286",
+    "uAtmoB": "0.0062,400,200,1",
+    "uAtmoC": "238.204,6,1.2361,0.55",
+    "uAtmoV": "0.0482,0.0648,0.0844"
+   },
+   "b": {
+    "uAtmoA": "4,243.1,63.1977,112",
+    "uAtmoB": "0.0062,400,200,1",
+    "uAtmoC": "238.204,6,1.2361,0.55",
+    "uAtmoV": "0.0482,0.0648,0.0844"
+   }
+  },
+  {
+   "k": "cam",
+   "a": {
+    "kind": "land",
+    "pos": [
+     -38.810594904704466,
+     523.1762313265032,
+     65.63379555809752
+    ],
+    "tgt": [
+     -38.810594904704466,
+     0.5072860934964555,
+     4.036984703568464
+    ]
+   },
+   "b": {
+    "kind": "land",
+    "pos": [
+     -143.0846057725948,
+     72.36609017352947,
+     4.704325877551085
+    ],
+    "tgt": [
+     -81.5,
+     2.9434436662407957,
+     -58
+    ]
+   }
+  },
+  {
+   "k": "ml",
+   "n": 37,
+   "first": [
+    {
+     "key": "n:gqg",
+     "a": "Imperial HeadquartersB|615 169 786 186|1.00",
+     "b": "Imperial HeadquartersB|615 267 786 284|1.00"
+    },
+    {
+     "key": "n:ahq",
+     "a": "Allied HeadquartersB|858 199 1017 216|1.00",
+     "b": null
+    },
+    {
+     "key": "n:buxhowden",
+     "a": "Left Wing CommandC|815 456 978 473|1.00",
+     "b": null
+    },
+    {
+     "key": "n:lich",
+     "a": "Fifth Column (cavalry)B|646 300 821 317|1.00",
+     "b": null
+    },
+    {
+     "key": "n:bag",
+     "a": "Advance Guard of the RightB|778 120 979 137|1.00",
+     "b": null
+    },
+    {
+     "key": "e:raigern",
+     "a": "Friant's division at Raigern since the night (interval)|380 565 680 582|1.00",
+     "b": null
+    },
+    {
+     "key": "p:plateau",
+     "a": "THE PRATZEN · derived: Allied ≈ 40,915|703 250 945 267|1.00",
+     "b": null
+    },
+    {
+     "key": "o:French line on the Goldbach",
+     "a": "French line on the Goldbach|678 195 845 212|1.00",
+     "b": "French line on the Goldbach|902 228 1069 245|1.00"
+    },
+    {
+     "key": "o:Allied columns on the plateau",
+     "a": "Allied columns on the plateau|852 283 1031 300|1.00",
+     "b": null
+    },
+    {
+     "key": "o:V Corps · IV Corps",
+     "a": "V Corps · IV Corps|671 224 787 241|1.00",
+     "b": "V Corps · IV Corps|842 279 958 296|1.00"
+    },
+    {
+     "key": "o:Soult's assault · Legrand",
+     "a": "Soult's assault · Legrand|558 322 704 339|1.00",
+     "b": null
+    },
+    {
+     "key": "o:I Column → Telnitz",
+     "a": "I Column → Telnitz|795 425 914 442|1.00",
+     "b": null
+    }
+   ]
+  }
+ ],
+ "diff_H0920a_H0920b": [],
+ "fp": {
+  "A0700": {
+   "clock": 420,
+   "phase": 1,
+   "units": {
+    "gqg": "1,-81.5,2.94,-58,1,1.25,0,0",
+    "heightguns": "0,0,0,0,0,1.25,0,0",
+    "sthilaire": "1,-67.62,-1.82,-10.75,1,1.25,0,0",
+    "vandamme": "1,-60,-0.9,-35.37,1.12,1.25,0,0",
+    "legrand": "1,-64.5,-2.28,64.5,0.92,1.25,1,0",
+    "friant": "1,-121.75,-0.81,101.25,1.03,1.25,0,0",
+    "bourcier": "1,-115.8,-0.89,101.1,1.17,1.25,0,1",
+    "caffarelli": "1,-50,-0.33,-67.5,1.13,1.25,0,0",
+    "suchet": "1,-52.5,0.35,-73.5,1.24,1.25,0,0",
+    "santon": "1,-59,3.34,-81.5,1.4,1.25,0,0",
+    "kellermann": "1,-39.31,-0.2,-57.73,0.54,1.25,0,1",
+    "nansouty": "1,-47.12,-0.97,-54.15,0.7,1.25,0,1",
+    "dhautpoul": "1,-54.73,-0.46,-49.92,0.84,1.25,0,1",
+    "walther": "1,-60.27,0.61,-61.81,0.78,1.25,0,1",
+    "rivaud": "1,-75.5,0.15,-43,1.14,1.25,0,0",
+    "drouet": "1,-80.5,0.25,-36.5,1.13,1.25,0,0",
+    "guard_inf": "1,-76.5,0.16,-50.5,1.05,1.25,0,0",
+    "guard_cav": "1,-69.5,0.19,-48,1.03,1.25,0,0",
+    "c_gren": "1,-82.5,0.29,-47.5,1.12,1.25,0,0",
+    "ahq": "1,-2.32,1.17,-12.74,-0.67,1.25,0,0",
+    "buxhowden": "1,-29.12,1.08,45.5,-1.08,1.25,0,0",
+    "kienmayer": "1,-52,-1.96,74,-0.91,1.25,1,0",
+    "dok": "1,-24.5,1.88,41,-0.96,1.25,0,0",
+    "lang": "1,-24.5,3.7,29,-0.82,1.25,0,0",
+    "kamensky": "0,0,0,0,0,1.25,0,0",
+    "prz": "1,-25,4.3,16,-0.94,1.25,0,0",
+    "milo": "1,-17.25,0.7,-7,-1.4,1.25,0,0",
+    "kollo": "1,-3.75,1.64,-10.87,-0.64,1.25,0,0",
+    "lich": "1,-13.37,2.22,-14.37,-0.54,1.25,0,1",
+    "bag": "1,6,1.54,-93,-0.91,1.25,0,0",
+    "rg_inf": "1,28.42,-1.06,-25.38,-1.12,1.25,0,0",
+    "rg_cav": "1,20.4,-0.56,-29.33,-1.12,1.25,0,1"
+   },
+   "ml": {
+    "n:ahq": "Allied HeadquartersB|617 150 776 167|1.00",
+    "n:buxhowden": "Left Wing CommandC|735 248 898 265|1.00",
+    "n:lich": "Fifth Column (cavalry)B|567 117 742 134|1.00",
+    "n:bag": "Advance Guard of the RightB|315 118 516 135|1.00",
+    "p:plateau": "THE PRATZEN · derived: Allied ≈ 40,915|349 215 591 232|1.00",
+    "o:French line on the Goldbach": "French line on the Goldbach|336 247 503 264|1.00",
+    "o:Telnitz": "Telnitz|831 448 879 465|1.00",
+    "t:goldbach": "Goldbach stream|518 306 626 322|1.00",
+    "t:augezd": "Augezd|919 309 974 325|1.00",
+    "t:satschan": "Satschan mere|995 381 1090 397|1.00",
+    "e:columns-move": "The Allied columns begin to leave the plateau (hour disputed|708 202 1070 219|1.00",
+    "e:counter-march": "Liechtenstein counter-marches across the 4th Column (hour di|459 177 861 194|1.00",
+    "e:telnitz": "Kienmayer attacks Telnitz (hour disputed)|586 383 835 400|1.00",
+    "o:I Column descends": "I Column descends|767 285 884 302|1.00",
+    "n:sthilaire": "Saint-HilaireB|390 289 505 306|1.00",
+    "n:vandamme": "VandammeC|360 268 468 285|1.00",
+    "n:legrand": "Legrand|722 353 792 370|1.00",
+    "n:caffarelli": "Caffarelli|341 175 416 192|1.00",
+    "n:suchet": "SuchetB|313 150 395 167|1.00",
+    "n:kellermann": "Kellermann's Light CavalryB|345 93 542 110|1.00",
+    "n:nansouty": "Nansouty's CuirassiersB|336 45 507 62|1.00",
+    "n:walther": "Walther's DragoonsC|415 155 569 172|1.00",
+    "n:rivaud": "RivaudB|353 356 438 373|1.00",
+    "n:drouet": "Drouet d'ErlonB|331 320 460 337|1.00",
+    "n:guard_cav": "Guard CavalryB|313 70 441 87|1.00",
+    "n:kienmayer": "Kienmayer's Advance Guard|865 343 1050 360|1.00",
+    "n:dok": "First Column|790 304 887 321|1.00",
+    "n:lang": "Second Column|769 222 882 239|1.00",
+    "n:prz": "Third Column|615 254 719 271|1.00",
+    "n:milo": "Miloradovich's RussiansB|575 80 755 97|1.00",
+    "n:kollo": "Kollowrat's Austrians|701 50 844 67|1.00",
+    "n:rg_inf": "Guard InfantryC|769 125 898 142|1.00",
+    "n:rg_cav": "Guard CavalryB|547 55 675 72|1.00",
+    "t:menitz": "Menitz mere|941 525 1021 541|1.00"
+   },
+   "overlays": [
+    "Mesh:1:0.475:504",
+    "Mesh:1:0.950:504",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Line:1:0.950:2",
+    "Mesh:1:0.190:20",
+    "Mesh:1:0.190:42",
+    "Mesh:1:0.236:16",
+    "Mesh:1:0.236:42",
+    "Mesh:0:0.475:45",
+    "Mesh:0:0.589:36",
+    "Mesh:1:0.190:84",
+    "Mesh:1:0.190:42",
+    "Mesh:1:0.236:63",
+    "Mesh:1:0.236:42",
+    "Mesh:0:0.475:108",
+    "Mesh:0:0.589:81",
+    "Mesh:1:0.190:308",
+    "Mesh:1:0.190:21",
+    "Mesh:1:0.236:231",
+    "Mesh:1:0.236:21",
+    "Mesh:1:0.475:336",
+    "Mesh:1:0.589:252",
+    "Sprite:1:0.950:4"
+   ],
+   "drawon": [
+    0,
+    0,
+    0.5
+   ],
+   "ovFade": [
+    1,
+    0
+   ],
+   "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+   "situation": "derived on the heights: Allied ≈ 40,915 plotted strength unchangedThe reconstruction plots formations, not losses. A holding that does not change does not mean the fighting there has stopped.The Allied columns begin to leave the plateau (the hour is disputed)Every column that goes down into the valley is a column no longer holding the centre.",
+   "dispatch": "07:00 - 08:00 / The Allied left opens the battle / Kienmayer's Austrian advance guard attacks Telnitz, the southernmost village on the Goldbach. Legrand's thin line holds the buildings and the vineyard bank above them, and the village changes hands repeatedly. Behind Kienmayer, Dokhturov's I Column is coming down off the southern end of the plateau. / c. 07:00Kienmayer's advance guard attacks Telnitz. According to Stutterheim the musket fire there grew very murderous, and the Szekler infantry regiment lost two thirds of its men, dead and wounded.c. 07:00Dokhturov's I Column leaves its camp as the disposition ordered; Kutuzov's report has it force the enemy back to Telnitz about eight, and Mikhailovsky-Danilevsky has Dokhturov begin the attack on Telnitz at half past eight. / WHAT CHANGED AT 07:00Contests Telnitz house by house against KienmayerMarching from Raigern toward TelnitzAttacks Telnitz; the village changes hands several timesLeaves its camp at seven, as the disposition ordered, and descends toward the Goldbach (Buxhowden's and Kutuzov's reports)The Santon detachment holdingSecond Column advancingThird Column advancing",
+   "clockText": "07:00",
+   "light": "{\"i\":0.404,\"c\":12889237,\"hemi\":0.562,\"fogN\":107.202,\"fogF\":668.808,\"fogC\":2566703,\"bg\":66309,\"sky\":[1516593,4280157,7040887],\"mistC\":3289392,\"disc\":0,\"grade\":[[0,0,0],[1.003,0.994,1.002],0.918,1.034,0.306,1.022],\"fill\":0.203,\"vis\":40,\"dir\":{\"x\":-0.318,\"y\":0.424,\"z\":-0.848},\"discDir\":{\"x\":0.982,\"y\":-0.125,\"z\":0.138},\"sun\":{\"alt\":-7.197,\"geo\":-7.197,\"az\":115.421,\"dec\":-21.925,\"eot\":10.443,\"am\":true}",
+   "cam": {
+    "kind": "land",
+    "pos": [
+     -167,
+     64.40321291999092,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.228534862993703,
+     62
+    ]
+   },
+   "fog": {
+    "uAtmoA": "4,243.1,63.1977,161.0226",
+    "uAtmoB": "0.0062,400,200,1",
+    "uAtmoC": "238.204,6,1.2361,0.55",
+    "uAtmoV": "0.1965,0.1954,0.1898"
+   },
+   "know": "none",
+   "sel": null,
+   "drawerLen": 0
+  },
+  "fresh0400": {
+   "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+   "dispatch": "04:00 - 07:00 / Dispositions in the dark / Napoleon has deliberately given up the Pratzen plateau and left his right, along the lower Goldbach, looking thin enough to invite attack. Weyrother's Allied orders, read out at Krzenowitz after midnight to commanders who largely did not understand them, send four of five columns south-west across the French front. Fog fills the Goldbach valley. Soult's two assault divisions are standing in it, invisible from the heights. / c. 01:00Weyrother reads the dispositions at Allied headquarters, Krzenowitz. Kutuzov reportedly dozes.c. 04:00The disposition orders the Allied columns to march at seven; Thiébault records reports through the night of the Allied left moving, judged by the noise. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column; the Materialien has it ordered off only at dawn.before dawnNapoleon mounted at one in the morning to ride round his posts (the 30th Bulletin), and Thiébault has him on horseback long before day; the dispositions called his marshals to his bivouac for half past seven. His post, 'la butte' of the orders, is taken here to be the Zuran; the map places him there from 04:00, and the hour he took post is not established. / WHAT CHANGED AT 04:00On the height of his bivouac, taken here to be the Zuran: 'la butte' of the orders of 1 December, 'the barrow by Schlapanitz' in Mikhailovsky-Danilevsky. The dispositions call his marshals to his bivouac for the morning's ordersStanding in fog behind Puntowitz, which hid it from the plateauConcealed by the fog in the valley behind GirzikowitzStrung out along the stream; skirmishing through the nightAt Raigern since the night of 1 December, 8 km south-west of Telnitz and just beyond the map edge, after about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers, a march whose figures vary between the sourcesFormed on the right of V Corps, linking toward BernadotteFormed south of the road, on its right as ordered the evening before, level with the fortified hill"
+  }
+ },
+ "snaps": {
+  "fresh0400": {
+   "clock": 240,
+   "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+   "toast": {
+    "text": "",
+    "on": false,
+    "op": 0,
+    "box": [
+     771,
+     26,
+     809,
+     44
+    ],
+    "timer": false
+   },
+   "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+   "cam": {
+    "pos": [
+     -38.81,
+     523.18,
+     65.63
+    ],
+    "tgt": [
+     -38.81,
+     0.51,
+     4.04
+    ]
+   },
+   "ml": {
+    "items": 31,
+    "placed": 21,
+    "dropped": 10
+   },
+   "drawon": [
+    0
+   ],
+   "smoke": 0,
+   "blocks": 30,
+   "overlays": 63
+  },
+  "A0700": {
+   "clock": 420,
+   "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+   "toast": {
+    "text": "",
+    "on": false,
+    "op": 0,
+    "box": [
+     771,
+     26,
+     809,
+     44
+    ],
+    "timer": false
+   },
+   "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+   "cam": {
+    "pos": [
+     -167,
+     64.4,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.23,
+     62
+    ]
+   },
+   "ml": {
+    "items": 63,
+    "placed": 34,
+    "dropped": 20
+   },
+   "drawon": [
+    0,
+    0,
+    0.5
+   ],
+   "smoke": 2,
+   "blocks": 30,
+   "overlays": 36
+  },
+  "B1600": {
+   "clock": 960,
+   "caption": "THE COLLAPSE · Augezd, the ponds and the ice",
+   "toast": {
+    "text": "",
+    "on": false,
+    "op": 0,
+    "box": [
+     771,
+     26,
+     809,
+     44
+    ],
+    "timer": false
+   },
+   "livePhase": "14:30 - 17:00. The Collapse: Augezd, the ponds and the ice.",
+   "cam": {
+    "pos": [
+     -122,
+     95.08,
+     2
+    ],
+    "tgt": [
+     -18,
+     4.25,
+     68
+    ]
+   },
+   "ml": {
+    "items": 63,
+    "placed": 20,
+    "dropped": 4
+   },
+   "drawon": [
+    0.6,
+    0.6
+   ],
+   "smoke": 8,
+   "blocks": 32,
+   "overlays": 29
+  },
+  "B0700": {
+   "clock": 420,
+   "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+   "toast": {
+    "text": "",
+    "on": false,
+    "op": 0,
+    "box": [
+     771,
+     26,
+     809,
+     44
+    ],
+    "timer": false
+   },
+   "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+   "cam": {
+    "pos": [
+     -167,
+     64.4,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.23,
+     62
+    ]
+   },
+   "ml": {
+    "items": 63,
+    "placed": 37,
+    "dropped": 17
+   },
+   "drawon": [
+    0,
+    0,
+    0.5
+   ],
+   "smoke": 2,
+   "blocks": 30,
+   "overlays": 36
+  },
+  "C1600": {
+   "clock": 960,
+   "caption": "THE COLLAPSE · Augezd, the ponds and the ice",
+   "toast": {
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "on": true,
+    "op": 0.94,
+    "box": [
+     650,
+     55,
+     931,
+     89
+    ],
+    "timer": true
+   },
+   "livePhase": "14:30 - 17:00. The Collapse: Augezd, the ponds and the ice.",
+   "cam": {
+    "pos": [
+     -122,
+     95.08,
+     2
+    ],
+    "tgt": [
+     -18,
+     4.25,
+     68
+    ]
+   },
+   "ml": {
+    "items": 63,
+    "placed": 20,
+    "dropped": 4
+   },
+   "drawon": [
+    0.6,
+    0.6
+   ],
+   "smoke": 8,
+   "blocks": 32,
+   "overlays": 29
+  },
+  "C0700": {
+   "clock": 420,
+   "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+   "toast": {
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "on": true,
+    "op": 1,
+    "box": [
+     650,
+     55,
+     931,
+     89
+    ],
+    "timer": true
+   },
+   "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+   "cam": {
+    "pos": [
+     -167,
+     64.4,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.23,
+     62
+    ]
+   },
+   "ml": {
+    "items": 63,
+    "placed": 36,
+    "dropped": 18
+   },
+   "drawon": [
+    0,
+    0,
+    0.5
+   ],
+   "smoke": 2,
+   "blocks": 30,
+   "overlays": 36
+  },
+  "D0700": {
+   "clock": 420,
+   "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+   "toast": {
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "on": true,
+    "op": 1,
+    "box": [
+     650,
+     55,
+     931,
+     89
+    ],
+    "timer": true
+   },
+   "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+   "cam": {
+    "pos": [
+     -167,
+     64.4,
+     162
+    ],
+    "tgt": [
+     -55,
+     6.23,
+     62
+    ]
+   },
+   "ml": {
+    "items": 63,
+    "placed": 34,
+    "dropped": 20
+   },
+   "drawon": [
+    0,
+    0,
+    0.5
+   ],
+   "smoke": 2,
+   "blocks": 30,
+   "overlays": 36
+  },
+  "E0700": {
+   "clock": 420,
+   "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+   "toast": {
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "on": true,
+    "op": 1,
+    "box": [
+     650,
+     55,
+     931,
+     89
+    ],
+    "timer": true
+   },
+   "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+   "cam": {
+    "pos": [
+     -143.08,
+     72.37,
+     4.7
+    ],
+    "tgt": [
+     -81.5,
+     2.94,
+     -58
+    ]
+   },
+   "ml": {
+    "items": 63,
+    "placed": 18,
+    "dropped": 3
+   },
+   "drawon": [
+    0,
+    0,
+    0.5
+   ],
+   "smoke": 2,
+   "blocks": 30,
+   "overlays": 36
+  },
+  "F0700": {
+   "clock": 420,
+   "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+   "toast": {
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "on": false,
+    "op": 0.1,
+    "box": [
+     650,
+     55,
+     931,
+     89
+    ],
+    "timer": true
+   },
+   "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+   "cam": {
+    "pos": [
+     -143.08,
+     72.37,
+     4.7
+    ],
+    "tgt": [
+     -81.5,
+     2.94,
+     -58
+    ]
+   },
+   "ml": {
+    "items": 63,
+    "placed": 18,
+    "dropped": 3
+   },
+   "drawon": [
+    0,
+    0,
+    0.5
+   ],
+   "smoke": 2,
+   "blocks": 30,
+   "overlays": 36
+  },
+  "G0400": {
+   "clock": 240,
+   "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+   "toast": {
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "on": false,
+    "op": 0,
+    "box": [
+     650,
+     55,
+     931,
+     89
+    ],
+    "timer": true
+   },
+   "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+   "cam": {
+    "pos": [
+     -143.08,
+     72.37,
+     4.7
+    ],
+    "tgt": [
+     -81.5,
+     2.94,
+     -58
+    ]
+   },
+   "ml": {
+    "items": 68,
+    "placed": 19,
+    "dropped": 4
+   },
+   "drawon": [
+    0
+   ],
+   "smoke": 0,
+   "blocks": 30,
+   "overlays": 63
+  },
+  "H0920a": {
+   "clock": 560,
+   "caption": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about · derived on the heights: Allied ≈ 20,365 · derived centre separation detected",
+   "toast": {
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "on": true,
+    "op": 0,
+    "box": [
+     650,
+     55,
+     931,
+     89
+    ],
+    "timer": true
+   },
+   "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+   "cam": {
+    "pos": [
+     -143.08,
+     72.37,
+     4.7
+    ],
+    "tgt": [
+     -81.5,
+     2.94,
+     -58
+    ]
+   },
+   "ml": {
+    "items": 64,
+    "placed": 16,
+    "dropped": 4
+   },
+   "drawon": [
+    1,
+    1,
+    0.667
+   ],
+   "smoke": 9,
+   "blocks": 31,
+   "overlays": 20
+  },
+  "H0920b": {
+   "clock": 560,
+   "caption": "THE PRATZEN STRIKE · Soult storms the heights · reconstruction Kutuzov orders the 4th Column to face about · derived on the heights: Allied ≈ 20,365 · derived centre separation detected",
+   "toast": {
+    "text": "The sun of Austerlitz, as memoirs call it",
+    "on": true,
+    "op": 1,
+    "box": [
+     650,
+     55,
+     931,
+     89
+    ],
+    "timer": true
+   },
+   "livePhase": "08:45 - 09:30. The Pratzen Strike: Soult storms the heights.",
+   "cam": {
+    "pos": [
+     -143.08,
+     72.37,
+     4.7
+    ],
+    "tgt": [
+     -81.5,
+     2.94,
+     -58
+    ]
+   },
+   "ml": {
+    "items": 64,
+    "placed": 16,
+    "dropped": 4
+   },
+   "drawon": [
+    1,
+    1,
+    0.667
+   ],
+   "smoke": 9,
+   "blocks": 31,
+   "overlays": 20
+  }
+ },
+ "listeners": {
+  "live": 674,
+  "removed": 0,
+  "onDetached": 1,
+  "total": 675,
+  "addCalls": 675,
+  "removeCalls": 0,
+  "byTarget": {
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerdown (capture)": 6,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window click (capture)": 4,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window wheel (capture)": 2,
+   "document focusin": 1,
+   "document focusout": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 2,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail lostpointercapture": 1,
+   "#evmarks pointerdown": 1,
+   "#evmarks pointermove": 1,
+   "#evmarks pointerup": 1,
+   "#evmarks pointercancel": 1,
+   "#evmarks click (capture)": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "#tltip pointermove": 1,
+   "#tltip pointerdown": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 19,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#fr-grades click": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 3,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip pointerdown": 1,
+   "#dgrip pointerup": 1,
+   "#dgrip pointercancel": 1,
+   "#dgrip click": 1,
+   "#phasebtn click": 1,
+   "#railclose click": 1,
+   "#now-show click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 1dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 100,
+   "div.ml-item blur": 100,
+   "div.ml-item keydown": 100,
+   "div.ml-item click": 100
+  },
+  "timeouts": 1,
+  "timeoutsBy": {
+   "at flash (austerlitz-command-map.html:17382:12) 3400": 1
+  },
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 2,
+  "tSet": 14,
+  "tFired": 5,
+  "tCleared": 8,
+  "rSet": 42,
+  "rFired": 42,
+  "rCancel": 0
+ },
+ "ms": 63747,
+ "ended": "2026-11-13T23:24:34.390Z"
+}

@@ -1,0 +1,5168 @@
+{
+ "name": "s11-state-hypotheses",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 3037848,
+  "md5": "8c0d383eb45a6f2a5522d04863824b7b"
+ },
+ "browser": "Chromium 141.0.7390.37 (pinned headless shell), ANGLE on SwiftShader (software WebGL)",
+ "started": "2026-11-13T23:19:59.487Z",
+ "opts": {
+  "pages": [
+   "visitor 1600x900",
+   "touch laptop 1280x720",
+   "retina laptop 880x660 -> 1600x900"
+  ]
+ },
+ "pages": [
+  {
+   "kind": "desk",
+   "size": [
+    1600,
+    900
+   ],
+   "o": {},
+   "bootMs": 39528
+  },
+  {
+   "kind": "touch",
+   "size": [
+    1280,
+    720
+   ],
+   "o": {
+    "touch": true
+   },
+   "bootMs": 28396
+  },
+  {
+   "kind": "desk-small",
+   "size": [
+    880,
+    660
+   ],
+   "o": {
+    "dpr": 2
+   },
+   "bootMs": 18537
+  }
+ ],
+ "steps": [
+  {
+   "page": 0,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 39939,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 17,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.47,
+      61.98
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.24
+     ]
+    }
+   },
+   "log": [],
+   "ms": 55
+  },
+  {
+   "page": 0,
+   "label": "click Layers; click 'Pause briefly at events' (off); read; click it again (on); read; Esc",
+   "at": 39994,
+   "ret": {
+    "a": {
+     "on": false,
+     "pressed": "false"
+    },
+    "b": {
+     "on": true,
+     "pressed": "true"
+    }
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 17,
+     "dropped": 14
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.47,
+      61.98
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.24
+     ]
+    }
+   },
+   "log": [],
+   "ms": 19229
+  },
+  {
+   "page": 0,
+   "label": "frames until the app's loop is idle; 3 s of idle frames (the driver's clock)",
+   "at": 59223,
+   "ret": {
+    "framesToIdle": 23,
+    "state": "idle"
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 24,
+     "dropped": 7
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      490.47,
+      61.98
+     ],
+     "tgt": [
+      -38.81,
+      0.52,
+      4.24
+     ]
+    }
+   },
+   "log": [],
+   "ms": 118
+  },
+  {
+   "page": 0,
+   "label": "set up: nothing focused; Space (real key: the window's play row); 4 frames traced",
+   "at": 59341,
+   "ret": [
+    [
+     240.1667,
+     "-",
+     0.5,
+     1
+    ],
+    [
+     240.3333,
+     "-",
+     0.5,
+     1
+    ],
+    [
+     240.5,
+     "-",
+     0.5,
+     1
+    ],
+    [
+     240.6667,
+     "-",
+     0.5,
+     1
+    ]
+   ],
+   "s": {
+    "clock": 240.667,
+    "clockText": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "body",
+    "focusVisible": null,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 18,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0.003
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -69.77,
+      464.01,
+      88.74
+     ],
+     "tgt": [
+      -43.94,
+      0.54,
+      9.31
+     ]
+    }
+   },
+   "log": [],
+   "ms": 144
+  },
+  {
+   "page": 0,
+   "label": "Space (pause); frames until idle; 3 s idle; set up focus on Play; Enter (real key); 4 frames traced",
+   "at": 59486,
+   "ret": {
+    "c0": 240.66666666666674,
+    "t": [
+     [
+      240.8333,
+      "-",
+      0.5,
+      1
+     ],
+     [
+      241,
+      "-",
+      0.5,
+      1
+     ],
+     [
+      241.1667,
+      "-",
+      0.5,
+      1
+     ],
+     [
+      241.3333,
+      "-",
+      0.5,
+      1
+     ]
+    ]
+   },
+   "s": {
+    "clock": 241.333,
+    "clockText": "04:01",
+    "playing": true,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 21,
+     "dropped": 9
+    },
+    "overlays": 63,
+    "drawon": [
+     0.006
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -96.9,
+      437.37,
+      111.83
+     ],
+     "tgt": [
+      -48.84,
+      0.28,
+      14.15
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1045
+  },
+  {
+   "page": 0,
+   "label": "click 4× (wakes the loop); frames until idle; 3 s idle; Enter on the focused Play button: pause then play",
+   "at": 60531,
+   "ret": {
+    "c0": 241.33333333333326,
+    "t": [
+     [
+      242.6667,
+      "-",
+      4,
+      1
+     ],
+     [
+      244,
+      "-",
+      4,
+      1
+     ],
+     [
+      245.3333,
+      "-",
+      4,
+      1
+     ],
+     [
+      246.6667,
+      "-",
+      4,
+      1
+     ]
+    ]
+   },
+   "s": {
+    "clock": 246.667,
+    "clockText": "04:06",
+    "playing": true,
+    "speed": 4,
+    "speedPressed": "4",
+    "speedBtn": "4×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Pause/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.028
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -121.11,
+      414.96,
+      132.7
+     ],
+     "tgt": [
+      -53.49,
+      0,
+      18.84
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1121
+  },
+  {
+   "page": 0,
+   "label": "Enter (pause); click ½×",
+   "at": 61653,
+   "s": {
+    "clock": 246.667,
+    "clockText": "04:06",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "button.t[½×]",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 19,
+     "dropped": 11
+    },
+    "overlays": 63,
+    "drawon": [
+     0.028
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -121.11,
+      414.96,
+      132.7
+     ],
+     "tgt": [
+      -53.49,
+      0,
+      18.84
+     ]
+    }
+   },
+   "log": [],
+   "ms": 238
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; Home; Play (by state); frames until the ease in before 04:15; 4 frames; click Pause",
+   "at": 61891,
+   "ret": 254.38749999999774,
+   "s": {
+    "clock": 254.387,
+    "clockText": "04:14",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 20,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0.06
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -277.41,
+      166.44,
+      257.22
+     ],
+     "tgt": [
+      -96.68,
+      -0.41,
+      63.95
+     ]
+    }
+   },
+   "log": [],
+   "ms": 955
+  },
+  {
+   "page": 0,
+   "label": "'.' (the next event, real key)",
+   "at": 62846,
+   "ret": {
+    "clock": 255,
+    "sel": null
+   },
+   "s": {
+    "clock": 255,
+    "clockText": "04:15",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      931,
+      26,
+      969,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 32,
+     "placed": 20,
+     "dropped": 12
+    },
+    "overlays": 63,
+    "drawon": [
+     0.063
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -277.41,
+      166.44,
+      257.22
+     ],
+     "tgt": [
+      -96.68,
+      -0.41,
+      63.95
+     ]
+    }
+   },
+   "log": [],
+   "ms": 10
+  },
+  {
+   "page": 0,
+   "label": "Esc; set up focus on the rail; Home; Shift+ArrowRight x8 (12:00); click the Order of battle tab; click Napoleon's headquarters' row",
+   "at": 62857,
+   "ret": 720,
+   "s": {
+    "clock": 720,
+    "clockText": "12:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 12,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · interval Napoleon moves forward to Stare Vinohrady · derived on the heights: Allied ≈ 11,580 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": false,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2007,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#drawer-back",
+    "focusVisible": false,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 65,
+     "placed": 9,
+     "dropped": 1
+    },
+    "overlays": 32,
+    "drawon": [
+     0.5
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.25,
+      -9.85
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 1041
+  },
+  {
+   "page": 0,
+   "label": "Play (by state); frames until 12:37; click Pause",
+   "at": 63901,
+   "ret": {
+    "clock": 757.166666666657,
+    "phase": 6
+   },
+   "s": {
+    "clock": 757.167,
+    "clockText": "12:37",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 16,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:gqg",
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · interval Napoleon moves forward to Stare Vinohrady · derived on the heights: Allied ≈ 7,330 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2025,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 66,
+     "placed": 6,
+     "dropped": 1
+    },
+    "overlays": 32,
+    "drawon": [
+     0.913
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.25,
+      -9.85
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s11-state-hypotheses-stale-card-1237-dom.jpg",
+   "log": [],
+   "ms": 2193
+  },
+  {
+   "page": 0,
+   "label": "Esc (card closed)",
+   "at": 66099,
+   "s": {
+    "clock": 757.167,
+    "clockText": "12:37",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 16,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 6,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The Russian Guard at Stare Vinohrady · interval Napoleon moves forward to Stare Vinohrady · derived on the heights: Allied ≈ 7,330 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": true,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "11:15 - 12:45. The Army Divided: The Russian Guard at Stare Vinohrady.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": true,
+     "head": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon I",
+     "len": 2025,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 66,
+     "placed": 6,
+     "dropped": 1
+    },
+    "overlays": 32,
+    "drawon": [
+     0.913
+    ],
+    "smoke": 0,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Russian Guard at Stare Vinohrady",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.25,
+      -9.85
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 32
+  },
+  {
+   "page": 0,
+   "label": "set up focus on the rail; Home; frames until no tween; PageDown (07:00); 15 frames (0.5 s), each recorded",
+   "at": 66131,
+   "ret": [
+    {
+     "old": 0.873,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.969,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.845,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.939,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.818,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.908,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.79,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.878,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.763,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.847,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.735,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.817,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.708,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.786,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.68,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.756,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.653,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.725,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.625,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.695,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.598,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.664,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.57,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.634,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.543,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.603,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.515,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.573,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    },
+    {
+     "old": 0.488,
+     "cur": 0,
+     "oldN": 63,
+     "curN": 36,
+     "oldVisible": true,
+     "fadeOut": 0.542,
+     "fadeIn": 0,
+     "phase": 1,
+     "clock": 420,
+     "arrowsLayer": true
+    }
+   ],
+   "s": {
+    "clock": 420,
+    "clockText": "07:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 1,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 63,
+     "placed": 19,
+     "dropped": 1
+    },
+    "overlays": 36,
+    "drawon": [
+     0,
+     0,
+     0.5
+    ],
+    "smoke": 2,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.25,
+      -9.85
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s11-state-hypotheses-pop-before-second-pagedown.jpg",
+   "log": [],
+   "ms": 9199
+  },
+  {
+   "page": 0,
+   "label": "PageDown again (08:00); 1 frame; draw",
+   "at": 75330,
+   "ret": {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.969,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   "s": {
+    "clock": 480,
+    "clockText": "08:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Langeron and Przybyszewski attack Sokolnitz · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 67,
+     "placed": 18,
+     "dropped": 1
+    },
+    "overlays": 41,
+    "drawon": [
+     0,
+     0.75
+    ],
+    "smoke": 6,
+    "blocks": 31,
+    "tween": {
+     "any": true,
+     "cam": false,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.25,
+      -9.85
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s11-state-hypotheses-pop-after-second-pagedown.jpg",
+   "log": [],
+   "ms": 11973
+  },
+  {
+   "page": 0,
+   "label": "frames until no tween; click Layers; click 'Movement' (off); Esc; 5 frames",
+   "at": 87511,
+   "ret": {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   "s": {
+    "clock": 480,
+    "clockText": "08:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Langeron and Przybyszewski attack Sokolnitz · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 59,
+     "placed": 18,
+     "dropped": 1
+    },
+    "overlays": 41,
+    "drawon": [
+     0,
+     0.75
+    ],
+    "smoke": 6,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.25,
+      -9.85
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s11-state-hypotheses-arrows-off-at-0800.jpg",
+   "log": [],
+   "ms": 9302
+  },
+  {
+   "page": 0,
+   "label": "PageDown (08:45) with the Movement layer off; 1 frame; draw",
+   "at": 96813,
+   "ret": {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   "s": {
+    "clock": 480,
+    "clockText": "08:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Langeron and Przybyszewski attack Sokolnitz · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 59,
+     "placed": 18,
+     "dropped": 1
+    },
+    "overlays": 41,
+    "drawon": [
+     0,
+     0.75
+    ],
+    "smoke": 6,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.25,
+      -9.85
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s11-state-hypotheses-arrows-off-pagedown.jpg",
+   "log": [],
+   "ms": 10079
+  },
+  {
+   "page": 0,
+   "label": "click Layers; 'Movement' on again; Esc",
+   "at": 107187,
+   "s": {
+    "clock": 480,
+    "clockText": "08:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Langeron and Przybyszewski attack Sokolnitz · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#layersbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 59,
+     "placed": 18,
+     "dropped": 1
+    },
+    "overlays": 41,
+    "drawon": [
+     0,
+     0.75
+    ],
+    "smoke": 6,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.25,
+      -9.85
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 290
+  },
+  {
+   "page": 0,
+   "label": "install a measuring listener for contextmenu (records defaultPrevented after the app's own handlers); right-click on the rail at 10:00 (real mouse)",
+   "at": 107477,
+   "ret": {
+    "c0": 480,
+    "start": {
+     "x": 687.7142857142857,
+     "y": 888,
+     "dx": 0,
+     "fy": 0.5,
+     "atCentre": "b."
+    },
+    "clock": 480,
+    "ctx": [
+     {
+      "target": "",
+      "prevented": false
+     }
+    ]
+   },
+   "s": {
+    "clock": 480,
+    "clockText": "08:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 2,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · Sokolnitz, the castle and the pheasantry · hour disputed Langeron and Przybyszewski attack Sokolnitz · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "08:00 - 08:45. The Allied Advance: Sokolnitz, the castle and the pheasantry.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 59,
+     "placed": 18,
+     "dropped": 1
+    },
+    "overlays": 41,
+    "drawon": [
+     0,
+     0.75
+    ],
+    "smoke": 6,
+    "blocks": 31,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Sokolnitz, the castle and the pheasantry",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.25,
+      -9.85
+     ],
+     "tgt": [
+      -81.5,
+      2.94,
+      -58
+     ]
+    }
+   },
+   "log": [],
+   "ms": 130
+  },
+  {
+   "page": 0,
+   "label": "Esc; set up focus on the rail; Home; PageDown; ArrowRight x3 (07:30); click the Order of battle tab; click Saint-Hilaire's row; click the Eyes button twice (the Allied headquarters)",
+   "at": 107607,
+   "ret": {
+    "cv": "al",
+    "hidden": true,
+    "card": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireConcealedPosition: estimated (B, interpolated)How this is sourcedStrength≈ 6,600 men (this map's working figure)UnderNicolas Soult · IV CorpsDoing nowNot known to Allied headquarters at 07:30ObjectiveAwait the signal in the Goldbach valley Claim: This map's readingWhereNot known to Allied headquarters at 07:30Full dossier: role, movement, sourcesHow this is sourced"
+   },
+   "s": {
+    "clock": 450,
+    "clockText": "07:30",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": "f:sthilaire",
+    "commandView": "al",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": true,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1616,
+     "inert": false
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": true,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#eyesbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "rail"
+    ],
+    "ml": {
+     "items": 44,
+     "placed": 7,
+     "dropped": 0
+    },
+    "overlays": 36,
+    "drawon": [
+     0.5,
+     0.909,
+     0.625
+    ],
+    "smoke": 0,
+    "blocks": 13,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": true,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.32,
+      -9.51
+     ],
+     "tgt": [
+      -81.42,
+      2.92,
+      -57.74
+     ]
+    }
+   },
+   "shot": "docs/audit-post8-evidence/interaction/s11-state-hypotheses-card-under-allied-reading-0730-dom.jpg",
+   "log": [],
+   "ms": 1870
+  },
+  {
+   "page": 0,
+   "label": "click the Eyes button (everyone); Esc",
+   "at": 109478,
+   "s": {
+    "clock": 450,
+    "clockText": "07:30",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 3,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": true,
+    "curVantage": null,
+    "followBtn": "false",
+    "playBtn": "Play/null",
+    "curPhase": 1,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ALLIED ADVANCE · The Allied left opens the battle · hour disputed The Allied columns begin to leave the plateau · derived on the heights: Allied ≈ 21,515",
+    "capVisible": true,
+    "toast": {
+     "text": "The sun of Austerlitz, as memoirs call it",
+     "on": false,
+     "op": 0,
+     "box": [
+      810,
+      55,
+      1091,
+      89
+     ],
+     "timer": true
+    },
+    "livePhase": "07:00 - 08:00. The Allied Advance: The Allied left opens the battle.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": true,
+     "head": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-Hilaire",
+     "len": 1770,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": false,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#eyesbtn",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 44,
+     "placed": 7,
+     "dropped": 0
+    },
+    "overlays": 36,
+    "drawon": [
+     0.5,
+     0.909,
+     0.625
+    ],
+    "smoke": 0,
+    "blocks": 13,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The Allied left opens the battle",
+    "cam": {
+     "pos": [
+      -128.79,
+      56.32,
+      -9.51
+     ],
+     "tgt": [
+      -81.42,
+      2.92,
+      -57.74
+     ]
+    }
+   },
+   "log": [],
+   "ms": 213
+  },
+  {
+   "page": 1,
+   "label": "Esc closes the first-run card; 2 frames",
+   "at": 138815,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 11,
+     "dropped": 20
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.18,
+      65.63
+     ],
+     "tgt": [
+      -38.81,
+      0.51,
+      4.04
+     ]
+    }
+   },
+   "log": [],
+   "ms": 37
+  },
+  {
+   "page": 1,
+   "label": "a touch on the rail at 06:00 moved to 06:30 and ended (touchEnd); then the mouse moved along the rail 10:00-12:00 with no button",
+   "at": 138852,
+   "ret": {
+    "c0": 240,
+    "afterTouch": 389.99999853749625,
+    "afterHover": 389.99999853749625
+   },
+   "s": {
+    "clock": 390,
+    "clockText": "06:29",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 1,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 11,
+     "dropped": 20
+    },
+    "overlays": 63,
+    "drawon": [
+     0.625
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.18,
+      65.63
+     ],
+     "tgt": [
+      -38.81,
+      0.51,
+      4.04
+     ]
+    }
+   },
+   "log": [],
+   "ms": 19829
+  },
+  {
+   "page": 1,
+   "label": "a touch on the rail at 06:00 moved to 06:30 and cancelled (touchCancel: the system took the touch); then the mouse moved along the rail with no button",
+   "at": 158681,
+   "ret": {
+    "c0": 389.99999853749625,
+    "afterTouch": 389.99999853749625,
+    "afterHover": 389.99999853749625
+   },
+   "s": {
+    "clock": 390,
+    "clockText": "06:29",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · hour disputed Liechtenstein counter-marches across the 4th Column · derived on the heights: Allied ≈ 40,915 plotted strength unchanged",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 11,
+     "dropped": 20
+    },
+    "overlays": 63,
+    "drawon": [
+     0.625
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.18,
+      65.63
+     ],
+     "tgt": [
+      -38.81,
+      0.51,
+      4.04
+     ]
+    }
+   },
+   "log": [],
+   "ms": 662
+  },
+  {
+   "page": 1,
+   "label": "a mouse press on the rail, released (control): the hover after it",
+   "at": 159343,
+   "ret": {
+    "c0": 640.0000097500249,
+    "after": 640.0000097500249
+   },
+   "s": {
+    "clock": 640,
+    "clockText": "10:40",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 2,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": null,
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 5,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE ARMY DIVIDED · The northern battle decided · Langeron's reinforcements arrive as the crest is lost · derived on the heights: Allied ≈ 23,265 · derived centre separation detected",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      771,
+      26,
+      809,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "10:30 - 11:15. The Army Divided: The northern battle decided.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": false,
+     "railVisible": true,
+     "railInert": false,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": true,
+     "tab": "now",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#timerail",
+    "focusVisible": true,
+    "inertKids": [
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 11,
+     "dropped": 20
+    },
+    "overlays": 12,
+    "drawon": [
+     0.222
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": true,
+     "cam": true,
+     "scene": true
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1280,
+     720
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": true
+    },
+    "phaseTitle": "The northern battle decided",
+    "cam": {
+     "pos": [
+      -38.81,
+      523.18,
+      65.63
+     ],
+     "tgt": [
+      -38.81,
+      0.51,
+      4.04
+     ]
+    }
+   },
+   "log": [],
+   "ms": 367
+  },
+  {
+   "page": 2,
+   "label": "Esc closes the first-run card",
+   "at": 178770,
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      421,
+      26,
+      459,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 6,
+     "dropped": 2
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     880,
+     660
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.8,
+      581.04,
+      72.15
+     ],
+     "tgt": [
+      -38.8,
+      0.49,
+      3.73
+     ]
+    }
+   },
+   "log": [],
+   "ms": 130
+  },
+  {
+   "page": 2,
+   "label": "resize the window to 1600 x 900 (the browser's resize event); 10 frames",
+   "at": 178906,
+   "ret": {
+    "lowTier": true,
+    "pixelRatio": 1,
+    "castShadow": false,
+    "dpr": 2,
+    "vw": [
+     1600,
+     900
+    ],
+    "drawBuffer": [
+     880,
+     660
+    ]
+   },
+   "s": {
+    "clock": 240,
+    "clockText": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "speedPressed": "0.5",
+    "speedBtn": "½×",
+    "dwellOn": true,
+    "dwellBtn": "true",
+    "dwellSt": null,
+    "dwellNext": 0,
+    "presentation": "study",
+    "mode": "terrain",
+    "factor": 4,
+    "selection": null,
+    "commandView": "none",
+    "TOURCV": null,
+    "eye": false,
+    "tourStep": -1,
+    "opening": false,
+    "openingK": -1,
+    "openingPlay": null,
+    "firstRun": false,
+    "freeCam": false,
+    "curVantage": "plan",
+    "followBtn": "true",
+    "playBtn": "Play/null",
+    "curPhase": 0,
+    "chapter": null,
+    "plan": null,
+    "caption": "THE DECEPTION · Dispositions in the dark · interval Friant's division at Raigern since the night · derived on the heights: Allied ≈ 40,915",
+    "capVisible": true,
+    "toast": {
+     "text": "",
+     "on": false,
+     "op": 0,
+     "box": [
+      781,
+      26,
+      819,
+      44
+     ],
+     "timer": false
+    },
+    "livePhase": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "selchip": null,
+    "drawer": {
+     "on": false,
+     "visible": false,
+     "head": null,
+     "len": 0,
+     "inert": true
+    },
+    "panels": {
+     "railHidden": true,
+     "railVisible": false,
+     "railInert": true,
+     "dispatchVisible": true,
+     "legendOpen": false,
+     "layers": false,
+     "help": false,
+     "modal": false,
+     "tourbar": false,
+     "firstrun": false,
+     "menu": false,
+     "dsheet": false,
+     "hideDispatch": false,
+     "docked": false,
+     "tab": "oob",
+     "eyecap": false,
+     "vsbadge": false,
+     "restore": false
+    },
+    "focus": "#play",
+    "focusVisible": true,
+    "inertKids": [
+     "rail",
+     "drawer"
+    ],
+    "ml": {
+     "items": 31,
+     "placed": 4,
+     "dropped": 26
+    },
+    "overlays": 63,
+    "drawon": [
+     0
+    ],
+    "smoke": 0,
+    "blocks": 30,
+    "tween": {
+     "any": false,
+     "cam": false,
+     "scene": false
+    },
+    "layers": {
+     "confidence": false,
+     "routes": false,
+     "skeleton": false
+    },
+    "viewport": [
+     1600,
+     900
+    ],
+    "phone": {
+     "on": false,
+     "menu": false,
+     "sheet": false,
+     "layers": false,
+     "drawer": false,
+     "rail": false
+    },
+    "phaseTitle": "Dispositions in the dark",
+    "cam": {
+     "pos": [
+      -38.8,
+      581.04,
+      72.15
+     ],
+     "tgt": [
+      -38.8,
+      0.49,
+      3.73
+     ]
+    }
+   },
+   "log": [],
+   "ms": 582
+  }
+ ],
+ "checks": [
+  {
+   "id": "dwell-toggle-pressed",
+   "ok": true,
+   "expected": "the dwell's button announces its state (aria-pressed) as it toggles",
+   "observed": {
+    "a": {
+     "on": false,
+     "pressed": "false"
+    },
+    "b": {
+     "on": true,
+     "pressed": "true"
+    }
+   }
+  },
+  {
+   "id": "idle-first-frame-space",
+   "ok": true,
+   "expected": "Space after idle: the first frame advances the clock as much as the next ones (one frame: 33.3 ms at the driver's 30 fps, 0.167 clock min at ½×)",
+   "observed": {
+    "steps": [
+     0.1667,
+     0.1666,
+     0.1667,
+     0.1667
+    ],
+    "trace": [
+     [
+      240.1667,
+      "-",
+      0.5,
+      1
+     ],
+     [
+      240.3333,
+      "-",
+      0.5,
+      1
+     ],
+     [
+      240.5,
+      "-",
+      0.5,
+      1
+     ],
+     [
+      240.6667,
+      "-",
+      0.5,
+      1
+     ]
+    ]
+   },
+   "note": "state finding 4: loop() keeps lastFrame from the last active frame, so the first dt is the 120 ms cap"
+  },
+  {
+   "id": "idle-first-frame-enter",
+   "ok": true,
+   "expected": "Enter on the focused Play button after idle: the first frame advances as the next ones",
+   "observed": {
+    "steps": [
+     0.1666,
+     0.1667,
+     0.1667,
+     0.1666
+    ]
+   }
+  },
+  {
+   "id": "idle-first-frame-4x",
+   "ok": true,
+   "expected": "the same at 4×",
+   "observed": {
+    "steps": [
+     1.3334,
+     1.3333,
+     1.3333,
+     1.3334
+    ],
+    "dwell": [
+     "-",
+     "-",
+     "-",
+     "-"
+    ]
+   }
+  },
+  {
+   "id": "next-event-from-ease",
+   "ok": true,
+   "expected": "paused in the ease in before the 04:15 start, '.' (the next event) goes to 04:15, the event the clock was approaching",
+   "observed": {
+    "pausedAt": 254.38749999999774,
+    "after": {
+     "clock": 255,
+     "sel": null
+    }
+   },
+   "note": "state finding 6: jumpEvent takes the first start more than 1.5 min ahead"
+  },
+  {
+   "id": "card-current-at-1237",
+   "ok": true,
+   "expected": "the open card at 12:37 (same phase) reads as the app paints it at 12:37",
+   "observed": {
+    "same": true,
+    "firstDifference": null
+   }
+  },
+  {
+   "id": "no-pop",
+   "ok": true,
+   "expected": "the 07:00 phase's arrows, at 0 when 08:00 is stepped to, are not drawn brighter as they are left",
+   "observed": {
+    "curBeforeSecond": 0,
+    "oldAfterSecond": 0,
+    "oldTrace": [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "id": "arrows-off-stay-off",
+   "ok": false,
+   "expected": "with the Movement layer off, a phase change draws no arrow: the outgoing phase's included",
+   "observed": {
+    "before": {
+     "old": null,
+     "cur": 0,
+     "oldN": 0,
+     "curN": 41,
+     "oldVisible": false,
+     "fadeOut": 0,
+     "fadeIn": 1,
+     "phase": 2,
+     "clock": 480,
+     "arrowsLayer": false
+    },
+    "first": {
+     "old": null,
+     "cur": 0,
+     "oldN": 0,
+     "curN": 41,
+     "oldVisible": false,
+     "fadeOut": 0,
+     "fadeIn": 1,
+     "phase": 2,
+     "clock": 480,
+     "arrowsLayer": false
+    },
+    "maxOldOver40": 0,
+    "framesAbove0_1": 0
+   }
+  },
+  {
+   "id": "rail-right-button",
+   "ok": true,
+   "expected": "a right press on the rail does not seek (a slider takes the primary button)",
+   "observed": {
+    "c0": 480,
+    "start": {
+     "x": 687.7142857142857,
+     "y": 888,
+     "dx": 0,
+     "fy": 0.5,
+     "atCentre": "b."
+    },
+    "clock": 480,
+    "ctx": [
+     {
+      "target": "",
+      "prevented": false
+     }
+    ]
+   },
+   "note": "state finding 7: pointerdown seeks with any button; the context menu is not prevented on the rail, so on a desktop where the menu opens at the press the release goes to the menu"
+  },
+  {
+   "id": "touch-cancel-no-hover-scrub",
+   "ok": true,
+   "expected": "after a touch on the rail ends or is cancelled, a buttonless mouse over the rail does not move the clock",
+   "observed": {
+    "ended": {
+     "c0": 240,
+     "afterTouch": 389.99999853749625,
+     "afterHover": 389.99999853749625
+    },
+    "cancelled": {
+     "c0": 389.99999853749625,
+     "afterTouch": 389.99999853749625,
+     "afterHover": 389.99999853749625
+    }
+   }
+  },
+  {
+   "id": "tier-follows-window",
+   "ok": false,
+   "expected": "enlarged to 1600 x 900 on a density-2 screen: the full tier (pixel ratio 2, the sun's shadow), as a page opened at that size has",
+   "observed": {
+    "small": {
+     "lowTier": true,
+     "pixelRatio": 1,
+     "castShadow": false,
+     "dpr": 2,
+     "vw": [
+      880,
+      660
+     ],
+     "drawBuffer": [
+      880,
+      660
+     ]
+    },
+    "enlarged": {
+     "lowTier": true,
+     "pixelRatio": 1,
+     "castShadow": false,
+     "dpr": 2,
+     "vw": [
+      1600,
+      900
+     ],
+     "drawBuffer": [
+      880,
+      660
+     ]
+    }
+   }
+  }
+ ],
+ "shots": [
+  "docs/audit-post8-evidence/interaction/s11-state-hypotheses-stale-card-1237-dom.jpg",
+  "docs/audit-post8-evidence/interaction/s11-state-hypotheses-pop-before-second-pagedown.jpg",
+  "docs/audit-post8-evidence/interaction/s11-state-hypotheses-pop-after-second-pagedown.jpg",
+  "docs/audit-post8-evidence/interaction/s11-state-hypotheses-arrows-off-at-0800.jpg",
+  "docs/audit-post8-evidence/interaction/s11-state-hypotheses-arrows-off-pagedown.jpg",
+  "docs/audit-post8-evidence/interaction/s11-state-hypotheses-card-under-allied-reading-0730-dom.jpg"
+ ],
+ "notes": [],
+ "staleCard": {
+  "at1200": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon IObservingPosition: estimated (B)Timing: approximate (B)How this is sourcedArmy totalabout 73,000 Claim: Not yet checked, 139 guns (Duffy 1977, nominal; Sokolov 2006, 72,500) Claim: Not yet checkedDoing nowMoves forward from the Zuran to Stare Vinohrady Claim: Not yet checkedObjectiveHold the right; break the Allied centre once it has committed Claim: This map's readingWhereZuran moundFull dossier: role, movement, sourcesHow this is sourced",
+  "at1237shown": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon IObservingPosition: estimated (B, interpolated)Timing: approximate (B)How this is sourcedArmy totalabout 73,000 Claim: Not yet checked, 139 guns (Duffy 1977, nominal; Sokolov 2006, 72,500) Claim: Not yet checkedDoing nowMoves forward from the Zuran to Stare Vinohrady Claim: Not yet checkedObjectiveHold the right; break the Allied centre once it has committed Claim: This map's readingWhereStare VinohradyFull dossier: role, movement, sourcesHow ",
+  "at1237repainted": "G.Q.G. · FranceImperial HeadquartersEmperor Napoleon IObservingPosition: estimated (B, interpolated)Timing: approximate (B)How this is sourcedArmy totalabout 73,000 Claim: Not yet checked, 139 guns (Duffy 1977, nominal; Sokolov 2006, 72,500) Claim: Not yet checkedDoing nowMoves forward from the Zuran to Stare Vinohrady Claim: Not yet checkedObjectiveHold the right; break the Allied centre once it has committed Claim: This map's readingWhereStare VinohradyFull dossier: role, movement, sourcesHow ",
+  "firstDifference": null
+ },
+ "pop": {
+  "afterFirst": [
+   {
+    "old": 0.873,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.969,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.845,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.939,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.818,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.908,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.79,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.878,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.763,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.847,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.735,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.817,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.708,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.786,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.68,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.756,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.653,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.725,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.625,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.695,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.598,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.664,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.57,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.634,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.543,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.603,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.515,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.573,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0.488,
+    "cur": 0,
+    "oldN": 63,
+    "curN": 36,
+    "oldVisible": true,
+    "fadeOut": 0.542,
+    "fadeIn": 0,
+    "phase": 1,
+    "clock": 420,
+    "arrowsLayer": true
+   }
+  ],
+  "afterSecond": [
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.969,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.939,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.908,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.878,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.847,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.817,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.786,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.756,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.725,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.695,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.664,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.634,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.603,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.573,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.542,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.512,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.481,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.451,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.42,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.389,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.359,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.328,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.298,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.267,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.237,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.206,
+    "fadeIn": 0,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.009,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.176,
+    "fadeIn": 0.009,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.027,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.145,
+    "fadeIn": 0.029,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.046,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.115,
+    "fadeIn": 0.048,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.064,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.084,
+    "fadeIn": 0.068,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.083,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.054,
+    "fadeIn": 0.087,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.101,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0.023,
+    "fadeIn": 0.106,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.12,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0,
+    "fadeIn": 0.126,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.138,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0,
+    "fadeIn": 0.145,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.156,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0,
+    "fadeIn": 0.165,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.175,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0,
+    "fadeIn": 0.184,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.193,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0,
+    "fadeIn": 0.204,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.212,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0,
+    "fadeIn": 0.223,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.23,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0,
+    "fadeIn": 0.242,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.249,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0,
+    "fadeIn": 0.262,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   },
+   {
+    "old": 0,
+    "cur": 0.267,
+    "oldN": 36,
+    "curN": 41,
+    "oldVisible": true,
+    "fadeOut": 0,
+    "fadeIn": 0.281,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": true
+   }
+  ]
+ },
+ "arrowsOff": {
+  "before": {
+   "old": null,
+   "cur": 0,
+   "oldN": 0,
+   "curN": 41,
+   "oldVisible": false,
+   "fadeOut": 0,
+   "fadeIn": 1,
+   "phase": 2,
+   "clock": 480,
+   "arrowsLayer": false
+  },
+  "afterPageDown": {
+   "old": null,
+   "cur": 0,
+   "oldN": 0,
+   "curN": 41,
+   "oldVisible": false,
+   "fadeOut": 0,
+   "fadeIn": 1,
+   "phase": 2,
+   "clock": 480,
+   "arrowsLayer": false
+  },
+  "trace": [
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   },
+   {
+    "old": null,
+    "cur": 0,
+    "oldN": 0,
+    "curN": 41,
+    "oldVisible": false,
+    "fadeOut": 0,
+    "fadeIn": 1,
+    "phase": 2,
+    "clock": 480,
+    "arrowsLayer": false
+   }
+  ]
+ },
+ "cardUnderReading": {
+  "cv": "al",
+  "hidden": true,
+  "card": "1re Div., IV Corps · FranceSaint-Hilaire's DivisionGen. de division Louis Vincent de Saint-HilaireConcealedPosition: estimated (B, interpolated)How this is sourcedStrength≈ 6,600 men (this map's working figure)UnderNicolas Soult · IV CorpsDoing nowNot known to Allied headquarters at 07:30ObjectiveAwait the signal in the Goldbach valley Claim: This map's readingWhereNot known to Allied headquarters at 07:30Full dossier: role, movement, sourcesHow this is sourced"
+ },
+ "listenersA": {
+  "live": 642,
+  "removed": 0,
+  "onDetached": 106,
+  "total": 748,
+  "addCalls": 748,
+  "removeCalls": 0,
+  "byTarget": {
+   "window error (capture)": 1,
+   "window keydown (capture)": 5,
+   "window pointerdown (capture)": 6,
+   "window wheel (capture)": 2,
+   "window click (capture)": 4,
+   "window __playwright_global_listeners_check__": 1,
+   "window mousemove (capture)": 1,
+   "window pointerup (capture)": 2,
+   "window touchstart (capture)": 1,
+   "window touchend (capture)": 1,
+   "window touchcancel (capture)": 1,
+   "window mousedown (capture)": 1,
+   "window mouseup (capture)": 1,
+   "window auxclick (capture)": 1,
+   "window dblclick (capture)": 1,
+   "window contextmenu (capture)": 1,
+   "document focusin": 1,
+   "document focusout": 1,
+   "canvas webglcontextlost": 2,
+   "canvas webglcontextrestored": 2,
+   "canvas contextmenu": 1,
+   "canvas pointerdown": 1,
+   "canvas pointermove": 1,
+   "window pointerup": 2,
+   "window pointercancel": 2,
+   "canvas pointerleave": 1,
+   "canvas dblclick": 1,
+   "canvas wheel": 1,
+   "button.step click": 10,
+   "#phases keydown": 1,
+   "button.ph-item click": 10,
+   "button.act-btn click": 5,
+   "#acts keydown": 1,
+   "button.ev-mark click": 25,
+   "#evmarks keydown": 1,
+   "#timerail pointerdown": 1,
+   "#timerail pointermove": 1,
+   "#timerail lostpointercapture": 1,
+   "#evmarks pointerdown": 1,
+   "#evmarks pointermove": 1,
+   "#evmarks pointerup": 1,
+   "#evmarks pointercancel": 1,
+   "#evmarks click (capture)": 1,
+   "#timerail keydown": 1,
+   "section.timebar pointerover": 1,
+   "section.timebar pointerout": 1,
+   "section.timebar pointerdown": 1,
+   "section.timebar focusin": 1,
+   "section.timebar focusout": 1,
+   "section.timebar click (capture)": 1,
+   "#tltip pointerover": 1,
+   "#tltip pointerout": 1,
+   "#tltip pointermove": 1,
+   "#tltip pointerdown": 1,
+   "button.mode-btn click": 3,
+   "#tab-now click": 1,
+   "#tab-oob click": 1,
+   "#tab-analysis click": 1,
+   "#tab-command click": 1,
+   "#tab-plans click": 1,
+   "div.tabs keydown": 1,
+   "button.chap click": 10,
+   "button.t click": 21,
+   "#speedbtn click": 1,
+   "button.lp-row click": 12,
+   "#eyesbtn click": 1,
+   "#eyego click": 1,
+   "#skel-day click": 1,
+   "#dwell click": 1,
+   "#prev click": 1,
+   "#next click": 1,
+   "#prevEv click": 1,
+   "#follow click": 1,
+   "#nextEv click": 1,
+   "#play click": 1,
+   "button.vm-btn click": 3,
+   "#restore click": 1,
+   "#tourbtn click": 1,
+   "#tour-prev click": 1,
+   "#tour-next click": 1,
+   "#tour-exit click": 1,
+   "#openingbtn click": 1,
+   "#panelsbtn click": 1,
+   "#tourbar keydown": 1,
+   "#fr-grades click": 1,
+   "#lg-toggle click": 1,
+   "#fr-close click": 1,
+   "#fr-tour click": 1,
+   "#firstrun keydown": 1,
+   "#sc-open click": 1,
+   "#sc-clear click": 1,
+   "window resize": 3,
+   "#menubtn click": 1,
+   "#tools click (capture)": 1,
+   "#dgrip pointerdown": 1,
+   "#dgrip pointerup": 1,
+   "#dgrip pointercancel": 1,
+   "#dgrip click": 1,
+   "#phasebtn click": 1,
+   "#railclose click": 1,
+   "#now-show click": 1,
+   "#drawer-back click": 1,
+   "#layersbtn click": 1,
+   "#layerclose click": 1,
+   "#layerpop click": 1,
+   "document click": 1,
+   "#going click": 1,
+   "#vsclear click": 1,
+   "#drawer-close click": 1,
+   "#srcbtn click": 1,
+   "window keydown": 1,
+   "#helpbtn click": 1,
+   "#help-close click": 1,
+   "#help-keys click": 1,
+   "#help click": 1,
+   "#modal-close click": 1,
+   "#modal click": 1,
+   "window pointermove (capture)": 1,
+   "document transitionrun": 1,
+   "document transitionstart": 1,
+   "document transitionend": 1,
+   "window orientationchange": 1,
+   "mql:(prefers-reduced-motion: reduce) change": 1,
+   "mql:(resolution: 1dppx) change": 1,
+   "button.oob-row click": 40,
+   "#maplayer keydown": 1,
+   "EventTarget loadingdone": 1,
+   "div.ml-item focus": 91,
+   "div.ml-item blur": 91,
+   "div.ml-item keydown": 91,
+   "div.ml-item click": 91,
+   "window contextmenu": 1,
+   "button.more-btn click": 1
+  },
+  "timeouts": 1,
+  "timeoutsBy": {
+   "at paintDrawerBody (austerlitz-command-map.html:16263:23) 360": 1
+  },
+  "intervals": 0,
+  "rafs": 0,
+  "rafsBy": {},
+  "observers": 2,
+  "tSet": 10,
+  "tFired": 7,
+  "tCleared": 2,
+  "rSet": 68,
+  "rFired": 68,
+  "rCancel": 0
+ },
+ "touch": {
+  "ended": {
+   "c0": 240,
+   "afterTouch": 389.99999853749625,
+   "afterHover": 389.99999853749625
+  },
+  "cancelled": {
+   "c0": 389.99999853749625,
+   "afterTouch": 389.99999853749625,
+   "afterHover": 389.99999853749625
+  },
+  "mouseControl": {
+   "c0": 640.0000097500249,
+   "after": 640.0000097500249
+  }
+ },
+ "tier": {
+  "small": {
+   "lowTier": true,
+   "pixelRatio": 1,
+   "castShadow": false,
+   "dpr": 2,
+   "vw": [
+    880,
+    660
+   ],
+   "drawBuffer": [
+    880,
+    660
+   ]
+  },
+  "enlarged": {
+   "lowTier": true,
+   "pixelRatio": 1,
+   "castShadow": false,
+   "dpr": 2,
+   "vw": [
+    1600,
+    900
+   ],
+   "drawBuffer": [
+    880,
+    660
+   ]
+  }
+ },
+ "ms": 179499,
+ "ended": "2026-11-13T23:22:58.986Z"
+}

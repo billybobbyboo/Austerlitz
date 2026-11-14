@@ -1,0 +1,72 @@
+buildCover 1165ms   buildGrid 2249ms
+terrain sample 2408ms
+
+-- land cover --
+  open field    84.2%
+  meadow         6.0%
+  track          2.6%
+  village        2.3%
+  water          2.3%
+  marsh          1.3%
+  wood           1.2%
+  vineyard       0.2%
+  villages on their own ground: 376 buildings, 360 on the village class, 0 on marsh; Sokolnitz 25/27, Telnitz 22/25, Kobelnitz 12/16 on the village class  OK
+  the castle's own ground: 7 ranges (want 7), 80 of 80 points on the village class  OK
+
+contours: 13 levels, 9,260 segments in 501ms | index lines: 2,433
+
+-- sightlines (share of the field visible from a 3 m eye) --
+  Pratzeberg               46.8%
+  Stare Vinohrady          61.1%
+  Santon                   42.1%
+  Zuran                    38.9%
+  Puntowitz (valley)       2.1%
+  Sokolnitz (valley)       1.8%
+  Augezd                   3.2%
+
+From the Pratzeberg:  Sokolnitz is dead ground,  Telnitz is dead ground,  Kobelnitz is visible
+From Puntowitz:       the Pratzeberg is visible,  Stare Vinohrady is dead ground
+  tour stop 5 quotes 47% and under 3%; live readings 46.8% and 2.1%: agree
+  the dead-ground line "Dead ground, lower Goldbach": 1 of its 188 points in sight of the Pratzeberg (at most 2%): agree
+  the chapel of St Anthony to the Satschan pond's centre: a margin of 0.4 m; SOURCE_NOTE says "the centre of the Satschan pond is only just in sight": agree
+
+-- relief (m, model | verified) --
+  Pratzeberg                     322 | 324 ±5
+  Stare Vinohrady                294 | 294 ±6
+  Santon                         296 | 296 ±6
+  Zuran                          290 | 290 ±6
+  Bosenitz                       258 | 257 ±8
+  Kobelnitz                      210 | 211 ±6
+  Sokolnitz                      210 | 207 ±6
+  Pratzen                        245 | 245 ±12
+  col south of Stare Vinohrady   272 | 273 ±10
+  Telnitz                        196 | 195 ±8
+  Augezd                         190 | 195 ±8
+  Krzenowitz                     216 | 210 ±8
+  Austerlitz                     227 | 218.5 ±18.5
+  summit ordering (Pratzeberg 25+ m above Santon/Vinohrady/Zuran > col > Pratzen village > Goldbach): OK  (the Pratzeberg 26.6 m above the highest of the three)
+  the Goldbach falls downstream, its bed by Kobelnitz >= by Sokolnitz >= by Telnitz: OK  (209.9 > 203.5 > 193.3 m; the villages' points 210.2, 210.4, 196.3 m)
+  relief tolerance: the southern Pratzen plateau (map x 270-330, y 295-350, 36 cells of the audit's 300 m grid): model mean 273.1 m against GLO-90's 273.4 m, -0.3 m (limit 10)  OK
+  relief tolerance: profile pratzeberg-augezd (16 points): worst model-GLO-90 -14.1 m, mean -2.0 m (limit 20)  OK
+  relief tolerance: profile pratzeberg-hostieradek (16 points): worst model-GLO-90 +12.8 m, mean 2.1 m (limit 20)  OK
+  relief tolerance: profile pratzen-augezd (16 points): worst model-GLO-90 -14.6 m, mean -2.6 m (limit 20)  OK
+  relief tolerance: profile sokolnitz-hostieradek (16 points): worst model-GLO-90 +13.1 m, mean 2.5 m (limit 20)  OK
+  relief tolerance: Slapanice (GT.schlapanitz): model 229.9 m against GLO-90's 225 m, +4.9 m (limit 10)  OK
+  relief tolerance: St Anthony's knoll (the chapel's OSM point): model 242.1 m against GLO-90's 240.0 m, +2.1 m (limit 10)  OK
+  relief tolerance: no false summit: the highest ground within 1 km of the Pratzeberg 325.9 m at map 290.0,286.6 (168 m from it), the surveyed summit 324 m (the model 322.5 m at its point), +1.9 m (limit +2)  OK
+  relief tolerance: the twelve sourced anchors 12 of 12 within relief-fit.js's tolerances
+  mere: Satschan ice at 1x: level -1.072, drawn edge 48 vertices, its lowest drawn ground -1.023 (2,000 points -1.023), margin 0.0493  OK
+  mere: Satschan shore ice at 1x: level -1.052, drawn edge 48 vertices, its lowest drawn ground -1.023 (2,000 points -1.023), margin 0.0293  OK
+  mere: Menitz ice at 1x: level -0.771, drawn edge 48 vertices, its lowest drawn ground -0.723 (2,000 points -0.723), margin 0.0484  OK
+  mere: Menitz shore ice at 1x: level -0.751, drawn edge 48 vertices, its lowest drawn ground -0.723 (2,000 points -0.723), margin 0.0284  OK
+  mere: Satschan ice at 4x: level -4.140, drawn edge 48 vertices, its lowest drawn ground -4.093 (2,000 points -4.092), margin 0.0471  OK
+  mere: Satschan shore ice at 4x: level -4.120, drawn edge 48 vertices, its lowest drawn ground -4.093 (2,000 points -4.092), margin 0.0271  OK
+  mere: Menitz ice at 4x: level -3.031, drawn edge 48 vertices, its lowest drawn ground -2.890 (2,000 points -2.890), margin 0.1404  OK
+  mere: Menitz shore ice at 4x: level -3.011, drawn edge 48 vertices, its lowest drawn ground -2.890 (2,000 points -2.890), margin 0.1204  OK
+  mere: Satschan ice at 10.33x: level -10.608, drawn edge 48 vertices, its lowest drawn ground -10.566 (2,000 points -10.565), margin 0.0425  OK
+  mere: Satschan shore ice at 10.33x: level -10.588, drawn edge 48 vertices, its lowest drawn ground -10.566 (2,000 points -10.565), margin 0.0225  OK
+  mere: Menitz ice at 10.33x: level -7.824, drawn edge 48 vertices, its lowest drawn ground -7.461 (2,000 points -7.461), margin 0.3623  OK
+  mere: Menitz shore ice at 10.33x: level -7.804, drawn edge 48 vertices, its lowest drawn ground -7.461 (2,000 points -7.461), margin 0.3423  OK
+  mere: the check is not vacuous: lifted a further 0.05, 8 of 12 surfaces would float (want at least 1)
+  vertical exaggeration (derived): 10.3x
+crop distribution (stubble/plough/pasture/sowing): 47/28/15/11 % of 113002 field faces

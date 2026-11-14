@@ -1,0 +1,31 @@
+## the build
+CL-HIS-12, the Command tab: 51 rows read at every phase of both headquarters; 4 shown DOCUMENTED; 0 DOCUMENTED on a claim not resting on a reading; 0 documented rows on a read claim not shown DOCUMENTED; 34 documented rows carrying their claim's tag
+CL-SRC-06, the headline strengths: 74 strength rows in the cards and dossiers at 09:30; tagged 74 {"working":71,"working (range)":3}; untagged 0
+build austerlitz-command-map.html md5 8c0d383eb45a6f2a5522d04863824b7b; page errors 0
+exit=0
+
+## negative control 1: CMD_READ widened to unchecked (CL-HIS-12's fix taken out)
+CL-HIS-12, the Command tab: 51 rows read at every phase of both headquarters; 38 shown DOCUMENTED; 34 DOCUMENTED on a claim not resting on a reading; 0 documented rows on a read claim not shown DOCUMENTED; 0 documented rows carrying their claim's tag
+  COMMAND.fr["0"][1] unchecked shown DOCUMENTED
+  COMMAND.fr["1"][0] unchecked shown DOCUMENTED
+  COMMAND.fr["1"][1] unchecked shown DOCUMENTED
+  COMMAND.fr["1"][2] unchecked shown DOCUMENTED
+  COMMAND.fr["2"][0] unchecked shown DOCUMENTED
+  COMMAND.fr["3"][0] unchecked shown DOCUMENTED
+CL-SRC-06, the headline strengths: 74 strength rows in the cards and dossiers at 09:30; tagged 74 {"working":71,"working (range)":3}; untagged 0
+build no-cmd.html md5 5153a9e3b05be3f265f2863dc7b5ab9e; page errors 0
+exit=1
+
+## negative control 2: strengthKind says 'estimated' (CL-SRC-06's fix taken out)
+CL-HIS-12, the Command tab: 51 rows read at every phase of both headquarters; 4 shown DOCUMENTED; 0 DOCUMENTED on a claim not resting on a reading; 0 documented rows on a read claim not shown DOCUMENTED; 34 documented rows carrying their claim's tag
+CL-SRC-06, the headline strengths: 74 strength rows in the cards and dossiers at 09:30; tagged 3 {"working (range)":3}; untagged 71
+  card c_iv: Strength≈ 23,600 men (estimated)
+  dossier c_iv: Approximate strength≈ 23,600 men (estimated)
+  card sthilaire: Strength≈ 6,600 men (estimated)
+  dossier sthilaire: Approximate strength≈ 6,600 men (estimated)
+  card vandamme: Strength≈ 6,700 men (estimated)
+  dossier vandamme: Approximate strength≈ 6,700 men (estimated)
+  card legrand: Strength≈ 7,000 men (estimated)
+  dossier legrand: Approximate strength≈ 7,000 men (estimated)
+build no-kind.html md5 e9ebdf54a2b501f5d13d55cd9547861b; page errors 0
+exit=1

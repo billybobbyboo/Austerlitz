@@ -1,0 +1,4 @@
+== ICE.clear 0.20
+  above   09:00 band 0.977 margin 1.147 clear 1.102 glare 0.06% white 0% p95 1.229 max 1.749 | 12:00 band 0.977 margin 1.146 clear 1.103 glare 0.18% white 0% p95 1.232 max 1.756 | 15:00 band 0.971 margin 1.123 clear 1.082 glare 0% white 0% p95 1.226 max 1.31
+  oblique 09:00 band 0.973 margin 1.04 clear 1.102 glare 0.15% white 0% p95 1.16 max 1.817 | 12:00 band 0.959 margin 1.025 clear 1.106 glare 0.21% white 0% p95 1.166 max 2.02 | 15:00 band 0.964 margin 1.036 clear 1.077 glare 0.06% white 0% p95 1.162 max 1.857
+  low     09:00 band 0.999 margin 1.096 clear 1.135 glare 0.12% white 0% p95 1.319 max 1.939 | 12:00 band 0.973 margin 1.082 clear 1.134 glare 0.98% white 0% p95 1.313 max 1.956 | 15:00 band 1.096 margin 1.202 clear 1.241 glare 1.87% white 0% p95 1.482 max 2.745

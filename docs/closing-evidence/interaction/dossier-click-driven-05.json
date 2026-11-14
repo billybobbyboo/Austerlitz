@@ -1,0 +1,161 @@
+{
+ "hold": 100,
+ "speed": 0.5,
+ "frameMs": 16.666666666666668,
+ "res": [
+  {
+   "k": 0,
+   "pressedAt": 421.667,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 422.333,
+   "playing": true
+  },
+  {
+   "k": 1,
+   "pressedAt": 421.75,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 422.417,
+   "playing": true
+  },
+  {
+   "k": 2,
+   "pressedAt": 421.833,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 422.5,
+   "playing": true
+  },
+  {
+   "k": 3,
+   "pressedAt": 421.917,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 422.583,
+   "playing": true
+  },
+  {
+   "k": 4,
+   "pressedAt": 422,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 422.667,
+   "playing": true
+  },
+  {
+   "k": 5,
+   "pressedAt": 422.083,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 422.75,
+   "playing": true
+  },
+  {
+   "k": 6,
+   "pressedAt": 422.167,
+   "anchorT": 555,
+   "repaintedDuringPress": true,
+   "taken": false,
+   "clock": 422.833,
+   "playing": true
+  },
+  {
+   "k": 7,
+   "pressedAt": 422.25,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 8,
+   "pressedAt": 422.333,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 9,
+   "pressedAt": 422.417,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 10,
+   "pressedAt": 422.5,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 11,
+   "pressedAt": 422.583,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 12,
+   "pressedAt": 422.667,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 13,
+   "pressedAt": 422.75,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 14,
+   "pressedAt": 422.833,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  },
+  {
+   "k": 15,
+   "pressedAt": 422.917,
+   "anchorT": 555,
+   "repaintedDuringPress": false,
+   "taken": true,
+   "clock": 555,
+   "playing": false
+  }
+ ],
+ "fullDossier": true,
+ "anchors": 7,
+ "summary": {
+  "presses": 16,
+  "taken": 9,
+  "repaintedDuringPress": 7,
+  "lostWhenRepainted": 7,
+  "lostOtherwise": 0
+ },
+ "md5": "8c0d383eb45a6f2a5522d04863824b7b"
+}

@@ -1,0 +1,322 @@
+{
+ "generated": "2026-11-13T23:54:16.684Z",
+ "isolatedCopy": "/tmp/claude-0/-home-user-Austerlitz/bd1c237e-5adb-5982-a9bf-fb3ff5f86d64/scratchpad/iso-mut",
+ "auditedBuildMd5": "8c0d383eb45a6f2a5522d04863824b7b",
+ "fails": "^(CSS ERRORS|ERRORS|errors|findings): *[1-9]|VIOLATIONS \\([1-9]|, [1-9][0-9]* failed$|: [1-9][0-9]* disagreements|^  (!|E|FAIL|✗) |BROKEN|  FLOATS$|: DISAGREE$|<-- outside|^console\\.warn unique: *[1-9]",
+ "results": [
+  {
+   "id": "M29",
+   "title": "presentation code overrides a guarded datum at start-up (init() moves sthilaire@5 0.4 km), the data file unchanged",
+   "claim": "check:data (DATA byte-identical: it compares declarations, and lists a changed interface declaration without failing); CLAUDE.md: never fix or alter data through the display",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -638,7 +638,7 @@\n   if(typeof AUS_BOOT!==\"undefined\"&&AUS_BOOT) AUS_BOOT.ok();   /* started: the guard's watch ends here at the latest */\n }\n function init(){\n-  var tb=performance.now(); BOOTMS.initAt=Math.round(tb);\n+  FORMATIONS.sthilaire.track[5].p=[287,295]; var tb=performance.now(); BOOTMS.initAt=Math.round(tb);\n   scene=new THREE.Scene();\n   scene.background=lin(LIGHT_RIG.bg0);\n   scene.fog=new THREE.Fog(lin(LIGHT_RIG.fog0),90,560);\n"
+    }
+   ],
+   "suites": {
+    "runtime": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 317.9,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.5,
+     "lines": []
+    },
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.1,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.5,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.3,
+     "lines": []
+    },
+    "audit": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.5,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.9,
+     "lines": []
+    },
+    "data": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.3,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [],
+   "caughtByNodeSuite": [],
+   "outcome": "missed",
+   "outcomeExcludingCheckData": "missed",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M30",
+   "title": "the formation dossier shows a strength 25% above the data's (dossierFormation's Approximate strength)",
+   "claim": "none found: no suite reads the dossier's strength row against FORMATIONS (runtime-test.js and the self-test check other dossier rows)",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -8533,7 +8533,7 @@\n   wrap.appendChild(sect(\"Who\",who,true,\"record\"));\n \n   /* HOW MANY */\n-  var str=f.strength||aggStrength(id);\n+  var str=Math.round((f.strength||aggStrength(id))*1.25);\n   var many = str ? row(\"Approximate strength\",\"&asymp; \"+str.toLocaleString(\"en-GB\")+\" men\"+' <span class=\"hh\">('+esc(strengthKind(f))+')</span>') : row(\"Strength\",\"Not recorded\");\n   if(f.guns) many+=row(\"Guns\", esc(String(f.guns)));\n   if(f.strengthNote) many+=row(\"On the figures\", esc(f.strengthNote)+claimTag(\"FORMATIONS.\"+id+\".strengthNote\"));\n"
+    }
+   ],
+   "suites": {
+    "runtime": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 308.9,
+     "lines": []
+    },
+    "css": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 3.2,
+     "lines": []
+    },
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.5,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.3,
+     "lines": []
+    },
+    "data": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.8,
+     "lines": []
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [],
+   "caughtByNodeSuite": [],
+   "outcome": "missed",
+   "outcomeExcludingCheckData": "missed",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M31",
+   "title": "an overlay objective placed off the map in y (phase 0's Telnitz objective at y 608; the frame is 500 deep)",
+   "claim": "test.js overlays: \"objective off map\" (test.js:96 reads the objective's x only)",
+   "expect": "missed",
+   "edits": [
+    {
+     "file": "app.js",
+     "diff": "--- a/app.js\n+++ b/app.js\n@@ -32,7 +32,7 @@\n      {pts:[[290,282],[264,303],[240,330]],kind:\"axis\",side:\"al\",label:\"III Column → the castle\",interp:\"route: an ordered route in the Allied disposition, not a movement made\"},\n      {pts:[[331,230],[285,251],[217,277]],kind:\"axis\",side:\"al\",label:\"IV Column → Kobelnitz\",interp:\"route: an ordered route in the Allied disposition, not a movement made\"},\n      {leg:[\"lich\",0,2],kind:\"move\",side:\"al\",label:\"V Column counter-marches north\"}],\n-    obj:[[212,408,\"Telnitz\"],[208,365,\"Sokolnitz\"],[205,277,\"Kobelnitz\"]]},\n+    obj:[[212,608,\"Telnitz\"],[208,365,\"Sokolnitz\"],[205,277,\"Kobelnitz\"]]},\n \n 1:{ lines:[{pts:[[223,82],[229,116],[238,158],[213,222],[205,277],[208,365],[212,408]],side:\"fr\",label:\"French line on the Goldbach\"}],\n     arrows:[\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.2,
+     "lines": []
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.1,
+     "lines": []
+    },
+    "binding": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.7,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.1,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.6,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: OVERLAYS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "data"
+   ],
+   "caughtByNodeSuite": [],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "missed",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M32",
+   "title": "a word-form hour retimed in an unchecked timing note (dok@1: \"the departure at seven\" becomes \"at nine\"; the anchor's dep stays 07:00)",
+   "claim": "check:chronology: \"every timed statement in data.js and analysis.js is cited by a REVIEW row or allowed by name\" (its extractor reads clock-shaped hours only, CLAUDE.md: handed on); test.js: the inventory current (a change detector: the statement is unchecked, no claim hash). Predicted: check:chronology misses, test.js fails on the stale inventory only",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "data.js",
+     "diff": "--- a/data.js\n+++ b/data.js\n@@ -499,7 +499,7 @@\n   role:\"Main weight of the attack on Telnitz.\",\n   track:{\n     0:{p:[291,332],st:\"forming\",cf:\"A\",obj:\"Follow Kienmayer through Telnitz and wheel north\",act:\"At the southern end of the Pratzen plateau\"},\n-    1:{tm:{dep:420,gr:\"A\",basis:\"source\",ev:[\"Dokhturov's I Column leaves its camp as the disposition ordered\"],note:\"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Buxhowden's and Kutuzov's reports give it (Kutuzov, documents, 1951, pp. 241-242, 255-258); the arrival is derived\"},\n+    1:{tm:{dep:420,gr:\"A\",basis:\"source\",ev:[\"Dokhturov's I Column leaves its camp as the disposition ordered\"],note:\"the departure at nine as the disposition ordered (Materialien 1806 pp. 101-106) and as Buxhowden's and Kutuzov's reports give it (Kutuzov, documents, 1951, pp. 241-242, 255-258); the arrival is derived\"},\n        p:[258,371],st:\"advancing\",cf:\"A\",act:\"Leaves its camp at seven, as the disposition ordered, and descends toward the Goldbach (Buxhowden's and Kutuzov's reports)\"},\n     2:{p:[232,397],st:\"attacking\",cf:\"A\",obj:\"Force the crossing at Telnitz\",act:\"Pushes into Telnitz behind Kienmayer\"},\n     7:{p:[226,404],cf:\"B\",st:\"engaged\",act:\"Attacked from the west by Friant and from the rear off the heights\"},\n"
+    }
+   ],
+   "suites": {
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 2.2,
+     "lines": []
+    },
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1.3,
+     "lines": [
+      "ERRORS: 1",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "sim": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.6,
+     "lines": [
+      "  CHANGED historical datasets: 27 declarations, 1,021,670 bytes  changed: FORMATIONS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  },
+  {
+   "id": "M33",
+   "title": "a claim's reading swapped for a page-image reading of the same source on another matter (bourcier@3 act: Davout at Telnitz becomes Bagration, p. 198)",
+   "claim": "test.js checks a reading's register entry, its source and its page-image status (test.js:438-446), not that it bears on the statement or that its pages agree with the claim's locator; the inventory carries each claim's readings (a change detector)",
+   "expect": "caught",
+   "edits": [
+    {
+     "file": "narrative.js",
+     "diff": "--- a/narrative.js\n+++ b/narrative.js\n@@ -49,7 +49,7 @@\n       {src:\"stutterheim1806de\", at:\"pp. 63-64\", rd:\"stut.p63-64.jurczeck\", side:\"Kollowrath, ordered to hold the enemy, sent the Austrian brigades forward\"},\n       {src:\"mikhailovsky1844\", at:\"pp. 186-187\", rd:\"md1844.p186-187.kamensky~C1.10\", side:\"Kamensky turned his brigade on his own\"}],\n     note:\"That the whole column faced about, and its hour, are this map's reading; the recall of part of the II Column is this map's record, not checked here.\"},\n-  \"FORMATIONS.bourcier.track[\\\"3\\\"].act\": {h:\"ef45d62b77ef\", cl:\"attributed\", by:[{src:\"mikhailovsky1844\", at:\"pp. 178-179\", rd:\"md1844.p178-179.davout-telnitz\"}],\n+  \"FORMATIONS.bourcier.track[\\\"3\\\"].act\": {h:\"ef45d62b77ef\", cl:\"attributed\", by:[{src:\"mikhailovsky1844\", at:\"pp. 178-179\", rd:\"md1844.p198.bagration\"}],\n     note:\"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry; no reading gives the dragoons' own place, so the screen is this map's.\"},\n   \"EVENTS[#telnitz].dispute\": {h:\"bf5ca2cd0451\", cl:\"disputed\", by:[{src:\"savary1828\", at:\"t. II, pp. 204-207\", rd:\"savary1828.p204-207\", side:\"the Russians debouching on Legrand about seven\"},\n       {src:\"schoenhals1873\", at:\"pp. 157-159\", rd:\"schoenhals1873.p157-159.departure\", side:\"the left wing off at half past six\"},\n"
+    }
+   ],
+   "suites": {
+    "test": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 1,
+     "lines": [
+      "ERRORS: 1",
+      "  ! claims: the inventory is out of date: docs/step4-evidence/inventory.json, docs/step4-evidence/inventory.md (node tools/step4/inventory.js)"
+     ]
+    },
+    "redteam": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 0.9,
+     "lines": []
+    },
+    "chron": {
+     "exit": 0,
+     "verdict": "passed (missed)",
+     "seconds": 1.6,
+     "lines": []
+    },
+    "data": {
+     "exit": 1,
+     "verdict": "FAILED (caught)",
+     "seconds": 0.6,
+     "lines": [
+      "  CHANGED narrative claims (roadmap step 4): 3 declarations, 94,305 bytes  changed: STATEMENT_CLAIMS",
+      "DATA CHANGED: 1"
+     ]
+    }
+   },
+   "applied": true,
+   "restored": true,
+   "rebuilt": true,
+   "buildMd5After": "8c0d383eb45a6f2a5522d04863824b7b",
+   "buildRestored": true,
+   "inconclusive": [],
+   "caughtBy": [
+    "test",
+    "data"
+   ],
+   "caughtByNodeSuite": [
+    "test"
+   ],
+   "outcome": "caught",
+   "outcomeExcludingCheckData": "caught",
+   "matchesExpectation": true
+  }
+ ]
+}

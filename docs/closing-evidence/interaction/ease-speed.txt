@@ -1,0 +1,6 @@
+pressed 1 frames into the ease in: step 1.1111 -> 0.1306 (ratio 8.508), the hold after 70 frames (clock 255), steps growing before it 0, backward 0
+pressed 3 frames into the ease in: step 0.8741 -> 0.1009 (ratio 8.663), the hold after 54 frames (clock 255), steps growing before it 0, backward 0
+pressed 6 frames into the ease in: step 0.5185 -> 0.0565 (ratio 9.177), the hold after 30 frames (clock 255), steps growing before it 0, backward 0
+pressed 10 frames into the ease in: step 0.0454 -> 0 (ratio Infinity), the hold after 0 frames (clock 255), steps growing before it 0, backward 0
+pressed 15 frames into the ease in: step 0 -> 0 (ratio NaN), the hold after 0 frames (clock 255), steps growing before it 0, backward 0
+build md5 8c0d383eb45a6f2a5522d04863824b7b

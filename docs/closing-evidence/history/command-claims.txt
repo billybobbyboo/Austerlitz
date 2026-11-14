@@ -1,0 +1,48 @@
+ref | kind | src label | statement claim | flags | text
+COMMAND.fr["0"][0] | saw | doc | attributed |  | The Allied bivouac fires, which he rode out at one in the morning to see from his posts (the 30th Bulletin); Thiébault has reports of the Allied left's movement
+COMMAND.fr["0"][1] | knew | doc | unchecked |  | That the Allied army was more numerous and that the Tsar's staff, not Kutuzov, was directing it.
+COMMAND.fr["0"][2] | didnt | inf | unchecked |  | The exact column boundaries and the order of march. Inferred: French accounts describe the Allied movement as read off the ground, not from captured orders.
+COMMAND.fr["0"][3] | ordered | doc | attributed |  | The army placed by seven in the morning as the dispositions of 1 December set out, Soult's three divisions beyond the ravine, ready for an advance in echelons, 
+COMMAND.fr["0"][4] | expected | doc | attributed | DOCUMENTED row text says: this map's inference | That the enemy would march across his front to turn his right. His proclamation of 1 December says in terms that they will march to turn his right and so presen
+COMMAND.fr["1"][0] | saw | doc | unchecked |  | The attack developing on Telnitz at the southern end of the line.
+COMMAND.fr["1"][1] | knew | doc | unchecked |  | That Davout's detachment had reached Raigern overnight and would come up to the Goldbach during the morning.
+COMMAND.fr["1"][2] | ordered | doc | unchecked |  | The right to give ground slowly and hold the villages.
+COMMAND.fr["2"][0] | saw | doc | unchecked |  | Allied columns descending off the plateau in strength.
+COMMAND.fr["2"][1] | knew | anec | disputed |  | Soult's answer that his troops needed twenty minutes at most to reach the heights: a memoir anecdote, as Thiébault tells it; Ségur tells the same exchange with 
+COMMAND.fr["2"][2] | ordered | anec | unchecked |  | A further quarter of an hour's delay before releasing the attack, the signal given only once an aide reported the heights abandoned (a little prematurely, Thiéb
+COMMAND.fr["3"][0] | saw | doc | unchecked |  | The crest of the Pratzen, once the mist lifted, and the 4th Column still on it.
+COMMAND.fr["3"][1] | didnt | inf | interpretation |  | How strong the force still on the plateau was. Inferred: the attack went in with Soult's two divisions; the reserve, the Guard and the grenadiers, was not commi
+COMMAND.fr["3"][2] | ordered | doc | unchecked |  | Soult to take the Pratzeberg and Stare Vinohrady.
+COMMAND.fr["4"][0] | knew | doc | unchecked |  | That Saint-Hilaire was in difficulty on the Pratzeberg.
+COMMAND.fr["4"][1] | ordered | inf | disputed |  | Bernadotte's corps forward between Soult and Lannes, toward the heights by Blasowitz (Stutterheim); no dated order to it is printed, and the hour is disputed, f
+COMMAND.fr["5"][0] | saw | inf | unchecked |  | The northern battle from the Zuran. Inferred from the model's terrain, not documented: most of the Olmütz road sector, including the Santon, is in view from tha
+COMMAND.fr["5"][1] | ordered | doc | unchecked |  | The cavalry reserve committed against the Allied horse.
+COMMAND.fr["6"][0] | saw | doc | unchecked |  | The Russian Guard attack on Stare Vinohrady.
+COMMAND.fr["6"][1] | ordered | doc | unchecked |  | Bessières to commit the Guard cavalry.
+COMMAND.fr["6"][2] | knew | doc | unchecked |  | That the plateau, and with it the centre of the enemy army, was his.
+COMMAND.fr["7"][0] | knew | doc | unchecked |  | That Buxhowden's columns were still fighting in the villages, unaware of what had happened behind them.
+COMMAND.fr["7"][1] | ordered | doc | unchecked |  | The centre to wheel south onto their rear, supported by the Guard and the grenadiers.
+COMMAND.fr["8"][0] | saw | doc | unchecked |  | The Allied left crowding into the Augezd defile and onto the meres.
+COMMAND.fr["8"][1] | ordered | doc | unchecked |  | Artillery fire onto the defile and the ice.
+COMMAND.al["0"][0] | knew | doc | unchecked |  | That the French had given up the Pratzen plateau and pulled back behind the Goldbach.
+COMMAND.al["0"][1] | didnt | doc | unchecked |  | That two French divisions were standing in the Goldbach valley. The fog in the valley hid them.
+COMMAND.al["0"][2] | didnt | inf | attributed |  | That Bernadotte's corps and part of Davout's had joined the army the evening before (Stutterheim, who has the Allied staff believe the French at Brünn few, and 
+COMMAND.al["0"][3] | ordered | doc | unchecked |  | Weyrother's dispositions: four columns south-west against the French right, Bagration to hold the highway.
+COMMAND.al["0"][4] | expected | doc | unchecked |  | A French army in retreat that would be turned and cut off from Vienna.
+COMMAND.al["1"][0] | saw | doc | unchecked |  | Telnitz taken and retaken.
+COMMAND.al["1"][1] | ordered | doc | unchecked |  | The left-hand columns to press on across the Goldbach and wheel north.
+COMMAND.al["2"][0] | knew | doc | unchecked |  | That the 4th Column was still on the plateau: Kutuzov was holding it back, and the Tsar rode up about 08:45 and ordered it forward (Russian Biographical Diction
+COMMAND.al["2"][1] | knew | doc | unchecked |  | That the villages on the stream were proving harder to take than expected.
+COMMAND.al["3"][0] | saw | doc | unchecked |  | French infantry on the crest of the Pratzen, at close range, from the 4th Column's own position.
+COMMAND.al["3"][1] | ordered | inf | unchecked |  | Kutuzov: the 4th Column to face about; part of the II Column recalled up the slope. This map's reading: Schönhals has him order the column's Austrian brigades t
+COMMAND.al["4"][0] | ordered | doc | disputed |  | Kamensky's brigade turned about against the French; the accounts differ on who ordered it: Kamensky on his own judgement (Mikhailovsky-Danilevsky, citing Langer
+COMMAND.al["4"][1] | didnt | doc | unchecked |  | Buxhowden, commanding the three left-hand columns, had not been told that the centre was gone.
+COMMAND.al["5"][0] | knew | doc | unchecked |  | That Bagration could not force the Santon.
+COMMAND.al["5"][1] | ordered | doc | unchecked |  | A withdrawal on Rausnitz, covering the Allied right.
+COMMAND.al["6"][0] | ordered | doc | unchecked |  | Constantine to commit the Russian Imperial Guard against the French on Stare Vinohrady.
+COMMAND.al["6"][1] | didnt | inf | interpretation |  | That the French Guard was in hand and uncommitted close by, Napoleon near Blasowitz ahead of his reserve (Schönhals). Inferred from the speed with which Bessièr
+COMMAND.al["6"][2] | knew | doc | unchecked |  | That Blasowitz had fallen.
+COMMAND.al["7"][0] | knew | doc | unchecked |  | From about noon, that the plateau was lost and the army was cut in two.
+COMMAND.al["7"][1] | didnt | doc | unchecked |  | On the left, the scale of it. Buxhowden's columns were still attacking westward while being enveloped.
+COMMAND.al["8"][0] | ordered | inf | unchecked |  | A retreat of the left. No order of the day naming its route has been read (the disposition's retreat for the left ran by the Turas wood, Kobelnitz and Puntowitz
+COMMAND.al["8"][1] | knew | inf | unchecked |  | That the way out by Augezd came under artillery fire from the height (Schönhals's 'auf der Höhe'; that it is the height above Augezd, ground the army had held a

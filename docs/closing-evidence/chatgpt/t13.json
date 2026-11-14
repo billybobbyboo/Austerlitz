@@ -1,0 +1,87 @@
+{
+ "report": "visual-report-43524457649.json",
+ "md5": "8c0d383eb45a6f2a5522d04863824b7b",
+ "asIs": [],
+ "mutations": [
+  {
+   "name": "one missing visual case",
+   "caught": true,
+   "failures": [
+    "case overview-field not measured (T-4)"
+   ],
+   "n": 1
+  },
+  {
+   "name": "all visual cases missing",
+   "caught": true,
+   "failures": [
+    "case first-run not measured (T-4)",
+    "case opening-1 not measured (T-4)",
+    "case opening-2 not measured (T-4)",
+    "case opening-3 not measured (T-4)",
+    "case opening-4 not measured (T-4)",
+    "case opening-end not measured (T-4)",
+    "case opening-1-laptop not measured (T-4)",
+    "case phone-390-first not measured (T-4)",
+    "case phone-390-explore not measured (T-4)",
+    "case phone-390-dossier not measured (T-4)",
+    "case phone-390-watch not measured (T-4)",
+    "case phone-390-layers not measured (T-4)",
+    "case phone-360-explore not measured (T-4)",
+    "case phone-430-explore not measured (T-4)",
+    "case phone-844x390-explore not measured (T-4)",
+    "case phone-402x714-explore not measured (T-4)",
+    "case phone-390-paper not measured (T-4)",
+    "case zoom-320x256-explore not measured (T-4)",
+    "case zoom-400x225-explore not measured (T-4)",
+    "case first-run-laptop not measured (T-4)",
+    "case overview-field not measured (T-4)",
+    "case overview-plan not measured (T-4)",
+    "case close-sokolnitz not measured (T-4)",
+    "case staff-paper not measured (T-4)",
+    "case pratzen-low not measured (T-4)",
+    "case pratzen-orbit-min not measured (T-4)",
+    "case selected-formation not measured (T-4)",
+    "case watch-selected not measured (T-4)",
+    "case hybrid-dimmed not measured (T-4)",
+    "case pratzen-low-1x not measured (T-4)",
+    "case pratzen-low-10x not measured (T-4)",
+    "case paper-north-up not measured (T-4)",
+    "case paper-close not measured (T-4)",
+    "case paper-drawer not measured (T-4)",
+    "case paper-laptop not measured (T-4)",
+    "case narrow-1024 not measured (T-4)",
+    "case ph8-overview-study not measured (T-4)",
+    "case ph8-overview-watch not measured (T-4)",
+    "case eye-zuran not measured (T-4)",
+    "case eye-zuran-1x not measured (T-4)"
+   ],
+   "n": 41
+  },
+  {
+   "name": "missing self-test check",
+   "caught": true,
+   "failures": [
+    "the self-test ran 350 checks; the manifest has 351 (T-4)",
+    "self-test check missing: camera controls: a left-drag pans (the grabbed ground point within 1 px of the pointer during and after), the wheel zooms toward the cursor (within 1 px, a step the floor shortens included), a double-click centres the point in the free rectangle (within 2 px), a right-drag orbits; the eye at or above the floor after every step (at 1×) (T-4)"
+   ],
+   "n": 2
+  },
+  {
+   "name": "added console error",
+   "caught": true,
+   "failures": [
+    "console error on the main page during the closing pass's control: Uncaught TypeError: the closing pass's control"
+   ],
+   "n": 1
+  },
+  {
+   "name": "missing live motion block",
+   "caught": true,
+   "failures": [
+    "live block not run: the map layer in motion: the 16 motions, the four by real input and two with a selection (Stage 8, implementation PR 8C, decision 240 (a)) (T-4, T-5)"
+   ],
+   "n": 1
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+
+> check:contrast
+> node tools/visual/contrast.js austerlitz-command-map.html
+
+text elements 9194, distinct text/background pairs 123, below AA 0, text below 10.5 px 0
+font failures: 0 (1028 characters in 22 computed fonts, from the 9194 text elements read, asked which faces drew them; decision 141: only the embedded faces)
+states 57 (10 at 390 x 844 as a phone; 12 at 320 x 256 and in forced colours): 57 reached; console messages 0, failing 0
+  boot ok no-three: the dialog with its reason, focus on Reload (Tab kept), the rest inert, AA, the messages expected
+  boot ok sri: the dialog with its reason, focus on Reload (Tab kept), the rest inert, AA, the messages expected
+  boot ok error: the dialog with its reason, focus on Reload (Tab kept), the rest inert, AA, the messages expected
+  boot ok no-webgl: the dialog with its reason, focus on Reload (Tab kept), the rest inert, AA, the messages expected
+  boot ok slow: the status line at 20 s, then a normal start (docked, the rail shown, nothing inert but the closed dossier, focus on the first card's primary action)
+  boot ok context-loss: the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored, idle with no warning, then a clock step drawn, disposing 72 of the 476 geometries drawn before the loss; 0 “does not belong to this context” warnings (none allowed since WP-14)
+  boot ok context-depth: the eye still across a loss and a restore: the ground's depth drawn again (2 -> 3 passes), its 49 texels as before, the frame within 7 pixels of the frame before the loss (the figures hidden; with them 28), the view's ground hiding 3556 pixels of the overlays
+  boot ok context-gait: a marching division mid-stride across a loss and a restore: the kit's programs compiled again with the hook (204 -> 287 materials, 217 -> 434 depth materials), still rich at full swing; the frame 0 pixels from the pose before the loss (the rest pose 41875), the sun's depth map 0 texels (the rest pose 16459)
+  boot ok context-play: the context lost while the clock plays: a frame before the loss's event compiles nothing and throws nothing, then three cycles lost and restored while playing, frames drawn after each, no page error
+  boot ok context-heap: 5 idle restores: the heap 15.37, 14.97, 15.18, 15.27, 15.39, 15.55 MB (0.15 MB a restore after the first; at most 0.50), at most 1 dispose listener an object (665, 575, 575, 575, 575, 575 in all)
+boot cases: 10 of 10 pass
+CONTRAST: all text meets WCAG AA, drawn in the embedded faces, in every state reached

@@ -1,0 +1,47 @@
+{
+ "what": "perf-run.html ?src= on a local copy",
+ "started": "2026-11-13T23:18:57.967Z",
+ "cases": [
+  {
+   "id": "javascript-url",
+   "url": "http://127.0.0.1:<port>/tools/step6/perf-run.html?src=javascript%3Aparent.document.title%3D'RBX%20'%2Bparent.location.origin%3Bvoid%200",
+   "title": "Frame-time route",
+   "frameSrc": "../../austerlitz-command-map.html",
+   "msg": "?src= was not a path on this site, so the default build is loaded. Loading the build…",
+   "scriptRanInPageOrigin": false,
+   "log": [
+    "error: Failed to load resource: the server responded with a status of 404 (Not Found)"
+   ]
+  },
+  {
+   "id": "data-url",
+   "url": "http://127.0.0.1:<port>/tools/step6/perf-run.html?src=data%3Atext%2Fhtml%2C%3Cscript%3Etry%7Bparent.document.title%3D'RBD%20'%2Bparent.location.origin%7Dcatch(e)%7Bdocument.title%3D'blocked'%7D%3C%2Fscript%3E",
+   "title": "Frame-time route",
+   "frameSrc": "../../austerlitz-command-map.html",
+   "msg": "?src= was not a path on this site, so the default build is loaded. Loading the build…",
+   "scriptRanInPageOrigin": false,
+   "log": [
+    "error: Failed to load resource: the server responded with a status of 404 (Not Found)"
+   ]
+  },
+  {
+   "id": "control (no src)",
+   "url": "http://127.0.0.1:<port>/tools/step6/perf-run.html",
+   "title": "Frame-time route",
+   "frameSrc": "../../austerlitz-command-map.html",
+   "msg": "Loading the build…",
+   "scriptRanInPageOrigin": false,
+   "log": [
+    "error: Failed to load resource: the server responded with a status of 404 (Not Found)"
+   ]
+  }
+ ],
+ "md5": [
+  "69e54ffb5e6eaff614e956635a3d4b72  /tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/robustness/pages-sim/tools/step6/perf-run.html",
+  "2c59886e000cf2c46488bff30e893aae  /tmp/claude-0/-home-user-Austerlitz/cb561984-b1ad-5d5a-82ba-de46bf4c820e/scratchpad/robustness/pages-sim/tools/step6/perf-route.js",
+  "69e54ffb5e6eaff614e956635a3d4b72  /home/user/Austerlitz/tools/step6/perf-run.html",
+  "2c59886e000cf2c46488bff30e893aae  /home/user/Austerlitz/tools/step6/perf-route.js"
+ ],
+ "browser": "141.0.7390.37",
+ "finished": "2026-11-13T23:19:11.464Z"
+}

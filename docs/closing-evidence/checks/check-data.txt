@@ -1,0 +1,22 @@
+
+> check:data
+> node tools/visual/data-invariance.js archive/stage6wp09w-45d29cc5.html austerlitz-command-map.html
+
+original stage6wp09w-45d29cc5.html: 1169 top-level statements;  patched austerlitz-command-map.html: 1191
+
+DATA (must be byte-identical):
+  identical historical datasets: 27 declarations, 1,021,670 bytes
+  identical geography and relief model: 53 declarations, 24,119 bytes
+  identical movement, strength and confidence model: 35 declarations, 11,615 bytes
+  identical historical appearance model (Stage 6B): 1 declarations, 630 bytes
+  identical derived readings, sight and knowledge: 17 declarations, 5,366 bytes
+  identical data in app.js (roadmap step 2, D-5): 7 declarations, 3,103 bytes
+  identical narrative claims (roadmap step 4): 3 declarations, 94,305 bytes
+
+Rendering and interface declarations changed (41): STREAM, buildWater, buildWoods, treeNear, GL, glRestored, init, kitWrap, makeBlock, animGLSL, <ExpressionStatement #4>, paintExaggeration, renderFX, MAPCAM, mlItem, enemyFacing, settleBlock, poseBlock, updateVisibility, syncFollow, LABELS, applyLabels, setShortcuts, esc, buildUI, paintKey, paintSituation, dossierFormation, sect, buildingNotes, claimsIndex, openSources, stopPlay, togglePlay, PHONE_Q,PHONE, syncPhone, setDSheet, bindPhone, syncVis, loop, AUSTERLITZ_DEBUG
+Added (25): MERE_ICE, iceTop, inMereDisc, TREE6, glLostNow, glTrackDispose, glDispCompact, glPruneDispose, lowTier,TIER_MOBILE, applyTier, retier, FACE (again), enemyBearing, faceWant, narrativeRefs, SHORT_Q, shortSheet, paintNowOff, _toolsEl, syncToolsEdge, wp16Checks, wp10gChecks, wp10pChecks, wp09Checks, wp10Checks
+Removed (3): v8Near, lowTier, gaitDist
+
+Outside the script: CSS changed (+6403 bytes; the original rules are edited); markup changed; closing identical
+
+All 143 DATA declarations are byte-identical to the original build.

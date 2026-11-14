@@ -1,0 +1,3 @@
+paused: 12 of 12 presses on a day-track anchor taken (press 100 ms)
+playing: 0 of 12 presses on a day-track anchor taken (press 100 ms)
+full dossier true, anchors 6; build md5 8c0d383eb45a6f2a5522d04863824b7b; page errors 0

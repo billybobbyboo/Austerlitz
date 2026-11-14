@@ -1,0 +1,26 @@
+event | t | pill claim | timing grade | name claim | why claim | dispute claim | flags
+columns-move | 07:00-08:00 | pill:disputed | timing:B | n:unchecked | why:unchecked | dispute:disputed | 
+counter-march | 04:15-08:00 | pill:disputed | timing:B | n:unchecked | why:disputed | dispute:disputed | 
+telnitz | 07:00 | pill:disputed | timing:B | n:unchecked | why:unchecked | dispute:disputed | 
+raigern | 04:00-04:45 | pill:est | timing:B | n:unchecked | why:disputed | dispute:- | 
+davout | 08:45-09:15 | pill:fact | timing:B | n:unchecked | why:attributed | dispute:- | 
+sokolnitz | 08:00 | pill:disputed | timing:B | n:unchecked | why:attributed | dispute:disputed | 
+telnitz-retaken | 09:30 | pill:fact | timing:A | n:unchecked | why:attributed | dispute:- | 
+decision | 08:25-08:45 | pill:disputed | timing:B | n:unchecked | why:disputed | dispute:disputed | 
+soult | 08:45-09:15 | pill:disputed | timing:C | n:unchecked | why:attributed | dispute:disputed | 
+pratzen-village | 09:00 | pill:est | timing:C | n:unchecked | why:uncertain | dispute:- | PILL est vs statement unchecked/uncertain
+face-about | 09:15 | pill:recon | timing:C | n:unchecked | why:disputed | dispute:- | 
+kamensky | 09:45 | pill:disputed | timing:B | n:unchecked | why:disputed | dispute:uncertain | 
+kursk | 10:30 | pill:est | timing:C | n:unchecked | why:disputed | dispute:- | 
+pratzeberg | 11:00 | pill:disputed | timing:B | n:unchecked | why:unchecked | dispute:disputed | 
+blasowitz | 11:15 | pill:est | timing:C | n:unchecked | why:disputed | dispute:- | 
+guard-attack | 11:00-13:00 | pill:disputed | timing:B | n:unchecked | why:attributed | dispute:disputed | 
+guard-broken | 11:15-13:15 | pill:disputed | timing:B | n:unchecked | why:attributed | dispute:disputed | 
+hq-forward | 12:00-12:40 | pill:est | timing:B | n:unchecked | why:unchecked | dispute:- | 
+buxhowden-blind | 11:40-12:40 | pill:est | timing:B | n:unchecked | why:unchecked | dispute:- | 
+davout-resumes | 12:30 | pill:disputed | timing:B | n:unchecked | why:unchecked | dispute:disputed | 
+wheel | 13:00-14:00 | pill:est | timing:B | n:unchecked | why:unchecked | dispute:- | 
+sokolnitz-falls | 14:00 | pill:disputed | timing:B | n:unchecked | why:unchecked | dispute:disputed | 
+augezd | 14:30 | pill:disputed | timing:B | n:unchecked | why:interpretation | dispute:disputed | 
+ice | 15:00 | pill:disputed | timing:B | n:unchecked | why:disputed | dispute:disputed | 
+end | 16:30 | pill:disputed | timing:B | n:unchecked | why:unchecked | dispute:disputed | 

@@ -1,0 +1,2091 @@
+{
+ "generated": "2026-11-13T23:00:21.001Z",
+ "files": [
+  {
+   "file": "tools/audit/a11y-probe.js",
+   "kind": "audit (2026-10)",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/audit/boot-probe.js",
+   "kind": "audit (2026-10)",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/audit/font-probe.js",
+   "kind": "audit (2026-10)",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/audit/mlfocus-probe.js",
+   "kind": "audit (2026-10)",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/audit/mlfocus-shot.js",
+   "kind": "audit (2026-10)",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/audit/perf-probe.js",
+   "kind": "audit (2026-10)",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/audit/scan-gaps.js",
+   "kind": "audit (2026-10)",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/audit/sheet.py",
+   "kind": "audit (2026-10)",
+   "parses": true
+  },
+  {
+   "file": "tools/audit/size.js",
+   "kind": "audit (2026-10)",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/audit/state-probe.js",
+   "kind": "audit (2026-10)",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/closing/claimed.py",
+   "kind": "other",
+   "parses": true
+  },
+  {
+   "file": "tools/closing/history-facing.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/closing/mentions.py",
+   "kind": "other",
+   "parses": true
+  },
+  {
+   "file": "tools/closing/mutate.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/closing/mutations-list.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage3/mutate.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage3/play-cost.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage3/rt-block.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4-wp04b/consequences.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4-wp04b/deadground.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4-wp04b/gait-ground.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4-wp04b/geometry/fit.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4-wp04b/geometry/fitlib.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4-wp04b/limber-probe.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4-wp04b/mutate.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4-wp04b/relief-measure.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4-wp04b/sights.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4/mutate.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage4/near.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/caption-judge.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/card-judge.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/lettering.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/long-only.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/mutate-wp07.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/mutate-wp08.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/mutate-wp08c.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/phone-timebar.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/summarise.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage5/variants.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/contrast-states.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/crowns.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/gait-cases.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/meres.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/mutate-wp09.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/mutate-wp10g.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/mutate-wp10p.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/mutate.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/occupy.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/run-block.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/streams.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/ux18.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage6/whites.py",
+   "kind": "other",
+   "parses": true
+  },
+  {
+   "file": "tools/final-stage7/device-reread.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage7/device-runs.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage7/fx-off-probe.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage7/idle.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage7/mutate.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage7/pair-pixels.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage7/route-check.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/final-stage7/route-selfcheck.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/fonts/accept-probe.js",
+   "kind": "generator",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/fonts/build-fonts.py",
+   "kind": "generator",
+   "parses": true
+  },
+  {
+   "file": "tools/geo-anchor.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/geo-dump.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/geo-migrate.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/geo-proto.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/inventory.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/leg-check.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/patch-app.py",
+   "kind": "history",
+   "parses": true
+  },
+  {
+   "file": "tools/patch-history.py",
+   "kind": "history",
+   "parses": true
+  },
+  {
+   "file": "tools/relief-dem.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/relief-fit.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/split-from-html.py",
+   "kind": "history",
+   "parses": true
+  },
+  {
+   "file": "tools/stage0/apply-stage0.py",
+   "kind": "history",
+   "parses": true
+  },
+  {
+   "file": "tools/stage0/extract-edits.py",
+   "kind": "history",
+   "parses": true
+  },
+  {
+   "file": "tools/stage2/arrowheads.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": [
+    "tools/stage2/out/heads"
+   ]
+  },
+  {
+   "file": "tools/stage2/arrows-2c.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": [
+    "tools/stage2/out/arrows-2c"
+   ]
+  },
+  {
+   "file": "tools/stage2/chronology-sim.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/cover-2f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/delayed-moves.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/derived-legs.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/dom-layer.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": [
+    "tools/stage2/out/dom"
+   ]
+  },
+  {
+   "file": "tools/stage2/drape-2f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/exag-1x-options.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": [
+    "tools/stage2/out/exag"
+   ]
+  },
+  {
+   "file": "tools/stage2/exag-renders.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": [
+    "tools/stage2/out/exag"
+   ]
+  },
+  {
+   "file": "tools/stage2/map-text.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": [
+    "tools/stage2/out/text"
+   ]
+  },
+  {
+   "file": "tools/stage2/occlusion-2d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/page.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/paper-2e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/paper-limits.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/paper-map.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": [
+    "tools/stage2/out/paper"
+   ]
+  },
+  {
+   "file": "tools/stage2/parity-2d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": [
+    "tools/stage2/out/parity"
+   ]
+  },
+  {
+   "file": "tools/stage2/perf-2f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/probe-exag.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/relief.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/renders-2b.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": [
+    "tools/stage2/out/renders-2b"
+   ]
+  },
+  {
+   "file": "tools/stage2/renders-2e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/renders-2f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/report-2d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/report-2e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/report-2f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage2/wmodel.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage3/dock-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage3/nav-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage3/offset-limits.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage3/report-3a.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage3/report-3b.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage3/spine.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/dark-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/ephem.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/extras-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/fog-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/light-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/pace-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/report-4b.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/report-4d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/report-4e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage4/sun.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/census.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/confidence-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/eyes-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/layout-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/lib.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/plans-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/report-5b.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/report-5c.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/report-5d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/report-5e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/report-5f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/report-5g.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage5/skeleton-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage6/appearance-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage6/census.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage6/compare-6c.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage6/compare-6d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage6/lib.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage6/scale-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage6/verify-quotes.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage7/firstrun-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage7/lib.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage7/opening-7c-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage7/opening-7d-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage7/opening-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage7/text-inventory.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/alloc-8e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/atlas-8f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/atlas-8g.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/buildings-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/caption-8l.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/carried.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/castle-8j.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/census-8d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/census-8e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/census-8g.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/census-8i.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/classtone-8g.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/clip-motion.py",
+   "kind": "stage evidence",
+   "parses": true
+  },
+  {
+   "file": "tools/stage8/clips-8e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/compare-8.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/contact-8f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/cost-8d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/cost-8e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/cost-8f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/ctx-8c.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/cull-8d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/density.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/dossier-shots.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/envelope-8e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/equiv-8e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/far-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/far-8i.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/fresh-8c.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/g2-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/gait-check.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/geo-8j.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/ice-8f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/ice-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/items-8l.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/kit-census-8e.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/kit-census.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 5,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/know-8j.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/label-far.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/label-motion-app.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/label-motion.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/layer-cost.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/legs.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/lib.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/march-8c.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/motion-8d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/motion-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-8c.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-8d.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-8e.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-8f.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-8g.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-8h.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-8l.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-css-8d.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-css-8e.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-css-8f.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-css-8g.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-css-8h.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/mutate-test-8g.js",
+   "kind": "mutation",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/near-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/pair-sheets.py",
+   "kind": "stage evidence",
+   "parses": true
+  },
+  {
+   "file": "tools/stage8/panels-8c.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/pause-8f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/pause-clip-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/pixdiff.py",
+   "kind": "stage evidence",
+   "parses": true
+  },
+  {
+   "file": "tools/stage8/plan-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/plans-8l.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/pose-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protect-8d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/arrows.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/buildings.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/counters.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/farnames.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/figures.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/ground.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/labels.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/water.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/woods.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/protos/woods8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/record-app.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/record.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/rest-8c.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/rest-8g.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/ribbon-widths.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/roadview-8k.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/s7-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/selftest-report.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/sheets-8f.py",
+   "kind": "stage evidence",
+   "parses": true
+  },
+  {
+   "file": "tools/stage8/sheets.py",
+   "kind": "stage evidence",
+   "parses": true
+  },
+  {
+   "file": "tools/stage8/startup-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/stills-8f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/stills-8g.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/stills-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/stills-8j.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/stills.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/stream-vis.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/tables-8c.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/toast-8h.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/toast-8i.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/toast-sheet-8h.py",
+   "kind": "stage evidence",
+   "parses": true
+  },
+  {
+   "file": "tools/stage8/toast.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/twin-8l.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/variants-8l.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/views.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/vis-257.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/woods-8f.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/woods-bldg-8j.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/woods-rs-8j.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stage8/xbuild-8d.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/stale-compare.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 4,
+   "missingRefs": [
+    "../aus2_pre_geo"
+   ]
+  },
+  {
+   "file": "tools/step3/hover-cost.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step3/report-diff.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/census-report.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/census.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/lod-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/paper-entry.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/perf-local.js",
+   "kind": "device route",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/perf-route.js",
+   "kind": "device route",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/perf-run.html",
+   "kind": "device route",
+   "other": true
+  },
+  {
+   "file": "tools/step6/phone-layouts.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/phone-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 4,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/phone-report.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/phone-rule-negatives.js",
+   "kind": "device route",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/phone-rule.js",
+   "kind": "device route",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/portrait-fit.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/step6/size-probe.js",
+   "kind": "stage evidence",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/visual/compare-gallery.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/visual/darkness-study.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/visual/remeasure.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 3,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/warp-proto.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/warp.js",
+   "kind": "history",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/wp15/apply-proposals.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/wp15/make-proposals.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/wp15/open-questions.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 1,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/wp15/tiers.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 0,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/wp15/triage.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 2,
+   "missingRefs": []
+  },
+  {
+   "file": "tools/visual/check-report.js",
+   "kind": "other",
+   "parses": true,
+   "refs": 4,
+   "missingRefs": [
+    "tools/visual/out"
+   ]
+  }
+ ],
+ "summary": {
+  "audit (2026-10)": {
+   "n": 10,
+   "parses": 10,
+   "parseFail": 0,
+   "withMissingRefs": 0,
+   "missing": 0
+  },
+  "other": {
+   "n": 48,
+   "parses": 48,
+   "parseFail": 0,
+   "withMissingRefs": 1,
+   "missing": 0
+  },
+  "mutation": {
+   "n": 25,
+   "parses": 25,
+   "parseFail": 0,
+   "withMissingRefs": 0,
+   "missing": 0
+  },
+  "generator": {
+   "n": 2,
+   "parses": 2,
+   "parseFail": 0,
+   "withMissingRefs": 0,
+   "missing": 0
+  },
+  "history": {
+   "n": 15,
+   "parses": 15,
+   "parseFail": 0,
+   "withMissingRefs": 1,
+   "missing": 0
+  },
+  "stage evidence": {
+   "n": 176,
+   "parses": 176,
+   "parseFail": 0,
+   "withMissingRefs": 9,
+   "missing": 0
+  },
+  "device route": {
+   "n": 5,
+   "parses": 4,
+   "parseFail": 0,
+   "withMissingRefs": 0,
+   "missing": 0
+  }
+ },
+ "missingRefFiles": [
+  {
+   "file": "tools/stage2/arrowheads.js",
+   "kind": "stage evidence",
+   "missing": [
+    "tools/stage2/out/heads"
+   ]
+  },
+  {
+   "file": "tools/stage2/arrows-2c.js",
+   "kind": "stage evidence",
+   "missing": [
+    "tools/stage2/out/arrows-2c"
+   ]
+  },
+  {
+   "file": "tools/stage2/dom-layer.js",
+   "kind": "stage evidence",
+   "missing": [
+    "tools/stage2/out/dom"
+   ]
+  },
+  {
+   "file": "tools/stage2/exag-1x-options.js",
+   "kind": "stage evidence",
+   "missing": [
+    "tools/stage2/out/exag"
+   ]
+  },
+  {
+   "file": "tools/stage2/exag-renders.js",
+   "kind": "stage evidence",
+   "missing": [
+    "tools/stage2/out/exag"
+   ]
+  },
+  {
+   "file": "tools/stage2/map-text.js",
+   "kind": "stage evidence",
+   "missing": [
+    "tools/stage2/out/text"
+   ]
+  },
+  {
+   "file": "tools/stage2/paper-map.js",
+   "kind": "stage evidence",
+   "missing": [
+    "tools/stage2/out/paper"
+   ]
+  },
+  {
+   "file": "tools/stage2/parity-2d.js",
+   "kind": "stage evidence",
+   "missing": [
+    "tools/stage2/out/parity"
+   ]
+  },
+  {
+   "file": "tools/stage2/renders-2b.js",
+   "kind": "stage evidence",
+   "missing": [
+    "tools/stage2/out/renders-2b"
+   ]
+  },
+  {
+   "file": "tools/stale-compare.js",
+   "kind": "history",
+   "missing": [
+    "../aus2_pre_geo"
+   ]
+  },
+  {
+   "file": "tools/visual/check-report.js",
+   "kind": "other",
+   "missing": [
+    "tools/visual/out"
+   ]
+  }
+ ],
+ "parseFailures": []
+}

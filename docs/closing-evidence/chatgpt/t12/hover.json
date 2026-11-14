@@ -1,0 +1,59 @@
+{
+ "records": {
+  "the self-test's block": {
+   "failures": [],
+   "realHover": null,
+   "twinHover": null
+  },
+  "check:visual's block": {
+   "failures": [],
+   "realHover": null,
+   "twinHover": null
+  }
+ },
+ "asWritten": {
+  "the self-test's block": {
+   "recordUnchanged": true,
+   "failures": []
+  },
+  "check:visual's block": {
+   "recordUnchanged": true,
+   "failures": []
+  }
+ },
+ "controls": [
+  {
+   "block": "the self-test's block",
+   "control": "the twin hovering Constantine, the real run nothing",
+   "caught": true,
+   "failures": [
+    "paper-zoom by real input: its pointer hovers nothing, its twin's constantine"
+   ]
+  },
+  {
+   "block": "the self-test's block",
+   "control": "the real run hovering Constantine, the twin nothing",
+   "caught": true,
+   "failures": [
+    "paper-zoom by real input: its pointer hovers constantine, its twin's nothing"
+   ]
+  },
+  {
+   "block": "check:visual's block",
+   "control": "the twin hovering Constantine, the real run nothing",
+   "caught": true,
+   "failures": [
+    "paper-zoom by real input: its pointer hovers nothing, its twin's constantine"
+   ]
+  },
+  {
+   "block": "check:visual's block",
+   "control": "the real run hovering Constantine, the twin nothing",
+   "caught": true,
+   "failures": [
+    "paper-zoom by real input: its pointer hovers constantine, its twin's nothing"
+   ]
+  }
+ ],
+ "all": true
+}
