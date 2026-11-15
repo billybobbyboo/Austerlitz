@@ -8078,7 +8078,8 @@ function buildTimeline(){
      move reaches RAIL_SLOP's test: a mouse has no implicit capture, and until step 1 a first move that left the 12 px marker (8, 16 or 33 px at
      once) was never seen, so the drag did nothing. The press ends without a drag on its release, a cancel or a lost capture; handed to the rail,
      the drag ends on the rail's release, cancel or lost capture as any rail drag (above). The click a handed drag's release may still make on a
-     marker is not the marker's: refused until the next press (until step 1 for 1.5 s, so a slower drag's release could open the event) */
+     marker is not the marker's: refused until the release's task has run (until step 1 for 1.5 s after the hand-over, so a slower drag's release
+     could open the event) */
   if(evh){ var mk=null, handed=false;
     evh.addEventListener("pointerdown",function(e){ var m=e.target&&e.target.closest?e.target.closest(".ev-mark"):null; handed=false;
       mk=(m&&e.button===0)?{id:e.pointerId,x:e.clientX,y:e.clientY,m:m}:null;
@@ -8092,8 +8093,11 @@ function buildTimeline(){
     evh.addEventListener("pointerup",function(e){ if(mk&&e.pointerId===mk.id) mk=null; });
     evh.addEventListener("pointercancel",function(e){ if(!mk||e.pointerId===mk.id) mk=null; });
     evh.addEventListener("lostpointercapture",function(e){ if(mk&&e.pointerId===mk.id) mk=null; });
+    /* the release ends the hand-over once its own click (dispatched in the same task as the release) has been refused, so a later Enter or click
+       on a marker is the marker's */
+    ["pointerup","pointercancel"].forEach(function(t){ window.addEventListener(t,function(){ if(handed) setTimeout(function(){ handed=false; },0); },true); });
     evh.addEventListener("click",function(e){ var m=e.target&&e.target.closest?e.target.closest(".ev-mark"):null;
-      if(m&&handed&&e.detail>0){ handed=false; e.stopPropagation(); e.preventDefault(); } },true); }
+      if(m&&handed){ handed=false; e.stopPropagation(); e.preventDefault(); } },true); }
   rail.addEventListener("keydown",function(e){
     var t=null, ph=phaseAt(clock);
     if(e.key==="ArrowRight") t=clock+(e.shiftKey?60:10); else if(e.key==="ArrowLeft") t=clock-(e.shiftKey?60:10);

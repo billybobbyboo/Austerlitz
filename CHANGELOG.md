@@ -6,8 +6,8 @@
 `main` at `98e15bc` (the merge of #110, verified). A presentation task: **no data changed** (`check:data`: all 143 declarations byte-identical to its
 reference), no event time, no timeline semantics and no existing key binding changed.
 
-**The build:** `austerlitz-command-map.html` was 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`; it is now **3,052,798 bytes, md5
-`09a906695fd9c4846396785907e6c1d8`**. `check:baseline` moved to it (`package.json`).
+**The build:** `austerlitz-command-map.html` was 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`; it is now **3,053,167 bytes, md5
+`d404045b4544eb03c69fc3c9e3fff044`**. `check:baseline` moved to it (`package.json`).
 
 ### Reproduced on the base build first (`tools/ux-step1/probe.js`, real browser input; `docs/ux-step1/base-ux1.json`)
 
@@ -35,8 +35,10 @@ The live block's checks (below) on the unmodified build: **165 failures.**
   name, and so the manifest's 351 checks, unchanged).
 - **UA-06** (`app.js` buildTimeline; `style.css`): a press on a marker captures the pointer (`setPointerCapture`), so every move reaches RAIL_SLOP's
   6 px test; handed to the rail, the drag ends on the rail's release, cancel or lost capture as any rail drag; before the hand-over a release, a cancel
-  or a lost capture ends the press. The click a handed drag may still make on a marker is refused until the next press (it was refused for 1.5 s, so
-  a slower drag's release could open the event); Enter, Space and an assistive click are never refused. On the phone layout the markers stand in a row of
+  or a lost capture ends the press. The click a handed drag's release may still make on a marker is refused until that release's task has run (it
+  was refused for 1.5 s after the hand-over, so a slower drag's release could open the event); a later Enter, Space or click is the marker's. (This
+  branch's first build refused only a click with a pointer's detail, so the self-test's check "timeline (WP-06, CL-UX-03)", whose release makes a
+  click of detail 0, failed on CI: its clock went back to the marker's start and the event opened. Fixed in the third build.) On the phone layout the markers stand in a row of
   their own above the rail, on the phases' band (which takes no press there), with hit areas 2 px round their diamonds: the rail's 24 px are the rail's,
   the timeline's 121 px kept. With a coarse pointer on the full timeline (a phone held landscape, a tablet) the markers stand on the rail's top edge
   with the same hit areas, so its lower 16 px are the scrub lane alone, the held-landscape timeline's 91 px kept.

@@ -20,7 +20,9 @@
 "use strict";
 const STEPS=[2,8,16,33], LANE_TOL=3;   /* minutes: a tap's seek against the time under it (2.25 min a px on a 374 px rail) */
 const KEY_VIEWS=[[1600,900],[1366,768],[1080,800],[1079,800],[800,450],[721,800],[720,800],[1280,431],[1280,430],[390,844]];
-const KEY_VIEWS_SO=[[1366,768],[1080,800],[1079,800],[800,450],[1280,431],[1280,430],[390,844]];   /* the self-test's page: fewer, the boundaries kept */
+/* check:selftest (its CI job's limit 60 minutes; the block's full run took it past the limit on this branch's first commit): the boundaries at
+   1080 px wide and 430 px tall and the phone, the draw skipped throughout and the lane swept every 24 px; check:visual and the probe run all */
+const KEY_VIEWS_SO=[[1080,800],[1079,800],[1280,431],[1280,430],[390,844]];
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 
 /* in the page: the visible key rows (topmost at their centre, inside the viewport) and the focus */
@@ -171,11 +173,11 @@ async function cancelCase(page){
   return {draggedTo:+c1.toFixed(2),afterCancel:{clock:+s.clock.toFixed(2),sel:s.sel},laterTouch:{sel:s2.sel},tapAfter:after?{want:g2.markers[k2].id,sel:after.sel,clock:after.clock}:null};
 }
 
-async function laneCases(page,log){
+async function laneCases(page,log,step){
   const out={taps:[],markers:[]};
   await reset(page,240); await sleep(200);
   const g=await page.evaluate(railGeo), bot=g.rail[3];
-  const pts=[]; for(let x=g.rail[0]+3;x<g.rail[2]-2;x+=12) pts.push({x,dy:8,why:"sweep"});
+  const pts=[]; for(let x=g.rail[0]+3;x<g.rail[2]-2;x+=(step||12)) pts.push({x,dy:8,why:"sweep"});
   const x9=xOf(g,540); [2,8,15].forEach(dy=>pts.push({x:x9,dy,why:"09:00"}));
   g.markers.forEach(m=>pts.push({x:m.x,dy:8,why:"marker "+m.id}));
   for(const q of pts){
@@ -263,11 +265,13 @@ const noDraw=page=>page.evaluate(()=>{ if(!window.__uxDraw){ window.__uxDraw=ren
 const draw=page=>page.evaluate(()=>{ if(window.__uxDraw){ renderer.render=window.__uxDraw; window.__uxDraw=null; } });
 async function runBlock(open,settle,opts){
   opts=opts||{}; const log=opts.log||(()=>{}), out={key:[],drag:null,cancel:null,lane:null,laneHeld:null,coincident:{},phases:[],scroll:{}};
-  const views=opts.selftestOnly?KEY_VIEWS_SO:KEY_VIEWS, on=k=>!opts.only||opts.only.split(",").includes(k);   /* only: a probe's subset (never the harness's) */
+  const SO=!!opts.selftestOnly, views=SO?KEY_VIEWS_SO:KEY_VIEWS, on=k=>!opts.only||opts.only.split(",").includes(k);   /* only: a probe's subset (never the harness's) */
+  const sweep=SO?24:12, settle0=settle;
+  if(SO) settle=async pg=>{ await pg.evaluate(()=>AUSTERLITZ_DEBUG.settle(3)); await sleep(300); };   /* nothing drawn: the layout's own passes */
   /* a mouse and its keyboard */
   const pm=await open([1600,900],null);
   try{
-    await settle(pm);
+    await settle0(pm); if(SO) await noDraw(pm);
     if(on("key")) for(const vp of views){ await pm.setViewportSize({width:vp[0],height:vp[1]}); await sleep(500); await settle(pm);
       for(const how of ["click","keyboard"]){ const r=await keyCase(pm,how,vp); out.key.push(r);
         log("  key "+r.vp+" "+how+": "+(r.error||((r.ms!==null?"shown and focused in "+r.ms+" ms ("+r.where+")":"NOT shown and focused: rows "+r.rows+", focus "+r.focus)+"; after Esc focus "+r.afterEsc.focus+(r.afterEsc.shown?"":" NOT SHOWN")))); } }
@@ -281,28 +285,28 @@ async function runBlock(open,settle,opts){
     await pm.evaluate(()=>{ setMode("staff"); }); out.scroll.paper=await pm.evaluate(scrollStyles);
     await pm.evaluate(()=>{ setMode("terrain"); });
     await pm.emulateMedia({forcedColors:"active"}); out.scroll.forced=await pm.evaluate(scrollStyles); await pm.emulateMedia({forcedColors:"none"});
-    await draw(pm);
+    if(!SO) await draw(pm);
   } finally { const cx=pm.context(); await pm.close(); await cx.close().catch(()=>{}); }
   /* touch at desktop sizes (a coarse pointer: the desktop timeline with its markers clear of the scrub lane) */
-  const pt=await open([1600,900],"touch");
+  const pt=await open(SO?[1080,800]:[1600,900],"touch");
   try{
-    await settle(pt);
+    await settle0(pt); if(SO) await noDraw(pt);
     if(on("key")) for(const vp of views.filter(v=>v[0]>=720)){ await pt.setViewportSize({width:vp[0],height:vp[1]}); await sleep(500); await settle(pt);
       const r=await keyCase(pt,"tap",vp); out.key.push(r);
       log("  key "+r.vp+" tap: "+(r.error||((r.ms!==null?"shown and focused in "+r.ms+" ms ("+r.where+")":"NOT shown and focused: rows "+r.rows+", focus "+r.focus)+"; after Esc focus "+r.afterEsc.focus+(r.afterEsc.shown?"":" NOT SHOWN")))); }
     await pt.setViewportSize({width:844,height:390}); await sleep(500); await settle(pt);
     await pt.evaluate(()=>{ if(firstRunOpen) closeFirst(null); }); await noDraw(pt);
-    if(on("lane")) out.laneHeld=await laneCases(pt,log);
+    if(on("lane")) out.laneHeld=await laneCases(pt,log,sweep);
     if(on("drag")){ out.cancel=await cancelCase(pt); log("  a touch drag cancelled: "+JSON.stringify(out.cancel)); }
   } finally { const cx=pt.context(); await pt.close(); await cx.close().catch(()=>{}); }
   /* the phone: an iPhone's size, density and user agent, touch */
   const pp=await open([390,844],"ios");
   try{
-    await settle(pp);
-    if(on("key")) for(const how of ["tap","keyboard"]){ const r=await keyCase(pp,how,[390,844]); r.device="ios"; out.key.push(r);
+    await settle0(pp); if(SO) await noDraw(pp);
+    if(on("key")) for(const how of (SO?["tap"]:["tap","keyboard"])){ const r=await keyCase(pp,how,[390,844]); r.device="ios"; out.key.push(r);
       log("  key 390x844 (phone) "+how+": "+(r.error||((r.ms!==null?"shown and focused in "+r.ms+" ms ("+r.where+")":"NOT shown and focused: rows "+r.rows+", focus "+r.focus)+"; after Esc focus "+r.afterEsc.focus+(r.afterEsc.shown?"":" NOT SHOWN")))); }
     await pp.evaluate(()=>{ if(firstRunOpen) closeFirst(null); }); await noDraw(pp);
-    if(on("lane")) out.lane=await laneCases(pp,log);
+    if(on("lane")) out.lane=await laneCases(pp,log,sweep);
     if(on("coincident")) out.coincident.touch=await coincidentCases(pp,true,log);
   } finally { const cx=pp.context(); await pp.close(); await cx.close().catch(()=>{}); }
   return out;

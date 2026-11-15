@@ -22,7 +22,7 @@ const UA_IOS="Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit
   async function settle(p){ await p.evaluate(()=>window.AUSTERLITZ_DEBUG&&AUSTERLITZ_DEBUG.settle?AUSTERLITZ_DEBUG.settle(30):null); await p.waitForTimeout(300); }
   const t0=Date.now(), live=await UX.runBlock(open,settle,{log:s=>console.log(s),selftestOnly:argv.includes("--selftest-only"),only:opt("--only")});
   await b.close();
-  const md5=crypto.createHash("md5").update(fs.readFileSync(html)).digest("hex"), f=T.checkUx1?T.checkUx1(live):["thresholds.js has no checkUx1"];
+  const md5=crypto.createHash("md5").update(fs.readFileSync(html)).digest("hex"), f=T.checkUx1?T.checkUx1(live,argv.includes("--selftest-only")):["thresholds.js has no checkUx1"];
   console.log("build "+md5+", "+Math.round((Date.now()-t0)/1000)+" s; page errors and console messages "+errs.length+(errs.length?": "+errs.slice(0,5).join(" | "):""));
   console.log(f.length?"FAILED ("+f.length+"):\n  "+f.join("\n  "):"ux1: every check passed");
   if(OUT) fs.writeFileSync(OUT,JSON.stringify({build:path.basename(html),md5,live,failures:f,errors:errs},null,1));

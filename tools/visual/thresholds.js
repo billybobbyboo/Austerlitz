@@ -1004,7 +1004,7 @@ function checkLive(live,opts){
      click, a tap), one Esc then closing the dossier; back with a new focus or a new hover; Esc on a shown tip hides it and does nothing else;
      with a marker focused, a hover over another shows that one's, and leaving it the focused one's again */
   /* UI/UX roadmap step 1 (UA-05, UA-06, UA-12, UA-13, UA-17): the live block "ux1" by real input (tools/visual/ux1.js), judged by checkUx1 (below) */
-  if(req("ux1","the map key and the timeline under real input (UI/UX roadmap step 1)")) checkUx1(live.ux1).forEach(x=>f.push(x));
+  if(req("ux1","the map key and the timeline under real input (UI/UX roadmap step 1)")) checkUx1(live.ux1,so).forEach(x=>f.push(x));
   if(req("tips","the timeline's tips by real keys, mouse and touch (Stage 8, implementation PR 8A, decision 251)")){ const T=live.tips, b=[];
     const is=(o,k)=>!!(o&&o.tip&&o.tip===o[k]), none=o=>!!(o&&o.tip===null);
     if(!is(T.focus,"focusTip")) b.push("Tab to a marker showed no tip");
@@ -1111,7 +1111,7 @@ function checkLive(live,opts){
 }
 /* UI/UX roadmap step 1 (docs/UX_ART_AUDIT.md sections 5 and 6, PR 1): the live block "ux1" (tools/visual/ux1.js), by real browser input on pages of
    its own; judged here. Each bound is the audit's check, written before the repair:
-   - UA-05: at every viewport (the harness's sizes and the boundaries at 1080 px wide and 430 px tall) and by click, tap and keyboard, "Show the key"
+   - UA-05: at every viewport (the harness's sizes and the boundaries at 1080 px wide and 430 px tall; check:selftest the boundaries and the phone) and by click, tap and keyboard, "Show the key"
      leaves a key row visible (topmost at its centre, inside the viewport) with the focus on an element holding it within KEY_MS; Esc then leaves
      the focus on a shown control (never the page), the card and the "?" sheet closed.
    - UA-06: the playhead under the 04:15 marker, a 200 px drag in moves of 2, 8, 16 and 33 px ends within DRAG_TOL minutes of the time under the
@@ -1128,12 +1128,12 @@ function checkLive(live,opts){
      Computed styles: the harness's headless Chromium draws no scrollbar (--hide-scrollbars), so a screenshot cannot show one */
 const UX1={KEY_MS:500, DRAG_TOL:1, OWN_PX:64, KEY_PAD:8, PANELS:["#lg-rows","#modal .sheet","#help .sheet","#layerpop","#firstrun"]};
 module.exports.UX1=UX1;
-function checkUx1(L){
+function checkUx1(L,so){
   const f=[]; if(!L) return ["ux1: no record"];
   const K=L.key||[], W=e=>"e:"+e;
   if(!K.length) f.push("UA-05: no key case run");
   ["click","keyboard","tap"].forEach(h=>{ if(!K.some(k=>k.how===h)) f.push("UA-05: no key case by "+h); });
-  ["390x844","800x450","1080x800","1079x800","1280x431","1280x430"].forEach(v=>{ if(!K.some(k=>k.vp===v)) f.push("UA-05: no key case at "+v); });
+  (so?["390x844","1080x800","1079x800","1280x431","1280x430"]:["390x844","800x450","1080x800","1079x800","1280x431","1280x430","1600x900"]).forEach(v=>{ if(!K.some(k=>k.vp===v)) f.push("UA-05: no key case at "+v); });
   K.forEach(k=>{ const at="UA-05 at "+k.vp+(k.device?" ("+k.device+")":"")+" by "+k.how;
     if(k.error){ f.push(at+": "+k.error); return; }
     if(k.ms===null||k.ms===undefined||k.ms>UX1.KEY_MS) f.push(at+": the key not visible and focused within "+UX1.KEY_MS+" ms (rows shown "+k.rows+", focus "+k.focus+", holding the key "+k.focusHolds+")");
