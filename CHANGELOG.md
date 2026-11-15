@@ -55,7 +55,7 @@ The live block's checks (below) on the unmodified build: **165 failures.**
   line colour on a clear track (dark on the landscape, paper on the paper map); `auto` (the system's) under a forced-colours mode; the key's rows 8 px
   clear at the inline end.
 
-### The checks added (real browser input)
+### The checks added and changed (real browser input)
 
 `tools/visual/ux1.js`, the live block **ux1** in `check:selftest` and `check:visual` (feature `UX1` required), judged by `thresholds.js` `checkUx1`
 (its bounds, the audit's checks, written before the repair: `UX1`), and on its own by `tools/ux-step1/probe.js`. Pages of its own: a mouse at 1600 x 900
@@ -81,9 +81,14 @@ WebGL draw, as the motion driver does (a software frame takes about a second and
 - **Targeted visual cases** (`harness.js --only`, judged by `check-report.js`; software WebGL here): `first-run-laptop`, `narrow-1024`, the ten phone
   cases and the two zoom cases pass every case measure (timeline ceilings, cut text, framing, unobstructed map, drops, contrast as rendered);
   `first-run`'s measures pass, its real-key block runs only in the full `--test` run. The full `check:visual` (about four hours on CI) was not run.
-- `check:contrast` and `check:selftest`: see the PR (here and on CI). CI's `check:contrast` on this branch's first commit failed once in the state
-  `reflow-help` (the map name "Kollowrat's Austrians" and its badge read at 1.12:1 at 320 x 256, under the "?" sheet); here on the final build it found
-  0 texts below AA. The cause is not established: a map item read during the layer's 180 ms fade (`MLS`) would read so, but that was not observed.
+- **`check:contrast`: a race in the tool, found by CI and fixed.** CI failed twice on this branch in the state `reflow-help` (320 x 256, the "?" sheet
+  over the map): "Kollowrat's Austrians" and its badge read at 1.12:1 (`3314ffd`) and 1.34:1 (`c9a3df0`). `tools/ux-step1/rf-fade.js` applies the
+  reflow page's states as `contrast.js` does: 300 ms after the state's one frame the name the state brings back (Saint-Hilaire deselected) stands at
+  opacity 0, mid-way through the map layer's 180 ms fade-in, **on the base build and on this one alike**. The read composites the element's opacity, so it
+  skipped the name at 0, passed it at 1 and failed it between: the result depended on the frame's time. `contrast.js` now reads every state at rest:
+  frames until no item of the layer's pass is fading in or out (one frame in `reflow-help`), and a state still fading after 40 frames fails. No limit
+  changed; the name is now read at full opacity, on its plate.
+- `check:selftest`: see the PR (here and on CI).
 
 ### Not verified
 

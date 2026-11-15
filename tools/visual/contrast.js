@@ -214,6 +214,9 @@ const REFLOW_STATES=[
   ["reflow-layers", ()=>{ setHelp(false); setLayerPop(true); }, ["setLayerPop"], ()=>__rf.noH()&&__rf.on("#layerpop")]
 ];
 const REFLOW_VP=[320,256], REFLOW_DPR=4;
+/* UI/UX roadmap step 1: an item of the map layer's current pass fading in (on, its fade under 1) or out (a remnant) (app.js MLS, mlLayout's it.fa and it.rem) */
+const ML_FADING="(function(){ if(typeof ML==='undefined'||!ML.items) return false; for(var k in ML.items){ var it=ML.items[k]; if(!it||it.eFrame!==ML.frame) continue;"+
+  " if((it.on&&typeof it.fa==='number'&&it.fa<1)||it.rem) return true; } return false; })()";
 /* the final audits' Stage 6, WP-09 (CL-UX-09; WCAG 1.4.1 and 1.4.11 in a forced-colours mode): a fourth page at 1600 x 900 with forced colours emulated.
    Not text contrast (the user's system colours draw the text): each pressed or selected state drawn otherwise than its group's unpressed one (the
    presentation, the vantage, the speed, the phase, the layers' rows), the event markers drawn (their background kept, the two sides apart), the key's
@@ -320,6 +323,13 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
     await page.evaluate(fn);
     await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG) AUSTERLITZ_DEBUG.settle(3); });   /* a drawn frame: the map layer lays out in it */
     await page.waitForTimeout(300);
+    /* UI/UX roadmap step 1 (PR #111's CI, twice: "Kollowrat's Austrians" read at 1.12:1 and 1.34:1 in reflow-help): a map item the state brings in
+       fades in over MLS's 180 ms (and one it drops fades out), frame by frame; read 300 ms after one frame it can stand at any opacity, which the
+       read composites, so whether it passed (read at 0, skipped, or at 1) or failed (between) depended on the frame's time. The same on the base
+       build (tools/ux-step1 rf probe: the item at opacity 0 at that moment on both builds). Each state is now read at rest: frames drawn until no
+       item is fading, else the state fails */
+    if(!LEGACY){ let n=0; while(n<40&&await page.evaluate(ML_FADING)){ await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(1)); await page.waitForTimeout(100); n++; }
+      if(await page.evaluate(ML_FADING)) stateFails.push("state "+name+": the map layer still fading after 40 frames (an item fading in or a remnant fading out), so its text cannot be read at rest"); }
     let ok=false; try{ ok=await page.evaluate(reached); }catch(e){ ok=false; }
     if(!ok){ const desc=String(reached).replace(/^\(\)=>/,"");
       if(LEGACY) skipped.push(name+" (not reached: "+desc+")"); else stateFails.push("state "+name+" not reached: "+desc+" is false (T-5)"); }
