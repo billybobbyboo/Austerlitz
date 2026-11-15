@@ -1,6 +1,6 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 367c8071653569ebd2e391c3379d3d3c (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 07cbcaf32808c430198d55b1b7ed78b7 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "07cbcaf32808c430198d55b1b7ed78b7",
  "count": 351,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",

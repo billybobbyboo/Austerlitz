@@ -299,7 +299,7 @@ browser checks and the acceptance runs are being run again on the final build; t
 | `npm run check:data` | final | all 143 declarations byte-identical to `archive/stage6wp09w-45d29cc5.html` |
 | `npm run check:chronology` | final | errors 0 |
 | `tools/ux-step2/block.js` (the block `ux2` alone) | final | every check passes; on the base 520 failures |
-| `npm run check:selftest` | `367c8071...` | passes: 351 checks by name; the motion block's 16: jumps 234 of 251, pops 948 of 1,049, level-of-detail switches 105 of 130, flickers 10 of 12; `MOTION.LONG` 4,833 of 6,322 and 11,869 of 16,010 (the base's counts); the blocks `ux1` and `ux2` pass ([`runs/check-selftest.log`](runs/check-selftest.log)) |
+| `npm run check:selftest` | final | passes: 351 checks by name; the motion block's 16: jumps 234 of 251, pops 948 of 1,049, level-of-detail switches 105 of 130, flickers 10 of 12; `MOTION.LONG` 4,833 of 6,322 and 11,869 of 16,010 (the base's counts); the blocks `ux1` and `ux2` pass ([`runs/check-selftest.log`](runs/check-selftest.log)) |
 | `npm run check:contrast` | `367c8071...` | passes: 9,172 text elements in 57 states, none below AA; 465 cased texts; 10 of 10 start-up cases ([`runs/check-contrast.log`](runs/check-contrast.log)) |
 | `tools/ux-step2/tiers.js` (`check:visual`'s block `tiers` alone) | `367c8071...` | its 13 views pass; tier 3 at 6.99:1 at the least as rendered ([`runs/tiers-step2.log`](runs/tiers-step2.log)) |
 | `npm run check:visual` (the full suite) | | **not run here** (about four hours on CI, where it runs on demand) |

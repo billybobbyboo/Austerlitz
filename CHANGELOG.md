@@ -104,10 +104,10 @@ browser checks and the acceptance runs are being run again on the final build; t
 
 - **On the final build:** `npm test`: all 9 suites, the height guard and the dead-code check pass. `npm run check:data`: all 143 declarations
   byte-identical to the reference. `npm run check:chronology`: errors 0. The block `ux2` alone (`tools/ux-step2/block.js`): every check passes.
-- **On `367c8071...`:** `npm run check:selftest`: passes (351 checks by name; the motion block's 16: jumps 234 of 251, pops 948 of 1,049,
+- **On the final build:** `npm run check:selftest`: passes (351 checks by name; the motion block's 16: jumps 234 of 251, pops 948 of 1,049,
   level-of-detail switches 105 of 130, flickers 10 of 12; `MOTION.LONG`: 4,833 of 6,322 and 11,869 of 16,010, the base's counts). One earlier run
   of it, made while the acceptance probes loaded the machine, ended on a 30 s timeout of a harness key press (`page.focus` on `#timerail`) after
-  all 351 in-app checks had passed; run alone it passes.
+  all 351 in-app checks had passed; run alone it passes, on that build and on the final one.
 - **On `367c8071...`:** `npm run check:contrast`: passes (9,172 text elements in 57 states, none below AA; 465 cased texts read against their
   casing; 10 of 10 start-up cases).
 - **On `367c8071...`:** the block `tiers` alone (`tools/ux-step2/tiers.js`): its 13 views pass (tier 3 at 6.99:1 at the least as rendered).
