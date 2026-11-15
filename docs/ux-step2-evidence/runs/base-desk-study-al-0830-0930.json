@@ -22,7 +22,7 @@
  "from": 510,
  "to": 570,
  "frames": 548,
- "secs": 115,
+ "secs": 93,
  "clockEnd": 570,
  "coverage": {
   "frames": 548,
@@ -100,6 +100,7 @@
  },
  "contrast": {
   "samples": 9,
+  "redrawn": 0,
   "texts": 212,
   "fading": 24,
   "tier3": {
@@ -292,11 +293,11 @@
   "share": 0.7668
  },
  "layerMs": {
-  "passes": 557,
+  "passes": 556,
   "median": 1.2,
-  "p95": 2.8,
-  "max": 11.4,
-  "over8": 3
+  "p95": 2.7,
+  "max": 27.4,
+  "over8": 1
  },
  "errors": []
 }

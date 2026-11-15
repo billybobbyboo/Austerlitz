@@ -22,7 +22,7 @@
  "from": 510,
  "to": 570,
  "frames": 548,
- "secs": 148,
+ "secs": 91,
  "clockEnd": 570,
  "coverage": {
   "frames": 548,
@@ -100,6 +100,7 @@
  },
  "contrast": {
   "samples": 9,
+  "redrawn": 0,
   "texts": 280,
   "fading": 29,
   "tier3": {
@@ -152,15 +153,15 @@
    "ring": {
     "n": 251,
     "min": 7.41,
-    "p10": 12.25,
-    "median": 13.37,
+    "p10": 11.91,
+    "median": 13.21,
     "below": 0
    },
    "box": {
     "n": 251,
     "min": 7.48,
-    "p10": 12.29,
-    "median": 13.37,
+    "p10": 12.03,
+    "median": 13.2,
     "below": 0
    }
   },
@@ -168,23 +169,23 @@
    "ring": {
     "n": 251,
     "min": 7.41,
-    "p10": 12.25,
-    "median": 13.37,
+    "p10": 11.91,
+    "median": 13.21,
     "below": 0
    },
    "box": {
     "n": 251,
     "min": 7.48,
-    "p10": 12.29,
-    "median": 13.37,
+    "p10": 12.03,
+    "median": 13.2,
     "below": 0
    },
    "bare": {
     "n": 251,
     "min": 1.02,
-    "p10": 1.76,
-    "median": 3.48,
-    "below": 185
+    "p10": 1.67,
+    "median": 3.24,
+    "below": 215
    }
   },
   "belowRing": []
@@ -283,11 +284,11 @@
   "share": 0.855
  },
  "layerMs": {
-  "passes": 557,
-  "median": 1.5,
-  "p95": 4,
-  "max": 51.6,
-  "over8": 10
+  "passes": 556,
+  "median": 1.2,
+  "p95": 2.6,
+  "max": 5.5,
+  "over8": 0
  },
  "errors": []
 }

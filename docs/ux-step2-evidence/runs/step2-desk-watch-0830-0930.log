@@ -1,8 +1,8 @@
-step2-desk-watch-0830-0930 on 367c8071 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 548 frames to 570.0, 411 s
+step2-desk-watch-0830-0930 on 07cbcaf3 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 548 frames to 570.0, 326 s
   filled plates over the formations' box: max 13.4%, median 8.7%, frames over 12%: 28 of 548; every label's box: max 17.1%; tier 3 fills: 0 at most, in 0 frames
   drawn labels: max 9, median 7, frames over 12: 0; filled: max 9, median 7; by tier at most {"0":0,"1":4,"2":5,"3":0}; a live event's plate at t-live in 1576 of its 1663 frames
-  contrast over 39 drawn frames, 280 texts at full opacity (1 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
-    every text: ring {"n":280,"min":12.37,"p10":12.52,"median":13.63,"below":0}, box {"n":280,"min":12.1,"p10":12.52,"median":13.63,"below":0}, bare {"n":280,"min":1.06,"p10":1.24,"median":2.66,"below":257}
+  contrast over 39 drawn frames (0 drawn again: the capture's canvas black), 280 texts at full opacity (1 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":280,"min":12.37,"p10":12.52,"median":13.63,"below":0}, box {"n":280,"min":12.1,"p10":12.52,"median":13.62,"below":0}, bare {"n":280,"min":1.06,"p10":1.25,"median":2.63,"below":260}
   the formations a live event names: drawn 2752 of 2752 in view (100.0%) over 548 frames of Play; not drawn: {"occluded":0,"placement":0,"calm":0,"withheld":0}; outside the measure: {"offscreen":0,"panel":0,"reading":0,"field":0,"lod":262,"aggregate":236,"none":0}
     decision           label drawn 236 frames; its formations drawn 639 of 639; outside {"c_iv:aggregate":236,"gqg:lod":69}
     davout             label drawn 493 frames; its formations drawn 493 of 493
@@ -10,4 +10,4 @@ step2-desk-watch-0830-0930 on 367c8071 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader
     pratzen-village    label drawn 193 frames; its formations drawn 193 of 193
     face-about         label drawn 193 frames; its formations drawn 386 of 386; outside {"ahq:lod":193}
     telnitz-retaken    label drawn 55 frames; its formations drawn 55 of 55
-  the label pass: median 1 ms, 95th 3, max 43 over 557 passes, over 8 ms: 4; page errors 0
+  the label pass: median 1 ms, 95th 2.5, max 7.6 over 556 passes, over 8 ms: 0; page errors 0

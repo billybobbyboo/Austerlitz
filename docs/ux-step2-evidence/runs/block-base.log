@@ -9,7 +9,7 @@ ux2 Watch while it plays, no tier 3 name: playing null (focus), focused -, blurr
 ux2 forced colours: 21 labels; tier 3 on no fill 0; tier 1 outlines 
 ux2 reduced motion, Play in Watch: 120 frames, 51 labels drawn at most, tier 3 drawn in 0 frames
 ux2 a phone (390 x 844): a live event at  px; Play, 270 frames: filled plates over the formations' box 45.3% at most, 32.3% (median); the formations a live event names drawn 27 of 52
-build d404045b4544eb03c69fc3c9e3fff044, Chromium 141.0.7390.37 (Playwright 1.56.0, software WebGL), 356 s; page errors and console messages 0
+build d404045b4544eb03c69fc3c9e3fff044, Chromium 141.0.7390.37 (Playwright 1.56.0, software WebGL), 173 s; page errors and console messages 0
 FAILED (561):
   ux2: the token t-live null px, 13.5 expected
   ux2 09:00: n:ahq tier null, 3 expected

@@ -1,6 +1,6 @@
 {
  "build": "step2.html",
- "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "md5": "07cbcaf32808c430198d55b1b7ed78b7",
  "tag": "step2-phone-study-1130-1300",
  "env": {
   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
@@ -22,7 +22,7 @@
  "from": 690,
  "to": 780,
  "frames": 728,
- "secs": 93,
+ "secs": 69,
  "clockEnd": 780,
  "coverage": {
   "frames": 728,
@@ -100,6 +100,7 @@
  },
  "contrast": {
   "samples": 25,
+  "redrawn": 0,
   "texts": 280,
   "fading": 35,
   "tier3": {
@@ -107,29 +108,29 @@
     "n": 111,
     "min": 8.77,
     "p10": 11.68,
-    "median": 12.9,
+    "median": 12.87,
     "below": 0
    },
    "wide": {
     "n": 111,
     "min": 3.56,
     "p10": 3.88,
-    "median": 6.51,
+    "median": 6.08,
     "below": 37
    },
    "box": {
     "n": 111,
     "min": 3.33,
     "p10": 3.63,
-    "median": 4.95,
-    "below": 50
+    "median": 4.58,
+    "below": 53
    },
    "bare": {
     "n": 111,
     "min": 3.28,
-    "p10": 3.57,
-    "median": 4.17,
-    "below": 64
+    "p10": 3.53,
+    "median": 4.16,
+    "below": 68
    }
   },
   "cased": {
@@ -137,22 +138,22 @@
     "n": 111,
     "min": 8.77,
     "p10": 11.68,
-    "median": 12.9,
+    "median": 12.87,
     "below": 0
    },
    "box": {
     "n": 111,
     "min": 3.33,
     "p10": 3.63,
-    "median": 4.95,
-    "below": 50
+    "median": 4.58,
+    "below": 53
    }
   },
   "plated": {
    "ring": {
     "n": 134,
     "min": 11.6,
-    "p10": 13.69,
+    "p10": 13.66,
     "median": 14.24,
     "below": 0
    },
@@ -168,23 +169,23 @@
    "ring": {
     "n": 245,
     "min": 8.77,
-    "p10": 12.1,
-    "median": 13.78,
+    "p10": 12.06,
+    "median": 13.71,
     "below": 0
    },
    "box": {
     "n": 245,
     "min": 3.33,
     "p10": 3.84,
-    "median": 13.77,
-    "below": 50
+    "median": 13.65,
+    "below": 53
    },
    "bare": {
     "n": 245,
     "min": 1.09,
-    "p10": 1.21,
-    "median": 3.82,
-    "below": 166
+    "p10": 1.22,
+    "median": 3.7,
+    "below": 172
    }
   },
   "belowRing": []
@@ -285,11 +286,11 @@
   "share": 1
  },
  "layerMs": {
-  "passes": 737,
+  "passes": 736,
   "median": 1.3,
-  "p95": 3,
-  "max": 6.6,
-  "over8": 0
+  "p95": 2.8,
+  "max": 36.1,
+  "over8": 5
  },
  "errors": []
 }

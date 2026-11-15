@@ -1,7 +1,7 @@
-step2-desk-study-al-0830-0930 on 367c8071 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 548 frames to 570.0, 111 s
+step2-desk-study-al-0830-0930 on 07cbcaf3 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 548 frames to 570.0, 105 s
   filled plates over the formations' box: max 13.6%, median 8.5%, frames over 12%: 28 of 548; every label's box: max 25.2%; tier 3 fills: 0 at most, in 0 frames
   drawn labels: max 33, median 23, frames over 12: 548; filled: max 9, median 7; by tier at most {"0":0,"1":4,"2":5,"3":31}; a live event's plate at t-live in 1392 of its 1648 frames
-  contrast over 9 drawn frames, 193 texts at full opacity (23 fading aside): tier 3 ring {"n":132,"min":7.47,"p10":10.73,"median":12.73,"below":0}, box {"n":132,"min":1.02,"p10":1.72,"median":3.83,"below":88}, bare {"n":132,"min":1.02,"p10":1.69,"median":3.3,"below":109}
+  contrast over 9 drawn frames (0 drawn again: the capture's canvas black), 193 texts at full opacity (23 fading aside): tier 3 ring {"n":132,"min":7.47,"p10":10.73,"median":12.73,"below":0}, box {"n":132,"min":1.02,"p10":1.72,"median":3.83,"below":88}, bare {"n":132,"min":1.02,"p10":1.69,"median":3.3,"below":109}
     the variant not built (the far plate under every tier 3 label whose words' box reads under 4.5:1): 11 labels a sampled frame (median; 15 at most), filled plates then over 11.2% of the formations' box (median; 19.4% at most), over 12% in 4 of 9 sampled frames
     every text: ring {"n":193,"min":7.47,"p10":11.14,"median":13.11,"below":0}, box {"n":193,"min":1.02,"p10":1.78,"median":5.14,"below":88}, bare {"n":193,"min":1.02,"p10":1.61,"median":3.23,"below":167}
   the formations a live event names: drawn 2380 of 2380 in view (100.0%) over 548 frames of Play; not drawn: {"occluded":0,"placement":0,"calm":0,"withheld":0}; outside the measure: {"offscreen":0,"panel":1,"reading":547,"field":0,"lod":262,"aggregate":0,"none":0}
@@ -11,4 +11,4 @@ step2-desk-study-al-0830-0930 on 367c8071 (ANGLE (Google, Vulkan 1.3.0 (SwiftSha
     pratzen-village    label drawn 193 frames; its formations drawn 193 of 193
     face-about         label drawn 193 frames; its formations drawn 386 of 386; outside {"ahq:lod":193}
     telnitz-retaken    label drawn 55 frames; its formations drawn 55 of 55
-  the label pass: median 1.1 ms, 95th 3.1, max 81.5 over 557 passes, over 8 ms: 7; page errors 0
+  the label pass: median 1.3 ms, 95th 3.1, max 21.3 over 556 passes, over 8 ms: 5; page errors 0

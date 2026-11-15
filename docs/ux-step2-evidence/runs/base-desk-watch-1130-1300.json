@@ -22,7 +22,7 @@
  "from": 690,
  "to": 780,
  "frames": 728,
- "secs": 291,
+ "secs": 220,
  "clockEnd": 780,
  "coverage": {
   "frames": 728,
@@ -100,6 +100,7 @@
  },
  "contrast": {
   "samples": 25,
+  "redrawn": 0,
   "texts": 935,
   "fading": 64,
   "tier3": {
@@ -153,14 +154,14 @@
     "n": 871,
     "min": 7.31,
     "p10": 12.58,
-    "median": 13.51,
+    "median": 13.49,
     "below": 0
    },
    "box": {
     "n": 871,
     "min": 7.31,
-    "p10": 12.61,
-    "median": 13.5,
+    "p10": 12.58,
+    "median": 13.46,
     "below": 0
    }
   },
@@ -169,22 +170,22 @@
     "n": 871,
     "min": 7.31,
     "p10": 12.58,
-    "median": 13.51,
+    "median": 13.49,
     "below": 0
    },
    "box": {
     "n": 871,
     "min": 7.31,
-    "p10": 12.61,
-    "median": 13.5,
+    "p10": 12.58,
+    "median": 13.46,
     "below": 0
    },
    "bare": {
     "n": 871,
     "min": 1.58,
-    "p10": 2.75,
-    "median": 4.64,
-    "below": 387
+    "p10": 2.73,
+    "median": 4.6,
+    "below": 401
    }
   },
   "belowRing": []
@@ -282,11 +283,11 @@
   "share": 0.9283
  },
  "layerMs": {
-  "passes": 737,
+  "passes": 736,
   "median": 1.3,
-  "p95": 2.8,
-  "max": 13.1,
-  "over8": 1
+  "p95": 2.6,
+  "max": 229.4,
+  "over8": 5
  },
  "errors": []
 }

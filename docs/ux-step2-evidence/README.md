@@ -17,39 +17,39 @@ device. Nothing here is a frame rate. Safari, a real GPU and a real phone were n
 | # | Target | Result | Met? |
 |---|---|---|---|
 | 1 | Filled plates over at most 12% of the formations' box in every frame of the 08:30 to 09:30 Play, at 1440 x 900 and 390 x 844, Study and Watch | **1440 x 900:** 30.8% at most (25.0% median) on the base; **13.6% at most (8.6% median)** now in Study, 13.4% (8.7%) in Watch; over 12% in **28 of 548 frames** (08:54.8 to 08:59.3, while four live events' plates and the four formations they name stand at once). **390 x 844:** 44.8% at most (30.8% median) on the base; **35.7% at most (16.2% median)** now; over 12% in 501 of 548 frames. Fallback plates under tier 3 labels: **0** in every frame of every run | **No** on the phone; on the desktop in 520 of 548 frames (section 3) |
-| 2 | Tier 3 at 4.5:1 as rendered against its local ground, fog included; the label pass under 8 ms | Against its casing: **7.46:1 at the least over 1,934 tier 3 texts** in 137 drawn frames (the fog of 08:30 to 09:00, 09:00 to 09:30, noon), none below 4.5:1. Against the ground between and round its words (the measure a plated label is held to) it reads lower: section 4. The label pass: **1.4 ms median, 3.7 ms at the 95th percentile** (base 1.3 and 3.4) | **Yes by the casing; no by the whole box**: the owner's call (section 4) |
-| 3 | The formations a live event names drawn in at least 90% of desktop frames; `MOTION.LONG` preserved | On the Landscape, 08:30 to 09:30: **2,706 of 2,706 (100%)** in Study, base 2,205 of 2,706 (81.5%); 2,752 of 2,752 in Watch, base 84.7%. 11:30 to 13:00: 6,878 of 6,878, base 92.2%. `MOTION.LONG`'s own runs (the Landscape with counters, which step 2 does not touch): 4,833 of 6,322 (76.4%) and 11,869 of 16,010 (74.1%), the base's counts exactly, over its 70% bar | **Yes** on the Landscape (section 5) |
+| 2 | Tier 3 at 4.5:1 as rendered against its local ground, fog included; the label pass under 8 ms | Against its casing: **7.46:1 at the least over 1,934 tier 3 texts** in 137 drawn frames (the fog of 08:30 to 09:00, 09:00 to 09:30, noon), none below 4.5:1. Against the ground between and round its words (the measure a plated label is held to) it reads lower: section 4. The label pass: **1.5 ms median, 3.9 ms at the 95th percentile** (base 1.5 and 4.6); single passes over 8 ms, 33 of 7,392 over the twelve runs (base 40), with two runs sharing four cores | **Yes by the casing; no by the whole box**: the owner's call (section 4) |
+| 3 | The formations a live event names drawn in at least 90% of desktop frames; `MOTION.LONG` preserved | On the Landscape, 08:30 to 09:30: **2,706 of 2,706 (100%)** in Study, base 2,205 of 2,706 (81.5%); 2,752 of 2,752 in Watch, base 84.7%. 11:30 to 13:00: 6,878 of 6,878, base 92.2%. `MOTION.LONG`'s own runs (the Landscape with counters, which step 2 does not touch): 4,833 of 6,322 (76.4%) and 11,869 of 16,010 (74.1%) here, the base's counts exactly (on CI's runner 12,072 of 16,010 on both builds), over its 70% bar | **Yes** on the Landscape (section 5) |
 | 4 | Interaction and accessibility through Play, pause, seek, event changes, focus, selection, forced colours, reduced motion, a phone; the comparison cases; #111's behaviour | The live block `ux2` passes every check on this build and fails 561 on the base; the Landscape with counters and the paper map measure the same on both builds in every number; the block `ux1` (step 1's key, rail and markers) passes | **Yes**, in emulation (section 6) |
-| 5 | The suites; guarded data byte-identical; existing assertions and baselines kept; the unobstructed-area targets measured | `npm test`, `check:data` (143 of 143 identical), `check:chronology`, `check:contrast`, `check:selftest`: section 7. No limit, ceiling or baseline moved. The unobstructed targets are not met on the base and are unchanged (section 8) | **Yes**; the full `check:visual` was not run here (section 7) |
+| 5 | The suites; guarded data byte-identical; existing assertions and baselines kept; the unobstructed-area targets measured | `npm test`, `check:data` (143 of 143 identical), `check:chronology`, `check:contrast`, `check:selftest`: section 7. No limit, ceiling or baseline moved. The unobstructed targets are not met on the base and are unchanged (section 8) | **Yes**; the full `check:visual` passed on CI, not run here (section 7) |
 
 ## 2. The runs
 
 | Run (frames) | Build | Filled plates over the formations' box: max / median / frames over 12% | Labels drawn: max / median; on a fill: max | Tier 3 fills | Event-named formations drawn of those in view | Label pass: median / 95th (ms) |
 |---|---|---|---|---|---|---|
-| 1440 x 900, Study, 08:30 to 09:30 (548) | Step 1 | 30.8% / 25.0% / 545 of 548 | 44 / 32; 44 | 0 | 2205 of 2706 (81.5%) | 1.3 / 3.4 |
-|  | **Step 2** | 13.6% / 8.6% / 28 of 548 | 43 / 32; 9 | 0 | 2706 of 2706 (100.0%) | 1.4 / 3.7 |
-| 1440 x 900, Watch, 08:30 to 09:30 (548) | Step 1 | 30.8% / 24.9% / 548 of 548 | 47 / 34; 47 | 0 | 2332 of 2752 (84.7%) | 1.3 / 3.5 |
-|  | **Step 2** | 13.4% / 8.7% / 28 of 548 | 9 / 7; 9 | 0 | 2752 of 2752 (100.0%) | 1 / 3 |
-| 390 x 844 (phone), Study, 08:30 to 09:30 (548) | Step 1 | 44.8% / 30.8% / 548 of 548 | 18 / 11; 18 | 0 | 248 of 334 (74.3%) | 0.8 / 2.3 |
-|  | **Step 2** | 35.7% / 16.2% / 501 of 548 | 18 / 12; 5 | 0 | 334 of 334 (100.0%) | 0.9 / 2.4 |
-| 390 x 844 (phone), Watch, 08:30 to 09:30 (548) | Step 1 | 44.8% / 30.8% / 548 of 548 | 19 / 11; 19 | 0 | 248 of 334 (74.3%) | 0.8 / 2.6 |
-|  | **Step 2** | 35.7% / 16.2% / 501 of 548 | 5 / 4; 5 | 0 | 334 of 334 (100.0%) | 0.7 / 1.8 |
-| 1440 x 900, Study, 11:30 to 13:00 (728) | Step 1 | 30.0% / 22.9% / 685 of 728 | 42 / 36; 42 | 0 | 6340 of 6878 (92.2%) | 1.3 / 3.8 |
-|  | **Step 2** | 17.9% / 8.6% / 91 of 728 | 43 / 36; 16 | 0 | 6878 of 6878 (100.0%) | 1.3 / 3.8 |
-| 1440 x 900, Watch, 11:30 to 13:00 (728) | Step 1 | 26.7% / 22.0% / 670 of 728 | 43 / 38; 43 | 0 | 6437 of 6934 (92.8%) | 1.3 / 2.8 |
-|  | **Step 2** | 13.8% / 8.3% / 41 of 728 | 16 / 13; 16 | 0 | 6934 of 6934 (100.0%) | 1 / 2.4 |
-| 390 x 844 (phone), Study, 11:30 to 13:00 (728) | Step 1 | 51.9% / 37.5% / 716 of 728 | 17 / 11; 17 | 0 | 845 of 1151 (73.4%) | 1.3 / 3.3 |
-|  | **Step 2** | 49.1% / 35.8% / 664 of 728 | 17 / 11; 8 | 0 | 1151 of 1151 (100.0%) | 1.3 / 3 |
-| 390 x 844 (phone), Watch, 11:30 to 13:00 (728) | Step 1 | 51.9% / 37.4% / 713 of 728 | 17 / 11; 17 | 0 | 883 of 1151 (76.7%) | 1.2 / 2.8 |
-|  | **Step 2** | 49.1% / 35.8% / 681 of 728 | 8 / 5; 8 | 0 | 1151 of 1151 (100.0%) | 1.2 / 2.8 |
-| 1440 x 900, Landscape with counters, 08:30 to 09:30 (548) | Step 1 | 28.4% / 23.4% / 539 of 548 | 32 / 25; 15 | 0 | 2223 of 2969 (74.9%) | 1.3 / 3.5 |
-|  | **Step 2** | 28.4% / 23.4% / 539 of 548 | 32 / 25; 15 | 0 | 2223 of 2969 (74.9%) | 1.3 / 4.4 |
-| 1440 x 900, Paper map, 08:30 to 09:30 (548) | Step 1 | 43.5% / 36.5% / 548 of 548 | 25 / 22; 12 | 0 | 595 of 665 (89.5%) | 1 / 1.9 |
-|  | **Step 2** | 43.5% / 36.5% / 548 of 548 | 25 / 22; 12 | 0 | 595 of 665 (89.5%) | 1.1 / 2.7 |
-| 1440 x 900, Study (the Allied reading), 08:30 to 09:30 (548) | Step 1 | 24.2% / 18.8% / 516 of 548 | 33 / 24; 33 | 0 | 1825 of 2380 (76.7%) | 1.2 / 2.8 |
-|  | **Step 2** | 13.6% / 8.5% / 28 of 548 | 33 / 23; 9 | 0 | 2380 of 2380 (100.0%) | 1.1 / 3.1 |
-| 1440 x 900, Watch (Napoleon's reading), 08:30 to 09:30 (548) | Step 1 | 26.8% / 21.8% / 548 of 548 | 42 / 32; 42 | 0 | 2353 of 2752 (85.5%) | 1.5 / 4 |
-|  | **Step 2** | 13.4% / 8.7% / 28 of 548 | 9 / 7; 9 | 0 | 2752 of 2752 (100.0%) | 1.1 / 3.7 |
+| 1440 x 900, Study, 08:30 to 09:30 (548) | Step 1 | 30.8% / 25.0% / 545 of 548 | 44 / 32; 44 | 0 | 2205 of 2706 (81.5%) | 1.5 / 4.6 |
+|  | **Step 2** | 13.6% / 8.6% / 28 of 548 | 43 / 32; 9 | 0 | 2706 of 2706 (100.0%) | 1.5 / 3.9 |
+| 1440 x 900, Watch, 08:30 to 09:30 (548) | Step 1 | 30.8% / 24.9% / 548 of 548 | 47 / 34; 47 | 0 | 2332 of 2752 (84.7%) | 1.3 / 2.9 |
+|  | **Step 2** | 13.4% / 8.7% / 28 of 548 | 9 / 7; 9 | 0 | 2752 of 2752 (100.0%) | 1 / 2.5 |
+| 390 x 844 (phone), Study, 08:30 to 09:30 (548) | Step 1 | 44.8% / 30.8% / 548 of 548 | 18 / 11; 18 | 0 | 248 of 334 (74.3%) | 0.9 / 2.4 |
+|  | **Step 2** | 35.7% / 16.2% / 501 of 548 | 18 / 12; 5 | 0 | 334 of 334 (100.0%) | 0.9 / 2.2 |
+| 390 x 844 (phone), Watch, 08:30 to 09:30 (548) | Step 1 | 44.8% / 30.8% / 548 of 548 | 19 / 11; 19 | 0 | 248 of 334 (74.3%) | 0.9 / 2.1 |
+|  | **Step 2** | 35.7% / 16.2% / 501 of 548 | 5 / 4; 5 | 0 | 334 of 334 (100.0%) | 0.8 / 1.8 |
+| 1440 x 900, Study, 11:30 to 13:00 (728) | Step 1 | 30.0% / 22.9% / 685 of 728 | 42 / 36; 42 | 0 | 6340 of 6878 (92.2%) | 1.3 / 3 |
+|  | **Step 2** | 17.9% / 8.6% / 91 of 728 | 43 / 36; 16 | 0 | 6878 of 6878 (100.0%) | 1.3 / 2.9 |
+| 1440 x 900, Watch, 11:30 to 13:00 (728) | Step 1 | 26.7% / 22.0% / 670 of 728 | 43 / 38; 43 | 0 | 6437 of 6934 (92.8%) | 1.3 / 2.6 |
+|  | **Step 2** | 13.8% / 8.3% / 41 of 728 | 16 / 13; 16 | 0 | 6934 of 6934 (100.0%) | 1.1 / 2.4 |
+| 390 x 844 (phone), Study, 11:30 to 13:00 (728) | Step 1 | 51.9% / 37.5% / 716 of 728 | 17 / 11; 17 | 0 | 845 of 1151 (73.4%) | 1.2 / 3 |
+|  | **Step 2** | 49.1% / 35.8% / 664 of 728 | 17 / 11; 8 | 0 | 1151 of 1151 (100.0%) | 1.3 / 2.8 |
+| 390 x 844 (phone), Watch, 11:30 to 13:00 (728) | Step 1 | 51.9% / 37.4% / 713 of 728 | 17 / 11; 17 | 0 | 883 of 1151 (76.7%) | 1.2 / 2.5 |
+|  | **Step 2** | 49.1% / 35.8% / 681 of 728 | 8 / 5; 8 | 0 | 1151 of 1151 (100.0%) | 1.1 / 2.4 |
+| 1440 x 900, Landscape with counters, 08:30 to 09:30 (548) | Step 1 | 28.4% / 23.4% / 539 of 548 | 32 / 25; 15 | 0 | 2223 of 2969 (74.9%) | 1.3 / 3.3 |
+|  | **Step 2** | 28.4% / 23.4% / 539 of 548 | 32 / 25; 15 | 0 | 2223 of 2969 (74.9%) | 1.3 / 4.5 |
+| 1440 x 900, Paper map, 08:30 to 09:30 (548) | Step 1 | 43.5% / 36.5% / 548 of 548 | 25 / 22; 12 | 0 | 595 of 665 (89.5%) | 0.9 / 2 |
+|  | **Step 2** | 43.5% / 36.5% / 548 of 548 | 25 / 22; 12 | 0 | 595 of 665 (89.5%) | 0.8 / 1.8 |
+| 1440 x 900, Study (the Allied reading), 08:30 to 09:30 (548) | Step 1 | 24.2% / 18.8% / 516 of 548 | 33 / 24; 33 | 0 | 1825 of 2380 (76.7%) | 1.2 / 2.7 |
+|  | **Step 2** | 13.6% / 8.5% / 28 of 548 | 33 / 23; 9 | 0 | 2380 of 2380 (100.0%) | 1.3 / 3.1 |
+| 1440 x 900, Watch (Napoleon's reading), 08:30 to 09:30 (548) | Step 1 | 26.8% / 21.8% / 548 of 548 | 42 / 32; 42 | 0 | 2353 of 2752 (85.5%) | 1.2 / 2.6 |
+|  | **Step 2** | 13.4% / 8.7% / 28 of 548 | 9 / 7; 9 | 0 | 2752 of 2752 (100.0%) | 1 / 2.5 |
 
 Fallback plates: the "Tier 3 fills" column. The far plate is drawn by nothing in this build.
 
@@ -80,7 +80,7 @@ the screen's edge. On the phone a live event is at 12.5 px always.
 
 **The desktop, 08:30 to 09:30: 28 of 548 frames, 13.6% at most.** All 28 lie between 08:54.8 and 08:59.3, when four live events are labelled at
 once (Napoleon's release of Soult, still in its tail; Friant at the Goldbach; the climb; Pratzen village, in its lead) and four formations are named
-by them: eight plates in a box 837 by 216 px (26% of the free map, Follow's framing). Nothing else is filled in those frames. Measured with a
+by them: in the worst frame eight plates in a box 849 by 215 px (27% of the free map, Follow's framing). Nothing else is filled in those frames. Measured with a
 live event's plate held at 12.5 px in the box it had before step 2 (`runs/step2-desk-study-t1-at-t-ui.json`): 13.1% at most, over 12% in the
 same 28 frames. The excess is the count of live events and the size of the box, not the type size. By arithmetic, not measured: with Follow's
 box at the 50% of the free map that step 3 aims at, the same plates would stand over about 7%.
@@ -104,19 +104,19 @@ in the Guard action. It gives up the accent plate on a phone, which the brief as
 | Run | Build | Texts read at full opacity (frames drawn) | Tier 3 against its casing: min / 10th pct / below 4.5 | Tier 3, the words' whole box: median / below 4.5 | Tier 3, the bare ground: median / below 4.5 | Every text, as its surface gives it: min / below 4.5 |
 |---|---|---|---|---|---|---|
 | 1440 x 900, Study, 08:30 to 09:30 | Step 1 | 1170 (39) | none drawn | - | - | 7.24 / 0 of 1170 |
-|  | **Step 2** | 1181 (39) | 7.47 / 10.97 / 0 of 903 | 4.06 / 571 of 903 | 3.43 / 720 of 903 | 7.47 / 0 of 1181 |
+|  | **Step 2** | 1181 (39) | 7.47 / 10.83 / 0 of 903 | 3.95 / 602 of 903 | 3.32 / 751 of 903 | 7.47 / 0 of 1181 |
 | 1440 x 900, Watch, 08:30 to 09:30 | Step 1 | 1257 (39) | none drawn | - | - | 7.24 / 0 of 1257 |
 |  | **Step 2** | 280 (39) | none drawn | - | - | 12.37 / 0 of 280 |
 | 390 x 844 (phone), Study, 08:30 to 09:30 | Step 1 | 388 (39) | none drawn | - | - | 11.37 / 0 of 388 |
-|  | **Step 2** | 403 (39) | 10.23 / 11.11 / 0 of 260 | 4.02 / 144 of 260 | 3.47 / 160 of 260 | 10.23 / 0 of 403 |
+|  | **Step 2** | 403 (39) | 9.99 / 11.1 / 0 of 260 | 3.8 / 154 of 260 | 3.22 / 170 of 260 | 9.99 / 0 of 403 |
 | 390 x 844 (phone), Watch, 08:30 to 09:30 | Step 1 | 389 (39) | none drawn | - | - | 11.37 / 0 of 389 |
 |  | **Step 2** | 143 (39) | none drawn | - | - | 11.6 / 0 of 143 |
 | 1440 x 900, Study, 11:30 to 13:00 | Step 1 | 811 (25) | none drawn | - | - | 7.29 / 0 of 811 |
-|  | **Step 2** | 837 (25) | 7.46 / 12.25 / 0 of 528 | 5.19 / 167 of 528 | 4.47 / 267 of 528 | 7.46 / 0 of 837 |
+|  | **Step 2** | 837 (25) | 7.46 / 12.25 / 0 of 528 | 5.17 / 170 of 528 | 4.42 / 272 of 528 | 7.46 / 0 of 837 |
 | 1440 x 900, Watch, 11:30 to 13:00 | Step 1 | 871 (25) | none drawn | - | - | 7.31 / 0 of 871 |
 |  | **Step 2** | 313 (25) | none drawn | - | - | 12.1 / 0 of 313 |
-| 390 x 844 (phone), Study, 11:30 to 13:00 | Step 1 | 243 (25) | none drawn | - | - | 8.41 / 0 of 243 |
-|  | **Step 2** | 245 (25) | 8.77 / 11.68 / 0 of 111 | 4.95 / 50 of 111 | 4.17 / 64 of 111 | 8.77 / 0 of 245 |
+| 390 x 844 (phone), Study, 11:30 to 13:00 | Step 1 | 243 (25) | none drawn | - | - | 7.75 / 0 of 243 |
+|  | **Step 2** | 245 (25) | 8.77 / 11.68 / 0 of 111 | 4.58 / 53 of 111 | 4.16 / 68 of 111 | 8.77 / 0 of 245 |
 | 390 x 844 (phone), Watch, 11:30 to 13:00 | Step 1 | 233 (25) | none drawn | - | - | 11.53 / 0 of 233 |
 |  | **Step 2** | 134 (25) | none drawn | - | - | 11.6 / 0 of 134 |
 | 1440 x 900, Study (the Allied reading), 08:30 to 09:30 | Step 1 | 188 (9) | none drawn | - | - | 7.47 / 0 of 188 |
@@ -131,14 +131,14 @@ its local ground":
    as the letter's background): 7.46:1 at the least, over every ground sampled, the valley fog included. This is the reading the build is held to
    (`check:contrast`, `check:visual`, the block `ux2`).
 2. **Against the words' whole box**, the measure the harness has always applied to a plated label (the worst decile of every pixel in the words'
-   line box): over the fog and the morning's haze the ground between and round the words is pale, and **571 of 903 tier 3 texts read under 4.5:1**
-   (median 4.06:1) in the 08:30 to 09:30 Study run; at noon 167 of 528 (median 5.19:1).
-3. **Against the bare ground**, with neither plate nor casing: 720 of 903 under 4.5:1 in the morning (median 3.43:1), 267 of 528 at noon. The
+   line box): over the fog and the morning's haze the ground between and round the words is pale, and **602 of 903 tier 3 texts read under 4.5:1**
+   (median 3.95:1) in the 08:30 to 09:30 Study run; at noon 170 of 528 (median 5.17:1).
+3. **Against the bare ground**, with neither plate nor casing: 751 of 903 under 4.5:1 in the morning (median 3.32:1), 272 of 528 at noon. The
    Landscape's ground is too pale for bare label ink for most of the day, fog or not.
 
 **The fallback was measured and not built.** Were every tier 3 label whose whole box reads under 4.5:1 given the far plate (reading 2), a sampled
-frame of the morning would carry 16 more plates at the median (27 at most) and filled plates would stand over **15.1% of the formations' box at
-the median and 24.9% at most, over 12% in 29 of 39 sampled frames**; at noon 10.9% at the median, 18.7% at most. Reading 2 and the 12% target
+frame of the morning would carry 16 more plates at the median (31 at most) and filled plates would stand over **15.1% of the formations' box at
+the median and 24.9% at most, over 12% in 29 of 39 sampled frames**; at noon 11.0% at the median, 18.7% at most (over 12% in 9 of 25). Reading 2 and the 12% target
 cannot both hold in the morning. The build takes reading 1 and draws no fallback plate; `sym.plate.far` stays in `tokens.js`, drawn by nothing.
 
 The audit's prototype's halo (five blurred shadows) reads faint over fog, as the audit says; on the same fog frames a casing of unblurred
@@ -289,29 +289,52 @@ named formations drawn, 45 labels in Watch, 45.3% on the phone.
 
 ## 7. The checks
 
-**Interim record (this commit).** Every check below is of the final build (md5 `07cbcaf3...`). The acceptance runs in sections 1 to 5 are of the
-build before the key's two rows and the width guard (md5 `367c8071653569ebd2e391c3379d3d3c`) and were taken before two faults of the probe were
-found and fixed (the pointer left over the map; the first drawn frame captured black: `METHOD.md`). They are being run again; sections 1 to 5
-are replaced by those runs in the next commit.
+Every check is of the final build (md5 `07cbcaf3...`). Locally: Chromium 141.0.7390.37 through Playwright 1.56.0, software WebGL, 4 cores. On CI:
+the same pinned browser on ubuntu-24.04.
 
-| Check | Build | Result |
+| Check | Where | Result |
 |---|---|---|
-| `npm test` | final | all 9 suites, the height guard and the dead-code check pass |
-| `npm run check:data` | final | all 143 declarations byte-identical to `archive/stage6wp09w-45d29cc5.html` |
-| `npm run check:chronology` | final | errors 0 |
-| `tools/ux-step2/block.js` (the block `ux2` alone) | final | every check passes; on the base 561 failures |
-| `npm run check:selftest` | final | passes: 351 checks by name; the motion block's 16: jumps 234 of 251, pops 948 of 1,049, level-of-detail switches 105 of 130, flickers 10 of 12; `MOTION.LONG` 4,833 of 6,322 and 11,869 of 16,010 (the base's counts); the blocks `ux1` and `ux2` pass ([`runs/check-selftest.log`](runs/check-selftest.log)) |
-| `npm run check:contrast` | final | passes: 9,195 text elements in 57 states, none below AA; 465 cased texts; 10 of 10 start-up cases ([`runs/check-contrast.log`](runs/check-contrast.log)) |
-| `tools/ux-step2/tiers.js` (`check:visual`'s block `tiers` alone) | final | its 13 views pass; tier 3 at 6.99:1 at the least as rendered ([`runs/tiers-step2.log`](runs/tiers-step2.log)) |
-| CI, on push and on the pull request | final | the checks job and the browser job (`check:contrast`, `check:selftest`) pass on `192902f` and `c7472fc`: runs 43706354632, 43706452916, 43708995528, 43709001179 |
-| `npm run check:visual` (the full suite) | final | **not run here**; started on CI on `192902f`, run 43706481008 (about four hours) |
+| `npm test` | here | all 9 suites, the height guard and the dead-code check pass |
+| `npm run check:data` | here | all 143 declarations byte-identical to `archive/stage6wp09w-45d29cc5.html` |
+| `npm run check:chronology` | here | errors 0 |
+| `npm run check:selftest` | here | passes: 351 checks by name; the motion block's 16: jumps 234 of 251, pops 948 of 1,049, level-of-detail switches 105 of 130, flickers 10 of 12; every run's visibility at its baseline; the blocks `ux1` and `ux2` pass ([`runs/check-selftest.log`](runs/check-selftest.log)) |
+| `npm run check:contrast` | here | passes: 9,195 text elements in 57 states, none below AA; 465 cased texts read against their casing; 10 of 10 start-up cases ([`runs/check-contrast.log`](runs/check-contrast.log)) |
+| `tools/ux-step2/block.js` (the block `ux2` alone) | here | every check passes ([`runs/block-step2.log`](runs/block-step2.log)); on the base 561 failures ([`runs/block-base.log`](runs/block-base.log)) |
+| `tools/ux-step2/tiers.js` (`check:visual`'s block `tiers` alone) | here | its 13 views pass; tier 3 at 6.99:1 at the least as rendered ([`runs/tiers-step2.log`](runs/tiers-step2.log)) |
+| Targeted visual cases (`harness.js --only`, judged case by case: `tools/ux-step2/judge-cases.js`) | here | 8 of 8 pass their own thresholds: `pratzen-low`, `selected-formation`, `watch-selected`, `narrow-1024`, `ph8-overview-watch`, `eye-zuran`, `plans-overview`, `phone-390-explore`; the label pass 0.6 to 2.6 ms; cased texts at 7.67:1 at the least as rendered, none unread; drops within each case's limit ([`runs/visual-cases.log`](runs/visual-cases.log)). The cases alone: no self-test and no live block in that run |
+| The checks job (the build, the committed HTML a fresh build's, `npm test`, `check:data`, `check:chronology`) and the browser job (`check:contrast`, `check:selftest`) | CI | pass on every push and pull-request run: `192902f` (43706354632, 43706452916), `c7472fc` (43708995528, 43709001179), `61d82ac` (43716094115, 43716098145), `f29a088` (43722112380, with `playRun` as it now is) |
+| `npm run check:visual` (the full suite, 41 cases and the live blocks) | CI | **passes**: the job `visual` of run 43706481008 on `192902f`, 3 h 45 min. Not run here |
 
-One earlier `check:selftest` run, made while the acceptance probes loaded the machine, ended on a 30 s timeout of a harness key press
+**Two things about the CI record.**
+
+- Run 43706481008 as a whole shows "cancelled": its `visual`, `checks` and contrast jobs passed, and its self-test job was ended by the job's
+  60-minute limit about six minutes from its end. The self-test's step took 57 min 57 s on `main` at `72cc626` (run 43682373857), before this
+  change; the block `ux2` adds about six minutes on a runner of that speed. The other seven finished runs of this branch took 33 to 53 minutes. The
+  browser job's limit is raised to 90 minutes in this pull request (`.github/workflows/checks.yml`); nothing else in the workflow changed.
+- `check:visual` ran on `192902f`. The build has not changed since. What changed in the tools after it: `playRun` (the pending frame,
+  `METHOD.md`), which the block `ux2` uses; the block with it passes here and in CI's self-test on `f29a088`. The full suite was not run
+  again on the last commit.
+
+**`MOTION.LONG`.** Its two desktop runs draw 4,833 of 6,322 and 11,869 of 16,010 event-named formation-frames here, on both builds. On CI's
+runner the second is 12,072 of 16,010, also on both builds (`main`'s run 43682373857 and this branch's): that run's count differs by machine
+(its clock ends at 1000.0000000006 there and 999.9999999995 here), not by build. Both are over its 70% bar.
+
+**The Landscape's Play in the motion block** is the one run of the 16 that step 2 changes (the formations a live event names are placed first
+while the clock plays): 2,772 of 3,146 formation-frames drawn (its baseline asks for 2,603 at least; step 1's build draws 2,720), 30 jumps,
+60 pops and 3 flickers (step 1's build: 23, 71 and 5). The 16's totals stay within their ceilings.
+
+One earlier local `check:selftest` run, made while the acceptance probes loaded the machine, ended on a 30 s timeout of a harness key press
 (`page.focus` on `#timerail`) after all 351 in-app checks had passed. Run alone it passes.
 
 No assertion was loosened to pass. Three were changed because the behaviour they held is superseded, each recorded in `CHANGELOG.md`: the far
 plate's (decision 263 (a)), the selection's "no other name edged" (a tier 2 name now has a 1 px keyline), and decision 38's plate rule for a
 label that no longer has a plate.
+
+**The acceptance tools were wrong three times before they were right** (`METHOD.md`): the pointer left over the map, a black capture of a run's
+first drawn frame, and the app's pending animation frame falling between two of a run's frames. None is the build's. Sections 1 to 5 are of
+the last batch, made with all three fixed: 24 runs, no page error, no capture drawn again. The coverage, the label counts and the visibility
+of the earlier batches were the same in every run but the outliers the faults made; the contrast's side readings (the whole box, the bare
+ground) moved a little, because some earlier runs had read one sample against a black canvas.
 
 ## 8. The unobstructed-area targets (measured, not changed)
 

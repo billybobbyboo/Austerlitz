@@ -1,6 +1,6 @@
 {
  "build": "step2.html",
- "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "md5": "07cbcaf32808c430198d55b1b7ed78b7",
  "tag": "step2-desk-watch-1130-1300",
  "env": {
   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
@@ -22,7 +22,7 @@
  "from": 690,
  "to": 780,
  "frames": 728,
- "secs": 285,
+ "secs": 216,
  "clockEnd": 780,
  "coverage": {
   "frames": 728,
@@ -100,6 +100,7 @@
  },
  "contrast": {
   "samples": 25,
+  "redrawn": 0,
   "texts": 313,
   "fading": 0,
   "tier3": {
@@ -153,14 +154,14 @@
     "n": 313,
     "min": 12.1,
     "p10": 13.06,
-    "median": 13.91,
+    "median": 13.85,
     "below": 0
    },
    "box": {
     "n": 313,
     "min": 9.52,
-    "p10": 13.09,
-    "median": 13.79,
+    "p10": 13.08,
+    "median": 13.78,
     "below": 0
    }
   },
@@ -169,22 +170,22 @@
     "n": 313,
     "min": 12.1,
     "p10": 13.06,
-    "median": 13.91,
+    "median": 13.85,
     "below": 0
    },
    "box": {
     "n": 313,
     "min": 9.52,
-    "p10": 13.09,
-    "median": 13.79,
+    "p10": 13.08,
+    "median": 13.78,
     "below": 0
    },
    "bare": {
     "n": 313,
     "min": 1.14,
-    "p10": 1.31,
-    "median": 3.24,
-    "below": 206
+    "p10": 1.39,
+    "median": 3.22,
+    "below": 209
    }
   },
   "belowRing": []
@@ -270,11 +271,11 @@
   "share": 1
  },
  "layerMs": {
-  "passes": 737,
-  "median": 1,
+  "passes": 736,
+  "median": 1.1,
   "p95": 2.4,
-  "max": 38.7,
-  "over8": 3
+  "max": 74.7,
+  "over8": 5
  },
  "errors": []
 }

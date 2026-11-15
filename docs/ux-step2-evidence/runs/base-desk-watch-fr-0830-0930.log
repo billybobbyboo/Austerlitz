@@ -1,8 +1,8 @@
-base-desk-watch-fr-0830-0930 on d404045b (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 548 frames to 570.0, 148 s
+base-desk-watch-fr-0830-0930 on d404045b (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 548 frames to 570.0, 91 s
   filled plates over the formations' box: max 26.8%, median 21.8%, frames over 12%: 548 of 548; every label's box: max 26.8%; tier 3 fills: 0 at most, in 0 frames
   drawn labels: max 42, median 32, frames over 12: 548; filled: max 42, median 32; by tier at most {"0":42,"1":0,"2":0,"3":0}; a live event's plate at t-live in 0 of its 0 frames
-  contrast over 9 drawn frames, 251 texts at full opacity (29 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
-    every text: ring {"n":251,"min":7.41,"p10":12.25,"median":13.37,"below":0}, box {"n":251,"min":7.48,"p10":12.29,"median":13.37,"below":0}, bare {"n":251,"min":1.02,"p10":1.76,"median":3.48,"below":185}
+  contrast over 9 drawn frames (0 drawn again: the capture's canvas black), 251 texts at full opacity (29 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":251,"min":7.41,"p10":11.91,"median":13.21,"below":0}, box {"n":251,"min":7.48,"p10":12.03,"median":13.2,"below":0}, bare {"n":251,"min":1.02,"p10":1.67,"median":3.24,"below":215}
   the formations a live event names: drawn 2353 of 2752 in view (85.5%) over 548 frames of Play; not drawn: {"occluded":0,"placement":399,"calm":0,"withheld":0}; outside the measure: {"offscreen":0,"panel":0,"reading":0,"field":0,"lod":262,"aggregate":236,"none":0}
     decision           label drawn 236 frames; its formations drawn 555 of 639; misses {"sthilaire:placement":58,"gqg:placement":10,"vandamme:placement":16}; outside {"c_iv:aggregate":236,"gqg:lod":69}
     davout             label drawn 493 frames; its formations drawn 447 of 493; misses {"friant:placement":46}
@@ -10,4 +10,4 @@ base-desk-watch-fr-0830-0930 on d404045b (ANGLE (Google, Vulkan 1.3.0 (SwiftShad
     pratzen-village    label drawn 193 frames; its formations drawn 140 of 193; misses {"sthilaire:placement":53}
     face-about         label drawn 193 frames; its formations drawn 354 of 386; misses {"kollo:placement":32}; outside {"ahq:lod":193}
     telnitz-retaken    label drawn 55 frames; its formations drawn 39 of 55; misses {"friant:placement":16}
-  the label pass: median 1.5 ms, 95th 4, max 51.6 over 557 passes, over 8 ms: 10; page errors 0
+  the label pass: median 1.2 ms, 95th 2.6, max 5.5 over 556 passes, over 8 ms: 0; page errors 0

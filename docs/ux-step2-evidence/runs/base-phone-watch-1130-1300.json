@@ -22,7 +22,7 @@
  "from": 690,
  "to": 780,
  "frames": 728,
- "secs": 87,
+ "secs": 65,
  "clockEnd": 780,
  "coverage": {
   "frames": 728,
@@ -100,6 +100,7 @@
  },
  "contrast": {
   "samples": 25,
+  "redrawn": 0,
   "texts": 274,
   "fading": 41,
   "tier3": {
@@ -153,14 +154,14 @@
     "n": 233,
     "min": 11.53,
     "p10": 12.54,
-    "median": 12.91,
+    "median": 12.89,
     "below": 0
    },
    "box": {
     "n": 233,
     "min": 11.53,
     "p10": 12.54,
-    "median": 12.9,
+    "median": 12.89,
     "below": 0
    }
   },
@@ -169,22 +170,22 @@
     "n": 233,
     "min": 11.53,
     "p10": 12.54,
-    "median": 12.91,
+    "median": 12.89,
     "below": 0
    },
    "box": {
     "n": 233,
     "min": 11.53,
     "p10": 12.54,
-    "median": 12.9,
+    "median": 12.89,
     "below": 0
    },
    "bare": {
     "n": 233,
     "min": 1.64,
-    "p10": 3.53,
-    "median": 4.77,
-    "below": 92
+    "p10": 3.52,
+    "median": 4.62,
+    "below": 100
    }
   },
   "belowRing": []
@@ -295,11 +296,11 @@
   "share": 0.7672
  },
  "layerMs": {
-  "passes": 737,
+  "passes": 736,
   "median": 1.2,
-  "p95": 2.8,
-  "max": 90.3,
-  "over8": 7
+  "p95": 2.5,
+  "max": 11.8,
+  "over8": 3
  },
  "errors": []
 }

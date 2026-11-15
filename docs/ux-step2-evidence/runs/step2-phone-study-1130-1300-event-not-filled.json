@@ -1,6 +1,6 @@
 {
  "build": "step2.html",
- "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "md5": "07cbcaf32808c430198d55b1b7ed78b7",
  "tag": "step2-phone-study-1130-1300-event-not-filled",
  "env": {
   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
@@ -22,7 +22,7 @@
  "from": 690,
  "to": 780,
  "frames": 728,
- "secs": 12,
+ "secs": 11,
  "clockEnd": 780,
  "coverage": {
   "frames": 728,
@@ -100,6 +100,7 @@
  },
  "contrast": {
   "samples": 0,
+  "redrawn": 0,
   "texts": 0,
   "fading": 0,
   "tier3": {
@@ -285,10 +286,10 @@
   "share": 1
  },
  "layerMs": {
-  "passes": 737,
+  "passes": 736,
   "median": 1.1,
-  "p95": 2.1,
-  "max": 5.4,
+  "p95": 2.2,
+  "max": 3.2,
   "over8": 0
  },
  "errors": []

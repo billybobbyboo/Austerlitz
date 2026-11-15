@@ -1,8 +1,8 @@
-step2-desk-watch-1130-1300 on 367c8071 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 728 frames to 780.0, 285 s
+step2-desk-watch-1130-1300 on 07cbcaf3 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 728 frames to 780.0, 216 s
   filled plates over the formations' box: max 13.8%, median 8.3%, frames over 12%: 41 of 728; every label's box: max 13.8%; tier 3 fills: 0 at most, in 0 frames
   drawn labels: max 16, median 13, frames over 12: 504; filled: max 16, median 13; by tier at most {"0":0,"1":5,"2":11,"3":0}; a live event's plate at t-live in 2719 of its 2835 frames
-  contrast over 25 drawn frames, 313 texts at full opacity (0 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
-    every text: ring {"n":313,"min":12.1,"p10":13.06,"median":13.91,"below":0}, box {"n":313,"min":9.52,"p10":13.09,"median":13.79,"below":0}, bare {"n":313,"min":1.14,"p10":1.31,"median":3.24,"below":206}
+  contrast over 25 drawn frames (0 drawn again: the capture's canvas black), 313 texts at full opacity (0 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":313,"min":12.1,"p10":13.06,"median":13.85,"below":0}, box {"n":313,"min":9.52,"p10":13.08,"median":13.78,"below":0}, bare {"n":313,"min":1.14,"p10":1.39,"median":3.22,"below":209}
   the formations a live event names: drawn 6934 of 6934 in view (100.0%) over 728 frames of Play; not drawn: {"occluded":0,"placement":0,"calm":0,"withheld":0}; outside the measure: {"offscreen":18,"panel":0,"reading":0,"field":0,"lod":432,"aggregate":728,"none":0}
     guard-attack       label drawn 728 frames; its formations drawn 2184 of 2184; outside {"constantine:aggregate":728}
     guard-broken       label drawn 728 frames; its formations drawn 2184 of 2184
@@ -10,4 +10,4 @@ step2-desk-watch-1130-1300 on 367c8071 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader
     hq-forward         label drawn 492 frames; its formations drawn 276 of 276; outside {"gqg:lod":216}
     davout-resumes     label drawn 192 frames; its formations drawn 384 of 384
     wheel              label drawn 55 frames; its formations drawn 220 of 220
-  the label pass: median 1 ms, 95th 2.4, max 38.7 over 737 passes, over 8 ms: 3; page errors 0
+  the label pass: median 1.1 ms, 95th 2.4, max 74.7 over 736 passes, over 8 ms: 5; page errors 0

@@ -1,6 +1,6 @@
 {
  "build": "step2.html",
- "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "md5": "07cbcaf32808c430198d55b1b7ed78b7",
  "tag": "step2-phone-study-0830-0930",
  "env": {
   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
@@ -22,7 +22,7 @@
  "from": 510,
  "to": 570,
  "frames": 548,
- "secs": 129,
+ "secs": 96,
  "clockEnd": 570,
  "coverage": {
   "frames": 548,
@@ -100,52 +100,53 @@
  },
  "contrast": {
   "samples": 39,
+  "redrawn": 0,
   "texts": 447,
   "fading": 44,
   "tier3": {
    "ring": {
     "n": 260,
-    "min": 10.23,
-    "p10": 11.11,
-    "median": 12.7,
+    "min": 9.99,
+    "p10": 11.1,
+    "median": 12.68,
     "below": 0
    },
    "wide": {
     "n": 260,
     "min": 1.67,
-    "p10": 2.69,
-    "median": 4.72,
-    "below": 118
+    "p10": 2.56,
+    "median": 4.54,
+    "below": 128
    },
    "box": {
     "n": 260,
     "min": 1.61,
-    "p10": 1.85,
-    "median": 4.02,
-    "below": 144
+    "p10": 1.8,
+    "median": 3.8,
+    "below": 154
    },
    "bare": {
     "n": 260,
     "min": 1.53,
     "p10": 1.73,
-    "median": 3.47,
-    "below": 160
+    "median": 3.22,
+    "below": 170
    }
   },
   "cased": {
    "ring": {
     "n": 260,
-    "min": 10.23,
-    "p10": 11.11,
-    "median": 12.7,
+    "min": 9.99,
+    "p10": 11.1,
+    "median": 12.68,
     "below": 0
    },
    "box": {
     "n": 260,
     "min": 1.61,
-    "p10": 1.85,
-    "median": 4.02,
-    "below": 144
+    "p10": 1.8,
+    "median": 3.8,
+    "below": 154
    }
   },
   "plated": {
@@ -167,35 +168,35 @@
   "all": {
    "ring": {
     "n": 403,
-    "min": 10.23,
-    "p10": 11.52,
-    "median": 13.08,
+    "min": 9.99,
+    "p10": 11.36,
+    "median": 13,
     "below": 0
    },
    "box": {
     "n": 403,
     "min": 1.61,
-    "p10": 2.17,
-    "median": 7.25,
-    "below": 144
+    "p10": 2.06,
+    "median": 6.2,
+    "below": 154
    },
    "bare": {
     "n": 403,
     "min": 1.19,
     "p10": 1.67,
-    "median": 2.93,
-    "below": 298
+    "median": 2.89,
+    "below": 309
    }
   },
   "belowRing": []
  },
  "boxFallback": {
   "samples": 39,
-  "labelsMax": 8,
-  "labelsMedian": 3,
+  "labelsMax": 10,
+  "labelsMedian": 4,
   "coverMax": 0.3768,
   "coverMedian": 0.2466,
-  "over12": 37
+  "over12": 38
  },
  "events": {
   "inView": 334,
@@ -280,11 +281,11 @@
   "share": 1
  },
  "layerMs": {
-  "passes": 557,
+  "passes": 556,
   "median": 0.9,
-  "p95": 2.4,
-  "max": 83.6,
-  "over8": 2
+  "p95": 2.2,
+  "max": 8.8,
+  "over8": 1
  },
  "errors": []
 }

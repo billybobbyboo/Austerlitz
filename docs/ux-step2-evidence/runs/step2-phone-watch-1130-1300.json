@@ -1,6 +1,6 @@
 {
  "build": "step2.html",
- "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "md5": "07cbcaf32808c430198d55b1b7ed78b7",
  "tag": "step2-phone-watch-1130-1300",
  "env": {
   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
@@ -22,7 +22,7 @@
  "from": 690,
  "to": 780,
  "frames": 728,
- "secs": 86,
+ "secs": 62,
  "clockEnd": 780,
  "coverage": {
   "frames": 728,
@@ -100,6 +100,7 @@
  },
  "contrast": {
   "samples": 25,
+  "redrawn": 0,
   "texts": 134,
   "fading": 0,
   "tier3": {
@@ -159,7 +160,7 @@
    "box": {
     "n": 134,
     "min": 10.25,
-    "p10": 13.68,
+    "p10": 13.66,
     "median": 14.24,
     "below": 0
    }
@@ -175,16 +176,16 @@
    "box": {
     "n": 134,
     "min": 10.25,
-    "p10": 13.68,
+    "p10": 13.66,
     "median": 14.24,
     "below": 0
    },
    "bare": {
     "n": 134,
     "min": 1.1,
-    "p10": 1.17,
+    "p10": 1.18,
     "median": 1.94,
-    "below": 100
+    "below": 101
    }
   },
   "belowRing": []
@@ -285,11 +286,11 @@
   "share": 1
  },
  "layerMs": {
-  "passes": 737,
-  "median": 1.2,
-  "p95": 2.8,
-  "max": 50.6,
-  "over8": 8
+  "passes": 736,
+  "median": 1.1,
+  "p95": 2.4,
+  "max": 9.4,
+  "over8": 1
  },
  "errors": []
 }

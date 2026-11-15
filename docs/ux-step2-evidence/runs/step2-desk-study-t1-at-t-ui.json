@@ -1,6 +1,6 @@
 {
  "build": "step2.html",
- "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "md5": "07cbcaf32808c430198d55b1b7ed78b7",
  "tag": "step2-desk-study-t1-at-t-ui",
  "env": {
   "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
@@ -100,6 +100,7 @@
  },
  "contrast": {
   "samples": 0,
+  "redrawn": 0,
   "texts": 0,
   "fading": 0,
   "tier3": {
@@ -269,11 +270,11 @@
   "share": 1
  },
  "layerMs": {
-  "passes": 557,
+  "passes": 556,
   "median": 1.2,
-  "p95": 1.9,
-  "max": 6.1,
-  "over8": 0
+  "p95": 2.2,
+  "max": 9.3,
+  "over8": 1
  },
  "errors": []
 }
