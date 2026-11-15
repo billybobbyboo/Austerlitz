@@ -15936,8 +15936,10 @@ function fitCaption(){
   /* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-13): the act never drawn cut ("THE PRAT\u2026" until step 1, allowed down to CAP_MIN): where it does not fit
      whole it gives way whole, before it truncates; the act band (and, on a phone, the phase list's heading) names it, and the act's button keeps its
      full accessible name */
-  function cutAct(){ return !!act&&shown(act)&&act.scrollWidth>act.clientWidth+1; }
-  function bad(){ return over()||cutAct()||frag(ph)||fragEv(); }
+  function cutWhole(e){ return !!e&&shown(e)&&e.scrollWidth>e.clientWidth+1; }
+  /* on the phone layout the phase's title likewise gives way whole rather than being drawn cut (as it did while the act took its room until step 1;
+     the dispatch sheet's title names it, decision 224 (a)) */
+  function bad(){ return over()||cutWhole(act)||(PHONE&&cutWhole(ph))||frag(ph)||fragEv(); }
   tidy(); if(!bad()) return;
   var D=[].filter.call(cap.querySelectorAll(".der"),function(d){ return shown(d); }), ev=cap.querySelector(".ev"), em=D.length?D[0].querySelector("em"):null;
   function set(e,on){ if(e) e.classList.toggle("fit-off",!on); }

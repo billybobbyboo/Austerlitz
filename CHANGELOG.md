@@ -6,8 +6,8 @@
 `main` at `98e15bc` (the merge of #110, verified). A presentation task: **no data changed** (`check:data`: all 143 declarations byte-identical to its
 reference), no event time, no timeline semantics and no existing key binding changed.
 
-**The build:** `austerlitz-command-map.html` was 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`; it is now **3,052,563 bytes, md5
-`cc8ec8f4f314bf4fef62037d181f386a`**. `check:baseline` moved to it (`package.json`).
+**The build:** `austerlitz-command-map.html` was 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`; it is now **3,052,798 bytes, md5
+`09a906695fd9c4846396785907e6c1d8`**. `check:baseline` moved to it (`package.json`).
 
 ### Reproduced on the base build first (`tools/ux-step1/probe.js`, real browser input; `docs/ux-step1/base-ux1.json`)
 
@@ -16,7 +16,7 @@ The live block's checks (below) on the unmodified build: **165 failures.**
   1080 x 800, 1079 x 800, 800 x 450, 721 x 800, 720 x 800, 1280 x 431, 1280 x 430 and 390 x 844). Below 1080 px wide and at 430 px tall the card closed
   with the focus on Play and the key `display:none`; from 1080 px the focus went to the key's toggle, not the key, and the rows waited for a frame.
 - **UA-06:** from the playhead under the 04:15 marker a 200 px drag scrubbed in moves of 2 and 8 px and **did not move the clock in moves of 16 and
-  33 px**; a drag released outside the rail did not move it either; after a cancelled touch drag a tap on a marker opened nothing. On the phone
+  33 px**; a drag released outside the rail (in 25 px moves) did not move it either; after a cancelled touch drag a tap on a marker opened nothing. On the phone
   (390 x 844) **42 of 59** taps in the rail's lower 16 px opened an event (at 09:00, at y 829, "Kutuzov orders the 4th Column to face about"); with a
   coarse pointer at 844 x 390, **44 of 96**.
 - **UA-17:** of the 8 events that share a start (07:00, 08:45, 11:00, 11:15), 4 could not be opened by a mouse (0 px of hit area of their own) and 4
@@ -48,7 +48,9 @@ The live block's checks (below) on the unmodified build: **165 failures.**
 - **UA-13** (`app.js` `fitPhaseLabels`, `fitCaption`): the current phase stays whole on its plate (decision 53); each label it reaches starts after
   the plate's edge, shortened with its ellipsis, or gives way (hidden, its button, press and name kept) under 3 em of room. In the caption the act gives
   way whole where it does not fit, before it truncates (the act band names it; on a phone the phase list's heading); its button and every phase keep
-  their full accessible names.
+  their full accessible names. On the phone layout the phase's title then gives way whole too rather than being drawn cut (until step 1 the cut act
+  kept it out; the phone cases allow no cut phase title upright: found by `phone-390-explore` and `zoom-400x225-explore` on this branch's first
+  build, fixed before the second).
 - **UA-12** (`style.css`): the key, the sources sheet and the "?" sheet, the Layers panel and the first card take `scrollbar-color` from the theme's
   line colour on a clear track (dark on the landscape, paper on the paper map); `auto` (the system's) under a forced-colours mode; the key's rows 8 px
   clear at the inline end.
@@ -69,14 +71,19 @@ WebGL draw, as the motion driver does (a software frame takes about a second and
 
 ### Verified
 
-- **The live block on the final build:** every check passed (`docs/ux-step1/after-ux1.json`): the key in 31 of 31 cases (1 to 12 ms after the
-  activation; the panel from 1080 px wide above 430 px tall, the "?" sheet elsewhere; after Esc the focus on the key's rows or on Play); the drags to
+- **The live block:** every check passed (`docs/ux-step1/after-ux1.json`): the key in 31 of 31 cases (4 to 32 ms after the activation in the page's
+  own time; the panel from 1080 px wide above 430 px tall, the "?" sheet elsewhere; after Esc the focus on the key's rows or on Play); the drags to
   within 0.01 minute of the release's time in all four step sizes, no event opened; the phone's 59 taps and the held landscape's 96 seeking within 3
   minutes, none opening anything; every marker opened by a tap (25 of 25 on each); the 8 coincident events by mouse (each its own target), touch (the
   chooser) and keys, each at its exact x; 0 overlapping labels and 0 act names cut at the three widths.
 - `npm test`: all 9 suites passed, the height guard and the dead-code check too. `npm run check:data`: 143 declarations byte-identical.
   `npm run check:chronology`: errors 0.
-- The browser checks, `check:contrast`, `check:selftest` and the targeted visual cases: in the PR (run here and on CI).
+- **Targeted visual cases** (`harness.js --only`, judged by `check-report.js`; software WebGL here): `first-run-laptop`, `narrow-1024`, the ten phone
+  cases and the two zoom cases pass every case measure (timeline ceilings, cut text, framing, unobstructed map, drops, contrast as rendered);
+  `first-run`'s measures pass, its real-key block runs only in the full `--test` run. The full `check:visual` (about four hours on CI) was not run.
+- `check:contrast` and `check:selftest`: see the PR (here and on CI). CI's `check:contrast` on this branch's first commit failed once in the state
+  `reflow-help` (the map name "Kollowrat's Austrians" and its badge read at 1.12:1 at 320 x 256, under the "?" sheet); here on the final build it found
+  0 texts below AA. The cause is not established: a map item read during the layer's 180 ms fade (`MLS`) would read so, but that was not observed.
 
 ### Not verified
 

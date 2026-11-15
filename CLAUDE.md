@@ -497,7 +497,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   `derivedModel`: at 14:40 neither derived reading applies and the caption shows none; at 14:20, in the same view, the caption shows the centre
   separation; every other Watch case as before).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of UI/UX roadmap step 1 (md5 `cc8ec8f4...`, 3,052,563 bytes, its data the archived
+- `npm run check:baseline` passes only on the unmodified build of UI/UX roadmap step 1 (md5 `09a90669...`, 3,052,798 bytes, its data the archived
   `45d29cc5...`'s, `CHANGELOG.md`); re-baselined from the final audits' Stage 7, WP-16's second PR (md5 `8c0d383e...`, 3,037,848 bytes, its
   data the archived `45d29cc5...`'s, `CHANGELOG.md`); re-baselined from WP-16's first PR (md5 `07c186de...`, 3,035,557 bytes, `CHANGELOG.md`); re-baselined from WP-14's robustness residuals (md5 `eabe076a...`, 3,028,969
   bytes, `CHANGELOG.md`); re-baselined from the build of Stage 6 as merged into `main` (#103's merge, `187231c`: md5 `dcc65319...`,

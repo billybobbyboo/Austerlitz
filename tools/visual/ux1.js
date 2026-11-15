@@ -58,13 +58,24 @@ async function keyCase(page,how,vp){
     const id=await page.evaluate(()=>document.activeElement&&document.activeElement.id);
     if(id!=="fr-grades") return {vp:vp.join("x"),how,error:"Tab did not reach Show the key (focus "+id+")"};
   }
-  const t0=Date.now();
+  /* the latency in the page's own time, from the activation's first event (the press, or the key) to the first moment the key is shown and
+     focused: checked right after the button's own handlers (a click listener on the window, bubbling) and every 20 ms after; so a round trip of
+     the driver, which waits behind a software frame, is not counted, and a frame the page needs before it shows the key is */
+  await page.evaluate(ks=>{ const keyState=new Function("return ("+ks+")")(); const K=window.__ux1k={t0:null,t:null,s:null,iv:0};
+    const start=()=>{ if(K.t0===null) K.t0=performance.now(); };
+    const check=()=>{ if(K.t0===null||K.t!==null) return; const s=keyState(); K.s=s; if(s.rows>0&&s.focusHolds) K.t=performance.now()-K.t0; };
+    K.off=()=>{ window.removeEventListener("pointerdown",start,true); window.removeEventListener("keydown",start,true); window.removeEventListener("click",start,true);
+      window.removeEventListener("click",check,false); clearInterval(K.iv); };
+    window.addEventListener("pointerdown",start,true); window.addEventListener("keydown",start,true); window.addEventListener("click",start,true);
+    window.addEventListener("click",check,false); K.iv=setInterval(check,20); },keyState.toString());
   if(how==="click") await page.click("#fr-grades",{timeout:60000});
   else if(how==="tap") await page.tap("#fr-grades",{timeout:60000});
   else await page.keyboard.press("Enter");
-  const act=Date.now()-t0;
-  let st=null, ms=null;
-  for(let i=0;i<=10;i++){ st=await page.evaluate(keyState); if(st.rows>0&&st.focusHolds){ ms=Date.now()-t0-act; break; } await sleep(50); }
+  let K=null; const w0=Date.now();
+  while(Date.now()-w0<30000){ K=await page.evaluate(()=>{ const K=window.__ux1k; return {t:K.t, el:K.t0===null?null:performance.now()-K.t0}; });
+    if(K.t!==null||(K.el!==null&&K.el>600)) break; await sleep(50); }
+  const st=await page.evaluate(keyState); await page.evaluate(()=>{ window.__ux1k.off(); });
+  const ms=K&&K.t!==null?Math.round(K.t):null;
   const shot=st;
   await page.keyboard.press("Escape"); await sleep(250);
   const esc=await page.evaluate(()=>{ const hp=document.getElementById("help"); return {help:!!hp&&!hp.hidden, card:firstRunOpen}; });
@@ -282,8 +293,7 @@ async function runBlock(open,settle,opts){
     await pt.setViewportSize({width:844,height:390}); await sleep(500); await settle(pt);
     await pt.evaluate(()=>{ if(firstRunOpen) closeFirst(null); }); await noDraw(pt);
     if(on("lane")) out.laneHeld=await laneCases(pt,log);
-    if(on("drag")) out.cancel=await cancelCase(pt);
-    log("  a touch drag cancelled: "+JSON.stringify(out.cancel));
+    if(on("drag")){ out.cancel=await cancelCase(pt); log("  a touch drag cancelled: "+JSON.stringify(out.cancel)); }
   } finally { const cx=pt.context(); await pt.close(); await cx.close().catch(()=>{}); }
   /* the phone: an iPhone's size, density and user agent, touch */
   const pp=await open([390,844],"ios");
