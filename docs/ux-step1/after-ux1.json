@@ -1,0 +1,3101 @@
+{
+ "build": "final3.html",
+ "md5": "09a906695fd9c4846396785907e6c1d8",
+ "live": {
+  "key": [
+   {
+    "vp": "1600x900",
+    "how": "click",
+    "ms": 32,
+    "rows": 18,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1600x900",
+    "how": "keyboard",
+    "ms": 5,
+    "rows": 18,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1366x768",
+    "how": "click",
+    "ms": 7,
+    "rows": 15,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1366x768",
+    "how": "keyboard",
+    "ms": 6,
+    "rows": 15,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1080x800",
+    "how": "click",
+    "ms": 5,
+    "rows": 15,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1080x800",
+    "how": "keyboard",
+    "ms": 13,
+    "rows": 15,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1079x800",
+    "how": "click",
+    "ms": 13,
+    "rows": 23,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1079x800",
+    "how": "keyboard",
+    "ms": 10,
+    "rows": 23,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "800x450",
+    "how": "click",
+    "ms": 11,
+    "rows": 8,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "800x450",
+    "how": "keyboard",
+    "ms": 9,
+    "rows": 8,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "721x800",
+    "how": "click",
+    "ms": 10,
+    "rows": 23,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "721x800",
+    "how": "keyboard",
+    "ms": 11,
+    "rows": 23,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "720x800",
+    "how": "click",
+    "ms": 13,
+    "rows": 23,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "720x800",
+    "how": "keyboard",
+    "ms": 8,
+    "rows": 23,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1280x431",
+    "how": "click",
+    "ms": 5,
+    "rows": 3,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1280x431",
+    "how": "keyboard",
+    "ms": 4,
+    "rows": 3,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1280x430",
+    "how": "click",
+    "ms": 12,
+    "rows": 7,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1280x430",
+    "how": "keyboard",
+    "ms": 13,
+    "rows": 7,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "390x844",
+    "how": "click",
+    "ms": 12,
+    "rows": 13,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "390x844",
+    "how": "keyboard",
+    "ms": 15,
+    "rows": 13,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1600x900",
+    "how": "tap",
+    "ms": 24,
+    "rows": 18,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1366x768",
+    "how": "tap",
+    "ms": 8,
+    "rows": 15,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1080x800",
+    "how": "tap",
+    "ms": 8,
+    "rows": 15,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1079x800",
+    "how": "tap",
+    "ms": 23,
+    "rows": 23,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "800x450",
+    "how": "tap",
+    "ms": 25,
+    "rows": 8,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "721x800",
+    "how": "tap",
+    "ms": 14,
+    "rows": 23,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "720x800",
+    "how": "tap",
+    "ms": 16,
+    "rows": 23,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1280x431",
+    "how": "tap",
+    "ms": 6,
+    "rows": 3,
+    "where": "legend",
+    "focus": "lg-rows",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "lg-rows",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "1280x430",
+    "how": "tap",
+    "ms": 13,
+    "rows": 7,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    }
+   },
+   {
+    "vp": "390x844",
+    "how": "tap",
+    "ms": 22,
+    "rows": 13,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    },
+    "device": "ios"
+   },
+   {
+    "vp": "390x844",
+    "how": "keyboard",
+    "ms": 11,
+    "rows": 13,
+    "where": "help",
+    "focus": "help-key",
+    "focusHolds": true,
+    "card": false,
+    "afterEsc": {
+     "help": false,
+     "card": false,
+     "focus": "play",
+     "shown": true,
+     "inCard": false
+    },
+    "device": "ios"
+   }
+  ],
+  "drag": {
+   "steps": [
+    {
+     "step": 2,
+     "moves": 100,
+     "pressedOn": "marker",
+     "before": 255,
+     "want": 361.87,
+     "clock": 361.87,
+     "sel": null,
+     "pick": false
+    },
+    {
+     "step": 8,
+     "moves": 25,
+     "pressedOn": "marker",
+     "before": 255,
+     "want": 361.87,
+     "clock": 361.87,
+     "sel": null,
+     "pick": false
+    },
+    {
+     "step": 16,
+     "moves": 13,
+     "pressedOn": "marker",
+     "before": 255,
+     "want": 361.87,
+     "clock": 361.87,
+     "sel": null,
+     "pick": false
+    },
+    {
+     "step": 33,
+     "moves": 7,
+     "pressedOn": "marker",
+     "before": 255,
+     "want": 361.87,
+     "clock": 361.87,
+     "sel": null,
+     "pick": false
+    }
+   ],
+   "outside": {
+    "want": 335.15,
+    "clock": 335.15,
+    "sel": null,
+    "afterHover": 335.15
+   },
+   "lost": {
+    "atLoss": 276.37,
+    "afterMoves": 276.37,
+    "sel": null
+   },
+   "after": [
+    {
+     "label": "after a drag in moves of 2 px",
+     "want": "pratzen-village",
+     "t": 540,
+     "clock": 540,
+     "sel": "e:pratzen-village"
+    },
+    {
+     "label": "after a drag in moves of 8 px",
+     "want": "pratzen-village",
+     "t": 540,
+     "clock": 540,
+     "sel": "e:pratzen-village"
+    },
+    {
+     "label": "after a drag in moves of 16 px",
+     "want": "pratzen-village",
+     "t": 540,
+     "clock": 540,
+     "sel": "e:pratzen-village"
+    },
+    {
+     "label": "after a drag in moves of 33 px",
+     "want": "pratzen-village",
+     "t": 540,
+     "clock": 540,
+     "sel": "e:pratzen-village"
+    },
+    {
+     "label": "after a release outside the rail",
+     "want": "pratzen-village",
+     "t": 540,
+     "clock": 540,
+     "sel": "e:pratzen-village"
+    },
+    {
+     "label": "after a lost capture",
+     "want": "pratzen-village",
+     "t": 540,
+     "clock": 540,
+     "sel": "e:pratzen-village"
+    }
+   ]
+  },
+  "cancel": {
+   "draggedTo": 296.62,
+   "afterCancel": {
+    "clock": 304.85,
+    "sel": null
+   },
+   "laterTouch": {
+    "sel": null
+   },
+   "tapAfter": {
+    "want": "pratzen-village",
+    "sel": "e:pratzen-village",
+    "clock": 540
+   }
+  },
+  "lane": {
+   "taps": [
+    {
+     "x": 11,
+     "y": 836,
+     "why": "sweep",
+     "want": 246.74,
+     "clock": 246.74,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 23,
+     "y": 836,
+     "why": "sweep",
+     "want": 273.69,
+     "clock": 273.69,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 35,
+     "y": 836,
+     "why": "sweep",
+     "want": 300.64,
+     "clock": 300.64,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 47,
+     "y": 836,
+     "why": "sweep",
+     "want": 327.59,
+     "clock": 327.59,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 59,
+     "y": 836,
+     "why": "sweep",
+     "want": 354.55,
+     "clock": 354.55,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 71,
+     "y": 836,
+     "why": "sweep",
+     "want": 381.5,
+     "clock": 381.5,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 83,
+     "y": 836,
+     "why": "sweep",
+     "want": 408.45,
+     "clock": 408.45,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 95,
+     "y": 836,
+     "why": "sweep",
+     "want": 435.4,
+     "clock": 435.4,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 107,
+     "y": 836,
+     "why": "sweep",
+     "want": 462.35,
+     "clock": 462.35,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 119,
+     "y": 836,
+     "why": "sweep",
+     "want": 489.3,
+     "clock": 489.3,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 131,
+     "y": 836,
+     "why": "sweep",
+     "want": 516.26,
+     "clock": 516.26,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 143,
+     "y": 836,
+     "why": "sweep",
+     "want": 543.21,
+     "clock": 543.21,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 155,
+     "y": 836,
+     "why": "sweep",
+     "want": 570.16,
+     "clock": 570.16,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 167,
+     "y": 836,
+     "why": "sweep",
+     "want": 597.11,
+     "clock": 597.11,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 179,
+     "y": 836,
+     "why": "sweep",
+     "want": 624.06,
+     "clock": 624.06,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 191,
+     "y": 836,
+     "why": "sweep",
+     "want": 651.02,
+     "clock": 651.02,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 203,
+     "y": 836,
+     "why": "sweep",
+     "want": 677.97,
+     "clock": 677.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 215,
+     "y": 836,
+     "why": "sweep",
+     "want": 704.92,
+     "clock": 704.92,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 227,
+     "y": 836,
+     "why": "sweep",
+     "want": 731.87,
+     "clock": 731.87,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 239,
+     "y": 836,
+     "why": "sweep",
+     "want": 758.82,
+     "clock": 758.82,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 251,
+     "y": 836,
+     "why": "sweep",
+     "want": 785.78,
+     "clock": 785.78,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 263,
+     "y": 836,
+     "why": "sweep",
+     "want": 812.73,
+     "clock": 812.73,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 275,
+     "y": 836,
+     "why": "sweep",
+     "want": 839.68,
+     "clock": 839.68,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 287,
+     "y": 836,
+     "why": "sweep",
+     "want": 866.63,
+     "clock": 866.63,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 299,
+     "y": 836,
+     "why": "sweep",
+     "want": 893.58,
+     "clock": 893.58,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 311,
+     "y": 836,
+     "why": "sweep",
+     "want": 920.53,
+     "clock": 920.53,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 323,
+     "y": 836,
+     "why": "sweep",
+     "want": 947.49,
+     "clock": 947.49,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 335,
+     "y": 836,
+     "why": "sweep",
+     "want": 974.44,
+     "clock": 974.44,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 347,
+     "y": 836,
+     "why": "sweep",
+     "want": 1001.39,
+     "clock": 1001.39,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 359,
+     "y": 836,
+     "why": "sweep",
+     "want": 1028.34,
+     "clock": 1028.34,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 371,
+     "y": 836,
+     "why": "sweep",
+     "want": 1055.29,
+     "clock": 1055.29,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 141.6,
+     "y": 842,
+     "why": "09:00",
+     "want": 540,
+     "clock": 540,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 141.6,
+     "y": 836,
+     "why": "09:00",
+     "want": 540,
+     "clock": 540,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 141.6,
+     "y": 829,
+     "why": "09:00",
+     "want": 540,
+     "clock": 540,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 8,
+     "y": 836,
+     "why": "marker raigern",
+     "want": 240,
+     "clock": 240,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 14.7,
+     "y": 836,
+     "why": "marker counter-march",
+     "want": 254.98,
+     "clock": 254.98,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 88.1,
+     "y": 836,
+     "why": "marker telnitz",
+     "want": 419.99,
+     "clock": 419.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 88.1,
+     "y": 836,
+     "why": "marker columns-move",
+     "want": 419.99,
+     "clock": 419.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 114.8,
+     "y": 836,
+     "why": "marker sokolnitz",
+     "want": 479.97,
+     "clock": 479.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 126,
+     "y": 836,
+     "why": "marker decision",
+     "want": 504.99,
+     "clock": 504.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 134.9,
+     "y": 836,
+     "why": "marker davout",
+     "want": 524.99,
+     "clock": 524.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 134.9,
+     "y": 836,
+     "why": "marker soult",
+     "want": 524.99,
+     "clock": 524.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 141.6,
+     "y": 836,
+     "why": "marker pratzen-village",
+     "want": 539.98,
+     "clock": 539.98,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 148.3,
+     "y": 836,
+     "why": "marker face-about",
+     "want": 555,
+     "clock": 555,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 154.9,
+     "y": 836,
+     "why": "marker telnitz-retaken",
+     "want": 569.98,
+     "clock": 569.98,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 161.6,
+     "y": 836,
+     "why": "marker kamensky",
+     "want": 584.97,
+     "clock": 584.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 181.6,
+     "y": 836,
+     "why": "marker kursk",
+     "want": 629.99,
+     "clock": 629.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 195,
+     "y": 836,
+     "why": "marker pratzeberg",
+     "want": 660,
+     "clock": 660,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 195,
+     "y": 836,
+     "why": "marker guard-attack",
+     "want": 660,
+     "clock": 660,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 201.7,
+     "y": 836,
+     "why": "marker blasowitz",
+     "want": 674.98,
+     "clock": 674.98,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 201.7,
+     "y": 836,
+     "why": "marker guard-broken",
+     "want": 674.98,
+     "clock": 674.98,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 212.8,
+     "y": 836,
+     "why": "marker buxhowden-blind",
+     "want": 699.97,
+     "clock": 699.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 221.7,
+     "y": 836,
+     "why": "marker hq-forward",
+     "want": 719.97,
+     "clock": 719.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 235.1,
+     "y": 836,
+     "why": "marker davout-resumes",
+     "want": 749.98,
+     "clock": 749.98,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 248.4,
+     "y": 836,
+     "why": "marker wheel",
+     "want": 779.98,
+     "clock": 779.98,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 275.1,
+     "y": 836,
+     "why": "marker sokolnitz-falls",
+     "want": 839.99,
+     "clock": 839.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 288.5,
+     "y": 836,
+     "why": "marker augezd",
+     "want": 870,
+     "clock": 870,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 301.8,
+     "y": 836,
+     "why": "marker ice",
+     "want": 899.97,
+     "clock": 899.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 341.9,
+     "y": 836,
+     "why": "marker end",
+     "want": 989.98,
+     "clock": 989.98,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    }
+   ],
+   "markers": [
+    {
+     "id": "raigern",
+     "t": 240,
+     "own": 106,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:raigern",
+     "clock": 240
+    },
+    {
+     "id": "counter-march",
+     "t": 255,
+     "own": 180,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:counter-march",
+     "clock": 255
+    },
+    {
+     "id": "telnitz",
+     "t": 420,
+     "own": 0,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:telnitz",
+     "clock": 420
+    },
+    {
+     "id": "columns-move",
+     "t": 420,
+     "own": 180,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:columns-move",
+     "clock": 420
+    },
+    {
+     "id": "sokolnitz",
+     "t": 480,
+     "own": 156,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:sokolnitz",
+     "clock": 480
+    },
+    {
+     "id": "decision",
+     "t": 505,
+     "own": 104,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:decision",
+     "clock": 505
+    },
+    {
+     "id": "davout",
+     "t": 525,
+     "own": 0,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:davout",
+     "clock": 525
+    },
+    {
+     "id": "soult",
+     "t": 525,
+     "own": 108,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:soult",
+     "clock": 525
+    },
+    {
+     "id": "pratzen-village",
+     "t": 540,
+     "own": 108,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:pratzen-village",
+     "clock": 540
+    },
+    {
+     "id": "face-about",
+     "t": 555,
+     "own": 84,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:face-about",
+     "clock": 555
+    },
+    {
+     "id": "telnitz-retaken",
+     "t": 570,
+     "own": 108,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:telnitz-retaken",
+     "clock": 570
+    },
+    {
+     "id": "kamensky",
+     "t": 585,
+     "own": 180,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:kamensky",
+     "clock": 585
+    },
+    {
+     "id": "kursk",
+     "t": 630,
+     "own": 162,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:kursk",
+     "clock": 630
+    },
+    {
+     "id": "pratzeberg",
+     "t": 660,
+     "own": 0,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:pratzeberg",
+     "clock": 660
+    },
+    {
+     "id": "guard-attack",
+     "t": 660,
+     "own": 108,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:guard-attack",
+     "clock": 660
+    },
+    {
+     "id": "blasowitz",
+     "t": 675,
+     "own": 0,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:blasowitz",
+     "clock": 675
+    },
+    {
+     "id": "guard-broken",
+     "t": 675,
+     "own": 148,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:guard-broken",
+     "clock": 675
+    },
+    {
+     "id": "buxhowden-blind",
+     "t": 700,
+     "own": 140,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:buxhowden-blind",
+     "clock": 700
+    },
+    {
+     "id": "hq-forward",
+     "t": 720,
+     "own": 132,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:hq-forward",
+     "clock": 720
+    },
+    {
+     "id": "davout-resumes",
+     "t": 750,
+     "own": 162,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:davout-resumes",
+     "clock": 750
+    },
+    {
+     "id": "wheel",
+     "t": 780,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:wheel",
+     "clock": 780
+    },
+    {
+     "id": "sokolnitz-falls",
+     "t": 840,
+     "own": 168,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:sokolnitz-falls",
+     "clock": 840
+    },
+    {
+     "id": "augezd",
+     "t": 870,
+     "own": 162,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:augezd",
+     "clock": 870
+    },
+    {
+     "id": "ice",
+     "t": 900,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:ice",
+     "clock": 900
+    },
+    {
+     "id": "end",
+     "t": 990,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:end",
+     "clock": 990
+    }
+   ]
+  },
+  "laneHeld": {
+   "taps": [
+    {
+     "x": 17,
+     "y": 382,
+     "why": "sweep",
+     "want": 243.09,
+     "clock": 243.09,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 29,
+     "y": 382,
+     "why": "sweep",
+     "want": 255.44,
+     "clock": 255.44,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 41,
+     "y": 382,
+     "why": "sweep",
+     "want": 267.79,
+     "clock": 267.79,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 53,
+     "y": 382,
+     "why": "sweep",
+     "want": 280.15,
+     "clock": 280.15,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 65,
+     "y": 382,
+     "why": "sweep",
+     "want": 292.5,
+     "clock": 292.5,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 77,
+     "y": 382,
+     "why": "sweep",
+     "want": 304.85,
+     "clock": 304.85,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 89,
+     "y": 382,
+     "why": "sweep",
+     "want": 317.21,
+     "clock": 317.21,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 101,
+     "y": 382,
+     "why": "sweep",
+     "want": 329.56,
+     "clock": 329.56,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 113,
+     "y": 382,
+     "why": "sweep",
+     "want": 341.91,
+     "clock": 341.91,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 125,
+     "y": 382,
+     "why": "sweep",
+     "want": 354.26,
+     "clock": 354.26,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 137,
+     "y": 382,
+     "why": "sweep",
+     "want": 366.62,
+     "clock": 366.62,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 149,
+     "y": 382,
+     "why": "sweep",
+     "want": 378.97,
+     "clock": 378.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 161,
+     "y": 382,
+     "why": "sweep",
+     "want": 391.32,
+     "clock": 391.32,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 173,
+     "y": 382,
+     "why": "sweep",
+     "want": 403.68,
+     "clock": 403.68,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 185,
+     "y": 382,
+     "why": "sweep",
+     "want": 416.03,
+     "clock": 416.03,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 197,
+     "y": 382,
+     "why": "sweep",
+     "want": 428.38,
+     "clock": 428.38,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 209,
+     "y": 382,
+     "why": "sweep",
+     "want": 440.74,
+     "clock": 440.74,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 221,
+     "y": 382,
+     "why": "sweep",
+     "want": 453.09,
+     "clock": 453.09,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 233,
+     "y": 382,
+     "why": "sweep",
+     "want": 465.44,
+     "clock": 465.44,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 245,
+     "y": 382,
+     "why": "sweep",
+     "want": 477.79,
+     "clock": 477.79,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 257,
+     "y": 382,
+     "why": "sweep",
+     "want": 490.15,
+     "clock": 490.15,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 269,
+     "y": 382,
+     "why": "sweep",
+     "want": 502.5,
+     "clock": 502.5,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 281,
+     "y": 382,
+     "why": "sweep",
+     "want": 514.85,
+     "clock": 514.85,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 293,
+     "y": 382,
+     "why": "sweep",
+     "want": 527.21,
+     "clock": 527.21,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 305,
+     "y": 382,
+     "why": "sweep",
+     "want": 539.56,
+     "clock": 539.56,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 317,
+     "y": 382,
+     "why": "sweep",
+     "want": 551.91,
+     "clock": 551.91,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 329,
+     "y": 382,
+     "why": "sweep",
+     "want": 564.26,
+     "clock": 564.26,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 341,
+     "y": 382,
+     "why": "sweep",
+     "want": 576.62,
+     "clock": 576.62,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 353,
+     "y": 382,
+     "why": "sweep",
+     "want": 588.97,
+     "clock": 588.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 365,
+     "y": 382,
+     "why": "sweep",
+     "want": 601.32,
+     "clock": 601.32,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 377,
+     "y": 382,
+     "why": "sweep",
+     "want": 613.68,
+     "clock": 613.68,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 389,
+     "y": 382,
+     "why": "sweep",
+     "want": 626.03,
+     "clock": 626.03,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 401,
+     "y": 382,
+     "why": "sweep",
+     "want": 638.38,
+     "clock": 638.38,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 413,
+     "y": 382,
+     "why": "sweep",
+     "want": 650.74,
+     "clock": 650.74,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 425,
+     "y": 382,
+     "why": "sweep",
+     "want": 663.09,
+     "clock": 663.09,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 437,
+     "y": 382,
+     "why": "sweep",
+     "want": 675.44,
+     "clock": 675.44,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 449,
+     "y": 382,
+     "why": "sweep",
+     "want": 687.79,
+     "clock": 687.79,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 461,
+     "y": 382,
+     "why": "sweep",
+     "want": 700.15,
+     "clock": 700.15,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 473,
+     "y": 382,
+     "why": "sweep",
+     "want": 712.5,
+     "clock": 712.5,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 485,
+     "y": 382,
+     "why": "sweep",
+     "want": 724.85,
+     "clock": 724.85,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 497,
+     "y": 382,
+     "why": "sweep",
+     "want": 737.21,
+     "clock": 737.21,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 509,
+     "y": 382,
+     "why": "sweep",
+     "want": 749.56,
+     "clock": 749.56,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 521,
+     "y": 382,
+     "why": "sweep",
+     "want": 761.91,
+     "clock": 761.91,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 533,
+     "y": 382,
+     "why": "sweep",
+     "want": 774.26,
+     "clock": 774.26,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 545,
+     "y": 382,
+     "why": "sweep",
+     "want": 786.62,
+     "clock": 786.62,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 557,
+     "y": 382,
+     "why": "sweep",
+     "want": 798.97,
+     "clock": 798.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 569,
+     "y": 382,
+     "why": "sweep",
+     "want": 811.32,
+     "clock": 811.32,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 581,
+     "y": 382,
+     "why": "sweep",
+     "want": 823.68,
+     "clock": 823.68,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 593,
+     "y": 382,
+     "why": "sweep",
+     "want": 836.03,
+     "clock": 836.03,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 605,
+     "y": 382,
+     "why": "sweep",
+     "want": 848.38,
+     "clock": 848.38,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 617,
+     "y": 382,
+     "why": "sweep",
+     "want": 860.74,
+     "clock": 860.74,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 629,
+     "y": 382,
+     "why": "sweep",
+     "want": 873.09,
+     "clock": 873.09,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 641,
+     "y": 382,
+     "why": "sweep",
+     "want": 885.44,
+     "clock": 885.44,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 653,
+     "y": 382,
+     "why": "sweep",
+     "want": 897.79,
+     "clock": 897.79,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 665,
+     "y": 382,
+     "why": "sweep",
+     "want": 910.15,
+     "clock": 910.15,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 677,
+     "y": 382,
+     "why": "sweep",
+     "want": 922.5,
+     "clock": 922.5,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 689,
+     "y": 382,
+     "why": "sweep",
+     "want": 934.85,
+     "clock": 934.85,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 701,
+     "y": 382,
+     "why": "sweep",
+     "want": 947.21,
+     "clock": 947.21,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 713,
+     "y": 382,
+     "why": "sweep",
+     "want": 959.56,
+     "clock": 959.56,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 725,
+     "y": 382,
+     "why": "sweep",
+     "want": 971.91,
+     "clock": 971.91,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 737,
+     "y": 382,
+     "why": "sweep",
+     "want": 984.26,
+     "clock": 984.26,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 749,
+     "y": 382,
+     "why": "sweep",
+     "want": 996.62,
+     "clock": 996.62,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 761,
+     "y": 382,
+     "why": "sweep",
+     "want": 1008.97,
+     "clock": 1008.97,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 773,
+     "y": 382,
+     "why": "sweep",
+     "want": 1021.32,
+     "clock": 1021.32,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 785,
+     "y": 382,
+     "why": "sweep",
+     "want": 1033.68,
+     "clock": 1033.68,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 797,
+     "y": 382,
+     "why": "sweep",
+     "want": 1046.03,
+     "clock": 1046.03,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 809,
+     "y": 382,
+     "why": "sweep",
+     "want": 1058.38,
+     "clock": 1058.38,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 821,
+     "y": 382,
+     "why": "sweep",
+     "want": 1070.74,
+     "clock": 1070.74,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 305.4,
+     "y": 388,
+     "why": "09:00",
+     "want": 540,
+     "clock": 540,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 305.4,
+     "y": 382,
+     "why": "09:00",
+     "want": 540,
+     "clock": 540,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 305.4,
+     "y": 375,
+     "why": "09:00",
+     "want": 540,
+     "clock": 540,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 14,
+     "y": 382,
+     "why": "marker raigern",
+     "want": 240,
+     "clock": 240,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 28.6,
+     "y": 382,
+     "why": "marker counter-march",
+     "want": 254.99,
+     "clock": 254.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 188.8,
+     "y": 382,
+     "why": "marker telnitz",
+     "want": 419.99,
+     "clock": 419.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 188.8,
+     "y": 382,
+     "why": "marker columns-move",
+     "want": 419.99,
+     "clock": 419.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 247.1,
+     "y": 382,
+     "why": "marker sokolnitz",
+     "want": 480,
+     "clock": 480,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 271.4,
+     "y": 382,
+     "why": "marker decision",
+     "want": 504.99,
+     "clock": 504.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 290.8,
+     "y": 382,
+     "why": "marker davout",
+     "want": 524.99,
+     "clock": 524.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 290.8,
+     "y": 382,
+     "why": "marker soult",
+     "want": 524.99,
+     "clock": 524.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 305.4,
+     "y": 382,
+     "why": "marker pratzen-village",
+     "want": 539.99,
+     "clock": 539.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 320,
+     "y": 382,
+     "why": "marker face-about",
+     "want": 555,
+     "clock": 555,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 334.6,
+     "y": 382,
+     "why": "marker telnitz-retaken",
+     "want": 569.99,
+     "clock": 569.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 349.1,
+     "y": 382,
+     "why": "marker kamensky",
+     "want": 585,
+     "clock": 585,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 392.8,
+     "y": 382,
+     "why": "marker kursk",
+     "want": 629.99,
+     "clock": 629.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 422,
+     "y": 382,
+     "why": "marker pratzeberg",
+     "want": 660,
+     "clock": 660,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 422,
+     "y": 382,
+     "why": "marker guard-attack",
+     "want": 660,
+     "clock": 660,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 436.6,
+     "y": 382,
+     "why": "marker blasowitz",
+     "want": 674.99,
+     "clock": 674.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 436.6,
+     "y": 382,
+     "why": "marker guard-broken",
+     "want": 674.99,
+     "clock": 674.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 460.8,
+     "y": 382,
+     "why": "marker buxhowden-blind",
+     "want": 699.99,
+     "clock": 699.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 480.3,
+     "y": 382,
+     "why": "marker hq-forward",
+     "want": 720,
+     "clock": 720,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 509.4,
+     "y": 382,
+     "why": "marker davout-resumes",
+     "want": 749.99,
+     "clock": 749.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 538.6,
+     "y": 382,
+     "why": "marker wheel",
+     "want": 779.99,
+     "clock": 779.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 596.8,
+     "y": 382,
+     "why": "marker sokolnitz-falls",
+     "want": 839.99,
+     "clock": 839.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 626,
+     "y": 382,
+     "why": "marker augezd",
+     "want": 870,
+     "clock": 870,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 655.1,
+     "y": 382,
+     "why": "marker ice",
+     "want": 900,
+     "clock": 900,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    },
+    {
+     "x": 742.6,
+     "y": 382,
+     "why": "marker end",
+     "want": 989.99,
+     "clock": 989.99,
+     "sel": null,
+     "drawer": false,
+     "pick": false
+    }
+   ],
+   "markers": [
+    {
+     "id": "raigern",
+     "t": 240,
+     "own": 172,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:raigern",
+     "clock": 240
+    },
+    {
+     "id": "counter-march",
+     "t": 255,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:counter-march",
+     "clock": 255
+    },
+    {
+     "id": "telnitz",
+     "t": 420,
+     "own": 0,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:telnitz",
+     "clock": 420
+    },
+    {
+     "id": "columns-move",
+     "t": 420,
+     "own": 180,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:columns-move",
+     "clock": 420
+    },
+    {
+     "id": "sokolnitz",
+     "t": 480,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:sokolnitz",
+     "clock": 480
+    },
+    {
+     "id": "decision",
+     "t": 505,
+     "own": 144,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:decision",
+     "clock": 505
+    },
+    {
+     "id": "davout",
+     "t": 525,
+     "own": 0,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:davout",
+     "clock": 525
+    },
+    {
+     "id": "soult",
+     "t": 525,
+     "own": 168,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:soult",
+     "clock": 525
+    },
+    {
+     "id": "pratzen-village",
+     "t": 540,
+     "own": 176,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:pratzen-village",
+     "clock": 540
+    },
+    {
+     "id": "face-about",
+     "t": 555,
+     "own": 140,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:face-about",
+     "clock": 555
+    },
+    {
+     "id": "telnitz-retaken",
+     "t": 570,
+     "own": 168,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:telnitz-retaken",
+     "clock": 570
+    },
+    {
+     "id": "kamensky",
+     "t": 585,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:kamensky",
+     "clock": 585
+    },
+    {
+     "id": "kursk",
+     "t": 630,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:kursk",
+     "clock": 630
+    },
+    {
+     "id": "pratzeberg",
+     "t": 660,
+     "own": 0,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:pratzeberg",
+     "clock": 660
+    },
+    {
+     "id": "guard-attack",
+     "t": 660,
+     "own": 172,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:guard-attack",
+     "clock": 660
+    },
+    {
+     "id": "blasowitz",
+     "t": 675,
+     "own": 0,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:blasowitz",
+     "clock": 675
+    },
+    {
+     "id": "guard-broken",
+     "t": 675,
+     "own": 180,
+     "inLane": false,
+     "via": "chooser",
+     "sel": "e:guard-broken",
+     "clock": 675
+    },
+    {
+     "id": "buxhowden-blind",
+     "t": 700,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:buxhowden-blind",
+     "clock": 700
+    },
+    {
+     "id": "hq-forward",
+     "t": 720,
+     "own": 144,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:hq-forward",
+     "clock": 720
+    },
+    {
+     "id": "davout-resumes",
+     "t": 750,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:davout-resumes",
+     "clock": 750
+    },
+    {
+     "id": "wheel",
+     "t": 780,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:wheel",
+     "clock": 780
+    },
+    {
+     "id": "sokolnitz-falls",
+     "t": 840,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:sokolnitz-falls",
+     "clock": 840
+    },
+    {
+     "id": "augezd",
+     "t": 870,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:augezd",
+     "clock": 870
+    },
+    {
+     "id": "ice",
+     "t": 900,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:ice",
+     "clock": 900
+    },
+    {
+     "id": "end",
+     "t": 990,
+     "own": 180,
+     "inLane": false,
+     "via": "direct",
+     "sel": "e:end",
+     "clock": 990
+    }
+   ]
+  },
+  "coincident": {
+   "mouse": [
+    {
+     "id": "telnitz",
+     "t": 420,
+     "dx": -0.01,
+     "group": 2,
+     "own": 148,
+     "pointerVia": "direct",
+     "pointer": {
+      "sel": "e:telnitz",
+      "clock": 420
+     },
+     "keyboard": {
+      "label": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "sel": "e:telnitz",
+      "clock": 420
+     }
+    },
+    {
+     "id": "columns-move",
+     "t": 420,
+     "dx": -0.01,
+     "group": 2,
+     "own": 174,
+     "pointerVia": "direct",
+     "pointer": {
+      "sel": "e:columns-move",
+      "clock": 420
+     },
+     "keyboard": {
+      "label": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "sel": "e:columns-move",
+      "clock": 420
+     }
+    },
+    {
+     "id": "davout",
+     "t": 525,
+     "dx": -0.01,
+     "group": 2,
+     "own": 148,
+     "pointerVia": "direct",
+     "pointer": {
+      "sel": "e:davout",
+      "clock": 525
+     },
+     "keyboard": {
+      "label": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "sel": "e:davout",
+      "clock": 525
+     }
+    },
+    {
+     "id": "soult",
+     "t": 525,
+     "dx": -0.01,
+     "group": 2,
+     "own": 174,
+     "pointerVia": "direct",
+     "pointer": {
+      "sel": "e:soult",
+      "clock": 525
+     },
+     "keyboard": {
+      "label": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (the hour is disputed)",
+      "sel": "e:soult",
+      "clock": 525
+     }
+    },
+    {
+     "id": "pratzeberg",
+     "t": 660,
+     "dx": 0,
+     "group": 2,
+     "own": 148,
+     "pointerVia": "direct",
+     "pointer": {
+      "sel": "e:pratzeberg",
+      "clock": 660
+     },
+     "keyboard": {
+      "label": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "sel": "e:pratzeberg",
+      "clock": 660
+     }
+    },
+    {
+     "id": "guard-attack",
+     "t": 660,
+     "dx": 0,
+     "group": 2,
+     "own": 174,
+     "pointerVia": "direct",
+     "pointer": {
+      "sel": "e:guard-attack",
+      "clock": 660
+     },
+     "keyboard": {
+      "label": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (the hour is disputed)",
+      "sel": "e:guard-attack",
+      "clock": 660
+     }
+    },
+    {
+     "id": "blasowitz",
+     "t": 675,
+     "dx": -0.01,
+     "group": 2,
+     "own": 148,
+     "pointerVia": "direct",
+     "pointer": {
+      "sel": "e:blasowitz",
+      "clock": 675
+     },
+     "keyboard": {
+      "label": "11:15, The French take Blasowitz from the Russian Guard",
+      "sel": "e:blasowitz",
+      "clock": 675
+     }
+    },
+    {
+     "id": "guard-broken",
+     "t": 675,
+     "dx": -0.01,
+     "group": 2,
+     "own": 174,
+     "pointerVia": "direct",
+     "pointer": {
+      "sel": "e:guard-broken",
+      "clock": 675
+     },
+     "keyboard": {
+      "label": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "sel": "e:guard-broken",
+      "clock": 675
+     }
+    }
+   ],
+   "touch": [
+    {
+     "id": "telnitz",
+     "t": 420,
+     "dx": 0,
+     "group": 2,
+     "own": 0,
+     "pointerVia": "chooser",
+     "choice": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+     "choiceSize": [
+      346,
+      44
+     ],
+     "pointer": {
+      "sel": "e:telnitz",
+      "clock": 420
+     },
+     "keyboard": {
+      "label": "07:00, Kienmayer attacks Telnitz (the hour is disputed)",
+      "sel": "e:telnitz",
+      "clock": 420
+     }
+    },
+    {
+     "id": "columns-move",
+     "t": 420,
+     "dx": 0,
+     "group": 2,
+     "own": 180,
+     "pointerVia": "chooser",
+     "choice": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+     "choiceSize": [
+      346,
+      44
+     ],
+     "pointer": {
+      "sel": "e:columns-move",
+      "clock": 420
+     },
+     "keyboard": {
+      "label": "07:00 to 08:00, The Allied columns begin to leave the plateau (the hour is disputed)",
+      "sel": "e:columns-move",
+      "clock": 420
+     }
+    },
+    {
+     "id": "davout",
+     "t": 525,
+     "dx": 0,
+     "group": 2,
+     "own": 0,
+     "pointerVia": "chooser",
+     "choice": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+     "choiceSize": [
+      346,
+      44
+     ],
+     "pointer": {
+      "sel": "e:davout",
+      "clock": 525
+     },
+     "keyboard": {
+      "label": "08:45 to 09:15, Friant's leading brigade reaches the Goldbach (an interval, not a timestamp)",
+      "sel": "e:davout",
+      "clock": 525
+     }
+    },
+    {
+     "id": "soult",
+     "t": 525,
+     "dx": 0,
+     "group": 2,
+     "own": 108,
+     "pointerVia": "chooser",
+     "choice": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (the hour is disputed)",
+     "choiceSize": [
+      346,
+      44
+     ],
+     "pointer": {
+      "sel": "e:soult",
+      "clock": 525
+     },
+     "keyboard": {
+      "label": "08:45 to 09:15, Saint-Hilaire and Vandamme climb the slope (the hour is disputed)",
+      "sel": "e:soult",
+      "clock": 525
+     }
+    },
+    {
+     "id": "pratzeberg",
+     "t": 660,
+     "dx": 0,
+     "group": 2,
+     "own": 0,
+     "pointerVia": "chooser",
+     "choice": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+     "choiceSize": [
+      346,
+      44
+     ],
+     "pointer": {
+      "sel": "e:pratzeberg",
+      "clock": 660
+     },
+     "keyboard": {
+      "label": "11:00, The Pratzeberg is firmly in French hands (the hour is disputed)",
+      "sel": "e:pratzeberg",
+      "clock": 660
+     }
+    },
+    {
+     "id": "guard-attack",
+     "t": 660,
+     "dx": 0,
+     "group": 2,
+     "own": 108,
+     "pointerVia": "chooser",
+     "choice": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (the hour is disputed)",
+     "choiceSize": [
+      346,
+      44
+     ],
+     "pointer": {
+      "sel": "e:guard-attack",
+      "clock": 660
+     },
+     "keyboard": {
+      "label": "11:00 to 13:00, The Russian Guard takes the eagle of the 4th Line (the hour is disputed)",
+      "sel": "e:guard-attack",
+      "clock": 660
+     }
+    },
+    {
+     "id": "blasowitz",
+     "t": 675,
+     "dx": -0.01,
+     "group": 2,
+     "own": 0,
+     "pointerVia": "chooser",
+     "choice": "11:15, The French take Blasowitz from the Russian Guard",
+     "choiceSize": [
+      346,
+      44
+     ],
+     "pointer": {
+      "sel": "e:blasowitz",
+      "clock": 675
+     },
+     "keyboard": {
+      "label": "11:15, The French take Blasowitz from the Russian Guard",
+      "sel": "e:blasowitz",
+      "clock": 675
+     }
+    },
+    {
+     "id": "guard-broken",
+     "t": 675,
+     "dx": -0.01,
+     "group": 2,
+     "own": 148,
+     "pointerVia": "chooser",
+     "choice": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+     "choiceSize": [
+      346,
+      44
+     ],
+     "pointer": {
+      "sel": "e:guard-broken",
+      "clock": 675
+     },
+     "keyboard": {
+      "label": "11:15 to 13:15, Rapp's counter-charge breaks the Chevalier Guard (the hour is disputed)",
+      "sel": "e:guard-broken",
+      "clock": 675
+     }
+    }
+   ]
+  },
+  "phases": [
+   {
+    "overlaps": [],
+    "actCut": [],
+    "samples": 35,
+    "width": 1024
+   },
+   {
+    "overlaps": [],
+    "actCut": [],
+    "samples": 35,
+    "width": 1280
+   },
+   {
+    "overlaps": [],
+    "actCut": [],
+    "samples": 35,
+    "width": 1440
+   }
+  ],
+  "scroll": {
+   "dark": [
+    {
+     "sel": "#lg-rows",
+     "scheme": "normal",
+     "color": "rgba(199, 189, 165, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 8
+    },
+    {
+     "sel": "#modal .sheet",
+     "scheme": "normal",
+     "color": "rgba(199, 189, 165, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 30
+    },
+    {
+     "sel": "#help .sheet",
+     "scheme": "normal",
+     "color": "rgba(199, 189, 165, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 30
+    },
+    {
+     "sel": "#layerpop",
+     "scheme": "normal",
+     "color": "rgba(199, 189, 165, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 0
+    },
+    {
+     "sel": "#firstrun",
+     "scheme": "normal",
+     "color": "rgba(199, 189, 165, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 24
+    }
+   ],
+   "paper": [
+    {
+     "sel": "#lg-rows",
+     "scheme": "normal",
+     "color": "rgba(40, 36, 28, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 8
+    },
+    {
+     "sel": "#modal .sheet",
+     "scheme": "normal",
+     "color": "rgba(40, 36, 28, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 30
+    },
+    {
+     "sel": "#help .sheet",
+     "scheme": "normal",
+     "color": "rgba(40, 36, 28, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 30
+    },
+    {
+     "sel": "#layerpop",
+     "scheme": "normal",
+     "color": "rgba(40, 36, 28, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 0
+    },
+    {
+     "sel": "#firstrun",
+     "scheme": "normal",
+     "color": "rgba(40, 36, 28, 0.42) rgba(0, 0, 0, 0)",
+     "padEnd": 24
+    }
+   ],
+   "forced": [
+    {
+     "sel": "#lg-rows",
+     "scheme": "light dark",
+     "color": "auto",
+     "padEnd": 8
+    },
+    {
+     "sel": "#modal .sheet",
+     "scheme": "light dark",
+     "color": "auto",
+     "padEnd": 30
+    },
+    {
+     "sel": "#help .sheet",
+     "scheme": "light dark",
+     "color": "auto",
+     "padEnd": 30
+    },
+    {
+     "sel": "#layerpop",
+     "scheme": "light dark",
+     "color": "auto",
+     "padEnd": 0
+    },
+    {
+     "sel": "#firstrun",
+     "scheme": "light dark",
+     "color": "auto",
+     "padEnd": 24
+    }
+   ]
+  }
+ },
+ "failures": [],
+ "errors": []
+}

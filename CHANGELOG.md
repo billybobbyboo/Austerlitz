@@ -1,8 +1,119 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · UI/UX roadmap step 1: the map key and the timeline's interactions repaired (UA-05, UA-06, UA-12, UA-13, UA-17)
+
+**Status: on `claude/austerlitz-ux-step-1-4cxrhk`, a draft PR into `main`, for review, not merged.** PR 1 of `docs/UX_ART_AUDIT.md` section 6, from
+`main` at `98e15bc` (the merge of #110, verified). A presentation task: **no data changed** (`check:data`: all 143 declarations byte-identical to its
+reference), no event time, no timeline semantics and no existing key binding changed.
+
+**The build:** `austerlitz-command-map.html` was 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`; it is now **3,053,167 bytes, md5
+`d404045b4544eb03c69fc3c9e3fff044`**. `check:baseline` moved to it (`package.json`).
+
+### Reproduced on the base build first (`tools/ux-step1/probe.js`, real browser input; `docs/ux-step1/base-ux1.json`)
+
+The live block's checks (below) on the unmodified build: **165 failures.**
+- **UA-05:** "Show the key" left no key row visible and focused within 500 ms in **0 of 31** cases (click, tap and keyboard at 1600 x 900, 1366 x 768,
+  1080 x 800, 1079 x 800, 800 x 450, 721 x 800, 720 x 800, 1280 x 431, 1280 x 430 and 390 x 844). Below 1080 px wide and at 430 px tall the card closed
+  with the focus on Play and the key `display:none`; from 1080 px the focus went to the key's toggle, not the key, and the rows waited for a frame.
+- **UA-06:** from the playhead under the 04:15 marker a 200 px drag scrubbed in moves of 2 and 8 px and **did not move the clock in moves of 16 and
+  33 px**; a drag released outside the rail (in 25 px moves) did not move it either; after a cancelled touch drag a tap on a marker opened nothing. On the phone
+  (390 x 844) **42 of 59** taps in the rail's lower 16 px opened an event (at 09:00, at y 829, "Kutuzov orders the 4th Column to face about"); with a
+  coarse pointer at 844 x 390, **44 of 96**.
+- **UA-17:** of the 8 events that share a start (07:00, 08:45, 11:00, 11:15), 4 could not be opened by a mouse (0 px of hit area of their own) and 4
+  not by a tap on the phone; all 8 by keyboard.
+- **UA-13:** overlapping phase labels at 1024 px (12 pairs over 35 clocks) and 1280 px (9); the act cut in the caption at 1280 px (18 of 35 clocks)
+  and 1440 px (27).
+- **UA-12:** the five scrolling panels with the platform's scrollbar (`auto`) in both themes; the key's rows 0 px from it.
+
+### What changed
+
+- **UA-05** (`app.js` `showKeyFromCard`, `mlLegendFit`, `buildHelp`): the card closes where it stands (decision 276 (a)); where the key panel is shown
+  (from 1080 px wide, above 430 px tall, not squeezed) it is laid out at once and the focus goes to its rows, now always a named region ("Key";
+  tabindex -1 while they fit, 0 while they scroll, as before); elsewhere the "?" sheet opens at "The map key", a section of its own (`#help-key`), with
+  the focus on it and the sheet from its top where the key's first rows show there. Esc and Close return the focus to Play (decision 118's rule for a
+  closed card), else the "?" button. The self-test's check "the first card's reconstruction" also asks for the key shown with the focus on it (its
+  name, and so the manifest's 351 checks, unchanged).
+- **UA-06** (`app.js` buildTimeline; `style.css`): a press on a marker captures the pointer (`setPointerCapture`), so every move reaches RAIL_SLOP's
+  6 px test; handed to the rail, the drag ends on the rail's release, cancel or lost capture as any rail drag; before the hand-over a release, a cancel
+  or a lost capture ends the press. The click a handed drag's release may still make on a marker is refused until that release's task has run (it
+  was refused for 1.5 s after the hand-over, so a slower drag's release could open the event); a later Enter, Space or click is the marker's. (This
+  branch's first build refused only a click with a pointer's detail, so the self-test's check "timeline (WP-06, CL-UX-03)", whose release makes a
+  click of detail 0, failed on CI: its clock went back to the marker's start and the event opened. Fixed in the third build.) On the phone layout the markers stand in a row of
+  their own above the rail, on the phases' band (which takes no press there), with hit areas 2 px round their diamonds: the rail's 24 px are the rail's,
+  the timeline's 121 px kept. With a coarse pointer on the full timeline (a phone held landscape, a tablet) the markers stand on the rail's top edge
+  with the same hit areas, so its lower 16 px are the scrub lane alone, the held-landscape timeline's 91 px kept.
+- **UA-17** (`app.js` `evPickOpen`, `shell.html` `#evpick`; `style.css` `[data-co]`): with a mouse on the full timeline the second event of a
+  coincident set stands lower in the rail at the same x (its exact time), each with a hit area of its own (6 px round the diamond). Where markers
+  stand stacked or crowded (the touch layouts: on a 374 px rail a quarter of an hour is about 7 px), a pointer's press opens a chooser over the
+  timeline: a non-modal dialog named by the count and the clock, one button per event (named as its marker, with its note), the first focused; arrows
+  move, Esc returns to the marker, a press outside closes it. Every marker keeps its keyboard stop in the events' group.
+- **UA-13** (`app.js` `fitPhaseLabels`, `fitCaption`): the current phase stays whole on its plate (decision 53); each label it reaches starts after
+  the plate's edge, shortened with its ellipsis, or gives way (hidden, its button, press and name kept) under 3 em of room. In the caption the act gives
+  way whole where it does not fit, before it truncates (the act band names it; on a phone the phase list's heading); its button and every phase keep
+  their full accessible names. On the phone layout the phase's title then gives way whole too rather than being drawn cut (until step 1 the cut act
+  kept it out; the phone cases allow no cut phase title upright: found by `phone-390-explore` and `zoom-400x225-explore` on this branch's first
+  build, fixed before the second).
+- **UA-12** (`style.css`): the key, the sources sheet and the "?" sheet, the Layers panel and the first card take `scrollbar-color` from the theme's
+  line colour on a clear track (dark on the landscape, paper on the paper map); `auto` (the system's) under a forced-colours mode; the key's rows 8 px
+  clear at the inline end.
+
+### The checks added and changed (real browser input)
+
+`tools/visual/ux1.js`, the live block **ux1** in `check:selftest` and `check:visual` (feature `UX1` required), judged by `thresholds.js` `checkUx1`
+(its bounds, the audit's checks, written before the repair: `UX1`), and on its own by `tools/ux-step1/probe.js`. Pages of its own: a mouse at 1600 x 900
+resized through the sizes, a touch page (`harness.js` device `touch`), an iPhone's (density 3, touch, its user agent). The timeline's cases skip the
+WebGL draw, as the motion driver does (a software frame takes about a second and would pace each move); the key's cases keep it.
+- the key at every size above by click, tap and keyboard, visible and focused within 500 ms, then Esc (`check:selftest` runs seven of the ten sizes,
+  the boundaries kept);
+- the four drags, a release outside the rail, a lost capture, a touch drag cancelled by CDP's `touchCancel`, and an ordinary click or tap on a marker
+  after each;
+- the scrub lane at 390 x 844 and 844 x 390 (a sweep every 12 px, at 09:00 at three heights, at every marker's x) and a tap on each marker;
+- the coincident events by mouse, touch and keys; the phase row and caption at 1024, 1280 and 1440 px, every phase and event start; the scrollbars in
+  both themes and forced colours (computed styles: the harness's headless Chromium draws no scrollbar, `--hide-scrollbars`).
+
+### Verified
+
+- **The live block:** every check passed (`docs/ux-step1/after-ux1.json`): the key in 31 of 31 cases (4 to 32 ms after the activation in the page's
+  own time; the panel from 1080 px wide above 430 px tall, the "?" sheet elsewhere; after Esc the focus on the key's rows or on Play); the drags to
+  within 0.01 minute of the release's time in all four step sizes, no event opened; the phone's 59 taps and the held landscape's 96 seeking within 3
+  minutes, none opening anything; every marker opened by a tap (25 of 25 on each); the 8 coincident events by mouse (each its own target), touch (the
+  chooser) and keys, each at its exact x; 0 overlapping labels and 0 act names cut at the three widths.
+- `npm test`: all 9 suites passed, the height guard and the dead-code check too. `npm run check:data`: 143 declarations byte-identical.
+  `npm run check:chronology`: errors 0.
+- **Targeted visual cases** (`harness.js --only`, judged by `check-report.js`; software WebGL here): `first-run-laptop`, `narrow-1024`, the ten phone
+  cases and the two zoom cases pass every case measure (timeline ceilings, cut text, framing, unobstructed map, drops, contrast as rendered);
+  `first-run`'s measures pass, its real-key block runs only in the full `--test` run. The full `check:visual` (about four hours on CI) was not run.
+- **`check:contrast`: a race in the tool, found by CI and fixed.** CI failed twice on this branch in the state `reflow-help` (320 x 256, the "?" sheet
+  over the map): "Kollowrat's Austrians" and its badge read at 1.12:1 (`3314ffd`) and 1.34:1 (`c9a3df0`). `tools/ux-step1/rf-fade.js` applies the
+  reflow page's states as `contrast.js` does: 300 ms after the state's one frame the name the state brings back (Saint-Hilaire deselected) stands at
+  opacity 0, mid-way through the map layer's 180 ms fade-in, **on the base build and on this one alike**. The read composites the element's opacity, so it
+  skipped the name at 0, passed it at 1 and failed it between: the result depended on the frame's time. `contrast.js` now reads every state at rest:
+  frames until no item of the layer's pass is fading in or out (one frame in `reflow-help`), and a state still fading after 40 frames fails. No limit
+  changed; the name is now read at full opacity, on its plate.
+- **`check:selftest` on CI (`c9a3df0`, run 43666219714, 52 minutes): two failures, both this branch's, both fixed.** The self-test's "timeline (WP-06,
+  CL-UX-03)" (above, UA-06); and the live block `tips`, whose phone tap on the third marker (one of the two at 07:00) now opens the chooser, not the
+  dossier (UA-17): the block now taps a marker standing alone (no other marker's centre within 12 px; 10:30's at 390 px), so it still holds that a
+  tap shows no tip and opens the dossier; the chooser by touch is the live block `ux1`'s. On the first commit the job reached its 60-minute limit
+  (the `ux1` block about 7 minutes of it), so under `--selftest-only` the block now runs lighter (above).
+- **`check:selftest` on CI (`ff7e61c`, run 43670337013, 36 minutes): one failure, in the block's own setup.** "UA-06 a marker tap after a cancelled
+  drag": the tap on the 09:00 marker, made 200 ms after a quick 40 px swipe, opened nothing (also once on the base build, and in 1 of about 12 runs
+  here; the marker was topmost at the tap's point each time). Not established which; the likely cause, by Chromium's own rule, is that a tap stopping a
+  fling makes no click: the swipe now holds still before it lifts and the tap follows 600 ms later, and the outcome is read for up to 1.5 s (with the
+  events the tap delivered recorded). Each case now starts with the rail hidden below the docked width (at 430 px tall it stands over the timeline:
+  another run found the 04:15 marker under the Sources button). 3 of 3 runs here pass since.
+- **`check:selftest` here** (Chromium 153 through Playwright 1.63, not the pinned 1.56): the self-test's 351 checks pass; the old tips case and the
+  cancelled-drag case as on CI; and the motion block's flickers 14 (its ceiling 12) with two runs' visibility a few frames under their baselines, which
+  CI's pinned browser passes on this branch's builds (`b61ef4f`, `ff7e61c`): the block's counts are the pinned browser's.
+
+### Not verified
+
+- Every touch result is Chromium's touch emulation (density 3 and an iPhone's user agent on the phone page), not a physical device; the iPhone's and a
+  tablet's own touch adjustment and Safari's pointer capture are pending the owner's run. The scrollbar colours are computed styles: no scrollbar is
+  drawn in the headless browser, macOS overlay scrollbars and Windows were not seen.
+
 ## 2026-11 · Independent UI/UX, cartographic and art-direction audit
 
-**Status: a draft PR into `main`, for review, not merged.** An independent audit of the experience a visitor sees, on the Stage 7 closeout build
+**Status: merged into `main` (#110, merge commit `98e15bc`).** (This line said "a draft PR into `main`, for review, not merged" until UI/UX step 1 corrected it.) An independent audit of the experience a visitor sees, on the Stage 7 closeout build
 (commit `5382a60`, the merge of #109): `docs/UX_ART_AUDIT.md`, with its figures, captures, mockups, logs and probes in `docs/ux-art-audit/`.
 **No build, source or data changes:** `austerlitz-command-map.html` is unchanged, 3,037,848 bytes, md5 `8c0d383eb45a6f2a5522d04863824b7b`
 (SHA-256 `22756380...`), and `check:baseline` stays on it. The probes are the audit's own, kept as evidence; none is in the suite and none is bundled.

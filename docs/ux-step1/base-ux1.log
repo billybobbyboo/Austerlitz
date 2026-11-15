@@ -1,0 +1,208 @@
+  key 1600x900 click: NOT shown and focused: rows 19, focus lg-toggle; after Esc focus lg-toggle
+  key 1600x900 keyboard: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1366x768 click: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1366x768 keyboard: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1080x800 click: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1080x800 keyboard: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1079x800 click: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 1079x800 keyboard: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 800x450 click: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 800x450 keyboard: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 721x800 click: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 721x800 keyboard: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 720x800 click: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 720x800 keyboard: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 1280x431 click: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1280x431 keyboard: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1280x430 click: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 1280x430 keyboard: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 390x844 click: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 390x844 keyboard: NOT shown and focused: rows 0, focus play; after Esc focus play
+  marker drags: 2 px 361.87 (want 361.87); 8 px 361.87 (want 361.87); 16 px 255 (want 361.87); 33 px 255 (want 361.87)
+  coincident markers (mouse): telnitz POINTER e:columns-move, keys; columns-move pointer direct, keys; davout POINTER e:soult, keys; soult pointer direct, keys; pratzeberg POINTER e:guard-attack, keys; guard-attack pointer direct, keys; blasowitz POINTER e:guard-broken, keys; guard-broken pointer direct, keys
+  phase row at 1024 px: 12 overlapping label pairs, 0 act names cut, over 35 clocks
+  phase row at 1280 px: 9 overlapping label pairs, 18 act names cut, over 35 clocks
+  phase row at 1440 px: 0 overlapping label pairs, 27 act names cut, over 35 clocks
+  key 1600x900 tap: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1366x768 tap: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1080x800 tap: NOT shown and focused: rows 0, focus lg-toggle; after Esc focus lg-toggle
+  key 1079x800 tap: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 800x450 tap: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 721x800 tap: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 720x800 tap: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 1280x431 tap: NOT shown and focused: rows 3, focus lg-toggle; after Esc focus lg-toggle
+  key 1280x430 tap: NOT shown and focused: rows 0, focus play; after Esc focus play
+  rail taps in the lower 16 px: 96, wrong 44; marker taps: 21 of 25 opened their event
+  a touch drag cancelled: {"draggedTo":296.62,"afterCancel":{"clock":304.85,"sel":null},"laterTouch":{"sel":null},"tapAfter":{"want":"pratzen-village","sel":null,"clock":240}}
+  key 390x844 (phone) tap: NOT shown and focused: rows 0, focus play; after Esc focus play
+  key 390x844 (phone) keyboard: NOT shown and focused: rows 0, focus play; after Esc focus play
+  rail taps in the lower 16 px: 59, wrong 42; marker taps: 20 of 25 opened their event
+  coincident markers (touch): telnitz POINTER e:columns-move, keys; columns-move pointer direct, keys; davout POINTER e:face-about, keys; soult pointer direct, keys; pratzeberg POINTER e:guard-broken, keys; guard-attack pointer direct, keys; blasowitz POINTER e:buxhowden-blind, keys; guard-broken pointer direct, keys
+build 8c0d383eb45a6f2a5522d04863824b7b, 501 s; page errors and console messages 0
+FAILED (165):
+  UA-05 at 1600x900 by click: the key not visible and focused within 500 ms (rows shown 19, focus lg-toggle, holding the key false)
+  UA-05 at 1600x900 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1366x768 by click: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1366x768 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1080x800 by click: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1080x800 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1079x800 by click: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 1079x800 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 800x450 by click: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 800x450 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 721x800 by click: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 721x800 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 720x800 by click: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 720x800 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 1280x431 by click: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1280x431 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1280x430 by click: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 1280x430 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 390x844 by click: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 390x844 by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 1600x900 by tap: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1366x768 by tap: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1080x800 by tap: the key not visible and focused within 500 ms (rows shown 0, focus lg-toggle, holding the key false)
+  UA-05 at 1079x800 by tap: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 800x450 by tap: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 721x800 by tap: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 720x800 by tap: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 1280x431 by tap: the key not visible and focused within 500 ms (rows shown 3, focus lg-toggle, holding the key false)
+  UA-05 at 1280x430 by tap: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 390x844 (ios) by tap: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-05 at 390x844 (ios) by keyboard: the key not visible and focused within 500 ms (rows shown 0, focus play, holding the key false)
+  UA-06 drag from the 04:15 marker in moves of 16 px: the clock 255, the release's time 361.87
+  UA-06 drag from the 04:15 marker in moves of 33 px: the clock 255, the release's time 361.87
+  UA-06 a drag released outside the rail: the clock 255, the release's time 335.15
+  UA-06 a marker tap after a cancelled drag: {"want":"pratzen-village","sel":null,"clock":240}
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 11, y 836 (sweep): the clock 255 (the tap's time 246.74), opened e:counter-march, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 83, y 836 (sweep): the clock 420 (the tap's time 408.45), opened e:columns-move, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 119, y 836 (sweep): the clock 480 (the tap's time 489.3), opened e:sokolnitz, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 131, y 836 (sweep): the clock 525 (the tap's time 516.26), opened e:soult, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 143, y 836 (sweep): the clock 540 (the tap's time 543.21), opened e:pratzen-village, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 155, y 836 (sweep): the clock 570 (the tap's time 570.16), opened e:telnitz-retaken, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 179, y 836 (sweep): the clock 630 (the tap's time 624.06), opened e:kursk, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 191, y 836 (sweep): the clock 660 (the tap's time 651.02), opened e:guard-attack, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 203, y 836 (sweep): the clock 675 (the tap's time 677.97), opened e:guard-broken, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 215, y 836 (sweep): the clock 700 (the tap's time 704.92), opened e:buxhowden-blind, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 239, y 836 (sweep): the clock 750 (the tap's time 758.82), opened e:davout-resumes, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 251, y 836 (sweep): the clock 780 (the tap's time 785.78), opened e:wheel, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 275, y 836 (sweep): the clock 840 (the tap's time 839.68), opened e:sokolnitz-falls, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 287, y 836 (sweep): the clock 870 (the tap's time 866.63), opened e:augezd, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 299, y 836 (sweep): the clock 900 (the tap's time 893.58), opened e:ice, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 141.6, y 836 (09:00): the clock 540 (the tap's time 540), opened e:pratzen-village, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 141.6, y 829 (09:00): the clock 555 (the tap's time 540), opened e:face-about, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 8, y 836 (marker raigern): the clock 240 (the tap's time 240), opened e:raigern, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 14.7, y 836 (marker counter-march): the clock 240 (the tap's time 254.98), opened e:raigern, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 88.1, y 836 (marker telnitz): the clock 420 (the tap's time 419.99), opened e:columns-move, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 88.1, y 836 (marker columns-move): the clock 420 (the tap's time 419.99), opened e:columns-move, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 114.8, y 836 (marker sokolnitz): the clock 480 (the tap's time 479.97), opened e:sokolnitz, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 126, y 836 (marker decision): the clock 505 (the tap's time 504.99), opened e:decision, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 134.9, y 836 (marker davout): the clock 525 (the tap's time 524.99), opened e:soult, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 134.9, y 836 (marker soult): the clock 525 (the tap's time 524.99), opened e:soult, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 141.6, y 836 (marker pratzen-village): the clock 540 (the tap's time 539.98), opened e:pratzen-village, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 148.3, y 836 (marker face-about): the clock 555 (the tap's time 555), opened e:face-about, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 154.9, y 836 (marker telnitz-retaken): the clock 570 (the tap's time 569.98), opened e:telnitz-retaken, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 161.6, y 836 (marker kamensky): the clock 585 (the tap's time 584.97), opened e:kamensky, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 181.6, y 836 (marker kursk): the clock 630 (the tap's time 629.99), opened e:kursk, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 195, y 836 (marker pratzeberg): the clock 660 (the tap's time 660), opened e:guard-attack, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 195, y 836 (marker guard-attack): the clock 660 (the tap's time 660), opened e:guard-attack, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 201.7, y 836 (marker blasowitz): the clock 675 (the tap's time 674.98), opened e:guard-broken, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 201.7, y 836 (marker guard-broken): the clock 675 (the tap's time 674.98), opened e:guard-broken, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 212.8, y 836 (marker buxhowden-blind): the clock 700 (the tap's time 699.97), opened e:buxhowden-blind, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 221.7, y 836 (marker hq-forward): the clock 720 (the tap's time 719.97), opened e:hq-forward, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 235.1, y 836 (marker davout-resumes): the clock 750 (the tap's time 749.98), opened e:davout-resumes, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 248.4, y 836 (marker wheel): the clock 780 (the tap's time 779.98), opened e:wheel, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 275.1, y 836 (marker sokolnitz-falls): the clock 840 (the tap's time 839.99), opened e:sokolnitz-falls, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 288.5, y 836 (marker augezd): the clock 870 (the tap's time 870), opened e:augezd, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 301.8, y 836 (marker ice): the clock 900 (the tap's time 899.97), opened e:ice, a dossier open
+  UA-06 the phone at 390 x 844, a tap in the rail's lower 16 px at x 341.9, y 836 (marker end): the clock 990 (the tap's time 989.98), opened e:end, a dossier open
+  UA-06 the phone at 390 x 844: the marker raigern takes a press only inside the rail's lower 16 px
+  UA-06 the phone at 390 x 844, a tap on the marker telnitz: direct, selection e:columns-move
+  UA-06 the phone at 390 x 844, a tap on the marker decision: direct, selection e:soult
+  UA-06 the phone at 390 x 844: the marker decision takes a press only inside the rail's lower 16 px
+  UA-06 the phone at 390 x 844, a tap on the marker davout: direct, selection e:face-about
+  UA-06 the phone at 390 x 844: the marker soult takes a press only inside the rail's lower 16 px
+  UA-06 the phone at 390 x 844: the marker pratzen-village takes a press only inside the rail's lower 16 px
+  UA-06 the phone at 390 x 844: the marker face-about takes a press only inside the rail's lower 16 px
+  UA-06 the phone at 390 x 844: the marker telnitz-retaken takes a press only inside the rail's lower 16 px
+  UA-06 the phone at 390 x 844, a tap on the marker pratzeberg: direct, selection e:guard-broken
+  UA-06 the phone at 390 x 844: the marker guard-attack takes a press only inside the rail's lower 16 px
+  UA-06 the phone at 390 x 844, a tap on the marker blasowitz: direct, selection e:buxhowden-blind
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 17, y 382 (sweep): the clock 240 (the tap's time 243.09), opened e:raigern, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 29, y 382 (sweep): the clock 255 (the tap's time 255.44), opened e:counter-march, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 185, y 382 (sweep): the clock 420 (the tap's time 416.03), opened e:columns-move, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 245, y 382 (sweep): the clock 480 (the tap's time 477.79), opened e:sokolnitz, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 269, y 382 (sweep): the clock 505 (the tap's time 502.5), opened e:decision, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 293, y 382 (sweep): the clock 525 (the tap's time 527.21), opened e:soult, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 305, y 382 (sweep): the clock 540 (the tap's time 539.56), opened e:pratzen-village, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 317, y 382 (sweep): the clock 555 (the tap's time 551.91), opened e:face-about, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 353, y 382 (sweep): the clock 585 (the tap's time 588.97), opened e:kamensky, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 389, y 382 (sweep): the clock 630 (the tap's time 626.03), opened e:kursk, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 425, y 382 (sweep): the clock 660 (the tap's time 663.09), opened e:guard-attack, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 437, y 382 (sweep): the clock 675 (the tap's time 675.44), opened e:guard-broken, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 461, y 382 (sweep): the clock 700 (the tap's time 700.15), opened e:buxhowden-blind, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 509, y 382 (sweep): the clock 750 (the tap's time 749.56), opened e:davout-resumes, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 593, y 382 (sweep): the clock 840 (the tap's time 836.03), opened e:sokolnitz-falls, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 629, y 382 (sweep): the clock 870 (the tap's time 873.09), opened e:augezd, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 653, y 382 (sweep): the clock 900 (the tap's time 897.79), opened e:ice, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 305.4, y 382 (09:00): the clock 540 (the tap's time 540), opened e:pratzen-village, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 305.4, y 375 (09:00): the clock 540 (the tap's time 540), opened e:pratzen-village, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 14, y 382 (marker raigern): the clock 240 (the tap's time 240), opened e:raigern, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 28.6, y 382 (marker counter-march): the clock 255 (the tap's time 254.99), opened e:counter-march, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 188.8, y 382 (marker telnitz): the clock 420 (the tap's time 419.99), opened e:columns-move, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 188.8, y 382 (marker columns-move): the clock 420 (the tap's time 419.99), opened e:columns-move, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 247.1, y 382 (marker sokolnitz): the clock 480 (the tap's time 480), opened e:sokolnitz, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 271.4, y 382 (marker decision): the clock 505 (the tap's time 504.99), opened e:decision, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 290.8, y 382 (marker davout): the clock 525 (the tap's time 524.99), opened e:soult, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 290.8, y 382 (marker soult): the clock 525 (the tap's time 524.99), opened e:soult, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 305.4, y 382 (marker pratzen-village): the clock 540 (the tap's time 539.99), opened e:pratzen-village, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 320, y 382 (marker face-about): the clock 555 (the tap's time 555), opened e:face-about, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 334.6, y 382 (marker telnitz-retaken): the clock 570 (the tap's time 569.99), opened e:telnitz-retaken, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 349.1, y 382 (marker kamensky): the clock 585 (the tap's time 585), opened e:kamensky, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 392.8, y 382 (marker kursk): the clock 630 (the tap's time 629.99), opened e:kursk, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 422, y 382 (marker pratzeberg): the clock 660 (the tap's time 660), opened e:guard-attack, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 422, y 382 (marker guard-attack): the clock 660 (the tap's time 660), opened e:guard-attack, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 436.6, y 382 (marker blasowitz): the clock 675 (the tap's time 674.99), opened e:guard-broken, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 436.6, y 382 (marker guard-broken): the clock 675 (the tap's time 674.99), opened e:guard-broken, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 460.8, y 382 (marker buxhowden-blind): the clock 700 (the tap's time 699.99), opened e:buxhowden-blind, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 480.3, y 382 (marker hq-forward): the clock 720 (the tap's time 720), opened e:hq-forward, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 509.4, y 382 (marker davout-resumes): the clock 750 (the tap's time 749.99), opened e:davout-resumes, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 538.6, y 382 (marker wheel): the clock 780 (the tap's time 779.99), opened e:wheel, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 596.8, y 382 (marker sokolnitz-falls): the clock 840 (the tap's time 839.99), opened e:sokolnitz-falls, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 626, y 382 (marker augezd): the clock 870 (the tap's time 870), opened e:augezd, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 655.1, y 382 (marker ice): the clock 900 (the tap's time 900), opened e:ice, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap in the rail's lower 16 px at x 742.6, y 382 (marker end): the clock 990 (the tap's time 989.99), opened e:end, a dossier open
+  UA-06 a coarse pointer at 844 x 390, a tap on the marker telnitz: direct, selection e:columns-move
+  UA-06 a coarse pointer at 844 x 390, a tap on the marker davout: direct, selection e:pratzen-village
+  UA-06 a coarse pointer at 844 x 390, a tap on the marker pratzeberg: direct, selection e:guard-broken
+  UA-06 a coarse pointer at 844 x 390, a tap on the marker blasowitz: direct, selection e:guard-broken
+  UA-17 a mouse at 1600 x 900, telnitz (its start 420): by pointer direct, selection e:columns-move
+  UA-17 a mouse at 1600 x 900, telnitz (its start 420): with a mouse not a target of its own (direct, 0 px of its own hit area)
+  UA-17 a mouse at 1600 x 900, davout (its start 525): by pointer direct, selection e:soult
+  UA-17 a mouse at 1600 x 900, davout (its start 525): with a mouse not a target of its own (direct, 0 px of its own hit area)
+  UA-17 a mouse at 1600 x 900, pratzeberg (its start 660): by pointer direct, selection e:guard-attack
+  UA-17 a mouse at 1600 x 900, pratzeberg (its start 660): with a mouse not a target of its own (direct, 0 px of its own hit area)
+  UA-17 a mouse at 1600 x 900, blasowitz (its start 675): by pointer direct, selection e:guard-broken
+  UA-17 a mouse at 1600 x 900, blasowitz (its start 675): with a mouse not a target of its own (direct, 0 px of its own hit area)
+  UA-17 touch on the phone, telnitz (its start 420): by pointer direct, selection e:columns-move
+  UA-17 touch on the phone, davout (its start 525): by pointer direct, selection e:face-about
+  UA-17 touch on the phone, pratzeberg (its start 660): by pointer direct, selection e:guard-broken
+  UA-17 touch on the phone, blasowitz (its start 675): by pointer direct, selection e:buxhowden-blind
+  UA-13 at 1024 px: 12 overlapping phase labels, e.g. Sokolnitz/The Pratzen 0.7 px at 481; The Pratzen/Pratzeberg 18.1 px at 526; Olmütz road/The Guard 18.9 px at 631
+  UA-13 at 1280 px: 9 overlapping phase labels, e.g. The Pratzen/Pratzeberg 4.4 px at 526; Olmütz road/The Guard 5.2 px at 631; The Pratzen/Pratzeberg 4.4 px at 525
+  UA-13 at 1280 px: the act cut in the caption 18 times, e.g. "THE ALLIED ADVANCE" 78 of 146 px at 421; "THE ALLIED ADVANCE" 76 of 146 px at 481
+  UA-13 at 1440 px: the act cut in the caption 27 times, e.g. "THE ALLIED ADVANCE" 137 of 146 px at 421; "THE ALLIED ADVANCE" 135 of 146 px at 481
+  UA-12 dark: #lg-rows's scrollbar the platform's (auto)
+  UA-12 dark: #modal .sheet's scrollbar the platform's (auto)
+  UA-12 dark: #help .sheet's scrollbar the platform's (auto)
+  UA-12 dark: #layerpop's scrollbar the platform's (auto)
+  UA-12 dark: #firstrun's scrollbar the platform's (auto)
+  UA-12 dark: the key's rows 0 px from its scrollbar (at least 8)
+  UA-12 paper: #lg-rows's scrollbar the platform's (auto)
+  UA-12 paper: #modal .sheet's scrollbar the platform's (auto)
+  UA-12 paper: #help .sheet's scrollbar the platform's (auto)
+  UA-12 paper: #layerpop's scrollbar the platform's (auto)
+  UA-12 paper: #firstrun's scrollbar the platform's (auto)
+  UA-12 paper: the key's rows 0 px from its scrollbar (at least 8)
+exit 1

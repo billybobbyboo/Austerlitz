@@ -112,7 +112,8 @@
       KEYS:typeof KEYS!=="undefined", SUN_DAY:typeof SUN_DAY!=="undefined", ATMO:typeof ATMO!=="undefined", SMOKE:typeof SMOKE!=="undefined",
       settle:!!d.settle, applyCase:!!d.applyCase, selfTest:!!d.selfTest, SHORTCUTS:typeof SHORTCUTS!=="undefined", TIPS:typeof tipSync==="function",
       MLS:typeof MLS!=="undefined"&&typeof mlStabBegin==="function", CULL:typeof CULL!=="undefined"&&typeof setCull==="function", ANIM:typeof ANIM!=="undefined"&&typeof animHook==="function",
-      mlFarPlate:typeof mlFarPlate==="function"&&!!(TOKENS.sym.plate&&TOKENS.sym.plate.far), TOAST:typeof toastRelayout==="function"};   /* Stage 8, the follow-up 8I */
+      mlFarPlate:typeof mlFarPlate==="function"&&!!(TOKENS.sym.plate&&TOKENS.sym.plate.far), TOAST:typeof toastRelayout==="function",   /* Stage 8, the follow-up 8I */
+      UX1:typeof showKeyFromCard==="function"&&typeof evPickOpen==="function"&&typeof fitPhaseLabels==="function"};   /* UI/UX roadmap step 1 */
   }
 
   /* ---- roadmap step 1 (T-1): an app canvas's pixels are read through a canvas the harness owns ----

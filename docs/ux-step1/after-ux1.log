@@ -1,0 +1,43 @@
+  key 1600x900 click: shown and focused in 32 ms (legend); after Esc focus lg-rows
+  key 1600x900 keyboard: shown and focused in 5 ms (legend); after Esc focus lg-rows
+  key 1366x768 click: shown and focused in 7 ms (legend); after Esc focus lg-rows
+  key 1366x768 keyboard: shown and focused in 6 ms (legend); after Esc focus lg-rows
+  key 1080x800 click: shown and focused in 5 ms (legend); after Esc focus lg-rows
+  key 1080x800 keyboard: shown and focused in 13 ms (legend); after Esc focus lg-rows
+  key 1079x800 click: shown and focused in 13 ms (help); after Esc focus play
+  key 1079x800 keyboard: shown and focused in 10 ms (help); after Esc focus play
+  key 800x450 click: shown and focused in 11 ms (help); after Esc focus play
+  key 800x450 keyboard: shown and focused in 9 ms (help); after Esc focus play
+  key 721x800 click: shown and focused in 10 ms (help); after Esc focus play
+  key 721x800 keyboard: shown and focused in 11 ms (help); after Esc focus play
+  key 720x800 click: shown and focused in 13 ms (help); after Esc focus play
+  key 720x800 keyboard: shown and focused in 8 ms (help); after Esc focus play
+  key 1280x431 click: shown and focused in 5 ms (legend); after Esc focus lg-rows
+  key 1280x431 keyboard: shown and focused in 4 ms (legend); after Esc focus lg-rows
+  key 1280x430 click: shown and focused in 12 ms (help); after Esc focus play
+  key 1280x430 keyboard: shown and focused in 13 ms (help); after Esc focus play
+  key 390x844 click: shown and focused in 12 ms (help); after Esc focus play
+  key 390x844 keyboard: shown and focused in 15 ms (help); after Esc focus play
+  marker drags: 2 px 361.87 (want 361.87); 8 px 361.87 (want 361.87); 16 px 361.87 (want 361.87); 33 px 361.87 (want 361.87)
+  coincident markers (mouse): telnitz pointer direct, keys; columns-move pointer direct, keys; davout pointer direct, keys; soult pointer direct, keys; pratzeberg pointer direct, keys; guard-attack pointer direct, keys; blasowitz pointer direct, keys; guard-broken pointer direct, keys
+  phase row at 1024 px: 0 overlapping label pairs, 0 act names cut, over 35 clocks
+  phase row at 1280 px: 0 overlapping label pairs, 0 act names cut, over 35 clocks
+  phase row at 1440 px: 0 overlapping label pairs, 0 act names cut, over 35 clocks
+  key 1600x900 tap: shown and focused in 24 ms (legend); after Esc focus lg-rows
+  key 1366x768 tap: shown and focused in 8 ms (legend); after Esc focus lg-rows
+  key 1080x800 tap: shown and focused in 8 ms (legend); after Esc focus lg-rows
+  key 1079x800 tap: shown and focused in 23 ms (help); after Esc focus play
+  key 800x450 tap: shown and focused in 25 ms (help); after Esc focus play
+  key 721x800 tap: shown and focused in 14 ms (help); after Esc focus play
+  key 720x800 tap: shown and focused in 16 ms (help); after Esc focus play
+  key 1280x431 tap: shown and focused in 6 ms (legend); after Esc focus lg-rows
+  key 1280x430 tap: shown and focused in 13 ms (help); after Esc focus play
+  rail taps in the lower 16 px: 96, wrong 0; marker taps: 25 of 25 opened their event
+  a touch drag cancelled: {"draggedTo":296.62,"afterCancel":{"clock":304.85,"sel":null},"laterTouch":{"sel":null},"tapAfter":{"want":"pratzen-village","sel":"e:pratzen-village","clock":540}}
+  key 390x844 (phone) tap: shown and focused in 22 ms (help); after Esc focus play
+  key 390x844 (phone) keyboard: shown and focused in 11 ms (help); after Esc focus play
+  rail taps in the lower 16 px: 59, wrong 0; marker taps: 25 of 25 opened their event
+  coincident markers (touch): telnitz pointer chooser, keys; columns-move pointer chooser, keys; davout pointer chooser, keys; soult pointer chooser, keys; pratzeberg pointer chooser, keys; guard-attack pointer chooser, keys; blasowitz pointer chooser, keys; guard-broken pointer chooser, keys
+build 09a906695fd9c4846396785907e6c1d8, 608 s; page errors and console messages 0
+ux1: every check passed
+exit 0

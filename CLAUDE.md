@@ -497,7 +497,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   `derivedModel`: at 14:40 neither derived reading applies and the caption shows none; at 14:20, in the same view, the caption shows the centre
   separation; every other Watch case as before).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of the final audits' Stage 7, WP-16's second PR (md5 `8c0d383e...`, 3,037,848 bytes, its
+- `npm run check:baseline` passes only on the unmodified build of UI/UX roadmap step 1 (md5 `d404045b...`, 3,053,167 bytes, its data the archived
+  `45d29cc5...`'s, `CHANGELOG.md`); re-baselined from the final audits' Stage 7, WP-16's second PR (md5 `8c0d383e...`, 3,037,848 bytes, its
   data the archived `45d29cc5...`'s, `CHANGELOG.md`); re-baselined from WP-16's first PR (md5 `07c186de...`, 3,035,557 bytes, `CHANGELOG.md`); re-baselined from WP-14's robustness residuals (md5 `eabe076a...`, 3,028,969
   bytes, `CHANGELOG.md`); re-baselined from the build of Stage 6 as merged into `main` (#103's merge, `187231c`: md5 `dcc65319...`,
   3,025,956 bytes, `CHANGELOG.md`; re-baselined from Stage 6's PRs' builds as each was reconciled, the last before it
@@ -841,3 +842,8 @@ decision 268 (a)'s excess gone on that desktop; the owner's iPhone runs of the s
 second P5's like for like, section 8.5's long-frame clause failing in phase 8's Overview orbiting, accepted as measured by decision 324 (a) and carried into the closing pass; an integrated GPU still to run), the stage's last pass, is merged (#108, `a8720b9`).
 The closing re-verification pass (13-14 November 2026; `docs/CLOSING_REVERIFICATION.md`, with `docs/closing-evidence/` and `tools/closing/`; no build, source or
 data changed) is on `claude/admiring-dirac-m1syqs`, a draft PR: of the 158 findings, 103 fixed, 19 kept and 36 carried, each with its evidence.
+The independent UI/UX, cartographic and art-direction audit (`docs/UX_ART_AUDIT.md`, with `docs/ux-art-audit/`; no build changed) is merged (#110,
+`98e15bc`). UI/UX roadmap step 1 (its section 6, PR 1: UA-05, UA-06, UA-12, UA-13, UA-17; presentation only) is on `claude/austerlitz-ux-step-1-4cxrhk`,
+a draft PR: "Show the key" shows the key on every layout, a marker's press captures the pointer, the touch layouts' scrub lane and marker row, the
+coincident events' own targets or chooser (`#evpick`), the phase row and caption fitted, the panels' scrollbars themed; the live block `ux1`
+(`tools/visual/ux1.js`, judged by `thresholds.js` `checkUx1`) in `check:selftest` and `check:visual`, and `tools/ux-step1/` (the probe on any build, the captures).

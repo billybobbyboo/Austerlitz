@@ -294,6 +294,7 @@ body.docked:not(.rail-hidden) #toast{left:calc(50% + var(--rail)/2);max-width:ca
 .step[aria-current="true"]{color:var(--text-hi);background:rgb(var(--scrim-rgb));box-shadow:inset 0 2px 0 var(--accent);
   overflow:visible;min-width:max-content;padding-right:6px;z-index:2}
 .step[aria-current="true"] .step-l{overflow:visible}
+.step .step-l.ph-under{visibility:hidden}   /* UI/UX step 1 (UA-13; app.js fitPhaseLabels): a label with no room beside the current one gives way, its button kept */
 
 #prog{position:absolute;left:0;right:0;top:0;height:2px;background:rgba(var(--line-rgb),.10);transform-origin:left center}
 
@@ -411,6 +412,19 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
 .step.inth{box-shadow:inset 0 -2px 0 var(--text-hi)}
 .step.inth[aria-current="true"]{box-shadow:inset 0 2px 0 var(--accent),inset 0 -2px 0 var(--text-hi)}
 .ev-mark.inth:focus-visible{outline:2px solid var(--accent)}   /* 8H: focused, 2 px in the accent, apart from its 1 px in-the-hour ring */
+/* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-17; app.js buildTimeline): events that start at the same minute. With a mouse on the full timeline the second
+   marker stands lower in the rail at the same x (its time), each with a hit area of its own (6 px round its diamond, not the 12 px that let the top one
+   take the other's); on the touch layouts' marker row (below) the set stands stacked and a press opens the chooser (#evpick); the media rules after the narrow layout's block */
+#evpick{position:fixed;z-index:30;min-width:200px;max-width:min(360px,calc(100vw - 16px));padding:6px;display:flex;flex-direction:column;gap:2px;
+  background:rgba(var(--scrim-rgb),.97);border:1px solid var(--line-2);border-top:2px solid var(--accent);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+#evpick[hidden]{display:none}
+#evpick .evp-h{margin:2px 6px 4px;font-size:var(--t-small);color:var(--text-muted);letter-spacing:.04em}
+#evpick .evp-b{display:flex;align-items:center;gap:8px;min-height:32px;padding:4px 8px;background:none;border:0;border-radius:2px;color:var(--text-hi);
+  font-size:var(--t-ui);text-align:left;cursor:pointer}
+#evpick .evp-b:hover{background:rgba(var(--line-rgb),.08)}
+#evpick .evp-b i{flex:0 0 auto;width:8px;height:8px;transform:rotate(45deg)}
+#evpick .evp-b.fr i{background:var(--side-fr)}
+#evpick .evp-b.al i{background:var(--side-al)}
 /* Stage 5C (docs/STAGE5_SPEC.md section C.3; decision 89): an interval's window as a bar from its start (where its diamond stands) to its
    end, in the side's colour at full strength (3:1 against the timebar in both themes), in one of four lanes at the top of the event row,
    under the diamonds; lit with its marker */
@@ -706,7 +720,7 @@ body.firstrun-on #openingbtn{display:none}
    status icons, drawn by the map's own drawers (app.js paintKey) */
 /* the final audits' Stage 5, WP-08 (CL-MAP-10): the selected formation's name on the landscape, an accent edge round its plate (app.js mlCollect) */
 .mln.mln-sel{box-shadow:0 0 0 2px var(--accent)}
-.legend .lg-rows{overflow-y:auto;overscroll-behavior:contain}   /* WP-08: held below the tools by app.js mlLegendFit, scrolling where taller */
+.legend .lg-rows{overflow-y:auto;overscroll-behavior:contain;padding-inline-end:8px}   /* WP-08: held below the tools by app.js mlLegendFit, scrolling where taller; UI/UX step 1 (UA-12): 8 px clear of its scrollbar */
 .legend .kgrp{display:inline-flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:1px 9px}   /* one row, its items those drawn ([data-lgi]) */
 .legend .kgrp>span{display:inline-flex;align-items:center;gap:4px}
 .legend .kgrp>span[hidden]{display:none}
@@ -730,6 +744,10 @@ body.firstrun-on #openingbtn{display:none}
 .legend .hlt{width:5px;height:15px;border-radius:1px;margin:0 7px}
 .legend .bnd{width:20px;height:0;border-top:2px solid}
 .legend .stg{width:20px;height:0;border-top:2px dashed var(--text-muted)}
+/* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-12): the scrolling panels' scrollbars in the theme's colours (the line colour on a clear track: the panel's own
+   ground shows through, dark on the landscape, paper on the paper map), not the platform's light scrollbar on a dark panel; the key's rows 8 px clear of
+   it at the inline end. A forced-colours mode keeps the system's (below) */
+.legend .lg-rows,.sheet,#layerpop,#firstrun{scrollbar-color:rgba(var(--line-rgb),.42) transparent}
 /* Stage 2D: the legend's head toggles it; closed, its rows keep their size (measured) but are not drawn */
 .lg-head{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin:0 0 0 auto;background:none;border:0;padding:0;
   color:var(--text-muted);font-size:var(--t-small);line-height:1.3;cursor:pointer}
@@ -807,6 +825,22 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   background:rgba(4,8,10,.84);border:1px solid rgba(160,200,150,.25);padding:6px 9px}
 #devstats[hidden]{display:none}
 
+/* UI/UX step 1 (UA-17): with a mouse on the full timeline the second of a coincident set lower in the rail (app.js buildTimeline's data-co), each its own hit area */
+@media (min-width:720.02px) and (pointer:fine){
+  .ev-mark[data-co]::after{inset:-2px}
+  .ev-mark[data-co="1"]{top:13px}
+  .ev-mark.dec[data-co="1"]{top:12px}
+}
+/* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-06): with a coarse pointer on the full timeline (a phone held landscape, a tablet) the markers stand on the
+   rail's top edge with hit areas 2 px round their diamonds, so that the rail's lower 16 px are the scrub lane alone (the timeline's height kept);
+   until step 1 a finger's tap there opened the marker under it */
+@media (pointer:coarse){
+  #evpick .evp-b{min-height:44px}
+  .ev-mark{top:-4.5px}
+  .ev-mark.dec{top:-5.5px}
+  .ev-mark::after{inset:-2px}
+}
+
 /* ---------- roadmap step 6 item 3 (docs/STEP6_SPEC.md section 4; decisions 223-229): the phone layout, below 720 px wide ----------
    A phone held landscape (844 x 390; 667 x 375 and 640 x 360 too: the query asks for more than 430 px of height, the review's item 3) keeps
    the layout above (decision 226). The compact timeline (decisions 223, 225): one row of the transport (event
@@ -849,7 +883,14 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .step::before{display:none}
   .step-l{display:none}   /* each phase keeps its name (aria-label); the caption names the current one */
   .step[aria-current="true"]{min-width:0;padding-right:2px}
-  .timerail,.evmarks{top:12px}
+  .timerail{top:12px}
+  /* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-06): the event markers in a row of their own over the rail, on the phases' band (which takes no press here),
+     with hit areas 2 px round their diamonds; the rail's 24 px are the rail's (until step 1 the markers' hit areas took about two thirds of it: a
+     tap meant for 09:00 opened the 09:15 event). Coincident events stand stacked here; a press opens the chooser (app.js evPickOpen) */
+  .evmarks{top:0;height:12px}
+  .ev-mark,.ev-mark[data-co]{top:2px}
+  .ev-mark.dec,.ev-mark.dec[data-co]{top:1px}
+  .ev-mark::after{inset:-2px}
   .playhead{top:-12px;height:36px}
   /* the dispatch card a sheet at the foot (decision 223): its head (the readings, decision 174, whole; the clock; the title) shown, the grip
      opening it whole (app.js setDSheet) with the lede, the events, the changes and the phases (decision 224 (a)); it scrolls inside, never cut.
@@ -957,6 +998,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   [aria-pressed="true"],[aria-selected="true"],[aria-current="true"],.layer-btn[aria-pressed="true"]{forced-color-adjust:none;background:Highlight!important;color:HighlightText!important;border-color:HighlightText!important}   /* over every control's own pressed colours (.vm-btn[aria-pressed] and the like are more specific) */
   .tab-btn[aria-selected="true"]{text-decoration:underline 2px}
   .ev-mark,.ev-bar,.mln-mark,.legend .sw,#firstrun .key-sw{forced-color-adjust:none;outline:1px solid CanvasText}
+  .legend .lg-rows,.sheet,#layerpop,#firstrun{scrollbar-color:auto}   /* UI/UX step 1 (UA-12): the system's scrollbar */
+  #evpick{border:1px solid CanvasText}
 }
 /* Stage 5E (docs/STAGE5_SPEC.md section D.5): "Whose eyes?", its caption, the timeline's button, the eye-level vantage's caption */
 .eyes-note{margin:8px 0 4px;color:var(--text-body);font-size:var(--t-small);line-height:1.45}
@@ -1761,6 +1804,8 @@ $Id$
 
 <div id="toast"></div>
 <div id="tltip" aria-hidden="true" hidden></div>
+<!-- UI/UX step 1 (UA-17): the chooser for events that start at the same minute where their markers stand stacked (app.js evPickOpen); not modal -->
+<div id="evpick" role="dialog" aria-modal="false" aria-labelledby="evpick-t" hidden></div>
 <!-- roadmap step 3 (docs/FINAL_AUDIT.md SW-1): the notice when the browser takes the 3D view's graphics context away (empty until then) -->
 <div id="glnotice" role="alert"></div>
 
@@ -8537,6 +8582,7 @@ function fontsReady(ms){
 function relayoutAfterFonts(){
   for(var k in ML.items) ML.items[k].dirty=true;
   syncTimebarHeight(); syncDock(); syncViewOffset(true);
+  fitPhaseLabels(true);   /* UI/UX step 1 (UA-13): the labels' widths changed with the face */
   if(firstRunOpen) frameFirstView();
   requestRender(3);
 }
@@ -13941,8 +13987,9 @@ function mlLegendFit(VW,VH){
     var mx=Math.max(96,Math.floor(Lb-top-hd.height-16));
     if(rows.dataset.mx!==String(mx)){ rows.style.maxHeight=mx+"px"; rows.dataset.mx=String(mx); ML.lgSize=null; }
     var sc=rows.scrollHeight>rows.clientHeight+1;
-    if(sc!==(rows.getAttribute("tabindex")==="0")){ if(sc){ rows.setAttribute("tabindex","0"); rows.setAttribute("role","region"); rows.setAttribute("aria-label","Key, scrolling"); }
-      else { rows.removeAttribute("tabindex"); rows.removeAttribute("role"); rows.removeAttribute("aria-label"); } } }
+    /* UI/UX step 1 (UA-05, UA-12): the rows a named region always, so that "Show the key" can focus them (a focus target, tabindex -1, while they fit;
+       a Tab stop, 0, while they scroll); their 8 px clear of a scrollbar at the inline end is style.css's (UA-12) */
+    if(sc!==(rows.getAttribute("tabindex")==="0")||!rows.hasAttribute("tabindex")){ rows.setAttribute("tabindex",sc?"0":"-1"); rows.setAttribute("role","region"); rows.setAttribute("aria-label",sc?"Key, scrolling":"Key"); } }
   if(lg.classList.contains("collapsed")===open){ lg.classList.toggle("collapsed",!open); tg.setAttribute("aria-expanded",String(open)); }
   if(lg.classList.contains("squeezed")!==squeeze){ lg.classList.toggle("squeezed",squeeze);
     tg.title=squeeze?"No room for the key beside "+LABELS.names.phaseText+": hide it (D) or close the dossier":"Show or hide the key"; }
@@ -15103,7 +15150,8 @@ function buildHelp(){
     [].forEach.call(lr.querySelectorAll(".k"),function(k){ if(k.hidden||k.closest("[hidden]")) return; var c=k.cloneNode(true); c.removeAttribute("id");
       [].forEach.call(c.querySelectorAll("[id]"),function(x){ x.removeAttribute("id"); }); [].forEach.call(c.querySelectorAll("[hidden]"),function(x){ x.parentNode.removeChild(x); });
       K.push(c.outerHTML); });
-    if(K.length) html+='<h3>'+esc(LABELS.keys.mapKey)+'</h3><div class="legend hp-key">'+K.join("")+'</div>'; }
+    /* UI/UX step 1 (UA-05): the key a section of its own, which the first card's "Show the key" focuses where the key panel is not shown */
+    if(K.length) html+='<section id="help-key" tabindex="-1" aria-labelledby="help-key-t"><h3 id="help-key-t">'+esc(LABELS.keys.mapKey)+'</h3><div class="legend hp-key">'+K.join("")+'</div></section>'; }
   HELP_GROUPS.forEach(function(g){ var rows=KEYS.filter(function(r){ return r.group===g; }); if(!rows.length) return;
     html+='<h3>'+esc(g)+'</h3>';
     rows.forEach(function(r){ var off=!SHORTCUTS.on&&r.scope==="window"&&r.keys.length&&r.keys.every(charKey);
@@ -15289,7 +15337,7 @@ function buildUI(){
   bindCanvas();
 
   /* the one timeline (Stage 3C): act bands, phase ticks, the rail, the event markers, on one time axis */
-  buildTimeline(); bindTimeTips();
+  buildTimeline(); bindTimeTips(); bindEvPick();
 
   document.querySelectorAll(".mode-btn").forEach(function(b){
     b.addEventListener("click",function(){ setMode(b.dataset.m); });
@@ -15494,6 +15542,7 @@ function buildUI(){
     retier();   /* the final audits' Stage 6 (CL-VIS-09): a small window enlarged takes the full tier */
     renderer.setPixelRatio(pxRatio());   /* roadmap step 3 (SW-10): a window moved to a screen of another density */
     fitCaption();   /* roadmap step 3 (decision 159): the caption's room changed */
+    fitPhaseLabels(true);   /* UI/UX step 1 (UA-13) */
     renderer.setSize(window.innerWidth,window.innerHeight);
     sizeFX();
     syncViewOffset(true);   /* Stage 3D: the focus at the new free rectangle's centre at once */
@@ -15568,8 +15617,29 @@ function paintKey(){
     /* the final audits' Stage 6, WP-09 (CL-UX-11; owner decision 276 (a)): the map said nowhere on its first screen that it is a reconstruction or what
        the letters beside names are; one sentence, and the key's grade rows one press away (the button closes the card where it stands, the key open) */
     esc(LABELS.card.recon)+' <button class="fr-link" id="fr-grades" type="button">'+esc(LABELS.card.key)+'</button>';
-  var gb=document.getElementById("fr-grades"); if(gb) gb.addEventListener("click",function(){ closeFirst("explore"); ML.legendOpen=true; requestRender(2);
-    var t=document.getElementById("lg-toggle"); if(t) focusTo([t,"play"]); });
+  var gb=document.getElementById("fr-grades"); if(gb) gb.addEventListener("click",showKeyFromCard);
+}
+/* UI/UX roadmap step 1 (docs/UX_ART_AUDIT.md UA-05): "Show the key" shows the key on every layout. The card closes where it stands (decision 276
+   (a)); where the key panel is shown (from 1080 px wide and above 430 px tall, not squeezed beside the dispatch) it opens, laid out at once, and the
+   focus goes to its rows (a region named "Key"); elsewhere (below 1080 px, at 430 px tall or less, where the panel is display:none) the "?" sheet
+   opens at "The map key" (buildHelp's section, WP-08's copy of the rows) with the focus on that section, and Esc or Close returns the focus to Play
+   (decision 118's rule for a closed card) or the "?" button. Until step 1 the handler opened the hidden panel and focused its toggle, so below 1080
+   px or at 430 px tall the card closed and nothing was shown (the audit's measure: the legend display:none, the focus on Play) */
+function showKeyFromCard(){
+  closeFirst("explore"); ML.legendOpen=true;
+  var lg=document.querySelector(".legend"), rows=document.getElementById("lg-rows");
+  var VW=renderer.domElement.clientWidth||innerWidth; mlLegendFit(VW,viewH()); mlLegendFit(VW,viewH());   /* twice: the second measures the rows open */
+  requestRender(2);
+  var panel=!!(lg&&rows&&getComputedStyle(lg).display!=="none"&&!lg.classList.contains("collapsed")&&!lg.classList.contains("squeezed")&&shown(rows));
+  if(panel){ rows.scrollTop=0; if(focusTo([rows])) return; }
+  setHelp(true);
+  var sec=document.getElementById("help-key"); if(!sec) return;
+  SHEETS.help.from=shown(document.getElementById("play"))?document.getElementById("play"):(shown(document.getElementById("helpbtn"))?document.getElementById("helpbtn"):SHEETS.help.from);
+  var sh=document.querySelector("#help .sheet");
+  /* the sheet from its top (its Close and title in view) where the key's heading and its first rows show there; else the heading at the top (the
+     sheet is its offset parent) */
+  if(sh) sh.scrollTop=sec.offsetTop+72>sh.clientHeight?Math.max(0,sec.offsetTop-12):0;
+  focusTo([sec]);
 }
 /* the final audits' Stage 5, WP-08 (CL-MAP-08): the key's samples of the event glyphs, the objective, the place marker and the counter's arm marks,
    drawn by the map's own drawers (EVG, objGlyph, armGlyphSVG) in the theme's text colour (the map draws the event glyphs in the side's colour, which
@@ -15863,7 +15933,13 @@ function fitCaption(){
   function fragEv(){ var ev=cap.querySelector(".ev"); if(!ev||!shown(ev)) return false; var er=ev.getBoundingClientRect();
     return [].some.call(ev.querySelectorAll(".evt"),function(t){ var r=t.getBoundingClientRect(), fs=parseFloat(getComputedStyle(t).fontSize)||12.5;
       var cut=t.scrollWidth>t.clientWidth+1||r.right>er.right+0.5; return cut&&Math.min(r.right,er.right)-r.left<CAP_MIN*fs; }); }
-  function bad(){ return over()||frag(act)||frag(ph)||fragEv(); }
+  /* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-13): the act never drawn cut ("THE PRAT\u2026" until step 1, allowed down to CAP_MIN): where it does not fit
+     whole it gives way whole, before it truncates; the act band (and, on a phone, the phase list's heading) names it, and the act's button keeps its
+     full accessible name */
+  function cutWhole(e){ return !!e&&shown(e)&&e.scrollWidth>e.clientWidth+1; }
+  /* on the phone layout the phase's title likewise gives way whole rather than being drawn cut (as it did while the act took its room until step 1;
+     the dispatch sheet's title names it, decision 224 (a)) */
+  function bad(){ return over()||cutWhole(act)||(PHONE&&cutWhole(ph))||frag(ph)||fragEv(); }
   tidy(); if(!bad()) return;
   var D=[].filter.call(cap.querySelectorAll(".der"),function(d){ return shown(d); }), ev=cap.querySelector(".ev"), em=D.length?D[0].querySelector("em"):null;
   function set(e,on){ if(e) e.classList.toggle("fit-off",!on); }
@@ -15997,11 +16073,18 @@ function buildTimeline(){
       bar.style.left=tlPc(o.t)+"%"; bar.style.width=(tlPc(o.t1)-tlPc(o.t))+"%"; bar.style.top=(EV_BAR.TOP+k*EV_BAR.STEP)+"px";
       evh.appendChild(bar); o.bar=bar; });
     EV_BAR.lanes=lanes.length;
+    /* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-17): events that start at the same minute (07:00, 08:45, 11:00, 11:15) are one set: each marker keeps its
+       exact time (its x) and its keyboard stop; with a mouse on the full timeline the second stands lower in the rail with a hit area of its own
+       (style.css [data-co]); where the markers stand stacked (the touch layouts' marker row) a pointer's press on the set opens a chooser naming each
+       (evPickOpen). Until step 1 the top marker alone took a pointer */
+    var co={}; evs.forEach(function(o){ (co[o.t]=co[o.t]||[]).push(o); });
     evs.forEach(function(o,k){
       var e=o.e, b=el("button","ev-mark "+(e.kind==="decision"?"dec ":"")+(e.side==="fr"?"fr":"al")); b.type="button";
       var lab=evTimeText(e)+", "+e.n+evNote(e);   /* roadmap step 2 (H-1, H-15): its note, disputed, an interval or a reconstruction */
       b.style.left=tlPc(o.t)+"%"; b.dataset.tip=evTimeShown(e)+": "+e.n+evNote(e); b.setAttribute("aria-label",lab); b.tabIndex=k===0?0:-1;
-      b.addEventListener("click",function(){ stopPlay(); setClock(o.t); select("e",e.id); });
+      var set=co[o.t]; if(set.length>1){ b.dataset.co=String(set.indexOf(o)); b.dataset.coN=String(set.length); }
+      /* a pointer's click (detail above 0) on a stacked set opens the chooser; Enter, Space and an assistive click (detail 0) act on the focused marker */
+      b.addEventListener("click",function(ev){ if(ev.detail>0&&evPickOpen(b,ev.clientX,ev.clientY)) return; stopPlay(); setClock(o.t); select("e",e.id); });
       evh.appendChild(b); _evTicks.push({el:b,bar:o.bar||null,e:e,t:o.t}); });
     rovingGroup(evh,".ev-mark"); }
   if(!rail) return;
@@ -16026,20 +16109,30 @@ function buildTimeline(){
      (the pointer captured by the rail, the clock following it, the marker's click not made), so a drag scrubs wherever on the rail it starts: on
      a phone the markers' hit areas took about two thirds of it, and on a desktop the marker standing on the playhead at an event's start. A
      press that does not move is the marker's tap or click, as before */
-  if(evh){ var mk=null;
-    evh.addEventListener("pointerdown",function(e){ var m=e.target&&e.target.closest?e.target.closest(".ev-mark"):null;
-      mk=(m&&e.button===0)?{id:e.pointerId,x:e.clientX,y:e.clientY,m:m}:null; });
+  /* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-06; the closing pass's CL-UX-03 residual): the marker captures its press (setPointerCapture), so every
+     move reaches RAIL_SLOP's test: a mouse has no implicit capture, and until step 1 a first move that left the 12 px marker (8, 16 or 33 px at
+     once) was never seen, so the drag did nothing. The press ends without a drag on its release, a cancel or a lost capture; handed to the rail,
+     the drag ends on the rail's release, cancel or lost capture as any rail drag (above). The click a handed drag's release may still make on a
+     marker is not the marker's: refused until the release's task has run (until step 1 for 1.5 s after the hand-over, so a slower drag's release
+     could open the event) */
+  if(evh){ var mk=null, handed=false;
+    evh.addEventListener("pointerdown",function(e){ var m=e.target&&e.target.closest?e.target.closest(".ev-mark"):null; handed=false;
+      mk=(m&&e.button===0)?{id:e.pointerId,x:e.clientX,y:e.clientY,m:m}:null;
+      if(mk){ try{ if(m.setPointerCapture) m.setPointerCapture(e.pointerId); }catch(x){} } });   /* a pointer the browser no longer tracks cannot be captured */
     evh.addEventListener("pointermove",function(e){
       if(dragging&&e.pointerId===dragId){ railMove(e); return; }   /* the drag's moves, where the capture did not move to the rail */
       if(!mk||e.pointerId!==mk.id) return;
       if(e.buttons!==undefined&&!(e.buttons&1)){ mk=null; return; }
       if(Math.hypot(e.clientX-mk.x,e.clientY-mk.y)<RAIL_SLOP) return;
-      var m=mk.m; mk=null; m._dragged=Date.now(); railBegin(e,rail); });
+      mk=null; handed=true; railBegin(e,rail); });
     evh.addEventListener("pointerup",function(e){ if(mk&&e.pointerId===mk.id) mk=null; });
-    evh.addEventListener("pointercancel",function(){ mk=null; });
-    /* the click a handed drag's release may still make on its marker (a mouse's, where the capture stayed on it) is not the marker's */
+    evh.addEventListener("pointercancel",function(e){ if(!mk||e.pointerId===mk.id) mk=null; });
+    evh.addEventListener("lostpointercapture",function(e){ if(mk&&e.pointerId===mk.id) mk=null; });
+    /* the release ends the hand-over once its own click (dispatched in the same task as the release) has been refused, so a later Enter or click
+       on a marker is the marker's */
+    ["pointerup","pointercancel"].forEach(function(t){ window.addEventListener(t,function(){ if(handed) setTimeout(function(){ handed=false; },0); },true); });
     evh.addEventListener("click",function(e){ var m=e.target&&e.target.closest?e.target.closest(".ev-mark"):null;
-      if(m&&m._dragged&&Date.now()-m._dragged<1500){ m._dragged=0; e.stopPropagation(); e.preventDefault(); } },true); }
+      if(m&&handed){ handed=false; e.stopPropagation(); e.preventDefault(); } },true); }
   rail.addEventListener("keydown",function(e){
     var t=null, ph=phaseAt(clock);
     if(e.key==="ArrowRight") t=clock+(e.shiftKey?60:10); else if(e.key==="ArrowLeft") t=clock-(e.shiftKey?60:10);
@@ -16050,6 +16143,52 @@ function buildTimeline(){
     e.preventDefault(); e.stopPropagation();   /* one step: the window's own arrow keys do not step it again (before 3C: +25 min) */
     stopPlay(); setClock(t);
   });
+}
+/* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-17, UA-06): the chooser for markers a pointer cannot tell apart: a set of events that start at the same minute
+   where their markers stand stacked (the touch layouts' marker row: no room to set one under the other), and with them any marker whose centre is
+   within EVPICK.R px of the press (on a phone's 374 px rail a quarter of an hour is about 7 px, so the 09:00 marker's hit area covers the 08:45 set's
+   centre). A pointer's press there opens it over the timeline: a non-modal dialog named by the count and the clock, one button per event named as
+   its marker is (its time, its name, its note), in time order, the first focused; a choice acts as the marker's click (the clock to the event's
+   start, its dossier); Esc returns the focus to the marker, a press outside or the focus leaving closes it. Where every marker under the press
+   stands apart (a mouse on the full timeline, its coincident sets one under the other, style.css [data-co]) no chooser opens */
+var EVPICK={from:null, R:9};
+function evPickClose(refocus){
+  var p=document.getElementById("evpick"); if(!p||p.hidden) return;
+  p.hidden=true; p.innerHTML=""; var f=EVPICK.from; EVPICK.from=null;
+  if(refocus&&f&&shown(f)) f.focus({preventScroll:true});
+}
+function evPickOpen(b,px,py){
+  var p=document.getElementById("evpick"); if(!p||!b) return false;
+  var o0=null; _evTicks.forEach(function(o){ if(o.el===b) o0=o; }); if(!o0) return false;
+  var r0=b.getBoundingClientRect(), cx=(r0.left+r0.right)/2, cy=(r0.top+r0.bottom)/2;
+  if(typeof px!=="number"||!isFinite(px)){ px=cx; py=cy; }
+  /* the markers a press here may have meant: those stacked on this one (within 3 px) and those whose centre is within R px of the press */
+  var set=_evTicks.filter(function(o){ var r=o.el.getBoundingClientRect(), x=(r.left+r.right)/2, y=(r.top+r.bottom)/2;
+    return o===o0||(Math.abs(x-cx)<3&&Math.abs(y-cy)<3)||Math.hypot(x-px,y-py)<=EVPICK.R; });
+  if(set.length<2) return false;
+  evPickClose(false); EVPICK.from=b;
+  var t0=set[0].t, t1=set[set.length-1].t, at=t0===t1?"at "+fmtClock(t0):"from "+fmtClock(t0)+" to "+fmtClock(t1);
+  var h='<p class="evp-h" id="evpick-t">'+esc(set.length+" events "+at)+'</p>';
+  set.forEach(function(o){ h+='<button type="button" class="evp-b '+(o.e.side==="fr"?"fr":"al")+'" data-ev="'+esc(o.e.id)+'" aria-label="'+esc(o.el.getAttribute("aria-label"))+'"><i aria-hidden="true"></i>'+esc(evTimeShown(o.e)+" · "+o.e.n+evNote(o.e))+'</button>'; });
+  p.innerHTML=h; p.hidden=false;
+  set.forEach(function(o){ var c=p.querySelector('[data-ev="'+o.e.id+'"]'); if(c) c.addEventListener("click",function(){ evPickClose(false); stopPlay(); setClock(o.t); select("e",o.e.id); }); });
+  var tb=document.querySelector(".timebar").getBoundingClientRect(), w=p.offsetWidth;
+  p.style.left=Math.round(Math.max(8,Math.min(window.innerWidth-w-8,cx-w/2)))+"px";
+  p.style.bottom=Math.round(window.innerHeight-tb.top+8)+"px";
+  focusTo([p.querySelector("button")]);
+  return true;
+}
+function bindEvPick(){
+  var p=document.getElementById("evpick"); if(!p||bindEvPick.done) return; bindEvPick.done=true;
+  p.addEventListener("keydown",function(e){
+    var B=[].slice.call(p.querySelectorAll("button")), i=B.indexOf(document.activeElement);
+    if(e.key==="Escape"){ e.preventDefault(); e.stopPropagation(); evPickClose(true); return; }
+    var j=-1; if(e.key==="ArrowDown"||e.key==="ArrowRight") j=Math.min(B.length-1,i+1); else if(e.key==="ArrowUp"||e.key==="ArrowLeft") j=Math.max(0,i-1);
+    else if(e.key==="Home") j=0; else if(e.key==="End") j=B.length-1;
+    if(j>=0){ e.preventDefault(); e.stopPropagation(); B[j].focus(); }
+  });
+  p.addEventListener("focusout",function(e){ if(!p.hidden&&!(e.relatedTarget&&p.contains(e.relatedTarget))&&e.relatedTarget) evPickClose(false); });
+  window.addEventListener("pointerdown",function(e){ if(!p.hidden&&!(e.target&&e.target.closest&&e.target.closest("#evpick"))) evPickClose(false); },{capture:true});
 }
 function buildActs(){
   var host=document.getElementById("acts");
@@ -16117,11 +16256,27 @@ function jumpEvent(dir){
     goToEventAt(T_MIN);
   }
 }
+/* UI/UX roadmap step 1 (docs/UX_ART_AUDIT.md UA-13): the current phase's label is drawn whole on its plate (decision 53) and may run over the
+   phases after it; each label it reaches starts after the plate's edge, shortened with its ellipsis in the room left, or gives way (hidden, its
+   button, its press and its name kept) where under 3 em is left. Until step 1 the next label ran on under the plate's edge and read as one
+   phrase with the current one ("The Pratzen ratzeberg" at 1280 and 1440 px). Laid out when the current phase or the width changes */
+var _phFit=null, PH_FIT_MIN=3;   /* em: the least room a label is drawn in beside the current one (a design value: about three letters and the ellipsis) */
+function fitPhaseLabels(force){
+  var S=document.querySelectorAll("#phases .step"); if(!S.length||typeof curPhase!=="number") return;
+  var key=curPhase+"|"+window.innerWidth+"|"+(PHONE?1:0); if(!force&&key===_phFit) return; _phFit=key;
+  for(var i=0;i<S.length;i++){ var l0=S[i].querySelector(".step-l"); if(l0){ l0.style.marginLeft=""; l0.classList.remove("ph-under"); } }
+  var cur=S[curPhase], cl=cur&&cur.querySelector(".step-l"); if(!cl||getComputedStyle(cl).display==="none") return;
+  var right=cur.getBoundingClientRect().right, fs=parseFloat(getComputedStyle(cl).fontSize)||12.5;
+  for(var j=curPhase+1;j<S.length;j++){ var b=S[j].getBoundingClientRect(), l=S[j].querySelector(".step-l"); if(!l||b.left>=right) break;
+    var push=Math.ceil(right-b.left), room=b.right-right-6;   /* the label's own padding, 4 px before and 2 after */
+    if(room<PH_FIT_MIN*fs) l.classList.add("ph-under"); else l.style.marginLeft=push+"px"; }
+}
 function paintTimeline(){
   var tl=document.getElementById("phases"), inG=!!(tl&&document.activeElement&&document.activeElement.parentNode===tl);
   document.querySelectorAll("#phases .step").forEach(function(b,i){
     b.setAttribute("aria-current", i===curPhase?"true":"false"); if(!inG) b.tabIndex=(i===curPhase)?0:-1;
   });
+  fitPhaseLabels();
   document.querySelectorAll("#phlist .ph-item").forEach(function(b,i){ b.setAttribute("aria-current", i===curPhase?"true":"false"); });   /* roadmap step 6 item 3 */
   paintSituation();
   paintActs();
@@ -18336,7 +18491,11 @@ function wp09Checks(){
   guard("the first card's reconstruction (WP-09, CL-UX-11)",function(){
     var bad=[]; document.getElementById("firstrun").hidden=false; openFirstRun(); var fk=document.getElementById("fr-key"), txt=(fk.textContent||"").replace(/\s+/g," "), gb=document.getElementById("fr-grades");
     if(txt.indexOf("a reconstruction from the sources, its certainty graded A to C")<0) bad.push("the sentence missing: “"+txt.slice(-140)+"”");
-    if(!gb||!vis(gb)) bad.push("no Show the key"); else { ML.legendOpen=false; gb.click(); if(firstRunOpen) bad.push("the card stayed open"); if(!ML.legendOpen) bad.push("the key not opened"); }
+    if(!gb||!vis(gb)) bad.push("no Show the key"); else { ML.legendOpen=false; gb.click(); if(firstRunOpen) bad.push("the card stayed open"); if(!ML.legendOpen) bad.push("the key not opened");
+      /* UI/UX step 1 (UA-05): the key shown with the focus on it, the panel's rows or the "?" sheet's key section (the live block ux1 holds every size by real input) */
+      var kr=document.getElementById("lg-rows"), hk=document.getElementById("help-key"), fa=document.activeElement;
+      if(!(kr&&fa===kr&&vis(kr))&&!(helpOpen()&&hk&&fa===hk)) bad.push("the key not shown with the focus on it (focus on "+(fa?(fa.id||fa.className||fa.tagName):"nothing")+")");
+      if(helpOpen()) setHelp(false); }
     if(firstRunOpen) closeFirst(null);
     ck("the first card's reconstruction (WP-09, CL-UX-11; decision 276 (a)): the card says it is a reconstruction from the sources, graded A to C, and its key's button opens the key",
       !bad.length, bad.length?"WRONG: "+bad.join("; "):"“"+LABELS.card.recon+"”; the key opened");

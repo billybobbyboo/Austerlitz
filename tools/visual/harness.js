@@ -43,7 +43,10 @@ const PHONE_DEVICES={
   /* the final audits' Stage 6, WP-09 (CL-UX-01; decision 306): a desktop's browser zoomed to 400% (density 4, a mouse, no touch, the
      browser's own user agent): WCAG 1.4.10's reflow width, 320 x 256 (a 1280 x 1024 screen), and a 1600 x 900 screen, 400 x 225. Its presses are
      clicks; its measures the phone cases' (phone-measure.js) */
-  zoom:{dpr:4, desktop:true}};
+  zoom:{dpr:4, desktop:true},
+  /* UI/UX roadmap step 1 (tools/visual/ux1.js): a desktop's size with touch (a coarse pointer: a tablet or a phone held landscape), density 1, the browser's
+     own user agent; Chromium's touch emulation, not a physical device */
+  touch:{dpr:1, touch:true}};
 const MANIFEST_PATH=path.join(__dirname,"selftest-manifest.json");
 const md5=f=>crypto.createHash("md5").update(fs.readFileSync(f)).digest("hex");
 const RUN=new Date().toISOString();
@@ -54,6 +57,7 @@ async function openPage(browser,vp,label,device){
   const Dv=device?PHONE_DEVICES[device]:null;
   if(device&&!Dv) throw new Error("no phone device "+device);
   const page=Dv&&Dv.desktop?await (await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:Dv.dpr})).newPage()
+    :Dv&&Dv.touch?await (await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:Dv.dpr,hasTouch:true})).newPage()
     :Dv?await (await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:Dv.dpr,isMobile:true,hasTouch:true,userAgent:Dv.ua})).newPage()
     :await browser.newPage({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:1});
   label=label||vp.join("x");
@@ -424,10 +428,21 @@ async function interact(page,it,vp){
       AT="tips (phone)"; const pp=await openPage(browser,[390,844],"390x844 tips","ios");
       try{ await settle(pp); await pp.tap("#fr-close",{timeout:180000}); await pp.waitForTimeout(400);
         await pp.evaluate(()=>{ setClock(570,{instant:true,force:true,camera:false}); }); await settle(pp);
-        const mk=await centre(pp,"#evmarks .ev-mark",2);
+        /* UI/UX step 1 (UA-17): a marker standing alone (no other marker's centre within 12 px), since a tap on a stacked or crowded set opens the
+           chooser (app.js evPickOpen; the live block ux1 holds it); until step 1 the third marker, one of the two at 07:00 */
+        const mk=await pp.evaluate(()=>{ const B=[].slice.call(document.querySelectorAll("#evmarks .ev-mark")).map(e=>{ const r=e.getBoundingClientRect(); return {e,x:r.left+r.width/2,y:r.top+r.height/2,w:r.width}; }).filter(o=>o.w>0);
+          const o=B.find(a=>!B.some(b=>b!==a&&Math.hypot(b.x-a.x,b.y-a.y)<12)); return o?{x:o.x,y:o.y,tip:o.e.dataset.tip}:null; });
         if(mk){ await pp.touchscreen.tap(mk.x,mk.y); await pp.waitForTimeout(1000); TP.tap1=await tipOn(pp); await pp.waitForTimeout(2000); TP.tap3=await tipOn(pp); }
       } finally { const cx=pp.context(); await pp.close(); await cx.close(); }
       LIVE.tips=TP; console.log("timeline tips by real input: "+JSON.stringify(TP)); }
+    /* UI/UX roadmap step 1 (docs/UX_ART_AUDIT.md sections 5 and 6, PR 1): "Show the key" at every size by click, tap and keyboard (UA-05); the markers'
+       drags by a real mouse, a lost capture, a cancelled touch, the touch scrub lane at 390 x 844 and 844 x 390 (UA-06); the coincident events by
+       mouse, touch and keys (UA-17); the phase row and the caption at 1024, 1280 and 1440 px (UA-13); the panels' scrollbars (UA-12). Pages of its
+       own (a mouse at 1600 x 900 resized through the sizes, a touch page, an iPhone's); judged in thresholds.js checkUx1 */
+    AT="ux1";
+    if(await has(first,"UX1","the map key and the timeline under real input (UI/UX roadmap step 1)")){
+      const UX=require("./ux1.js");
+      LIVE.ux1=await UX.runBlock((vp,dev)=>openPage(browser,vp,vp.join("x")+" ux1"+(dev?" ("+dev+")":""),dev),settle,{selftestOnly:SELFTEST_ONLY,log:s=>console.log(s)}); }
     /* Stage 8, implementation PR 8C (decision 240 (a); docs/STAGE8_SPEC.md sections 3.5 and 15): the map layer in motion. On a page of its own at
        1600 x 900, the 16 motions of tools/stage8/label-motion.js driven through the app's own input and its own frame on a clock of its own
        (tools/visual/motion.js: 30 frames a second, the WebGL draw skipped, nothing set that the app does not set), each after a view reached

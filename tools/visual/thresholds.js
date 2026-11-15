@@ -725,7 +725,8 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   CULL:"Stage 8, implementation PR 8D: the blocks culled by their own bounds, the census (decision 249 (a))",
   ANIM:"Stage 8, implementation PR 8D: the kit's animation hooks (decisions 244 (a), 250 (b))",
   mlFarPlate:"Stage 8, the follow-up 8I: the far formation names' lighter plate (decision 263 (a))",
-  TOAST:"Stage 8, the follow-up 8I: the phase's message placed again under a layout's change"};
+  TOAST:"Stage 8, the follow-up 8I: the phase's message placed again under a layout's change",
+  UX1:"UI/UX roadmap step 1: the map key shown from the first card, the markers' drags, the touch scrub lane, the coincident events (UA-05, 06, 12, 13, 17)"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -1002,6 +1003,8 @@ function checkLive(live,opts){
      (harness.js "tips"): a tip shown on a keyboard focus and a mouse's hover, never after a tap; gone when its element is activated (Enter, a
      click, a tap), one Esc then closing the dossier; back with a new focus or a new hover; Esc on a shown tip hides it and does nothing else;
      with a marker focused, a hover over another shows that one's, and leaving it the focused one's again */
+  /* UI/UX roadmap step 1 (UA-05, UA-06, UA-12, UA-13, UA-17): the live block "ux1" by real input (tools/visual/ux1.js), judged by checkUx1 (below) */
+  if(req("ux1","the map key and the timeline under real input (UI/UX roadmap step 1)")) checkUx1(live.ux1,so).forEach(x=>f.push(x));
   if(req("tips","the timeline's tips by real keys, mouse and touch (Stage 8, implementation PR 8A, decision 251)")){ const T=live.tips, b=[];
     const is=(o,k)=>!!(o&&o.tip&&o.tip===o[k]), none=o=>!!(o&&o.tip===null);
     if(!is(T.focus,"focusTip")) b.push("Tab to a marker showed no tip");
@@ -1106,6 +1109,80 @@ function checkLive(live,opts){
     live.horizon.forEach(H=>{ if(H.gaps&&!(H.worst<=HORIZON_DE)) f.push("the horizon: "+H.tag+": the gap under the horizon differs from the sky by "+H.worst+" (limit "+HORIZON_DE+")"); }); }
   return f;
 }
+/* UI/UX roadmap step 1 (docs/UX_ART_AUDIT.md sections 5 and 6, PR 1): the live block "ux1" (tools/visual/ux1.js), by real browser input on pages of
+   its own; judged here. Each bound is the audit's check, written before the repair:
+   - UA-05: at every viewport (the harness's sizes and the boundaries at 1080 px wide and 430 px tall; check:selftest the boundaries and the phone) and by click, tap and keyboard, "Show the key"
+     leaves a key row visible (topmost at its centre, inside the viewport) with the focus on an element holding it within KEY_MS; Esc then leaves
+     the focus on a shown control (never the page), the card and the "?" sheet closed.
+   - UA-06: the playhead under the 04:15 marker, a 200 px drag in moves of 2, 8, 16 and 33 px ends within DRAG_TOL minutes of the time under the
+     release and opens nothing; released outside the rail likewise, and a later hover moves nothing; a lost capture ends the drag; a touch drag
+     cancelled opens nothing; an ordinary click or tap on a marker after each opens its event at its start. On touch (the phone at 390 x 844 and a
+     coarse pointer at 844 x 390) every tap in the rail's lower 16 px seeks within ux1.js LANE_TOL minutes and opens nothing, and a tap on each marker
+     opens its event (directly, or by the chooser naming it), from a point outside that lower band.
+   - UA-17: every event sharing its start opened by pointer (a mouse; touch on the phone) and by keyboard (Tab, the arrow keys, Enter), its marker
+     within 1 px of its time; with a mouse each by a target of its own (OWN_PX pixels of hit area at least).
+   - UA-13: no two phase labels' drawn text overlapping and no act name drawn cut in the caption at 1024, 1280 and 1440 px, each phase current and at
+     every event start.
+   - UA-12: the key, the sources sheet, the "?" sheet, the Layers panel and the first card carry the theme's scrollbar colours (not auto) on the
+     landscape and the paper map, the system's (auto) under a forced-colours mode; the key's rows KEY_PAD px clear of a scrollbar at the inline end.
+     Computed styles: the harness's headless Chromium draws no scrollbar (--hide-scrollbars), so a screenshot cannot show one */
+const UX1={KEY_MS:500, DRAG_TOL:1, OWN_PX:64, KEY_PAD:8, PANELS:["#lg-rows","#modal .sheet","#help .sheet","#layerpop","#firstrun"]};
+module.exports.UX1=UX1;
+function checkUx1(L,so){
+  const f=[]; if(!L) return ["ux1: no record"];
+  const K=L.key||[], W=e=>"e:"+e;
+  if(!K.length) f.push("UA-05: no key case run");
+  ["click","keyboard","tap"].forEach(h=>{ if(!K.some(k=>k.how===h)) f.push("UA-05: no key case by "+h); });
+  (so?["390x844","1080x800","1079x800","1280x431","1280x430"]:["390x844","800x450","1080x800","1079x800","1280x431","1280x430","1600x900"]).forEach(v=>{ if(!K.some(k=>k.vp===v)) f.push("UA-05: no key case at "+v); });
+  K.forEach(k=>{ const at="UA-05 at "+k.vp+(k.device?" ("+k.device+")":"")+" by "+k.how;
+    if(k.error){ f.push(at+": "+k.error); return; }
+    if(k.ms===null||k.ms===undefined||k.ms>UX1.KEY_MS) f.push(at+": the key not visible and focused within "+UX1.KEY_MS+" ms (rows shown "+k.rows+", focus "+k.focus+", holding the key "+k.focusHolds+")");
+    if(k.card) f.push(at+": the card still open");
+    const e=k.afterEsc||{}; if(!e.focus||!e.shown||e.inCard) f.push(at+": after Esc the focus "+(e.focus||"on the page")+(e.focus&&!e.shown?", not shown":"")+(e.inCard?", in the closed card":""));
+    if(e.help) f.push(at+": Esc left the \"?\" sheet open"); if(e.card) f.push(at+": the card open after Esc"); });
+  const D=L.drag||{};
+  if(!D.steps||D.steps.length!==4) f.push("UA-06: "+((D.steps||[]).length)+" of the 4 marker drags run");
+  (D.steps||[]).forEach(s=>{ const at="UA-06 drag from the 04:15 marker in moves of "+s.step+" px";
+    if(s.pressedOn!=="marker") f.push(at+": the press did not land on a marker ("+s.pressedOn+"): the case proves nothing");
+    if(Math.abs(s.clock-s.want)>UX1.DRAG_TOL) f.push(at+": the clock "+s.clock+", the release's time "+s.want);
+    if(s.sel||s.pick) f.push(at+": "+(s.sel?"opened "+s.sel:"opened the chooser")); });
+  const O=D.outside; if(!O) f.push("UA-06: no drag released outside the rail");
+  else { if(Math.abs(O.clock-O.want)>UX1.DRAG_TOL) f.push("UA-06 a drag released outside the rail: the clock "+O.clock+", the release's time "+O.want);
+    if(O.sel) f.push("UA-06 a drag released outside the rail opened "+O.sel); if(Math.abs(O.afterHover-O.clock)>0.01) f.push("UA-06 after a release outside the rail a hover moved the clock "+O.clock+" to "+O.afterHover); }
+  const LC=D.lost; if(!LC) f.push("UA-06: no drag with its capture lost");
+  else { if(Math.abs(LC.afterMoves-LC.atLoss)>0.01) f.push("UA-06 a lost capture: the clock moved on "+LC.atLoss+" to "+LC.afterMoves); if(LC.sel) f.push("UA-06 a lost capture opened "+LC.sel); }
+  if(!D.after||D.after.length<6) f.push("UA-06: "+((D.after||[]).length)+" of the 6 marker clicks after a drag run");
+  (D.after||[]).forEach(a=>{ if(a.error||a.sel!==W(a.want)||Math.abs(a.clock-a.t)>0.01) f.push("UA-06 a marker click "+a.label+": "+(a.error||("selection "+a.sel+" at "+a.clock+", "+W(a.want)+" at "+a.t+" expected"))); });
+  const C=L.cancel; if(!C||C.error) f.push("UA-06: the cancelled touch drag "+(C?C.error:"not run"));
+  else { if(C.afterCancel.sel) f.push("UA-06 a cancelled touch drag opened "+C.afterCancel.sel); if(C.laterTouch.sel) f.push("UA-06 a touch after a cancelled drag opened "+C.laterTouch.sel);
+    if(!C.tapAfter||C.tapAfter.sel!==W(C.tapAfter.want)) f.push("UA-06 a marker tap after a cancelled drag: "+JSON.stringify(C.tapAfter)); }
+  const LT=require("./ux1.js").LANE_TOL;
+  [["lane","the phone at 390 x 844"],["laneHeld","a coarse pointer at 844 x 390"]].forEach(q=>{ const A=L[q[0]];
+    if(!A||!A.taps||!A.taps.length){ f.push("UA-06 "+q[1]+": no rail taps"); return; }
+    if(!A.taps.some(t=>t.why==="09:00")) f.push("UA-06 "+q[1]+": no tap at 09:00");
+    A.taps.forEach(t=>{ if(t.sel||t.pick||t.drawer||Math.abs(t.clock-t.want)>LT) f.push("UA-06 "+q[1]+", a tap in the rail's lower 16 px at x "+t.x+", y "+t.y+" ("+t.why+"): the clock "+t.clock+" (the tap's time "+t.want+")"+(t.sel?", opened "+t.sel:"")+(t.pick?", opened the chooser":"")+(t.drawer?", a dossier open":"")); });
+    (A.markers||[]).forEach(m=>{ if(m.sel!==W(m.id)) f.push("UA-06 "+q[1]+", a tap on the marker "+m.id+": "+m.via+", selection "+m.sel);
+      if(m.inLane) f.push("UA-06 "+q[1]+": the marker "+m.id+" takes a press only inside the rail's lower 16 px"); });
+    if(!(A.markers||[]).length) f.push("UA-06 "+q[1]+": no marker taps"); });
+  [["mouse","a mouse at 1600 x 900"],["touch","touch on the phone"]].forEach(q=>{ const R=(L.coincident||{})[q[0]]||[];
+    if(R.length<8) f.push("UA-17 "+q[1]+": "+R.length+" coincident events measured (07:00, 08:45, 11:00 and 11:15: 8)");
+    R.forEach(r=>{ const at="UA-17 "+q[1]+", "+r.id+" (its start "+r.t+")";
+      if(Math.abs(r.dx)>1) f.push(at+": its marker "+r.dx+" px from its time");
+      if(r.pointer.sel!==W(r.id)) f.push(at+": by pointer "+r.pointerVia+", selection "+r.pointer.sel);
+      if(q[0]==="mouse"&&(r.pointerVia!=="direct"||!(r.own>=UX1.OWN_PX))) f.push(at+": with a mouse not a target of its own ("+r.pointerVia+", "+r.own+" px of its own hit area)");
+      if(!r.keyboard||r.keyboard.sel!==W(r.id)||Math.abs(r.keyboard.clock-r.t)>0.01) f.push(at+": by keyboard "+JSON.stringify(r.keyboard)); }); });
+  const P=L.phases||[]; if(P.length!==3) f.push("UA-13: "+P.length+" of the 3 widths measured");
+  P.forEach(p=>{ if(p.overlaps.length) f.push("UA-13 at "+p.width+" px: "+p.overlaps.length+" overlapping phase labels, e.g. "+p.overlaps.slice(0,3).map(o=>o.a+"/"+o.b+" "+o.px+" px at "+o.t).join("; "));
+    if(p.actCut.length) f.push("UA-13 at "+p.width+" px: the act cut in the caption "+p.actCut.length+" times, e.g. "+p.actCut.slice(0,2).map(a=>JSON.stringify(a.text)+" "+a.w+" of "+a.need+" px at "+a.t).join("; ")); });
+  /* a forced-colours mode keeps the system's scrollbar (the user's colours) */
+  const FC=(L.scroll||{}).forced||[]; if(!FC.length) f.push("UA-12: the forced-colours state not read");
+  FC.forEach(r=>{ if(!r.missing&&r.color&&r.color!=="auto") f.push("UA-12 forced colours: "+r.sel+"'s scrollbar "+r.color+", not the system's"); });
+  ["dark","paper"].forEach(th=>{ const S=(L.scroll||{})[th]||[]; UX1.PANELS.forEach(sel=>{ const r=S.find(x=>x.sel===sel);
+    if(!r||r.missing) f.push("UA-12 "+th+": "+sel+" not found"); else if(!r.color||r.color==="auto") f.push("UA-12 "+th+": "+sel+"'s scrollbar the platform's ("+r.color+")"); });
+    const k=S.find(x=>x.sel==="#lg-rows"); if(k&&!k.missing&&!(k.padEnd>=UX1.KEY_PAD)) f.push("UA-12 "+th+": the key's rows "+k.padEnd+" px from its scrollbar (at least "+UX1.KEY_PAD+")"); });
+  return f;
+}
+module.exports.checkUx1=checkUx1;
 module.exports.checkLive=checkLive;
 
 /* T-4: the in-app self-test, every check by name against tools/visual/selftest-manifest.json (generated from a passing run by
