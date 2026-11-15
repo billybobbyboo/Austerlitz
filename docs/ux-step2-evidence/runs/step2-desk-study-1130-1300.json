@@ -1,0 +1,280 @@
+{
+ "build": "step2.html",
+ "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "tag": "step2-desk-study-1130-1300",
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "dpr": 1,
+  "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "phoneLayout": false,
+  "w": 1440,
+  "h": 900,
+  "tiers": true
+ },
+ "vp": [
+  1440,
+  900
+ ],
+ "phone": false,
+ "presentation": "study",
+ "mode": "terrain",
+ "reading": null,
+ "from": 690,
+ "to": 780,
+ "frames": 728,
+ "secs": 266,
+ "clockEnd": 780,
+ "coverage": {
+  "frames": 728,
+  "max": 0.1788,
+  "median": 0.0858,
+  "over12": 91,
+  "worst": [
+   {
+    "f": 670,
+    "clock": 771.7,
+    "fillCover": 0.1788,
+    "filled": 14,
+    "labels": 24,
+    "bboxShare": 0.3247,
+    "tier3Filled": 0
+   },
+   {
+    "f": 672,
+    "clock": 772,
+    "fillCover": 0.1785,
+    "filled": 14,
+    "labels": 28,
+    "bboxShare": 0.321,
+    "tier3Filled": 0
+   },
+   {
+    "f": 671,
+    "clock": 771.8,
+    "fillCover": 0.1783,
+    "filled": 14,
+    "labels": 24,
+    "bboxShare": 0.3235,
+    "tier3Filled": 0
+   },
+   {
+    "f": 669,
+    "clock": 771.5,
+    "fillCover": 0.1778,
+    "filled": 14,
+    "labels": 24,
+    "bboxShare": 0.3265,
+    "tier3Filled": 0
+   },
+   {
+    "f": 668,
+    "clock": 771.3,
+    "fillCover": 0.1772,
+    "filled": 14,
+    "labels": 24,
+    "bboxShare": 0.3276,
+    "tier3Filled": 0
+   }
+  ],
+  "labelCoverMax": 0.3033,
+  "labelCoverMedian": 0.2286,
+  "fillAllMax": 0.1849,
+  "bboxShareMedian": 0.3664,
+  "tier3FillFrames": 0,
+  "tier3FillsMax": 0
+ },
+ "drawn": {
+  "max": 43,
+  "median": 36,
+  "over12": 728,
+  "byTierMax": {
+   "0": 0,
+   "1": 5,
+   "2": 11,
+   "3": 28
+  },
+  "fillsMax": 16,
+  "fillsMedian": 13,
+  "tier1Frames": 2820,
+  "tier1Grown": 2241
+ },
+ "contrast": {
+  "samples": 25,
+  "texts": 909,
+  "fading": 72,
+  "tier3": {
+   "ring": {
+    "n": 528,
+    "min": 7.46,
+    "p10": 12.25,
+    "median": 13.37,
+    "below": 0
+   },
+   "wide": {
+    "n": 528,
+    "min": 2.98,
+    "p10": 3.94,
+    "median": 6.57,
+    "below": 82
+   },
+   "box": {
+    "n": 528,
+    "min": 2.46,
+    "p10": 3.61,
+    "median": 5.19,
+    "below": 167
+   },
+   "bare": {
+    "n": 528,
+    "min": 1.64,
+    "p10": 2.87,
+    "median": 4.47,
+    "below": 267
+   }
+  },
+  "cased": {
+   "ring": {
+    "n": 528,
+    "min": 7.46,
+    "p10": 12.25,
+    "median": 13.37,
+    "below": 0
+   },
+   "box": {
+    "n": 528,
+    "min": 2.46,
+    "p10": 3.61,
+    "median": 5.19,
+    "below": 167
+   }
+  },
+  "plated": {
+   "ring": {
+    "n": 309,
+    "min": 12.1,
+    "p10": 13.05,
+    "median": 13.9,
+    "below": 0
+   },
+   "box": {
+    "n": 309,
+    "min": 9.52,
+    "p10": 13.06,
+    "median": 13.78,
+    "below": 0
+   }
+  },
+  "all": {
+   "ring": {
+    "n": 837,
+    "min": 7.46,
+    "p10": 12.43,
+    "median": 13.55,
+    "below": 0
+   },
+   "box": {
+    "n": 837,
+    "min": 2.46,
+    "p10": 3.75,
+    "median": 7.18,
+    "below": 167
+   },
+   "bare": {
+    "n": 837,
+    "min": 1.14,
+    "p10": 2.13,
+    "median": 4.11,
+    "below": 466
+   }
+  },
+  "belowRing": []
+ },
+ "boxFallback": {
+  "samples": 25,
+  "labelsMax": 13,
+  "labelsMedian": 7,
+  "coverMax": 0.1872,
+  "coverMedian": 0.1095,
+  "over12": 9
+ },
+ "events": {
+  "inView": 6878,
+  "drawn": 6878,
+  "miss": {
+   "occluded": 0,
+   "placement": 0,
+   "calm": 0,
+   "withheld": 0
+  },
+  "out": {
+   "offscreen": 29,
+   "panel": 0,
+   "reading": 0,
+   "field": 0,
+   "lod": 432,
+   "aggregate": 728,
+   "none": 0
+  },
+  "by": {
+   "guard-attack": {
+    "frames": 728,
+    "inView": 2184,
+    "drawn": 2184,
+    "miss": {},
+    "out": {
+     "constantine:aggregate": 728
+    }
+   },
+   "guard-broken": {
+    "frames": 728,
+    "inView": 2184,
+    "drawn": 2184,
+    "miss": {},
+    "out": {}
+   },
+   "buxhowden-blind": {
+    "frames": 625,
+    "inView": 1630,
+    "drawn": 1630,
+    "miss": {},
+    "out": {
+     "dok:offscreen": 29,
+     "buxhowden:lod": 216
+    }
+   },
+   "hq-forward": {
+    "frames": 492,
+    "inView": 276,
+    "drawn": 276,
+    "miss": {},
+    "out": {
+     "gqg:lod": 216
+    }
+   },
+   "davout-resumes": {
+    "frames": 192,
+    "inView": 384,
+    "drawn": 384,
+    "miss": {},
+    "out": {}
+   },
+   "wheel": {
+    "frames": 55,
+    "inView": 220,
+    "drawn": 220,
+    "miss": {},
+    "out": {}
+   }
+  },
+  "frames": 728,
+  "share": 1
+ },
+ "layerMs": {
+  "passes": 737,
+  "median": 1.3,
+  "p95": 3.8,
+  "max": 29.5,
+  "over8": 7
+ },
+ "errors": []
+}

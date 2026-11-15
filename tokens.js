@@ -7,11 +7,18 @@
    sym.plate (Stage 2D) is the plate under every map-layer label: opaque enough that each map text colour below meets
    WCAG AA over black and over white ground (dark 0.88, worst 5.8:1, the road ink; paper 0.95, worst 4.6:1, the water ink).
    sym.plate.far (Stage 8, the follow-up 8I; decision 263 (a), 255 (d)'s "d-plate"): the lighter plate of a formation's name standing far on the
-   landscape (app.js mlFarPlate), by the same rule for the one ink it carries, the label ink: the lightest alpha keeping it at AA over white
+   landscape until UI/UX roadmap step 2 (see below), by the same rule for the one ink it carries, the label ink: the lightest alpha keeping it at AA over white
    ground, 0.64 (4.55:1; over black 15.4:1); the prototype's 0.62 gave 4.23:1 over white.
    sym.paperMap (Stage 2E) is the paper map's own symbology: woods (a tint, the tree marks and the outline) and the flat
    village footprints. Symbols on the map, not text. Since Stage 4E also its ground (the cover classes' colours, in
    coverClass's order through COVER_KEYS), its contours and its marsh lines (owner decision 79; values unchanged).
+   UI/UX roadmap step 2 (the owner's decision of 15 November 2026, Direction A's three label tiers on the Landscape; docs/UX_ART_AUDIT.md UA-01):
+   a live event's label (tier 1) is the one filled accent plate, theme.dark.accent under theme.dark.on-accent, at type.t-live (13.5 px, the
+   serif); a formation a live event names and the selection (tier 2) keep sym.plate.dark, with a 1 px keyline of the accent; every other
+   Landscape label (tier 3) has no plate: its own ink, cased by sym.keyline (style.css .ml-q). sym.plate.far is drawn by nothing since
+   step 2: decision 263 (a)'s lighter plate for far names is superseded there (a tier 3 name has no plate at any distance), and its value is
+   kept as the recorded fallback fill, should a later measurement require one (none did: docs/ux-step2-evidence/). The paper map and the
+   Landscape with counters draw sym.plate as before.
    type.sans and type.serif (decision 141, roadmap step 1): the type is embedded. Each stack names first a face that fonts.css
    carries in the file ("Austerlitz Sans", from Inter, and "Austerlitz Serif", from TeX Gyre Pagella; tools/fonts/build-fonts.py),
    so the page is drawn in the same faces on every machine; the system faces behind it are a per-glyph fallback, drawn only for a
@@ -48,7 +55,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
     }
   },
   "type": {
-    "t-micro": "10.5px", "t-small": "11.5px", "t-ui": "12.5px", "t-prose": "14px",
+    "t-micro": "10.5px", "t-small": "11.5px", "t-ui": "12.5px", "t-live": "13.5px", "t-prose": "14px",
     "t-h3": "17px", "t-h2": "21px", "t-display": "25px",
     "serif": "\"Austerlitz Serif\",\"Iowan Old Style\",\"Palatino Linotype\",Palatino,\"Book Antiqua\",Georgia,serif",
     "sans": "\"Austerlitz Sans\",ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,sans-serif"

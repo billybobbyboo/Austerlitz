@@ -1,0 +1,74 @@
+ux2 still, 09:00: 21 labels drawn, by tier 0/0/0, on a fill 21; tier 3 as rendered none read
+ux2 still, 08:44, the valley fog: 42 labels drawn, by tier 0/0/0, on a fill 42; tier 3 as rendered none read
+ux2 the paper map: 24 labels drawn, with a tier 0, with a tier's class 0
+ux2 the Landscape with counters: 19 labels drawn, with a tier 0, with a tier's class 0
+ux2 Clean: 0 labels drawn, with a tier 0, with a tier's class 0
+ux2 Play in Study, 270 frames to 545.0: filled plates over the formations' box 29.8% at most; the formations a live event names drawn 1033 of 1333; the label pass 1.3 ms (median)
+ux2 Play in Watch, 270 frames: 45 labels drawn at most, tier 3 drawn in 0 frames; the formations a live event names drawn 1158 of 1369
+ux2 Watch while it plays, no tier 3 name: playing null (focus), focused -, blurred -, hovered -, selected -, paused -, study -, playing again -, sought -
+ux2 forced colours: 21 labels; tier 3 on no fill 0; tier 1 outlines 
+ux2 reduced motion, Play in Watch: 120 frames, 51 labels drawn at most, tier 3 drawn in 0 frames
+ux2 a phone (390 x 844): a live event at  px; Play, 270 frames: filled plates over the formations' box 45.3% at most, 32.3% (median); the formations a live event names drawn 27 of 52
+build d404045b4544eb03c69fc3c9e3fff044, Chromium 141.0.7390.37 (Playwright 1.56.0, software WebGL), 295 s; page errors and console messages 0
+FAILED (520):
+  ux2: the token t-live null px, 13.5 expected
+  ux2 09:00: n:ahq tier null, 3 expected
+  ux2 09:00: n:lich tier null, 3 expected
+  ux2 09:00: p:plateau tier null, 3 expected
+  ux2 09:00: t:pratzeberg tier null, 3 expected
+  ux2 09:00: t:litava tier null, 3 expected
+  ux2 09:00: t:austerlitz tier null, 3 expected
+  ux2 09:00: n:sthilaire tier null, 2 expected
+  ux2 09:00: n:vandamme tier null, 2 expected
+  ux2 09:00: n:kamensky tier null, 3 expected
+  ux2 09:00: n:milo tier null, 3 expected
+  ux2 09:00: n:kollo tier null, 3 expected
+  ux2 09:00: n:rg_inf tier null, 3 expected
+  ux2 09:00: n:rg_cav tier null, 3 expected
+  ux2 09:00: e:soult tier null, 1 expected
+  ux2 09:00: e:pratzen-village tier null, 1 expected
+  ux2 09:00: o:Pratzeberg tier null, 3 expected
+  ux2 09:00: o:Stare Vinohrady tier null, 3 expected
+  ux2 09:00: t:kobelnitz tier null, 3 expected
+  ux2 09:00: t:puntowitz tier null, 3 expected
+  ux2 09:00: t:blasowitz tier null, 3 expected
+  ux2 09:00: t:krzenowitz tier null, 3 expected
+  ux2 09:00: tiers 1/2/3 drawn 0/0/0 (at least 1/1/5: the view proves nothing)
+  ux2 09:00: no live event at t-live (13.5 px)
+  ux2 09:00: 0 tier 3 texts read as rendered
+  ux2 08:44, the valley fog: n:ahq tier null, 3 expected
+  ux2 08:44, the valley fog: n:buxhowden tier null, 3 expected
+  ux2 08:44, the valley fog: n:lich tier null, 3 expected
+  ux2 08:44, the valley fog: n:bag tier null, 3 expected
+  ux2 08:44, the valley fog: p:plateau tier null, 3 expected
+  ux2 08:44, the valley fog: o:II Column → Sokolnitz tier null, 3 expected
+  ux2 08:44, the valley fog: o:Sokolnitz tier null, 3 expected
+  ux2 08:44, the valley fog: t:goldbach tier null, 3 expected
+  ux2 08:44, the valley fog: t:litava tier null, 3 expected
+  ux2 08:44, the valley fog: t:telnitz tier null, 3 expected
+  ux2 08:44, the valley fog: t:augezd tier null, 3 expected
+  ux2 08:44, the valley fog: t:satschan tier null, 3 expected
+  ux2 08:44, the valley fog: t:austerlitz tier null, 3 expected
+  ux2 08:44, the valley fog: n:sthilaire tier null, 2 expected
+  ux2 08:44, the valley fog: n:vandamme tier null, 2 expected
+  ux2 08:44, the valley fog: n:legrand tier null, 3 expected
+  ux2 08:44, the valley fog: n:friant tier null, 2 expected
+  ux2 08:44, the valley fog: n:bourcier tier null, 3 expected
+  ux2 08:44, the valley fog: n:caffarelli tier null, 3 expected
+  ux2 08:44, the valley fog: n:suchet tier null, 3 expected
+  ux2 08:44, the valley fog: n:kellermann tier null, 3 expected
+  ux2 08:44, the valley fog: n:nansouty tier null, 3 expected
+  ux2 08:44, the valley fog: n:dhautpoul tier null, 3 expected
+  ux2 08:44, the valley fog: n:walther tier null, 3 expected
+  ux2 08:44, the valley fog: n:kienmayer tier null, 3 expected
+  ux2 08:44, the valley fog: n:dok tier null, 3 expected
+  ux2 08:44, the valley fog: n:lang tier null, 3 expected
+  ux2 08:44, the valley fog: n:kamensky tier null, 3 expected
+  ux2 08:44, the valley fog: n:prz tier null, 3 expected
+  ux2 08:44, the valley fog: n:milo tier null, 3 expected
+  ux2 08:44, the valley fog: n:kollo tier null, 3 expected
+  ux2 08:44, the valley fog: n:rg_inf tier null, 3 expected
+  ux2 08:44, the valley fog: n:rg_cav tier null, 3 expected
+  ux2 08:44, the valley fog: e:davout tier null, 1 expected
+  ux2 08:44, the valley fog: e:soult tier null, 1 expected
+  ... and 460 more

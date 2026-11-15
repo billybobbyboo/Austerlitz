@@ -1,5 +1,141 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · UI/UX roadmap step 2: the Landscape's label tiers and Watch's label set (UA-01, UA-15)
+
+**Status: on `claude/magical-bohr-n7pllo`, a draft PR into `main`, for review, not merged.** PR 2 of `docs/UX_ART_AUDIT.md` section 6, from `main`
+at `72cc626f83707ebb24a0e8586005fbdfed8f3579` (the merge of #111, verified). A presentation task: **no data changed** (`check:data`: all 143
+declarations byte-identical to its reference). The evidence, with every number's method: `docs/ux-step2-evidence/`.
+
+**The owner's decision** (15 November 2026, this step's brief; no number given): Direction A's three-tier label hierarchy for the Landscape is
+approved; it supersedes decisions 284 (b) and 263 (a) only where that change needs it; the historical data, the confidence and claim semantics and
+the information filters stay.
+
+**The build:** `austerlitz-command-map.html` was 3,053,167 bytes, md5 `d404045b4544eb03c69fc3c9e3fff044`; it is now **3,071,014 bytes, md5
+`07cbcaf32808c430198d55b1b7ed78b7`**. `check:baseline` moved to it (`package.json`).
+
+### Measured on the base build first (`tools/ux-step2/probe.js`; a scripted Play from 08:30 to 09:30 with Follow, 548 frames at 30 a second)
+
+- **UA-01:** at 1440 x 900 in Study every one of 32 labels (median; 44 at most) stood on the same plate; filled plates lay over **25.0% of the
+  formations' bounding box at the median and 30.8% at most**, over 12% in 545 of 548 frames (the audit sampled 28% to 32%). On a phone's page
+  (390 x 844): 30.8% and 44.8%, over 12% in every frame.
+- **The formations a live event names** were drawn in **2,205 of the 2,706 frames they stood in view (81.5%)**; every miss was the layout's (no
+  room). On the phone 248 of 334 (74.3%).
+- **UA-15:** Watch drew 34 labels at the median and 47 at most, Study's set.
+- The live block `ux2` (below) on the base build: **520 failures.**
+
+### What changed
+
+On the Landscape (the paper map and the Landscape with counters are untouched) every label has a tier, decided before the layout from the clock
+and the selection (`app.js` `MLT`, `mlTierPrep`):
+
+- **Tier 1, a live event** (an event whose weight is above 0.3, `liveEvents`' own weight): the one filled accent plate, `theme.dark.accent` under
+  `on-accent`, with a keyline and a soft shadow. Never dropped, as before. It is **laid out in the box it had before step 2 and drawn at 13.5 px**
+  (`type.t-live`, a new token; the serif) **where the larger plate stands clear** of every other label, panel, symbol and the screen's edge
+  (`mlGrow`); else at 12.5 px in the box laid out. Below 720 px wide always 12.5 px.
+- **Tier 2, a formation a live event names** (`EVENTS[].forms` and its parents, while the Events layer is drawn) **and what the layer protects**
+  (the selection, the hovered formation, a highlighted family): the dark plate kept, with a 1 px keyline of the accent at 0.7; the selected name
+  keeps its 2 px edge. Side squares, grade badges and accessible names as before. **While the clock plays** such a formation is placed before every
+  other label the layer does not protect, by its kept place, then the places hugging its anchor, then the full search, in every pass. It is still
+  not protected (decision 39 unchanged).
+- **Tier 3, every other label** (formation names, place and terrain-study names, the arrows', plans' and objectives' labels, the plateau's
+  reading): **no plate**. Its own ink, cased by the keyline colour, opaque to 2 px round every letter (`style.css` `.ml-q`: 24 shadows, none
+  blurred). The keyboard's focus draws a tier 3 label on the plate, under its ring.
+- **Watch while the clock plays** (UA-15): tier 3 is not drawn (state `calm`: neither placed nor dropped). The labels stay in the layer: the
+  keyboard reaches them and the focus draws one, a hovered or selected formation is tier 2 and drawn, a pause brings them back.
+- **Forced colours:** the browser draws no shadow there, so a tier 3 label stands on the system's Canvas; a live event has a 2 px outline, a tier 2
+  label a 1 px one.
+- **The key** (`shell.html`, `paintLegend`): two rows, shown on the Landscape while its labels are: "a light plate: an event at about this hour ·
+  a plate with a light edge: a formation it names, or the selection", and, in Watch while the clock plays, "Watch, while the clock plays: only
+  these are named; pause for every name".
+- **A guard, not shown to be needed:** a live event's box at 13.5 px is measured again when the window's width changes (`MLT.vw`), since the
+  larger size applies only from 720 px. In every turn and resize tried the labels were measured again anyway (a copy of the build without the
+  line passes the block's phone-turn case), so no browser check demonstrates it; `css-test.js` holds the line in the source.
+- **Decision 263 (a)'s far plate is gone** (`mlFarPlate`, `mlFarRatio` removed): a name's surface is its tier's at any distance. The token
+  `sym.plate.far` stays, drawn by nothing, as the recorded fallback fill. The far step (a far place name a type step smaller) is unchanged.
+
+What did not change: what is collected (a reading's knowledge, the level of detail, the ground's occlusion, the layers' switches), every box a
+label is laid out in, and so every placement outside Play; the paper map; the Landscape with counters; Clean.
+
+### Decisions taken in the implementation, put to the owner (`docs/ux-step2-evidence/README.md` section 9)
+
+1. **"Warm text, dark fill".** The brief's words for tier 1 read the other way round from Figure 2 and the prototype (a warm plate under dark ink)
+   and from its own "filled accent plate". Built as Figure 2 shows.
+2. **Tier 3's contrast is held to its casing** (WCAG technique G18: a border wide enough to fill a letter's inner details is its background), not
+   to the words' whole box. By the whole box 571 of 903 tier 3 texts read under 4.5:1 in the morning's run; the fallback that reading asks for (the
+   far plate under each) was measured and would put filled plates over 15.1% of the formations' box at the median and 24.9% at most. No fallback
+   plate is drawn.
+3. **A live event is laid out at its old size.** Laid out at 13.5 px its sentence is about 27 px wider, and in the low views that moved the names
+   beside it and those beside them (the motion block's low pan: 794 formation-frames drawn against its baseline's 806).
+4. **Tier 2's priority acts while the clock plays**, not at rest: ordered first everywhere it cost the same baseline 12 frames.
+5. **Watch is not capped at 12 labels.** In the Guard action five live events name up to eleven formations.
+6. **On a phone the 12% is not met** (below). A variant without the fill under a live event below 720 px was measured, not built.
+
+### The checks added and changed
+
+- **Added: the live block `ux2`** in `check:selftest` and `check:visual` (`tools/visual/ux2.js`, feature `MLT` required, judged by `thresholds.js`
+  `checkUx2`, its bars `UX2`; alone on any build: `tools/ux-step2/block.js`). The tiers at rest at 09:00 and in the fog at 08:44 with every text's
+  contrast as rendered; the paper map, the Landscape with counters and Clean; a scripted Play from 08:40 to 09:05 in Study (filled plates over at
+  most 15% of the formations' box in every frame and over 12% only while four live events' plates stand; no tier 3 fill; the formations a live
+  event names drawn in at least 90% of their frames in view; every frame's tiers by the rule; the label pass under 8 ms) and in Watch (at most 12
+  labels in every frame, none of tier 3; a tier 3 name focused, blurred, hovered and selected while it plays; its focus kept through a pause, a
+  change of presentation, Play again and a seek); a phone's page; forced colours; reduced motion (`check:visual`).
+- **Changed, because decision 263 (a) is superseded:** `check:visual`'s block `farPlate` is the block `tiers` (`thresholds.js` `TIER_VIEWS`, the
+  same 13 views; `measure.js` `tierNames` for `farNames`): every label on its tier's surface and at AA as rendered. The self-test's check "map
+  layer (Stage 8, 8I; decision 263)" is "map layer (UI/UX step 2; the Landscape's tiers, which supersede decision 263)": the same low view,
+  every label on its tier's surface, placed as without the tiers, a selected and a focused name, Napoleon's reading, Watch while the clock plays,
+  none on the paper map. `css-test.js`: the far plate's drawing rules (the far step's test, names alone, the protected names) are replaced by "the
+  layer no longer draws the far plate"; its token's rules (0.64, AA over white and black) are kept.
+- **Changed, because tier 2 has a keyline:** the self-test's check "the selection on the landscape (WP-08, CL-MAP-10)" held that no other name
+  was edged in the accent. It now holds that only the selected name has the 2 px edge, and that a name with the 1 px keyline is tier 2. Renamed.
+- **Changed, because a tier 3 label has no plate:** `check:contrast` composited every map text over black and white on its plate (decision 38).
+  A cased label is now read against its casing, whose shape is checked on its computed style; every other map text as before.
+  `measure.js` `textContrast` reads a cased text on two frames of one state (the second with the ink transparent: `harness.js`
+  `mapTextContrast`), its ink the pixels the ink changed and its ground the first whole pixel round it; a cased text not so read fails.
+- **Added to `css-test.js`:** the tiers' rules in the source (`MLT`'s values, the Landscape alone, the order, Watch's set, the surfaces from the
+  tokens, the plate grown only where free and never the layout's box) and in the stylesheet (`t-live` 13.5 px, the casing's 24 unblurred shadows,
+  no tier's rule changing a box but `.ml-t1g` from 720 px, forced colours).
+- The self-test's manifest: 351 checks, two renamed (above), none added or removed. No limit, ceiling or baseline moved.
+
+### Verified (Chromium 141 through the pinned Playwright 1.56.0; software WebGL; the phone is Chromium's emulation)
+
+**Interim record (this commit).** The final build (md5 `07cbcaf3...`) differs from the build most of the browser runs below were made on
+(md5 `367c8071653569ebd2e391c3379d3d3c`, 3,069,881 bytes) only by the key's two rows and the width guard. Each line says which build it is of. The
+browser checks and the acceptance runs are being run again on the final build; this record is replaced by theirs in the next commit.
+
+- **On the final build:** `npm test`: all 9 suites, the height guard and the dead-code check pass. `npm run check:data`: all 143 declarations
+  byte-identical to the reference. `npm run check:chronology`: errors 0. The block `ux2` alone (`tools/ux-step2/block.js`): every check passes.
+- **On `367c8071...`:** `npm run check:selftest`: passes (351 checks by name; the motion block's 16: jumps 234 of 251, pops 948 of 1,049,
+  level-of-detail switches 105 of 130, flickers 10 of 12; `MOTION.LONG`: 4,833 of 6,322 and 11,869 of 16,010, the base's counts). One earlier run
+  of it, made while the acceptance probes loaded the machine, ended on a 30 s timeout of a harness key press (`page.focus` on `#timerail`) after
+  all 351 in-app checks had passed; run alone it passes.
+- **On `367c8071...`:** `npm run check:contrast`: passes (9,172 text elements in 57 states, none below AA; 465 cased texts read against their
+  casing; 10 of 10 start-up cases).
+- **On `367c8071...`:** the block `tiers` alone (`tools/ux-step2/tiers.js`): its 13 views pass (tier 3 at 6.99:1 at the least as rendered).
+- **The block `ux2` on the base build:** 520 failures (`docs/ux-step2-evidence/runs/block-base.log`).
+- **The acceptance runs** (`tools/ux-step2/probe.js`, on `367c8071...` and the base; `docs/ux-step2-evidence/README.md`): at 1440 x 900 from 08:30 to
+  09:30 in Study, filled plates over the formations' box 13.6% at most and 8.6% at the median (base 30.8% and 25.0%), over 12% in 28 of 548
+  frames; the formations a live event names drawn in 2,706 of 2,706 frames in view (base 2,205, 81.5%); Watch 9 labels at most (base 47);
+  tier 3 at 7.46:1 at the least against its casing over 1,934 texts in 137 drawn frames; the label pass 1.4 ms at the median and 3.7 ms at the
+  95th percentile (base 1.3 and 3.4); no tier 3 fill in any run. The Landscape with counters and the paper map: the same on both builds in
+  every number.
+- **Guarded data:** unchanged (`check:data`). **Limits, ceilings and baselines:** none moved.
+
+### Not met, and not verified
+
+- **The 12% in every frame is not met.** 1440 x 900, 08:30 to 09:30: 28 of 548 frames, 13.6% at most (08:54.8 to 08:59.3, four live events and
+  the four formations they name at once). The Guard action, 11:30 to 13:00: 91 of 728 frames in Study, 17.9% at most; 41 in Watch, 13.8%.
+  390 x 844: 501 of 548 frames, 35.7% at most, 16.2% at the median (base 44.8% and 30.8%).
+- **Watch's 12 labels are not met in the Guard action:** 16 at most, over 12 in 504 of 728 frames (five live events naming up to eleven
+  formations). Met from 08:30 to 09:30 (9 at most).
+- **Tier 3's 4.5:1 is met against its casing and not against its words' whole box** (571 of 903 texts under 4.5:1 in the morning's run by that
+  reading). The owner's call (`docs/ux-step2-evidence/README.md` sections 4 and 9).
+- **The roadmap's unobstructed-area targets** (0.70 at the first run, 0.45 in Study at 800 x 450) are not met on the base build and are unchanged
+  here: 60.8% and 52.1% at the first run; at 800 x 450 the free rectangle is 18.0%. They belong to the roadmap's PR 4 and PR 6.
+- **Not run here: the full `npm run check:visual`** (about four hours on CI). Its new and changed parts were run alone (the blocks `ux2` and
+  `tiers`), and a set of its cases on their own.
+- **Not verified:** a real phone, Safari, a real GPU (everything here is Chromium with software WebGL; the phone is its emulation); forced colours
+  and reduced motion beyond Chromium's emulation of them; a screen reader. The width guard (above) is not demonstrated by any browser check.
+
 ## 2026-11 · UI/UX roadmap step 1: the map key and the timeline's interactions repaired (UA-05, UA-06, UA-12, UA-13, UA-17)
 
 **Status: on `claude/austerlitz-ux-step-1-4cxrhk`, a draft PR into `main`, for review, not merged.** PR 1 of `docs/UX_ART_AUDIT.md` section 6, from

@@ -1,0 +1,280 @@
+{
+ "build": "step2.html",
+ "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "tag": "step2-desk-watch-1130-1300",
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "dpr": 1,
+  "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "phoneLayout": false,
+  "w": 1440,
+  "h": 900,
+  "tiers": true
+ },
+ "vp": [
+  1440,
+  900
+ ],
+ "phone": false,
+ "presentation": "watch",
+ "mode": "terrain",
+ "reading": null,
+ "from": 690,
+ "to": 780,
+ "frames": 728,
+ "secs": 285,
+ "clockEnd": 780,
+ "coverage": {
+  "frames": 728,
+  "max": 0.1375,
+  "median": 0.0829,
+  "over12": 41,
+  "worst": [
+   {
+    "f": 664,
+    "clock": 770.7,
+    "fillCover": 0.1375,
+    "filled": 14,
+    "labels": 14,
+    "bboxShare": 0.2503,
+    "tier3Filled": 0
+   },
+   {
+    "f": 665,
+    "clock": 770.8,
+    "fillCover": 0.1355,
+    "filled": 14,
+    "labels": 14,
+    "bboxShare": 0.2542,
+    "tier3Filled": 0
+   },
+   {
+    "f": 642,
+    "clock": 767,
+    "fillCover": 0.1347,
+    "filled": 13,
+    "labels": 13,
+    "bboxShare": 0.2381,
+    "tier3Filled": 0
+   },
+   {
+    "f": 643,
+    "clock": 767.2,
+    "fillCover": 0.1337,
+    "filled": 13,
+    "labels": 13,
+    "bboxShare": 0.24,
+    "tier3Filled": 0
+   },
+   {
+    "f": 666,
+    "clock": 771,
+    "fillCover": 0.1335,
+    "filled": 14,
+    "labels": 14,
+    "bboxShare": 0.2581,
+    "tier3Filled": 0
+   }
+  ],
+  "labelCoverMax": 0.1375,
+  "labelCoverMedian": 0.083,
+  "fillAllMax": 0.1375,
+  "bboxShareMedian": 0.2388,
+  "tier3FillFrames": 0,
+  "tier3FillsMax": 0
+ },
+ "drawn": {
+  "max": 16,
+  "median": 13,
+  "over12": 504,
+  "byTierMax": {
+   "0": 0,
+   "1": 5,
+   "2": 11,
+   "3": 0
+  },
+  "fillsMax": 16,
+  "fillsMedian": 13,
+  "tier1Frames": 2835,
+  "tier1Grown": 2719
+ },
+ "contrast": {
+  "samples": 25,
+  "texts": 313,
+  "fading": 0,
+  "tier3": {
+   "ring": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "wide": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "box": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "bare": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   }
+  },
+  "cased": {
+   "ring": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "box": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   }
+  },
+  "plated": {
+   "ring": {
+    "n": 313,
+    "min": 12.1,
+    "p10": 13.06,
+    "median": 13.91,
+    "below": 0
+   },
+   "box": {
+    "n": 313,
+    "min": 9.52,
+    "p10": 13.09,
+    "median": 13.79,
+    "below": 0
+   }
+  },
+  "all": {
+   "ring": {
+    "n": 313,
+    "min": 12.1,
+    "p10": 13.06,
+    "median": 13.91,
+    "below": 0
+   },
+   "box": {
+    "n": 313,
+    "min": 9.52,
+    "p10": 13.09,
+    "median": 13.79,
+    "below": 0
+   },
+   "bare": {
+    "n": 313,
+    "min": 1.14,
+    "p10": 1.31,
+    "median": 3.24,
+    "below": 206
+   }
+  },
+  "belowRing": []
+ },
+ "boxFallback": {
+  "samples": 25,
+  "labelsMax": 0,
+  "labelsMedian": 0,
+  "coverMax": 0.1276,
+  "coverMedian": 0.0828,
+  "over12": 1
+ },
+ "events": {
+  "inView": 6934,
+  "drawn": 6934,
+  "miss": {
+   "occluded": 0,
+   "placement": 0,
+   "calm": 0,
+   "withheld": 0
+  },
+  "out": {
+   "offscreen": 18,
+   "panel": 0,
+   "reading": 0,
+   "field": 0,
+   "lod": 432,
+   "aggregate": 728,
+   "none": 0
+  },
+  "by": {
+   "guard-attack": {
+    "frames": 728,
+    "inView": 2184,
+    "drawn": 2184,
+    "miss": {},
+    "out": {
+     "constantine:aggregate": 728
+    }
+   },
+   "guard-broken": {
+    "frames": 728,
+    "inView": 2184,
+    "drawn": 2184,
+    "miss": {},
+    "out": {}
+   },
+   "buxhowden-blind": {
+    "frames": 640,
+    "inView": 1686,
+    "drawn": 1686,
+    "miss": {},
+    "out": {
+     "dok:offscreen": 18,
+     "buxhowden:lod": 216
+    }
+   },
+   "hq-forward": {
+    "frames": 492,
+    "inView": 276,
+    "drawn": 276,
+    "miss": {},
+    "out": {
+     "gqg:lod": 216
+    }
+   },
+   "davout-resumes": {
+    "frames": 192,
+    "inView": 384,
+    "drawn": 384,
+    "miss": {},
+    "out": {}
+   },
+   "wheel": {
+    "frames": 55,
+    "inView": 220,
+    "drawn": 220,
+    "miss": {},
+    "out": {}
+   }
+  },
+  "frames": 728,
+  "share": 1
+ },
+ "layerMs": {
+  "passes": 737,
+  "median": 1,
+  "p95": 2.4,
+  "max": 38.7,
+  "over8": 3
+ },
+ "errors": []
+}

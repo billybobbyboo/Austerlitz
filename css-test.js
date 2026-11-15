@@ -1163,9 +1163,10 @@ if(cerrs) process.exitCode=1;
    nothing done while the message is not seen; at most once a frame; flash()'s timer, its 3.4 s lifetime, never touched there. Its behaviour is the
    harness's live block toastLayout (shown first, then each change in both directions; the lifetime unheld).
    (2) Decision 263 (a): a far formation name's lighter plate. TOKENS.sym.plate.far by sym.plate's rule (the label ink at AA over white ground) and
-   lighter than the full plate; the far test the far step's (MLS.FAR, the band); names alone; the protected names (keep, the focus's forced place,
-   the focus) on the full plate; the plate set again with an item's content; no size change (no class, no font). Its contrast as rendered is the
-   harness's (every map text at AA in every case; check:visual's farPlate block) */
+   lighter than the full plate, at 0.64 as decided: kept. Its drawing rules (the far step's test, names alone, the protected names on the full
+   plate, the plate set again with an item's content, no size change) held mlFarPlate until UI/UX roadmap step 2, where the owner's decision of 15
+   November 2026 supersedes them: on the Landscape a name's surface is its tier's at any distance (the step 2 block below holds the tiers), and
+   nothing draws the far plate. Here: the map layer no longer reads the token, and an item's content still sets its plate and ink again */
 {
   const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), tsrc=fs.readFileSync('tokens.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), ierr=[];
   const fnOf=name=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?src.slice(n.start,n.end):""; };
@@ -1192,14 +1193,73 @@ if(cerrs) process.exitCode=1;
     if(!(w>=4.5&&b>=4.5)) ierr.push("tokens.js: the far plate leaves the label ink "+ink+" at "+w.toFixed(2)+":1 over white and "+b.toFixed(2)+":1 over black (AA 4.5:1, sym.plate's rule)");
     if(!(far[3]<full[3])) ierr.push("tokens.js: the far plate ("+far[3]+") not lighter than the full plate ("+full[3]+")");
     if(far[3]!==0.64) ierr.push("tokens.js: sym.plate.far's alpha "+far[3]+", not 0.64 as decided and recorded (decision 263 (a); section 21)"); }
-  const fp=fnOf("mlFarPlate"), fr=fnOf("mlFarRatio"), mc=fnOf("mlContent"), lay=fnOf("mlLayout");
-  if(!/mlBandAt\(pre\+it\.key,r\)/.test(fr)||!/mlFarRatio\(it,"farp:"\)>MLS\.FAR/.test(fp)) ierr.push("the far plate's test is not the far step's (MLS.FAR, the band)");
-  if(!/camera\.isOrthographicCamera/.test(fp)||!/mode!=="staff"/.test(fp)) ierr.push("the far plate allowed on the paper map");
-  if(!/TOKENS\.sym\.plate\.far/.test(fp)||/rgba\(/.test(fp)) ierr.push("the far plate not TOKENS.sym.plate.far (a colour typed in app.js)");
-  if(!/if\(on&&it\.cat==="name"&&mlFarPlate\(it,!\(it\.keep\|\|it\.forced\|\|it\.el===foc\)\)\) nfp\+\+;/.test(lay)) ierr.push("the far plate not for names alone, or a protected name (keep, forced, the focus) given it");
-  if(!/it\.plate0=plate\[0\]; it\.farP=false;/.test(mc)) ierr.push("mlContent does not keep the plate and reset the far plate's state with an item's content");
-  if(/classList|fontSize|font-size|className/.test(fp)) ierr.push("the far plate changes more than the plate (a class or a size)");
+  const mc=fnOf("mlContent"), lay=fnOf("mlLayout"), sf=fnOf("mlSurface");
+  if(fnOf("mlFarPlate")||fnOf("mlFarRatio")) ierr.push("app.js: the far plate's functions are back (superseded by the Landscape's tiers, UI/UX roadmap step 2)");
+  if(/plate\.far/.test(lay+sf+mc)) ierr.push("the map layer draws TOKENS.sym.plate.far (superseded: a name's surface is its tier's)");
+  if(!/it\.plate0=plate\[0\]; it\.ink0=plate\[1\]; it\.surf=null;/.test(mc)) ierr.push("mlContent does not keep the plate and the ink and reset the surface with an item's content");
   ierr.forEach(e=>console.log("  ! "+e));
-  console.log("the phase's message under a layout's change and the far names' plate (8I): "+(ierr.length?ierr.length+" wrong":"placed again by every layout's change while seen, its 3.4 s untouched; the far plate 0.64 by sym.plate's rule, the far step's test, names alone, the protected ones on the full plate (decision 263)"));
+  console.log("the phase's message under a layout's change and the far plate's token (8I): "+(ierr.length?ierr.length+" wrong":"placed again by every layout's change while seen, its 3.4 s untouched; the far plate's token 0.64 by sym.plate's rule, drawn by nothing since the tiers (decision 263 superseded, UI/UX step 2)"));
   if(ierr.length) process.exitCode=1;
+}
+/* UI/UX roadmap step 2 (docs/UX_ART_AUDIT.md UA-01, UA-15, Direction A; the owner's decision of 15 November 2026, which supersedes decisions 284 (b)
+   and 263 (a) where this needs it): the Landscape's label tiers as decided. In the source:
+   - MLT's values (LIVE 0.3, the audit's; PRI 1.5; GROW 2); the tiers on the Landscape alone (mode "terrain"), a live event by evWeight above
+     MLT.LIVE, the formations it names only while the Events layer is drawn; Watch's set only in Watch while the clock plays;
+   - an item's tier: none off the Landscape or for a counter, a live event's 1, what the layer protects 2 at least, else 3;
+   - a formation a live event names placed first only while the clock plays (it.first), after what is never dropped (decision 39 unchanged), by its
+     kept place, the places hugging its anchor, then the full search; Watch's set never the keyboard's focus;
+   - the surfaces from TOKENS (no colour typed), no size written there; a live event's plate grown only for tier 1, only where it is free, never
+     the box laid out (mlGrow writes no rect, width or height of the layout);
+   - a name Watch does not draw neither aging nor lost to the hover.
+   In the stylesheet: t-live 13.5 px; the casing 24 shadows of the keyline, none blurred, eight at 1 px and sixteen at 2 px; no tier's rule but
+   .ml-t1g's changes a box, and .ml-t1g only from 720 px wide; in a forced-colours mode a tier 3 label on Canvas and the tiers' outlines.
+   The behaviour is the harness's live block ux2 (tools/visual/ux2.js) and check:visual's tiers block */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), css=fs.readFileSync('style.css','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), terr=[];
+  const fnOf=name=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?src.slice(n.start,n.end):""; };
+  if(!/var MLT=\{LIVE:0\.3, PRI:1\.5, GROW:2, /.test(src)) terr.push("MLT is not {LIVE:0.3, PRI:1.5, GROW:2}");
+  const tp=fnOf("mlTierPrep"), col=fnOf("mlCollect"), lay=fnOf("mlLayout"), sf=fnOf("mlSurface"), gr=fnOf("mlGrow"), age=fnOf("mlAgeAfter");
+  if(!/MLT\.on=\(mode==="terrain"\); MLT\.calm=MLT\.on&&presentation==="watch"&&!!playing;/.test(tp)) terr.push("the tiers are not the Landscape's alone, or Watch's set not only in Watch while the clock plays (mlTierPrep)");
+  if(!/if\(!MLT\.on\|\|!eventGroup\|\|!eventGroup\.visible\) return;/.test(tp)) terr.push("a live event's formations are tier 2 while the Events layer is not drawn");
+  if(!/if\(!\(evWeight\(e,clock\)>MLT\.LIVE\)\) continue;/.test(tp)) terr.push("a live event is not an event whose weight is above MLT.LIVE");
+  if(!/if\(MLT\.vw!==window\.innerWidth\)\{ MLT\.vw=window\.innerWidth; for\(var kw in ML\.items\) ML\.items\[kw\]\.w1=0; \}/.test(lay)) terr.push("a live event's box at t-live is not measured again when the window's width changes (a phone turned)");
+  if(!/tiers:mode==="terrain"&&textOn\(\), calm:mode==="terrain"&&textOn\(\)&&presentation==="watch"&&!!playing,/.test(fnOf("paintLegend"))) terr.push("the key has no row for the tiers on the Landscape, or for Watch's set while the clock plays");
+  if(!/it\.tier=!MLT\.on\|\|o\.cat==="counter"\?0:o\.tier\|\|\(o\.keep\?2:3\);/.test(col)) terr.push("an item's tier is not: none off the Landscape or for a counter, its own, what the layer protects 2, else 3");
+  if(!/tier:MLT\.live\[k\.e\.id\]\?1:0,/.test(col)) terr.push("an event's label is not tier 1 exactly while it is live");
+  if(!/var evn=MLT\.on&&!!MLT\.ev\[id\], npri=mlPriX\(id,base\), evp=evn&&!!playing;/.test(col)||!/it\.first=evp;/.test(col)) terr.push("a formation a live event names is not placed first only while the clock plays (evp, it.first)");
+  if(!/keep:sel\|\|hov\|\|fo\|\|inFam,fid:id,pick:\{kind:"f",id:id\},acl:2,\s*tier:evn\?2:0,/.test(col)) terr.push("a formation a live event names is protected, or not tier 2 (decision 39: the selection, the hovered, the family alone)");
+  if(!/\(a\.keep!==b\.keep\)\?\(a\.keep\?-1:1\):\(\(!!a\.first\)!==\(!!b\.first\)\)\?\(a\.first\?-1:1\):\(a\.pri-b\.pri\)/.test(lay)) terr.push("the order is not: what is never dropped, then the formations a live event names while the clock plays, then as before");
+  if(!/if\(it\.first\)\{ it\.room2=0; return !!\(it\.wasOn&&it\.mem&&\(mlHoldTry\(it,VW,VH,panels,obst\)\|\|mlPlaceItem\(it,VW,VH,panels,obst,true\)\)\)\|\|mlPlaceItem\(it,VW,VH,panels,obst\); \}/.test(lay))
+    terr.push("a formation a live event names is not placed by its kept place, the places hugging its anchor, then the full search");
+  if(!/function calm\(it\)\{ return MLT\.calm&&it\.tier===3&&it\.el!==foc; \}/.test(lay)) terr.push("Watch's set is not tier 3 alone, or takes the keyboard's focus");
+  if((lay.match(/if\(calm\((it|jt)\)\)\{ (it|jt)\.state="calm";/g)||[]).length!==2) terr.push("Watch's set is not applied in both the moving and the resting pass");
+  if(!/var sf=mlSurface\(it,it\.forced\|\|it\.el===foc\);/.test(lay)) terr.push("the keyboard's focus and its forced place do not draw a tier 3 item on the plate");
+  if(!/var t=it\.tier\|\|0, s=!t\?"":t===1\?"1":\(t===2\|\|prot\)\?"2":"q";/.test(sf)) terr.push("mlSurface's surfaces are not: none, the accent plate, the plate, no plate");
+  if(/rgba?\(|#[0-9A-Fa-f]{3,8}\b/.test(sf)||!/D\.accent/.test(sf)||!/D\["on-accent"\]/.test(sf)) terr.push("mlSurface types a colour, or a live event's plate is not the accent under on-accent from TOKENS");
+  if(/fontSize|font-size|padding|\.w=|\.h=|dirty/.test(sf)) terr.push("mlSurface changes a size");
+  if(!/if\(it\.tier!==1\)\{ if\(it\.grow\) it\.grow=null; if\(it\.growC\)\{ it\.el\.classList\.remove\("ml-t1g"\); it\.growC=false; \} return; \}/.test(gr)) terr.push("mlGrow grows more than a live event's plate, or leaves its size on an item no longer tier 1");
+  if(!/!hits\(r,panels,px,py\)&&!hits\(r,obst,px,py\)&&!hits\(r,ML\.taken,px,py,it\.rect\)&&!hits\(r,G,px,py\)/.test(gr)||!/if\(it\.state!=="on"\)\{ it\.grow=null; return; \}/.test(gr)||!/if\(!it\.forced&&it\.rect&&it\.w1>0&&!it\.wrapped\)/.test(gr)) terr.push("a live event's plate grows where it is not clear of the panels, the symbols, the other labels and the other grown plates");
+  if(/it\.rect\s*=|it\.w\s*=|it\.h\s*=|ML\.taken\.push/.test(gr)) terr.push("mlGrow changes the box laid out");
+  if(!/mlGrow\(elig,VW,VH,panels,obst\);/.test(lay)||lay.indexOf("mlGrow(elig")<lay.indexOf("runRest(strat);")) terr.push("mlGrow does not run after the placement");
+  if(!/\|\|it\.state==="calm"\) return; var id=it\.fid; seen\[id\]=1;/.test(age)) terr.push("a name Watch does not draw ages (mlAgeAfter)");
+  if(!/\(dropped&&it\.state!=="dropped"&&it\.state!=="calm"\)/.test(fnOf("mlNearAnchor"))||!/n\.state==="dropped"\|\|n\.state==="calm"/.test(fnOf("mlDroppedNow"))) terr.push("a name Watch does not draw is not reached by the hover as a dropped one is");
+  /* the stylesheet */
+  if(!/--t-live:13\.5px/.test(css)) terr.push("t-live is not 13.5 px");
+  const rule=sel=>{ const m=new RegExp("(^|\\})\\s*"+sel.replace(/[.]/g,"\\.")+"\\{([^}]*)\\}","m").exec(css); return m?m[2]:null; };
+  const q=rule(".ml-q"), t1=rule(".ml-t1"), t2=rule(".ml-t2");
+  if(q===null||t1===null||t2===null) terr.push("style.css: .ml-q, .ml-t1 or .ml-t2 has no base rule");
+  else { const sh=(/text-shadow:([^;]*)/.exec(q)||["",""])[1].split(",").map(x=>x.trim()).filter(Boolean), R=sh.map(x=>{ const m=/^(-?[\d.]+(?:px)?) (-?[\d.]+(?:px)?) (-?[\d.]+(?:px)?) var\(--keyline\)$/.exec(x); return m?{r:Math.hypot(parseFloat(m[1]),parseFloat(m[2])),blur:parseFloat(m[3])}:null; });
+    if(R.some(x=>!x)) terr.push("style.css: the casing has a shadow that is not an offset of the keyline token");
+    else { const at=r=>R.filter(x=>Math.abs(x.r-r)<0.02).length;
+      if(sh.length!==24||at(1)!==8||at(2)!==16||R.some(x=>x.blur!==0)) terr.push("style.css: the casing is "+sh.length+" shadows ("+at(1)+" at 1 px, "+at(2)+" at 2 px"+(R.some(x=>x.blur!==0)?", some blurred":"")+"), not eight at 1 px and sixteen at 2 px, none blurred"); }
+    const SIZE=/(^|;)\s*(font-size|font|line-height|padding[a-z-]*|margin[a-z-]*|border[a-z-]*|width|height|min-[a-z]+|max-[a-z]+|display|white-space|letter-spacing|gap)\s*:/;
+    [[".ml-q",q],[".ml-t1",t1],[".ml-t2",t2]].forEach(x=>{ if(SIZE.test(x[1])) terr.push("style.css: "+x[0]+" changes the box a label is laid out in: "+x[1]); });
+    if(!/box-shadow:0 0 0 1px rgba\(var\(--accent-rgb\),\.7\)/.test(t2)) terr.push("style.css: tier 2's keyline is not 1 px of the accent"); }
+  if(!/@media \(min-width:720px\)\{\s*\.ml-t1g\{font-size:var\(--t-live\);padding:0 6px 1px\}\s*\}/.test(css)) terr.push("style.css: a live event's plate is not at t-live from 720 px wide alone (.ml-t1g)");
+  if((css.match(/\.ml-t1g\{/g)||[]).length!==1) terr.push("style.css: .ml-t1g in more than its one rule");
+  const fc=(/@media \(forced-colors: active\)\{([\s\S]*?)\n\}/.exec(css)||["",""])[1];
+  if(!/#maplayer \.ml-q\{background-color:Canvas!important\}/.test(fc)||!/\.ml-t1\{outline:2px solid CanvasText\}/.test(fc)||!/\.ml-t2\{outline:1px solid CanvasText\}/.test(fc)) terr.push("style.css: in a forced-colours mode a tier 3 label is not on Canvas, or a live event's and a tier 2 label's outlines are missing");
+  terr.forEach(e=>console.log("  ! "+e));
+  console.log("the Landscape's label tiers (UI/UX step 2): "+(terr.length?terr.length+" wrong":"a live event above weight 0.3 on the accent plate, at t-live 13.5 px where the larger plate stands clear and never in the layout's box; the formations it names tier 2, placed first while the clock plays; every other label cased by 24 unblurred shadows of the keyline, on no plate; Watch's set tier 3 alone, never the focus; forced colours"));
+  if(terr.length) process.exitCode=1;
 }

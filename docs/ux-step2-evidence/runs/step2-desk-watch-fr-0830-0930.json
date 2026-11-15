@@ -1,0 +1,278 @@
+{
+ "build": "step2.html",
+ "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "tag": "step2-desk-watch-fr-0830-0930",
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "dpr": 1,
+  "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "phoneLayout": false,
+  "w": 1440,
+  "h": 900,
+  "tiers": true
+ },
+ "vp": [
+  1440,
+  900
+ ],
+ "phone": false,
+ "presentation": "watch",
+ "mode": "terrain",
+ "reading": "fr",
+ "from": 510,
+ "to": 570,
+ "frames": 548,
+ "secs": 128,
+ "clockEnd": 570,
+ "coverage": {
+  "frames": 548,
+  "max": 0.1339,
+  "median": 0.0868,
+  "over12": 28,
+  "worst": [
+   {
+    "f": 212,
+    "clock": 535.3,
+    "fillCover": 0.1339,
+    "filled": 8,
+    "labels": 8,
+    "bboxShare": 0.1671,
+    "tier3Filled": 0
+   },
+   {
+    "f": 213,
+    "clock": 535.5,
+    "fillCover": 0.1339,
+    "filled": 8,
+    "labels": 8,
+    "bboxShare": 0.1675,
+    "tier3Filled": 0
+   },
+   {
+    "f": 209,
+    "clock": 534.8,
+    "fillCover": 0.1338,
+    "filled": 8,
+    "labels": 8,
+    "bboxShare": 0.1672,
+    "tier3Filled": 0
+   },
+   {
+    "f": 214,
+    "clock": 535.7,
+    "fillCover": 0.1337,
+    "filled": 8,
+    "labels": 8,
+    "bboxShare": 0.1677,
+    "tier3Filled": 0
+   },
+   {
+    "f": 210,
+    "clock": 535,
+    "fillCover": 0.1336,
+    "filled": 8,
+    "labels": 8,
+    "bboxShare": 0.1674,
+    "tier3Filled": 0
+   }
+  ],
+  "labelCoverMax": 0.1482,
+  "labelCoverMedian": 0.0872,
+  "fillAllMax": 0.1339,
+  "bboxShareMedian": 0.1901,
+  "tier3FillFrames": 0,
+  "tier3FillsMax": 0
+ },
+ "drawn": {
+  "max": 9,
+  "median": 7,
+  "over12": 0,
+  "byTierMax": {
+   "0": 0,
+   "1": 4,
+   "2": 5,
+   "3": 0
+  },
+  "fillsMax": 9,
+  "fillsMedian": 7,
+  "tier1Frames": 1663,
+  "tier1Grown": 1576
+ },
+ "contrast": {
+  "samples": 9,
+  "texts": 64,
+  "fading": 0,
+  "tier3": {
+   "ring": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "wide": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "box": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "bare": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   }
+  },
+  "cased": {
+   "ring": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "box": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   }
+  },
+  "plated": {
+   "ring": {
+    "n": 64,
+    "min": 12.37,
+    "p10": 13.08,
+    "median": 13.65,
+    "below": 0
+   },
+   "box": {
+    "n": 64,
+    "min": 12.1,
+    "p10": 12.69,
+    "median": 13.53,
+    "below": 0
+   }
+  },
+  "all": {
+   "ring": {
+    "n": 64,
+    "min": 12.37,
+    "p10": 13.08,
+    "median": 13.65,
+    "below": 0
+   },
+   "box": {
+    "n": 64,
+    "min": 12.1,
+    "p10": 12.69,
+    "median": 13.53,
+    "below": 0
+   },
+   "bare": {
+    "n": 64,
+    "min": 1.16,
+    "p10": 1.2,
+    "median": 2.97,
+    "below": 59
+   }
+  },
+  "belowRing": []
+ },
+ "boxFallback": {
+  "samples": 9,
+  "labelsMax": 0,
+  "labelsMedian": 0,
+  "coverMax": 0.1094,
+  "coverMedian": 0.0832,
+  "over12": 0
+ },
+ "events": {
+  "inView": 2752,
+  "drawn": 2752,
+  "miss": {
+   "occluded": 0,
+   "placement": 0,
+   "calm": 0,
+   "withheld": 0
+  },
+  "out": {
+   "offscreen": 0,
+   "panel": 0,
+   "reading": 0,
+   "field": 0,
+   "lod": 262,
+   "aggregate": 236,
+   "none": 0
+  },
+  "by": {
+   "decision": {
+    "frames": 236,
+    "inView": 639,
+    "drawn": 639,
+    "miss": {},
+    "out": {
+     "c_iv:aggregate": 236,
+     "gqg:lod": 69
+    }
+   },
+   "davout": {
+    "frames": 493,
+    "inView": 493,
+    "drawn": 493,
+    "miss": {},
+    "out": {}
+   },
+   "soult": {
+    "frames": 493,
+    "inView": 986,
+    "drawn": 986,
+    "miss": {},
+    "out": {}
+   },
+   "pratzen-village": {
+    "frames": 193,
+    "inView": 193,
+    "drawn": 193,
+    "miss": {},
+    "out": {}
+   },
+   "face-about": {
+    "frames": 193,
+    "inView": 386,
+    "drawn": 386,
+    "miss": {},
+    "out": {
+     "ahq:lod": 193
+    }
+   },
+   "telnitz-retaken": {
+    "frames": 55,
+    "inView": 55,
+    "drawn": 55,
+    "miss": {},
+    "out": {}
+   }
+  },
+  "frames": 548,
+  "share": 1
+ },
+ "layerMs": {
+  "passes": 557,
+  "median": 1.1,
+  "p95": 3.7,
+  "max": 63.2,
+  "over8": 6
+ },
+ "errors": []
+}

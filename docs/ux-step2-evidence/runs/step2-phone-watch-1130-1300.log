@@ -1,0 +1,13 @@
+step2-phone-watch-1130-1300 on 367c8071 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 390x844 phone, density 3): 728 frames to 780.0, 86 s
+  filled plates over the formations' box: max 49.1%, median 35.8%, frames over 12%: 681 of 728; every label's box: max 49.1%; tier 3 fills: 0 at most, in 0 frames
+  drawn labels: max 8, median 5, frames over 12: 0; filled: max 8, median 5; by tier at most {"0":0,"1":5,"2":6,"3":0}; a live event's plate at t-live in 2034 of its 2762 frames
+  contrast over 25 drawn frames, 134 texts at full opacity (0 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":134,"min":11.6,"p10":13.68,"median":14.24,"below":0}, box {"n":134,"min":10.25,"p10":13.68,"median":14.24,"below":0}, bare {"n":134,"min":1.1,"p10":1.17,"median":1.94,"below":100}
+  the formations a live event names: drawn 1151 of 1151 in view (100.0%) over 728 frames of Play; not drawn: {"occluded":0,"placement":0,"calm":0,"withheld":0}; outside the measure: {"offscreen":172,"panel":0,"reading":0,"field":0,"lod":5848,"aggregate":728,"none":0}
+    guard-attack       label drawn 728 frames; its formations drawn 129 of 129; outside {"constantine:aggregate":728,"rg_inf:lod":685,"rg_cav:lod":685,"vandamme:lod":685}
+    guard-broken       label drawn 728 frames; its formations drawn 129 of 129; outside {"guard_cav:lod":685,"drouet:lod":685,"rg_cav:lod":685}
+    buxhowden-blind    label drawn 573 frames; its formations drawn 573 of 573; outside {"dok:lod":573,"lang:lod":573}
+    hq-forward         label drawn 492 frames; its formations drawn 320 of 320; outside {"gqg:offscreen":172}
+    davout-resumes     label drawn 186 frames; its formations drawn 0 of 0; outside {"friant:lod":186,"bourcier:lod":186}
+    wheel              label drawn 55 frames; its formations drawn 0 of 0; outside {"sthilaire:lod":55,"vandamme:lod":55,"c_gren:lod":55,"guard_inf:lod":55}
+  the label pass: median 1.2 ms, 95th 2.8, max 50.6 over 737 passes, over 8 ms: 8; page errors 0

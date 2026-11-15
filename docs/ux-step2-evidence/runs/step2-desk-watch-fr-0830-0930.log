@@ -1,0 +1,13 @@
+step2-desk-watch-fr-0830-0930 on 367c8071 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 548 frames to 570.0, 128 s
+  filled plates over the formations' box: max 13.4%, median 8.7%, frames over 12%: 28 of 548; every label's box: max 14.8%; tier 3 fills: 0 at most, in 0 frames
+  drawn labels: max 9, median 7, frames over 12: 0; filled: max 9, median 7; by tier at most {"0":0,"1":4,"2":5,"3":0}; a live event's plate at t-live in 1576 of its 1663 frames
+  contrast over 9 drawn frames, 64 texts at full opacity (0 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":64,"min":12.37,"p10":13.08,"median":13.65,"below":0}, box {"n":64,"min":12.1,"p10":12.69,"median":13.53,"below":0}, bare {"n":64,"min":1.16,"p10":1.2,"median":2.97,"below":59}
+  the formations a live event names: drawn 2752 of 2752 in view (100.0%) over 548 frames of Play; not drawn: {"occluded":0,"placement":0,"calm":0,"withheld":0}; outside the measure: {"offscreen":0,"panel":0,"reading":0,"field":0,"lod":262,"aggregate":236,"none":0}
+    decision           label drawn 236 frames; its formations drawn 639 of 639; outside {"c_iv:aggregate":236,"gqg:lod":69}
+    davout             label drawn 493 frames; its formations drawn 493 of 493
+    soult              label drawn 493 frames; its formations drawn 986 of 986
+    pratzen-village    label drawn 193 frames; its formations drawn 193 of 193
+    face-about         label drawn 193 frames; its formations drawn 386 of 386; outside {"ahq:lod":193}
+    telnitz-retaken    label drawn 55 frames; its formations drawn 55 of 55
+  the label pass: median 1.1 ms, 95th 3.7, max 63.2 over 557 passes, over 8 ms: 6; page errors 0

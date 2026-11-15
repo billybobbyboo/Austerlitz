@@ -1,0 +1,13 @@
+base-desk-counters-0830-0930 on d404045b (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 548 frames to 570.0, 18 s
+  filled plates over the formations' box: max 28.4%, median 23.4%, frames over 12%: 539 of 548; every label's box: max 51.3%; tier 3 fills: 0 at most, in 0 frames
+  drawn labels: max 32, median 25, frames over 12: 548; filled: max 15, median 7; by tier at most {"0":32,"1":0,"2":0,"3":0}; a live event's plate at t-live in 0 of its 0 frames
+  contrast over 0 drawn frames, 0 texts at full opacity (0 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+  the formations a live event names: drawn 2223 of 2969 in view (74.9%) over 548 frames of Play; not drawn: {"occluded":0,"placement":746,"calm":0,"withheld":0}; outside the measure: {"offscreen":0,"panel":0,"reading":0,"field":0,"lod":0,"aggregate":221,"none":0}
+    decision           label drawn 221 frames; its formations drawn 545 of 663; misses {"gqg:placement":53,"vandamme:placement":37,"sthilaire:placement":28}; outside {"c_iv:aggregate":221}
+    davout             label drawn 493 frames; its formations drawn 374 of 493; misses {"friant:placement":119}
+    soult              label drawn 493 frames; its formations drawn 827 of 986; misses {"sthilaire:placement":76,"vandamme:placement":83}
+    pratzen-village    label drawn 193 frames; its formations drawn 161 of 193; misses {"sthilaire:placement":32}
+    face-about         label drawn 193 frames; its formations drawn 281 of 579; misses {"ahq:placement":72,"milo:placement":56,"kollo:placement":170}
+    telnitz-retaken    label drawn 55 frames; its formations drawn 35 of 55; misses {"friant:placement":20}
+  the label pass: median 1.3 ms, 95th 3.5, max 10 over 557 passes, over 8 ms: 3; page errors 0

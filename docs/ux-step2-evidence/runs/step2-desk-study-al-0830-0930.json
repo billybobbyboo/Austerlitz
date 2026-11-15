@@ -1,0 +1,286 @@
+{
+ "build": "step2.html",
+ "md5": "367c8071653569ebd2e391c3379d3d3c",
+ "tag": "step2-desk-study-al-0830-0930",
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "dpr": 1,
+  "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "phoneLayout": false,
+  "w": 1440,
+  "h": 900,
+  "tiers": true
+ },
+ "vp": [
+  1440,
+  900
+ ],
+ "phone": false,
+ "presentation": "study",
+ "mode": "terrain",
+ "reading": "al",
+ "from": 510,
+ "to": 570,
+ "frames": 548,
+ "secs": 111,
+ "clockEnd": 570,
+ "coverage": {
+  "frames": 548,
+  "max": 0.1359,
+  "median": 0.0854,
+  "over12": 28,
+  "worst": [
+   {
+    "f": 212,
+    "clock": 535.3,
+    "fillCover": 0.1359,
+    "filled": 8,
+    "labels": 23,
+    "bboxShare": 0.2665,
+    "tier3Filled": 0
+   },
+   {
+    "f": 213,
+    "clock": 535.5,
+    "fillCover": 0.1358,
+    "filled": 8,
+    "labels": 23,
+    "bboxShare": 0.2671,
+    "tier3Filled": 0
+   },
+   {
+    "f": 214,
+    "clock": 535.7,
+    "fillCover": 0.1357,
+    "filled": 8,
+    "labels": 23,
+    "bboxShare": 0.2674,
+    "tier3Filled": 0
+   },
+   {
+    "f": 211,
+    "clock": 535.2,
+    "fillCover": 0.1354,
+    "filled": 8,
+    "labels": 22,
+    "bboxShare": 0.2674,
+    "tier3Filled": 0
+   },
+   {
+    "f": 215,
+    "clock": 535.8,
+    "fillCover": 0.1348,
+    "filled": 8,
+    "labels": 23,
+    "bboxShare": 0.2693,
+    "tier3Filled": 0
+   }
+  ],
+  "labelCoverMax": 0.2524,
+  "labelCoverMedian": 0.1855,
+  "fillAllMax": 0.1459,
+  "bboxShareMedian": 0.2964,
+  "tier3FillFrames": 0,
+  "tier3FillsMax": 0
+ },
+ "drawn": {
+  "max": 33,
+  "median": 23,
+  "over12": 548,
+  "byTierMax": {
+   "0": 0,
+   "1": 4,
+   "2": 5,
+   "3": 31
+  },
+  "fillsMax": 9,
+  "fillsMedian": 7,
+  "tier1Frames": 1648,
+  "tier1Grown": 1392
+ },
+ "contrast": {
+  "samples": 9,
+  "texts": 216,
+  "fading": 23,
+  "tier3": {
+   "ring": {
+    "n": 132,
+    "min": 7.47,
+    "p10": 10.73,
+    "median": 12.73,
+    "below": 0
+   },
+   "wide": {
+    "n": 132,
+    "min": 1.03,
+    "p10": 1.91,
+    "median": 4.37,
+    "below": 74
+   },
+   "box": {
+    "n": 132,
+    "min": 1.02,
+    "p10": 1.72,
+    "median": 3.83,
+    "below": 88
+   },
+   "bare": {
+    "n": 132,
+    "min": 1.02,
+    "p10": 1.69,
+    "median": 3.3,
+    "below": 109
+   }
+  },
+  "cased": {
+   "ring": {
+    "n": 132,
+    "min": 7.47,
+    "p10": 10.73,
+    "median": 12.73,
+    "below": 0
+   },
+   "box": {
+    "n": 132,
+    "min": 1.02,
+    "p10": 1.72,
+    "median": 3.83,
+    "below": 88
+   }
+  },
+  "plated": {
+   "ring": {
+    "n": 61,
+    "min": 11.73,
+    "p10": 12.96,
+    "median": 13.66,
+    "below": 0
+   },
+   "box": {
+    "n": 61,
+    "min": 12.1,
+    "p10": 12.69,
+    "median": 13.55,
+    "below": 0
+   }
+  },
+  "all": {
+   "ring": {
+    "n": 193,
+    "min": 7.47,
+    "p10": 11.14,
+    "median": 13.11,
+    "below": 0
+   },
+   "box": {
+    "n": 193,
+    "min": 1.02,
+    "p10": 1.78,
+    "median": 5.14,
+    "below": 88
+   },
+   "bare": {
+    "n": 193,
+    "min": 1.02,
+    "p10": 1.61,
+    "median": 3.23,
+    "below": 167
+   }
+  },
+  "belowRing": []
+ },
+ "boxFallback": {
+  "samples": 9,
+  "labelsMax": 15,
+  "labelsMedian": 11,
+  "coverMax": 0.1945,
+  "coverMedian": 0.1119,
+  "over12": 4
+ },
+ "events": {
+  "inView": 2380,
+  "drawn": 2380,
+  "miss": {
+   "occluded": 0,
+   "placement": 0,
+   "calm": 0,
+   "withheld": 0
+  },
+  "out": {
+   "offscreen": 0,
+   "panel": 1,
+   "reading": 547,
+   "field": 0,
+   "lod": 262,
+   "aggregate": 0,
+   "none": 0
+  },
+  "by": {
+   "decision": {
+    "frames": 221,
+    "inView": 429,
+    "drawn": 429,
+    "miss": {},
+    "out": {
+     "gqg:panel": 1,
+     "c_iv:reading": 221,
+     "sthilaire:reading": 82,
+     "vandamme:reading": 82,
+     "gqg:lod": 69
+    }
+   },
+   "davout": {
+    "frames": 493,
+    "inView": 439,
+    "drawn": 439,
+    "miss": {},
+    "out": {
+     "friant:reading": 54
+    }
+   },
+   "soult": {
+    "frames": 493,
+    "inView": 878,
+    "drawn": 878,
+    "miss": {},
+    "out": {
+     "sthilaire:reading": 54,
+     "vandamme:reading": 54
+    }
+   },
+   "pratzen-village": {
+    "frames": 193,
+    "inView": 193,
+    "drawn": 193,
+    "miss": {},
+    "out": {}
+   },
+   "face-about": {
+    "frames": 193,
+    "inView": 386,
+    "drawn": 386,
+    "miss": {},
+    "out": {
+     "ahq:lod": 193
+    }
+   },
+   "telnitz-retaken": {
+    "frames": 55,
+    "inView": 55,
+    "drawn": 55,
+    "miss": {},
+    "out": {}
+   }
+  },
+  "frames": 548,
+  "share": 1
+ },
+ "layerMs": {
+  "passes": 557,
+  "median": 1.1,
+  "p95": 3.1,
+  "max": 81.5,
+  "over8": 7
+ },
+ "errors": []
+}

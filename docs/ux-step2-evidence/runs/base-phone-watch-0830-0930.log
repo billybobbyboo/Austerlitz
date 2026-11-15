@@ -1,0 +1,13 @@
+base-phone-watch-0830-0930 on d404045b (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 390x844 phone, density 3): 548 frames to 570.0, 123 s
+  filled plates over the formations' box: max 44.8%, median 30.8%, frames over 12%: 548 of 548; every label's box: max 44.8%; tier 3 fills: 0 at most, in 0 frames
+  drawn labels: max 19, median 11, frames over 12: 72; filled: max 19, median 11; by tier at most {"0":19,"1":0,"2":0,"3":0}; a live event's plate at t-live in 0 of its 0 frames
+  contrast over 39 drawn frames, 389 texts at full opacity (49 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":389,"min":11.37,"p10":11.5,"median":12.64,"below":0}, box {"n":389,"min":11.37,"p10":11.5,"median":12.65,"below":0}, bare {"n":389,"min":1.49,"p10":1.67,"median":3.45,"below":273}
+  the formations a live event names: drawn 248 of 334 in view (74.3%) over 548 frames of Play; not drawn: {"occluded":0,"placement":86,"calm":0,"withheld":0}; outside the measure: {"offscreen":1,"panel":0,"reading":0,"field":0,"lod":2397,"aggregate":142,"none":0}
+    davout             label drawn 493 frames; its formations drawn 0 of 0; outside {"friant:lod":493}
+    decision           label drawn 142 frames; its formations drawn 85 of 141; misses {"gqg:placement":56}; outside {"c_iv:aggregate":142,"sthilaire:lod":142,"vandamme:lod":142,"gqg:offscreen":1}
+    soult              label drawn 493 frames; its formations drawn 0 of 0; outside {"sthilaire:lod":493,"vandamme:lod":493}
+    pratzen-village    label drawn 193 frames; its formations drawn 0 of 0; outside {"sthilaire:lod":193}
+    face-about         label drawn 193 frames; its formations drawn 163 of 193; misses {"ahq:placement":30}; outside {"milo:lod":193,"kollo:lod":193}
+    telnitz-retaken    label drawn 55 frames; its formations drawn 0 of 0; outside {"friant:lod":55}
+  the label pass: median 0.8 ms, 95th 2.6, max 65.3 over 557 passes, over 8 ms: 3; page errors 0

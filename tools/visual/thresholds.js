@@ -488,24 +488,28 @@ module.exports.SOLID_BLACK=SOLID_BLACK; module.exports.LIGHT_SWEEP=LIGHT_SWEEP;
 /* Stage 4C (docs/STAGE4_SPEC.md section C.6): the valley fog's hours, rendered by the harness at 4x [case, clock]. New */
 const FOG_VIEWS=[["overview-field",480],["pratzen-low",510]];
 module.exports.FOG_VIEWS=FOG_VIEWS;
-/* Stage 8, the follow-up 8I (decision 263 (a); docs/STAGE8_SPEC.md section 21): the views where far battle information stands, rendered with the
-   far names' lighter plate (check:visual's live block farPlate): Part A's low view east over the Goldbach (the wall of formation names; tools/stage8/
-   views.js horizon-east) at 09:00, 12:00 and 15:00 (the morning's haze, noon, a low sun), the infantry's front (inf-front), the low Pratzen view, the
-   valley fog's two hours (the FOG_VIEWS), the phase-8 Overview in Watch; then the low view at 12:00 with a far name selected, with one focused, under
-   Napoleon's reading, held as a phone held landscape (844 x 390) and in the landscape with counters (no names: no far plate). Each: [tag, the view
-   (a cases.js case's name or Part A's aim), overrides, the state to set: "select", "focus", "reading", "hybrid" or null, the size or null].
-   Judged in checkLive: every name on the plate the rule gives it (the far plate beyond MLS.FAR times the eye's distance to its target unless
-   protected), every name at one size, every far-plated name at AA as rendered; far names drawn in the wall of names */
+/* UI/UX roadmap step 2 (the owner's decision of 15 November 2026; docs/UX_ART_AUDIT.md UA-01, Direction A): the views the Landscape's label tiers are
+   rendered and judged in (check:visual's live block tiers). They are the views the follow-up 8I chose for the far names' lighter plate (decision
+   263 (a), which the tiers supersede: FAR_PLATE_VIEWS until step 2), where far battle information stands: Part A's low view east over the Goldbach
+   (the wall of formation names; tools/stage8/views.js horizon-east) at 09:00, 12:00 and 15:00 (the morning's haze, noon, a low sun), the infantry's
+   front (inf-front), the low Pratzen view, the valley fog's two hours (the FOG_VIEWS), the phase-8 Overview in Watch; then the low view at 12:00 with
+   a tier 3 name selected, with one focused, under Napoleon's reading, held as a phone held landscape (844 x 390) and in the Landscape with counters
+   (no tiers). Each: [tag, the view (a cases.js case's name or Part A's aim), overrides, the state to set: "select", "focus", "reading", "hybrid" or
+   null, the size or null].
+   Judged in checkLive: every label on the surface its tier gives it (a live event on the accent fill at t-live, t-ui below 720 px; a formation a
+   live event names and what the layer protects on the plate with its keyline; every other label on no fill, cased, the keyboard's focus on the
+   plate), every label's own words at AA as rendered (a cased label against its casing, measure.js tierNames), tier 3 names drawn in the wall of
+   names, and with counters no tier */
 const FAR_LOW={t:720, presentation:"watch", mode:"terrain", aim:{map:[230,250], dir:[-0.97,0.10,0.21], r:60}};   /* tools/stage8/views.js horizon-east */
-const FAR_PLATE_VIEWS=[["the wall of names 09:00",Object.assign({},FAR_LOW,{t:540}),null,null],["the wall of names 12:00",FAR_LOW,null,null],
+const TIER_VIEWS=[["the wall of names 09:00",Object.assign({},FAR_LOW,{t:540}),null,null],["the wall of names 12:00",FAR_LOW,null,null],
   ["the wall of names 15:00",Object.assign({},FAR_LOW,{t:900}),null,null],
   ["the infantry's front",{t:560, presentation:"watch", mode:"terrain", aim:{map:"sthilaire", dir:[-0.62,0.34,0.70], r:40}},null,null],
   ["pratzen-low","pratzen-low",null,null],["overview-field 08:00 (fog)","overview-field",{t:480},null],["pratzen-low 08:30 (fog)","pratzen-low",{t:510},null],
   ["ph8-overview-watch","ph8-overview-watch",null,null],
-  ["the wall of names, a far name selected",FAR_LOW,null,"select"],["the wall of names, a far name focused",FAR_LOW,null,"focus"],
+  ["the wall of names, a tier 3 name selected",FAR_LOW,null,"select"],["the wall of names, a tier 3 name focused",FAR_LOW,null,"focus"],
   ["the wall of names, Napoleon's reading",FAR_LOW,null,"reading"],["the wall of names at 844 x 390",FAR_LOW,null,null,[844,390]],
   ["the wall of names, with counters",FAR_LOW,{mode:"hybrid"},"hybrid"]];
-module.exports.FAR_PLATE_VIEWS=FAR_PLATE_VIEWS;
+module.exports.TIER_VIEWS=TIER_VIEWS;
 module.exports.PAPER_MIN_PXKM=PAPER_MIN_PXKM;
 module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; module.exports.LAYER_MS=LAYER_MS;
 /* Stage 0 guarantees, checked on every baseline case (harness --test). The numbers are the
@@ -581,6 +585,8 @@ module.exports.check=function(name,m,spec,opts){
     if(!(L.ms<LAYER_MS)) f.push("the layer pass took "+L.ms+" ms (budget "+LAYER_MS+" ms)");
     if(L.belowFloor.length) f.push(L.belowFloor.length+" map texts below their floor: "+L.belowFloor.slice(0,4).join("; "));
     if(m.textContrast&&m.textContrast.belowAA.length) f.push(m.textContrast.belowAA.length+" map texts below AA on the rendered frame: "+m.textContrast.belowAA.slice(0,4).join("; "));
+    /* UI/UX roadmap step 2: a cased text (a tier 3 label of the Landscape, on no plate) is read on a second frame, the ink transparent; unread is a failure */
+    if(m.textContrast&&m.textContrast.casedUnread) f.push(m.textContrast.casedUnread+" cased map texts not read (no frame with the ink transparent)");
   }
   const U=UNOBSTRUCTED[name];
   /* (strict: a case without a baseline, or a report without both measures, fails in requirements below) */
@@ -724,7 +730,7 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   MLS:"Stage 8, implementation PR 8C: the map layer in motion (decision 240 (a))",
   CULL:"Stage 8, implementation PR 8D: the blocks culled by their own bounds, the census (decision 249 (a))",
   ANIM:"Stage 8, implementation PR 8D: the kit's animation hooks (decisions 244 (a), 250 (b))",
-  mlFarPlate:"Stage 8, the follow-up 8I: the far formation names' lighter plate (decision 263 (a))",
+  MLT:"UI/UX roadmap step 2: the Landscape's label tiers (the owner's decision of 15 November 2026; they supersede the follow-up 8I's far plate, decision 263 (a))",
   TOAST:"Stage 8, the follow-up 8I: the phase's message placed again under a layout's change",
   UX1:"UI/UX roadmap step 1: the map key shown from the first card, the markers' drags, the touch scrub lane, the coincident events (UA-05, 06, 12, 13, 17)"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
@@ -899,17 +905,9 @@ function checkLive(live,opts){
     const R=L.reads||[]; if(!R.some(r=>r.onAtChange)) f.push("the phase's message's lifetime, unheld: no layout's change made while it showed (the case proves nothing)");
     R.forEach(r=>{ if(r.onAtChange&&!(r.placed>r.placedBefore)) f.push("the phase's message, unheld, "+r.step+": changed while it showed and not placed again");
       if(r.on&&(r.overlapSwitch>0||(r.others||[]).length)) f.push("the phase's message, unheld, "+r.step+": over the presentation switch by "+r.overlapSwitch+" px"+((r.others||[]).length?", over "+r.others.map(o=>o.el+" by "+o.px+" px").join(", "):"")); }); }
-  /* Stage 8, the follow-up 8I (decision 263 (a)): the far names' lighter plate as rendered, in check:visual (FAR_PLATE_VIEWS) */
-  if(!so&&req("farPlate","the far names' lighter plate as rendered in the low views, the fog, the light, selected, focused, a reading, a phone, with counters (Stage 8, 8I)")){ const V=Array.isArray(live.farPlate)?live.farPlate:[];
-    if(V.length!==FAR_PLATE_VIEWS.length) f.push("the far names' plate: "+V.length+" of the "+FAR_PLATE_VIEWS.length+" views measured");
-    V.forEach(v=>{ const N=v.names||[], far=N.filter(n=>n.plate==="far");
-      N.forEach(n=>{ const want=(!n.prot&&n.ratio>v.far)?"far":"full";
-        if(n.plate!==want) f.push("the far names' plate, "+v.tag+": "+n.id+" (ratio "+n.ratio+(n.prot?", protected":"")+") on the "+n.plate+" plate, the "+want+" expected");
-        if(n.plate==="far"&&!(n.contrast>=4.5)) f.push("the far names' plate, "+v.tag+": "+n.id+" at "+n.contrast+":1 as rendered, under AA"); });
-      const px=[...new Set(N.map(n=>n.px))]; if(px.length>1) f.push("the far names' plate, "+v.tag+": the names at "+px.join(", ")+" px (one size)");
-      if(/^the wall of names( 1[25]:00| 09:00)?$/.test(v.tag)&&!far.length) f.push("the far names' plate, "+v.tag+": no far name drawn in the wall of names");
-      if(v.state==="hybrid"&&N.length) f.push("the far names' plate, "+v.tag+": "+N.length+" names drawn with counters");
-      if((v.state==="select"||v.state==="focus")&&!(v.target&&v.target.plate==="full"&&v.target.prot)) f.push("the far names' plate, "+v.tag+": the "+(v.state==="select"?"selected":"focused")+" far name "+JSON.stringify(v.target)+" not on the full plate"); }); }
+  /* UI/UX roadmap step 2 (the owner's decision of 15 November 2026): the Landscape's label tiers as rendered, in check:visual (TIER_VIEWS). Until
+     step 2 this block held decision 263 (a)'s far plate (every far name on the lighter plate), which the tiers supersede */
+  if(!so&&req("tiers","the Landscape's label tiers as rendered in the low views, the fog, the light, selected, focused, a reading, a phone, with counters (UI/UX roadmap step 2)")) checkTiers(live.tiers).forEach(x=>f.push(x));
   /* Stage 8, 8H (docs/FINAL_AUDIT.md A-6): the focus ring as drawn, on Play reached by real Tab presses: focused and :focus-visible, a solid
      outline in the theme's accent, and on each of its four sides 2 or 3 pixels of the ring's colour in the screenshot (2 px drawn; a third where
      its edge falls between pixels) */
@@ -1005,6 +1003,8 @@ function checkLive(live,opts){
      with a marker focused, a hover over another shows that one's, and leaving it the focused one's again */
   /* UI/UX roadmap step 1 (UA-05, UA-06, UA-12, UA-13, UA-17): the live block "ux1" by real input (tools/visual/ux1.js), judged by checkUx1 (below) */
   if(req("ux1","the map key and the timeline under real input (UI/UX roadmap step 1)")) checkUx1(live.ux1,so).forEach(x=>f.push(x));
+  /* UI/UX roadmap step 2 (UA-01, UA-15): the live block "ux2" (tools/visual/ux2.js), judged by checkUx2 (below) */
+  if(req("ux2","the Landscape's label tiers and Watch's set while the clock plays (UI/UX roadmap step 2)")) checkUx2(live.ux2,so).forEach(x=>f.push(x));
   if(req("tips","the timeline's tips by real keys, mouse and touch (Stage 8, implementation PR 8A, decision 251)")){ const T=live.tips, b=[];
     const is=(o,k)=>!!(o&&o.tip&&o.tip===o[k]), none=o=>!!(o&&o.tip===null);
     if(!is(T.focus,"focusTip")) b.push("Tab to a marker showed no tip");
@@ -1183,6 +1183,139 @@ function checkUx1(L,so){
   return f;
 }
 module.exports.checkUx1=checkUx1;
+/* UI/UX roadmap step 2 (docs/UX_ART_AUDIT.md UA-01, UA-15, Direction A; the owner's decision of 15 November 2026): the live block "ux2"
+   (tools/visual/ux2.js runBlock), judged. Its bars:
+   - the tiers (still, a view reached without motion at 09:00 and in the fog at 08:44): a live event (weight above LIVE) tier 1, on the accent fill,
+     at t-live where its larger plate stands clear (at least one in each view) and at t-ui where it does not; a formation a live event names tier 2,
+     on the plate with its keyline; every other label tier 3, on no fill, cased by CASING shadows;
+     every text at AA as rendered, a tier 3 text by its ring (the first whole pixel round the ink beyond its fringe: its casing);
+   - the paper map and the Landscape with counters: no tier, every label on its plate; Clean: no label; the key's row for the tiers shown on the
+     Landscape alone, its row for Watch's set only while Watch plays;
+   - Play in Study (08:40 to 09:05): filled plates over the formations' box at most COVER_MAX in every frame, and above COVER (the audit's 12%) only
+     while LIVE4 or more live events' plates are drawn (the measured residual: four sentences on the accent plate at once, 08:54 to 08:59; the Step 1
+     build stands at 25-31% throughout); no tier 3 label on a fill; the formations a live event names drawn in EV_SHARE of their frames in view
+     (the roadmap's measure, tools/visual/motion.js LONG's, here on the Landscape); the label pass under LAYER_MS (median);
+   - Play in Watch: at most WATCH_MAX labels drawn in every frame, none of tier 3 (UA-15); the same visibility bar; then while it plays a tier 3
+     name drawn on the plate under the keyboard's focus, not drawn without it, drawn as tier 2 when hovered and when selected, and its focus kept
+     and drawn through a pause (tier 3 back), a change to Study and back, Play again and a seek; in both runs every frame's tiers by the rule as the
+     live events come and go;
+   - a phone (390 x 844, emulated): a live event on the accent fill at t-ui; turned to 844 x 390 and back, each live event drawn where and as wide
+     as the layout holds it; no tier 3 fill; the visibility bar; its coverage recorded and held to
+     PHONE_COVER_MAX and PHONE_COVER_MED, the build's own measures rounded up (the audit's 12% is not met on a phone: one event's sentence on its
+     plate spans the screen; docs/ux-step2-evidence/);
+   - forced colours: a tier 3 label on a fill (the system's Canvas), a live event's 2 px outline, a tier 2 label's 1 px;
+   - reduced motion (check:visual): Watch's set while the clock plays, as without it */
+const UX2={LIVE:0.3, COVER:0.12, COVER_MAX:0.15, LIVE4:4, EV_SHARE:0.90, EV_MIN:100, EV_MIN_PHONE:30, WATCH_MAX:12, AA:4.5, LAYER_MS:8, T_LIVE:13.5, T_UI:12.5, CASING:24, PHONE_COVER_MAX:0.40, PHONE_COVER_MED:0.22};
+module.exports.UX2=UX2;
+function checkUx2(L,so){
+  const f=[]; if(!L) return ["ux2: no record"];
+  const K=L.tokens||{};
+  if(K.tLive!==UX2.T_LIVE) f.push("ux2: the token t-live "+K.tLive+" px, "+UX2.T_LIVE+" expected");
+  const onOf=S=>Object.keys(S.items).filter(k=>S.items[k].st==="on").map(k=>Object.assign({k:k},S.items[k]));
+  const rule=(S,at,px1)=>{ const N=onOf(S); N.forEach(n=>{ if(n.cat==="counter") return;
+      const ev=n.cat==="event"?S.ev[n.k.slice(2)]:0, want=ev>UX2.LIVE?1:(n.keep||(n.cat==="name"&&S.named[n.fid]))?2:3;
+      if(n.tier!==want){ f.push(at+n.k+" tier "+n.tier+", "+want+" expected"); return; }
+      /* a live event's plate at t-live where it stands clear (app.js mlGrow: the item's grown), else at t-ui in the box laid out; below 720 px t-ui */
+      const pxw=want===1&&n.grown?px1:UX2.T_UI;
+      if(want===1&&!(n.fill&&n.bg===K.accent&&Math.abs(n.px-pxw)<0.01)) f.push(at+n.k+", a live event, not on the accent fill at "+pxw+" px ("+n.bg+", "+n.px+" px"+(n.grown?", its larger plate drawn":"")+")");
+      if(want===1&&!(Math.abs(n.dx)<=1&&Math.abs(n.dw)<=1)) f.push(at+n.k+", a live event, drawn "+n.dx+" px from its place and "+n.dw+" px wider than the layout holds it");
+      if(want===2&&!(n.fill&&/\bml-t2\b/.test(n.cls||""))) f.push(at+n.k+", tier 2, "+(n.fill?"without its keyline":"on no plate"));
+      if(want===3&&!n.foc&&!n.forced&&(n.fill||n.shadows!==UX2.CASING||!/\bml-q\b/.test(n.cls||""))) f.push(at+n.k+", tier 3, "+(n.fill?"on a fill":"cased by "+n.shadows+" shadows, "+UX2.CASING+" expected")); });
+    return N; };
+  /* still */
+  const SV=L.still||[]; if(SV.length<(so?1:2)) f.push("ux2: "+SV.length+" still views read");
+  SV.forEach(v=>{ const at="ux2 "+v.tag+": ", N=rule(v.snap,at,UX2.T_LIVE), n=t=>N.filter(x=>x.tier===t).length;
+    if(v.snap.mode!=="terrain"||v.snap.presentation!=="study"||v.snap.playing) f.push(at+"not the Landscape in Study at rest");
+    if(!(v.snap.key&&v.snap.key.tiers===true&&v.snap.key.calm===false)) f.push(at+"the key's rows for the tiers and for Watch's set "+JSON.stringify(v.snap.key)+" (the tiers' shown, Watch's hidden)");
+    if(!(n(1)>=1&&n(2)>=1&&n(3)>=5)) f.push(at+"tiers 1/2/3 drawn "+n(1)+"/"+n(2)+"/"+n(3)+" (at least 1/1/5: the view proves nothing)");
+    if(!N.some(x=>x.tier===1&&x.grown&&Math.abs(x.px-UX2.T_LIVE)<0.01)) f.push(at+"no live event at t-live ("+UX2.T_LIVE+" px)");
+    const T=(v.texts||[]).filter(t=>t.opacity>=0.999), q=T.filter(t=>t.tier===3);
+    if(q.length<5) f.push(at+q.length+" tier 3 texts read as rendered");
+    T.forEach(t=>{ if(t.ring===null||t.ring===undefined) f.push(at+t.k+" \""+t.text+"\" not read as rendered"); else if(!(t.ring>=UX2.AA)) f.push(at+t.k+" \""+t.text+"\" (tier "+t.tier+") at "+t.ring+":1 as rendered, under AA"); }); });
+  /* the comparison cases */
+  const MD=L.modes||[]; if(MD.length!==3) f.push("ux2: "+MD.length+" of the 3 comparison cases read");
+  MD.forEach(m=>{ const N=onOf(m.snap), at="ux2 "+m.tag+": ";
+    if(!(m.snap.key&&m.snap.key.tiers===false&&m.snap.key.calm===false)) f.push(at+"the key shows the tiers' rows "+JSON.stringify(m.snap.key));
+    if(m.tag==="Clean"){ if(N.length) f.push(at+N.length+" labels drawn"); return; }
+    if(N.length<5) f.push(at+N.length+" labels drawn (the case proves nothing)");
+    N.forEach(n=>{ if(n.tier) f.push(at+n.k+" has tier "+n.tier); if(/\bml-(t1|t2|q)\b/.test(n.cls||"")) f.push(at+n.k+" carries a tier's class"); if(n.cat!=="counter"&&!n.fill) f.push(at+n.k+" on no plate"); }); });
+  /* Play */
+  const play=(P,at,o)=>{ if(!P){ f.push(at+"not run"); return; }
+    if(P.frames<(so?60:150)) f.push(at+P.frames+" frames");
+    const F=P.fr.filter(x=>x.playing);
+    F.forEach(x=>{ if(x.t3fills.length) f.push(at+"frame "+x.f+": tier 3 on a fill: "+x.t3fills.slice(0,3).join(", ")); });
+    (P.tierBad||["no tier read"]).forEach(x=>f.push(at+x));
+    if(!((P.events||[]).length>=(o.events||2))) f.push(at+(P.events||[]).length+" live events in the run (the tiers' changes prove nothing)");
+    if(o.cover){ const over=F.filter(x=>x.cover!==null&&x.cover>UX2.COVER_MAX), mid=F.filter(x=>x.cover!==null&&x.cover>UX2.COVER&&x.t1<UX2.LIVE4);
+      if(over.length) f.push(at+"filled plates over "+(100*UX2.COVER_MAX)+"% of the formations' box in "+over.length+" frames ("+(100*Math.max.apply(null,over.map(x=>x.cover))).toFixed(1)+"% at "+over[0].clock+")");
+      if(mid.length) f.push(at+"filled plates over "+(100*UX2.COVER)+"% of the formations' box in "+mid.length+" frames with fewer than "+UX2.LIVE4+" live events' plates ("+(100*Math.max.apply(null,mid.map(x=>x.cover))).toFixed(1)+"% at "+mid[0].clock+")"); }
+    if(!(P.ev.inView>=(o.evMin||(so?40:UX2.EV_MIN)))) f.push(at+"the formations a live event names in view in "+P.ev.inView+" frames (the run proves nothing)");
+    else if(!(P.ev.share>=UX2.EV_SHARE)) f.push(at+"the formations a live event names drawn in "+P.ev.drawn+" of "+P.ev.inView+" frames ("+P.ev.share+"; at least "+UX2.EV_SHARE+"); not drawn: "+JSON.stringify(P.ev.miss));
+    if(!(P.msMedian<UX2.LAYER_MS)) f.push(at+"the label pass "+P.msMedian+" ms (median; under "+UX2.LAYER_MS+")");
+    return F; };
+  play(L.play,"ux2 Play in Study: ",{cover:true});
+  const WF=play(L.watch,"ux2 Play in Watch: ",{cover:true})||[];
+  WF.forEach(x=>{ if(x.drawn>UX2.WATCH_MAX) f.push("ux2 Play in Watch: frame "+x.f+" ("+x.clock+"): "+x.drawn+" labels drawn (at most "+UX2.WATCH_MAX+")");
+    if(x.other.length) f.push("ux2 Play in Watch: frame "+x.f+": tier 3 drawn: "+x.other.slice(0,3).join(", ")); });
+  if(WF.length&&!WF.some(x=>x.calm>0)) f.push("ux2 Play in Watch: no tier 3 label held back (the run proves nothing)");
+  const Q=L.seq; if(!Q||!Q.id) f.push("ux2 Watch while it plays: "+(Q?"no tier 3 name to focus":"not run"));
+  else { const is=(k,c,w)=>{ const s=Q[k]; if(!s||!c(s)) f.push("ux2 Watch while it plays, "+Q.id+" "+k+": "+w+" ("+JSON.stringify(s)+")"); };
+    is("playing",s=>s.playing&&s.st==="calm"&&s.t3===0,"not held back while Watch plays");
+    is("playing",s=>s.key&&s.key.tiers===true&&s.key.calm===true,"the key does not say what Watch names while the clock plays");
+    is("paused",s=>s.key&&s.key.calm===false,"the key still says Watch's set at a pause");
+    is("focused",s=>s.playing&&s.focus&&s.st==="on"&&s.fill,"not drawn on the plate under the keyboard's focus");
+    is("blurred",s=>s.playing&&s.st==="calm","drawn without the focus");
+    is("hovered",s=>s.st==="on"&&s.tier===2&&s.fill&&s.keep,"not drawn as tier 2 when hovered");
+    is("selected",s=>s.st==="on"&&s.tier===2&&s.fill&&s.keep,"not drawn as tier 2 when selected");
+    is("paused",s=>!s.playing&&s.focus&&s.st==="on"&&s.fill&&s.t3>0&&s.calm===0,"the focus not kept and drawn at a pause, or tier 3 not back");
+    is("study",s=>s.presentation==="study"&&s.focus&&s.st==="on"&&s.fill,"the focus not kept and drawn in Study");
+    is("playing again",s=>s.playing&&s.presentation==="watch"&&s.focus&&s.st==="on"&&s.fill&&s.t3===0,"the focus not kept and drawn when Watch plays again, or tier 3 drawn");
+    is("sought",s=>s.inLayer&&(!s.held||(s.focus&&s.st==="on"&&s.fill)),"after a seek the focus left the layer, or the item it stands on is not drawn"); }
+  /* a phone */
+  const PH=L.phone; if(!PH) f.push("ux2: the phone not run");
+  else { if(PH.phoneLayout!==true) f.push("ux2 a phone: not the phone layout");
+    const N=rule(PH.still,"ux2 a phone at 09:00: ",UX2.T_UI); if(!N.some(n=>n.tier===1)) f.push("ux2 a phone at 09:00: no live event drawn");
+    if(!PH.turned||!PH.back) f.push("ux2 a phone: not turned and back");
+    else { const A=rule(PH.turned,"ux2 a phone turned (844 x 390) at 09:00: ",UX2.T_LIVE), B=rule(PH.back,"ux2 a phone turned back (390 x 844) at 09:00: ",UX2.T_UI);
+      if(PH.turned.width!==844||PH.back.width!==390) f.push("ux2 a phone turned: the widths "+PH.turned.width+" and "+PH.back.width);
+      if(!A.some(n=>n.tier===1)||!B.some(n=>n.tier===1)) f.push("ux2 a phone turned: no live event drawn"); }
+    play(PH.play,"ux2 a phone, Play in Study: ",{cover:false,evMin:so?10:UX2.EV_MIN_PHONE});   /* on a phone few of the formations a live event names stand near enough for a name */
+    if(PH.play&&!(PH.play.coverMax<=UX2.PHONE_COVER_MAX&&PH.play.coverMedian<=UX2.PHONE_COVER_MED)) f.push("ux2 a phone, Play in Study: filled plates over the formations' box "+(100*PH.play.coverMax).toFixed(1)+"% at most, "+(100*PH.play.coverMedian).toFixed(1)+"% (median); the limits "+(100*UX2.PHONE_COVER_MAX)+"% and "+(100*UX2.PHONE_COVER_MED)+"%"); }
+  /* forced colours */
+  const FC=L.forced; if(!FC||!FC.active) f.push("ux2: forced colours "+(FC?"not active":"not run"));
+  else { const I=FC.items||[], n=t=>I.filter(x=>x.tier===t);
+    if(!(n(1).length&&n(2).length&&n(3).length>=5)) f.push("ux2 forced colours: tiers 1/2/3 drawn "+n(1).length+"/"+n(2).length+"/"+n(3).length);
+    n(3).forEach(x=>{ if(!(x.bgAlpha>0.5)) f.push("ux2 forced colours: "+x.k+", tier 3, on no fill (no casing is drawn there)"); });
+    n(1).forEach(x=>{ if(x.outline!=="solid 2px") f.push("ux2 forced colours: "+x.k+", a live event, outline "+x.outline+" (solid 2px)"); });
+    n(2).forEach(x=>{ if(x.outline!=="solid 1px"&&x.outline!=="solid 2px") f.push("ux2 forced colours: "+x.k+", tier 2, outline "+x.outline+" (solid 1px)"); }); }
+  if(!so){ const RMd=L.reduced; if(!RMd) f.push("ux2: reduced motion not run");
+    else { if(RMd.rm!==true) f.push("ux2 reduced motion: the app's RM "+RMd.rm);
+      const F=RMd.fr.filter(x=>x.playing); if(F.length<20) f.push("ux2 reduced motion: "+F.length+" frames of Play");
+      F.forEach(x=>{ if(x.other.length||x.drawn>UX2.WATCH_MAX) f.push("ux2 reduced motion, Play in Watch: frame "+x.f+": "+x.drawn+" labels, tier 3 drawn "+x.other.length); }); } }
+  return f;
+}
+module.exports.checkUx2=checkUx2;
+/* UI/UX roadmap step 2: check:visual's block "tiers" judged (the views of TIER_VIEWS, read by tools/visual/ux2.js tierViews) */
+function checkTiers(L){
+  const f=[], V=Array.isArray(L)?L:[];
+    if(V.length!==TIER_VIEWS.length) f.push("the label tiers: "+V.length+" of the "+TIER_VIEWS.length+" views measured");
+    V.forEach(v=>{ const N=v.items||[], at="the label tiers, "+v.tag+": ";
+      if(v.state==="hybrid"){ if(v.on) f.push(at+"tiers on with counters"); N.forEach(n=>{ if(n.tier||n.surface!=="plate"||n.keyline) f.push(at+n.id+" tier "+n.tier+" on "+n.surface+" (every label on its plate, no tier)"); });
+        if(N.some(n=>n.cat==="name")) f.push(at+"names drawn with counters"); return; }
+      if(!v.on) f.push(at+"the tiers off on the Landscape");
+      N.forEach(n=>{ const live1=n.cat==="event"&&n.live, want=live1?1:(n.prot||(n.cat==="name"&&n.named))?2:3, px1=v.width<720||!n.grown?UX2.T_UI:UX2.T_LIVE;
+        if(n.tier!==want) f.push(at+n.id+" tier "+n.tier+", "+want+" expected"+(n.prot?" (protected)":"")+(n.named?" (named by a live event)":""));
+        if(n.tier===1&&(n.surface!=="accent"||Math.abs(n.px-px1)>0.01)) f.push(at+n.id+", a live event, on "+n.surface+" at "+n.px+" px (the accent fill at "+px1+")");
+        if(n.tier===2&&(n.surface!=="plate"||!n.keyline)) f.push(at+n.id+", tier 2, on "+n.surface+(n.keyline?"":" without its keyline"));
+        if(n.tier===3&&!n.focus&&(n.surface!=="none"||!n.cased)) f.push(at+n.id+", tier 3, on "+n.surface+(n.cased?"":" not cased"));
+        if(n.tier===3&&n.focus&&n.surface!=="plate") f.push(at+n.id+", tier 3 with the keyboard's focus, on "+n.surface+" (the plate)");
+        if(n.contrast!==null&&n.contrast!==undefined&&!(n.contrast>=UX2.AA)) f.push(at+n.id+" at "+n.contrast+":1 as rendered, under AA"+(n.surface==="none"?" (cased)":"")); });
+      if(/^the wall of names( 1[25]:00| 09:00)?$/.test(v.tag)&&!N.some(n=>n.cat==="name"&&n.tier===3&&n.surface==="none")) f.push(at+"no tier 3 name drawn in the wall of names");
+      if((v.state==="select"||v.state==="focus")&&!(v.target&&v.target.id&&v.target.surf==="2"&&v.target.prot&&(v.state==="focus"||v.target.tier===2)))
+        f.push(at+"the "+(v.state==="select"?"selected":"focused")+" name "+JSON.stringify(v.target)+" not on the plate"); });
+  return f;
+}
+module.exports.checkTiers=checkTiers;
 module.exports.checkLive=checkLive;
 
 /* T-4: the in-app self-test, every check by name against tools/visual/selftest-manifest.json (generated from a passing run by

@@ -38,7 +38,10 @@
    and every state says what it needs from the build and how to tell it was reached (STATES' third and fourth fields). Before step 1 seven
    typeof gates let a state the build could not reach be read as whatever the page showed, without a word: now a missing function or a state
    not reached fails (CONTRAST: FAILED). node tools/visual/contrast.js <build.html> --legacy (an archived build) keeps the gates and lists the
-   states it skipped. The browser is launched as the harness launches it (ANGLE on SwiftShader; AUSTERLITZ_CHROME). */
+   states it skipped. The browser is launched as the harness launches it (ANGLE on SwiftShader; AUSTERLITZ_CHROME).
+   UI/UX roadmap step 2 (docs/UX_ART_AUDIT.md UA-01; the owner's decision of 15 November 2026): the Landscape's tier 3 labels stand on no plate, so
+   decision 38's rule (a plate that holds AA over black and over white) cannot hold them; each is cased by the keyline, opaque to 2 px round its
+   letters, and is read here against that casing (WCAG technique G18), its casing checked on its computed style; every other map text as before. */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const TH=require("./thresholds.js");
@@ -75,8 +78,16 @@ const COLLECT=`(function(state){
       transform:cs.textTransform,lang:(e.closest&&e.closest("[lang]")||document.documentElement).getAttribute("lang")||""};
     var fk=JSON.stringify(font), F=FA[fk]||(FA[fk]={font:font,chars:{}});
     for(var c of own) if(c!==" "&&!F.chars[c]) F.chars[c]=state+": "+sel+" \\""+own.slice(0,40)+"\\"";
+    /* UI/UX roadmap step 2: a tier 3 label of the Landscape stands on no plate; its own words are cased (style.css .ml-q). Its casing is read
+       off its computed text-shadow: one opaque colour, no blur, at least eight shadows 1 px from the letters and sixteen at 2 px, or "bad" */
+    var casing=null;
+    if(e.classList&&e.classList.contains("ml-q")&&e.classList.contains("ml-item")&&!bgs.some(function(b){ return /\\bml-item\\b/.test(String(b[4])); })){
+      var sh=cs.textShadow==="none"?[]:cs.textShadow.split(/,(?![^(]*\\))/), cc=null, n1=0, n2=0, okc=true;
+      sh.forEach(function(x){ var c=rgba(x), m=x.replace(/rgba?\\([^)]*\\)/,"").trim().split(/\\s+/).map(parseFloat); if(!c||m.length<3||c[3]<1||m[2]!==0){ okc=false; return; }
+        if(cc&&(cc[0]!==c[0]||cc[1]!==c[1]||cc[2]!==c[2])) okc=false; cc=c; var r=Math.hypot(m[0],m[1]); if(Math.abs(r-1)<0.03) n1++; else if(Math.abs(r-2)<0.03) n2++; });
+      casing=okc&&cc&&n1>=8&&n2>=16?[cc[0],cc[1],cc[2]]:"bad"; }
     out.push({state:state, sel:sel, text:own.slice(0,40), color:rgba(cs.color), size:parseFloat(cs.fontSize), weight:cs.fontWeight, opacity:op, bgs:bgs,
-      map:!!(e.closest&&e.closest("#maplayer"))});
+      map:!!(e.closest&&e.closest("#maplayer")), casing:casing});
   }
   return out;
 })`;
@@ -365,21 +376,28 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   else if(!LEGACY) stateFails.push("the build has no short screens' phase text (#phasebtn): the reflow and forced-colours states cannot be read (the final audits' Stage 6, T-5)");
   else skipped.push("the reflow and forced-colours states (the build has neither)");
   await browser.close();
-  const pairs=new Map(); let small=0;
+  const pairs=new Map(), cased={n:0,bad:0}; let small=0;
   rows.forEach(r=>{
     const paper=r.state.startsWith("staff"); let worst=99, wbg=null;
     BACK[paper?"paper":"dark"].concat(r.map?[[0,0,0],[255,255,255]]:[]).forEach(bd=>{
       let bg=bd; for(let i=r.bgs.length-1;i>=0;i--) bg=over(r.bgs[i].slice(0,3),r.bgs[i][3],bg);
-      const fg=over(r.color.slice(0,3),r.color[3]*r.opacity,bg), c=ratio(fg,bg);
+      /* UI/UX roadmap step 2: a cased label (a tier 3 label of the Landscape, on no plate) stands against its casing (WCAG technique G18's note:
+         a border wide enough to fill a letter's inner details is its background), drawn with the label's own opacity over the backdrop; a
+         label marked cased whose casing is not the rule's fails outright. Its contrast as rendered is check:visual's and the live block ux2's */
+      if(r.casing==="bad"){ worst=0; wbg=bg; cased.bad++; return; }
+      if(r.casing){ bg=over(r.casing,r.opacity,bg); }
+      const fg=over(r.color.slice(0,3),r.color[3]*r.opacity,r.casing?bd:bg), c=ratio(fg,bg);
       if(c<worst){ worst=c; wbg=bg; }
     });
+    if(r.casing) cased.n++;
     if(r.size<10.5) small++;
     const need=(r.size>=18||(r.size>=14&&+r.weight>=600))?3:4.5;
     const key=[paper?"paper":"dark",r.color.join(","),r.opacity.toFixed(2),wbg.map(Math.round).join(","),r.size].join("|");
     const p=pairs.get(key); if(!p||worst<p.ratio) pairs.set(key,{ratio:worst,need:need,theme:paper?"paper":"dark",size:r.size,sel:r.sel,text:r.text,state:r.state});
   });
   const all=[...pairs.values()], fails=all.filter(p=>p.ratio<p.need).sort((a,b)=>a.ratio-b.ratio);
-  console.log("text elements "+rows.length+", distinct text/background pairs "+all.length+", below AA "+fails.length+", text below 10.5 px "+small);
+  console.log("text elements "+rows.length+", distinct text/background pairs "+all.length+", below AA "+fails.length+", text below 10.5 px "+small+
+    "; cased map texts (the Landscape's tier 3 labels, read against their casing) "+cased.n+(cased.bad?", with a casing out of rule "+cased.bad:""));
   fails.slice(0,40).forEach(p=>console.log("  ! "+p.ratio.toFixed(2)+" < "+p.need+"  "+p.theme+" "+p.size+"px "+p.sel+" ["+p.state+'] "'+p.text+'"'));
   console.log("font failures: "+fontFails.length+" ("+FC.chars+" characters in "+FC.fonts+" computed fonts, from the "+rows.length+" text elements read, asked which faces drew them; decision 141: only the embedded faces)");
   fontFails.slice(0,40).forEach(f=>console.log("  ! font: "+f));

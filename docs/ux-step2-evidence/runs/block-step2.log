@@ -1,0 +1,13 @@
+ux2 still, 09:00: 21 labels drawn, by tier 2/2/17, on a fill 4; tier 3 as rendered 8.26:1 at least over 17 texts
+ux2 still, 08:44, the valley fog: 42 labels drawn, by tier 2/3/37, on a fill 5; tier 3 as rendered 7.41:1 at least over 37 texts
+ux2 the paper map: 24 labels drawn, with a tier 0, with a tier's class 0
+ux2 the Landscape with counters: 19 labels drawn, with a tier 0, with a tier's class 0
+ux2 Clean: 0 labels drawn, with a tier 0, with a tier's class 0
+ux2 Play in Study, 270 frames to 545.0: filled plates over the formations' box 12.3% at most; the formations a live event names drawn 1333 of 1333; the label pass 1.4 ms (median)
+ux2 Play in Watch, 270 frames: 7 labels drawn at most, tier 3 drawn in 0 frames; the formations a live event names drawn 1369 of 1369
+ux2 Watch while it plays, n:ahq: playing calm, focused on (focus), blurred calm, hovered on, selected on, paused on (focus), study on (focus), playing again on (focus), sought on (focus)
+ux2 forced colours: 21 labels; tier 3 on no fill 0; tier 1 outlines solid 2px
+ux2 reduced motion, Play in Watch: 120 frames, 7 labels drawn at most, tier 3 drawn in 0 frames
+ux2 a phone (390 x 844): a live event at 12.5 px; Play, 270 frames: filled plates over the formations' box 20.1% at most, 16.1% (median); the formations a live event names drawn 52 of 52
+build 367c8071653569ebd2e391c3379d3d3c, Chromium 141.0.7390.37 (Playwright 1.56.0, software WebGL), 301 s; page errors and console messages 0
+ux2: every check passed
