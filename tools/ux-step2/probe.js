@@ -30,19 +30,36 @@ const q=(a,p)=>{ if(!a.length) return null; const s=a.slice().sort((x,y)=>x-y); 
   await TR.routeThree(p); await p.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000}); await TR.waitBoot(p,240000);
   const settle=async()=>{ await p.evaluate(()=>AUSTERLITZ_DEBUG.settle(30)); await p.waitForTimeout(200); };
   await settle();
-  if(PHONE) await p.tap("#fr-close",{timeout:60000}); else await p.click("#fr-close",{timeout:60000});
+  if(PHONE) await p.tap("#fr-close",{timeout:60000}); else { await p.click("#fr-close",{timeout:60000});
+    /* the pointer off the map (tools/visual/motion.js does the same): left where the card's button was, it stands over the map, and whether the
+       browser then reports a hover on the counter or name under it depends on the run. Found on the paper map, where two runs of one build
+       gave two layouts (a hovered formation is protected); with the pointer parked every run of a build is the same */
+    await p.mouse.move(2,2); }
   await p.evaluate(a=>{ setMode(a.mode); setPresentation(a.pres); select(null,null); setClock(a.from,{instant:true,force:true}); },{mode:MODE,pres:PRES,from:FROM}); await settle();
   await p.evaluate(UX.inPage);
   if(opt("--css",null)) await p.addStyleTag({content:fs.readFileSync(opt("--css"),"utf8")});   /* a prototype's rules over the build (the casings compared) */
   const env=await p.evaluate(()=>{ var gl=renderer.getContext(), e=gl.getExtension("WEBGL_debug_renderer_info"); return {renderer:e?gl.getParameter(e.UNMASKED_RENDERER_WEBGL):null, dpr:window.devicePixelRatio, ua:navigator.userAgent,
     phoneLayout:typeof PHONE!=="undefined"?PHONE:null, w:innerWidth, h:innerHeight, tiers:typeof MLT!=="undefined"}; });
-  const samples=[], comps=[], atLeft=AT.slice().sort((x,y)=>x-y);
+  const samples=[], comps=[], atLeft=AT.slice().sort((x,y)=>x-y); let redrawn=0;
+  /* the share of a capture's canvas that is exactly black (a drawn Landscape has next to none; a canvas not on screen is all black but
+     for the labels over it) */
+  const blackShare=buf=>p.evaluate(async s=>{ const im=new Image(); im.src="data:image/png;base64,"+s; await im.decode();
+    const c=document.createElement("canvas"); c.width=im.width; c.height=im.height; const g=c.getContext("2d"); g.drawImage(im,0,0);
+    const r=renderer.domElement.getBoundingClientRect(), k=im.width/innerWidth, d=g.getImageData(Math.round(r.left*k),Math.round(r.top*k),Math.max(1,Math.round(r.width*k)),Math.max(1,Math.round(r.height*k))).data;
+    let z=0, n=0; for(let i=0;i<d.length;i+=16){ n++; if(d[i]+d[i+1]+d[i+2]===0) z++; } return z/n; },buf.toString("base64"));
   const t0=Date.now();
   const R=await UX.playRun(p,MO,{from:FROM,to:TO,reading:READING,comp:true,
     sample:(f,clk)=>{ if(atLeft.length&&clk>=atLeft[0]-0.26){ atLeft.shift(); return true; } return EVERY>0&&f%EVERY===0; },
     onSample:async(f,s)=>{
       const T=await p.evaluate(()=>window.__ux2.texts());
-      const A=await p.screenshot({timeout:180000,scale:"css"});
+      /* a frame drawn outside the page's own animation frame is not always on screen when the capture is taken: the first drawn frame of a
+         run came back with a black canvas in about half the runs (the drawing buffer held the picture, read back in the same task; the
+         capture did not), which reads every text against black. A capture whose canvas is black is not used: the same state is drawn
+         again (no clock, no layout) and captured again; counted (redrawn), and a frame still black after three tries ends the run */
+      let A=await p.screenshot({timeout:180000,scale:"css"}), tries=0;
+      while(await blackShare(A)>0.25){ if(++tries>3) throw new Error("frame "+f+": the canvas is black in the capture after "+(tries-1)+" redraws");
+        await p.evaluate(()=>{ renderer.render=window.__ux2rr; if(typeof GDEPTH!=="undefined") GDEPTH.key=null; if(FX.on) renderFX(); else renderStandard(); renderer.render=function(){}; });
+        A=await p.screenshot({timeout:180000,scale:"css"}); redrawn++; }
       await p.evaluate(()=>window.__ux2.inkOff(true)); const B=await p.screenshot({timeout:180000,scale:"css"});
       await p.evaluate(()=>{ window.__ux2.inkOff(false); window.__ux2.layerOff(true); }); const C=await p.screenshot({timeout:180000,scale:"css"});
       await p.evaluate(()=>window.__ux2.layerOff(false));
@@ -79,7 +96,7 @@ const q=(a,p)=>{ if(!a.length) return null; const s=a.slice().sort((x,y)=>x-y); 
     drawn:{max:drawnMax, median:q(comps.map(c=>c.drawn),0.5), over12:over12, byTierMax:{1:Math.max.apply(null,comps.map(c=>c.byTier[1]||0)),2:Math.max.apply(null,comps.map(c=>c.byTier[2]||0)),3:Math.max.apply(null,comps.map(c=>c.byTier[3]||0)),0:Math.max.apply(null,comps.map(c=>c.byTier[0]||0))},
       fillsMax:Math.max.apply(null,comps.map(c=>c.fills)), fillsMedian:q(comps.map(c=>c.fills),0.5),
       tier1Frames:comps.reduce((n,c)=>n+(c.byTier[1]||0),0), tier1Grown:comps.reduce((n,c)=>n+(c.grown||0),0)},
-    contrast:{samples:samples.length, texts:texts.length, fading:texts.length-full.length,
+    contrast:{samples:samples.length, redrawn:redrawn, texts:texts.length, fading:texts.length-full.length,
       tier3:{ring:sum(t3,"ring"), wide:sum(t3,"wide"), box:sum(t3,"box"), bare:sum(t3.filter(t=>t.bare!==null),"bare")},
       cased:{ring:sum(cased,"ring"), box:sum(cased,"box")}, plated:{ring:sum(plated,"ring"), box:sum(plated,"box")}, all:{ring:sum(full,"ring"), box:sum(full,"box"), bare:sum(full.filter(t=>t.bare!==null),"bare")},
       belowRing:full.filter(t=>t.ring<4.5).map(t=>({f:t.f, clock:t.clock, k:t.k, tier:t.tier, text:t.text, ring:t.ring, box:t.box, bare:t.bare})).slice(0,40)},
@@ -93,7 +110,7 @@ const q=(a,p)=>{ if(!a.length) return null; const s=a.slice().sort((x,y)=>x-y); 
   console.log(TAG+" on "+md5.slice(0,8)+" ("+out.env.renderer+"; "+VP.join("x")+(PHONE?" phone, density 3":"")+"): "+F.length+" frames to "+(out.clockEnd||0).toFixed(1)+", "+out.secs+" s");
   console.log("  filled plates over the formations' box: max "+pc(out.coverage.max)+", median "+pc(out.coverage.median)+", frames over 12%: "+out.coverage.over12+" of "+cov.length+"; every label's box: max "+pc(out.coverage.labelCoverMax)+"; tier 3 fills: "+out.coverage.tier3FillsMax+" at most, in "+out.coverage.tier3FillFrames+" frames");
   console.log("  drawn labels: max "+out.drawn.max+", median "+out.drawn.median+", frames over 12: "+over12+"; filled: max "+out.drawn.fillsMax+", median "+out.drawn.fillsMedian+"; by tier at most "+JSON.stringify(out.drawn.byTierMax)+"; a live event's plate at t-live in "+out.drawn.tier1Grown+" of its "+out.drawn.tier1Frames+" frames");
-  console.log("  contrast over "+samples.length+" drawn frames, "+full.length+" texts at full opacity ("+out.contrast.fading+" fading aside): tier 3 ring "+JSON.stringify(out.contrast.tier3.ring)+", box "+JSON.stringify(out.contrast.tier3.box)+", bare "+JSON.stringify(out.contrast.tier3.bare));
+  console.log("  contrast over "+samples.length+" drawn frames ("+redrawn+" drawn again: the capture's canvas black), "+full.length+" texts at full opacity ("+out.contrast.fading+" fading aside): tier 3 ring "+JSON.stringify(out.contrast.tier3.ring)+", box "+JSON.stringify(out.contrast.tier3.box)+", bare "+JSON.stringify(out.contrast.tier3.bare));
   if(out.boxFallback.labelsMax) console.log("    the variant not built (the far plate under every tier 3 label whose words' box reads under 4.5:1): "+out.boxFallback.labelsMedian+" labels a sampled frame (median; "+out.boxFallback.labelsMax+" at most), filled plates then over "+pc(out.boxFallback.coverMedian)+" of the formations' box (median; "+pc(out.boxFallback.coverMax)+" at most), over 12% in "+out.boxFallback.over12+" of "+samples.length+" sampled frames");
   console.log("    every text: ring "+JSON.stringify(out.contrast.all.ring)+", box "+JSON.stringify(out.contrast.all.box)+", bare "+JSON.stringify(out.contrast.all.bare));
   console.log("  the formations a live event names: drawn "+EV.drawn+" of "+EV.inView+" in view ("+pc(EV.share)+") over "+EV.frames+" frames of Play; not drawn: "+JSON.stringify(EV.miss)+"; outside the measure: "+JSON.stringify(EV.out));

@@ -502,7 +502,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   separation; every other Watch case as before).
   Since UI/UX roadmap step 2 (`docs/UX_ART_AUDIT.md` UA-01, UA-15, Direction A; the owner's decision of 15 November 2026, which supersedes decisions
   284 (b) and 263 (a) where it needs to): the live block `ux2` in `check:selftest` and `check:visual` (`tools/visual/ux2.js`, feature `MLT` required,
-  judged by `thresholds.js` `checkUx2`, its bars `UX2`; alone on any build by `tools/ux-step2/block.js`: on the Step 1 build 520 failures): on the
+  judged by `thresholds.js` `checkUx2`, its bars `UX2`; alone on any build by `tools/ux-step2/block.js`: on the Step 1 build 561 failures): on the
   Landscape a live event (weight above 0.3) on the accent plate, at `t-live` where its larger plate stands clear; a formation a live event names
   on the plate with its keyline; every other label cased on no plate, at AA as rendered against its casing, at 09:00 and in the valley fog; the paper
   map and the Landscape with counters without tiers, Clean without labels; a scripted Play from 08:40 to 09:05 in Study (filled plates over the

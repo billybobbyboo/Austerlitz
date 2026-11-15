@@ -16,6 +16,15 @@ project's own harness. The same tool, with the same arguments, was run on the St
   (the phase's view, as a visitor's seek gives it); then Play at half speed with Follow, on the motion driver's clock
   (`tools/visual/motion.js`: the app's own loop stepped at 30 frames a second, whatever the machine's speed). 08:30 to 09:30 is 548 frames;
   11:30 to 13:00 is 728. Two runs of one build give the same frames (the draw is skipped between the sampled frames; the layout reads nothing drawn).
+- **The pointer.** On the desktop's page the card is closed by a real click, and the pointer is then parked off the map (at 2, 2, as
+  `tools/visual/motion.js` parks it). Left where the card's button was, it stands over the map, and whether the browser then reports a hover
+  on the counter or name under it varies by run: a hovered formation is protected, so the layout changes. This was found on the paper map,
+  where two runs of one build gave two layouts. With the pointer parked every run of a build is the same. The phone's page is tapped: no hover.
+- **A black capture.** The frames between samples are not drawn. The first frame a run draws was captured with a black canvas in about half
+  the runs: the drawing buffer held the picture (read back in the same task), the capture did not, taken before the browser put the frame on
+  screen. Such a capture reads every text against black. The probe now tests each capture's canvas (the share of its pixels exactly black:
+  0.60 to 0.72 on the black captures, 0 on a drawn frame), and draws the same state again (no clock, no layout) and captures again when it is
+  black; the summary counts them (`contrast.redrawn`).
 - **Sampling.** Every frame: the layer's items and the composition. Every 15th frame (30th in the later window), and the frames at the clocks named
   (08:44.7 in the valley fog, 09:00, 09:15; 12:15, 12:30), are drawn by the app's own WebGL frame and captured three times.
 

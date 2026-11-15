@@ -21,7 +21,7 @@ the information filters stay.
 - **The formations a live event names** were drawn in **2,205 of the 2,706 frames they stood in view (81.5%)**; every miss was the layout's (no
   room). On the phone 248 of 334 (74.3%).
 - **UA-15:** Watch drew 34 labels at the median and 47 at most, Study's set.
-- The live block `ux2` (below) on the base build: **520 failures.**
+- The live block `ux2` (below) on the base build: **561 failures.**
 
 ### What changed
 
@@ -98,9 +98,9 @@ label is laid out in, and so every placement outside Play; the paper map; the La
 
 ### Verified (Chromium 141 through the pinned Playwright 1.56.0; software WebGL; the phone is Chromium's emulation)
 
-**Interim record (this commit).** The final build (md5 `07cbcaf3...`) differs from the build most of the browser runs below were made on
-(md5 `367c8071653569ebd2e391c3379d3d3c`, 3,069,881 bytes) only by the key's two rows and the width guard. Each line says which build it is of. The
-browser checks and the acceptance runs are being run again on the final build; this record is replaced by theirs in the next commit.
+**Interim record (this commit).** Every check below is of the final build (md5 `07cbcaf3...`). The acceptance runs' numbers are of the build before
+the key's two rows and the width guard (md5 `367c8071653569ebd2e391c3379d3d3c`), and were taken before two faults of the probe were found and
+fixed (below); they are being run again and this record is replaced by theirs in the next commit.
 
 - **On the final build:** `npm test`: all 9 suites, the height guard and the dead-code check pass. `npm run check:data`: all 143 declarations
   byte-identical to the reference. `npm run check:chronology`: errors 0. The block `ux2` alone (`tools/ux-step2/block.js`): every check passes.
@@ -108,11 +108,22 @@ browser checks and the acceptance runs are being run again on the final build; t
   level-of-detail switches 105 of 130, flickers 10 of 12; `MOTION.LONG`: 4,833 of 6,322 and 11,869 of 16,010, the base's counts). One earlier run
   of it, made while the acceptance probes loaded the machine, ended on a 30 s timeout of a harness key press (`page.focus` on `#timerail`) after
   all 351 in-app checks had passed; run alone it passes, on that build and on the final one.
-- **On `367c8071...`:** `npm run check:contrast`: passes (9,172 text elements in 57 states, none below AA; 465 cased texts read against their
+- **On the final build:** `npm run check:contrast`: passes (9,195 text elements in 57 states, none below AA; 465 cased texts read against their
   casing; 10 of 10 start-up cases).
-- **On `367c8071...`:** the block `tiers` alone (`tools/ux-step2/tiers.js`): its 13 views pass (tier 3 at 6.99:1 at the least as rendered).
-- **The block `ux2` on the base build:** 520 failures (`docs/ux-step2-evidence/runs/block-base.log`).
-- **The acceptance runs** (`tools/ux-step2/probe.js`, on `367c8071...` and the base; `docs/ux-step2-evidence/README.md`): at 1440 x 900 from 08:30 to
+- **On the final build:** the block `tiers` alone (`tools/ux-step2/tiers.js`): its 13 views pass (tier 3 at 6.99:1 at the least as rendered).
+- **On CI** (ubuntu-24.04, the pinned Chromium): the checks job (the build, the committed HTML a fresh build's, `npm test`, `check:data`,
+  `check:chronology`) and the browser job (`check:contrast`, `check:selftest`) pass on `192902f` (runs 43706354632 and 43706452916) and on `c7472fc`
+  (runs 43708995528 and 43709001179). The full `check:visual` was started on `192902f` (run 43706481008).
+- **Two faults of the acceptance probe, found on the final build's runs and fixed** (`tools/ux-step2/probe.js`; neither is the build's):
+  (1) the pointer was left where the card's button had been, over the map, and whether the browser then reported a hover on the counter under
+  it varied by run: the paper map's run gave two layouts on one build. The pointer is now parked off the map, as `tools/visual/motion.js` does.
+  With it parked every Landscape run of both builds is frame for frame the run before (12 runs compared, 0 frames differing); the paper map's
+  run is frame for frame the same on both builds (3 runs of this build, 2 of the base); the Landscape with counters' run changes on both
+  builds alike (a counter had been hovered in both). (2) The first frame a run drew was captured with a black canvas in about half the runs
+  (the drawing buffer held the picture; the capture was taken before the browser put it on screen), which reads that frame's texts against
+  black. A capture whose canvas is black is now drawn and captured again, and counted.
+- **The block `ux2` on the base build:** 561 failures (`docs/ux-step2-evidence/runs/block-base.log`).
+- **The acceptance runs** (`tools/ux-step2/probe.js`, on `367c8071...` and the base, before the probe's two fixes; `docs/ux-step2-evidence/README.md`): at 1440 x 900 from 08:30 to
   09:30 in Study, filled plates over the formations' box 13.6% at most and 8.6% at the median (base 30.8% and 25.0%), over 12% in 28 of 548
   frames; the formations a live event names drawn in 2,706 of 2,706 frames in view (base 2,205, 81.5%); Watch 9 labels at most (base 47);
   tier 3 at 7.46:1 at the least against its casing over 1,934 texts in 137 drawn frames; the label pass 1.4 ms at the median and 3.7 ms at the

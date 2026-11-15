@@ -11,5 +11,6 @@ the wall of names, a tier 3 name focused: 30 labels, tier 1 3, tier 2 5, tier 3 
 the wall of names, Napoleon's reading: 28 labels, tier 1 3, tier 2 5, tier 3 20, 20 on no plate (as rendered 7.04 to 14.38:1)
 the wall of names at 844 x 390: 20 labels, tier 1 3, tier 2 1, tier 3 16, 16 on no plate (as rendered 9.77 to 14.04:1)
 the wall of names, with counters: 10 labels, tier 1 0, tier 2 0, tier 3 0, tier 0 10, 0 on no plate
-build 367c8071653569ebd2e391c3379d3d3c, 182 s; page errors and console messages 0
+build 07cbcaf32808c430198d55b1b7ed78b7, 320 s; page errors and console messages 0
 the label tiers: every check passed in the 13 views
+EXIT 0

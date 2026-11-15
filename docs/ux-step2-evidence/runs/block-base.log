@@ -9,8 +9,8 @@ ux2 Watch while it plays, no tier 3 name: playing null (focus), focused -, blurr
 ux2 forced colours: 21 labels; tier 3 on no fill 0; tier 1 outlines 
 ux2 reduced motion, Play in Watch: 120 frames, 51 labels drawn at most, tier 3 drawn in 0 frames
 ux2 a phone (390 x 844): a live event at  px; Play, 270 frames: filled plates over the formations' box 45.3% at most, 32.3% (median); the formations a live event names drawn 27 of 52
-build d404045b4544eb03c69fc3c9e3fff044, Chromium 141.0.7390.37 (Playwright 1.56.0, software WebGL), 295 s; page errors and console messages 0
-FAILED (520):
+build d404045b4544eb03c69fc3c9e3fff044, Chromium 141.0.7390.37 (Playwright 1.56.0, software WebGL), 356 s; page errors and console messages 0
+FAILED (561):
   ux2: the token t-live null px, 13.5 expected
   ux2 09:00: n:ahq tier null, 3 expected
   ux2 09:00: n:lich tier null, 3 expected
@@ -33,6 +33,7 @@ FAILED (520):
   ux2 09:00: t:puntowitz tier null, 3 expected
   ux2 09:00: t:blasowitz tier null, 3 expected
   ux2 09:00: t:krzenowitz tier null, 3 expected
+  ux2 09:00: the key's rows for the tiers and for Watch's set {"tiers":null,"calm":null} (the tiers' shown, Watch's hidden)
   ux2 09:00: tiers 1/2/3 drawn 0/0/0 (at least 1/1/5: the view proves nothing)
   ux2 09:00: no live event at t-live (13.5 px)
   ux2 09:00: 0 tier 3 texts read as rendered
@@ -70,5 +71,5 @@ FAILED (520):
   ux2 08:44, the valley fog: n:rg_inf tier null, 3 expected
   ux2 08:44, the valley fog: n:rg_cav tier null, 3 expected
   ux2 08:44, the valley fog: e:davout tier null, 1 expected
-  ux2 08:44, the valley fog: e:soult tier null, 1 expected
-  ... and 460 more
+  ... and 501 more
+EXIT 1

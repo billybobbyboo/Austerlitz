@@ -19,7 +19,7 @@ device. Nothing here is a frame rate. Safari, a real GPU and a real phone were n
 | 1 | Filled plates over at most 12% of the formations' box in every frame of the 08:30 to 09:30 Play, at 1440 x 900 and 390 x 844, Study and Watch | **1440 x 900:** 30.8% at most (25.0% median) on the base; **13.6% at most (8.6% median)** now in Study, 13.4% (8.7%) in Watch; over 12% in **28 of 548 frames** (08:54.8 to 08:59.3, while four live events' plates and the four formations they name stand at once). **390 x 844:** 44.8% at most (30.8% median) on the base; **35.7% at most (16.2% median)** now; over 12% in 501 of 548 frames. Fallback plates under tier 3 labels: **0** in every frame of every run | **No** on the phone; on the desktop in 520 of 548 frames (section 3) |
 | 2 | Tier 3 at 4.5:1 as rendered against its local ground, fog included; the label pass under 8 ms | Against its casing: **7.46:1 at the least over 1,934 tier 3 texts** in 137 drawn frames (the fog of 08:30 to 09:00, 09:00 to 09:30, noon), none below 4.5:1. Against the ground between and round its words (the measure a plated label is held to) it reads lower: section 4. The label pass: **1.4 ms median, 3.7 ms at the 95th percentile** (base 1.3 and 3.4) | **Yes by the casing; no by the whole box**: the owner's call (section 4) |
 | 3 | The formations a live event names drawn in at least 90% of desktop frames; `MOTION.LONG` preserved | On the Landscape, 08:30 to 09:30: **2,706 of 2,706 (100%)** in Study, base 2,205 of 2,706 (81.5%); 2,752 of 2,752 in Watch, base 84.7%. 11:30 to 13:00: 6,878 of 6,878, base 92.2%. `MOTION.LONG`'s own runs (the Landscape with counters, which step 2 does not touch): 4,833 of 6,322 (76.4%) and 11,869 of 16,010 (74.1%), the base's counts exactly, over its 70% bar | **Yes** on the Landscape (section 5) |
-| 4 | Interaction and accessibility through Play, pause, seek, event changes, focus, selection, forced colours, reduced motion, a phone; the comparison cases; #111's behaviour | The live block `ux2` passes every check on this build and fails 520 on the base; the Landscape with counters and the paper map measure the same on both builds in every number; the block `ux1` (step 1's key, rail and markers) passes | **Yes**, in emulation (section 6) |
+| 4 | Interaction and accessibility through Play, pause, seek, event changes, focus, selection, forced colours, reduced motion, a phone; the comparison cases; #111's behaviour | The live block `ux2` passes every check on this build and fails 561 on the base; the Landscape with counters and the paper map measure the same on both builds in every number; the block `ux1` (step 1's key, rail and markers) passes | **Yes**, in emulation (section 6) |
 | 5 | The suites; guarded data byte-identical; existing assertions and baselines kept; the unobstructed-area targets measured | `npm test`, `check:data` (143 of 143 identical), `check:chronology`, `check:contrast`, `check:selftest`: section 7. No limit, ceiling or baseline moved. The unobstructed targets are not met on the base and are unchanged (section 8) | **Yes**; the full `check:visual` was not run here (section 7) |
 
 ## 2. The runs
@@ -265,7 +265,7 @@ a live event names (section 9).
 ## 6. Interaction and accessibility
 
 The live block `ux2` (`tools/visual/ux2.js`, judged by `thresholds.js` `checkUx2`), on this build: **every check passes** (`runs/block-step2.log`).
-On the base build: **520 failures** (`runs/block-base.log`, `runs/block-base-failures.json`): no tier, 29.8% of the formations' box under plates in the block's Play, 1,033 of 1,333
+On the base build: **561 failures** (`runs/block-base.log`, `runs/block-base-failures.json`): no tier, 29.8% of the formations' box under plates in the block's Play, 1,033 of 1,333
 named formations drawn, 45 labels in Watch, 45.3% on the phone.
 
 - **The tiers at rest** (09:00 and 08:44 in the fog): every label on its tier's surface; 54 tier 3 texts at 7.41:1 at the least against their casing.
@@ -289,20 +289,22 @@ named formations drawn, 45 labels in Watch, 45.3% on the phone.
 
 ## 7. The checks
 
-**Interim record (this commit).** The final build (md5 `07cbcaf3...`) differs from the build most of the browser runs below were made on
-(md5 `367c8071653569ebd2e391c3379d3d3c`, 3,069,881 bytes) only by the key's two rows and the width guard. Each line says which build it is of. The
-browser checks and the acceptance runs are being run again on the final build; this record is replaced by theirs in the next commit.
+**Interim record (this commit).** Every check below is of the final build (md5 `07cbcaf3...`). The acceptance runs in sections 1 to 5 are of the
+build before the key's two rows and the width guard (md5 `367c8071653569ebd2e391c3379d3d3c`) and were taken before two faults of the probe were
+found and fixed (the pointer left over the map; the first drawn frame captured black: `METHOD.md`). They are being run again; sections 1 to 5
+are replaced by those runs in the next commit.
 
 | Check | Build | Result |
 |---|---|---|
 | `npm test` | final | all 9 suites, the height guard and the dead-code check pass |
 | `npm run check:data` | final | all 143 declarations byte-identical to `archive/stage6wp09w-45d29cc5.html` |
 | `npm run check:chronology` | final | errors 0 |
-| `tools/ux-step2/block.js` (the block `ux2` alone) | final | every check passes; on the base 520 failures |
+| `tools/ux-step2/block.js` (the block `ux2` alone) | final | every check passes; on the base 561 failures |
 | `npm run check:selftest` | final | passes: 351 checks by name; the motion block's 16: jumps 234 of 251, pops 948 of 1,049, level-of-detail switches 105 of 130, flickers 10 of 12; `MOTION.LONG` 4,833 of 6,322 and 11,869 of 16,010 (the base's counts); the blocks `ux1` and `ux2` pass ([`runs/check-selftest.log`](runs/check-selftest.log)) |
-| `npm run check:contrast` | `367c8071...` | passes: 9,172 text elements in 57 states, none below AA; 465 cased texts; 10 of 10 start-up cases ([`runs/check-contrast.log`](runs/check-contrast.log)) |
-| `tools/ux-step2/tiers.js` (`check:visual`'s block `tiers` alone) | `367c8071...` | its 13 views pass; tier 3 at 6.99:1 at the least as rendered ([`runs/tiers-step2.log`](runs/tiers-step2.log)) |
-| `npm run check:visual` (the full suite) | | **not run here** (about four hours on CI, where it runs on demand) |
+| `npm run check:contrast` | final | passes: 9,195 text elements in 57 states, none below AA; 465 cased texts; 10 of 10 start-up cases ([`runs/check-contrast.log`](runs/check-contrast.log)) |
+| `tools/ux-step2/tiers.js` (`check:visual`'s block `tiers` alone) | final | its 13 views pass; tier 3 at 6.99:1 at the least as rendered ([`runs/tiers-step2.log`](runs/tiers-step2.log)) |
+| CI, on push and on the pull request | final | the checks job and the browser job (`check:contrast`, `check:selftest`) pass on `192902f` and `c7472fc`: runs 43706354632, 43706452916, 43708995528, 43709001179 |
+| `npm run check:visual` (the full suite) | final | **not run here**; started on CI on `192902f`, run 43706481008 (about four hours) |
 
 One earlier `check:selftest` run, made while the acceptance probes loaded the machine, ended on a 30 s timeout of a harness key press
 (`page.focus` on `#timerail`) after all 351 in-app checks had passed. Run alone it passes.
