@@ -160,7 +160,16 @@ function evShare(F,events){
    Returns every frame's snap */
 async function playRun(page,MO,o){
   await page.evaluate(MO.inPage); await page.evaluate(inPage);
-  await page.evaluate(a=>{ var D=window.__md; D.start({gl:true}); window.__ux2rr=renderer.render; renderer.render=function(){};
+  /* the app's own pending animation frame, consumed before the run. loop() asks for its next frame as it begins, so one callback is always
+     pending when the driver starts; the driver refuses the next, but that one still comes, at a moment of the browser's choosing (0.7 to 2.5 s
+     after the start were measured), and runs one frame of the app, with a pass of the label layer, between two of the run's frames: the frames
+     here are stepped one evaluate at a time (tools/visual/motion.js RUN steps all of its frames in one task, so none comes in between). Where
+     it fell the layout could change from that frame on: one run in four of the Allied reading's, on one build. So the driver is started with
+     the page at rest (D.start leaves no frame asked for), the pending frame is waited for (it counts as skipped or drawn), and the layer is
+     marked as reached afresh again before the run's own first frame */
+  const n0=await page.evaluate(()=>{ var D=window.__md; D.start({gl:true}); window.__ux2rr=renderer.render; renderer.render=function(){}; return DEV.frames+DEV.skipped; });
+  await page.waitForFunction(n=>DEV.frames+DEV.skipped>n,n0,{timeout:15000}).catch(()=>{ throw new Error("playRun: the app's pending frame did not come within 15 s of the driver's start"); });
+  await page.evaluate(a=>{ var D=window.__md; if(typeof mlReset==="function") mlReset("driver"); needFrames=0;
     if(a.reading&&a.reading!=="none") setCommandView(a.reading);
     stopPlay(); setClock(a.from,{instant:true,force:true,camera:false}); if(mode!=="staff"){ freeCam=false; curVantage=null; } setSpeed(0.5); requestRender(8); D.frame(8); togglePlay(); },{from:o.from,reading:o.reading||null});
   const F=[]; let f=0, last=null;

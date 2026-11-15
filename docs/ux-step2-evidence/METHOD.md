@@ -19,12 +19,20 @@ project's own harness. The same tool, with the same arguments, was run on the St
 - **The pointer.** On the desktop's page the card is closed by a real click, and the pointer is then parked off the map (at 2, 2, as
   `tools/visual/motion.js` parks it). Left where the card's button was, it stands over the map, and whether the browser then reports a hover
   on the counter or name under it varies by run: a hovered formation is protected, so the layout changes. This was found on the paper map,
-  where two runs of one build gave two layouts. With the pointer parked every run of a build is the same. The phone's page is tapped: no hover.
+  where two runs of one build gave two layouts (the pending frame below also played a part there). The phone's page is tapped: no hover.
 - **A black capture.** The frames between samples are not drawn. The first frame a run draws was captured with a black canvas in about half
   the runs: the drawing buffer held the picture (read back in the same task), the capture did not, taken before the browser put the frame on
   screen. Such a capture reads every text against black. The probe now tests each capture's canvas (the share of its pixels exactly black:
   0.60 to 0.72 on the black captures, 0 on a drawn frame), and draws the same state again (no clock, no layout) and captures again when it is
   black; the summary counts them (`contrast.redrawn`).
+- **The app's own pending frame.** The app's loop asks for its next animation frame as each one begins, so one is always pending when the
+  driver starts. The driver refuses the next, but that one still comes, when the browser chooses (0.7 to 2.5 s after the start, measured), and
+  runs one frame of the app, with a pass of the label layer, between two of the run's frames (the run's frames are stepped one at a time from
+  outside the page). Where it fell, the layout could differ from that frame on: one run in four of the Allied reading's gave another layout
+  on one build, one of seven of the Landscape with counters', two of three of the paper map's. A scripted Play (`tools/visual/ux2.js`
+  `playRun`, the probe's and the block's) now starts the driver with the page at rest, waits for that frame, marks the layer as reached afresh
+  and only then begins. With it ten runs under load (four of the Allied reading's, three of each of the others) are frame for frame the
+  same, and the same as the result most runs had given before.
 - **Sampling.** Every frame: the layer's items and the composition. Every 15th frame (30th in the later window), and the frames at the clocks named
   (08:44.7 in the valley fog, 09:00, 09:15; 12:15, 12:30), are drawn by the app's own WebGL frame and captured three times.
 

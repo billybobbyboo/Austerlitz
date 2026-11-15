@@ -114,14 +114,20 @@ fixed (below); they are being run again and this record is replaced by theirs in
 - **On CI** (ubuntu-24.04, the pinned Chromium): the checks job (the build, the committed HTML a fresh build's, `npm test`, `check:data`,
   `check:chronology`) and the browser job (`check:contrast`, `check:selftest`) pass on `192902f` (runs 43706354632 and 43706452916) and on `c7472fc`
   (runs 43708995528 and 43709001179). The full `check:visual` was started on `192902f` (run 43706481008).
-- **Two faults of the acceptance probe, found on the final build's runs and fixed** (`tools/ux-step2/probe.js`; neither is the build's):
+- **Three faults of the acceptance tools, found on the final build's runs and fixed** (`tools/ux-step2/probe.js`, `tools/visual/ux2.js`
+  `playRun`; none is the build's):
   (1) the pointer was left where the card's button had been, over the map, and whether the browser then reported a hover on the counter under
   it varied by run: the paper map's run gave two layouts on one build. The pointer is now parked off the map, as `tools/visual/motion.js` does.
   With it parked every Landscape run of both builds is frame for frame the run before (12 runs compared, 0 frames differing); the paper map's
   run is frame for frame the same on both builds (3 runs of this build, 2 of the base); the Landscape with counters' run changes on both
   builds alike (a counter had been hovered in both). (2) The first frame a run drew was captured with a black canvas in about half the runs
   (the drawing buffer held the picture; the capture was taken before the browser put it on screen), which reads that frame's texts against
-  black. A capture whose canvas is black is now drawn and captured again, and counted.
+  black. A capture whose canvas is black is now drawn and captured again, and counted. (3) The app's loop always has one animation frame
+  pending when the motion driver starts; it came when the browser chose, between two of the run's frames (which `playRun` steps one at a time
+  from outside the page), and ran a pass of the label layer there. Where it fell the layout could change: one run in four of the Allied
+  reading's gave another layout on one build. `playRun` now starts the driver with the page at rest, waits for that frame and marks the layer
+  as reached afresh before the run. Ten runs under load are then frame for frame the same, and the same as most runs had given before; the
+  block `ux2` uses the same `playRun`.
 - **The block `ux2` on the base build:** 561 failures (`docs/ux-step2-evidence/runs/block-base.log`).
 - **The acceptance runs** (`tools/ux-step2/probe.js`, on `367c8071...` and the base, before the probe's two fixes; `docs/ux-step2-evidence/README.md`): at 1440 x 900 from 08:30 to
   09:30 in Study, filled plates over the formations' box 13.6% at most and 8.6% at the median (base 30.8% and 25.0%), over 12% in 28 of 548
