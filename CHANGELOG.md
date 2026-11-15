@@ -90,7 +90,11 @@ WebGL draw, as the motion driver does (a software frame takes about a second and
   skipped the name at 0, passed it at 1 and failed it between: the result depended on the frame's time. `contrast.js` now reads every state at rest:
   frames until no item of the layer's pass is fading in or out (one frame in `reflow-help`), and a state still fading after 40 frames fails. No limit
   changed; the name is now read at full opacity, on its plate.
-- `check:selftest`: see the PR (here and on CI).
+- **`check:selftest` on CI (`c9a3df0`, run 43666219714, 52 minutes): two failures, both this branch's, both fixed.** The self-test's "timeline (WP-06,
+  CL-UX-03)" (above, UA-06); and the live block `tips`, whose phone tap on the third marker (one of the two at 07:00) now opens the chooser, not the
+  dossier (UA-17): the block now taps a marker standing alone (no other marker's centre within 12 px; 10:30's at 390 px), so it still holds that a
+  tap shows no tip and opens the dossier; the chooser by touch is the live block `ux1`'s. On the first commit the job reached its 60-minute limit
+  (the `ux1` block about 7 minutes of it), so under `--selftest-only` the block now runs lighter (above).
 
 ### Not verified
 

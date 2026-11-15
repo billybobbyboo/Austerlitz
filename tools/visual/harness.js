@@ -428,7 +428,10 @@ async function interact(page,it,vp){
       AT="tips (phone)"; const pp=await openPage(browser,[390,844],"390x844 tips","ios");
       try{ await settle(pp); await pp.tap("#fr-close",{timeout:180000}); await pp.waitForTimeout(400);
         await pp.evaluate(()=>{ setClock(570,{instant:true,force:true,camera:false}); }); await settle(pp);
-        const mk=await centre(pp,"#evmarks .ev-mark",2);
+        /* UI/UX step 1 (UA-17): a marker standing alone (no other marker's centre within 12 px), since a tap on a stacked or crowded set opens the
+           chooser (app.js evPickOpen; the live block ux1 holds it); until step 1 the third marker, one of the two at 07:00 */
+        const mk=await pp.evaluate(()=>{ const B=[].slice.call(document.querySelectorAll("#evmarks .ev-mark")).map(e=>{ const r=e.getBoundingClientRect(); return {e,x:r.left+r.width/2,y:r.top+r.height/2,w:r.width}; }).filter(o=>o.w>0);
+          const o=B.find(a=>!B.some(b=>b!==a&&Math.hypot(b.x-a.x,b.y-a.y)<12)); return o?{x:o.x,y:o.y,tip:o.e.dataset.tip}:null; });
         if(mk){ await pp.touchscreen.tap(mk.x,mk.y); await pp.waitForTimeout(1000); TP.tap1=await tipOn(pp); await pp.waitForTimeout(2000); TP.tap3=await tipOn(pp); }
       } finally { const cx=pp.context(); await pp.close(); await cx.close(); }
       LIVE.tips=TP; console.log("timeline tips by real input: "+JSON.stringify(TP)); }
