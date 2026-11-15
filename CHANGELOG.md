@@ -121,8 +121,10 @@ Every check is of the final build. `docs/ux-step2-evidence/README.md` section 7 
   changed since; `playRun` has, and the block `ux2` with it passes here and in CI's self-test on `f29a088`). That run as a whole shows
   "cancelled": its self-test job was ended by the job's 60-minute limit about six minutes from its end.
 - **The browser job's limit is 90 minutes** (`.github/workflows/checks.yml`; was 60). The self-test's step took 57 min 57 s on `main` at
-  `72cc626` (run 43682373857), before this change; the block `ux2` adds about six minutes on a runner of that speed; the other seven finished
-  runs of this branch took 33 to 53 minutes. Nothing else in the workflow changed.
+  `72cc626` (run 43682373857), before this change; the block `ux2` adds about six minutes on a runner of that speed; two of this branch's first
+  nine runs had their self-test job ended at 60 minutes (43706481008, and 43722106923 on `f29a088`, whose pull-request twin on the same commit
+  passed in 33 minutes); the other seven took 33 to 53 minutes. Nothing else in the workflow changed. The runs under the new limit were still
+  going when this was written.
 - **The acceptance runs** (`tools/ux-step2/probe.js`, both builds, the same tool and arguments; 24 runs, no page error;
   `docs/ux-step2-evidence/README.md`): at 1440 x 900 from 08:30 to 09:30 in Study, filled plates over the formations' box 13.6% at most and 8.6%
   at the median (base 30.8% and 25.0%), over 12% in 28 of 548 frames; the formations a live event names drawn in 2,706 of 2,706 frames in view

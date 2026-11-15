@@ -309,8 +309,10 @@ the same pinned browser on ubuntu-24.04.
 
 - Run 43706481008 as a whole shows "cancelled": its `visual`, `checks` and contrast jobs passed, and its self-test job was ended by the job's
   60-minute limit about six minutes from its end. The self-test's step took 57 min 57 s on `main` at `72cc626` (run 43682373857), before this
-  change; the block `ux2` adds about six minutes on a runner of that speed. The other seven finished runs of this branch took 33 to 53 minutes. The
-  browser job's limit is raised to 90 minutes in this pull request (`.github/workflows/checks.yml`); nothing else in the workflow changed.
+  change; the block `ux2` adds about six minutes on a runner of that speed. A second run's self-test job was ended the same way (43722106923,
+  the push run on `f29a088`; its pull-request twin on the same commit, 43722112380, passed in 33 minutes). The other seven finished runs of this
+  branch took 33 to 53 minutes. The browser job's limit is raised to 90 minutes in this pull request (`.github/workflows/checks.yml`, from
+  `f5eb5ea`); nothing else in the workflow changed. The runs on the commits after it were still going when this was written.
 - `check:visual` ran on `192902f`. The build has not changed since. What changed in the tools after it: `playRun` (the pending frame,
   `METHOD.md`), which the block `ux2` uses; the block with it passes here and in CI's self-test on `f29a088`. The full suite was not run
   again on the last commit.
