@@ -96,7 +96,9 @@ const toClock=(g,x)=>g.tmin+Math.max(0,Math.min(1,(x-g.rail[0])/((g.rail[2]-g.ra
 const xOf=(g,t)=>g.rail[0]+(t-g.tmin)/(g.tmax-g.tmin)*(g.rail[2]-g.rail[0]);
 const readSel=page=>page.evaluate(()=>({clock, sel:selection?selection.kind+":"+selection.id:null, drawer:typeof drawerShown==="function"?drawerShown():null,
   pick:(()=>{ const p=document.getElementById("evpick"); return !!p&&!p.hidden; })(), playing}));
-const reset=(page,t)=>page.evaluate(t=>{ stopPlay(); if(typeof evPickClose==="function") evPickClose(false); select(null,null); setClock(t,{instant:true,force:true}); if(typeof paintTimeline==="function") paintTimeline(); },t);
+/* each case from a clear timeline: no sheet, no chooser, no selection and, below the docked width, the rail hidden (at 430 px tall it stands over the
+   timeline, the final audits' Stage 6) */
+const reset=(page,t)=>page.evaluate(t=>{ stopPlay(); if(typeof setHelp==="function") setHelp(false); if(typeof setPanels==="function"&&!docked) setPanels(false); if(typeof evPickClose==="function") evPickClose(false); select(null,null); setClock(t,{instant:true,force:true}); if(typeof paintTimeline==="function") paintTimeline(); },t);
 
 /* a point inside an element where it is the topmost (its own hit area), searched on a 1 px grid over its box and 6 px around */
 function ownPoint([sel,i]){
@@ -158,19 +160,25 @@ async function dragCases(page,log){
 /* a touch drag from a marker cancelled (CDP's touchCancel: the browser's own cancellation), then an ordinary tap on a marker */
 async function cancelCase(page){
   await reset(page,255); const g=await page.evaluate(railGeo), k=g.markers.findIndex(m=>m.t===255);
-  const p=await page.evaluate(ownPoint,["#evmarks .ev-mark",k]); if(!p||p.x===undefined) return {error:"no point on the 04:15 marker"};
+  const p=await page.evaluate(ownPoint,["#evmarks .ev-mark",k]); if(!p||p.x===undefined) return {error:"no point on the 04:15 marker", over:await page.evaluate(k=>{ const m=_evTicks[k].el, r=m.getBoundingClientRect(), h=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2); return {box:[r.left,r.top,r.width,r.height].map(Math.round), hit:h?(h.id||h.className||h.tagName):null, vp:[innerWidth,innerHeight]}; },k)};
   const cdp=await page.context().newCDPSession(page);
   const T=(type,x,y)=>cdp.send("Input.dispatchTouchEvent",{type,touchPoints:(type==="touchCancel"||type==="touchEnd")?[]:[{x,y,id:1}]});
   await T("touchStart",p.x,p.y); for(let i=1;i<=6;i++) await T("touchMove",p.x+8*i,p.y); const c1=(await readSel(page)).clock;
   await T("touchCancel"); await sleep(200); const s=await readSel(page);
-  await T("touchStart",p.x+80,p.y); await T("touchMove",p.x+120,p.y); await T("touchEnd"); await sleep(200);   /* a later touch elsewhere on the evmarks: no leftover drag */
+  /* a later touch elsewhere: no leftover drag. Held still before it lifts, so that it ends no fling: a tap that stops a fling makes no click in
+     Chromium (the platform's rule, not the app's), which on a slow runner left the tap below without its click */
+  await T("touchStart",p.x+80,p.y); await T("touchMove",p.x+100,p.y); await T("touchMove",p.x+120,p.y); await sleep(300); await T("touchEnd"); await sleep(600);
   const s2=await readSel(page);
   await cdp.detach();
   /* then a tap on the 09:00 marker */
   await reset(page,240); const g2=await page.evaluate(railGeo), k2=g2.markers.findIndex(m=>m.t===540), p2=await page.evaluate(ownPoint,["#evmarks .ev-mark",k2]);
-  let after=null; if(p2&&p2.x!==undefined){ await page.touchscreen.tap(p2.x,p2.y); await sleep(300); after=await readSel(page);
+  let after=null; if(p2&&p2.x!==undefined){ const hit2=await page.evaluate(([x,y])=>{ const h=document.elementFromPoint(x,y); return h?(h.id||h.className||h.tagName):null; },[p2.x,p2.y]);
+    await page.evaluate(()=>{ const L=window.__ux1ev=[]; ["pointerdown","pointerup","pointercancel","click","touchstart","touchend"].forEach(t=>window.addEventListener(t,e=>L.push(t+":"+((e.target&&(e.target.id||e.target.className))||"").toString().slice(0,12)),true)); });
+    await page.touchscreen.tap(p2.x,p2.y);
+    for(let w=0;w<10;w++){ await sleep(150); after=await readSel(page); if(after.sel||after.pick) break; }   /* the tap's click, however late the gesture delivers it (1.5 s) */
+    after.hit=hit2; after.at=[p2.x,p2.y]; after.ev=await page.evaluate(()=>window.__ux1ev.join(" "));
     if(after.pick){ await chooseIn(page,g2.markers[k2].id,true); after=await readSel(page); } }
-  return {draggedTo:+c1.toFixed(2),afterCancel:{clock:+s.clock.toFixed(2),sel:s.sel},laterTouch:{sel:s2.sel},tapAfter:after?{want:g2.markers[k2].id,sel:after.sel,clock:after.clock}:null};
+  return {draggedTo:+c1.toFixed(2),afterCancel:{clock:+s.clock.toFixed(2),sel:s.sel},laterTouch:{sel:s2.sel},tapAfter:after?{want:g2.markers[k2].id,sel:after.sel,clock:after.clock,hit:after.hit,at:after.at,ev:after.ev}:null};
 }
 
 async function laneCases(page,log,step){

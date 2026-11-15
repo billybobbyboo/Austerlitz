@@ -95,6 +95,15 @@ WebGL draw, as the motion driver does (a software frame takes about a second and
   dossier (UA-17): the block now taps a marker standing alone (no other marker's centre within 12 px; 10:30's at 390 px), so it still holds that a
   tap shows no tip and opens the dossier; the chooser by touch is the live block `ux1`'s. On the first commit the job reached its 60-minute limit
   (the `ux1` block about 7 minutes of it), so under `--selftest-only` the block now runs lighter (above).
+- **`check:selftest` on CI (`ff7e61c`, run 43670337013, 36 minutes): one failure, in the block's own setup.** "UA-06 a marker tap after a cancelled
+  drag": the tap on the 09:00 marker, made 200 ms after a quick 40 px swipe, opened nothing (also once on the base build, and in 1 of about 12 runs
+  here; the marker was topmost at the tap's point each time). Not established which; the likely cause, by Chromium's own rule, is that a tap stopping a
+  fling makes no click: the swipe now holds still before it lifts and the tap follows 600 ms later, and the outcome is read for up to 1.5 s (with the
+  events the tap delivered recorded). Each case now starts with the rail hidden below the docked width (at 430 px tall it stands over the timeline:
+  another run found the 04:15 marker under the Sources button). 3 of 3 runs here pass since.
+- **`check:selftest` here** (Chromium 153 through Playwright 1.63, not the pinned 1.56): the self-test's 351 checks pass; the old tips case and the
+  cancelled-drag case as on CI; and the motion block's flickers 14 (its ceiling 12) with two runs' visibility a few frames under their baselines, which
+  CI's pinned browser passes on this branch's builds (`b61ef4f`, `ff7e61c`): the block's counts are the pinned browser's.
 
 ### Not verified
 
