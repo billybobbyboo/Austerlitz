@@ -41,10 +41,13 @@ jobs:
   # decision 132: the two browser checks a push can afford, in parallel (headless Chromium from Playwright, software WebGL); 60 minutes since
   # Stage 8's implementation PR 8D: its culling checks add about two minutes to the in-app self-test on the runner (682-1,183 s before them,
   # 779-1,189 s with them), whose step has taken 16-31 minutes, and one stalled install try takes ten minutes of the limit; since 8E (the
-  # richer kit and the gait) the step has taken 19-38 minutes in eleven runs, the job at most 44
+  # richer kit and the gait) the step has taken 19-38 minutes in eleven runs, the job at most 44; 90 minutes since UI/UX roadmap step 2: on
+  # main at 72cc626 (step 1's build) the self-test's step took 57 min 57 s (run 43682373857), two minutes under the limit; step 2's live block
+  # ux2 adds about six minutes on such a runner (the motion block reached 50 min 30 s into the step against 44 min 41 s), and one of step
+  # 2's first eight runs was ended at 60 minutes with about six to go (run 43706481008; the other seven took 33 to 53 minutes)
   browser:
     runs-on: ubuntu-24.04
-    timeout-minutes: 60
+    timeout-minutes: 90
     strategy:
       fail-fast: false
       matrix:
