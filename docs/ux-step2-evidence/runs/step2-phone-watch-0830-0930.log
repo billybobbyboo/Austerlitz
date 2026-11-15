@@ -1,0 +1,13 @@
+step2-phone-watch-0830-0930 on 07cbcaf3 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 390x844 phone, density 3): 548 frames to 570.0, 88 s
+  filled plates over the formations' box: max 35.7%, median 16.2%, frames over 12%: 501 of 548; every label's box: max 44.0%; tier 3 fills: 0 at most, in 0 frames
+  drawn labels: max 5, median 4, frames over 12: 0; filled: max 5, median 4; by tier at most {"0":0,"1":4,"2":3,"3":0}; a live event's plate at t-live in 1569 of its 1569 frames
+  contrast over 39 drawn frames (0 drawn again: the capture's canvas black), 143 texts at full opacity (2 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":143,"min":11.6,"p10":13.49,"median":14.24,"below":0}, box {"n":143,"min":10.25,"p10":13.06,"median":14.24,"below":0}, bare {"n":143,"min":1.2,"p10":1.3,"median":2.61,"below":139}
+  the formations a live event names: drawn 334 of 334 in view (100.0%) over 548 frames of Play; not drawn: {"occluded":0,"placement":0,"calm":0,"withheld":0}; outside the measure: {"offscreen":1,"panel":0,"reading":0,"field":0,"lod":2397,"aggregate":142,"none":0}
+    davout             label drawn 493 frames; its formations drawn 0 of 0; outside {"friant:lod":493}
+    decision           label drawn 142 frames; its formations drawn 141 of 141; outside {"c_iv:aggregate":142,"sthilaire:lod":142,"vandamme:lod":142,"gqg:offscreen":1}
+    soult              label drawn 493 frames; its formations drawn 0 of 0; outside {"sthilaire:lod":493,"vandamme:lod":493}
+    pratzen-village    label drawn 193 frames; its formations drawn 0 of 0; outside {"sthilaire:lod":193}
+    face-about         label drawn 193 frames; its formations drawn 193 of 193; outside {"milo:lod":193,"kollo:lod":193}
+    telnitz-retaken    label drawn 55 frames; its formations drawn 0 of 0; outside {"friant:lod":55}
+  the label pass: median 0.8 ms, 95th 1.8, max 43.5 over 556 passes, over 8 ms: 1; page errors 0

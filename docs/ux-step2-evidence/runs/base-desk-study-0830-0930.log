@@ -1,0 +1,13 @@
+base-desk-study-0830-0930 on d404045b (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 548 frames to 570.0, 328 s
+  filled plates over the formations' box: max 30.8%, median 25.0%, frames over 12%: 545 of 548; every label's box: max 30.8%; tier 3 fills: 0 at most, in 0 frames
+  drawn labels: max 44, median 32, frames over 12: 548; filled: max 44, median 32; by tier at most {"0":44,"1":0,"2":0,"3":0}; a live event's plate at t-live in 0 of its 0 frames
+  contrast over 39 drawn frames (0 drawn again: the capture's canvas black), 1170 texts at full opacity (73 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":1170,"min":7.24,"p10":11.6,"median":13.16,"below":0}, box {"n":1170,"min":7.24,"p10":11.61,"median":13.17,"below":0}, bare {"n":1170,"min":1.01,"p10":1.68,"median":3.27,"below":981}
+  the formations a live event names: drawn 2205 of 2706 in view (81.5%) over 548 frames of Play; not drawn: {"occluded":0,"placement":501,"calm":0,"withheld":0}; outside the measure: {"offscreen":0,"panel":1,"reading":0,"field":0,"lod":262,"aggregate":221,"none":0}
+    decision           label drawn 221 frames; its formations drawn 471 of 593; misses {"gqg:placement":24,"sthilaire:placement":58,"vandamme:placement":40}; outside {"gqg:panel":1,"c_iv:aggregate":221,"gqg:lod":69}
+    davout             label drawn 493 frames; its formations drawn 441 of 493; misses {"friant:placement":52}
+    soult              label drawn 493 frames; its formations drawn 781 of 986; misses {"sthilaire:placement":125,"vandamme:placement":80}
+    pratzen-village    label drawn 193 frames; its formations drawn 140 of 193; misses {"sthilaire:placement":53}
+    face-about         label drawn 193 frames; its formations drawn 333 of 386; misses {"milo:placement":16,"kollo:placement":37}; outside {"ahq:lod":193}
+    telnitz-retaken    label drawn 55 frames; its formations drawn 39 of 55; misses {"friant:placement":16}
+  the label pass: median 1.5 ms, 95th 4.6, max 37.4 over 556 passes, over 8 ms: 5; page errors 0

@@ -1,0 +1,16 @@
+the wall of names 09:00: 21 labels, tier 1 2, tier 2 2, tier 3 17, 17 on no plate (as rendered 8.43 to 14.48:1)
+the wall of names 12:00: 30 labels, tier 1 3, tier 2 5, tier 3 22, 22 on no plate (as rendered 7.04 to 13.79:1)
+the wall of names 15:00: 24 labels, tier 1 0, tier 2 0, tier 3 24, 24 on no plate (as rendered 8.71 to 14.31:1)
+the infantry's front: 13 labels, tier 1 2, tier 2 5, tier 3 6, 6 on no plate (as rendered 12.03 to 13.27:1)
+pratzen-low: 20 labels, tier 1 1, tier 2 3, tier 3 16, 16 on no plate (as rendered 11.39 to 14.20:1)
+overview-field 08:00 (fog): 37 labels, tier 1 3, tier 2 8, tier 3 26, 26 on no plate (as rendered 10.69 to 13.68:1)
+pratzen-low 08:30 (fog): 19 labels, tier 1 0, tier 2 0, tier 3 19, 19 on no plate (as rendered 7.49 to 14.48:1)
+ph8-overview-watch: 21 labels, tier 1 1, tier 2 0, tier 3 20, 20 on no plate (as rendered 8.78 to 14.52:1)
+the wall of names, a tier 3 name selected: 32 labels, tier 1 3, tier 2 6, tier 3 23, 23 on no plate (as rendered 6.99 to 14.20:1), the selected name {"id":"ahq","tier":2,"surf":"2","prot":true}
+the wall of names, a tier 3 name focused: 30 labels, tier 1 3, tier 2 5, tier 3 22, 21 on no plate (as rendered 7.04 to 13.82:1), the focused name {"id":"ahq","tier":3,"surf":"2","prot":true}
+the wall of names, Napoleon's reading: 28 labels, tier 1 3, tier 2 5, tier 3 20, 20 on no plate (as rendered 7.04 to 14.38:1)
+the wall of names at 844 x 390: 20 labels, tier 1 3, tier 2 1, tier 3 16, 16 on no plate (as rendered 9.77 to 14.04:1)
+the wall of names, with counters: 10 labels, tier 1 0, tier 2 0, tier 3 0, tier 0 10, 0 on no plate
+build 07cbcaf32808c430198d55b1b7ed78b7, 320 s; page errors and console messages 0
+the label tiers: every check passed in the 13 views
+EXIT 0

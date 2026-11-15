@@ -1,0 +1,13 @@
+base-phone-watch-1130-1300 on d404045b (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 390x844 phone, density 3): 728 frames to 780.0, 65 s
+  filled plates over the formations' box: max 51.9%, median 37.4%, frames over 12%: 713 of 728; every label's box: max 51.9%; tier 3 fills: 0 at most, in 0 frames
+  drawn labels: max 17, median 11, frames over 12: 98; filled: max 17, median 11; by tier at most {"0":17,"1":0,"2":0,"3":0}; a live event's plate at t-live in 0 of its 0 frames
+  contrast over 25 drawn frames (0 drawn again: the capture's canvas black), 233 texts at full opacity (41 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":233,"min":11.53,"p10":12.54,"median":12.89,"below":0}, box {"n":233,"min":11.53,"p10":12.54,"median":12.89,"below":0}, bare {"n":233,"min":1.64,"p10":3.52,"median":4.62,"below":100}
+  the formations a live event names: drawn 883 of 1151 in view (76.7%) over 728 frames of Play; not drawn: {"occluded":0,"placement":268,"calm":0,"withheld":0}; outside the measure: {"offscreen":172,"panel":0,"reading":0,"field":0,"lod":5848,"aggregate":728,"none":0}
+    guard-attack       label drawn 728 frames; its formations drawn 87 of 129; misses {"rg_cav:placement":19,"vandamme:placement":23}; outside {"constantine:aggregate":728,"rg_inf:lod":685,"rg_cav:lod":685,"vandamme:lod":685}
+    guard-broken       label drawn 728 frames; its formations drawn 75 of 129; misses {"rg_cav:placement":19,"drouet:placement":35}; outside {"guard_cav:lod":685,"drouet:lod":685,"rg_cav:lod":685}
+    buxhowden-blind    label drawn 573 frames; its formations drawn 498 of 573; misses {"buxhowden:placement":75}; outside {"dok:lod":573,"lang:lod":573}
+    hq-forward         label drawn 492 frames; its formations drawn 223 of 320; misses {"gqg:placement":97}; outside {"gqg:offscreen":172}
+    davout-resumes     label drawn 186 frames; its formations drawn 0 of 0; outside {"friant:lod":186,"bourcier:lod":186}
+    wheel              label drawn 55 frames; its formations drawn 0 of 0; outside {"sthilaire:lod":55,"vandamme:lod":55,"c_gren:lod":55,"guard_inf:lod":55}
+  the label pass: median 1.2 ms, 95th 2.5, max 11.8 over 736 passes, over 8 ms: 3; page errors 0

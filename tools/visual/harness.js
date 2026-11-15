@@ -91,6 +91,16 @@ async function has(page,feat,where){
   return ok;
 }
 const stateOf=(page,c)=>page.evaluate(s=>window.__aus.state(s),c);
+/* UI/UX roadmap step 2: every map text's contrast as rendered (measure.js textContrast). Where the layer draws cased texts (the Landscape's tier 3
+   labels, on no plate), a second frame of the same state is taken with the layer's ink transparent, as buf was taken (opts), and the cased texts
+   are read on the two; a build or a view without them is read on the one frame, as before */
+async function mapTextContrast(page,buf,opts){
+  if(!(await page.evaluate(()=>!!window.__aus.textContrast))) return null;
+  let off=null;
+  if(await page.evaluate(()=>window.__aus.casedCount?window.__aus.casedCount():0)){
+    await page.evaluate(()=>window.__aus.inkOff(true)); off=await page.screenshot(Object.assign({timeout:180000},opts||{})); await page.evaluate(()=>window.__aus.inkOff(false)); }
+  return page.evaluate(([a,b])=>window.__aus.textContrast(a,b),[buf.toString("base64"),off?off.toString("base64"):null]);
+}
 async function settle(page){
   const has=await page.evaluate(()=>!!(window.AUSTERLITZ_DEBUG&&AUSTERLITZ_DEBUG.settle));
   if(has){ await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(90));
@@ -221,7 +231,7 @@ async function interact(page,it,vp){
     m.pixels=await page.evaluate(b=>window.__aus.pixels(b),buf.toString("base64"));
     /* Stage 2D: every map-layer text's contrast on the rendered frame (the section E method), and section H's unobstructed
        fraction at 1280 x 720 too (the same page resized, then restored) */
-    m.textContrast=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,buf.toString("base64"));
+    m.textContrast=await mapTextContrast(page,buf,{scale:"css"});
     /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks' share of the free rectangle, as rendered: the same
        view drawn once more without them (a build with the marks; not the first-run views, whose card is not a reading; the opening's are) */
     /* (a reading not at the layer's first setting fails in thresholds.js expectState: decisions 85 and 239) */
@@ -247,7 +257,7 @@ async function interact(page,it,vp){
       const s0=await lay();
       await page.evaluate(()=>{ layerOn.routes=true; requestRender(3); }); await settle(page);
       const on=await page.screenshot({timeout:180000,scale:"css"}), s1=await lay();
-      const tc=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,on.toString("base64"));
+      const tc=await mapTextContrast(page,on,{scale:"css"});
       await page.evaluate(()=>{ layerOn.routes=false; requestRender(3); }); await settle(page);
       m.routes={routes:s1.routes,items:[s0.items,s1.items],dropped:[s0.dropped,s1.dropped],sameDrops:s0.ids===s1.ids,
         belowAA:tc?tc.belowAA:[],minContrast:tc?tc.min:null,share:(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[on.toString("base64"),buf.toString("base64")])).share};
@@ -258,7 +268,7 @@ async function interact(page,it,vp){
       const s0=await lay();
       await page.evaluate(()=>{ layerOn.skeleton=true; SKEL.day=true; requestRender(3); }); await settle(page);
       const on=await page.screenshot({timeout:180000,scale:"css"}), s1=await lay();
-      const tc=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,on.toString("base64"));
+      const tc=await mapTextContrast(page,on,{scale:"css"});
       await page.evaluate(()=>{ layerOn.skeleton=false; SKEL.day=false; requestRender(3); }); await settle(page);
       m.skeleton={anchors:s1.anchors,legs:s1.legs,items:[s0.items,s1.items],dropped:[s0.dropped,s1.dropped],sameDrops:s0.ids===s1.ids,
         belowAA:tc?tc.belowAA:[],minContrast:tc?tc.min:null,share:(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[on.toString("base64"),buf.toString("base64")])).share};
@@ -443,6 +453,12 @@ async function interact(page,it,vp){
     if(await has(first,"UX1","the map key and the timeline under real input (UI/UX roadmap step 1)")){
       const UX=require("./ux1.js");
       LIVE.ux1=await UX.runBlock((vp,dev)=>openPage(browser,vp,vp.join("x")+" ux1"+(dev?" ("+dev+")":""),dev),settle,{selftestOnly:SELFTEST_ONLY,log:s=>console.log(s)}); }
+    /* UI/UX roadmap step 2 (docs/UX_ART_AUDIT.md UA-01, UA-15; tools/visual/ux2.js; judged by thresholds.js checkUx2): the Landscape's label tiers
+       and Watch's set while the clock plays, on pages of the block's own (a desktop's at 1440 x 900 and a phone's) */
+    AT="ux2";
+    if(await has(first,"MLT","the Landscape's label tiers (UI/UX roadmap step 2)")){
+      const UX2=require("./ux2.js");
+      LIVE.ux2=await UX2.runBlock((vp,dev)=>openPage(browser,vp,vp.join("x")+" ux2"+(dev?" ("+dev+")":""),dev),settle,{selftestOnly:SELFTEST_ONLY,log:s=>console.log(s)}); }
     /* Stage 8, implementation PR 8C (decision 240 (a); docs/STAGE8_SPEC.md sections 3.5 and 15): the map layer in motion. On a page of its own at
        1600 x 900, the 16 motions of tools/stage8/label-motion.js driven through the app's own input and its own frame on a clock of its own
        (tools/visual/motion.js: 30 frames a second, the WebGL draw skipped, nothing set that the app does not set), each after a view reached
@@ -488,7 +504,7 @@ async function interact(page,it,vp){
           return {E:DWELL.st&&DWELL.st.E,clock:clock,ev:(dwellEvents()||[]).map(e=>e.id)}; });
         await settle(first);
         const buf=await first.screenshot({timeout:180000}), b64=buf.toString("base64");
-        const px=await first.evaluate(b=>window.__aus.pixels(b),b64), tc=await first.evaluate(b=>window.__aus.textContrast(b),b64);
+        const px=await first.evaluate(b=>window.__aus.pixels(b),b64), tc=await mapTextContrast(first,buf);
         const st2=await first.evaluate(()=>{ mlLayout(); var cap=document.querySelector("#tb-cap .ev.dwell"), lit=document.querySelectorAll("#evmarks .ev-mark.dw").length;
           var r={dropped:ML.stats.dropped,cap:cap?cap.textContent:null,lit:lit}; DWELL.HOLD=1.5; stopPlay(); return r; });
         LIVE.dwell={E:dw.E!==undefined?dw.E:null,clock:dw.clock,ev:dw.ev,solid:px.solidBlack,blocks:px.solidBlocks,belowAA:tc.belowAA,minContrast:tc.min,dropped:st2.dropped,cap:st2.cap,lit:st2.lit};
@@ -810,7 +826,7 @@ async function interact(page,it,vp){
         const c=require("./cases.js").find(x=>x.name===name);
         await first.evaluate(s=>window.__aus.apply(s),Object.assign({},c,{t,factor:4})); await settle(first);
         const buf=await first.screenshot({timeout:180000}), b64=buf.toString("base64");
-        const px=await first.evaluate(b=>window.__aus.pixels(b),b64), tc=await first.evaluate(b=>window.__aus.textContrast(b),b64);
+        const px=await first.evaluate(b=>window.__aus.pixels(b),b64), tc=await mapTextContrast(first,buf);
         const st4=await first.evaluate(()=>{ mlLayout(); applyAtmo(); var C=ATMO.u.uAtmoC.value, fr=landFreeRect(), worst=0, n=0;
           for(var j=0;j<=6;j++) for(var i=0;i<=8;i++){ var g=groundAt(fr[0]+(fr[2]-fr[0])*i/8,fr[1]+(fr[3]-fr[1])*j/6); if(!g) continue; n++;
             worst=Math.max(worst,atmoAt(landCam.position,new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]))[1]); }
@@ -820,34 +836,15 @@ async function interact(page,it,vp){
         fw.push(tag+": solid "+(100*px.solidBlack).toFixed(3)+"%, below AA "+tc.belowAA.length+", drops "+st4.dropped+", "+st4.under+" formations drawn under the fog, fog at most "+st4.worst.toFixed(3)+" (cap "+st4.cap.toFixed(2)+")");
         LIVE.fog.push({name:name,t:t,tag:tag,solid:px.solidBlack,belowAA:tc.belowAA,minContrast:tc.min,dropped:st4.dropped,under:st4.under,worst:st4.worst,cap:st4.cap,samples:st4.samples}); }
       report.fogViews=fw; console.log("the valley fog: "+fw.join("; ")); }
-    /* Stage 8, the follow-up 8I (decision 263 (a); docs/STAGE8_SPEC.md section 21): the far names' lighter plate as rendered, in the views where far
-       battle information stands (thresholds.js FAR_PLATE_VIEWS: the wall of formation names at three hours, the infantry's front, the low Pratzen
-       view, the valley fog's two hours, the phase-8 Overview; a far name selected, one focused, Napoleon's reading, a phone held landscape, the
-       landscape with counters): every drawn formation name's plate, distance ratio, protection, size and contrast as rendered (measure.js farNames) */
-    AT="far plate";
-    if(!SELFTEST_ONLY&&await has(first,"mlFarPlate","the far names' plate")){
-      LIVE.farPlate=[]; const fpw=[], vpF=first.viewportSize();
-      const sizeF=async(w,h)=>{ await first.setViewportSize({width:w,height:h}); await first.evaluate(()=>window.dispatchEvent(new Event("resize"))); await first.waitForTimeout(700); };
-      for(const [tag,view,over,state,sz] of T.FAR_PLATE_VIEWS){
-        const base=typeof view==="string"?JSON.parse(JSON.stringify(require("./cases.js").find(x=>x.name===view))):JSON.parse(JSON.stringify(view));
-        const spec=Object.assign(base,over||{}); delete spec.viewport;
-        if(sz) await sizeF(sz[0],sz[1]);
-        await first.evaluate(s=>{ closeFirst(null); if(playing) stopPlay(); select(null,null); setCommandView("none"); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); window.__aus.apply(s); },spec); await settle(first);
-        const target=state==="select"||state==="focus"?await first.evaluate(st=>{ mlLayout(); var tmp=document.createElement("i"); tmp.style.background=TOKENS.sym.plate.far; var FAR=tmp.style.background, id=null;
-            for(var k in ML.items){ var it=ML.items[k]; if(k.indexOf("n:")===0&&it.eFrame===ML.frame&&it.state==="on"&&it.el.style.background===FAR){ id=k.slice(2); break; } }
-            if(!id) return {id:null};
-            if(st==="select") select("f",id); else { var e=ML.items["n:"+id].el; if(e&&e.focus) e.focus(); }
-            AUSTERLITZ_DEBUG.settle(2,true); mlLayout(); var t=ML.items["n:"+id], tmp2=document.createElement("i"); tmp2.style.background=TOKENS.sym.plate.far;
-            return {id:id, plate:t&&t.el.style.background===tmp2.style.background?"far":"full", prot:!!(t&&(t.keep||t.forced||t.el===document.activeElement))}; },state):null;
-        if(state==="reading") await first.evaluate(()=>{ setCommandView("fr"); AUSTERLITZ_DEBUG.settle(2,true); });
-        if(state) await settle(first);
-        const b64=(await first.screenshot({timeout:180000})).toString("base64"), fn=await first.evaluate(b=>window.__aus.farNames(b),b64);
-        const N=(fn&&fn.names)||[], far=N.filter(n=>n.plate==="far"), cs=far.map(n=>n.contrast).filter(c=>c!=null);
-        LIVE.farPlate.push({tag:tag, state:state||null, size:sz||null, far:fn?fn.far:null, names:N, target:target});
-        fpw.push(tag+": "+N.length+" names, "+far.length+" far"+(cs.length?" (as rendered "+Math.min(...cs).toFixed(2)+" to "+Math.max(...cs).toFixed(2)+":1)":"")+(target?", the "+state+"ed name "+JSON.stringify(target):""));
-        await first.evaluate(()=>{ select(null,null); setCommandView("none"); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); setMode("terrain"); });
-        if(sz) await sizeF(vpF.width,vpF.height); }
-      report.farPlate=fpw; console.log("the far names' plate: "+fpw.join("; ")); }
+    /* UI/UX roadmap step 2 (the owner's decision of 15 November 2026; app.js MLT, mlSurface): the Landscape's label tiers as rendered, in the views
+       the follow-up 8I read the far names' lighter plate in (decision 263 (a), superseded; thresholds.js TIER_VIEWS: the wall of formation names at
+       three hours, the infantry's front, the low Pratzen view, the valley fog's two hours, the phase-8 Overview; a tier 3 name selected, one focused,
+       Napoleon's reading, a phone held landscape, the Landscape with counters): every drawn label's tier, surface, size and contrast as rendered
+       (measure.js tierNames) */
+    AT="label tiers";
+    if(!SELFTEST_ONLY&&await has(first,"MLT","the Landscape's label tiers")){
+      const TV=await require("./ux2.js").tierViews(first,settle,T.TIER_VIEWS);   /* the block itself is ux2.js's, so that tools/ux-step2/tiers.js runs it alone */
+      LIVE.tiers=TV.views; report.tiers=TV.lines; console.log("the Landscape's label tiers: "+TV.lines.join("; ")); }
     /* Stage 4E (docs/STAGE4_SPEC.md section F.2): in the low views the gap, if any, between the apron's far edge and the true
        horizon is drawn in the haze's colour (a pixel test along the horizon, in 32 columns of the free rectangle) */
     AT="horizon";

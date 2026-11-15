@@ -1,5 +1,5 @@
 /* tokens:begin — generated from tokens.js by `python3 build.py --tokens`; do not edit */
-:root{--ink:#0C1116;--ink-rgb:12,17,22;--panel:#131A21;--panel-rgb:19,26,33;--scrim-rgb:10,14,19;--line-rgb:199,189,165;--line:rgba(199,189,165,.16);--line-2:rgba(199,189,165,.30);--text-hi:#E7DFCC;--text:#CABFA8;--text-body:#B4AC99;--text-muted:#9BA3A9;--accent:#EFE4C8;--accent-rgb:239,228,200;--on-accent:#101720;--plate:#2A3038;--plate-ink:#E7DFCC;--side-fr:#4C86D8;--side-al:#D4703A;--side-fr-text:#7FB0F0;--side-al-text:#EC9A5E;--keyline:#0A0E12;--t-micro:10.5px;--t-small:11.5px;--t-ui:12.5px;--t-prose:14px;--t-h3:17px;--t-h2:21px;--t-display:25px;--serif:"Austerlitz Serif","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--sans:"Austerlitz Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;}
+:root{--ink:#0C1116;--ink-rgb:12,17,22;--panel:#131A21;--panel-rgb:19,26,33;--scrim-rgb:10,14,19;--line-rgb:199,189,165;--line:rgba(199,189,165,.16);--line-2:rgba(199,189,165,.30);--text-hi:#E7DFCC;--text:#CABFA8;--text-body:#B4AC99;--text-muted:#9BA3A9;--accent:#EFE4C8;--accent-rgb:239,228,200;--on-accent:#101720;--plate:#2A3038;--plate-ink:#E7DFCC;--side-fr:#4C86D8;--side-al:#D4703A;--side-fr-text:#7FB0F0;--side-al-text:#EC9A5E;--keyline:#0A0E12;--t-micro:10.5px;--t-small:11.5px;--t-ui:12.5px;--t-live:13.5px;--t-prose:14px;--t-h3:17px;--t-h2:21px;--t-display:25px;--serif:"Austerlitz Serif","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--sans:"Austerlitz Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;}
 body.mode-staff{--ink:#F3EEE2;--ink-rgb:243,238,226;--panel:#F5F1E6;--panel-rgb:245,241,230;--scrim-rgb:243,238,226;--line-rgb:40,36,28;--line:rgba(40,36,28,.14);--line-2:rgba(40,36,28,.25);--text-hi:#14120C;--text:#33301F;--text-body:#3A362B;--text-muted:#45412F;--accent:#4E3F1E;--accent-rgb:78,63,30;--on-accent:#F2EEE2;--plate:#E3DDCD;--plate-ink:#14120C;--side-fr:#2A5FB0;--side-al:#A8501C;--side-fr-text:#2A5FB0;--side-al-text:#A8501C;--keyline:#0A0E12;}
 /* tokens:end */
 html{--rail:300px;--draw:376px;--tb:108px}
@@ -753,7 +753,8 @@ body.firstrun-on #openingbtn{display:none}
 .legend.collapsed .lg-rows{position:absolute;right:0;bottom:0;width:max-content;visibility:hidden;pointer-events:none}
 
 /* ---------- Stage 2D: the map layer (app.js THE MAP LAYER; symbols.js counterHTML). Colours are set from TOKENS by the
-   script; every text is on a plate. The .mlc paddings are mirrored in mlPlaceItem (the frame's foot). ---------- */
+   script; every text is on a plate (since UI/UX step 2, but the Landscape's tier 3 labels, cased: .ml-q below). The .mlc paddings are
+   mirrored in mlPlaceItem (the frame's foot). ---------- */
 #maplayer{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
 body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!important}   /* the self-test holds the panels' slides still */
 /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): reduced motion in the stylesheet too: the panels' slides, the toast's and the boot screen's fades */
@@ -778,6 +779,22 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
    floor for tertiary text; the battle information at t-ui has no step above its 12 px floor) */
 .ml-item.ml-fading{z-index:-1;pointer-events:none}
 .mlt-small.ml-far{font-size:var(--t-micro);line-height:14px}
+/* UI/UX roadmap step 2 (docs/UX_ART_AUDIT.md UA-01, Direction A; the owner's decision of 15 November 2026; app.js MLT, mlSurface, mlGrow): the
+   Landscape's label tiers. Tier 1, a live event: the one filled accent plate (its colours from TOKENS, set by the script), a keyline and a soft
+   shadow under it (.ml-t1); from 720 px wide at t-live with 6 px at its sides where the larger plate stands clear of every other label (.ml-t1g,
+   app.js mlGrow: the box laid out is the one it had at t-ui), in the line every label has (16 px: the smallest box that holds the words; the
+   audit's prototype padded it to 21 px high and, measured, four live events' plates then stood over 14% of the formations' box); below 720 px
+   at t-ui, where its sentence spans the screen. Tier 2, a formation a live event names and the selection: the plate kept, a 1 px keyline of
+   the accent (the selected name's 2 px edge above it, .mln-sel). Tier 3, every other label: no plate; its ink cased by the keyline, opaque to
+   2 px round every letter (eight shadows at 1 px, sixteen at 2 px, none blurred: each is the letters drawn again, no filter pass), so that the
+   ink stands against the casing whatever the ground (WCAG's technique G18: a border wide enough to fill a letter's inner details is its
+   background). No rule here changes the box a label is laid out in */
+.ml-t1{box-shadow:0 0 0 1px var(--keyline),0 3px 12px rgba(var(--scrim-rgb),.55)}
+.ml-t2{box-shadow:0 0 0 1px rgba(var(--accent-rgb),.7)}
+.ml-q{text-shadow:1px 0 0 var(--keyline),0.71px 0.71px 0 var(--keyline),0 1px 0 var(--keyline),-0.71px 0.71px 0 var(--keyline),-1px 0 0 var(--keyline),-0.71px -0.71px 0 var(--keyline),0 -1px 0 var(--keyline),0.71px -0.71px 0 var(--keyline),2px 0 0 var(--keyline),1.85px 0.77px 0 var(--keyline),1.41px 1.41px 0 var(--keyline),0.77px 1.85px 0 var(--keyline),0 2px 0 var(--keyline),-0.77px 1.85px 0 var(--keyline),-1.41px 1.41px 0 var(--keyline),-1.85px 0.77px 0 var(--keyline),-2px 0 0 var(--keyline),-1.85px -0.77px 0 var(--keyline),-1.41px -1.41px 0 var(--keyline),-0.77px -1.85px 0 var(--keyline),0 -2px 0 var(--keyline),0.77px -1.85px 0 var(--keyline),1.41px -1.41px 0 var(--keyline),1.85px -0.77px 0 var(--keyline)}
+@media (min-width:720px){
+  .ml-t1g{font-size:var(--t-live);padding:0 6px 1px}
+}
 .mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
 .mlt-pl{display:flex;align-items:center;gap:5px}   /* WP-08 (CL-MAP-11): a plan label with its side's mark */
 .mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
@@ -994,6 +1011,12 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .ev-mark,.ev-bar,.mln-mark,.legend .sw,#firstrun .key-sw{forced-color-adjust:none;outline:1px solid CanvasText}
   .legend .lg-rows,.sheet,#layerpop,#firstrun{scrollbar-color:auto}   /* UI/UX step 1 (UA-12): the system's scrollbar */
   #evpick{border:1px solid CanvasText}
+  /* UI/UX roadmap step 2: in a forced-colours mode the browser draws no text-shadow and no box-shadow, and leaves a transparent background
+     transparent: a tier 3 label stands on the system's Canvas, as every plate does there, and the tiers are told apart by an outline (a live
+     event's 2 px, a tier 2 item's 1 px; the keyboard's focus keeps its own ring, a more specific rule) */
+  #maplayer .ml-q{background-color:Canvas!important}
+  .ml-t1{outline:2px solid CanvasText}
+  .ml-t2{outline:1px solid CanvasText}
 }
 /* Stage 5E (docs/STAGE5_SPEC.md section D.5): "Whose eyes?", its caption, the timeline's button, the eye-level vantage's caption */
 .eyes-note{margin:8px 0 4px;color:var(--text-body);font-size:var(--t-small);line-height:1.45}

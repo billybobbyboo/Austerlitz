@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Austerlitz — command map, 2 December 1805</title>
 <style>/* tokens:begin — generated from tokens.js by `python3 build.py --tokens`; do not edit */
-:root{--ink:#0C1116;--ink-rgb:12,17,22;--panel:#131A21;--panel-rgb:19,26,33;--scrim-rgb:10,14,19;--line-rgb:199,189,165;--line:rgba(199,189,165,.16);--line-2:rgba(199,189,165,.30);--text-hi:#E7DFCC;--text:#CABFA8;--text-body:#B4AC99;--text-muted:#9BA3A9;--accent:#EFE4C8;--accent-rgb:239,228,200;--on-accent:#101720;--plate:#2A3038;--plate-ink:#E7DFCC;--side-fr:#4C86D8;--side-al:#D4703A;--side-fr-text:#7FB0F0;--side-al-text:#EC9A5E;--keyline:#0A0E12;--t-micro:10.5px;--t-small:11.5px;--t-ui:12.5px;--t-prose:14px;--t-h3:17px;--t-h2:21px;--t-display:25px;--serif:"Austerlitz Serif","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--sans:"Austerlitz Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;}
+:root{--ink:#0C1116;--ink-rgb:12,17,22;--panel:#131A21;--panel-rgb:19,26,33;--scrim-rgb:10,14,19;--line-rgb:199,189,165;--line:rgba(199,189,165,.16);--line-2:rgba(199,189,165,.30);--text-hi:#E7DFCC;--text:#CABFA8;--text-body:#B4AC99;--text-muted:#9BA3A9;--accent:#EFE4C8;--accent-rgb:239,228,200;--on-accent:#101720;--plate:#2A3038;--plate-ink:#E7DFCC;--side-fr:#4C86D8;--side-al:#D4703A;--side-fr-text:#7FB0F0;--side-al-text:#EC9A5E;--keyline:#0A0E12;--t-micro:10.5px;--t-small:11.5px;--t-ui:12.5px;--t-live:13.5px;--t-prose:14px;--t-h3:17px;--t-h2:21px;--t-display:25px;--serif:"Austerlitz Serif","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--sans:"Austerlitz Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;}
 body.mode-staff{--ink:#F3EEE2;--ink-rgb:243,238,226;--panel:#F5F1E6;--panel-rgb:245,241,230;--scrim-rgb:243,238,226;--line-rgb:40,36,28;--line:rgba(40,36,28,.14);--line-2:rgba(40,36,28,.25);--text-hi:#14120C;--text:#33301F;--text-body:#3A362B;--text-muted:#45412F;--accent:#4E3F1E;--accent-rgb:78,63,30;--on-accent:#F2EEE2;--plate:#E3DDCD;--plate-ink:#14120C;--side-fr:#2A5FB0;--side-al:#A8501C;--side-fr-text:#2A5FB0;--side-al-text:#A8501C;--keyline:#0A0E12;}
 /* tokens:end */
 html{--rail:300px;--draw:376px;--tb:108px}
@@ -759,7 +759,8 @@ body.firstrun-on #openingbtn{display:none}
 .legend.collapsed .lg-rows{position:absolute;right:0;bottom:0;width:max-content;visibility:hidden;pointer-events:none}
 
 /* ---------- Stage 2D: the map layer (app.js THE MAP LAYER; symbols.js counterHTML). Colours are set from TOKENS by the
-   script; every text is on a plate. The .mlc paddings are mirrored in mlPlaceItem (the frame's foot). ---------- */
+   script; every text is on a plate (since UI/UX step 2, but the Landscape's tier 3 labels, cased: .ml-q below). The .mlc paddings are
+   mirrored in mlPlaceItem (the frame's foot). ---------- */
 #maplayer{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
 body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!important}   /* the self-test holds the panels' slides still */
 /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): reduced motion in the stylesheet too: the panels' slides, the toast's and the boot screen's fades */
@@ -784,6 +785,22 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
    floor for tertiary text; the battle information at t-ui has no step above its 12 px floor) */
 .ml-item.ml-fading{z-index:-1;pointer-events:none}
 .mlt-small.ml-far{font-size:var(--t-micro);line-height:14px}
+/* UI/UX roadmap step 2 (docs/UX_ART_AUDIT.md UA-01, Direction A; the owner's decision of 15 November 2026; app.js MLT, mlSurface, mlGrow): the
+   Landscape's label tiers. Tier 1, a live event: the one filled accent plate (its colours from TOKENS, set by the script), a keyline and a soft
+   shadow under it (.ml-t1); from 720 px wide at t-live with 6 px at its sides where the larger plate stands clear of every other label (.ml-t1g,
+   app.js mlGrow: the box laid out is the one it had at t-ui), in the line every label has (16 px: the smallest box that holds the words; the
+   audit's prototype padded it to 21 px high and, measured, four live events' plates then stood over 14% of the formations' box); below 720 px
+   at t-ui, where its sentence spans the screen. Tier 2, a formation a live event names and the selection: the plate kept, a 1 px keyline of
+   the accent (the selected name's 2 px edge above it, .mln-sel). Tier 3, every other label: no plate; its ink cased by the keyline, opaque to
+   2 px round every letter (eight shadows at 1 px, sixteen at 2 px, none blurred: each is the letters drawn again, no filter pass), so that the
+   ink stands against the casing whatever the ground (WCAG's technique G18: a border wide enough to fill a letter's inner details is its
+   background). No rule here changes the box a label is laid out in */
+.ml-t1{box-shadow:0 0 0 1px var(--keyline),0 3px 12px rgba(var(--scrim-rgb),.55)}
+.ml-t2{box-shadow:0 0 0 1px rgba(var(--accent-rgb),.7)}
+.ml-q{text-shadow:1px 0 0 var(--keyline),0.71px 0.71px 0 var(--keyline),0 1px 0 var(--keyline),-0.71px 0.71px 0 var(--keyline),-1px 0 0 var(--keyline),-0.71px -0.71px 0 var(--keyline),0 -1px 0 var(--keyline),0.71px -0.71px 0 var(--keyline),2px 0 0 var(--keyline),1.85px 0.77px 0 var(--keyline),1.41px 1.41px 0 var(--keyline),0.77px 1.85px 0 var(--keyline),0 2px 0 var(--keyline),-0.77px 1.85px 0 var(--keyline),-1.41px 1.41px 0 var(--keyline),-1.85px 0.77px 0 var(--keyline),-2px 0 0 var(--keyline),-1.85px -0.77px 0 var(--keyline),-1.41px -1.41px 0 var(--keyline),-0.77px -1.85px 0 var(--keyline),0 -2px 0 var(--keyline),0.77px -1.85px 0 var(--keyline),1.41px -1.41px 0 var(--keyline),1.85px -0.77px 0 var(--keyline)}
+@media (min-width:720px){
+  .ml-t1g{font-size:var(--t-live);padding:0 6px 1px}
+}
 .mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
 .mlt-pl{display:flex;align-items:center;gap:5px}   /* WP-08 (CL-MAP-11): a plan label with its side's mark */
 .mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
@@ -1000,6 +1017,12 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .ev-mark,.ev-bar,.mln-mark,.legend .sw,#firstrun .key-sw{forced-color-adjust:none;outline:1px solid CanvasText}
   .legend .lg-rows,.sheet,#layerpop,#firstrun{scrollbar-color:auto}   /* UI/UX step 1 (UA-12): the system's scrollbar */
   #evpick{border:1px solid CanvasText}
+  /* UI/UX roadmap step 2: in a forced-colours mode the browser draws no text-shadow and no box-shadow, and leaves a transparent background
+     transparent: a tier 3 label stands on the system's Canvas, as every plate does there, and the tiers are told apart by an outline (a live
+     event's 2 px, a tier 2 item's 1 px; the keyboard's focus keeps its own ring, a more specific rule) */
+  #maplayer .ml-q{background-color:Canvas!important}
+  .ml-t1{outline:2px solid CanvasText}
+  .ml-t2{outline:1px solid CanvasText}
 }
 /* Stage 5E (docs/STAGE5_SPEC.md section D.5): "Whose eyes?", its caption, the timeline's button, the eye-level vantage's caption */
 .eyes-note{margin:8px 0 4px;color:var(--text-body);font-size:var(--t-small);line-height:1.45}
@@ -1621,6 +1644,10 @@ $Id$
     <!-- Stage 8, implementation PR 8E (decision 244 (a); docs/STAGE8_SPEC.md section 0.3.1, item 8): wherever figures are drawn, what their step is -->
     <div class="k" data-lg="gait"><span>marching figures step: a visual convention for symbols under compressed time, not their footsteps</span></div>
     <div class="k" data-lg="sidemark"><span>beside a name: its side, French or Allied</span><span class="sw" data-key="side-fr"></span><span class="sw" data-key="side-al"></span></div>
+    <!-- UI/UX roadmap step 2 (docs/UX_ART_AUDIT.md UA-01, UA-15): the Landscape's label tiers, wherever its names are drawn; and Watch's set while the
+         clock plays (a row for every encoding drawn, WP-08) -->
+    <div class="k" data-lg="tiers"><span>a light plate: an event at about this hour &middot; a plate with a light edge: a formation it names, or the selection</span></div>
+    <div class="k" data-lg="calm"><span>Watch, while the clock plays: only these are named; pause for every name</span></div>
     <div class="k" data-lg="foot"><span>French formation, its footprint</span><span class="sw" data-key="foot-fr"></span></div>
     <div class="k" data-lg="foot"><span>Allied formation, its footprint</span><span class="sw" data-key="foot-al"></span></div>
     <!-- Stage 8, implementation PR 8B (decision 239): on the landscape every formation drawn as figures is outlined on the ground in its side's
@@ -1882,11 +1909,18 @@ var ASSETS={
    sym.plate (Stage 2D) is the plate under every map-layer label: opaque enough that each map text colour below meets
    WCAG AA over black and over white ground (dark 0.88, worst 5.8:1, the road ink; paper 0.95, worst 4.6:1, the water ink).
    sym.plate.far (Stage 8, the follow-up 8I; decision 263 (a), 255 (d)'s "d-plate"): the lighter plate of a formation's name standing far on the
-   landscape (app.js mlFarPlate), by the same rule for the one ink it carries, the label ink: the lightest alpha keeping it at AA over white
+   landscape until UI/UX roadmap step 2 (see below), by the same rule for the one ink it carries, the label ink: the lightest alpha keeping it at AA over white
    ground, 0.64 (4.55:1; over black 15.4:1); the prototype's 0.62 gave 4.23:1 over white.
    sym.paperMap (Stage 2E) is the paper map's own symbology: woods (a tint, the tree marks and the outline) and the flat
    village footprints. Symbols on the map, not text. Since Stage 4E also its ground (the cover classes' colours, in
    coverClass's order through COVER_KEYS), its contours and its marsh lines (owner decision 79; values unchanged).
+   UI/UX roadmap step 2 (the owner's decision of 15 November 2026, Direction A's three label tiers on the Landscape; docs/UX_ART_AUDIT.md UA-01):
+   a live event's label (tier 1) is the one filled accent plate, theme.dark.accent under theme.dark.on-accent, at type.t-live (13.5 px, the
+   serif); a formation a live event names and the selection (tier 2) keep sym.plate.dark, with a 1 px keyline of the accent; every other
+   Landscape label (tier 3) has no plate: its own ink, cased by sym.keyline (style.css .ml-q). sym.plate.far is drawn by nothing since
+   step 2: decision 263 (a)'s lighter plate for far names is superseded there (a tier 3 name has no plate at any distance), and its value is
+   kept as the recorded fallback fill, should a later measurement require one (none did: docs/ux-step2-evidence/). The paper map and the
+   Landscape with counters draw sym.plate as before.
    type.sans and type.serif (decision 141, roadmap step 1): the type is embedded. Each stack names first a face that fonts.css
    carries in the file ("Austerlitz Sans", from Inter, and "Austerlitz Serif", from TeX Gyre Pagella; tools/fonts/build-fonts.py),
    so the page is drawn in the same faces on every machine; the system faces behind it are a per-glyph fallback, drawn only for a
@@ -1923,7 +1957,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
     }
   },
   "type": {
-    "t-micro": "10.5px", "t-small": "11.5px", "t-ui": "12.5px", "t-prose": "14px",
+    "t-micro": "10.5px", "t-small": "11.5px", "t-ui": "12.5px", "t-live": "13.5px", "t-prose": "14px",
     "t-h3": "17px", "t-h2": "21px", "t-display": "25px",
     "serif": "\"Austerlitz Serif\",\"Iowan Old Style\",\"Palatino Linotype\",Palatino,\"Book Antiqua\",Georgia,serif",
     "sans": "\"Austerlitz Sans\",ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,sans-serif"
@@ -13317,7 +13351,7 @@ function mlItem(key,cls){
 function mlContent(it,ck,html,plate){
   if(it.ck===ck) return;
   it.ck=ck; it.el.innerHTML=html; it.dirty=true;
-  if(plate){ it.plate0=plate[0]; it.farP=false; it.el.style.background=plate[0]; it.el.style.color=plate[1]; }   /* Stage 8, 8I: the plate kept for mlFarPlate */
+  if(plate){ it.plate0=plate[0]; it.ink0=plate[1]; it.surf=null; it.el.style.background=plate[0]; it.el.style.color=plate[1]; }   /* the plate and the ink kept for the tier's surface (mlSurface; UI/UX step 2) */
 }
 function mlAria(it,label){
   if(!label||it.aria===label) return;
@@ -13356,11 +13390,55 @@ function mlPriX(id,base){ var a=MLAGE.st[id]; return a&&a.boost?MLAGE.PRI:MLAGE.
 /* after a pass: each formation item in view (not behind the ground) drawn or hidden by the layout; the others reset */
 function mlAgeAfter(order){
   var seen={};
-  order.forEach(function(it){ if(!it.fid||!(it.cat==="counter"||it.cat==="name")) return; var id=it.fid; seen[id]=1;
+  order.forEach(function(it){ if(!it.fid||!(it.cat==="counter"||it.cat==="name")||it.state==="calm") return; var id=it.fid; seen[id]=1;   /* UI/UX step 2: a name Watch does not draw while the clock plays is not aging */
     var a=MLAGE.st[id]||(MLAGE.st[id]={last:clock,boost:false,on:null});
     if(it.state==="on"){ if(!a.boost) a.last=clock; else { if(a.on===null) a.on=clock; if(clock-a.on>=MLAGE.HOLD){ a.boost=false; a.last=clock; a.on=null; } } }
     else if(!a.boost&&playing&&clock-a.last>=MLAGE.MIN){ a.boost=true; a.on=null; } });
   for(var id in MLAGE.st) if(!seen[id]){ MLAGE.st[id].last=clock; if(!MLAGE.st[id].boost) MLAGE.st[id].on=null; }
+}
+/* ---- UI/UX roadmap step 2 (docs/UX_ART_AUDIT.md UA-01, UA-15, Direction A; the owner's decision of 15 November 2026, which supersedes decisions
+   284 (b) and 263 (a) where this needs it): the Landscape's label tiers ----
+   Until step 2 every label of the map layer stood on the same opaque plate (sym.plate), so that on the Landscape a wall of plates covered the
+   formations (measured while the clock plays from 08:30 to 09:30: 25% of their bounding box at the median, 31% at most; on a phone 31% and 45%)
+   and a live event read like any name. On the Landscape (mode "terrain"; the paper map and the Landscape with counters as before, tier 0) each
+   item now has a tier, decided before the layout:
+   - tier 1, a live event: an event whose weight (evWeight; liveEvents' own) is above MLT.LIVE. Its label is the one filled accent plate
+     (theme.dark.accent under on-accent). Never dropped, as before (decision 39). It is laid out in the box it had before step 2 and drawn at
+     t-live where the larger plate stands clear (mlGrow below);
+   - tier 2: a formation a live event names (EVENTS[].forms and its parents, the relation WP-07's order reads, while the Events layer is drawn)
+     and what the layer protects (the selection of any kind, the hovered formation, the highlighted family). The dark plate kept, with a 1 px
+     keyline of the accent (the selected name its 2 px edge, WP-08). A formation a live event names is not protected (decision 39 unchanged: it can
+     stand behind the ground, off the screen or find no room). While the clock plays it is placed before every other item the layer does not
+     protect, by its kept place, else the places hugging its anchor, else the full search, in every pass (it does not wait for the stabiliser's
+     re-placement passes), so that it takes the room another label held (WP-07's rise, decision 299 (D), which ordered it after the aged and
+     left it to the stabiliser's wait: measured on the Landscape from 08:30 to 09:30, 81.5% of its frames in view drawn; with this, 100%). At
+     rest, and while the view moves with the clock still, its order is as before step 2: a view reached without motion is laid out as before;
+   - tier 3, every other label (formation names, place and terrain-study names, the arrows', the plans' and the objectives' labels, the plateau's
+     reading): no plate: its own ink, cased by the keyline (style.css .ml-q), its box, marks, badge and accessible name as before. The keyboard's
+     focus draws a tier 3 item on the plate (under its ring).
+   Watch while the clock plays (MLT.calm; UA-15): tier 3 is not drawn (state "calm": neither placed nor dropped). The items stay in the layer:
+   the keyboard reaches them and the focus draws one, a hovered or selected formation is tier 2 and drawn, and a pause brings them back.
+   What a reading does not know, the level of detail, the ground's occlusion and the layers' switches decide what is collected, as before: a tier
+   only orders and draws what they allow. No tier changes a label's box, so every placement outside Play is the placement before step 2.
+   MLT.LIVE is the audit's prototype's; MLT.PRI and MLT.GROW are design values; tools/visual/ux2.js holds the behaviour */
+var MLT={LIVE:0.3, PRI:1.5, GROW:2, on:false, calm:false, live:{}, ev:{}, vw:0, stats:{t1:0,grown:0}};
+function mlTierPrep(){
+  MLT.on=(mode==="terrain"); MLT.calm=MLT.on&&presentation==="watch"&&!!playing; MLT.live={}; MLT.ev={};
+  if(!MLT.on||!eventGroup||!eventGroup.visible) return;
+  for(var i=0;i<EVENTS.length;i++){ var e=EVENTS[i]; if(!(evWeight(e,clock)>MLT.LIVE)) continue;
+    MLT.live[e.id]=1;
+    (e.forms||[]).forEach(function(id){ for(var x=id,g=0;x&&FORMATIONS[x]&&g<6;x=FORMATIONS[x].parent,g++) MLT.ev[x]=1; }); }
+}
+/* the surface a drawn item stands on, by its tier ("" as before step 2, "1" the accent plate, "2" the plate, "q" none); prot: the keyboard's
+   focus or its forced place, which draws a tier 3 item on the plate. Written only when it changes; no size changes here (tier 1's size at
+   t-live is mlGrow's, after the placement) */
+function mlSurface(it,prot){
+  var t=it.tier||0, s=!t?"":t===1?"1":(t===2||prot)?"2":"q";
+  if(s===it.surf) return s;
+  var e=it.el, D=TOKENS.theme.dark;
+  e.classList.toggle("ml-t1",s==="1"); e.classList.toggle("ml-t2",t===2); e.classList.toggle("ml-q",s==="q");
+  if(it.plate0){ e.style.background=s==="q"?"transparent":s==="1"?D.accent:it.plate0; e.style.color=s==="1"?D["on-accent"]:it.ink0; }
+  it.surf=s; return s;
 }
 function mlCollect(){
   var out=[], paper=(mode==="staff"), labels=textOn(), K=paper?"paper":"dark";
@@ -13373,7 +13451,9 @@ function mlCollect(){
   function add(it,o){
     it.cat=o.cat; it.pri=o.pri; it.base=o.base===undefined?o.pri:o.base; it.keep=!!o.keep; it.occl=o.occl!==false; it.acl=o.acl||4;
     it.r=o.r||0; it.mode=o.mode||"label"; it.fid=o.fid||null; it.pick=o.pick||null; it.ground=o.ground||null; it.op=o.op===undefined?1:o.op;
-    it.mk=o.mk||null; mlAria(it,o.aria); if(o.name) mlName(it,o.name); out.push(it); return it;
+    it.mk=o.mk||null; mlAria(it,o.aria); if(o.name) mlName(it,o.name);
+    it.tier=!MLT.on||o.cat==="counter"?0:o.tier||(o.keep?2:3);   /* UI/UX step 2: what the layer protects is tier 2 at least; a live event tier 1 */
+    out.push(it); return it;
   }
   function text(key,cat,cls,str,col,w,o){
     var it=mlItem(key,"mlt "+cls);
@@ -13408,8 +13488,10 @@ function mlCollect(){
     mlContent(it,["n",id,PL,S.cf,S.know].join("|"),nameHTML(f,false,S),[PL,LB.ink]);
     it.world.set(r.block.position.x,r.block.position.y+6.4,r.block.position.z);
     var sel=isSel("f",id), inFam=!!(fam&&fam[id]), hov=(ML.hover===id), fo=(foc===id), base=7+rank(f,S.strength);
-    add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:mlPriX(id,base),base:base,keep:sel||hov||fo||inFam,fid:id,pick:{kind:"f",id:id},acl:2,
-            aria:counterLabel(f,S)});
+    /* UI/UX step 2: a formation a live event names is tier 2; while the clock plays it is placed first (MLT.PRI, it.first: mlLayout) */
+    var evn=MLT.on&&!!MLT.ev[id], npri=mlPriX(id,base), evp=evn&&!!playing;
+    add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:(evp&&npri>MLT.PRI?MLT.PRI:npri),base:base,keep:sel||hov||fo||inFam,fid:id,pick:{kind:"f",id:id},acl:2,
+            tier:evn?2:0,aria:counterLabel(f,S)}); it.first=evp;
     /* the final audits' Stage 5, WP-08 (CL-MAP-10): the selected formation's name stands out on the landscape by an accent edge round its plate (a
        shadow: its box, its place and its words' contrast as before); until WP-08 it was drawn like every other name */
     if(it.selC!==sel){ it.el.classList.toggle("mln-sel",sel); it.selC=sel; }
@@ -13418,6 +13500,7 @@ function mlCollect(){
   if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(!k.labelOn) return;
     var sel=isSel("e",k.e.id);
     text("e:"+k.e.id,"event","mlt-serif",evMapText(k.e),LB.annotation,k.world,{pri:sel?0:4+(1-evWeight(k.e,clock))*0.5,base:4,keep:true,r:2.1,acl:3,
+      tier:MLT.live[k.e.id]?1:0,   /* UI/UX step 2: a live event, tier 1; a selected one whose weight has fallen, tier 2 by its protection */
       pick:{kind:"e",id:k.e.id},aria:"Event, "+evTimeText(k.e)+": "+evMapText(k.e)+(evNoteParts(k.e,LABELS.event).length?", "+evNoteParts(k.e,LABELS.event).join("; "):"")});   /* roadmap step 2: the note in its name; step 3: its drawn words carry the short note too (WCAG 2.5.3: the name begins with them) */
   });
   /* the plateau reading, over the northern part of its outline: a derived reading, marked "derived" in its words and its name in every
@@ -13727,21 +13810,34 @@ function mlFar(it){
   var r=camera.position.distanceTo(it.world)/dt; if(!isFinite(r)) return false;
   return mlBandAt("far:"+it.key,r)>MLS.FAR;   /* while the view moves, the ratio held inside the band: no flicker at the boundary */
 }
-/* Stage 8, the follow-up 8I (decision 263 (a): 255 (d)'s "d-plate", the owner's choice; docs/STAGE8_SPEC.md sections 20.9 and 21): a formation's
-   name on the landscape standing beyond the far step's distance (FAR times the eye's distance to its target: mlFar's test, held by its band while the
-   view moves) is drawn on a lighter plate, TOKENS.sym.plate.far, so that the far names read below the near ones by their plate, not their size: words,
-   size (t-ui, 12.5 px; decision 16's 12 px floor), marks, place and box unchanged. The plate's alpha is the lightest that keeps the name's ink (the
-   label ink) at AA over white ground, the rule sym.plate is built on (tokens.js): 0.64, 4.55:1 there (the prototype's 0.62 gave 4.23:1). What the layer
-   protects keeps the full plate: the selection, the hovered, the highlighted family (it.keep), the focus's forced place and the item with the focus.
-   The paper map has no formation names; counters, events and places keep their plates. Written only when an item's state changes */
-function mlFarRatio(it,pre){ var dt=landCam.position.distanceTo(orbitTarget); if(!(dt>=1)) return 0; var r=camera.position.distanceTo(it.world)/dt; return isFinite(r)?mlBandAt(pre+it.key,r):0; }
-function mlFarPlate(it,may){
-  var far=!!may&&!camera.isOrthographicCamera&&mode!=="staff"&&mlFarRatio(it,"farp:")>MLS.FAR;
-  if(far!==!!it.farP){ it.farP=far; if(it.plate0) it.el.style.background=far?TOKENS.sym.plate.far:it.plate0; }
-  return far;
-}
+/* Stage 8, the follow-up 8I (decision 263 (a), 255 (d)'s "d-plate") drew a formation's name beyond the far step's distance on a lighter plate,
+   TOKENS.sym.plate.far. UI/UX roadmap step 2 supersedes it on the owner's decision of 15 November 2026: on the Landscape
+   a name's surface is its tier's (mlSurface), at any distance: a tier 3 name has no plate, a tier 2 name the full one. The far step above (a
+   place's or terrain-study name a type step smaller) is unchanged */
 /* the far step's words inside the box the item has at its own size, on the side toward the anchor */
 function mlAlign(d,w,fw){ return d>=0?0:(d+w<=0?w-fw:(w-fw)/2); }
+/* UI/UX roadmap step 2: a live event's label (tier 1) is laid out in its box at t-ui and drawn at t-live (.ml-t1g), the larger plate centred on
+   that box, where the larger plate stands inside the screen and clear of every panel, every symbol the layer keeps clear and every other label's
+   box as placed in this pass (a grown plate's too), ML_PAD px apart; else at t-ui, in the box laid out. Measured before it was built this way: laid
+   out at t-live, a live event's sentence is about 27 px wider than before, and in the low views that one change moved the names beside it and those
+   beside them (formation-frames drawn in the motion block's low pan 806 to 794). A plate already grown stays grown while it overlaps nothing; one
+   not grown waits for MLT.GROW px more than ML_PAD at its sides, so that a neighbour at the boundary does not switch it at every frame. Not for the keyboard's
+   forced place; below 720 px wide t-live is t-ui (style.css) and the two boxes are one */
+function mlGrow(elig,VW,VH,panels,obst){
+  var n1=0, ng=0, G=[];
+  function hits(r,L,px,py,skip){ for(var i=0;i<L.length;i++){ var q=L[i]; if(q===skip) continue; if(r[0]<q[2]+px&&q[0]<r[2]+px&&r[1]<q[3]+py&&q[1]<r[3]+py) return true; } return false; }
+  elig.forEach(function(it){ if(it.tier!==1){ if(it.grow) it.grow=null; if(it.growC){ it.el.classList.remove("ml-t1g"); it.growC=false; } return; }
+    if(it.state!=="on"){ it.grow=null; return; }   /* not drawn: a remnant fades at the size it was drawn at */
+    var g=null;
+    if(!it.forced&&it.rect&&it.w1>0&&!it.wrapped){ n1++;
+      /* the plate grows sideways (its line is the line it has): to grow it needs ML_PAD + MLT.GROW px clear at its sides and the layout's ML_PAD
+         above and below; grown, it stays while it overlaps nothing */
+      var x0=it.rect[0]-(it.w1-it.w)/2, y0=it.rect[1]-(it.h1-it.h)/2, r=[x0,y0,x0+it.w1,y0+it.h1], px=it.grow?0:ML_PAD+MLT.GROW, py=it.grow?0:ML_PAD, edge=it.grow?0:ML_PAD;
+      if(r[0]>=edge&&r[1]>=edge&&r[2]<=VW-edge&&r[3]<=VH-edge&&!hits(r,panels,px,py)&&!hits(r,obst,px,py)&&!hits(r,ML.taken,px,py,it.rect)&&!hits(r,G,px,py)) g=r; }
+    it.grow=g; if(g){ ng++; G.push(g); }
+    if(!!g!==!!it.growC){ it.el.classList.toggle("ml-t1g",!!g); it.growC=!!g; } });
+  MLT.stats.t1=n1; MLT.stats.grown=ng;
+}
 /* the pass */
 function mlLayout(){
   if(!ML.root) return;
@@ -13749,10 +13845,16 @@ function mlLayout(){
   ML.frame++;
   var VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
   camera.updateMatrixWorld();
+  /* UI/UX step 2: a live event's box at t-live depends on the window's width (t-live from 720 px, style.css): measured again when it changes (a
+     phone turned, a window resized across 720 px; until then the box kept was the other width's) */
+  if(MLT.vw!==window.innerWidth){ MLT.vw=window.innerWidth; for(var kw in ML.items) ML.items[kw].w1=0; }
   mlLegendFit(VW,VH);
   mlPriPrep();   /* WP-07 (decision 299): the order's Play terms for this pass */
+  mlTierPrep();  /* UI/UX step 2: the Landscape's tiers for this pass */
   var list=mlCollect(), panels=mlPanels();
-  var st={items:list.length,placed:0,leaders:0,dropped:0,held:0,occluded:0,offscreen:0,underPanel:0,withheld:0,keepMissing:[],dropped_:[],ms:0,nodes:0};   /* withheld: WP-08 (CL-MAP-09), an arrow's name-only label while its formation's own is in view */
+  /* calm: UI/UX step 2 (UA-15), a tier 3 item not drawn in Watch while the clock plays; t1, t2, t3: the drawn items by tier; fills: the drawn items
+     standing on a filled plate (a tier 1 or tier 2 item, a tier 3 item drawn on the plate for the keyboard's focus, and every tier 0 label) */
+  var st={items:list.length,placed:0,leaders:0,dropped:0,held:0,occluded:0,offscreen:0,underPanel:0,withheld:0,calm:0,t1:0,t2:0,t3:0,fills:0,keepMissing:[],dropped_:[],ms:0,nodes:0};   /* withheld: WP-08 (CL-MAP-09), an arrow's name-only label while its formation's own is in view */
   var elig=[], dirty=[];
   list.forEach(function(it){
     _mlV.copy(it.world).applyMatrix4(camera.matrixWorldInverse);
@@ -13778,14 +13880,22 @@ function mlLayout(){
     if(q.eFrame!==ML.frame&&q.disp){ if(document.activeElement===q.el) lostFocus=q; q.el.style.display="none"; q.disp=false; q.on=false; q.el.classList.remove("on"); q.tx=null; } }
   /* Stage 8, 8C: an item is measured at its own size, the size the layout places (the far step leaves every placement as it was); then the
      far step's smaller size, drawn inside that box */
-  dirty.forEach(function(it){ if(it.farC){ it.el.classList.remove("ml-far"); it.farC=false; } });
-  dirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.w=Math.ceil(r.width||0); it.h=Math.ceil(r.height||0); it.dirty=false; it.fdirty=true; });
+  dirty.forEach(function(it){ if(it.farC){ it.el.classList.remove("ml-far"); it.farC=false; } if(it.growC){ it.el.classList.remove("ml-t1g"); it.growC=false; } });
+  dirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.w=Math.ceil(r.width||0); it.h=Math.ceil(r.height||0); it.dirty=false; it.fdirty=true; it.w1=0; });
+  /* UI/UX step 2: a live event's label is laid out in the box it has at t-ui, the box it had before step 2, so that no other label's place changes
+     with its size; its box at t-live (.ml-t1g) is measured beside it and drawn where it stands clear (mlGrow, after the placement) */
+  var live1=elig.filter(function(it){ return it.tier===1&&!it.w1; });
+  live1.forEach(function(it){ it.el.classList.add("ml-t1g"); });
+  live1.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.w1=Math.ceil(r.width||0); it.h1=Math.ceil(r.height||0); });
+  live1.forEach(function(it){ if(!it.growC) it.el.classList.remove("ml-t1g"); });
   var fdirty=[];
   elig.forEach(function(it){ if(it.far!==!!it.farC){ it.el.classList.toggle("ml-far",it.far); it.farC=it.far; it.fdirty=true; } if(it.farC&&it.fdirty) fdirty.push(it); });
   fdirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.fw=Math.ceil(r.width||0); it.fh=Math.ceil(r.height||0); it.fdirty=false; });
   var maxG=mlMaxG(), obst=mlObstacles(VW,VH);
   elig.forEach(function(it){ it.occ=!it.keep&&it.occl&&mlOccluded(it.world,maxG); if(it.occ){ it.state="occluded"; st.occluded++; } });
-  var order=elig.filter(function(it){ return !it.occ; }).sort(function(a,b){ return (a.keep!==b.keep)?(a.keep?-1:1):(a.pri-b.pri); });
+  /* UI/UX step 2: while the clock plays, after what is never dropped, the Landscape's formations a live event names (it.first) before every
+     other item, the aged (WP-07) included; within each, the order as before. At rest, and on the paper map and the Landscape with counters: as before */
+  var order=elig.filter(function(it){ return !it.occ; }).sort(function(a,b){ return (a.keep!==b.keep)?(a.keep?-1:1):((!!a.first)!==(!!b.first))?(a.first?-1:1):(a.pri-b.pri); });
   ML.taken=[];
   /* Stage 8, 8C (MLS above): what is never dropped first, by the full search as before; then the rest as the view stands: a fresh view as before
      8C ("build"), moving ("hold"), at rest after motion ("persist") */
@@ -13800,8 +13910,14 @@ function mlLayout(){
   function dupDrawn(it){ if(!it.dupOf) return false; var c=ML.items["c:"+it.dupOf], n=ML.items["n:"+it.dupOf];
     function inView(q){ return !!(q&&q.eFrame===ML.frame&&!q.occ&&q.state!=="offscreen"&&q.state!=="panel"&&q.state!=="occluded"); }
     return inView(c)||inView(n); }
+  /* UI/UX step 2 (UA-15): in Watch while the clock plays a tier 3 item is not drawn (neither placed nor dropped); the keyboard's focus draws it */
+  function calm(it){ return MLT.calm&&it.tier===3&&it.el!==foc; }
   function placeRest(it,s){
     if(s==="build"||it.el===foc) return mlPlaceItem(it,VW,VH,panels,obst);
+    /* UI/UX step 2: while the clock plays a formation a live event names (it.first) keeps its place while it is free, else takes a place hugging
+       its anchor, else is placed by the full search, in this pass (no wait for the re-placement passes): placed before every other item the
+       layer does not protect, it takes the room one of them held */
+    if(it.first){ it.room2=0; return !!(it.wasOn&&it.mem&&(mlHoldTry(it,VW,VH,panels,obst)||mlPlaceItem(it,VW,VH,panels,obst,true)))||mlPlaceItem(it,VW,VH,panels,obst); }
     if(it.wasOn&&it.mem){ if(mlHoldTry(it,VW,VH,panels,obst)||mlPlaceItem(it,VW,VH,panels,obst,true)){ it.room2=0; return true; } it.held=true; return false; }
     if(!MLS.pass){ it.held=true; return false; }
     if(mlPlaceItem(it,VW,VH,panels,obst)){ it.room2=(it.room2||0)+1; if(it.room2>=MLS.PASSES){ it.room2=0; return true; } mlUntake(it); it.held=true; return false; }
@@ -13811,14 +13927,15 @@ function mlLayout(){
     if(s==="persist"){   /* at rest after motion: every place that still fits is kept first, in priority order; then the others by the full search,
                             into the room left: nothing drawn moves to make room for another (no reshuffle) */
       var later=[];
-      for(var i=nk;i<order.length;i++){ var it=order[i]; it.held=false; if(dupDrawn(it)){ it.state="withheld"; continue; } if(it.el===foc||!mlHoldTry(it,VW,VH,panels,obst)) later.push(it); }
+      for(var i=nk;i<order.length;i++){ var it=order[i]; it.held=false; if(calm(it)){ it.state="calm"; continue; } if(dupDrawn(it)){ it.state="withheld"; continue; } if(it.el===foc||!mlHoldTry(it,VW,VH,panels,obst)) later.push(it); }
       later.forEach(function(it){ if(dupDrawn(it)){ it.state="withheld"; return; } if(!mlPlaceItem(it,VW,VH,panels,obst)) it.state="dropped"; });
       return; }
-    for(var j=nk;j<order.length;j++){ var jt=order[j]; jt.held=false; if(dupDrawn(jt)){ jt.state="withheld"; jt.room2=0; continue; } if(!placeRest(jt,s)) jt.state="dropped"; }
+    for(var j=nk;j<order.length;j++){ var jt=order[j]; jt.held=false; if(calm(jt)){ jt.state="calm"; jt.room2=0; continue; } if(dupDrawn(jt)){ jt.state="withheld"; jt.room2=0; continue; } if(!placeRest(jt,s)) jt.state="dropped"; }
   }
   runRest(strat);
   order.forEach(function(it){
     if(it.state==="withheld"){ st.withheld++; return; }   /* WP-08: neither placed nor dropped: its formation's name stands for it */
+    if(it.state==="calm"){ st.calm++; return; }   /* UI/UX step 2: neither placed nor dropped: Watch's set while the clock plays */
     if(it.state==="on"){ st.placed++; if(it.lead) st.leaders++; }
     else { st.dropped++; st.dropped_.push(it.key); if(it.held) st.held++; if(it.keep) st.keepMissing.push(it.key); }
   });
@@ -13837,6 +13954,7 @@ function mlLayout(){
     if(!pick){ var x0=Math.max(4,Math.min(VW-fw-4,cands[0][0])), y0=Math.max(4,Math.min(VH-fh-4,cands[0][1])); pick=[x0,y0,x0+fw,y0+fh]; }
     fit.rect=pick; fit.state="on"; fit.lead=true; fit.forced=true; fit.el.classList.add("ml-forced");
   }
+  mlGrow(elig,VW,VH,panels,obst);   /* UI/UX step 2: a live event's plate at t-live where it stands clear */
   /* Stage 8, 8C: what each item held, for the next pass (a place the layout gave it, against its anchor; not the focus's forced place), and
      its fade: from its alpha toward 1 if drawn, 0 if not, by the wall-clock time since its last pass over FADE_MS; at once where fades are off
      (a fresh view, reduced motion) or the item is new to the layer. A leaving item with alpha left is a remnant at its last drawn place.
@@ -13857,12 +13975,14 @@ function mlLayout(){
   });
   MLS.stats.fading=fading;
   /* write: positions, visibility, the leader lines and markers */
-  var K=mode==="staff"?"paper":"dark", C={cs:TOKENS.sym.plate[K],co:TOKENS.sym.label[K].annotation}, s=[], nfar=0, nfp=0;
+  var K=mode==="staff"?"paper":"dark", C={cs:TOKENS.sym.plate[K],co:TOKENS.sym.label[K].annotation}, s=[], nfar=0;
   elig.forEach(function(it){
     var on=it.state==="on";
-    if(on&&it.cat==="name"&&mlFarPlate(it,!(it.keep||it.forced||it.el===foc))) nfp++;   /* Stage 8, 8I (decision 263): a far name's lighter plate; a remnant keeps its last */
+    /* UI/UX step 2: the surface by the item's tier (a remnant keeps its last); the keyboard's focus and its forced place draw a tier 3 item on the plate */
+    if(on){ var sf=mlSurface(it,it.forced||it.el===foc); if(sf==="1") st.t1++; else if(sf==="2"&&it.tier===2) st.t2++; else if(it.tier===3) st.t3++; if(sf!=="q") st.fills++; }
     if(on){ var x=Math.round(it.rect[0]), y=Math.round(it.rect[1]), dw=it.w, dh=it.h;
       if(it.farC&&it.fw>0){ nfar++; x=Math.round(it.rect[0]+mlAlign(it.rect[0]-it.sx,it.w,it.fw)); y=Math.round(it.rect[1]+mlAlign(it.rect[1]-it.sy,it.h,it.fh)); dw=it.fw; dh=it.fh; }   /* Stage 8, 8C: the far step's words inside its box */
+      if(it.grow){ x=Math.round(it.grow[0]); y=Math.round(it.grow[1]); dw=it.w1; dh=it.h1; }   /* UI/UX step 2: a live event's plate at t-live, round the box laid out */
       var tx=x+","+y;
       if(it.tx!==tx){ it.el.style.transform="translate("+x+"px,"+y+"px)"; it.tx=tx; }
       it.lastOn=[x,y];
@@ -13879,7 +13999,7 @@ function mlLayout(){
     var op=on?(it.op<1?Math.max(0,it.op):1)*it.fa:(rm?it.fa:1), os=(on?op>=1:!rm)?"":String(op.toFixed(2));
     if(it.opS!==os){ it.el.style.opacity=os; it.opS=os; }
   });
-  MLS.stats.far=nfar; MLS.stats.farPlate=nfp;
+  MLS.stats.far=nfar;
   if(fading||MLS.moving) requestRender(1);   /* a fade under way; and one pass more after the last moving one, at rest (the band released) */
   var svg=s.join("");
   if(svg!==ML.svg){ ML.lines.innerHTML=svg; ML.svg=svg; }
@@ -13933,6 +14053,8 @@ function paintLegend(){
           /* Stage 6C (sections 4.3, 6.4): what the figures and the standards are, wherever figures are drawn; the name's side mark
              wherever the landscape draws names */
           figures:land&&!isTrueScale(), standards:land&&!isTrueScale(), sidemark:mode==="terrain"&&textOn(),
+          /* UI/UX step 2: the Landscape's label tiers wherever its names are drawn; Watch's set while the clock plays (MLT.calm's own condition) */
+          tiers:mode==="terrain"&&textOn(), calm:mode==="terrain"&&textOn()&&presentation==="watch"&&!!playing,
           gait:land&&!isTrueScale()};   /* Stage 8, 8E (decision 244 (a)): wherever figures are drawn, what their step is */
   /* the final audits' Stage 5, WP-08 (CL-MAP-08): a row for every encoding drawn: the phase's dashed axis arrows (their words their own interp),
      its objectives, each kind of event glyph drawn, the places' markers, and where counters are drawn their echelon marks, each arm's mark and
@@ -14038,20 +14160,21 @@ function pickFormation(cx,cy){
   return best;
 }
 function mlHit(cx,cy){
-  for(var k in ML.items){ var it=ML.items[k]; if(it.on&&it.rect&&cx>=it.rect[0]&&cx<=it.rect[2]&&cy>=it.rect[1]&&cy<=it.rect[3]) return it; }
+  for(var k in ML.items){ var it=ML.items[k], r=it.grow||it.rect;   /* UI/UX step 2: a live event's grown plate takes the pointer over all of it */
+    if(it.on&&r&&cx>=r[0]&&cx<=r[2]&&cy>=r[1]&&cy<=r[3]) return it; }
   return null;
 }
 /* the formation whose counter or name anchor lies within 20 px (a corps counter has no footprint of its own) */
 function mlNearAnchor(cx,cy,r2,dropped){
   var best=null, bd=r2||400;
-  for(var k in ML.items){ var it=ML.items[k]; if(!it.fid||it.eFrame!==ML.frame||it.state==="occluded"||(dropped&&it.state!=="dropped")) continue;
+  for(var k in ML.items){ var it=ML.items[k]; if(!it.fid||it.eFrame!==ML.frame||it.state==="occluded"||(dropped&&it.state!=="dropped"&&it.state!=="calm")) continue;   /* UI/UX step 2: a name Watch does not draw, as a dropped one */
     var d=(it.sx-cx)*(it.sx-cx)+(it.sy-cy)*(it.sy-cy); if(d<bd){ bd=d; best=it.fid; } }
   return best;
 }
 /* a formation's counter or name dropped in the frame laid out last */
 function mlDroppedNow(fid){
   var n=ML.items["n:"+fid], c=ML.items["c:"+fid];
-  return !!((n&&n.eFrame===ML.frame&&n.state==="dropped")||(c&&c.eFrame===ML.frame&&c.state==="dropped"));
+  return !!((n&&n.eFrame===ML.frame&&(n.state==="dropped"||n.state==="calm"))||(c&&c.eFrame===ML.frame&&c.state==="dropped"));
 }
 /* the point within sqrt(r2) px of this formation's counter or name anchor */
 function mlAnchorWithin(fid,cx,cy,r2){
@@ -18209,11 +18332,15 @@ function wp08Checks(){
     if(!pick){ ck("the selection on the landscape (WP-08, CL-MAP-10): the selected name's accent edge and the ring",false,"no name drawn to select"); return; }
     select("f",pick); settle(40,true); mlLayout();
     var acc=TOKENS.theme.dark.accent, rgb=[1,3,5].map(function(i){ return parseInt(acc.substr(i,2),16); }).join(", ");
-    var me=ML.items["n:"+pick], others=0, mine=!!(me&&me.on&&getComputedStyle(me.el).boxShadow.indexOf(rgb)>=0);
-    for(var k2 in ML.items){ var q=ML.items[k2]; if(q.cat==="name"&&q.on&&q.fid!==pick&&getComputedStyle(q.el).boxShadow.indexOf(rgb)>=0) others++; }
+    /* UI/UX roadmap step 2 (the owner's decision of 15 November 2026): a formation a live event names (tier 2) has a 1 px keyline of the accent at
+       0.7 round its plate, so "no other name edged in the accent" (this check until step 2) cannot hold; the selection's edge is the 2 px one,
+       opaque, and no other name has it: a tier 2 name's keyline is 1 px, and a name that is not tier 2 has none */
+    var edge=function(q){ var b=getComputedStyle(q.el).boxShadow; return b.indexOf("rgb("+rgb+") 0px 0px 0px 2px")>=0?2:b.indexOf(rgb)>=0?1:0; };
+    var me=ML.items["n:"+pick], others=0, keyl=0, mine=!!(me&&me.on&&edge(me)===2);
+    for(var k2 in ML.items){ var q=ML.items[k2]; if(q.cat!=="name"||!q.on||q.fid===pick) continue; var eg=edge(q); if(eg===2||(eg===1&&q.tier!==2)) others++; else if(eg===1) keyl++; }
     var op=selRing&&selRing.visible?selRing.material.opacity:0;
-    ck("the selection on the landscape (WP-08, CL-MAP-10): the selected name's plate edged in the accent, no other name's, the ring at least 0.85 opaque",
-      mine&&!others&&op>=0.85, (mine?"":"WRONG: the selected name not edged; ")+(others?"WRONG: "+others+" other names edged; ":"")+(op>=0.85?"":"WRONG: ")+"the ring "+op.toFixed(2)+" ("+pick+")");
+    ck("the selection on the landscape (WP-08, CL-MAP-10): the selected name's plate edged 2 px in the accent, no other name's so (a tier 2 name's keyline is 1 px, UI/UX step 2), the ring at least 0.85 opaque",
+      mine&&!others&&op>=0.85, (mine?"":"WRONG: the selected name not edged; ")+(others?"WRONG: "+others+" other names edged; ":"")+(op>=0.85?"":"WRONG: ")+"the ring "+op.toFixed(2)+" ("+pick+"); "+keyl+" tier 2 names with their 1 px keyline");
     select(null,null);
   });
   } finally {
@@ -23319,38 +23446,53 @@ var AUSTERLITZ_DEBUG=(function(){
         for(var pk in ML.items){ if(ML.items[pk].eFrame===ML.frame&&ML.items[pk].el.classList.contains("ml-far")) farBad.push(pk+" stepped on the paper map"); }
         ck("map layer (section 7.2, decision 240): in the low views the place and terrain-study names beyond "+MLS.FAR+" times the eye's distance to its target a type step smaller (10.5 px), in the box their own size gives them, so no item is placed otherwise; battle information never (decision 16); none on the paper map",
           nF>0&&!farBad.length, nF+" of "+nSm+" place names drawn close on Sokolnitz at the step"+(farBad.length?"; WRONG: "+farBad.slice(0,5).join("; "):"; the layout identical without it; the paper map none"));
-        /* Stage 8, the follow-up 8I (decision 263 (a)): in the low view east over the Goldbach at 12:00 (Part A's wall of formation names, horizon-east)
-           every formation name drawn beyond FAR times the eye's distance to its target on the far plate, every nearer one on the full plate, all at the
-           same size and in the places they have without it; a far name selected, then focused, back on the full plate; under Napoleon's reading the
-           same rule for the names it draws; none on the paper map. The plates' contrast as rendered is the harness's (every map text at AA in every
-           case; check:visual's farPlate block in the low views, the fog and the light) */
-        var fpBad=[], fpN=0, fpNear=0, fpProt=[], PF=TOKENS.sym.plate.far;
-        var plateOf=function(it){ var p=document.createElement("i"); p.style.background=PF; var far=p.style.background; return it.el.style.background===far?"far":"full"; };
-        var fpCheck=function(tag){ var dT=landCam.position.distanceTo(orbitTarget), px0=null;
-          for(var nk2 in ML.items){ var nt=ML.items[nk2]; if(nk2.indexOf("n:")!==0||nt.eFrame!==ML.frame||nt.state!=="on") continue;
-            var rr=camera.position.distanceTo(nt.world)/dT, prot=nt.keep||nt.forced||nt.el===document.activeElement, want=(!prot&&rr>MLS.FAR)?"far":"full", got=plateOf(nt), fpx=parseFloat(getComputedStyle(nt.el).fontSize);
-            if(got!==want) fpBad.push(tag+": "+nk2+" ratio "+rr.toFixed(2)+(prot?" protected":"")+" on the "+got+" plate");
-            if(px0===null) px0=fpx; else if(Math.abs(fpx-px0)>0.01) fpBad.push(tag+": "+nk2+" at "+fpx+" px against "+px0);
-            if(want==="far") fpN++; else fpNear++; } };
+        /* UI/UX roadmap step 2 (the owner's decision of 15 November 2026, which supersedes decision 263 (a)'s far plate, held here until step 2): in
+           the low view east over the Goldbach at 12:00 (Part A's wall of formation names, horizon-east; four live events) every label on the surface
+           its tier gives it: a live event on the accent plate, at t-live where its larger plate stands clear and at t-ui in the box laid out where
+           it does not; a formation a live event names and the selection on the plate with its keyline; every other label cased, on no plate; the
+           keyboard's focus on the plate. Every label placed as without the tiers (no tier changes a box). The same under Napoleon's reading; in
+           Watch while the clock plays tier 3 not drawn, but the keyboard's focus; no tier on the paper map. The surfaces' contrast as rendered is
+           the harness's (every map text at AA in every case; the live block ux2; check:visual's tiers block in the low views, the fog and the light) */
+        var tBad=[], tN={1:0,2:0,3:0,g:0}, tProt=[];
+        var colOf=function(c){ var p=document.createElement("i"); p.style.background=c; return p.style.background; }, ACC=colOf(TOKENS.theme.dark.accent);
+        var tCheck=function(tag){
+          for(var nk2 in ML.items){ var nt=ML.items[nk2]; if(nt.eFrame!==ML.frame||nt.state!=="on"||nt.cat==="counter") continue;
+            var liveE=nt.cat==="event"&&nt.pick&&evWeight(EVENTS.filter(function(e){ return e.id===nt.pick.id; })[0],clock)>MLT.LIVE, named=nt.cat==="name"&&!!MLT.ev[nt.fid];
+            var want=liveE?1:(nt.keep||named)?2:3, foc2=nt.forced||nt.el===document.activeElement, bg=nt.el.style.background, c=nt.el.classList, fpx=parseFloat(getComputedStyle(nt.el).fontSize);
+            if(nt.tier!==want){ tBad.push(tag+": "+nk2+" tier "+nt.tier+", "+want+" expected"); continue; }
+            if(want===1){ tN[1]++; if(nt.grow) tN.g++;
+              if(bg!==ACC||!c.contains("ml-t1")) tBad.push(tag+": "+nk2+", a live event, not on the accent plate");
+              if(Math.abs(fpx-(nt.grow&&window.innerWidth>=720?13.5:12.5))>0.01||c.contains("ml-t1g")!==!!nt.grow) tBad.push(tag+": "+nk2+" at "+fpx+" px, its larger plate "+(nt.grow?"drawn":"not drawn")); }
+            else if(want===2){ tN[2]++; if(bg!==colOf(nt.plate0)||!c.contains("ml-t2")||c.contains("ml-q")) tBad.push(tag+": "+nk2+", tier 2, not on the plate with its keyline"); }
+            else { tN[3]++; if(foc2?(bg!==colOf(nt.plate0)||c.contains("ml-q")):(bg!=="transparent"||!c.contains("ml-q")||getComputedStyle(nt.el).textShadow==="none")) tBad.push(tag+": "+nk2+", tier 3"+(foc2?" with the focus, not on the plate":", not cased on no plate")); }
+            if(want!==1&&Math.abs(fpx-(nt.farC?10.5:nt.small?11.5:12.5))>0.01) tBad.push(tag+": "+nk2+" at "+fpx+" px"); } };
         stopPlay(); lastInput=-1e9; setMode("terrain"); setPresentation("watch"); setClock(720,{instant:true,force:true,camera:false}); finishTween();
         var hw=W(230,250), hty=displayHeight(hw[0],hw[1]), hdv=new THREE.Vector3(-0.97,0.10,0.21).normalize().multiplyScalar(60);
         placeCamera([hw[0]+hdv.x,hty+hdv.y,hw[1]+hdv.z,hw[0],hty,hw[1]]); syncViewOffset(true); settle(4,true); mlReset("test"); mlLayout();
         var FPL={}; for(var fk0 in ML.items){ var ft0=ML.items[fk0]; if(ft0.eFrame===ML.frame) FPL[fk0]=[ft0.state,ft0.rect?ft0.rect.join(","):""]; }
-        fpCheck("12:00"); var fpFar0=fpN;
-        /* the places with no name far (and no far step, which 8C's check above shows changes no place): the layout is the same, the plate changes no box */
-        var far1=MLS.FAR; MLS.FAR=1e9; mlReset("test"); mlLayout(); MLS.FAR=far1;
-        for(var fk1 in FPL){ var ft1=ML.items[fk1]; if(ft1.eFrame!==ML.frame||ft1.state!==FPL[fk1][0]||(ft1.rect?ft1.rect.join(","):"")!==FPL[fk1][1]) fpBad.push(fk1+" placed otherwise with the full plate");
-          if(fk1.indexOf("n:")===0&&ft1.eFrame===ML.frame&&ft1.state==="on"&&plateOf(ft1)!=="full") fpBad.push(fk1+" on the far plate with no name far"); }
+        tCheck("12:00"); var tAt=[tN[1],tN[2],tN[3],tN.g];
+        /* the same view without the tiers (the tiers' preparation put aside for one pass): every item in the state and the box it has with them */
+        var tp0=mlTierPrep; mlTierPrep=function(){ MLT.on=false; MLT.calm=false; MLT.live={}; MLT.ev={}; }; mlReset("test"); mlLayout(); mlTierPrep=tp0;
+        for(var fk1 in FPL){ var ft1=ML.items[fk1]; if(ft1.eFrame!==ML.frame||ft1.state!==FPL[fk1][0]||(ft1.rect?ft1.rect.join(","):"")!==FPL[fk1][1]) tBad.push(fk1+" placed otherwise without the tiers");
+          if(ft1.eFrame===ML.frame&&ft1.state==="on"&&(ft1.tier||ft1.el.classList.contains("ml-q")||ft1.el.classList.contains("ml-t1")||ft1.el.classList.contains("ml-t2")||ft1.el.classList.contains("ml-t1g"))) tBad.push(fk1+" keeps a tier's surface without the tiers"); }
         mlReset("test"); mlLayout();
-        var farOne=null; for(var fk2 in ML.items){ var ft2=ML.items[fk2]; if(fk2.indexOf("n:")===0&&ft2.eFrame===ML.frame&&ft2.state==="on"&&plateOf(ft2)==="far"){ farOne=fk2.slice(2); break; } }
-        if(farOne){ select("f",farOne); settle(2,true); mlLayout(); var sIt=ML.items["n:"+farOne]; fpProt.push("selected "+plateOf(sIt)); if(plateOf(sIt)!=="full") fpBad.push(farOne+" selected on the far plate"); fpCheck("selected");
-          select(null,null); settle(2,true); mlLayout(); var fIt=ML.items["n:"+farOne]; if(fIt&&fIt.el&&fIt.focusable){ fIt.el.focus(); mlLayout(); fpProt.push("focused "+plateOf(fIt)); if(plateOf(fIt)!=="full") fpBad.push(farOne+" focused on the far plate"); fpCheck("focused"); fIt.el.blur(); mlLayout(); } }
-        else fpBad.push("no far name to select in the view");
-        setCommandView("fr"); settle(2,true); mlReset("test"); mlLayout(); fpCheck("Napoleon's reading"); setCommandView("none"); settle(2,true);
-        setMode("staff"); settle(4,true); mlLayout(); for(var fk3 in ML.items){ var ft3=ML.items[fk3]; if(ft3.eFrame===ML.frame&&ft3.plate0&&plateOf(ft3)==="far") fpBad.push(fk3+" on the far plate on the paper map"); }
+        var t3One=null; for(var fk2 in ML.items){ var ft2=ML.items[fk2]; if(fk2.indexOf("n:")===0&&ft2.eFrame===ML.frame&&ft2.state==="on"&&ft2.tier===3){ t3One=fk2.slice(2); break; } }
+        if(t3One){ select("f",t3One); settle(2,true); mlLayout(); var sIt=ML.items["n:"+t3One]; tProt.push("selected: tier "+sIt.tier+", surface "+sIt.surf); if(sIt.tier!==2||sIt.surf!=="2"||!sIt.el.classList.contains("mln-sel")) tBad.push(t3One+" selected, not tier 2 on the plate"); tCheck("selected");
+          select(null,null); settle(2,true); mlLayout(); var fIt=ML.items["n:"+t3One]; if(fIt&&fIt.el&&fIt.focusable){ fIt.el.focus(); mlLayout(); tProt.push("focused: surface "+fIt.surf); if(fIt.surf!=="2") tBad.push(t3One+" focused, not on the plate"); tCheck("focused");
+            /* Watch while the clock plays: tier 3 not drawn, but the item with the focus; then without the focus not that one either */
+            playing=true; mlReset("test"); mlLayout();
+            var cOn=0, cCalm=0; for(var ck1 in ML.items){ var ct=ML.items[ck1]; if(ct.eFrame!==ML.frame) continue; if(ct.state==="calm") cCalm++; if(ct.state==="on"&&ct.tier===3&&ct!==fIt){ cOn++; tBad.push("Watch while the clock plays: "+ck1+", tier 3, drawn"); } }
+            if(!(fIt.state==="on"&&fIt.surf==="2")) tBad.push("Watch while the clock plays: "+t3One+" with the focus not drawn on the plate");
+            if(!cCalm) tBad.push("Watch while the clock plays: no tier 3 label held back");
+            fIt.el.blur(); mlReset("test"); mlLayout(); if(fIt.state!=="calm") tBad.push("Watch while the clock plays: "+t3One+" without the focus "+fIt.state);
+            tProt.push("Watch playing: "+cCalm+" held back, "+cOn+" tier 3 drawn");
+            playing=false; mlReset("test"); mlLayout(); } }
+        else tBad.push("no tier 3 name to select in the view");
+        setCommandView("fr"); settle(2,true); mlReset("test"); mlLayout(); tCheck("Napoleon's reading"); setCommandView("none"); settle(2,true);
+        setMode("staff"); settle(4,true); mlLayout(); for(var fk3 in ML.items){ var ft3=ML.items[fk3]; if(ft3.eFrame===ML.frame&&(ft3.tier||(ft3.state==="on"&&(ft3.el.classList.contains("ml-q")||ft3.el.classList.contains("ml-t1")||ft3.el.classList.contains("ml-t2")||ft3.el.classList.contains("ml-t1g"))))) tBad.push(fk3+" with a tier on the paper map"); }
         setMode("terrain");
-        ck("map layer (Stage 8, 8I; decision 263): in the low view east over the Goldbach the formation names beyond "+MLS.FAR+" times the eye's distance to its target on the lighter far plate (TOKENS.sym.plate.far), the nearer and the protected ones (selected, focused) on the full plate, all at one size and placed as without it; the same under a headquarters' reading; none on the paper map",
-          fpFar0>0&&!!farOne&&!fpBad.length, fpFar0+" far names at 12:00 ("+fpNear+" near or protected reads, "+fpN+" far reads in all); "+fpProt.join(", ")+(fpBad.length?"; WRONG: "+fpBad.slice(0,5).join("; "):"; the layout identical with the full plate; the paper map none"));
+        ck("map layer (UI/UX step 2; the Landscape's tiers, which supersede decision 263): in the low view east over the Goldbach every label on its tier's surface (a live event above weight "+MLT.LIVE+" on the accent plate, at t-live where its larger plate stands clear; a formation a live event names and the selection on the plate with its keyline; every other label cased on no plate, the keyboard's focus on the plate), each placed as without the tiers; the same under a headquarters' reading; in Watch while the clock plays tier 3 not drawn but the focus; none on the paper map",
+          tAt[0]>0&&tAt[1]>0&&tAt[2]>0&&!!t3One&&!tBad.length, "at 12:00 tier 1 "+tAt[0]+" ("+tAt[3]+" at t-live), tier 2 "+tAt[1]+", tier 3 "+tAt[2]+"; "+tProt.join(", ")+(tBad.length?"; WRONG: "+tBad.slice(0,5).join("; "):"; the layout identical without the tiers; the paper map none"));
       } catch(err){ ck("map layer in motion (decision 240): the motion checks ran", false, "threw: "+err.message);
       } finally {
         if(hadNow) performance.now=realNow; else delete performance.now;

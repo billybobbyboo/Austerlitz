@@ -1,0 +1,14 @@
+step2-phone-study-0830-0930 on 07cbcaf3 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 390x844 phone, density 3): 548 frames to 570.0, 96 s
+  filled plates over the formations' box: max 35.7%, median 16.2%, frames over 12%: 501 of 548; every label's box: max 45.9%; tier 3 fills: 0 at most, in 0 frames
+  drawn labels: max 18, median 12, frames over 12: 89; filled: max 5, median 4; by tier at most {"0":0,"1":4,"2":3,"3":18}; a live event's plate at t-live in 1569 of its 1569 frames
+  contrast over 39 drawn frames (0 drawn again: the capture's canvas black), 403 texts at full opacity (44 fading aside): tier 3 ring {"n":260,"min":9.99,"p10":11.1,"median":12.68,"below":0}, box {"n":260,"min":1.61,"p10":1.8,"median":3.8,"below":154}, bare {"n":260,"min":1.53,"p10":1.73,"median":3.22,"below":170}
+    the variant not built (the far plate under every tier 3 label whose words' box reads under 4.5:1): 4 labels a sampled frame (median; 10 at most), filled plates then over 24.7% of the formations' box (median; 37.7% at most), over 12% in 38 of 39 sampled frames
+    every text: ring {"n":403,"min":9.99,"p10":11.36,"median":13,"below":0}, box {"n":403,"min":1.61,"p10":2.06,"median":6.2,"below":154}, bare {"n":403,"min":1.19,"p10":1.67,"median":2.89,"below":309}
+  the formations a live event names: drawn 334 of 334 in view (100.0%) over 548 frames of Play; not drawn: {"occluded":0,"placement":0,"calm":0,"withheld":0}; outside the measure: {"offscreen":1,"panel":0,"reading":0,"field":0,"lod":2397,"aggregate":142,"none":0}
+    davout             label drawn 493 frames; its formations drawn 0 of 0; outside {"friant:lod":493}
+    decision           label drawn 142 frames; its formations drawn 141 of 141; outside {"c_iv:aggregate":142,"sthilaire:lod":142,"vandamme:lod":142,"gqg:offscreen":1}
+    soult              label drawn 493 frames; its formations drawn 0 of 0; outside {"sthilaire:lod":493,"vandamme:lod":493}
+    pratzen-village    label drawn 193 frames; its formations drawn 0 of 0; outside {"sthilaire:lod":193}
+    face-about         label drawn 193 frames; its formations drawn 193 of 193; outside {"milo:lod":193,"kollo:lod":193}
+    telnitz-retaken    label drawn 55 frames; its formations drawn 0 of 0; outside {"friant:lod":55}
+  the label pass: median 0.9 ms, 95th 2.2, max 8.8 over 556 passes, over 8 ms: 1; page errors 0

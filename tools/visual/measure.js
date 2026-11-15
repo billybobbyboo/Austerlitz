@@ -112,7 +112,8 @@
       KEYS:typeof KEYS!=="undefined", SUN_DAY:typeof SUN_DAY!=="undefined", ATMO:typeof ATMO!=="undefined", SMOKE:typeof SMOKE!=="undefined",
       settle:!!d.settle, applyCase:!!d.applyCase, selfTest:!!d.selfTest, SHORTCUTS:typeof SHORTCUTS!=="undefined", TIPS:typeof tipSync==="function",
       MLS:typeof MLS!=="undefined"&&typeof mlStabBegin==="function", CULL:typeof CULL!=="undefined"&&typeof setCull==="function", ANIM:typeof ANIM!=="undefined"&&typeof animHook==="function",
-      mlFarPlate:typeof mlFarPlate==="function"&&!!(TOKENS.sym.plate&&TOKENS.sym.plate.far), TOAST:typeof toastRelayout==="function",   /* Stage 8, the follow-up 8I */
+      MLT:typeof MLT!=="undefined"&&typeof mlSurface==="function"&&typeof mlTierPrep==="function",   /* UI/UX roadmap step 2: the Landscape's label tiers (they supersede 8I's far plate) */
+      TOAST:typeof toastRelayout==="function",   /* Stage 8, the follow-up 8I */
       UX1:typeof showKeyFromCard==="function"&&typeof evPickOpen==="function"&&typeof fitPhaseLabels==="function"};   /* UI/UX roadmap step 1 */
   }
 
@@ -231,8 +232,9 @@
         b={left:Math.max(b.left,eb.left),top:Math.max(b.top,eb.top),right:Math.min(b.right,eb.right),bottom:Math.min(b.bottom,eb.bottom)};
         var cs=getComputedStyle(e), cls=typeof e.className==="string"?e.className:"";
         var tert=/mlc-ech|mlc-tag|mlc-badge/.test(cls)||/mlt-small/.test(it.el.className);
+        /* UI/UX roadmap step 2: a tier 3 label's own words are cased, on no plate (app.js mlSurface, style.css .ml-q): read against the casing */
         out.push({cat:it.cat,id:k,text:own.slice(0,40),px:parseFloat(cs.fontSize),weight:cs.fontWeight,color:cs.color,floor:tert?10.5:12,
-          bx:[b.left,b.top,b.right,b.bottom]}); });
+          cased:e===it.el&&it.el.classList.contains("ml-q"),bx:[b.left,b.top,b.right,b.bottom]}); });
     });
     return out;
   }
@@ -325,18 +327,49 @@
      pixels within 1 px of one nearer the ink than half) is left out of the surround. Without them the 10th percentile
      falls on the fringe: 3.8-4.0:1 for text measured 6.49:1 at the median on its opaque plate (hybrid-dimmed).
      AA: 4.5:1 below 18 px (14 px bold), else 3:1. */
-  function textContrast(b64){
+  /* UI/UX roadmap step 2 (docs/UX_ART_AUDIT.md UA-01; app.js mlSurface, style.css .ml-q): a tier 3 label of the Landscape has no plate; its ink is
+     cased by the keyline, opaque to 2 px round every letter. Such a text is read on two frames of one state: the frame as rendered (b64) and the
+     same with the layer's ink transparent (inkOff64; inkOff() below; the casings and the plates stay). Its ink is the pixels the ink changed by
+     half or more (exact: the half-distance rule below reads pale fog as ink where no plate stands under the words), and its contrast the 10th
+     percentile over the first whole pixel round the ink beyond its 1 px fringe: what the letters stand against (WCAG technique G18's note: a
+     border wide enough to fill a letter's inner details is its background). A plated text is read as before, on the first frame alone. A cased
+     text with no second frame is not read and counted (casedUnread: a failure under --test) */
+  function inkOff(off){ var s=document.getElementById("aus-inkoff");
+    if(off&&!s){ s=document.createElement("style"); s.id="aus-inkoff"; s.textContent="#maplayer .ml-item{color:transparent!important}"; document.head.appendChild(s); } else if(!off&&s) s.remove(); }
+  function casedCount(){ return layerTexts().filter(function(t){ return t.cased; }).length; }
+  var CASE_RING=2;
+  function casedContrast(A,B,t,ink,L){
+    var x0=Math.max(0,Math.ceil(t.bx[0])), y0=Math.max(0,Math.ceil(t.bx[1])), x1=Math.min(A.w,Math.floor(t.bx[2])), y1=Math.min(A.h,Math.floor(t.bx[3]));
+    var P=CASE_RING+1, X0=Math.max(0,x0-P), Y0=Math.max(0,y0-P), X1=Math.min(A.w,x1+P), Y1=Math.min(A.h,y1+P), w=X1-X0, h=Y1-Y0; if(w<2||h<2) return null;
+    var dist=new Float32Array(w*h), i, j, o, n=0;
+    for(j=0;j<h;j++) for(i=0;i<w;i++){ o=((Y0+j)*A.w+X0+i)*4; var inB=i+X0>=x0&&i+X0<x1&&j+Y0>=y0&&j+Y0<y1;
+      var dAB=Math.hypot(A.d[o]-B.d[o],A.d[o+1]-B.d[o+1],A.d[o+2]-B.d[o+2]), dIB=Math.hypot(ink[0]-B.d[o],ink[1]-B.d[o+1],ink[2]-B.d[o+2]);
+      if(inB&&dIB>24&&dAB/dIB>=0.5){ dist[j*w+i]=0; n++; } else dist[j*w+i]=1e6; }
+    if(n<4) return null;
+    for(j=0;j<h;j++) for(i=0;i<w;i++){ o=j*w+i; if(i>0) dist[o]=Math.min(dist[o],dist[o-1]+1); if(j>0) dist[o]=Math.min(dist[o],dist[o-w]+1); if(i>0&&j>0) dist[o]=Math.min(dist[o],dist[o-w-1]+1.4142); if(i<w-1&&j>0) dist[o]=Math.min(dist[o],dist[o-w+1]+1.4142); }
+    for(j=h-1;j>=0;j--) for(i=w-1;i>=0;i--){ o=j*w+i; if(i<w-1) dist[o]=Math.min(dist[o],dist[o+1]+1); if(j<h-1) dist[o]=Math.min(dist[o],dist[o+w]+1); if(i<w-1&&j<h-1) dist[o]=Math.min(dist[o],dist[o+w+1]+1.4142); if(i>0&&j<h-1) dist[o]=Math.min(dist[o],dist[o+w-1]+1.4142); }
+    var li=L(ink), cs=[];
+    for(j=0;j<h;j++) for(i=0;i<w;i++){ var d=dist[j*w+i]; if(d<1.5||d>CASE_RING+0.001) continue;   /* the ink and its 1 px fringe aside; the first whole pixel beyond */
+      var q=((Y0+j)*A.w+X0+i)*4, lq=L([B.d[q],B.d[q+1],B.d[q+2]]); cs.push((Math.max(li,lq)+0.05)/(Math.min(li,lq)+0.05)); }
+    if(!cs.length) return null; cs.sort(function(a,b){ return a-b; }); return cs[Math.floor(cs.length*0.10)];
+  }
+  function textContrast(b64,inkOff64){
     var T=layerTexts();
     return new Promise(function(res){
-      var im=new Image();
-      im.onload=function(){
+      var im=new Image(), im2=inkOff64?new Image():null, left=im2?2:1;
+      var go=function(){ if(--left) return;
         var cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height;
-        var x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); var d=x.getImageData(0,0,cv.width,cv.height).data;
+        var x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); var d=x.getImageData(0,0,cv.width,cv.height).data, d2=null;
+        if(im2){ x.clearRect(0,0,cv.width,cv.height); x.drawImage(im2,0,0); d2=x.getImageData(0,0,cv.width,cv.height).data; }
         function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }
         function L(c){ return 0.2126*lin(c[0])+0.7152*lin(c[1])+0.0722*lin(c[2]); }
-        var below=[], min=99, n=0, raw=99;
+        var below=[], min=99, n=0, raw=99, cased=0, casedMin=99, casedUnread=0;
         T.forEach(function(t){
           var m=/rgba?\(([^)]+)\)/.exec(t.color); if(!m) return; var ink=m[1].split(",").map(parseFloat);
+          if(t.cased){ if(!d2){ casedUnread++; return; }
+            var cc=casedContrast({w:cv.width,h:cv.height,d:d},{w:cv.width,h:cv.height,d:d2},t,ink,L); if(cc===null) return;
+            var nd=(t.px>=18||(t.px>=14&&+t.weight>=600))?3:4.5; n++; cased++; if(cc<min) min=cc; if(cc<casedMin) casedMin=cc;
+            if(cc<nd) below.push(t.id+" \""+t.text+"\" (cased) "+cc.toFixed(2)+"<"+nd); return; }
           var x0=Math.max(0,Math.ceil(t.bx[0])), y0=Math.max(0,Math.ceil(t.bx[1])), x1=Math.min(cv.width,Math.floor(t.bx[2])), y1=Math.min(cv.height,Math.floor(t.bx[3]));
           var w=x1-x0, h=y1-y0; if(w<2||h<2) return;
           var px=[], dist=[], mx=0, i, j;
@@ -352,35 +385,41 @@
           if(c<min) min=c; raw=Math.min(raw,cr[Math.floor(cr.length*0.10)]);
           if(c<need) below.push(t.id+" \""+t.text+"\" "+c.toFixed(2)+"<"+need);
         });
-        res({texts:n, min:n?+min.toFixed(2):null, belowAA:below, rawSectionE:n?+raw.toFixed(2):null});
+        res({texts:n, min:n?+min.toFixed(2):null, belowAA:below, rawSectionE:n&&raw<99?+raw.toFixed(2):null, cased:cased, casedMin:cased?+casedMin.toFixed(2):null, casedUnread:casedUnread});
       };
+      im.onload=go; if(im2){ im2.onload=go; im2.src="data:image/png;base64,"+inkOff64; }
       im.src="data:image/png;base64,"+b64;
     });
   }
 
-  /* Stage 8, the follow-up 8I (decision 263 (a)): the landscape's formation names as rendered on the frame b64, each with its plate (the far plate,
-     TOKENS.sym.plate.far, or the full one, read off its style), its distance ratio (the eye's distance to it over the eye's distance to its target,
-     the far test's), whether the layer protects it (selected, hovered, highlighted, forced, focused), its size, and its contrast as rendered by
-     textContrast's method (the 10th percentile of the ground round its ink, the ink's 1 px fringe aside). A build without the far plate: null */
-  function farNames(b64){
-    if(typeof mlFarPlate!=="function"||!TOKENS.sym.plate.far) return Promise.resolve(null);
-    var tmp=document.createElement("i"); tmp.style.background=TOKENS.sym.plate.far; var FAR=tmp.style.background;
-    var dT=landCam.position.distanceTo(orbitTarget), foc=document.activeElement, N=[];
-    for(var k in ML.items){ var it=ML.items[k]; if(k.indexOf("n:")!==0||it.eFrame!==ML.frame||it.state!=="on"||!it.el) continue;
-      var r=it.el.getBoundingClientRect(), cs=getComputedStyle(it.el);
-      N.push({id:k, plate:it.el.style.background===FAR?"far":"full", ratio:+(camera.position.distanceTo(it.world)/dT).toFixed(3), prot:!!(it.keep||it.forced||it.el===foc),
-        px:parseFloat(cs.fontSize), bx:[r.left,r.top,r.right,r.bottom], color:cs.color}); }
-    return new Promise(function(res){ var im=new Image(); im.onload=function(){
-      var cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height; var x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); var d=x.getImageData(0,0,cv.width,cv.height).data;
-      function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); } function L(c){ return 0.2126*lin(c[0])+0.7152*lin(c[1])+0.0722*lin(c[2]); }
-      N.forEach(function(t){ var m=/rgba?\(([^)]+)\)/.exec(t.color); t.contrast=null; if(!m) return; var ink=m[1].split(",").map(parseFloat);
-        var x0=Math.max(0,Math.ceil(t.bx[0])), y0=Math.max(0,Math.ceil(t.bx[1])), x1=Math.min(cv.width,Math.floor(t.bx[2])), y1=Math.min(cv.height,Math.floor(t.bx[3])), w=x1-x0, h=y1-y0; if(w<2||h<2) return;
-        var px=[], dist=[], mx=0, i, j; for(j=0;j<h;j++) for(i=0;i<w;i++){ var o=((y0+j)*cv.width+x0+i)*4, q=[d[o],d[o+1],d[o+2]], dd=Math.hypot(q[0]-ink[0],q[1]-ink[1],q[2]-ink[2]); px.push(q); dist.push(dd); if(dd>mx) mx=dd; }
-        var near=new Uint8Array(w*h); for(j=0;j<h;j++) for(i=0;i<w;i++) if(dist[j*w+i]<0.5*mx) for(var b2=-1;b2<=1;b2++) for(var a2=-1;a2<=1;a2++){ var ii=i+a2, jj=j+b2; if(ii>=0&&jj>=0&&ii<w&&jj<h) near[jj*w+ii]=1; }
-        var li=L(ink), c2=[]; for(var q2=0;q2<px.length;q2++){ if(dist[q2]<0.5*mx||near[q2]) continue; var lq=L(px[q2]); c2.push((Math.max(li,lq)+0.05)/(Math.min(li,lq)+0.05)); }
-        if(c2.length){ c2.sort(function(a,b){ return a-b; }); t.contrast=+c2[Math.floor(c2.length*0.10)].toFixed(2); }
-        delete t.bx; delete t.color; });
-      res({far:MLS.FAR, names:N}); }; im.src="data:image/png;base64,"+b64; });
+  /* UI/UX roadmap step 2 (the owner's decision of 15 November 2026, which supersedes decision 263 (a)'s far plate; app.js MLT, mlSurface): every label
+     drawn on the frame, with its tier, the surface it is drawn on as computed ("accent": the accent fill; "plate": another fill; "none": no fill, with
+     whether it is cased), its size, whether the keyboard's focus stands on it or forces its place, whether the layer protects it, and its own words'
+     contrast as rendered (a cased label on the two frames, casedContrast; a plated one by textContrast's method on the first). Measurement only; a
+     build without tiers: null */
+  function tierNames(b64,inkOff64){
+    if(typeof MLT==="undefined"||typeof mlSurface!=="function") return Promise.resolve(null);
+    var tmp=document.createElement("i"); tmp.style.background=TOKENS.theme.dark.accent; document.body.appendChild(tmp); var ACC=getComputedStyle(tmp).backgroundColor; tmp.remove();
+    var foc=document.activeElement, N=[], T=layerTexts(), byId={};
+    T.forEach(function(t){ if(!byId[t.id]&&/^(n|e|t|a|o|p|pl):/.test(t.id)&&!/mlc/.test(t.cat||"")) byId[t.id]=t; });
+    for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame||it.state!=="on"||!it.el||it.cat==="counter") continue;
+      var cs=getComputedStyle(it.el), m=/rgba?\(([^)]+)\)/.exec(cs.backgroundColor), al=m?(m[1].split(",").length>3?parseFloat(m[1].split(",")[3]):1):0;
+      N.push({id:k, cat:it.cat, tier:it.tier||0, surface:al<0.05?"none":cs.backgroundColor===ACC?"accent":"plate", cased:cs.textShadow!=="none", keyline:it.el.classList.contains("ml-t2"),
+        px:parseFloat(cs.fontSize), grown:!!it.grow, focus:it.el===foc||!!it.forced, prot:!!it.keep, live:!!(it.pick&&it.pick.kind==="e"&&MLT.live[it.pick.id]), named:!!(it.fid&&MLT.ev[it.fid]), t:byId[k]||null}); }
+    return new Promise(function(res){ var im=new Image(), im2=inkOff64?new Image():null, left=im2?2:1;
+      var go=function(){ if(--left) return;
+        var cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height; var x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); var d=x.getImageData(0,0,cv.width,cv.height).data, d2=null;
+        if(im2){ x.clearRect(0,0,cv.width,cv.height); x.drawImage(im2,0,0); d2=x.getImageData(0,0,cv.width,cv.height).data; }
+        function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); } function L(c){ return 0.2126*lin(c[0])+0.7152*lin(c[1])+0.0722*lin(c[2]); }
+        N.forEach(function(q){ var t=q.t; q.contrast=null; delete q.t; if(!t) return; var m=/rgba?\(([^)]+)\)/.exec(t.color); if(!m) return; var ink=m[1].split(",").map(parseFloat);
+          if(t.cased){ if(d2){ var cc=casedContrast({w:cv.width,h:cv.height,d:d},{w:cv.width,h:cv.height,d:d2},t,ink,L); q.contrast=cc===null?null:+cc.toFixed(2); } return; }
+          var x0=Math.max(0,Math.ceil(t.bx[0])), y0=Math.max(0,Math.ceil(t.bx[1])), x1=Math.min(cv.width,Math.floor(t.bx[2])), y1=Math.min(cv.height,Math.floor(t.bx[3])), w=x1-x0, h=y1-y0; if(w<2||h<2) return;
+          var px=[], dist=[], mx=0, i, j; for(j=0;j<h;j++) for(i=0;i<w;i++){ var o=((y0+j)*cv.width+x0+i)*4, c=[d[o],d[o+1],d[o+2]], dd=Math.hypot(c[0]-ink[0],c[1]-ink[1],c[2]-ink[2]); px.push(c); dist.push(dd); if(dd>mx) mx=dd; }
+          var near=new Uint8Array(w*h); for(j=0;j<h;j++) for(i=0;i<w;i++) if(dist[j*w+i]<0.5*mx) for(var b2=-1;b2<=1;b2++) for(var a2=-1;a2<=1;a2++){ var ii=i+a2, jj=j+b2; if(ii>=0&&jj>=0&&ii<w&&jj<h) near[jj*w+ii]=1; }
+          var li=L(ink), c2=[]; for(var q2=0;q2<px.length;q2++){ if(dist[q2]<0.5*mx||near[q2]) continue; var lq=L(px[q2]); c2.push((Math.max(li,lq)+0.05)/(Math.min(li,lq)+0.05)); }
+          if(c2.length){ c2.sort(function(a,b){ return a-b; }); q.contrast=+c2[Math.floor(c2.length*0.10)].toFixed(2); } });
+        res({on:MLT.on, calm:MLT.calm, width:innerWidth, items:N}); };
+      im.onload=go; if(im2){ im2.onload=go; im2.src="data:image/png;base64,"+inkOff64; } im.src="data:image/png;base64,"+b64; });
   }
 
   /* Stage 2E: the paper map's geometry, read from the page as drawn (docs/STAGE2_SPEC.md section J, 2E): the bearing of
@@ -725,7 +764,7 @@
     setPresentation("study"); return out; }
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures, census:census, cullEquiv:cullEquiv,
-                overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, farNames:farNames, layerTexts:layerTexts,
+                overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, tierNames:tierNames, inkOff:inkOff, casedCount:casedCount, layerTexts:layerTexts,
                 legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, derivedModel:derivedModel, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare, confShare:confShare,
                 state:state, features:features, camState:camState, readCanvas:readCanvas, captionParts:captionParts};
 })();

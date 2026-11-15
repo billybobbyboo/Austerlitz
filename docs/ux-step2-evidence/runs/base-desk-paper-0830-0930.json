@@ -1,0 +1,294 @@
+{
+ "build": "step1.html",
+ "md5": "d404045b4544eb03c69fc3c9e3fff044",
+ "tag": "base-desk-paper-0830-0930",
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "dpr": 1,
+  "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "phoneLayout": false,
+  "w": 1440,
+  "h": 900,
+  "tiers": false
+ },
+ "vp": [
+  1440,
+  900
+ ],
+ "phone": false,
+ "presentation": "study",
+ "mode": "staff",
+ "reading": null,
+ "from": 510,
+ "to": 570,
+ "frames": 548,
+ "secs": 8,
+ "clockEnd": 570,
+ "coverage": {
+  "frames": 548,
+  "max": 0.4351,
+  "median": 0.3646,
+  "over12": 548,
+  "worst": [
+   {
+    "f": 495,
+    "clock": 562.5,
+    "fillCover": 0.4351,
+    "filled": 25,
+    "labels": 25,
+    "bboxShare": 0.0937,
+    "tier3Filled": 0
+   },
+   {
+    "f": 494,
+    "clock": 562.3,
+    "fillCover": 0.4344,
+    "filled": 25,
+    "labels": 25,
+    "bboxShare": 0.0937,
+    "tier3Filled": 0
+   },
+   {
+    "f": 232,
+    "clock": 538.7,
+    "fillCover": 0.4189,
+    "filled": 24,
+    "labels": 24,
+    "bboxShare": 0.0996,
+    "tier3Filled": 0
+   },
+   {
+    "f": 233,
+    "clock": 538.8,
+    "fillCover": 0.4189,
+    "filled": 24,
+    "labels": 24,
+    "bboxShare": 0.0996,
+    "tier3Filled": 0
+   },
+   {
+    "f": 234,
+    "clock": 539,
+    "fillCover": 0.4189,
+    "filled": 24,
+    "labels": 24,
+    "bboxShare": 0.0996,
+    "tier3Filled": 0
+   }
+  ],
+  "labelCoverMax": 0.6549,
+  "labelCoverMedian": 0.4972,
+  "fillAllMax": 0.4351,
+  "bboxShareMedian": 0.0992,
+  "tier3FillFrames": 0,
+  "tier3FillsMax": 0
+ },
+ "drawn": {
+  "max": 25,
+  "median": 22,
+  "over12": 548,
+  "byTierMax": {
+   "0": 25,
+   "1": 0,
+   "2": 0,
+   "3": 0
+  },
+  "fillsMax": 12,
+  "fillsMedian": 10,
+  "tier1Frames": 0,
+  "tier1Grown": 0
+ },
+ "contrast": {
+  "samples": 0,
+  "redrawn": 0,
+  "texts": 0,
+  "fading": 0,
+  "tier3": {
+   "ring": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "wide": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "box": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "bare": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   }
+  },
+  "cased": {
+   "ring": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "box": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   }
+  },
+  "plated": {
+   "ring": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "box": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   }
+  },
+  "all": {
+   "ring": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "box": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   },
+   "bare": {
+    "n": 0,
+    "min": null,
+    "p10": null,
+    "median": null,
+    "below": 0
+   }
+  },
+  "belowRing": []
+ },
+ "boxFallback": {
+  "samples": 0,
+  "labelsMax": null,
+  "labelsMedian": null,
+  "coverMax": null,
+  "coverMedian": null,
+  "over12": 0
+ },
+ "events": {
+  "inView": 665,
+  "drawn": 595,
+  "miss": {
+   "occluded": 0,
+   "placement": 70,
+   "calm": 0,
+   "withheld": 0
+  },
+  "out": {
+   "offscreen": 0,
+   "panel": 0,
+   "reading": 0,
+   "field": 0,
+   "lod": 2585,
+   "aggregate": 0,
+   "none": 0
+  },
+  "by": {
+   "decision": {
+    "frames": 236,
+    "inView": 472,
+    "drawn": 408,
+    "miss": {
+     "c_iv:placement": 44,
+     "gqg:placement": 20
+    },
+    "out": {
+     "sthilaire:lod": 236,
+     "vandamme:lod": 236
+    }
+   },
+   "davout": {
+    "frames": 493,
+    "inView": 0,
+    "drawn": 0,
+    "miss": {},
+    "out": {
+     "friant:lod": 493
+    }
+   },
+   "soult": {
+    "frames": 493,
+    "inView": 0,
+    "drawn": 0,
+    "miss": {},
+    "out": {
+     "sthilaire:lod": 493,
+     "vandamme:lod": 493
+    }
+   },
+   "pratzen-village": {
+    "frames": 193,
+    "inView": 0,
+    "drawn": 0,
+    "miss": {},
+    "out": {
+     "sthilaire:lod": 193
+    }
+   },
+   "face-about": {
+    "frames": 193,
+    "inView": 193,
+    "drawn": 187,
+    "miss": {
+     "ahq:placement": 6
+    },
+    "out": {
+     "milo:lod": 193,
+     "kollo:lod": 193
+    }
+   },
+   "telnitz-retaken": {
+    "frames": 55,
+    "inView": 0,
+    "drawn": 0,
+    "miss": {},
+    "out": {
+     "friant:lod": 55
+    }
+   }
+  },
+  "frames": 548,
+  "share": 0.8947
+ },
+ "layerMs": {
+  "passes": 556,
+  "median": 0.9,
+  "p95": 2,
+  "max": 33.1,
+  "over8": 1
+ },
+ "errors": []
+}
