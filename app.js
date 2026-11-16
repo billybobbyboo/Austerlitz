@@ -2558,7 +2558,7 @@ function dayTrackEl(id){
       :'Its formations\u2019 plotted days together (no aggregate track is drawn: an aggregate has no positions of its own)'+(hasRoute?'; dashed, their ordered routes':'')+
         (nHid?'; '+esc(R.noDays.replace("%c",fmtClock(clock)).replace("%k",nHid).replace("%r",hr)):'')+'.')+'</figcaption>';
   fig.querySelectorAll(".dt-a").forEach(function(b,k){ if(k===0) b.tabIndex=0;
-    function go(){ stopPlay(); setClock(+b.dataset.t); }
+    function go(){ stopPlay(); setClock(+b.dataset.t,{camera:false}); }   /* UI/UX step 3: a seek, the eye kept (setClock's note) */
     b.addEventListener("click",go); b.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }); });
   rovingGroup(fig.querySelector("svg"),".dt-a");
   fig._model=M;
@@ -3583,6 +3583,16 @@ function startPhaseTransition(ph,instant,moveCam){
   });
 }
 
+/* UI/UX roadmap step 3 (docs/UX_ART_AUDIT.md UA-02; the owner's decision of 15 November 2026): who moves the camera when the clock moves.
+   setClock still glides the landscape's eye to the new phase's authored view at a phase change (startPhaseTransition) unless asked not to
+   (opts.camera false); since step 3 every ordinary seek asks not to: the rail dragged or pressed, its keys (PageUp and PageDown among them),
+   an event marker and the coincident set's chooser, the ten-minute buttons and the window's arrow keys, a day-track anchor, an event dossier's
+   "Go to this moment" (whose centring, a deliberate move, is its own), and Play pressed at the day's end. Until step 3 each of them, from one
+   phase into another with Follow on, glided the eye 2.6 s to the phase's view (at 10:00 into 10:30, 198 units, the ground crossing the screen at up
+   to 1,807 px a second: tools/ux-step3/continuity.js on the Step 2 build), which could leave the event just chosen off the screen. A pause and
+   the natural end of Play hold the eye too (stopPlay moves nothing). The phase's view is now asked for only by the phase's and the act's
+   buttons and the phone's phase list (setPhase), the start (init) and the self-test; a vantage, a tour stop, a theme, the opening and a
+   centring move the eye by their own glides, as before */
 function setClock(t,opts){
   opts=opts||{};
   clock=clampT(t);
@@ -6880,7 +6890,8 @@ function fitOverview(c){
   return [E.x,E.y,E.z,T.x,T.y,T.z];
 }
 /* Follow (section A.3; owner decision 47): today's rule made visible. On, the eye goes to each phase's view at the phase
-   boundary; off, it stays where the visitor put it. It is !freeCam. A pan, orbit, zoom or double-click, and a centring
+   boundary (since UI/UX step 3: while the clock plays it follows the action, followStep; a seek, a pause and the day's end keep it where it
+   is, setClock's note); off, it stays where the visitor put it. It is !freeCam. A pan, orbit, zoom or double-click, and a centring
    (the dossier, the order of battle, the events), turn it off; a vantage, chapter, tour stop, phase or act turns it on.
    The button and the vantages' pressed state are brought up to date every animation frame (and by the self-test). */
 var curVantage=null;
@@ -6901,7 +6912,10 @@ function syncFollow(){
     if(vn){ vn.textContent=m?pb.textContent+": "+m[1]+".":""; vn.hidden=!m; } }
 }
 function setFollow(on){
-  if(on){ freeCam=false; flyTo(PHASES[curPhase].cam); }
+  /* UI/UX step 3: while the clock plays, Follow on takes the view up from where it is (followStep's easing, its caps); until step 3 it glided
+     to the phase's authored view first, then eased from there to the action. With the clock stopped, the phase's view, as before */
+  if(on&&playing&&mode!=="staff"){ if(EYE.on) eyeLeave(); freeCam=false; curVantage=null; FOLLOW.T=null; FOLLOW.ev=null; setTween("cam",null); }
+  else if(on){ freeCam=false; flyTo(PHASES[curPhase].cam); }
   else { freeCam=true; curVantage=null; }
   syncFollow();
 }
@@ -7104,7 +7118,7 @@ function applyLabels(){
 var ARROWS=["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"];
 var KEYS=[
   {id:"time", scope:"window", group:"Time", keys:["ArrowLeft","ArrowRight"], show:["←","→"], text:"Back or forward ten minutes; with Shift, an hour. Stops playback. Not while a button has focus",
-    run:function(e){ stopPlay(); setClock(clock+(e.key==="ArrowRight"?1:-1)*(e.shiftKey?60:10)); }},
+    run:function(e){ stopPlay(); setClock(clock+(e.key==="ArrowRight"?1:-1)*(e.shiftKey?60:10),{camera:false}); }},   /* UI/UX step 3: a seek keeps the eye */
   {id:"play", scope:"window", group:"Time", keys:[" "], show:["Space"], text:"Play or pause (on a focused button, Space presses the button)",
     run:function(e){ e.preventDefault(); togglePlay(); }},
   {id:"nextev", scope:"window", group:"Time", keys:["."], show:["."], text:"The next event", run:function(){ jumpEvent(1); }},
@@ -7461,8 +7475,8 @@ function buildUI(){
   if(rtb) rtb.addEventListener("click",function(){ paintDrawer(); requestRender(2); });
   var dwb=document.getElementById("dwell");   /* Stage 4D (decision 75): pause briefly at events, on by default */
   if(dwb) dwb.addEventListener("click",function(){ dwellSet(!DWELL.on); });
-  document.getElementById("prev").addEventListener("click",function(){ stopPlay(); setClock(clock-10); });
-  document.getElementById("next").addEventListener("click",function(){ stopPlay(); setClock(clock+10); });
+  document.getElementById("prev").addEventListener("click",function(){ stopPlay(); setClock(clock-10,{camera:false}); });   /* UI/UX step 3: seeks, the eye kept */
+  document.getElementById("next").addEventListener("click",function(){ stopPlay(); setClock(clock+10,{camera:false}); });
   document.getElementById("prevEv").addEventListener("click",function(){ jumpEvent(-1); });
   var fb=document.getElementById("follow");   /* Stage 3D: Follow the action (section A.3, decision 47) */
   if(fb) fb.addEventListener("click",function(){ setFollow(freeCam); });
@@ -8138,7 +8152,7 @@ function buildTimeline(){
       b.style.left=tlPc(o.t)+"%"; b.dataset.tip=evTimeShown(e)+": "+e.n+evNote(e); b.setAttribute("aria-label",lab); b.tabIndex=k===0?0:-1;
       var set=co[o.t]; if(set.length>1){ b.dataset.co=String(set.indexOf(o)); b.dataset.coN=String(set.length); }
       /* a pointer's click (detail above 0) on a stacked set opens the chooser; Enter, Space and an assistive click (detail 0) act on the focused marker */
-      b.addEventListener("click",function(ev){ if(ev.detail>0&&evPickOpen(b,ev.clientX,ev.clientY)) return; stopPlay(); setClock(o.t); select("e",e.id); });
+      b.addEventListener("click",function(ev){ if(ev.detail>0&&evPickOpen(b,ev.clientX,ev.clientY)) return; stopPlay(); setClock(o.t,{camera:false}); select("e",e.id); });   /* UI/UX step 3: a seek, the eye kept */
       evh.appendChild(b); _evTicks.push({el:b,bar:o.bar||null,e:e,t:o.t}); });
     rovingGroup(evh,".ev-mark"); }
   if(!rail) return;
@@ -8149,11 +8163,11 @@ function buildTimeline(){
      only a release on the window ended the drag */
   function railBegin(e,capEl){ dragging=true; dragId=e.pointerId; stopPlay();
     try{ if(capEl.setPointerCapture) capEl.setPointerCapture(e.pointerId); }catch(x){}   /* a pointer the browser no longer tracks cannot be captured */
-    setClock(toClock(e.clientX)); }
+    setClock(toClock(e.clientX),{camera:false}); }   /* UI/UX step 3: the rail seeks; the eye stays where it is, inside a phase and across one */
   function railEnd(e){ if(!e||e.pointerId===undefined||dragId===null||e.pointerId===dragId){ dragging=false; dragId=null; } }
   function railMove(e){ if(!dragging||(dragId!==null&&e.pointerId!==dragId)) return;
     if(e.buttons!==undefined&&!(e.buttons&1)){ railEnd(); return; }   /* the release was missed (a context menu took it): no scrubbing on a hover */
-    setClock(toClock(e.clientX)); }
+    setClock(toClock(e.clientX),{camera:false}); }
   rail.addEventListener("pointerdown",function(e){ if(e.button!==0) return; railBegin(e,rail); });
   rail.addEventListener("pointermove",railMove);
   window.addEventListener("pointerup",railEnd);
@@ -8195,7 +8209,7 @@ function buildTimeline(){
     else if(e.key==="PageUp") t=(clock>PHASES[ph].t0+0.5)?PHASES[ph].t0:PHASES[Math.max(0,ph-1)].t0;
     if(t===null) return;
     e.preventDefault(); e.stopPropagation();   /* one step: the window's own arrow keys do not step it again (before 3C: +25 min) */
-    stopPlay(); setClock(t);
+    stopPlay(); setClock(t,{camera:false});   /* UI/UX step 3: the slider's keys seek (PageUp and PageDown to a phase's start too); the eye kept */
   });
 }
 /* UI/UX step 1 (docs/UX_ART_AUDIT.md UA-17, UA-06): the chooser for markers a pointer cannot tell apart: a set of events that start at the same minute
@@ -8225,7 +8239,7 @@ function evPickOpen(b,px,py){
   var h='<p class="evp-h" id="evpick-t">'+esc(set.length+" events "+at)+'</p>';
   set.forEach(function(o){ h+='<button type="button" class="evp-b '+(o.e.side==="fr"?"fr":"al")+'" data-ev="'+esc(o.e.id)+'" aria-label="'+esc(o.el.getAttribute("aria-label"))+'"><i aria-hidden="true"></i>'+esc(evTimeShown(o.e)+" · "+o.e.n+evNote(o.e))+'</button>'; });
   p.innerHTML=h; p.hidden=false;
-  set.forEach(function(o){ var c=p.querySelector('[data-ev="'+o.e.id+'"]'); if(c) c.addEventListener("click",function(){ evPickClose(false); stopPlay(); setClock(o.t); select("e",o.e.id); }); });
+  set.forEach(function(o){ var c=p.querySelector('[data-ev="'+o.e.id+'"]'); if(c) c.addEventListener("click",function(){ evPickClose(false); stopPlay(); setClock(o.t,{camera:false}); select("e",o.e.id); }); });   /* UI/UX step 3: as the marker's click */
   var tb=document.querySelector(".timebar").getBoundingClientRect(), w=p.offsetWidth;
   p.style.left=Math.round(Math.max(8,Math.min(window.innerWidth-w-8,cx-w/2)))+"px";
   p.style.bottom=Math.round(window.innerHeight-tb.top+8)+"px";
@@ -9109,7 +9123,7 @@ function dossierEvent(eid){
     (exact||e.dispute?"":" Shown as an interval rather than a timestamp: a process, or an hour this map does not fix to the minute.")));
   var act=el("div","dact");
   var b1=el("button","t","Go to this moment");
-  b1.addEventListener("click",function(){ stopPlay(); setClock(evClock(e)); centreOnMap(e.p,96); });
+  b1.addEventListener("click",function(){ stopPlay(); setClock(evClock(e),{camera:false}); centreOnMap(e.p,96); });   /* UI/UX step 3: the clock a seek's, the eye the centring's alone */
   act.appendChild(b1);
   wrap.appendChild(act);
   Array.prototype.push.apply(srcRefs,claimRefsEnd(cr0));
@@ -9606,7 +9620,7 @@ function stopPlay(){
 }
 function togglePlay(){
   if(playing){ stopPlay(); return; }
-  if(clock>=T_MAX-0.5) setClock(T_MIN,{force:true});
+  if(clock>=T_MAX-0.5) setClock(T_MIN,{force:true,camera:false});   /* UI/UX step 3: Play from the day's end starts it again with the eye where it is; Follow takes it from there */
   playing=true; dwellReset(); FOLLOW.T=null; FOLLOW.ev=null;
   var b=document.getElementById("play");
   if(b) b.textContent="Pause";
@@ -9698,31 +9712,96 @@ function dwellDayLength(t0,x){
   if(DWELL.on) for(var i=0;i<S.length;i++) if(S[i]>t0+1e-9&&S[i]<T_MAX) L+=DWELL.HOLD+2*dwellReach(i,v)/v;
   return L;
 }
-/* ---- Stage 4D: Follow while the clock plays (docs/STAGE4_SPEC.md sections D.2 and D.3, item 3; owner decision 78) ----
-   With Follow on and the clock playing, the eye follows the action: its target eased toward the weighted centre of the live
-   events (liveEvents, their own weights), its distance toward one that holds their spread (FOLLOW: 2.4 x their weighted radius
-   + 130 units, in 230-300), its direction toward the current phase's authored view; eased in real time (time constant FOLLOW.TAU) and
-   the target's move across the screen held to FOLLOW.CAP px a second at the free centre by slowing, never by a jump; every
-   step through the floor (clampCamera). While playing the phase boundary's glide is not used; when the clock stops the view
-   stays, and a phase or act button, a vantage, a theme or a tour stop glides to its view as before. Any pan, orbit, zoom or
-   double-click turns Follow off (decision 47). Under reduced motion the eye moves only at each event's start, at once. On
-   the paper map nothing follows (its plan shows the whole field). */
-/* the distance: section D.2's candidate held 86-274 units (2.4 x the spread + 70); between about 140 and 200, where the map layer
-   shows every brigade, its drops reached 19-20 over the day (the limit 19). 230-300 (2.4 x the spread + 130) keeps them at 11-12
-   and every live event in the free rectangle in 92-93% of minutes (tools/stage4/report-4d.js, counting every minute; since roadmap
-   step 1 the self-test counts only the minutes with a live event, and its detail gives that share and count): the action framed wider than
-   most phase views (92-212 units in phases 1-8); a zoom turns Follow off for a closer look. */
-var FOLLOW={TAU:1.5, CAP:150, K:2.4, D0:130, DMIN:230, DMAX:300, T:null, dist:0, dir:null, ev:null};
+/* ---- Stage 4D: Follow while the clock plays (docs/STAGE4_SPEC.md sections D.2 and D.3, item 3; owner decision 78); since UI/UX roadmap
+   step 3 (docs/UX_ART_AUDIT.md UA-02; the owner's decision of 15 November 2026, which revisits decision 78 for Play) a steeper, closer view
+   fitted to the action ----
+   With Follow on and the clock playing, the eye follows the action: the live events (liveEvents, their own weights) fitted into the free map.
+   - Its direction: the current phase's authored view turned only in elevation, to FOLLOW.ELEV degrees above the horizon (the authored views
+     stand 15 to 36 degrees up: the action seen along a shallow line, the formations a thin band under the haze; UA-02).
+   - Its target and distance: each live event's place, drawn toward the events' weighted centre by its weight's share (smoothstep from LO to HI:
+     an event fading in or out of the window pulls the view with it, one above HI counts whole, one above 0.3, UA-02's rule, nearly so); the
+     target the middle of those places as the eye would see them (fitted three times), the distance the least that puts every one inside the
+     free map with MARGIN of its half-size to spare (the free map: landFreeRect, the rectangle no panel covers, the eye's view offset centring
+     the target in it), within DMIN to DMAX: DMIN the nearest the eye comes for one event, DMAX the farthest for events spread far apart (the
+     rest then fall out of the free map). A phone held upright (PHONE, the free map taller than it is wide) has its own profile, FOLLOW.P.
+   - Eased in real time (time constant TAU); the target's move across the screen held to CAP px a second at the free centre by slowing, never by
+     a jump (Stage 4D's pan cap), and with FLOW set every move of the eye (target, distance and direction) slowed so that no ground point under
+     the free map moves faster than FLOW px a second (followFlow); every step through the floor (clampCamera).
+   While playing the phase boundary's glide is not used. When the clock stops (a pause, the day's end, a seek: setClock's note) the view stays;
+   Play again takes it up from there. A phase's or an act's button, a vantage, a theme or a tour stop glides to its view as before. Any pan,
+   orbit, zoom or double-click turns Follow off (decision 47); the Follow button turns it on: while the clock plays from the view where it is,
+   paused with the phase's view (setFollow). Minutes with no live event keep the target and the distance and ease the direction only. Under
+   reduced motion the eye moves only at each event's start, at once. On the paper map nothing follows (its plan shows the whole field).
+   Until step 3: the direction was the phase's authored view, the distance 2.4 x the events' weighted radius + 130 in 230-300 units (the map
+   layer's drops reached 19-20 at 140-200 units before its tiers), and a box of the formations 27-31% of the free map in Study (UA-02). The
+   values below were measured (tools/ux-step3/framing.js; docs/ux-step3-evidence/): design values */
+var FOLLOW={TAU:1.5, CAP:150, FLOW:150, ELEV:52, DMIN:200, DMAX:400, MARGIN:0.12, LO:0.05, HI:0.35, LEAD:16, REF:0.229,
+  P:{ELEV:55, DMIN:360, DMAX:600, MARGIN:0.10, REF:0.1427},
+  T:null, dist:0, dir:null, ev:null};
+function followProfile(){ var w=renderer.domElement.clientWidth||innerWidth; return (PHONE&&viewH()>w)?FOLLOW.P:null; }
+var _fq=new THREE.Vector3(), _fr=new THREE.Vector3(), _fu=new THREE.Vector3(), _fg=new THREE.Vector3(), _fU=new THREE.Vector3(0,1,0);
 function followGoal(){
-  var L=liveEvents(clock), sw=0, cx=0, cz=0, c=presetFrame(PHASES[curPhase].cam);
-  var dir=new THREE.Vector3(c[0]-c[3],c[1]-c[4],c[2]-c[5]).normalize();
+  var P0=followProfile(), el=(P0&&P0.ELEV!==undefined?P0.ELEV:FOLLOW.ELEV)*Math.PI/180, DMIN=P0&&P0.DMIN!==undefined?P0.DMIN:FOLLOW.DMIN, DMAX=P0&&P0.DMAX!==undefined?P0.DMAX:FOLLOW.DMAX,
+    MG=P0&&P0.MARGIN!==undefined?P0.MARGIN:FOLLOW.MARGIN, c=presetFrame(PHASES[curPhase].cam), az=(P0&&P0.AZABS!==undefined)?P0.AZABS*Math.PI/180:Math.atan2(c[0]-c[3],c[2]-c[5])+((P0&&P0.AZ)||0)*Math.PI/180;
+  var dir=new THREE.Vector3(Math.sin(az)*Math.cos(el),Math.sin(el),Math.cos(az)*Math.cos(el));
+  /* the events as the clock has them, and as it will have them LEAD clock minutes on: an event about to begin is framed as it grows, before its
+     weight reaches 0.3 (the pan cap holds the target back: at 200 units 150 px a second is about 22 units, and an event 50 units off needed
+     2.5 s, half the time an instant event qualifies in at half speed) */
+  var L=liveEvents(clock), sw=0, cx=0, cz=0;
+  if(FOLLOW.LEAD>0){ var ahead=liveEvents(clock+FOLLOW.LEAD), by={}; L.forEach(function(o){ by[o.e.id]=o; });
+    ahead.forEach(function(o){ var q=by[o.e.id]; if(!q) L.push(o); else if(o.w>q.w) by[o.e.id]={e:q.e,w:Math.max(q.w,o.w)}; });
+    L=L.map(function(o){ return by[o.e.id]||o; }); }
   L.forEach(function(o){ var w=W(o.e.p[0],o.e.p[1]); cx+=w[0]*o.w; cz+=w[1]*o.w; sw+=o.w; });
   if(!(sw>0)) return {T:null,dist:null,dir:dir};
-  cx/=sw; cz/=sw; var rad=0;
-  L.forEach(function(o){ var w=W(o.e.p[0],o.e.p[1]); rad+=o.w*Math.hypot(w[0]-cx,w[1]-cz); }); rad/=sw;
-  return {T:new THREE.Vector3(cx,groundY(cx,cz),cz),dist:Math.max(FOLLOW.DMIN,Math.min(FOLLOW.DMAX,FOLLOW.K*rad+FOLLOW.D0))*portraitK(),dir:dir};   /* roadmap step 6 item 3: 1 but on a phone held upright */
+  cx/=sw; cz/=sw;
+  var Q=[]; L.forEach(function(o){ var s=smoothstep(FOLLOW.LO,FOLLOW.HI,o.w); if(!(s>0)) return; var w=W(o.e.p[0],o.e.p[1]), x=cx+(w[0]-cx)*s, z=cz+(w[1]-cz)*s; Q.push([x,groundY(x,z),z]); });
+  /* the eye's axes: r to the screen's right, u up the screen, g the ground's forward (away from the eye, level) */
+  _fr.crossVectors(_fU,dir).normalize(); _fu.crossVectors(dir,_fr).normalize(); _fg.set(-dir.x,0,-dir.z).normalize();
+  var fr=landFreeRect(), f=(viewH()/2)/Math.tan(THREE.MathUtils.degToRad(landCam.fov)/2), tx=Math.max(1e-3,(fr[2]-fr[0])/2*(1-MG)/f), ty=Math.max(1e-3,(fr[3]-fr[1])/2*(1-MG)/f);
+  /* DMIN and DMAX are the distances for the free map they were measured in (REF: its smaller half-extent over the focal length, Study's at
+     1440 x 900 for the desktop's profile, Study's at 390 x 844 for the phone's). In a free map larger in that measure (Watch, which has no
+     rail) both come nearer in proportion, so the nearest view shows the ground Study's does; in a smaller one (a short window, a phone held
+     landscape) DMAX goes farther in proportion, so that events far apart still fit, and DMIN stays (measured: taking DMIN farther there too
+     cost the box its share and gained no event, tools/ux-step3/framing.js, docs/ux-step3-evidence/) */
+  var REF=P0&&P0.REF?P0.REF:FOLLOW.REF, kS=REF>0?Math.max(0.5,Math.min(3,REF/(Math.min(tx,ty)/(1-MG)))):1; DMIN*=Math.min(1,kS); DMAX*=kS;
+  var T=new THREE.Vector3(cx,groundY(cx,cz),cz), gu=Math.max(0.2,_fg.dot(_fu)), D=0;
+  function fit(){ var d=0; for(var i=0;i<Q.length;i++){ _fq.set(Q[i][0]-T.x,Q[i][1]-T.y,Q[i][2]-T.z); var k=_fq.dot(dir);
+      d=Math.max(d,Math.abs(_fq.dot(_fr))/tx+k,Math.abs(_fq.dot(_fu))/ty+k); } return d; }
+  for(var it=0;it<3;it++){ D=Math.max(fit(),DMIN*0.25);
+    var a0=1e9,a1=-1e9,b0=1e9,b1=-1e9;
+    for(var i=0;i<Q.length;i++){ _fq.set(Q[i][0]-T.x,Q[i][1]-T.y,Q[i][2]-T.z); var z=Math.max(1e-3,D-_fq.dot(dir)), a=_fq.dot(_fr)/z, b=_fq.dot(_fu)/z;
+      a0=Math.min(a0,a); a1=Math.max(a1,a); b0=Math.min(b0,b); b1=Math.max(b1,b); }
+    if(!(a1>=a0)) break;
+    T.addScaledVector(_fr,(a0+a1)/2*D).addScaledVector(_fg,(b0+b1)/2*D/gu); T.y=groundY(T.x,T.z); }
+  D=fit();
+  return {T:T,dist:Math.max(DMIN,Math.min(DMAX,D)),dir:dir,fit:D};
 }
 function followActive(){ return playing&&!freeCam&&mode!=="staff"&&!_tw.cam; }
+/* the move, in CSS px, of the orbit target (t) and the largest of the ground under the free map (all: the drawn ground under a 5 x 5 grid of
+   the free map, with the target) from the eye as it stands to the eye at (T, dist, dir); the caps' measure. The target's is
+   its own point seen from both eyes, so a change of distance or direction that moves it on the screen counts too (Stage 4D's cap read the
+   target's move over the ground alone) */
+var _ff=new THREE.PerspectiveCamera(), _fv=new THREE.Vector3(), _fw=new THREE.Vector3(), _fRay=new THREE.Vector3(), _fP=[], _fm={t:0,all:0};
+function followFlow(T,dist,dir,grid){
+  var VW=renderer.domElement.clientWidth||innerWidth, VH=viewH(), E=landCam.position, n=0;
+  landCam.updateMatrixWorld();
+  (_fP[n]||(_fP[n]=new THREE.Vector3())).copy(orbitTarget); n++;
+  if(grid){ var fr=landFreeRect();
+    for(var i=0;i<5;i++) for(var j=0;j<5;j++){ var sx=fr[0]+(fr[2]-fr[0])*(i+0.5)/5, sy=fr[1]+(fr[3]-fr[1])*(j+0.5)/5;
+      _fRay.set(sx/VW*2-1,-(sy/VH)*2+1,0.5).unproject(landCam).sub(E).normalize();
+      if(_fRay.y>=-1e-4) continue; var s=(orbitTarget.y-E.y)/_fRay.y; if(!(s>0)||s>20*Math.max(1,FOLLOW.dist)) continue;
+      /* onto the drawn ground: from the target's level, the ray's point at the ground's height there, four times (a hill's slope moves the point
+         toward the ray's crossing; within a unit or so on this relief, against the target's level, which put the plateau's far side tens of
+         units off and let its ground move 185 px a second under a 150 cap) */
+      for(var it=0;it<4;it++){ var gx=E.x+_fRay.x*s, gz=E.z+_fRay.z*s, s2=(groundY(gx,gz)-E.y)/_fRay.y; if(!(s2>0)) break; s=s2; }
+      (_fP[n]||(_fP[n]=new THREE.Vector3())).copy(E).addScaledVector(_fRay,s); n++; } }
+  _ff.copy(landCam,false); _ff.position.copy(T).addScaledVector(dir,dist); _ff.up.copy(landCam.up); _ff.lookAt(T); _ff.updateMatrixWorld(true);
+  _ff.projectionMatrix.copy(landCam.projectionMatrix); _ff.projectionMatrixInverse.copy(landCam.projectionMatrixInverse);
+  _fm.t=0; _fm.all=0;
+  for(var k=0;k<n;k++){ _fv.copy(_fP[k]).project(landCam); _fw.copy(_fP[k]).project(_ff);
+    if(!(_fv.z<1&&_fw.z<1)) continue; var m=Math.hypot((_fw.x-_fv.x)*VW/2,(_fw.y-_fv.y)*VH/2); if(k===0) _fm.t=m; if(m>_fm.all) _fm.all=m; }
+  return _fm;
+}
 function followStep(dtMs){
   if(!followActive()){ FOLLOW.T=null; return false; }
   var g=followGoal();
@@ -9733,11 +9812,17 @@ function followStep(dtMs){
     if(j===FOLLOW.ev) return false;
     FOLLOW.ev=j; if(g.T){ FOLLOW.T.copy(g.T); FOLLOW.dist=g.dist; } FOLLOW.dir.copy(g.dir); mlReset("at once");   /* Stage 8, 8C: a jump (MLS) */
   } else {
-    var a=1-Math.exp(-(dtMs/1000)/FOLLOW.TAU);
+    var a=1-Math.exp(-(dtMs/1000)/FOLLOW.TAU), nT=FOLLOW.T.clone(), nD=FOLLOW.dist, nDir=FOLLOW.dir.clone().lerp(g.dir,a).normalize();
     if(g.T){ var mv=g.T.clone().sub(FOLLOW.T).multiplyScalar(a), cap=FOLLOW.CAP*(dtMs/1000)*worldPerPx(FOLLOW.T), ml=Math.hypot(mv.x,mv.z);
       if(ml>cap) mv.multiplyScalar(cap/ml);
-      FOLLOW.T.add(mv); FOLLOW.dist+=(g.dist-FOLLOW.dist)*a; }
-    FOLLOW.dir.lerp(g.dir,a).normalize();
+      nT.add(mv); nD+=(g.dist-FOLLOW.dist)*a; }
+    /* the caps, by the move as the screen shows it: the target's at most CAP px a second, every ground point's at most FLOW (when set); the
+       step slowed, never cut short (its fraction k of the eased step) */
+    var fm=followFlow(nT,nD,nDir,FOLLOW.FLOW>0), sec=dtMs/1000, k=1;
+    if(fm.t>FOLLOW.CAP*sec) k=Math.min(k,FOLLOW.CAP*sec/fm.t);
+    if(FOLLOW.FLOW>0&&fm.all>FOLLOW.FLOW*sec) k=Math.min(k,FOLLOW.FLOW*sec/fm.all);
+    if(k<1){ nT.lerpVectors(FOLLOW.T,nT,k); nD=FOLLOW.dist+(nD-FOLLOW.dist)*k; nDir.lerpVectors(FOLLOW.dir,nDir,k).normalize(); }
+    FOLLOW.T.copy(nT); FOLLOW.dist=nD; FOLLOW.dir.copy(nDir);
   }
   FOLLOW.T.y=groundY(FOLLOW.T.x,FOLLOW.T.z);
   orbitTarget.copy(FOLLOW.T); landCam.position.copy(FOLLOW.T).addScaledVector(FOLLOW.dir,FOLLOW.dist); landCam.lookAt(orbitTarget);
@@ -11640,18 +11725,38 @@ var AUSTERLITZ_DEBUG=(function(){
     var keep=clock, cam={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam};
     /* the day under Follow at half speed: the floor, the live events in the free rectangle, the screen speed, the drops */
     var fr=landFreeRect(), R={min:0,ev:0,inn:0,below:0,spd:0,drops:0,dropAt:"",lastMin:-1}, pT=new THREE.Vector3(), pW=1;
-    var sec=playDay(0.5,T_MIN,T_MAX,100,function(){ pT.copy(orbitTarget); pW=worldPerPx(orbitTarget); },function(){
+    /* UI/UX roadmap step 3 (UA-02): with it, Follow's caps as the screen shows them (the eye of each step put back for the step's measure:
+       followFlow, the target and the drawn ground under a 5 x 5 grid of the free map), the events above 0.3 (UA-02's rule) inside the free
+       rectangle by minutes, and the eye's elevation once Follow holds it */
+    var F3={t:0,all:0,evMin:0,evIn:0,liveMin:0,liveAll:0,elOff:0,elN:0,dMin:1e9,dMax:0}, pP=new THREE.Vector3(), pQ=new THREE.Vector3();
+    var sec=playDay(0.5,T_MIN,T_MAX,100,function(){ pT.copy(orbitTarget); pW=worldPerPx(orbitTarget); pP.copy(landCam.position); pQ.copy(orbitTarget); },function(){
       var p=landCam.position; if(p.y<camFloor(p.x,p.z)-1e-6) R.below++;
       R.spd=Math.max(R.spd,Math.hypot(orbitTarget.x-pT.x,orbitTarget.z-pT.z)/pW/0.1);
+      if(FOLLOW.T){ var nP=landCam.position.clone(), nQ=orbitTarget.clone(), dd=nP.distanceTo(nQ), dr=nP.clone().sub(nQ).divideScalar(dd||1);
+        landCam.position.copy(pP); orbitTarget.copy(pQ); landCam.lookAt(orbitTarget); landCam.updateMatrixWorld(true);
+        var fm=followFlow(nQ,dd,dr,true); F3.t=Math.max(F3.t,fm.t/0.1); F3.all=Math.max(F3.all,fm.all/0.1);
+        landCam.position.copy(nP); orbitTarget.copy(nQ); landCam.lookAt(orbitTarget); landCam.updateMatrixWorld(true);
+        if(clock>T_MIN+30){ F3.elN++; if(Math.abs(Math.asin(dr.y)*180/Math.PI-FOLLOW.ELEV)>0.5) F3.elOff++; F3.dMin=Math.min(F3.dMin,dd); F3.dMax=Math.max(F3.dMax,dd); } }
       var m=Math.floor(clock); if(m===R.lastMin) return; R.lastMin=m; R.min++;
       landCam.updateMatrixWorld(true);
       var live=liveEvents(clock).filter(function(o){ return o.w>=0.5; }), ok=live.every(function(o){ var w=W(o.e.p[0],o.e.p[1]); return onFreeRect([w[0],groundY(w[0],w[1]),w[1]],fr); });
       if(live.length){ R.ev++; if(ok) R.inn++; }   /* a minute with no live event is no evidence either way (T-6) */
+      var q3=liveEvents(clock).filter(function(o){ return o.w>0.3; }), in3=q3.filter(function(o){ var w=W(o.e.p[0],o.e.p[1]); return onFreeRect([w[0],groundY(w[0],w[1]),w[1]],fr); }).length;
+      if(q3.length){ F3.liveMin++; F3.evMin+=q3.length; F3.evIn+=in3; if(in3===q3.length) F3.liveAll++; }
       if(m%10===0){ for(var k=0;k<12;k++){ settling=false; updateVisibility(); } mlLayout(); if(ML.stats.dropped>R.drops){ R.drops=ML.stats.dropped; R.dropAt=fmtClock(m); } } });
     var share=R.ev>0?R.inn/R.ev:0, whole=R.min===T_MAX-T_MIN+1;
     ck("Follow while playing: the day at \u00bd\u00d7 never under the floor, every live event in the free rectangle in at least 80% of its minutes, the ground's speed across the screen within "+FOLLOW.CAP+" px/s, drops never above 19 (section D.4)",
       whole&&R.ev>0&&!R.below&&share>=0.8&&R.spd<=FOLLOW.CAP+1e-6&&R.drops<=19,
       "played in "+sec.toFixed(1)+" s; "+R.below+" steps under the floor; every live event inside in "+(100*share).toFixed(1)+"% of the "+R.ev+" minutes with a live event ("+(R.min-R.ev)+" of the day's "+R.min+" minutes have none"+(whole?"":", NOT THE WHOLE DAY")+"); the target's largest speed "+R.spd.toFixed(1)+" px/s; drops at most "+R.drops+(R.dropAt?" ("+R.dropAt+")":""));
+    /* UI/UX roadmap step 3 (UA-02; the owner's decision of 15 November 2026): Follow fitted to the action. Over the same day: the target never
+       faster than FOLLOW.CAP and the drawn ground under the free map never faster than FOLLOW.FLOW as the screen shows them; once Follow has
+       taken the day up (from 04:30) the eye at FOLLOW.ELEV in every step but its easings' (at most 5%); the events above 0.3 inside the free
+       rectangle in at least 95% of their minutes and every one of them inside together in at least 90% of the minutes with one (measured 98.9% and
+       97.7% at 1440 x 900 in Study, tools/ux-step3/framing.js; the bars below them for the self-test's page and factors) */
+    var e3=F3.evMin?F3.evIn/F3.evMin:0, a3=F3.liveMin?F3.liveAll/F3.liveMin:0, el3=F3.elN?F3.elOff/F3.elN:1;
+    ck("Follow fitted to the action (UI/UX step 3, UA-02): the day at \u00bd\u00d7 with the target within "+FOLLOW.CAP+" px/s and the drawn ground under the free map within "+FOLLOW.FLOW+" px/s as the screen shows them, the eye at "+FOLLOW.ELEV+" degrees, the events above 0.3 inside the free rectangle in at least 95% of their minutes and all together in at least 90%",
+      whole&&F3.t<=FOLLOW.CAP*(1+1e-6)&&F3.all<=FOLLOW.FLOW*(1+1e-6)&&el3<=0.05&&e3>=0.95&&a3>=0.90,
+      "the target at most "+F3.t.toFixed(1)+" px/s, the ground "+F3.all.toFixed(1)+" px/s; the eye off "+FOLLOW.ELEV+" degrees in "+F3.elOff+" of "+F3.elN+" steps after 04:30, at "+(F3.dMin<1e9?F3.dMin.toFixed(1):"-")+" to "+F3.dMax.toFixed(1)+" units; events above 0.3 inside in "+F3.evIn+" of "+F3.evMin+" event-minutes ("+(100*e3).toFixed(1)+"%), all inside in "+F3.liveAll+" of "+F3.liveMin+" minutes ("+(100*a3).toFixed(1)+"%)");
     /* Stage 7D (docs/STAGE7_SPEC.md section 6, 7D; decision 123): the opening's played stretches at this factor, run by the app's own tick
        in 100 ms steps from the reopened card: never under the floor, the target's speed across the screen within FOLLOW.CAP, drops every ten
        clock minutes no more than Follow's 19; each stretch ending at its stop's clock with the stop's camera after the tour's glide from

@@ -1023,6 +1023,26 @@ try{
     clock=c0; dwellReset();
     console.log("dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed; the toggle mid-day never sends it back OK"); }
 
+  /* UI/UX roadmap step 3 (docs/UX_ART_AUDIT.md UA-02; the owner's decision of 15 November 2026): who moves the camera, dry run. With Follow on
+     and the clock stopped, an ordinary seek across a phase (the window's arrow key, its KEYS row) keeps the eye, as Play pressed at the day's end
+     does; a phase's button (setPhase) glides to that phase's authored view; a pause holds the eye (followStep idle). The framing itself reads the
+     drawn ground, which this stub does not build: the self-test (followChecks3) and tools/visual/ux3.js hold it in the browser, by real input too */
+  { const k0={t:clock,p:landCam.position.clone(),q:orbitTarget.clone(),fc:freeCam,sp:speed};
+    const fin=()=>{ let n=0; while(tween&&n<8){ tween(performance.now()+1e7); n++; } };
+    const at=t=>{ if(playing) stopPlay(); setClock(t,{instant:true,force:true,camera:false}); fin(); const c=presetFrame(PHASES[phaseAt(t)].cam);
+      landCam.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); landCam.lookAt(orbitTarget); freeCam=false; return {p:landCam.position.clone(),q:orbitTarget.clone(),ph:curPhase}; };
+    const moved=a=>Math.max(landCam.position.distanceTo(a.p),orbitTarget.distanceTo(a.q));
+    let a=at(625); const kr=KEYS.filter(r=>r.id==="time")[0]; kr.run({key:"ArrowRight",shiftKey:false,preventDefault(){}}); fin();
+    if(curPhase===a.ph||moved(a)>1e-9) throw new Error("camera: the window's arrow key from "+fmtClock(625)+" (phase "+a.ph+" to "+curPhase+") moved the eye "+moved(a).toFixed(3)+" units (a seek keeps it)");
+    a=at(T_MAX); togglePlay(); fin(); const restarted=clock; stopPlay();
+    if(restarted!==T_MIN||moved(a)>1e-9) throw new Error("camera: Play at the day's end moved the eye "+moved(a).toFixed(3)+" units or did not start the day again");
+    at(600); setPhase(6); fin(); const c6=presetFrame(PHASES[6].cam);
+    if(landCam.position.distanceTo(new THREE.Vector3(c6[0],c6[1],c6[2]))>1e-6||orbitTarget.distanceTo(new THREE.Vector3(c6[3],c6[4],c6[5]))>1e-6) throw new Error("camera: a phase's button did not glide to its authored view");
+    a=at(540); togglePlay(); for(let i=0;i<30;i++){ tickClock(1000/30); followStep(1000/30); } stopPlay(); a={p:landCam.position.clone(),q:orbitTarget.clone()};
+    for(let i=0;i<30;i++){ tickClock(1000/30); followStep(1000/30); } if(moved(a)>1e-9) throw new Error("camera: a pause did not hold the eye");
+    setSpeed(k0.sp); setClock(k0.t,{instant:true,force:true,camera:false}); fin(); landCam.position.copy(k0.p); orbitTarget.copy(k0.q); landCam.lookAt(orbitTarget); freeCam=k0.fc;
+    console.log("camera (UI/UX step 3): a seek across a phase and Play at the day's end keep the eye, a phase's button glides to its view, a pause holds it OK"); }
+
   /* Stage 5B (docs/STAGE5_SPEC.md section A.5): spatial confidence, dry run. Since Stage 8, implementation PR 8B (decision 239): off at first
      on the landscape, where every formation drawn as figures has its outline (the footprint's, in its side's colour) and no filled mark; with
      the layer on, its outline at its confAt grade's extent, still no filled mark; on the paper map on at first (decision 85 kept there), every

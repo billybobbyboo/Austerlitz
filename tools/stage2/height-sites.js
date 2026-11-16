@@ -85,6 +85,7 @@ const CLASS={
   "app.js:fogChecks":"test","app.js:atmoDayChecks":"test",
   /* Stage 4D: Follow's target stands on the drawn ground */
   "app.js:followGoal":"presentation","app.js:followStep":"presentation",
+  "app.js:followFlow":"presentation",   /* UI/UX roadmap step 3: Follow's caps, the drawn ground under the free map as the screen shows it */
   /* Stage 4D: a drawn-on arrow's end, draped like the rest of its shaft; the self-test's day under Follow */
   "app.js:shaftEnd":"presentation","app.js:paceChecks":"test",
   /* Stage 4E: the self-test's ice and smoke checks against the drawn ground; since roadmap step 1 (T-2) the ice's drawn edge read

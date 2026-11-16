@@ -396,10 +396,18 @@ const MOTION={JUMPS:251, POPS:1049, FLICKER:12, LOD:130, REAL_TOL:{abs:6, rel:0.
      [1010,1321,1467]; decision 299 (D), the event-named rise during Play: on the paper map while it plays their counters take room from others,
      "paper-play" [1564,1694,667] to [1533,1694,667]. Each as approved, measured again on the implementation; every other baseline and the 16's
      ceilings unchanged (the 16: 249 jumps, 1,043 pops, 9 flickers, 105 switches) */
+  /* UI/UX roadmap step 3 (UA-02; the owner's decision of 15 November 2026, which revisits decision 78 for Play: Follow at 52 degrees, fitted to the
+     action; docs/ux-step3-evidence/): one baseline moved, put to the owner with the draft. "land-play" (90 frames of Play under Follow from 09:00 in
+     the Landscape's Field view, 1600 x 900) [2603,3146,667] to [2890,3236,667], the step 3 build's own counts, the same in check:selftest's set and
+     check:visual's (tools/stage8/motion-8h.js on a page of its own, Chromium 141): Follow now tilts toward 52 degrees and comes nearer, so 90 more
+     formation-frames stand in view and 287 more are drawn; its jumps 30 to 39, pops 60 to 69, switches 2 to 15 (names entering at their distances),
+     flickers 3 to 0. "hybrid-play" and the long Play runs (MOTION.LONG) under Follow keep their baselines and bars (hybrid-play in view 3,388 on both
+     builds, drawn 2,079 to 2,326; hybrid-long 76.2% to 76.1%, hybrid-3600 75.9% to 77.9-79.5%). Every other baseline and the 16's ceilings unchanged
+     (the 16: jumps 234 to 245, pops 948 to 959, switches 105 to 128, flickers 10 to 10; ceilings 251, 1,049, 130, 12) */
   VIS:{"hybrid-pan":[1436,2189,3033], "hybrid-zoom":[1242,2203,2133], "hybrid-orbit":[1520,2548,1833], "hybrid-glide":[1153,1786,1700],
     "hybrid-play":[2073,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[852,1232,667], "paper-glide":[551,822,667],
     "paper-play":[1533,1694,667], "land-pan":[1783,2038,667], "land-zoom":[1649,2207,667], "land-orbit":[1749,2366,1167],
-    "land-play":[2603,3146,667], "low-pan":[806,861,533], "low-orbit":[649,859,667], "low-zoom":[441,590,667], "hybrid-orbit+sel":[1524,2548,2100],
+    "land-play":[2890,3236,667], "low-pan":[806,861,533], "low-orbit":[649,859,667], "low-zoom":[441,590,667], "hybrid-orbit+sel":[1524,2548,2100],
     "paper-zoom+sel":[821,1232,667], "hybrid-pan+fr":[1387,2112,3033], "hybrid-pan+al":[1010,1321,1467], "paper-play+al":[1171,1331,667],
     "phone-pan+touch":[257,696,1367],
     "hybrid-pan+point":[1436,2189,3033], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1242,2203,2133], "paper-zoom+point":[852,1232,667]}};
@@ -732,7 +740,8 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   ANIM:"Stage 8, implementation PR 8D: the kit's animation hooks (decisions 244 (a), 250 (b))",
   MLT:"UI/UX roadmap step 2: the Landscape's label tiers (the owner's decision of 15 November 2026; they supersede the follow-up 8I's far plate, decision 263 (a))",
   TOAST:"Stage 8, the follow-up 8I: the phase's message placed again under a layout's change",
-  UX1:"UI/UX roadmap step 1: the map key shown from the first card, the markers' drags, the touch scrub lane, the coincident events (UA-05, 06, 12, 13, 17)"};
+  UX1:"UI/UX roadmap step 1: the map key shown from the first card, the markers' drags, the touch scrub lane, the coincident events (UA-05, 06, 12, 13, 17)",
+  UX3:"UI/UX roadmap step 3: Follow fitted to the action during Play, a pause, the end of Play and every ordinary seek keeping the eye (UA-02; the owner's decision of 15 November 2026)"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -1005,6 +1014,8 @@ function checkLive(live,opts){
   if(req("ux1","the map key and the timeline under real input (UI/UX roadmap step 1)")) checkUx1(live.ux1,so).forEach(x=>f.push(x));
   /* UI/UX roadmap step 2 (UA-01, UA-15): the live block "ux2" (tools/visual/ux2.js), judged by checkUx2 (below) */
   if(req("ux2","the Landscape's label tiers and Watch's set while the clock plays (UI/UX roadmap step 2)")) checkUx2(live.ux2,so).forEach(x=>f.push(x));
+  /* UI/UX roadmap step 3 (UA-02): the live block "ux3" (tools/visual/ux3.js), who moves the camera, judged by checkUx3 (below) */
+  if(req("ux3","who moves the camera: Play's stops, the seeks and the deliberate moves by real input (UI/UX roadmap step 3)")) checkUx3(live.ux3,so).forEach(x=>f.push(x));
   if(req("tips","the timeline's tips by real keys, mouse and touch (Stage 8, implementation PR 8A, decision 251)")){ const T=live.tips, b=[];
     const is=(o,k)=>!!(o&&o.tip&&o.tip===o[k]), none=o=>!!(o&&o.tip===null);
     if(!is(T.focus,"focusTip")) b.push("Tab to a marker showed no tip");
@@ -1374,3 +1385,45 @@ function consoleEntries(r){
     return {page:"last",at:"an unknown block (a report made before roadmap step 1 kept only the last page's messages)",type:k[1]==="PAGEERROR"?"pageerror":k[1],text:k[2]}; });
 }
 module.exports.consoleEntries=consoleEntries; module.exports.judgeReport=judgeReport;
+/* UI/UX roadmap step 3 (docs/UX_ART_AUDIT.md UA-02; the owner's decision of 15 November 2026): the live block "ux3" (tools/visual/ux3.js
+   runBlock), judged. Who moves the camera, by real input:
+   - Play's stops: a pause by a click leaves the eye where it stood, frame after frame; the natural end of Play the same; Play (from a phase's
+     authored view) and Play again (from the held view) move the orbit target at most CAP px a second on the screen (Follow's pan cap, FOLLOW.CAP)
+     and the ground under the free map at most FLOW (FOLLOW.FLOW, within FLOW_TOL: the cap reads its own 5 x 5 grid, the block the ground
+     under its grid as groundAt finds it), never under the floor;
+   - every ordinary seek (the rail dragged inside a phase and across one, an event marker, the next-ten-minutes button, the window's arrow key,
+     the rail's PageDown, a day-track anchor, the phone's chooser) keeps the eye (moved at most EPS units), its clock where the seek put it and,
+     for a marker or the chooser, its event selected; the cross-phase cases crossed a phase;
+   - deliberate moves: a phase's or an act's button at that phase's authored view (within VIEW units), a vantage's at its view, "Go to this
+     moment" centring its event (within CENTRE units) with Follow off; with Follow off a cross-phase drag and Play leave the eye where it is;
+   - the Landscape with counters keeps the eye on a cross-phase drag; the paper map's plan stays on a drag and while the clock plays;
+   - reduced motion: while Play runs, the eye moves only in a frame whose clock reached an event's start; a pause and a cross-phase drag keep it */
+const UX3={EPS:1e-6, VIEW:1e-3, CENTRE:0.5, CAP:150, FLOW:150, FLOW_TOL:1.05};
+module.exports.UX3=UX3;
+function checkUx3(L,so){
+  const f=[]; if(!L||!L.cases) return ["ux3: no record"];
+  const C=L.cases, need=(k,ok,why)=>{ if(!C[k]) f.push("ux3 "+k+": not run"); else if(!ok(C[k])) f.push("ux3 "+k+": "+why+" "+JSON.stringify(C[k])); };
+  need("pause",r=>r.playing&&r.stopped&&r.clickMoved<=UX3.EPS&&r.heldMoved<=UX3.EPS&&r.below===0&&r.playTargetMax<=UX3.CAP+1e-6&&r.playFlowMax<=UX3.FLOW*UX3.FLOW_TOL,"a pause by a click: the eye not held where it stood, or under the floor, or while playing (from the phase's authored view) the target faster than "+UX3.CAP+" px/s or the ground under the free map faster than "+UX3.FLOW+" px/s (within "+Math.round(100*(UX3.FLOW_TOL-1))+"%: the cap samples the ground on its own grid)");
+  need("resume",r=>r.playing&&r.targetMax<=UX3.CAP+1e-6&&r.flowMax<=UX3.FLOW*UX3.FLOW_TOL&&r.below===0,"Play again from the held view: the orbit target faster than "+UX3.CAP+" px/s, the ground faster than "+UX3.FLOW+" px/s, or under the floor");
+  need("end",r=>r.stopped&&r.clock>=1080-1e-6&&r.heldMoved<=UX3.EPS&&r.below===0,"the natural end of Play: the eye not held where the end found it");
+  const seeks=[["scrub-same",false],["scrub-cross",true],["marker",true],["step",true],["key",true],["rail-key",true],["anchor",true],["hybrid-scrub",true]];
+  seeks.forEach(([k,cross])=>need(k,r=>(!r.info||!r.info.none)&&r.moved<=UX3.EPS&&r.to!==r.from&&(cross?r.ph1!==r.ph0:r.ph1===r.ph0)&&r.below===0,
+    "an ordinary seek"+(cross?" across a phase":" inside a phase")+": the eye moved (the owner's decision: a seek keeps the pose), or the case did not "+(cross?"cross a phase":"stay in its phase")));
+  need("marker",r=>r.sel==="e:kursk"&&Math.abs(r.to-(r.info&&r.info.t))<1e-6,"an event marker's click: the clock not at the event's start or the event not selected");
+  need("phase-button",r=>r.toPhaseView<=UX3.VIEW&&r.to===6&&!r.fc,"a phase's button: the eye not at that phase's authored view");
+  need("act-button",r=>r.act&&r.toPhaseView<=UX3.VIEW,"an act's button by Enter: the eye not at its first phase's authored view");
+  need("vantage",r=>r.shown===false||r.toView<=UX3.VIEW,"a vantage's button: the eye not at its view");
+  need("centre",r=>r.shown===false||(r.targetToEvent<=UX3.CENTRE&&Math.abs(r.clock-r.eventClock)<1e-6&&r.fc),"\"Go to this moment\": the event not centred, or the clock not at its start, or Follow still on");
+  need("follow-off",r=>r.fc&&r.scrubMoved<=UX3.EPS&&r.playMoved<=UX3.EPS,"Follow off by a drag: a cross-phase drag or Play moved the eye");
+  need("paper",r=>r.mode==="staff"&&r.scrubMoved<=UX3.EPS&&r.playMoved<=UX3.EPS,"the paper map: its plan moved on a drag or while the clock played");
+  const R=L.reduced||{};
+  if(!R.play) f.push("ux3 reduced motion: not run");
+  else if(!(R.play.rm===true&&R.play.movedElse.length===0&&R.play.heldMoved<=UX3.EPS&&R.play.below===0&&R.play.to>R.play.from)) f.push("ux3 reduced motion, Play: the eye moved in a frame that reached no event's start, or the pause did not hold it "+JSON.stringify(R.play));
+  if(!R.scrub) f.push("ux3 reduced motion, a cross-phase drag: not run");
+  else if(!(R.scrub.moved<=UX3.EPS&&R.scrub.ph1!==R.scrub.ph0)) f.push("ux3 reduced motion, a cross-phase drag: the eye moved "+JSON.stringify(R.scrub));
+  const P=(L.phone||{}).chooser;
+  if(!P) f.push("ux3 a phone's chooser: not run");
+  else if(!(P.opened&&P.chose&&P.sel==="e:"+P.chose&&P.moved<=UX3.EPS&&P.ph1!==P.ph0)) f.push("ux3 a phone's chooser by taps: not opened, the event not selected, the case not across a phase, or the eye moved "+JSON.stringify(P));
+  return f;
+}
+module.exports.checkUx3=checkUx3;
