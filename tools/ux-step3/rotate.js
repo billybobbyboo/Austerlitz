@@ -19,7 +19,9 @@ const inPage=require("./framing.js").inPage;   /* framing.js's in-page measures:
   const b=await L.launch(), p=await L.open(b,html,{vp:[390,844],phone:true});
   await L.settle(p); await L.closeCard(p); await L.settle(p);
   await p.evaluate(MO.inPage); await p.evaluate(UX.inPage); await p.evaluate(inPage);
-  const n0=await p.evaluate(()=>{ setMode("terrain"); setPresentation("study"); select(null,null); window.__md.start({gl:false}); return DEV.frames+DEV.skipped; });
+  /* the driver started with the WebGL draw kept (gl true) and stubbed here, so that the three shots can draw with the real renderer (with gl false
+     the driver's own stub stays in place and a shot drew nothing) */
+  const n0=await p.evaluate(()=>{ setMode("terrain"); setPresentation("study"); select(null,null); window.__md.start({gl:true}); window.__rtrr=renderer.render; renderer.render=function(){}; return DEV.frames+DEV.skipped; });
   await p.waitForFunction(n=>DEV.frames+DEV.skipped>n,n0,{timeout:15000}).catch(()=>{});
   await p.evaluate(a=>{ var D=window.__md; mlReset("driver"); needFrames=0; stopPlay(); setClock(a,{instant:true,force:true,camera:false}); var n=0; while(tween&&n<8){ tween(performance.now()+1e7); n++; }
     var c=presetFrame(PHASES[phaseAt(a)].cam); landCam.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true);
@@ -27,14 +29,21 @@ const inPage=require("./framing.js").inPage;   /* framing.js's in-page measures:
   const F=[], shots=[];
   const step=async(n,tag)=>{ for(let i=0;i<n;i++){ const s=await p.evaluate(()=>{ window.__md.frame(); var o=window.__fr.frame({dt:window.__md.frameMs/1000});
       o.phone=typeof PHONE!=="undefined"?PHONE:null; o.profile=typeof followProfile==="function"?(followProfile()?"phone":"desktop"):null; o.w=innerWidth; o.h=innerHeight; return o; }); s.stage=tag; F.push(s); } };
-  const shot=async tag=>{ await p.evaluate(()=>{ if(typeof GDEPTH!=="undefined") GDEPTH.key=null; if(FX.on) renderFX(); else renderStandard(); });
-    const f=path.join(OUT,TAG+"-"+tag+".png"); await p.screenshot({path:f,scale:"css"}); shots.push(path.basename(f)); };
+  /* a shot: the frame drawn by the app's own render path with the real renderer; a capture whose map is mostly exactly black (taken before the
+     browser put the frame on screen: tools/ux-step2/probe.js's finding) is drawn and taken again, up to three times */
+  const draw=()=>p.evaluate(()=>{ renderer.render=window.__rtrr; if(typeof GDEPTH!=="undefined") GDEPTH.key=null; if(FX.on) renderFX(); else renderStandard(); renderer.render=function(){}; });
+  const black=buf=>p.evaluate(async b64=>{ const im=new Image(); im.src="data:image/png;base64,"+b64; await im.decode(); const c=document.createElement("canvas"); c.width=im.width; c.height=im.height;
+    const g=c.getContext("2d"); g.drawImage(im,0,0); const r=renderer.domElement.getBoundingClientRect(), k=im.width/innerWidth, d=g.getImageData(Math.round(r.left*k),Math.round(r.top*k),Math.max(1,Math.round(r.width*k)),Math.max(1,Math.round(r.height*k)/2|0)).data;
+    let z=0,n=0; for(let i=0;i<d.length;i+=16){ n++; if(d[i]+d[i+1]+d[i+2]===0) z++; } return z/n; },buf.toString("base64"));
+  const shot=async tag=>{ await draw(); let A=await p.screenshot({scale:"css"}), tries=0;
+    while(await black(A)>0.25&&tries<3){ tries++; await draw(); await p.waitForTimeout(200); A=await p.screenshot({scale:"css"}); }
+    const f=path.join(OUT,TAG+"-"+tag+".png"); fs.writeFileSync(f,A); shots.push(path.basename(f)+(tries?" (drawn again "+tries+")":"")); };
   const turn=async(w,h)=>{ await p.setViewportSize({width:w,height:h}); await p.evaluate(()=>window.dispatchEvent(new Event("resize")));
     await p.waitForFunction(([w,h])=>innerWidth===w&&innerHeight===h&&Math.abs(landCam.aspect-w/h)<1e-9,[w,h],{timeout:60000,polling:50}); };
   await step(HOLD,"upright"); await shot("1-upright");
   await turn(844,390); await step(HOLD,"turned"); await shot("2-turned");
   await turn(390,844); await step(HOLD,"back"); await shot("3-back");
-  await p.evaluate(()=>{ stopPlay(); window.__md.stop(); });
+  await p.evaluate(()=>{ stopPlay(); renderer.render=window.__rtrr; window.__md.stop(); });
   const errs=p.__errs.slice(); await b.close();
   const by={}; F.forEach(s=>{ const B=by[s.stage]||(by[s.stage]={frames:0, evQ:0, evIn:0, box:[], d:[], el:[], flow:0, tflow:0, phone:new Set(), profile:new Set()}); B.frames++;
     s.ev.forEach(e=>{ B.evQ++; if(e.c==="free") B.evIn++; }); if(s.comp&&s.comp.bbox) B.box.push(s.comp.bboxShare); B.d.push(s.cam.d); B.el.push(s.cam.el);

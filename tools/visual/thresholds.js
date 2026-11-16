@@ -398,16 +398,16 @@ const MOTION={JUMPS:251, POPS:1049, FLICKER:12, LOD:130, REAL_TOL:{abs:6, rel:0.
      ceilings unchanged (the 16: 249 jumps, 1,043 pops, 9 flickers, 105 switches) */
   /* UI/UX roadmap step 3 (UA-02; the owner's decision of 15 November 2026, which revisits decision 78 for Play: Follow at 52 degrees, fitted to the
      action; docs/ux-step3-evidence/): one baseline moved, put to the owner with the draft. "land-play" (90 frames of Play under Follow from 09:00 in
-     the Landscape's Field view, 1600 x 900) [2603,3146,667] to [2890,3236,667], the step 3 build's own counts, the same in check:selftest's set and
-     check:visual's (tools/stage8/motion-8h.js on a page of its own, Chromium 141): Follow now tilts toward 52 degrees and comes nearer, so 90 more
-     formation-frames stand in view and 287 more are drawn; its jumps 30 to 39, pops 60 to 69, switches 2 to 15 (names entering at their distances),
-     flickers 3 to 0. "hybrid-play" and the long Play runs (MOTION.LONG) under Follow keep their baselines and bars (hybrid-play in view 3,388 on both
-     builds, drawn 2,079 to 2,326; hybrid-long 76.2% to 76.1%, hybrid-3600 75.9% to 77.9-79.5%). Every other baseline and the 16's ceilings unchanged
-     (the 16: jumps 234 to 245, pops 948 to 959, switches 105 to 128, flickers 10 to 10; ceilings 251, 1,049, 130, 12) */
+     the Landscape's Field view, 1600 x 900) [2603,3146,667] to [2918,3236,667], the step 3 build's own counts (fd7b8b72...), the same in check:selftest's
+     set and check:visual's (tools/stage8/motion-8h.js on a page of its own, Chromium 141): Follow now tilts toward 52 degrees and comes nearer, so 90
+     more formation-frames stand in view and 315 more are drawn; its jumps 30 to 42, pops 60 to 62, switches 2 to 5, flickers 3 to 0. "hybrid-play" and
+     the long Play runs (MOTION.LONG) under Follow keep their baselines and bars (hybrid-play in view 3,388 on both builds, drawn 2,079 to 2,235;
+     hybrid-long 76.2% to 75.2%, hybrid-3600 75.9% to 82.0%). Every other baseline and the 16's ceilings unchanged (the 16: jumps 234 to 246, pops 948 to
+     961, switches 105 to 108, flickers 10 to 9; ceilings 251, 1,049, 130, 12) */
   VIS:{"hybrid-pan":[1436,2189,3033], "hybrid-zoom":[1242,2203,2133], "hybrid-orbit":[1520,2548,1833], "hybrid-glide":[1153,1786,1700],
     "hybrid-play":[2073,3388,4033], "paper-pan":[1274,1274,0], "paper-zoom":[852,1232,667], "paper-glide":[551,822,667],
     "paper-play":[1533,1694,667], "land-pan":[1783,2038,667], "land-zoom":[1649,2207,667], "land-orbit":[1749,2366,1167],
-    "land-play":[2890,3236,667], "low-pan":[806,861,533], "low-orbit":[649,859,667], "low-zoom":[441,590,667], "hybrid-orbit+sel":[1524,2548,2100],
+    "land-play":[2918,3236,667], "low-pan":[806,861,533], "low-orbit":[649,859,667], "low-zoom":[441,590,667], "hybrid-orbit+sel":[1524,2548,2100],
     "paper-zoom+sel":[821,1232,667], "hybrid-pan+fr":[1387,2112,3033], "hybrid-pan+al":[1010,1321,1467], "paper-play+al":[1171,1331,667],
     "phone-pan+touch":[257,696,1367],
     "hybrid-pan+point":[1436,2189,3033], "hybrid-orbit+point":[1520,2548,1833], "hybrid-zoom+point":[1242,2203,2133], "paper-zoom+point":[852,1232,667]}};

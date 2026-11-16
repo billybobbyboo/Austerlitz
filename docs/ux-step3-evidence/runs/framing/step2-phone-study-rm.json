@@ -1,0 +1,264 @@
+{
+ "tag": "step2-phone-study-rm",
+ "build": {
+  "file": "docs/ux-step3-evidence/device/builds/austerlitz-07cbcaf3-step2.html",
+  "bytes": 3071014,
+  "md5": "07cbcaf32808c430198d55b1b7ed78b7",
+  "sha256": "06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186"
+ },
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+  "dpr": 3,
+  "phoneLayout": true,
+  "w": 390,
+  "h": 844,
+  "rm": true,
+  "follow": {
+   "TAU": 1.5,
+   "CAP": 150,
+   "K": 2.4,
+   "D0": 130,
+   "DMIN": 230,
+   "DMAX": 300,
+   "dist": 0,
+   "ev": null
+  }
+ },
+ "vp": [
+  390,
+  844
+ ],
+ "phone": true,
+ "pres": "study",
+ "mode": "terrain",
+ "from": 500,
+ "to": 600,
+ "set": null,
+ "reduced": true,
+ "frames": 960,
+ "events": {
+  "decision": {
+   "minutes": 43,
+   "inside": 20,
+   "visible": 35,
+   "why": {
+    "offscreen": 8,
+    "margin": 15
+   },
+   "share": 0.465,
+   "visShare": 0.814
+  },
+  "davout": {
+   "minutes": 58,
+   "inside": 18,
+   "visible": 48,
+   "why": {
+    "offscreen": 10,
+    "margin": 30
+   },
+   "share": 0.31,
+   "visShare": 0.828
+  },
+  "soult": {
+   "minutes": 58,
+   "inside": 48,
+   "visible": 48,
+   "why": {
+    "offscreen": 10
+   },
+   "share": 0.828,
+   "visShare": 0.828
+  },
+  "pratzen-village": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "face-about": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "telnitz-retaken": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "kamensky": {
+   "minutes": 26,
+   "inside": 26,
+   "visible": 26,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  }
+ },
+ "eventsUnder90": [
+  "decision",
+  "davout",
+  "soult"
+ ],
+ "eventMinutes": {
+  "total": 269,
+  "inside": 196,
+  "share": 0.729
+ },
+ "live": {
+  "minutes": 101,
+  "all": 56,
+  "allVisible": 83,
+  "allShare": 0.554,
+  "allVisibleShare": 0.822
+ },
+ "eventFrames": {
+  "qualifying": 2688,
+  "inside": 1997,
+  "share": 0.743
+ },
+ "box": {
+  "goal": 0.4,
+  "median": 0.1633,
+  "p10": 0.1062,
+  "max": 0.3997,
+  "atGoal": 0,
+  "liveMedian": 0.1633,
+  "liveAtGoal": 0
+ },
+ "formations": {
+  "inFreeMedian": 16,
+  "inFreeMin": 15,
+  "inFreeMax": 22,
+  "onFieldMedian": 31,
+  "inFreeShareMedian": 0.5161290322580645
+ },
+ "fillCover": {
+  "median": 0.1568,
+  "max": 0.4047,
+  "over12": 784,
+  "of": 960
+ },
+ "cam": {
+  "dMedian": 402.89,
+  "dMin": 228.1,
+  "dMax": 454.2,
+  "elMedian": 17.75,
+  "elMin": 17.2,
+  "elMax": 20.89,
+  "clearMin": 86.961,
+  "below": 0
+ },
+ "motion": {
+  "flowMax": 9942.8,
+  "flowP95": 0,
+  "flowP99": 360,
+  "flowOver150": 12,
+  "flowOver300": 10,
+  "targetMax": 9074.8,
+  "targetOver150": 12,
+  "frames": 959,
+  "voffFrames": 7,
+  "targetMaxNoVoff": 9074.8,
+  "targetOver150NoVoff": 5,
+  "flowMaxNoVoff": 9942.8,
+  "flowP95NoVoff": 0,
+  "top": [
+   {
+    "clock": 505,
+    "flow": 9942.8,
+    "tflow": 9074.8,
+    "d": 402.89,
+    "el": 20.89,
+    "az": -46.33
+   },
+   {
+    "clock": 525,
+    "flow": 8231.1,
+    "tflow": 4930.8,
+    "d": 454.2,
+    "el": 17.2,
+    "az": -75.34
+   },
+   {
+    "clock": 570,
+    "flow": 4908.2,
+    "tflow": 2091.7,
+    "d": 402.89,
+    "el": 17.75,
+    "az": -69.9
+   },
+   {
+    "clock": 540,
+    "flow": 3368.3,
+    "tflow": 1311.1,
+    "d": 402.89,
+    "el": 17.2,
+    "az": -75.34
+   },
+   {
+    "clock": 585,
+    "flow": 1818.7,
+    "tflow": 936.7,
+    "d": 402.89,
+    "el": 17.75,
+    "az": -69.9
+   },
+   {
+    "clock": 555,
+    "flow": 1253,
+    "tflow": 763.2,
+    "d": 402.89,
+    "el": 17.2,
+    "az": -75.34
+   },
+   {
+    "clock": 540.001,
+    "flow": 360,
+    "tflow": 360,
+    "d": 402.89,
+    "el": 17.2,
+    "az": -75.34
+   },
+   {
+    "clock": 542.667,
+    "flow": 360,
+    "tflow": 360,
+    "d": 402.89,
+    "el": 17.2,
+    "az": -75.34
+   }
+  ]
+ },
+ "kit": {
+  "richMedian": 0,
+  "richMax": 0,
+  "switches": 0
+ },
+ "labels": {
+  "drawnMedian": 11,
+  "drawnMax": 23,
+  "namesMedian": 5,
+  "namesMax": 26,
+  "namesOnMedian": 3,
+  "namesOnMax": 11,
+  "droppedMedian": 9,
+  "droppedMax": 14
+ },
+ "census": null,
+ "layerMs": {
+  "median": 0.8,
+  "p95": 1.8,
+  "over8": 6,
+  "n": 969
+ },
+ "errors": []
+}

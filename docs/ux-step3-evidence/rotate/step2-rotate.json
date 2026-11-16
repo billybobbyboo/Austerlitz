@@ -1,0 +1,88 @@
+{
+ "tag": "step2-rotate",
+ "build": {
+  "file": "docs/ux-step3-evidence/device/builds/austerlitz-07cbcaf3-step2.html",
+  "bytes": 3071014,
+  "md5": "07cbcaf32808c430198d55b1b7ed78b7",
+  "sha256": "06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186"
+ },
+ "from": 528,
+ "hold": 150,
+ "shots": [
+  "step2-rotate-1-upright.png",
+  "step2-rotate-2-turned.png",
+  "step2-rotate-3-back.png"
+ ],
+ "errors": [],
+ "stages": {
+  "upright": {
+   "frames": 150,
+   "clock": [
+    528.167,
+    543
+   ],
+   "phone": [
+    "true"
+   ],
+   "profile": [
+    "null"
+   ],
+   "eventFramesInside": "287 of 587",
+   "eventShare": 0.489,
+   "boxMedian": 0.1831,
+   "dFirst": 250.76,
+   "dLast": 399.25,
+   "elLast": 17.2,
+   "flowMax": 275.7,
+   "targetMax": 77.8,
+   "voffFrames": 27,
+   "targetMaxVoff": 175.2
+  },
+  "turned": {
+   "frames": 150,
+   "clock": [
+    543.167,
+    558
+   ],
+   "phone": [
+    "false"
+   ],
+   "profile": [
+    "null"
+   ],
+   "eventFramesInside": "588 of 588",
+   "eventShare": 1,
+   "boxMedian": 0.2436,
+   "dFirst": 395.53,
+   "dLast": 236.04,
+   "elLast": 17.2,
+   "flowMax": 124.3,
+   "targetMax": 6.9,
+   "voffFrames": 5,
+   "targetMaxVoff": 29.9
+  },
+  "back": {
+   "frames": 150,
+   "clock": [
+    558.167,
+    573
+   ],
+   "phone": [
+    "true"
+   ],
+   "profile": [
+    "null"
+   ],
+   "eventFramesInside": "527 of 588",
+   "eventShare": 0.896,
+   "boxMedian": 0.1952,
+   "dFirst": 239.7,
+   "dLast": 397.12,
+   "elLast": 17.64,
+   "flowMax": 164.3,
+   "targetMax": 25.7,
+   "voffFrames": 16,
+   "targetMaxVoff": 169.4
+  }
+ }
+}

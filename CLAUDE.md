@@ -526,8 +526,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   day-track anchor, the Landscape with counters, under reduced motion, a phone's chooser) keeps the eye with its clock and its event as the seek set
   them; a Phase and an Act button at that phase's authored view, a vantage at its view, "Go to this moment" centring its event; Follow off by a drag
   then a cross-phase drag and Play leaving the eye; the paper map's plan kept; under reduced motion the eye moving only at an event's start.
-  One baseline moved, put to the owner with the step's draft: the motion block's `land-play` [2603,3146,667] to [2890,3236,667] (Follow's closer view
-  brings 90 more formation-frames into view); the 16's ceilings and every other baseline unchanged (the 16 at 245, 959, 128 and 10).
+  One baseline moved, put to the owner with the step's draft: the motion block's `land-play` [2603,3146,667] to [2918,3236,667] (Follow's closer view
+  brings 90 more formation-frames into view); the 16's ceilings and every other baseline unchanged (the 16 at 246, 961, 108 and 9).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
 - `npm run check:baseline` passes only on the unmodified build of UI/UX roadmap step 3 (md5 `fd7b8b72...`, 3,085,998 bytes, its data the archived
   `45d29cc5...`'s, `CHANGELOG.md`); re-baselined from UI/UX roadmap step 2 (md5 `07cbcaf3...`, 3,071,014 bytes, `CHANGELOG.md`); re-baselined from UI/UX roadmap step 1 (md5 `d404045b...`, 3,053,167 bytes, `CHANGELOG.md`); re-baselined from the final audits' Stage 7, WP-16's second PR (md5 `8c0d383e...`, 3,037,848 bytes, its

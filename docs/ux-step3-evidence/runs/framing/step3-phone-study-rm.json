@@ -1,0 +1,268 @@
+{
+ "tag": "step3-phone-study-rm",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 3085998,
+  "md5": "fd7b8b72c6315d1bb5bf0b8fa45cf263",
+  "sha256": "48f5d6314e2b8b336d17d3be6caad94c5c4254471da6095605fd013d644c9b34"
+ },
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+  "dpr": 3,
+  "phoneLayout": true,
+  "w": 390,
+  "h": 844,
+  "rm": true,
+  "follow": {
+   "TAU": 1.5,
+   "CAP": 150,
+   "FLOW": 150,
+   "ELEV": 52,
+   "DMIN": 200,
+   "DMAX": 400,
+   "MARGIN": 0.12,
+   "LO": 0.05,
+   "HI": 0.35,
+   "LEAD": 16,
+   "REF": 0.229,
+   "P": {
+    "ELEV": 55,
+    "DMIN": 360,
+    "DMAX": 600,
+    "MARGIN": 0.1,
+    "REF": 0.1427
+   },
+   "dist": 0,
+   "ev": null
+  }
+ },
+ "vp": [
+  390,
+  844
+ ],
+ "phone": true,
+ "pres": "study",
+ "mode": "terrain",
+ "from": 500,
+ "to": 600,
+ "set": null,
+ "reduced": true,
+ "frames": 960,
+ "events": {
+  "decision": {
+   "minutes": 43,
+   "inside": 38,
+   "visible": 38,
+   "why": {
+    "offscreen": 5
+   },
+   "share": 0.884,
+   "visShare": 0.884
+  },
+  "davout": {
+   "minutes": 58,
+   "inside": 58,
+   "visible": 58,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "soult": {
+   "minutes": 58,
+   "inside": 58,
+   "visible": 58,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "pratzen-village": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "face-about": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "telnitz-retaken": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "kamensky": {
+   "minutes": 26,
+   "inside": 26,
+   "visible": 26,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  }
+ },
+ "eventsUnder90": [
+  "decision"
+ ],
+ "eventMinutes": {
+  "total": 269,
+  "inside": 264,
+  "share": 0.981
+ },
+ "live": {
+  "minutes": 101,
+  "all": 96,
+  "allVisible": 96,
+  "allShare": 0.95,
+  "allVisibleShare": 0.95
+ },
+ "eventFrames": {
+  "qualifying": 2688,
+  "inside": 2651,
+  "share": 0.986
+ },
+ "box": {
+  "goal": 0.4,
+  "median": 0.5623,
+  "p10": 0.3806,
+  "max": 0.8351,
+  "atGoal": 0.853,
+  "liveMedian": 0.5623,
+  "liveAtGoal": 0.853
+ },
+ "formations": {
+  "inFreeMedian": 28,
+  "inFreeMin": 13,
+  "inFreeMax": 29,
+  "onFieldMedian": 31,
+  "inFreeShareMedian": 0.9032258064516129
+ },
+ "fillCover": {
+  "median": 0.1576,
+  "max": 0.292,
+  "over12": 536,
+  "of": 960
+ },
+ "cam": {
+  "dMedian": 405.75,
+  "dMin": 228.1,
+  "dMax": 527.25,
+  "elMedian": 55,
+  "elMin": 20.89,
+  "elMax": 55,
+  "clearMin": 86.961,
+  "below": 0
+ },
+ "motion": {
+  "flowMax": 6084.9,
+  "flowP95": 0,
+  "flowP99": 360,
+  "flowOver150": 12,
+  "flowOver300": 10,
+  "targetMax": 3716.9,
+  "targetOver150": 11,
+  "frames": 959,
+  "voffFrames": 7,
+  "targetMaxNoVoff": 3716.9,
+  "targetOver150NoVoff": 4,
+  "flowMaxNoVoff": 6084.9,
+  "flowP95NoVoff": 0,
+  "top": [
+   {
+    "clock": 505,
+    "flow": 6084.9,
+    "tflow": 3647.2,
+    "d": 405.75,
+    "el": 55,
+    "az": -46.33
+   },
+   {
+    "clock": 555,
+    "flow": 5111.4,
+    "tflow": 3716.9,
+    "d": 359.95,
+    "el": 55,
+    "az": -75.34
+   },
+   {
+    "clock": 525,
+    "flow": 4178.4,
+    "tflow": 980.6,
+    "d": 525.92,
+    "el": 55,
+    "az": -75.34
+   },
+   {
+    "clock": 585,
+    "flow": 1299.8,
+    "tflow": 1169.8,
+    "d": 359.95,
+    "el": 55,
+    "az": -69.9
+   },
+   {
+    "clock": 570,
+    "flow": 821.6,
+    "tflow": 87.9,
+    "d": 359.95,
+    "el": 55,
+    "az": -69.9
+   },
+   {
+    "clock": 540,
+    "flow": 588.3,
+    "tflow": 565.8,
+    "d": 527.25,
+    "el": 55,
+    "az": -75.34
+   },
+   {
+    "clock": 540.001,
+    "flow": 360,
+    "tflow": 360,
+    "d": 527.25,
+    "el": 55,
+    "az": -75.34
+   },
+   {
+    "clock": 542.667,
+    "flow": 360,
+    "tflow": 360,
+    "d": 527.25,
+    "el": 55,
+    "az": -75.34
+   }
+  ]
+ },
+ "kit": {
+  "richMedian": 0,
+  "richMax": 0,
+  "switches": 0
+ },
+ "labels": {
+  "drawnMedian": 12,
+  "drawnMax": 23,
+  "namesMedian": 5,
+  "namesMax": 26,
+  "namesOnMedian": 3,
+  "namesOnMax": 11,
+  "droppedMedian": 8,
+  "droppedMax": 12
+ },
+ "census": null,
+ "layerMs": {
+  "median": 0.7,
+  "p95": 1.4,
+  "over8": 1,
+  "n": 969
+ },
+ "errors": []
+}
