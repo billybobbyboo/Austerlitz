@@ -3,7 +3,7 @@
    show that it runs end to end in both of its ways (pasted into the build's page; the wrapper page tools/step6/perf-run.html with the build in
    a frame) and to record what it reports here. Here is SOFTWARE WebGL (SwiftShader, headless Chromium, no GPU): its frame times are not a
    visitor's and decide nothing (question 139 needs the owner's machines); its draw calls and triangles are the build's own.
-   node tools/step6/perf-local.js [--way paste|frame] [--device desktop|iphone] [--viewport WxH] [--quick] [--only id,id] [--phone] [--cull] [--fx] [--gait] [--json out.json]
+   node tools/step6/perf-local.js [--way paste|frame] [--src <a build's path from the repository's root>] [--device desktop|iphone] [--viewport WxH] [--quick] [--only id,id] [--phone] [--cull] [--fx] [--gait] [--json out.json]
    (--phone: decision 236's phone route, docs/STEP6_SPEC.md section 14; --cull, --fx: Stage 8's bracketed routes, culling and the effects on and off, 8D, docs/STAGE8_SPEC.md section 16;
    --gait: the gait on and at rest with the clock played, 8E, section 17)
    The repository is served from a local HTTP server (the wrapper reads its frame's window, which file:// pages may not); three.js is answered
@@ -13,7 +13,7 @@ const { chromium } = require("playwright");
 const TR=require("../visual/three-route.js");
 const ROOT=path.join(__dirname,"..","..");
 const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; }, has=f=>argv.includes(f);
-const WAY=opt("--way")||"paste", DEV=opt("--device")||"desktop", VPO=opt("--viewport"), OUT=opt("--json"), QUICK=has("--quick"), ONLY=opt("--only"), PHONE=has("--phone"), CULL=has("--cull"), FX=has("--fx"), GAIT=has("--gait");
+const WAY=opt("--way")||"paste", SRC=opt("--src")||"austerlitz-command-map.html", DEV=opt("--device")||"desktop", VPO=opt("--viewport"), OUT=opt("--json"), QUICK=has("--quick"), ONLY=opt("--only"), PHONE=has("--phone"), CULL=has("--cull"), FX=has("--fx"), GAIT=has("--gait");
 const DEVICES={
   desktop:{viewport:{width:1600,height:900},deviceScaleFactor:1},
   /* an iPhone 13-15's CSS viewport and density; Chromium with Safari's user agent, so the build takes its lowTier path as on the phone */
@@ -34,14 +34,14 @@ function serve(){ return new Promise(res=>{ const s=http.createServer((q,r)=>{
   await TR.routeThree(page);
   const t0=Date.now(); let r;
   if(WAY==="paste"){
-    await page.goto(base+"austerlitz-command-map.html",{waitUntil:"commit",timeout:180000});
+    await page.goto(base+SRC,{waitUntil:"commit",timeout:180000});   /* UI/UX step 3: --src, another build in the repository (a path from its root) */
     await TR.waitBoot(page,240000,500);
     console.log("started in",Date.now()-t0,"ms");
     await page.evaluate(()=>{ window.AUS_PERF_NO_AUTORUN=true; });
     await page.addScriptTag({path:path.join(__dirname,"perf-route.js")});
     r=await page.evaluate(o=>AUS_PERF.run(window,o).then(x=>x),{quick:QUICK,only:ONLY,phone:PHONE,cull:CULL,fx:FX,gait:GAIT});
   } else {
-    const qs=[QUICK?"quick=1":"",ONLY?"only="+ONLY:"",PHONE?"route=phone":"",CULL?"route=cull":"",FX?"route=fx":"",GAIT?"route=gait":""].filter(Boolean).join("&");
+    const qs=[SRC!=="austerlitz-command-map.html"?"src=../../"+SRC:"",QUICK?"quick=1":"",ONLY?"only="+ONLY:"",PHONE?"route=phone":"",CULL?"route=cull":"",FX?"route=fx":"",GAIT?"route=gait":""].filter(Boolean).join("&");
     await page.goto(base+"tools/step6/perf-run.html"+(qs?"?"+qs:""),{waitUntil:"load",timeout:180000});
     await page.waitForFunction(()=>!document.getElementById("go").disabled,null,{timeout:300000,polling:500});
     console.log("started in",Date.now()-t0,"ms; the panel:",await page.textContent("#msg"));

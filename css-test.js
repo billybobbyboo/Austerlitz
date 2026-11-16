@@ -268,6 +268,29 @@ if(cerrs) process.exitCode=1;
   console.log("pacing: "+(perr.length?perr.length+" wrong":"half speed by default, its button pressed; the dwell's toggle on; no phase glide while playing"));
   if(perr.length) process.exitCode=1;
 }
+/* UI/UX roadmap step 3 (docs/UX_ART_AUDIT.md UA-02; the owner's decision of 15 November 2026): every move of the clock in app.js keeps the eye
+   (setClock's opts.camera false) but in the functions that ask for a phase's authored view by name: init (the start's view), setPhase (the
+   phase's and the act's buttons, the phone's phase list), tickClock (Play's own advance: no glide while playing) and the self-test's own
+   placements (cameraChecks3D, selfTest). A new call elsewhere without camera:false (a seek that glides the eye to the phase's view, the defect
+   step 3 removed) fails here, by the enclosing function's name. And Follow's step 3 values: FOLLOW at 52 degrees, 200-400 units with the lead,
+   the caps on the screen (CAP and FLOW 150), the phone's profile at 55 degrees, 360-600 units */
+{ const acorn=require('acorn'), app=fs.readFileSync('app.js','utf8'), ast=acorn.parse(app,{ecmaVersion:2020,locations:true}), cerr=[];
+  const ALLOW={init:"the start's view", setPhase:"the phase's and the act's buttons, the phone's phase list", tickClock:"Play's own advance (no glide while playing)",
+    cameraChecks3D:"the self-test's camera checks", selfTest:"the self-test"};
+  const seen={};
+  (function walk(n,fn){ if(!n||typeof n.type!=="string") return;
+    const f=(n.type==="FunctionDeclaration"&&n.id)?n.id.name:fn;
+    if(n.type==="CallExpression"&&n.callee.type==="Identifier"&&n.callee.name==="setClock"){
+      const o=n.arguments[1]; let cam=null; if(o&&o.type==="ObjectExpression") o.properties.forEach(p=>{ if(p.key&&p.key.name==="camera") cam=app.slice(p.value.start,p.value.end); });
+      if(cam!=="false"){ if(!ALLOW[f]) cerr.push("app.js:"+n.loc.start.line+" ("+(f||"top level")+"): setClock without camera:false outside "+Object.keys(ALLOW).join(", ")+": a seek there would glide the eye to the phase's view"); else seen[f]=(seen[f]||0)+1; } }
+    for(const k in n){ const v=n[k]; if(Array.isArray(v)) v.forEach(c=>walk(c,f)); else if(v&&typeof v.type==="string") walk(v,f); } })(ast,null);
+  ["init","setPhase","tickClock"].forEach(k=>{ if(!seen[k]) cerr.push("app.js: "+k+" no longer asks setClock for the phase's view (the rule's list is out of date)"); });
+  if(!/var FOLLOW=\{TAU:1\.5, CAP:150, FLOW:150, ELEV:52, DMIN:200, DMAX:400, MARGIN:0\.12, LO:0\.05, HI:0\.35, LEAD:16, REF:0\.229,\s*P:\{ELEV:55, DMIN:360, DMAX:600, MARGIN:0\.10, REF:0\.1427\},/.test(app)) cerr.push("app.js: FOLLOW is not step 3's (52 degrees, 200-400 units, the margin 0.12, the lead 16, the caps 150 and 150; the phone's 55 degrees, 360-600)");
+  if(!/limT=FOLLOW\.CAP\*sec/.test(app)||!/limG=FOLLOW\.FLOW>0\?FOLLOW\.FLOW\*sec/.test(app)||!/followFlow\(sT,sD,sDir,limG>0\)/.test(app)) cerr.push("app.js: followStep does not hold the target to CAP and the ground to FLOW as the screen shows them, on the pose it draws");
+  cerr.forEach(e=>console.log("  ! "+e));
+  console.log("camera (UI/UX step 3): "+(cerr.length?cerr.length+" wrong":"every seek keeps the eye; the phase's view asked for by "+Object.keys(seen).map(k=>k+" ("+seen[k]+")").join(", ")+"; Follow's step 3 values and caps"));
+  if(cerr.length) process.exitCode=1;
+}
 /* Stage 4E (docs/STAGE4_SPEC.md section G.3; owner decision 79): the landscape's colours live in their tables. Every colour literal
    in world.js is in COVER_COL, LAND_COL or WATER_COL; in app.js in the light's tables (LIGHT, LIGHT_RIG) or the sprite palette
    (SPRITE_COL). White (a vertex-coloured material's neutral base) is not a palette colour. The paper map's ground is

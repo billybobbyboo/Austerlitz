@@ -1,0 +1,426 @@
+{
+ "tag": "step2-1024x768",
+ "build": {
+  "file": "docs/ux-step3-evidence/device/builds/austerlitz-07cbcaf3-step2.html",
+  "bytes": 3071014,
+  "md5": "07cbcaf32808c430198d55b1b7ed78b7",
+  "sha256": "06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186"
+ },
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "dpr": 1,
+  "phoneLayout": false,
+  "w": 1024,
+  "h": 768,
+  "rm": false,
+  "follow": {
+   "TAU": 1.5,
+   "CAP": 150,
+   "K": 2.4,
+   "D0": 130,
+   "DMIN": 230,
+   "DMAX": 300,
+   "dist": 0,
+   "ev": null
+  }
+ },
+ "vp": [
+  1024,
+  768
+ ],
+ "phone": false,
+ "pres": "study",
+ "mode": "terrain",
+ "from": 240,
+ "to": 1080,
+ "set": null,
+ "reduced": false,
+ "frames": 6240,
+ "events": {
+  "raigern": {
+   "minutes": 63,
+   "inside": 43,
+   "visible": 46,
+   "why": {
+    "offscreen": 7,
+    "panel": 10,
+    "margin": 3
+   },
+   "share": 0.683,
+   "visShare": 0.73
+  },
+  "counter-march": {
+   "minutes": 253,
+   "inside": 253,
+   "visible": 253,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "columns-move": {
+   "minutes": 88,
+   "inside": 88,
+   "visible": 88,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "telnitz": {
+   "minutes": 28,
+   "inside": 22,
+   "visible": 23,
+   "why": {
+    "panel": 5,
+    "margin": 1
+   },
+   "share": 0.786,
+   "visShare": 0.821
+  },
+  "sokolnitz": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "decision": {
+   "minutes": 48,
+   "inside": 23,
+   "visible": 26,
+   "why": {
+    "panel": 22,
+    "margin": 3
+   },
+   "share": 0.479,
+   "visShare": 0.542
+  },
+  "davout": {
+   "minutes": 58,
+   "inside": 14,
+   "visible": 20,
+   "why": {
+    "offscreen": 38,
+    "margin": 6
+   },
+   "share": 0.241,
+   "visShare": 0.345
+  },
+  "soult": {
+   "minutes": 58,
+   "inside": 56,
+   "visible": 56,
+   "why": {
+    "offscreen": 2
+   },
+   "share": 0.966,
+   "visShare": 0.966
+  },
+  "pratzen-village": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "face-about": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "telnitz-retaken": {
+   "minutes": 28,
+   "inside": 26,
+   "visible": 28,
+   "why": {
+    "margin": 2
+   },
+   "share": 0.929,
+   "visShare": 1
+  },
+  "kamensky": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "kursk": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "pratzeberg": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "guard-attack": {
+   "minutes": 148,
+   "inside": 148,
+   "visible": 148,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "blasowitz": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "guard-broken": {
+   "minutes": 148,
+   "inside": 148,
+   "visible": 148,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "buxhowden-blind": {
+   "minutes": 88,
+   "inside": 15,
+   "visible": 20,
+   "why": {
+    "offscreen": 68,
+    "margin": 5
+   },
+   "share": 0.17,
+   "visShare": 0.227
+  },
+  "hq-forward": {
+   "minutes": 68,
+   "inside": 68,
+   "visible": 68,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "davout-resumes": {
+   "minutes": 28,
+   "inside": 0,
+   "visible": 10,
+   "why": {
+    "offscreen": 18,
+    "margin": 10
+   },
+   "share": 0,
+   "visShare": 0.357
+  },
+  "wheel": {
+   "minutes": 88,
+   "inside": 88,
+   "visible": 88,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "sokolnitz-falls": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "augezd": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "ice": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "end": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  }
+ },
+ "eventsUnder90": [
+  "raigern",
+  "telnitz",
+  "decision",
+  "davout",
+  "buxhowden-blind",
+  "davout-resumes"
+ ],
+ "eventMinutes": {
+  "total": 1500,
+  "inside": 1300,
+  "share": 0.867
+ },
+ "live": {
+  "minutes": 683,
+  "all": 515,
+  "allVisible": 538,
+  "allShare": 0.754,
+  "allVisibleShare": 0.788
+ },
+ "eventFrames": {
+  "qualifying": 12181,
+  "inside": 10549,
+  "share": 0.866
+ },
+ "box": {
+  "goal": 0.5,
+  "median": 0.2718,
+  "p10": 0.1629,
+  "max": 0.7169,
+  "atGoal": 0.158,
+  "liveMedian": 0.277,
+  "liveAtGoal": 0.157
+ },
+ "formations": {
+  "inFreeMedian": 16,
+  "inFreeMin": 12,
+  "inFreeMax": 30,
+  "onFieldMedian": 31,
+  "inFreeShareMedian": 0.5161290322580645
+ },
+ "fillCover": {
+  "median": 0.1262,
+  "max": 0.5117,
+  "over12": 3209,
+  "of": 6239
+ },
+ "cam": {
+  "dMedian": 230,
+  "dMin": 230,
+  "dMax": 319.3,
+  "elMedian": 24.92,
+  "elMin": 15.13,
+  "elMax": 40.77,
+  "clearMin": 55.182,
+  "below": 0
+ },
+ "motion": {
+  "flowMax": 462.4,
+  "flowP95": 141,
+  "flowP99": 276.8,
+  "flowOver150": 263,
+  "flowOver300": 46,
+  "targetMax": 123,
+  "targetOver150": 0,
+  "frames": 6238,
+  "voffFrames": 0,
+  "targetMaxNoVoff": 123,
+  "targetOver150NoVoff": 0,
+  "flowMaxNoVoff": 462.4,
+  "flowP95NoVoff": 141,
+  "top": [
+   {
+    "clock": 765,
+    "flow": 462.4,
+    "tflow": 11.1,
+    "d": 234.44,
+    "el": 15.65,
+    "az": -74.55
+   },
+   {
+    "clock": 765.167,
+    "flow": 445.4,
+    "tflow": 11.5,
+    "d": 234.34,
+    "el": 16.09,
+    "az": -75.48
+   },
+   {
+    "clock": 765.333,
+    "flow": 428.8,
+    "tflow": 11.8,
+    "d": 234.25,
+    "el": 16.52,
+    "az": -76.4
+   },
+   {
+    "clock": 675,
+    "flow": 425.7,
+    "tflow": 23.6,
+    "d": 230,
+    "el": 15.23,
+    "az": -117.71
+   },
+   {
+    "clock": 675,
+    "flow": 416.9,
+    "tflow": 23.2,
+    "d": 230,
+    "el": 15.31,
+    "az": -116.82
+   },
+   {
+    "clock": 765.5,
+    "flow": 410.6,
+    "tflow": 12.2,
+    "d": 234.16,
+    "el": 16.94,
+    "az": -77.32
+   },
+   {
+    "clock": 675,
+    "flow": 408.2,
+    "tflow": 22.9,
+    "d": 230,
+    "el": 15.4,
+    "az": -115.96
+   },
+   {
+    "clock": 675,
+    "flow": 398.9,
+    "tflow": 22.5,
+    "d": 230,
+    "el": 15.48,
+    "az": -115.1
+   }
+  ]
+ },
+ "kit": {
+  "richMedian": 0,
+  "richMax": 2,
+  "switches": 8
+ },
+ "labels": {
+  "drawnMedian": 20,
+  "drawnMax": 38,
+  "namesMedian": 26,
+  "namesMax": 29,
+  "namesOnMedian": 13,
+  "namesOnMax": 26,
+  "droppedMedian": 9,
+  "droppedMax": 37
+ },
+ "census": null,
+ "layerMs": {
+  "median": 1,
+  "p95": 2.2,
+  "over8": 29,
+  "n": 6249
+ },
+ "errors": []
+}

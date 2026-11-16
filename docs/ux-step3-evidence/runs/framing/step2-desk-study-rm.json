@@ -1,0 +1,259 @@
+{
+ "tag": "step2-desk-study-rm",
+ "build": {
+  "file": "docs/ux-step3-evidence/device/builds/austerlitz-07cbcaf3-step2.html",
+  "bytes": 3071014,
+  "md5": "07cbcaf32808c430198d55b1b7ed78b7",
+  "sha256": "06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186"
+ },
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "dpr": 1,
+  "phoneLayout": false,
+  "w": 1440,
+  "h": 900,
+  "rm": true,
+  "follow": {
+   "TAU": 1.5,
+   "CAP": 150,
+   "K": 2.4,
+   "D0": 130,
+   "DMIN": 230,
+   "DMAX": 300,
+   "dist": 0,
+   "ev": null
+  }
+ },
+ "vp": [
+  1440,
+  900
+ ],
+ "phone": false,
+ "pres": "study",
+ "mode": "terrain",
+ "from": 500,
+ "to": 600,
+ "set": null,
+ "reduced": true,
+ "frames": 960,
+ "events": {
+  "decision": {
+   "minutes": 43,
+   "inside": 38,
+   "visible": 38,
+   "why": {
+    "panel": 5
+   },
+   "share": 0.884,
+   "visShare": 0.884
+  },
+  "davout": {
+   "minutes": 58,
+   "inside": 48,
+   "visible": 48,
+   "why": {
+    "offscreen": 10
+   },
+   "share": 0.828,
+   "visShare": 0.828
+  },
+  "soult": {
+   "minutes": 58,
+   "inside": 58,
+   "visible": 58,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "pratzen-village": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "face-about": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "telnitz-retaken": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "kamensky": {
+   "minutes": 26,
+   "inside": 26,
+   "visible": 26,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  }
+ },
+ "eventsUnder90": [
+  "decision",
+  "davout"
+ ],
+ "eventMinutes": {
+  "total": 269,
+  "inside": 254,
+  "share": 0.944
+ },
+ "live": {
+  "minutes": 101,
+  "all": 86,
+  "allVisible": 86,
+  "allShare": 0.851,
+  "allVisibleShare": 0.851
+ },
+ "eventFrames": {
+  "qualifying": 2688,
+  "inside": 2585,
+  "share": 0.962
+ },
+ "box": {
+  "goal": 0.5,
+  "median": 0.2546,
+  "p10": 0.1396,
+  "max": 0.4879,
+  "atGoal": 0,
+  "liveMedian": 0.2546,
+  "liveAtGoal": 0
+ },
+ "formations": {
+  "inFreeMedian": 26,
+  "inFreeMin": 22,
+  "inFreeMax": 31,
+  "onFieldMedian": 31,
+  "inFreeShareMedian": 0.8387096774193549
+ },
+ "fillCover": {
+  "median": 0.0847,
+  "max": 0.1635,
+  "over12": 204,
+  "of": 960
+ },
+ "cam": {
+  "dMedian": 230,
+  "dMin": 130.22,
+  "dMax": 259.29,
+  "elMedian": 17.75,
+  "elMin": 17.2,
+  "elMax": 20.89,
+  "clearMin": 52.302,
+  "below": 0
+ },
+ "motion": {
+  "flowMax": 26840.9,
+  "flowP95": 0,
+  "flowP99": 0,
+  "flowOver150": 6,
+  "flowOver300": 6,
+  "targetMax": 18988.1,
+  "targetOver150": 6,
+  "frames": 959,
+  "voffFrames": 0,
+  "targetMaxNoVoff": 18988.1,
+  "targetOver150NoVoff": 6,
+  "flowMaxNoVoff": 26840.9,
+  "flowP95NoVoff": 0,
+  "top": [
+   {
+    "clock": 505,
+    "flow": 26840.9,
+    "tflow": 18988.1,
+    "d": 230,
+    "el": 20.89,
+    "az": -46.33
+   },
+   {
+    "clock": 525,
+    "flow": 16593.6,
+    "tflow": 9187.2,
+    "d": 259.29,
+    "el": 17.2,
+    "az": -75.34
+   },
+   {
+    "clock": 570,
+    "flow": 9033.7,
+    "tflow": 3794,
+    "d": 230,
+    "el": 17.75,
+    "az": -69.9
+   },
+   {
+    "clock": 540,
+    "flow": 8784.6,
+    "tflow": 2128.7,
+    "d": 230,
+    "el": 17.2,
+    "az": -75.34
+   },
+   {
+    "clock": 585,
+    "flow": 4843.2,
+    "tflow": 1807.3,
+    "d": 230,
+    "el": 17.75,
+    "az": -69.9
+   },
+   {
+    "clock": 555,
+    "flow": 3014.4,
+    "tflow": 1442.2,
+    "d": 230,
+    "el": 17.2,
+    "az": -75.34
+   },
+   {
+    "clock": 500.333,
+    "flow": 0,
+    "tflow": 0,
+    "d": 130.22,
+    "el": 20.89,
+    "az": -46.33
+   },
+   {
+    "clock": 500.5,
+    "flow": 0,
+    "tflow": 0,
+    "d": 130.22,
+    "el": 20.89,
+    "az": -46.33
+   }
+  ]
+ },
+ "kit": {
+  "richMedian": 0,
+  "richMax": 10,
+  "switches": 10
+ },
+ "labels": {
+  "drawnMedian": 31,
+  "drawnMax": 41,
+  "namesMedian": 26,
+  "namesMax": 31,
+  "namesOnMedian": 23,
+  "namesOnMax": 29,
+  "droppedMedian": 11,
+  "droppedMax": 18
+ },
+ "census": null,
+ "layerMs": {
+  "median": 1,
+  "p95": 2.3,
+  "over8": 6,
+  "n": 969
+ },
+ "errors": []
+}

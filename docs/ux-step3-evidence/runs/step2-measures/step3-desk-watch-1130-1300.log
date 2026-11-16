@@ -1,0 +1,13 @@
+step3-desk-watch-1130-1300 on fd7b8b72 (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); 1440x900): 728 frames to 780.0, 366 s
+  filled plates over the formations' box: max 7.5%, median 6.0%, frames over 12%: 0 of 728; every label's box: max 11.1%; tier 3 fills: 0 at most, in 0 frames
+  drawn labels: max 17, median 12, frames over 12: 344; filled: max 17, median 12; by tier at most {"0":0,"1":5,"2":12,"3":0}; a live event's plate at t-live in 2340 of its 2699 frames
+  contrast over 25 drawn frames (0 drawn again: the capture's canvas black), 304 texts at full opacity (0 fading aside): tier 3 ring {"n":0,"min":null,"p10":null,"median":null,"below":0}, box {"n":0,"min":null,"p10":null,"median":null,"below":0}, bare {"n":0,"min":null,"p10":null,"median":null,"below":0}
+    every text: ring {"n":304,"min":12.34,"p10":13.25,"median":13.78,"below":0}, box {"n":304,"min":10.92,"p10":13.22,"median":13.79,"below":0}, bare {"n":304,"min":1.12,"p10":1.24,"median":3.64,"below":214}
+  the formations a live event names: drawn 6698 of 6698 in view (100.0%) over 728 frames of Play; not drawn: {"occluded":0,"placement":0,"calm":0,"withheld":0}; outside the measure: {"offscreen":226,"panel":52,"reading":0,"field":0,"lod":0,"aggregate":728,"none":0}
+    guard-attack       label drawn 728 frames; its formations drawn 2184 of 2184; outside {"constantine:aggregate":728}
+    guard-broken       label drawn 728 frames; its formations drawn 2184 of 2184
+    buxhowden-blind    label drawn 504 frames; its formations drawn 1406 of 1406; outside {"dok:offscreen":35,"lang:offscreen":19,"lang:panel":23,"dok:panel":29}
+    hq-forward         label drawn 492 frames; its formations drawn 320 of 320; outside {"gqg:offscreen":172}
+    davout-resumes     label drawn 192 frames; its formations drawn 384 of 384
+    wheel              label drawn 55 frames; its formations drawn 220 of 220
+  the label pass: median 1.4 ms, 95th 3.8, max 79.5 over 736 passes, over 8 ms: 4; page errors 0

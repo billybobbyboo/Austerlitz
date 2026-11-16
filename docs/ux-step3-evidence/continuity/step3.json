@@ -1,0 +1,263 @@
+{
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 3085998,
+  "md5": "fd7b8b72c6315d1bb5bf0b8fa45cf263",
+  "sha256": "48f5d6314e2b8b336d17d3be6caad94c5c4254471da6095605fd013d644c9b34"
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "playwright": "1.56.0"
+ },
+ "live": {
+  "cases": {
+   "pause": {
+    "playing": true,
+    "stopped": true,
+    "clickMoved": 0,
+    "heldMoved": 0,
+    "playFlowMax": 149.9,
+    "playTargetMax": 69.8,
+    "below": 0,
+    "clock": 530
+   },
+   "resume": {
+    "playing": true,
+    "flowMax": 75.8,
+    "targetMax": 65,
+    "below": 0,
+    "from": 530,
+    "to": 545
+   },
+   "end": {
+    "stopped": true,
+    "clock": 1080,
+    "heldMoved": 0,
+    "flowMax": 120.3,
+    "below": 0
+   },
+   "scrub-same": {
+    "from": 575,
+    "to": 620,
+    "ph0": 4,
+    "ph1": 4,
+    "moved": 0,
+    "toPhaseView": 0,
+    "sel": null,
+    "fc": false,
+    "playing": false,
+    "flowMax": 0,
+    "below": 0,
+    "info": {
+     "a": {
+      "x": 577.1190476190477,
+      "y": 890
+     },
+     "b": {
+      "x": 652.7619047619048,
+      "y": 888
+     }
+    }
+   },
+   "scrub-cross": {
+    "from": 600,
+    "to": 650,
+    "ph0": 4,
+    "ph1": 5,
+    "moved": 0,
+    "toPhaseView": 197.8712,
+    "sel": null,
+    "fc": false,
+    "playing": false,
+    "flowMax": 0,
+    "below": 0,
+    "info": {
+     "a": {
+      "x": 619.1428571428571,
+      "y": 888
+     },
+     "b": {
+      "x": 703.1904761904761,
+      "y": 888
+     }
+    }
+   },
+   "marker": {
+    "from": 600,
+    "to": 630,
+    "ph0": 4,
+    "ph1": 5,
+    "moved": 0,
+    "toPhaseView": 197.8712,
+    "sel": "e:kursk",
+    "fc": false,
+    "playing": false,
+    "flowMax": 0,
+    "below": 0,
+    "info": {
+     "event": "kursk",
+     "t": 630
+    }
+   },
+   "step": {
+    "from": 625,
+    "to": 635,
+    "ph0": 4,
+    "ph1": 5,
+    "moved": 0,
+    "toPhaseView": 197.8712,
+    "sel": null,
+    "fc": false,
+    "playing": false,
+    "flowMax": 0,
+    "below": 0,
+    "info": null
+   },
+   "key": {
+    "from": 625,
+    "to": 635,
+    "ph0": 4,
+    "ph1": 5,
+    "moved": 0,
+    "toPhaseView": 197.8712,
+    "sel": null,
+    "fc": false,
+    "playing": false,
+    "flowMax": 0,
+    "below": 0,
+    "info": null
+   },
+   "rail-key": {
+    "from": 600,
+    "to": 630,
+    "ph0": 4,
+    "ph1": 5,
+    "moved": 0,
+    "toPhaseView": 197.8712,
+    "sel": null,
+    "fc": false,
+    "playing": false,
+    "flowMax": 0,
+    "below": 0,
+    "info": null
+   },
+   "anchor": {
+    "from": 600,
+    "to": 675,
+    "ph0": 4,
+    "ph1": 6,
+    "moved": 0,
+    "toPhaseView": 47.0725,
+    "sel": "f:sthilaire",
+    "fc": false,
+    "playing": false,
+    "flowMax": 0,
+    "below": 0,
+    "info": {
+     "t": 675
+    }
+   },
+   "phase-button": {
+    "from": 4,
+    "to": 6,
+    "toPhaseView": 0,
+    "clock": 675,
+    "fc": false,
+    "below": 0
+   },
+   "act-button": {
+    "act": "deception",
+    "from": 4,
+    "to": 0,
+    "toPhaseView": 0,
+    "clock": 240,
+    "below": 0
+   },
+   "vantage": {
+    "toView": 0,
+    "vantage": "plateau",
+    "below": 0
+   },
+   "centre": {
+    "clock": 630,
+    "eventClock": 630,
+    "targetToEvent": 0,
+    "fc": true
+   },
+   "follow-off": {
+    "fc": true,
+    "scrubMoved": 0,
+    "playMoved": 0,
+    "clock": 660
+   },
+   "hybrid-scrub": {
+    "from": 600,
+    "to": 650,
+    "ph0": 4,
+    "ph1": 5,
+    "moved": 0,
+    "toPhaseView": 197.8712,
+    "sel": null,
+    "fc": false,
+    "playing": false,
+    "flowMax": 0,
+    "below": 0,
+    "info": {
+     "a": {
+      "x": 619.1428571428571,
+      "y": 888
+     },
+     "b": {
+      "x": 703.1904761904761,
+      "y": 888
+     }
+    }
+   },
+   "paper": {
+    "mode": "staff",
+    "scrubMoved": 0,
+    "playMoved": 0
+   }
+  },
+  "phone": {
+   "chooser": {
+    "opened": true,
+    "set": [
+     "pratzeberg",
+     "guard-attack",
+     "blasowitz",
+     "guard-broken"
+    ],
+    "chose": "pratzeberg",
+    "from": 600,
+    "to": 660,
+    "ph0": 4,
+    "ph1": 5,
+    "sel": "e:pratzeberg",
+    "moved": 0,
+    "toPhaseView": 359.5982,
+    "below": 0
+   }
+  },
+  "reduced": {
+   "play": {
+    "rm": true,
+    "frames": 240,
+    "moved": 1,
+    "movedAtStart": 1,
+    "movedElse": [],
+    "from": 510,
+    "to": 539.69,
+    "below": 0,
+    "heldMoved": 0
+   },
+   "scrub": {
+    "moved": 0,
+    "ph0": 4,
+    "ph1": 5
+   }
+  }
+ },
+ "failures": [],
+ "errors": []
+}

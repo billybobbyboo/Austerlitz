@@ -1,0 +1,32 @@
+ux3 pause: {"playing":true,"stopped":true,"clickMoved":0,"heldMoved":0,"playFlowMax":493.9,"playTargetMax":135,"below":0,"clock":530}
+ux3 resume: {"playing":true,"flowMax":57,"targetMax":18.3,"below":0,"from":530,"to":545}
+ux3 end: {"stopped":true,"clock":1080,"heldMoved":0,"flowMax":0,"below":0}
+ux3 scrub-same: {"from":575,"to":620,"ph0":4,"ph1":4,"moved":0,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":0,"below":0,"info":{"a":{"x":577.1190476190477,"y":890},"b":{"x":652.7619047619048,"y":888}}}
+ux3 scrub-cross: {"from":600,"to":650,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":{"a":{"x":619.1428571428571,"y":888},"b":{"x":703.1904761904761,"y":888}}}
+ux3 marker: {"from":600,"to":630,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":"e:kursk","fc":false,"playing":false,"flowMax":1807,"below":0,"info":{"event":"kursk","t":630}}
+ux3 step: {"from":625,"to":635,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":null}
+ux3 key: {"from":625,"to":635,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":null}
+ux3 rail-key: {"from":600,"to":630,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":null}
+ux3 anchor: {"from":600,"to":675,"ph0":4,"ph1":6,"moved":47.0725,"toPhaseView":0,"sel":"f:sthilaire","fc":false,"playing":false,"flowMax":742.2,"below":0,"info":{"t":675}}
+ux3 phase-button: {"from":4,"to":6,"toPhaseView":0,"clock":675,"fc":false,"below":0}
+ux3 act-button: {"act":"deception","from":4,"to":0,"toPhaseView":0,"clock":240,"below":0}
+ux3 vantage: {"toView":0,"vantage":"plateau","below":0}
+ux3 centre: {"clock":630,"eventClock":630,"targetToEvent":0,"fc":true}
+ux3 follow-off: {"fc":true,"scrubMoved":0,"playMoved":0,"clock":660}
+ux3 hybrid-scrub: {"from":600,"to":650,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":{"a":{"x":619.1428571428571,"y":888},"b":{"x":703.1904761904761,"y":888}}}
+ux3 paper: {"mode":"staff","scrubMoved":0,"playMoved":0}
+ux3 reduced motion, Play: {"rm":true,"frames":240,"moved":1,"movedAtStart":1,"movedElse":[],"from":510,"to":539.69,"below":0,"heldMoved":0}
+ux3 reduced motion, a cross-phase drag: {"moved":197.8712,"ph0":4,"ph1":5}
+ux3 a phone, the chooser: {"opened":true,"set":["pratzeberg","guard-attack","blasowitz","guard-broken"],"chose":"pratzeberg","from":600,"to":660,"ph0":4,"ph1":5,"sel":"e:pratzeberg","moved":296.4692,"toPhaseView":79.5798,"below":0}
+build 07cbcaf32808c430198d55b1b7ed78b7 (sha256 06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186, 3071014 bytes), Chromium 141.0.7390.37 (Playwright 1.56.0, software WebGL), 159 s; page errors and console messages 0
+FAILED (10):
+  ux3 pause: a pause by a click: the eye not held where it stood, or under the floor, or while playing (from the phase's authored view) the target faster than 150 px/s or the ground under the free map faster than 150 px/s (within 5%: the cap samples the ground on its own grid) {"playing":true,"stopped":true,"clickMoved":0,"heldMoved":0,"playFlowMax":493.9,"playTargetMax":135,"below":0,"clock":530}
+  ux3 scrub-cross: an ordinary seek across a phase: the eye moved (the owner's decision: a seek keeps the pose), or the case did not cross a phase {"from":600,"to":650,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":{"a":{"x":619.1428571428571,"y":888},"b":{"x":703.1904761904761,"y":888}}}
+  ux3 marker: an ordinary seek across a phase: the eye moved (the owner's decision: a seek keeps the pose), or the case did not cross a phase {"from":600,"to":630,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":"e:kursk","fc":false,"playing":false,"flowMax":1807,"below":0,"info":{"event":"kursk","t":630}}
+  ux3 step: an ordinary seek across a phase: the eye moved (the owner's decision: a seek keeps the pose), or the case did not cross a phase {"from":625,"to":635,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":null}
+  ux3 key: an ordinary seek across a phase: the eye moved (the owner's decision: a seek keeps the pose), or the case did not cross a phase {"from":625,"to":635,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":null}
+  ux3 rail-key: an ordinary seek across a phase: the eye moved (the owner's decision: a seek keeps the pose), or the case did not cross a phase {"from":600,"to":630,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":null}
+  ux3 anchor: an ordinary seek across a phase: the eye moved (the owner's decision: a seek keeps the pose), or the case did not cross a phase {"from":600,"to":675,"ph0":4,"ph1":6,"moved":47.0725,"toPhaseView":0,"sel":"f:sthilaire","fc":false,"playing":false,"flowMax":742.2,"below":0,"info":{"t":675}}
+  ux3 hybrid-scrub: an ordinary seek across a phase: the eye moved (the owner's decision: a seek keeps the pose), or the case did not cross a phase {"from":600,"to":650,"ph0":4,"ph1":5,"moved":197.8712,"toPhaseView":0,"sel":null,"fc":false,"playing":false,"flowMax":1807,"below":0,"info":{"a":{"x":619.1428571428571,"y":888},"b":{"x":703.1904761904761,"y":888}}}
+  ux3 reduced motion, a cross-phase drag: the eye moved {"moved":197.8712,"ph0":4,"ph1":5}
+  ux3 a phone's chooser by taps: not opened, the event not selected, the case not across a phase, or the eye moved {"opened":true,"set":["pratzeberg","guard-attack","blasowitz","guard-broken"],"chose":"pratzeberg","from":600,"to":660,"ph0":4,"ph1":5,"sel":"e:pratzeberg","moved":296.4692,"toPhaseView":79.5798,"below":0}

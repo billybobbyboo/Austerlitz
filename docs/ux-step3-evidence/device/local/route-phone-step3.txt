@@ -1,0 +1,32 @@
+started in 16121 ms; the panel: The build has started (14 s). Press Start.
+Austerlitz step 6 frame-time route (step6-perf-route 4), 2026-11-16T05:53:25.348Z
+device: Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1
+GPU: Google Inc. (Google) / ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver); WebGL2 true; cores 4; memory 8 GB
+screen 402x714, viewport 402x714, devicePixelRatio 3, drawn at 1 (402x714), lowTier true, effects true (scale 1), in a frame true
+load: DOM ready 15956 ms, load event 15961 ms, 3086298 bytes transferred
+build: 3085998 bytes, sha256 48f5d6314e2b8b336d17d3be6caad94c5c4254471da6095605fd013d644c9b34; refresh 16.7 ms (at the end 16.7); long frame > 25 ms; miss% the share of refreshes that brought no new frame; wake lock requested, not granted
+         segment             kind frames   fps     p50     p95     p99     max  long%  miss%    warm    js50    js95   gpu50   gpu95 calls     tris
+            idle             idle     22    11    16.7     100  1566.6  1566.6    9.1   81.7       -       -       -       -       -     -        -
+        overview             held      2   1.1  1849.9  1849.9  1849.9  1849.9     50   98.2       -    22.6    22.6       -       -   540  1164903
+        overview            orbit      0     -       -       -       -       -      -      -   100.1       -       -       -       -     -        -
+        overview   orbit -figures      1   0.9  1116.6  1116.6  1116.6  1116.6    100   98.5   116.7    15.2    15.2       -       -   244   673287
+        overview   orbit -effects      4   0.7   749.9  5099.8  5099.8  5099.8    100   98.9       -    15.9    18.1       -       -   535  1311870
+  pratzen-low-4x             held      0     -       -       -       -       -      -      -       -       -       -       -       -     -        -
+  pratzen-low-4x            orbit      3   1.4  1049.9    1050    1050    1050    100   97.7       -    15.4    16.3       -       -   181   786055
+  pratzen-low-4x   orbit -figures      9   1.8   533.4     900     900     900    100     97   183.4    11.8      20   528.7     550   150   652520
+  pratzen-low-4x   orbit -effects      7   1.4   566.6  1916.5  1916.5  1916.5    100   97.7       -    14.3    18.9       -       -   177   788698
+  pratzen-low-1x             held      1   2.2     450     450     450     450    100   96.3       -       8       8       -       -   132   228035
+  pratzen-low-1x            orbit      9   1.9   466.7  1133.3  1133.3  1133.3    100   96.9       -    11.8    17.9   719.5     729   127   375123
+ pratzen-low-10x             held      3   1.4  1016.6  1083.3  1083.3  1083.3    100   97.7       -     8.6     9.7       -       -   216   710763
+ pratzen-low-10x            orbit      4   0.8   966.6  2849.9  2849.9  2849.9    100   98.6       -    22.9  2849.3       -       -   181   785011
+    ph8-overview             held      1   0.7  1533.2  1533.2  1533.2  1533.2    100   98.9       -     9.8     9.8       -       -   522  1157837
+    ph8-overview            orbit      0     -       -       -       -       -      -      -   116.6       -       -       -       -     -        -
+    ph8-overview   orbit -figures      1     1   966.6   966.6   966.6   966.6    100   98.3       -       8       8       -       -   233   676275
+    ph8-overview   orbit -effects      3   0.9    33.4  3183.2  3183.2  3183.2    100   98.5       -    10.2    13.6       -       -   517  1305394
+           paper             held      5   2.3     350   883.2   883.2   883.2    100   96.2       -       6    12.5       -       -   158   245711
+           paper              pan     10   1.9   583.3     650     650     650     90   96.8    16.7    10.8    12.8   570.1   616.3   157   245711
+             eye             held      3   1.2   866.6   883.3   883.3   883.3    100   97.9       -      18    20.8       -       -   135   277077
+             eye             look      3   1.7   799.9     850     850     850    100   97.2       -    10.6    12.2       -       -    94   414333
+         play-4x           played      8   0.7  1383.3  3066.5  3066.5  3066.5   87.5   98.8       -    23.3    29.8  1266.4  1426.2   399  1146821
+       play-half           played     15   1.3   733.3  1666.5  1783.3  1783.3   93.3   97.9       -    22.2    30.4   707.3   764.1   424  1142527
+console warnings and errors: 0 

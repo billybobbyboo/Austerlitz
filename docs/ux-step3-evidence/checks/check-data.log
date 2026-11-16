@@ -1,0 +1,22 @@
+
+> check:data
+> node tools/visual/data-invariance.js archive/stage6wp09w-45d29cc5.html austerlitz-command-map.html
+
+original stage6wp09w-45d29cc5.html: 1169 top-level statements;  patched austerlitz-command-map.html: 1204
+
+DATA (must be byte-identical):
+  identical historical datasets: 27 declarations, 1,021,670 bytes
+  identical geography and relief model: 53 declarations, 24,119 bytes
+  identical movement, strength and confidence model: 35 declarations, 11,615 bytes
+  identical historical appearance model (Stage 6B): 1 declarations, 630 bytes
+  identical derived readings, sight and knowledge: 17 declarations, 5,366 bytes
+  identical data in app.js (roadmap step 2, D-5): 7 declarations, 3,103 bytes
+  identical narrative claims (roadmap step 4): 3 declarations, 94,305 bytes
+
+Rendering and interface declarations changed (64): TOKENS, STREAM, buildWater, buildWoods, treeNear, relayoutAfterFonts, GL, glRestored, init, kitWrap, makeBlock, animGLSL, <ExpressionStatement #4>, dayTrackEl, paintExaggeration, renderFX, MAPCAM, mlItem, mlContent, mlAgeAfter, mlCollect, mlLayout, paintLegend, mlLegendFit, mlHit, mlNearAnchor, mlDroppedNow, enemyFacing, settleBlock, poseBlock, updateVisibility, syncFollow, setFollow, LABELS, applyLabels, KEYS, buildHelp, setShortcuts, esc, buildUI, paintKey, paintSituation, fitCaption, buildTimeline, paintTimeline, dossierFormation, sect, dossierEvent, buildingNotes, claimsIndex, openSources, stopPlay, togglePlay, FOLLOW, followGoal, followStep, PHONE_Q,PHONE, syncPhone, setDSheet, bindPhone, syncVis, loop, wp08Checks, AUSTERLITZ_DEBUG
+Added (40): MERE_ICE, iceTop, inMereDisc, TREE6, glLostNow, glTrackDispose, glDispCompact, glPruneDispose, lowTier,TIER_MOBILE, applyTier, retier, MLT, mlTierPrep, mlSurface, mlGrow, FACE (again), enemyBearing, faceWant, showKeyFromCard, EVPICK, evPickClose, evPickOpen, bindEvPick, _phFit,PH_FIT_MIN, fitPhaseLabels, narrativeRefs, followProfile, _fq,_fr,_fu,_fg,_fU, _ff,_fv,_fw,_fRay,_fP,_fm,_fnT,_fsT,_fsD, followFlow, SHORT_Q, shortSheet, paintNowOff, _toolsEl, syncToolsEdge, wp16Checks, wp10gChecks, wp10pChecks, wp09Checks, wp10Checks
+Removed (5): v8Near, lowTier, mlFarRatio, mlFarPlate, gaitDist
+
+Outside the script: CSS changed (+12945 bytes; the original rules are edited); markup changed; closing identical
+
+All 143 DATA declarations are byte-identical to the original build.

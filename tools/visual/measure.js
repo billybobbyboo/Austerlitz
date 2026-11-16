@@ -114,7 +114,8 @@
       MLS:typeof MLS!=="undefined"&&typeof mlStabBegin==="function", CULL:typeof CULL!=="undefined"&&typeof setCull==="function", ANIM:typeof ANIM!=="undefined"&&typeof animHook==="function",
       MLT:typeof MLT!=="undefined"&&typeof mlSurface==="function"&&typeof mlTierPrep==="function",   /* UI/UX roadmap step 2: the Landscape's label tiers (they supersede 8I's far plate) */
       TOAST:typeof toastRelayout==="function",   /* Stage 8, the follow-up 8I */
-      UX1:typeof showKeyFromCard==="function"&&typeof evPickOpen==="function"&&typeof fitPhaseLabels==="function"};   /* UI/UX roadmap step 1 */
+      UX1:typeof showKeyFromCard==="function"&&typeof evPickOpen==="function"&&typeof fitPhaseLabels==="function",   /* UI/UX roadmap step 1 */
+      UX3:typeof followProfile==="function"&&typeof followFlow==="function"};   /* UI/UX roadmap step 3: Follow fitted to the action, the seeks keeping the eye */
   }
 
   /* ---- roadmap step 1 (T-1): an app canvas's pixels are read through a canvas the harness owns ----

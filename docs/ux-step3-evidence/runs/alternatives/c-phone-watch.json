@@ -1,0 +1,423 @@
+{
+ "tag": "c-phone-watch",
+ "build": {
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/5fe71315-7094-58d8-9058-26bf1b3f4ac3/scratchpad/cand.html",
+  "bytes": 3078636,
+  "md5": "fc4177f0dba9d6e518d7a21584010d44",
+  "sha256": "e35ff011578e15c7dbe70796c90585289fd1aa8e1ca9e88459ea08ee7812ac81"
+ },
+ "env": {
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1",
+  "dpr": 3,
+  "phoneLayout": true,
+  "w": 390,
+  "h": 844,
+  "rm": false,
+  "follow": {
+   "TAU": 1.5,
+   "CAP": 150,
+   "FLOW": null,
+   "ELEV": 52,
+   "DMIN": 200,
+   "DMAX": 320,
+   "MARGIN": 0.12,
+   "LO": 0.05,
+   "HI": 0.35,
+   "P": {
+    "ELEV": 55,
+    "DMIN": 300,
+    "DMAX": 480,
+    "MARGIN": 0.1
+   },
+   "dist": 0,
+   "ev": null
+  }
+ },
+ "vp": [
+  390,
+  844
+ ],
+ "phone": true,
+ "pres": "watch",
+ "mode": "terrain",
+ "from": 240,
+ "to": 1080,
+ "set": null,
+ "reduced": false,
+ "frames": 6240,
+ "events": {
+  "raigern": {
+   "minutes": 63,
+   "inside": 63,
+   "visible": 63,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "counter-march": {
+   "minutes": 253,
+   "inside": 253,
+   "visible": 253,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "columns-move": {
+   "minutes": 88,
+   "inside": 88,
+   "visible": 88,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "telnitz": {
+   "minutes": 28,
+   "inside": 26,
+   "visible": 27,
+   "why": {
+    "panel": 1,
+    "margin": 1
+   },
+   "share": 0.929,
+   "visShare": 0.964
+  },
+  "sokolnitz": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "decision": {
+   "minutes": 48,
+   "inside": 39,
+   "visible": 40,
+   "why": {
+    "offscreen": 8,
+    "margin": 1
+   },
+   "share": 0.813,
+   "visShare": 0.833
+  },
+  "davout": {
+   "minutes": 58,
+   "inside": 37,
+   "visible": 48,
+   "why": {
+    "offscreen": 11,
+    "margin": 10
+   },
+   "share": 0.638,
+   "visShare": 0.828
+  },
+  "soult": {
+   "minutes": 58,
+   "inside": 55,
+   "visible": 56,
+   "why": {
+    "offscreen": 2,
+    "margin": 1
+   },
+   "share": 0.948,
+   "visShare": 0.966
+  },
+  "pratzen-village": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "face-about": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "telnitz-retaken": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "kamensky": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "kursk": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "pratzeberg": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "guard-attack": {
+   "minutes": 148,
+   "inside": 139,
+   "visible": 148,
+   "why": {
+    "margin": 9
+   },
+   "share": 0.939,
+   "visShare": 1
+  },
+  "blasowitz": {
+   "minutes": 28,
+   "inside": 27,
+   "visible": 28,
+   "why": {
+    "margin": 1
+   },
+   "share": 0.964,
+   "visShare": 1
+  },
+  "guard-broken": {
+   "minutes": 148,
+   "inside": 148,
+   "visible": 148,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "buxhowden-blind": {
+   "minutes": 88,
+   "inside": 78,
+   "visible": 78,
+   "why": {
+    "offscreen": 10
+   },
+   "share": 0.886,
+   "visShare": 0.886
+  },
+  "hq-forward": {
+   "minutes": 68,
+   "inside": 62,
+   "visible": 68,
+   "why": {
+    "margin": 6
+   },
+   "share": 0.912,
+   "visShare": 1
+  },
+  "davout-resumes": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "wheel": {
+   "minutes": 88,
+   "inside": 88,
+   "visible": 88,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "sokolnitz-falls": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "augezd": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "ice": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  },
+  "end": {
+   "minutes": 28,
+   "inside": 28,
+   "visible": 28,
+   "why": {},
+   "share": 1,
+   "visShare": 1
+  }
+ },
+ "eventsUnder90": [
+  "decision",
+  "davout",
+  "buxhowden-blind"
+ ],
+ "eventMinutes": {
+  "total": 1500,
+  "inside": 1439,
+  "share": 0.959
+ },
+ "live": {
+  "minutes": 683,
+  "all": 631,
+  "allVisible": 654,
+  "allShare": 0.924,
+  "allVisibleShare": 0.958
+ },
+ "eventFrames": {
+  "qualifying": 12181,
+  "inside": 11723,
+  "share": 0.962
+ },
+ "box": {
+  "goal": 0.4,
+  "median": 0.4486,
+  "p10": 0.1325,
+  "max": 0.949,
+  "atGoal": 0.539,
+  "liveMedian": 0.48,
+  "liveAtGoal": 0.56
+ },
+ "formations": {
+  "inFreeMedian": 13,
+  "inFreeMin": 9,
+  "inFreeMax": 30,
+  "onFieldMedian": 31,
+  "inFreeShareMedian": 0.43333333333333335
+ },
+ "fillCover": {
+  "median": 0.0907,
+  "max": 0.4262,
+  "over12": 2313,
+  "of": 6239
+ },
+ "cam": {
+  "dMedian": 300,
+  "dMin": 300,
+  "dMax": 557.05,
+  "elMedian": 55,
+  "elMin": 25.56,
+  "elMax": 61.54,
+  "clearMin": 237.149,
+  "below": 0
+ },
+ "motion": {
+  "flowMax": 279.7,
+  "flowP95": 124.5,
+  "flowP99": 199.9,
+  "flowOver150": 194,
+  "flowOver300": 0,
+  "targetMax": 137,
+  "targetOver150": 0,
+  "frames": 6238,
+  "top": [
+   {
+    "clock": 515.5,
+    "flow": 279.7,
+    "tflow": 124.9,
+    "d": 311.35,
+    "el": 55,
+    "az": -46.33
+   },
+   {
+    "clock": 515.667,
+    "flow": 276.9,
+    "tflow": 123.4,
+    "d": 313.37,
+    "el": 55,
+    "az": -46.33
+   },
+   {
+    "clock": 515.833,
+    "flow": 269.9,
+    "tflow": 121.1,
+    "d": 315.4,
+    "el": 55,
+    "az": -46.33
+   },
+   {
+    "clock": 240.333,
+    "flow": 261.5,
+    "tflow": 61,
+    "d": 551.4,
+    "el": 26.18,
+    "az": -43.89
+   },
+   {
+    "clock": 516,
+    "flow": 259.7,
+    "tflow": 117.9,
+    "d": 317.38,
+    "el": 55,
+    "az": -46.33
+   },
+   {
+    "clock": 240.5,
+    "flow": 255,
+    "tflow": 62.6,
+    "d": 545.88,
+    "el": 26.79,
+    "az": -43.89
+   },
+   {
+    "clock": 1020,
+    "flow": 250.6,
+    "tflow": 0,
+    "d": 300,
+    "el": 55.47,
+    "az": -121.14
+   },
+   {
+    "clock": 516.167,
+    "flow": 249.8,
+    "tflow": 115.6,
+    "d": 319.33,
+    "el": 55,
+    "az": -46.33
+   }
+  ]
+ },
+ "kit": {
+  "richMedian": 0,
+  "richMax": 0,
+  "switches": 0
+ },
+ "labels": {
+  "drawnMedian": 2,
+  "drawnMax": 7,
+  "namesMedian": 5,
+  "namesMax": 5,
+  "namesOnMedian": 1,
+  "namesOnMax": 2,
+  "droppedMedian": 0,
+  "droppedMax": 0
+ },
+ "layerMs": {
+  "median": 0.8,
+  "p95": 1.5,
+  "over8": 20,
+  "n": 6249
+ },
+ "errors": []
+}

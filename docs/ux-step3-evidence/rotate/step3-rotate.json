@@ -1,0 +1,88 @@
+{
+ "tag": "step3-rotate",
+ "build": {
+  "file": "austerlitz-command-map.html",
+  "bytes": 3085998,
+  "md5": "fd7b8b72c6315d1bb5bf0b8fa45cf263",
+  "sha256": "48f5d6314e2b8b336d17d3be6caad94c5c4254471da6095605fd013d644c9b34"
+ },
+ "from": 528,
+ "hold": 150,
+ "shots": [
+  "step3-rotate-1-upright.png",
+  "step3-rotate-2-turned.png",
+  "step3-rotate-3-back.png"
+ ],
+ "errors": [],
+ "stages": {
+  "upright": {
+   "frames": 150,
+   "clock": [
+    528.167,
+    543
+   ],
+   "phone": [
+    "true"
+   ],
+   "profile": [
+    "phone"
+   ],
+   "eventFramesInside": "415 of 587",
+   "eventShare": 0.707,
+   "boxMedian": 0.425,
+   "dFirst": 246.4,
+   "dLast": 515.19,
+   "elLast": 53.52,
+   "flowMax": 149.9,
+   "targetMax": 63.7,
+   "voffFrames": 27,
+   "targetMaxVoff": 178.4
+  },
+  "turned": {
+   "frames": 150,
+   "clock": [
+    543.167,
+    558
+   ],
+   "phone": [
+    "false"
+   ],
+   "profile": [
+    "desktop"
+   ],
+   "eventFramesInside": "588 of 588",
+   "eventShare": 1,
+   "boxMedian": 0.3527,
+   "dFirst": 508.86,
+   "dLast": 237.2,
+   "elLast": 52.05,
+   "flowMax": 134.8,
+   "targetMax": 27,
+   "voffFrames": 5,
+   "targetMaxVoff": 27.8
+  },
+  "back": {
+   "frames": 150,
+   "clock": [
+    558.167,
+    573
+   ],
+   "phone": [
+    "true"
+   ],
+   "profile": [
+    "phone"
+   ],
+   "eventFramesInside": "588 of 588",
+   "eventShare": 1,
+   "boxMedian": 0.6135,
+   "dFirst": 239.9,
+   "dLast": 355.57,
+   "elLast": 54.89,
+   "flowMax": 63.5,
+   "targetMax": 2.9,
+   "voffFrames": 16,
+   "targetMaxVoff": 173.8
+  }
+ }
+}

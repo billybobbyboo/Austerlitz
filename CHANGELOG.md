@@ -1,5 +1,98 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · UI/UX roadmap step 3: Follow framing and camera continuity (UA-02)
+
+**Status: on `claude/gallant-feynman-gok1g7`, a draft PR into `main` (#113), for review, not merged.** PR 3 of `docs/UX_ART_AUDIT.md` section 6, from `main`
+at `9d6b37451419721c759cca473da20bf8384f9247` (the Step 2 merge itself, verified; its build SHA-256 `06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186`).
+A presentation task: **no data changed** (`check:data`: all 143 declarations byte-identical to its reference). The evidence, with every number's
+method: `docs/ux-step3-evidence/`.
+
+**The owner's decision** (15 November 2026, this step's brief): decision 78 is revisited for this step. During Landscape Play, Follow may use a
+steeper, closer view fitted to the action; a pause, the natural end of Play and ordinary timeline seeks keep the camera pose; explicit Phase and Act
+navigation still use their authored views; a vantage, a tour stop and an explicit centre-on-map command are kept.
+
+**The owner's decisions on the draft** (16 November 2026, "With decisions, let's go with your recommendations for all"): every point put with the
+draft decided as recommended, so nothing in the build changed for them: the motion block's `land-play` baseline moved (below); the phone held upright
+at 360-600 units; Watch nearer than Study in proportion to its free map; the ground under the free map capped at 150 px/s; the Follow button pressed
+while playing taking the view up from where it is; PageUp and PageDown on the rail as seeks; Play at the day's end keeping the eye
+(`docs/ux-step3-evidence/README.md` section 10).
+
+**The build:** `austerlitz-command-map.html` was 3,071,014 bytes, md5 `07cbcaf32808c430198d55b1b7ed78b7`; it is now **3,085,998 bytes, md5
+`fd7b8b72c6315d1bb5bf0b8fa45cf263`** (SHA-256 `48f5d6314e2b8b336d17d3be6caad94c5c4254471da6095605fd013d644c9b34`). `check:baseline` moved to it (`package.json`).
+
+### Measured on the base build first
+
+- **The cross-phase camera move** (`tools/ux-step3/continuity.js`, real input; `docs/ux-step3-evidence/continuity/step2.log`): `stopPlay()` already
+  held the pose, and so did the natural end of Play and a seek inside a phase. **Every seek that crossed a phase with Follow on glided the eye 2.6 s
+  to the new phase's authored view** (`setClock` → `startPhaseTransition(..., moveCam)` while not playing): the rail dragged or its PageDown, an
+  event marker, the coincident set's chooser, the ten-minute buttons, the window's arrow keys, a day-track anchor, the Landscape with counters,
+  under reduced motion too: 47 to 296 units, the ground crossing the screen at up to 1,807 px/s. The block's judge: 10 failures.
+- **The framing** (`tools/ux-step3/framing.js`, the full battle at half speed, 6,240 frames): at 1440 x 900 in Study the eye at 230 units (median)
+  along the phases' authored directions (15 to 36 degrees up); the formations' box 30.0% of the free map at the median (50% or more in 3.6% of frames);
+  event-minutes inside 97.8%; on a phone 403 units, the box 21.9%, event-minutes 93.0% (Davout, the decision, Buxhowden's blindness and Davout's
+  resumption at 51-64%). While the eye tilted and zoomed the ground moved at up to 586 px/s in Study (746 in Watch); only the target was capped.
+
+### What changed
+
+- **Seeks keep the eye** (`app.js`, `setClock`'s note): every ordinary seek passes `camera:false`: the rail (drag and keys, PageUp and PageDown
+  among them), an event marker and the chooser, the ten-minute buttons, the window's arrow keys, a day-track anchor, an event dossier's "Go to this
+  moment" (its centring is its own move) and Play pressed at the day's end. The phase's authored view is asked for only by `setPhase` (the Phase
+  and Act buttons, the phone's phase list), `init` and the self-test. `css-test.js` fails on any other `setClock` call without `camera:false`.
+- **Follow during Play** (`FOLLOW`, `followProfile`, `followGoal`, `followFlow`, `followStep`): the phase's authored azimuth at **52 degrees**; every
+  live event's place (drawn toward the weighted centre by its weight's share, and the events 16 clock minutes ahead) **fitted into the free map**
+  with 12% of its half-size to spare, within **200 to 400 units** for Study's free map at 1440 x 900 (a larger free map brings both limits nearer in
+  proportion, a smaller one takes the far limit farther); a phone held upright at **55 degrees, 360 to 600 units**. The target held to **150 px/s as
+  the screen shows it** (Stage 4D's cap measured over the ground) and, new, **the drawn ground under a 5 x 5 grid of the free map held to 150 px/s**,
+  both found again on the pose that will be drawn (its target on the drawn ground) until it is within them; the azimuth and the elevation eased apart.
+  A first version scaled the step once and re-seated the target after: the self-test's own day at 100 ms steps read the ground at 154-175 px/s and
+  the eye off 52 degrees in 12% of steps (the vectors' lerp lifting it in mid-turn); fixed before this commit's self-test run.
+  No live event: target and distance held. Reduced motion: at each event's start, at once, as before.
+- **The Follow button pressed while the clock plays** takes the view up from where it is (Step 2 glided to the phase's view first). Its title says
+  what Follow now does (`shell.html`).
+
+### Verified (numbers in `docs/ux-step3-evidence/README.md`)
+
+- **Framing, the full battle at half speed** (`docs/ux-step3-evidence/runs/framing/`, Step 2 build then this build): 1440 x 900 Study event-minutes
+  inside 97.8% to **98.9%**, live minutes with every qualifying event inside 95.2% to **97.7%**, the formations' box 30.0% to **53.0%** of the free
+  map (at 50% or more in 3.6% to 57.5% of frames), formations in the free map 28 to 23 (median, of 31); Watch 99.3% to 98.7%, box 22.1% to 52.6%;
+  390 x 844 Study 93.0% to **99.1%**, 87.4% to **98.1%**, box 21.9% to **52.7%** (at 40% or more in 19.4% to 63.8%); 844 x 390 92.8% to 98.8%;
+  1280 x 720 97.2% to 98.9%; 1024 x 768 86.7% to 98.7%. Every event at 90% or more but Raigern (the first minutes of a Play begun at 04:00): 76%
+  (Step 2 65%) on the desktop, 79% (98%) on the phone. The eye at 200 units and 52 degrees (Step 2 230, 15-36 degrees); the ground's move under the
+  free map at most 149.9 px/s (Step 2's ground anywhere on the screen up to 586 in Study, 746 in Watch). Reduced motion: the eye moved in 6 frames,
+  each at an event's start, on both builds.
+- **Continuity by real input** (the live block `ux3`): every check passes; on the Step 2 build 10 fail.
+- **Step 2's targets** (its tool, its windows; the Step 2 rows reproduced its committed records exactly): filled plates over the formations' box
+  in Study 13.6% to **7.0%** at most (08:30-09:30) and 17.9% to **11.6%** (11:30-13:00), **0 frames over 12%** in either (28 and 91); Watch 5.3% and
+  7.5%; Watch's labels at most 10 in the morning and **17 in the Guard action** (Step 2: 16; frames over 12: 504 to 344); the formations a live event
+  names drawn in 100% of their frames in view, "no name at that distance" 262 and 432 to 0; the phone's plates 35.7% to 26.4% and 49.1% to 38.7% at
+  most (median 16.2% to 18.1%, 35.8% to 23.3%). Tier 3 against its casing at 7.39:1 or more but two texts in one sampled frame (08:45, Study),
+  2.88:1 and 3.34:1 while the phase's message faded in over them between the frame's captures; the frame drawn alone 7.95:1.
+- **The closer camera's costs:** blocks on the rich kit 1 to 2 (median) in Study, 1 to 18 in Watch (30 at most); names in the layer 26 to 29. The
+  census over the day (every 60th frame drawn): desktop at most 854 calls and 2,157,913 triangles in Study, 820 and 2,310,143 in Watch; the phone
+  551 and 1,307,287 (Step 2: 854, 2,207,007; 526, 1,398,103); within section 8.3's budgets. The Landscape with counters: event-named counters drawn
+  74.9% to 69.6% (08:30-09:30); `MOTION.LONG`'s runs 75.2% and 82.0% (bar 70%; Step 2 76.2% and 75.9%).
+- **Checks** (this build, md5 `fd7b8b72...`): `npm test` (all 9 suites, the height guard, the dead-code check), `check:data` (143 of 143
+  identical), `check:chronology` (0 errors), `check:selftest` (354 of 354; the manifest regenerated, 351 to 354, the three names of "Follow fitted to
+  the action (UI/UX step 3, UA-02)") here and on CI; `check:contrast` on CI (three runs). `check:visual` on CI passes (run 43801145325, dispatched with
+  `visual`, on `54cdc50`, this build; 2 h 48 min). The later commits change records, tools and a pinned copy of the build only.
+- **One baseline moved, on the owner's word (16 November 2026):** `thresholds.js` `MOTION.VIS["land-play"]` [2603,3146,667] to [2918,3236,667] (Follow's closer view
+  brings 90 more formation-frames into view; decision 257 (b) holds that denominator exactly). The 16's totals 234/948/105/10 to 246/961/108/9 under
+  their ceilings 251/1,049/130/12. Nothing else moved; no assertion loosened.
+- **Hardware:** both builds pinned in `docs/ux-step3-evidence/device/builds/` (Step 2's `austerlitz-07cbcaf3-step2.html` and, added with the
+  owner's decisions, Step 3's `austerlitz-fd7b8b72-step3.html`, byte for byte this build, SHA-256 `48f5d631...9b34`: the Step 3 build is on Pages
+  only once #113 is merged, and the pinned copies keep both links valid after `main` moves on); the owner's steps in
+  `docs/ux-step3-evidence/device/PROTOCOL.md`; the route run here on both (each report naming its build's SHA-256, `route-check.js` passing; the pinned
+  Step 3 copy loaded through `perf-run.html` by its `?src=` path and named by its hash). Frame times on the owner's RTX 4070 desktop and iPhone:
+  **pending**, to be made after the merge and filed by a follow-up pull request.
+
+### What remains uncertain or open
+
+- **Frame times on the owner's devices**: pending (`docs/ux-step3-evidence/device/PROTOCOL.md`: both builds, the links, the order), after the merge.
+- Raigern (04:00-04:45) framed in 76-79% of its minutes (the run's first minutes from phase 0's view, under the caps); Watch's 12 labels exceeded in
+  the Guard action (17 at most); the phone's 12% still exceeded; the Landscape with counters' event-named counters drawn 69.6% in 08:30-09:30 (74.9%);
+  the motion block's jumps at 246 of 251.
+- A lead, not investigated: a multi-move mouse drag of the rail lost its pointer capture after its first move in some runs (both builds).
+
 ## 2026-11 · UI/UX roadmap step 2: the Landscape's label tiers and Watch's label set (UA-01, UA-15)
 
 **Status: on `claude/magical-bohr-n7pllo`, a draft PR into `main`, for review, not merged.** PR 2 of `docs/UX_ART_AUDIT.md` section 6, from `main`
