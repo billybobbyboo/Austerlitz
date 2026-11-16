@@ -286,7 +286,7 @@ if(cerrs) process.exitCode=1;
     for(const k in n){ const v=n[k]; if(Array.isArray(v)) v.forEach(c=>walk(c,f)); else if(v&&typeof v.type==="string") walk(v,f); } })(ast,null);
   ["init","setPhase","tickClock"].forEach(k=>{ if(!seen[k]) cerr.push("app.js: "+k+" no longer asks setClock for the phase's view (the rule's list is out of date)"); });
   if(!/var FOLLOW=\{TAU:1\.5, CAP:150, FLOW:150, ELEV:52, DMIN:200, DMAX:400, MARGIN:0\.12, LO:0\.05, HI:0\.35, LEAD:16, REF:0\.229,\s*P:\{ELEV:55, DMIN:360, DMAX:600, MARGIN:0\.10, REF:0\.1427\},/.test(app)) cerr.push("app.js: FOLLOW is not step 3's (52 degrees, 200-400 units, the margin 0.12, the lead 16, the caps 150 and 150; the phone's 55 degrees, 360-600)");
-  if(!/fm\.t>FOLLOW\.CAP\*sec/.test(app)||!/FOLLOW\.FLOW>0&&fm\.all>FOLLOW\.FLOW\*sec/.test(app)) cerr.push("app.js: followStep does not hold the target to CAP and the ground to FLOW as the screen shows them");
+  if(!/limT=FOLLOW\.CAP\*sec/.test(app)||!/limG=FOLLOW\.FLOW>0\?FOLLOW\.FLOW\*sec/.test(app)||!/followFlow\(sT,sD,sDir,limG>0\)/.test(app)) cerr.push("app.js: followStep does not hold the target to CAP and the ground to FLOW as the screen shows them, on the pose it draws");
   cerr.forEach(e=>console.log("  ! "+e));
   console.log("camera (UI/UX step 3): "+(cerr.length?cerr.length+" wrong":"every seek keeps the eye; the phase's view asked for by "+Object.keys(seen).map(k=>k+" ("+seen[k]+")").join(", ")+"; Follow's step 3 values and caps"));
   if(cerr.length) process.exitCode=1;

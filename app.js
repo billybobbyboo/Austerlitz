@@ -9734,7 +9734,9 @@ function dwellDayLength(t0,x){
    reduced motion the eye moves only at each event's start, at once. On the paper map nothing follows (its plan shows the whole field).
    Until step 3: the direction was the phase's authored view, the distance 2.4 x the events' weighted radius + 130 in 230-300 units (the map
    layer's drops reached 19-20 at 140-200 units before its tiers), and a box of the formations 27-31% of the free map in Study (UA-02). The
-   values below were measured (tools/ux-step3/framing.js; docs/ux-step3-evidence/): design values */
+   values below were measured (tools/ux-step3/framing.js; docs/ux-step3-evidence/): design values. A profile's AZ (degrees added to the phase's
+   azimuth) and AZABS (a fixed azimuth) are measurement options the app never sets: a north-up view for the phone was measured with AZABS and
+   not taken (it lost the dawn's Raigern event and turns the field against every other view) */
 var FOLLOW={TAU:1.5, CAP:150, FLOW:150, ELEV:52, DMIN:200, DMAX:400, MARGIN:0.12, LO:0.05, HI:0.35, LEAD:16, REF:0.229,
   P:{ELEV:55, DMIN:360, DMAX:600, MARGIN:0.10, REF:0.1427},
   T:null, dist:0, dir:null, ev:null};
@@ -9781,7 +9783,7 @@ function followActive(){ return playing&&!freeCam&&mode!=="staff"&&!_tw.cam; }
    the free map, with the target) from the eye as it stands to the eye at (T, dist, dir); the caps' measure. The target's is
    its own point seen from both eyes, so a change of distance or direction that moves it on the screen counts too (Stage 4D's cap read the
    target's move over the ground alone) */
-var _ff=new THREE.PerspectiveCamera(), _fv=new THREE.Vector3(), _fw=new THREE.Vector3(), _fRay=new THREE.Vector3(), _fP=[], _fm={t:0,all:0};
+var _ff=new THREE.PerspectiveCamera(), _fv=new THREE.Vector3(), _fw=new THREE.Vector3(), _fRay=new THREE.Vector3(), _fP=[], _fm={t:0,all:0}, _fnT=new THREE.Vector3(), _fsT=new THREE.Vector3(), _fsD=new THREE.Vector3();
 function followFlow(T,dist,dir,grid){
   var VW=renderer.domElement.clientWidth||innerWidth, VH=viewH(), E=landCam.position, n=0;
   landCam.updateMatrixWorld();
@@ -9812,17 +9814,27 @@ function followStep(dtMs){
     if(j===FOLLOW.ev) return false;
     FOLLOW.ev=j; if(g.T){ FOLLOW.T.copy(g.T); FOLLOW.dist=g.dist; } FOLLOW.dir.copy(g.dir); mlReset("at once");   /* Stage 8, 8C: a jump (MLS) */
   } else {
-    var a=1-Math.exp(-(dtMs/1000)/FOLLOW.TAU), nT=FOLLOW.T.clone(), nD=FOLLOW.dist, nDir=FOLLOW.dir.clone().lerp(g.dir,a).normalize();
-    if(g.T){ var mv=g.T.clone().sub(FOLLOW.T).multiplyScalar(a), cap=FOLLOW.CAP*(dtMs/1000)*worldPerPx(FOLLOW.T), ml=Math.hypot(mv.x,mv.z);
+    /* the eased step: the target toward the goal (its move over the ground held to CAP at the free centre, as in Stage 4D), the distance, and
+       the direction by its azimuth and elevation apart (the shorter way round), so that a turn of the azimuth keeps the elevation (a lerp of the
+       two vectors lifted the eye a few degrees in mid-turn) */
+    var a=1-Math.exp(-(dtMs/1000)/FOLLOW.TAU), T0=FOLLOW.T, D0=FOLLOW.dist, az0=Math.atan2(FOLLOW.dir.x,FOLLOW.dir.z), el0=Math.asin(Math.max(-1,Math.min(1,FOLLOW.dir.y)));
+    var nT=_fnT.copy(T0), nD=D0, dAz=Math.atan2(g.dir.x,g.dir.z)-az0, dEl=Math.asin(Math.max(-1,Math.min(1,g.dir.y)))-el0;
+    while(dAz>Math.PI) dAz-=2*Math.PI; while(dAz<-Math.PI) dAz+=2*Math.PI;
+    if(g.T){ var mv=g.T.clone().sub(T0).multiplyScalar(a), cap=FOLLOW.CAP*(dtMs/1000)*worldPerPx(T0), ml=Math.hypot(mv.x,mv.z);
       if(ml>cap) mv.multiplyScalar(cap/ml);
-      nT.add(mv); nD+=(g.dist-FOLLOW.dist)*a; }
-    /* the caps, by the move as the screen shows it: the target's at most CAP px a second, every ground point's at most FLOW (when set); the
-       step slowed, never cut short (its fraction k of the eased step) */
-    var fm=followFlow(nT,nD,nDir,FOLLOW.FLOW>0), sec=dtMs/1000, k=1;
-    if(fm.t>FOLLOW.CAP*sec) k=Math.min(k,FOLLOW.CAP*sec/fm.t);
-    if(FOLLOW.FLOW>0&&fm.all>FOLLOW.FLOW*sec) k=Math.min(k,FOLLOW.FLOW*sec/fm.all);
-    if(k<1){ nT.lerpVectors(FOLLOW.T,nT,k); nD=FOLLOW.dist+(nD-FOLLOW.dist)*k; nDir.lerpVectors(FOLLOW.dir,nDir,k).normalize(); }
-    FOLLOW.T.copy(nT); FOLLOW.dist=nD; FOLLOW.dir.copy(nDir);
+      nT.add(mv); nD+=(g.dist-D0)*a; }
+    /* the pose at a fraction k of that step (the target on the drawn ground there, as it will be drawn) */
+    var sT=_fsT, sDir=_fsD, sD=D0;
+    var at=function(k){ sT.lerpVectors(T0,nT,k); sT.y=groundY(sT.x,sT.z); sD=D0+(nD-D0)*k; var z=az0+dAz*a*k, e=el0+dEl*a*k;
+      sDir.set(Math.sin(z)*Math.cos(e),Math.sin(e),Math.cos(z)*Math.cos(e)); };
+    /* the caps, by the move as the screen shows it, of the pose that will be drawn: the target's at most CAP px a second, every ground point's
+       under the free map at most FLOW (when set); the step slowed, never cut short, its fraction k found again from the pose's own move until it is
+       within both (the move is nearly linear in k; at most six tries, the last fraction taken) */
+    var sec=dtMs/1000, limT=FOLLOW.CAP*sec*(1-1e-3), limG=FOLLOW.FLOW>0?FOLLOW.FLOW*sec*(1-1e-3):0, k=1, ok=false;
+    for(var it=0;it<6&&!ok;it++){ at(k); var fm=followFlow(sT,sD,sDir,limG>0), r=Math.max(fm.t/limT,limG>0?fm.all/limG:0);
+      if(r>1) k*=1/r; else ok=true; }
+    if(!ok) at(k);
+    FOLLOW.T.copy(sT); FOLLOW.dist=sD; FOLLOW.dir.copy(sDir);
   }
   FOLLOW.T.y=groundY(FOLLOW.T.x,FOLLOW.T.z);
   orbitTarget.copy(FOLLOW.T); landCam.position.copy(FOLLOW.T).addScaledVector(FOLLOW.dir,FOLLOW.dist); landCam.lookAt(orbitTarget);
