@@ -1,0 +1,4221 @@
+{
+ "note": "the owner's runs of the Step 2 and Step 3 builds, read by sections 8.3 and 8.5 and the CPU line; nothing here is measured in this container",
+ "devices": {
+  "desk": {
+   "runs": [
+    "desk-S2-1.json",
+    "desk-S2-2.json",
+    "desk-S3-1.json",
+    "desk-S3-2.json"
+   ],
+   "refreshMs": 6.9,
+   "device": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+   "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+   "viewport": [
+    2560,
+    1305
+   ],
+   "started": [
+    [
+     "desk-S2-1.json",
+     "2026-11-16T08:51:50.126Z",
+     "2026-11-16T08:54:23.936Z",
+     1300599
+    ],
+    [
+     "desk-S2-2.json",
+     "2026-11-16T08:58:45.961Z",
+     "2026-11-16T09:01:17.584Z",
+     0
+    ],
+    [
+     "desk-S3-1.json",
+     "2026-11-16T08:55:40.804Z",
+     "2026-11-16T08:58:12.468Z",
+     1306181
+    ],
+    [
+     "desk-S3-2.json",
+     "2026-11-16T09:01:39.490Z",
+     "2026-11-16T09:04:11.134Z",
+     0
+    ]
+   ],
+   "budget": {
+    "desk-S2-1.json": {
+     "callsMax": {
+      "v": 843,
+      "at": "play-4x|played"
+     },
+     "trisMax": {
+      "v": 2317629,
+      "at": "play-4x|played"
+     },
+     "within": true,
+     "rule": "at most 900 calls and 2.8 million triangles in any frame"
+    },
+    "desk-S2-2.json": {
+     "callsMax": {
+      "v": 843,
+      "at": "play-4x|played"
+     },
+     "trisMax": {
+      "v": 2317629,
+      "at": "play-4x|played"
+     },
+     "within": true,
+     "rule": "at most 900 calls and 2.8 million triangles in any frame"
+    },
+    "desk-S3-1.json": {
+     "callsMax": {
+      "v": 829,
+      "at": "play-4x|played"
+     },
+     "trisMax": {
+      "v": 2300331,
+      "at": "play-4x|played"
+     },
+     "within": true,
+     "rule": "at most 900 calls and 2.8 million triangles in any frame"
+    },
+    "desk-S3-2.json": {
+     "callsMax": {
+      "v": 829,
+      "at": "play-4x|played"
+     },
+     "trisMax": {
+      "v": 2300331,
+      "at": "play-4x|played"
+     },
+     "within": true,
+     "rule": "at most 900 calls and 2.8 million triangles in any frame"
+    }
+   },
+   "rule85": {
+    "held": true,
+    "fails": []
+   },
+   "cpu": {
+    "held": true,
+    "maxExcess": 0.1,
+    "fails": [],
+    "at": "desk-S3-1.json vs desk-S2-1.json overview|orbit -effects",
+    "rule": "js50 not above Step 2's by more than 1 ms"
+   },
+   "segments": {
+    "overview|held": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7.1,
+       7.1
+      ],
+      "S3": [
+       7.1,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.1,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": -0.05
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       3.2,
+       3.2
+      ],
+      "S3": [
+       3.2,
+       3.3
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "js95": {
+      "S2": [
+       3.4,
+       3.5
+      ],
+      "S3": [
+       3.5,
+       3.6
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0.1
+     },
+     "gpu50": {
+      "S2": [
+       3.2,
+       6.5
+      ],
+      "S3": [
+       4.8,
+       2.3
+      ],
+      "spreadS2": 3.3,
+      "spreadS3": 2.5,
+      "meanDiff": -1.3
+     },
+     "gpu95": {
+      "S2": [
+       3.4,
+       6.7
+      ],
+      "S3": [
+       5.3,
+       5.1
+      ],
+      "spreadS2": 3.3,
+      "spreadS3": 0.2,
+      "meanDiff": 0.15
+     },
+     "calls": {
+      "S2": [
+       825,
+       825
+      ],
+      "S3": [
+       825,
+       825
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       825,
+       825
+      ],
+      "S3": [
+       825,
+       825
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       1977737,
+       1977737
+      ],
+      "S3": [
+       1977737,
+       1977737
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       1977737,
+       1977737
+      ],
+      "S3": [
+       1977737,
+       1977737
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "overview|orbit": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7
+      ],
+      "S3": [
+       7.1,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0.1
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       3.6,
+       3.6
+      ],
+      "S3": [
+       3.6,
+       3.6
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       3.8,
+       3.9
+      ],
+      "S3": [
+       3.9,
+       3.9
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       2.5,
+       2.5
+      ],
+      "S3": [
+       2.5,
+       4.8
+      ],
+      "spreadS2": 0,
+      "spreadS3": 2.3,
+      "meanDiff": 1.15
+     },
+     "gpu95": {
+      "S2": [
+       2.6,
+       2.6
+      ],
+      "S3": [
+       2.6,
+       5.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 2.6,
+      "meanDiff": 1.3
+     },
+     "calls": {
+      "S2": [
+       827,
+       827
+      ],
+      "S3": [
+       827,
+       827
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       827,
+       827
+      ],
+      "S3": [
+       827,
+       827
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       2124823,
+       2124823
+      ],
+      "S3": [
+       2124823,
+       2124823
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       2124847,
+       2124847
+      ],
+      "S3": [
+       2124847,
+       2124847
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "overview|orbit -figures": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7.1,
+       7.1
+      ],
+      "S3": [
+       7,
+       7
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": -0.1
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       2,
+       2
+      ],
+      "S3": [
+       2,
+       2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       2.3,
+       2.2
+      ],
+      "S3": [
+       2.3,
+       2.3
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       2.1,
+       2.1
+      ],
+      "S3": [
+       4.2,
+       4.3
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 2.15
+     },
+     "gpu95": {
+      "S2": [
+       2.2,
+       2.2
+      ],
+      "S3": [
+       4.9,
+       4.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 2.7
+     },
+     "calls": {
+      "S2": [
+       258,
+       258
+      ],
+      "S3": [
+       258,
+       258
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       258,
+       258
+      ],
+      "S3": [
+       258,
+       258
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       850215,
+       850215
+      ],
+      "S3": [
+       850215,
+       850215
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       850239,
+       850239
+      ],
+      "S3": [
+       850239,
+       850239
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "overview|orbit -effects": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7
+      ],
+      "S3": [
+       7,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.1
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       3.5,
+       3.5
+      ],
+      "S3": [
+       3.6,
+       3.6
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0.1
+     },
+     "js95": {
+      "S2": [
+       3.8,
+       3.8
+      ],
+      "S3": [
+       3.9,
+       3.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0.1
+     },
+     "gpu50": {
+      "S2": [
+       2.9,
+       2.9
+      ],
+      "S3": [
+       2.9,
+       2.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "gpu95": {
+      "S2": [
+       3.4,
+       3.4
+      ],
+      "S3": [
+       3.3,
+       3.4
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": -0.05
+     },
+     "calls": {
+      "S2": [
+       820,
+       820
+      ],
+      "S3": [
+       820,
+       820
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       820,
+       820
+      ],
+      "S3": [
+       820,
+       820
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       2124816,
+       2124816
+      ],
+      "S3": [
+       2124816,
+       2124816
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       2124840,
+       2124840
+      ],
+      "S3": [
+       2124840,
+       2124840
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "pratzen-low-4x|held": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7
+      ],
+      "S3": [
+       7,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.1
+      ],
+      "S3": [
+       7.1,
+       7.2
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       2.9,
+       2.8
+      ],
+      "S3": [
+       2.9,
+       2.8
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       3.1,
+       3
+      ],
+      "S3": [
+       3.2,
+       3
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.2,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       4.2,
+       4.2
+      ],
+      "S3": [
+       4.2,
+       2.8
+      ],
+      "spreadS2": 0,
+      "spreadS3": 1.4,
+      "meanDiff": -0.7
+     },
+     "gpu95": {
+      "S2": [
+       4.7,
+       4.8
+      ],
+      "S3": [
+       4.7,
+       3
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 1.7,
+      "meanDiff": -0.9
+     },
+     "calls": {
+      "S2": [
+       570,
+       570
+      ],
+      "S3": [
+       570,
+       570
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       570,
+       570
+      ],
+      "S3": [
+       570,
+       570
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       1690237,
+       1690237
+      ],
+      "S3": [
+       1690237,
+       1690237
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       1690237,
+       1690237
+      ],
+      "S3": [
+       1690237,
+       1690237
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "pratzen-low-4x|orbit": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7.1
+      ],
+      "S3": [
+       7,
+       7
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": -0.05
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       3.3,
+       3.3
+      ],
+      "S3": [
+       3.3,
+       3.4
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "js95": {
+      "S2": [
+       3.7,
+       3.7
+      ],
+      "S3": [
+       3.8,
+       3.8
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0.1
+     },
+     "gpu50": {
+      "S2": [
+       2.7,
+       2.7
+      ],
+      "S3": [
+       2.7,
+       2.7
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "gpu95": {
+      "S2": [
+       2.7,
+       2.7
+      ],
+      "S3": [
+       2.7,
+       2.7
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "calls": {
+      "S2": [
+       590,
+       590
+      ],
+      "S3": [
+       590,
+       590
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       633,
+       633
+      ],
+      "S3": [
+       633,
+       633
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       1892439,
+       1892439
+      ],
+      "S3": [
+       1892439,
+       1892439
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       1976613,
+       1976613
+      ],
+      "S3": [
+       1976613,
+       1976613
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "pratzen-low-4x|orbit -figures": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7.1,
+       7
+      ],
+      "S3": [
+       7,
+       7.1
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       2.3,
+       2.3
+      ],
+      "S3": [
+       2.3,
+       2.3
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       2.6,
+       2.7
+      ],
+      "S3": [
+       2.6,
+       2.7
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "gpu50": {
+      "S2": [
+       5,
+       4.5
+      ],
+      "S3": [
+       4.4,
+       5.1
+      ],
+      "spreadS2": 0.5,
+      "spreadS3": 0.7,
+      "meanDiff": 0
+     },
+     "gpu95": {
+      "S2": [
+       6.3,
+       5.9
+      ],
+      "S3": [
+       5.3,
+       6.2
+      ],
+      "spreadS2": 0.4,
+      "spreadS3": 0.9,
+      "meanDiff": -0.35
+     },
+     "calls": {
+      "S2": [
+       221,
+       221
+      ],
+      "S3": [
+       221,
+       221
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       227,
+       226
+      ],
+      "S3": [
+       227,
+       227
+      ],
+      "spreadS2": 1,
+      "spreadS3": 0,
+      "meanDiff": 0.5
+     },
+     "tris": {
+      "S2": [
+       843077,
+       843077
+      ],
+      "S3": [
+       843077,
+       843077
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       844065,
+       844065
+      ],
+      "S3": [
+       844065,
+       844065
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "pratzen-low-4x|orbit -effects": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7.1,
+       7
+      ],
+      "S3": [
+       7,
+       7
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": -0.05
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.1
+      ],
+      "S3": [
+       7.1,
+       7.2
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       3.2,
+       3.3
+      ],
+      "S3": [
+       3.3,
+       3.3
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "js95": {
+      "S2": [
+       3.6,
+       3.6
+      ],
+      "S3": [
+       3.6,
+       3.7
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       4.3,
+       4.2
+      ],
+      "S3": [
+       4.2,
+       4.2
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": -0.05
+     },
+     "gpu95": {
+      "S2": [
+       5.2,
+       5.1
+      ],
+      "S3": [
+       5.2,
+       5.2
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "calls": {
+      "S2": [
+       583,
+       583
+      ],
+      "S3": [
+       583,
+       583
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       626,
+       626
+      ],
+      "S3": [
+       626,
+       626
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       1892432,
+       1892432
+      ],
+      "S3": [
+       1892432,
+       1892432
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       1976606,
+       1976606
+      ],
+      "S3": [
+       1976606,
+       1976606
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "pratzen-low-1x|held": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7
+      ],
+      "S3": [
+       7,
+       7
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "max": {
+      "S2": [
+       7.1,
+       7.6
+      ],
+      "S3": [
+       7.2,
+       7.1
+      ],
+      "spreadS2": 0.5,
+      "spreadS3": 0.1,
+      "meanDiff": -0.2
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       1.7,
+       1.7
+      ],
+      "S3": [
+       1.7,
+       1.8
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "js95": {
+      "S2": [
+       2.1,
+       2.2
+      ],
+      "S3": [
+       2.2,
+       2.2
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       3.4,
+       3.4
+      ],
+      "S3": [
+       3.4,
+       3.4
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "gpu95": {
+      "S2": [
+       4.3,
+       4.3
+      ],
+      "S3": [
+       4.4,
+       4.4
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0.1
+     },
+     "calls": {
+      "S2": [
+       158,
+       158
+      ],
+      "S3": [
+       158,
+       158
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       158,
+       158
+      ],
+      "S3": [
+       158,
+       158
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       234003,
+       234003
+      ],
+      "S3": [
+       234003,
+       234003
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       234003,
+       234003
+      ],
+      "S3": [
+       234003,
+       234003
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "pratzen-low-1x|orbit": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7.1
+      ],
+      "S3": [
+       7,
+       7.1
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       1.8,
+       1.9
+      ],
+      "S3": [
+       1.9,
+       1.9
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "js95": {
+      "S2": [
+       2.2,
+       2.2
+      ],
+      "S3": [
+       2.3,
+       2.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       3.2,
+       2.1
+      ],
+      "S3": [
+       3.4,
+       3
+      ],
+      "spreadS2": 1.1,
+      "spreadS3": 0.4,
+      "meanDiff": 0.55
+     },
+     "gpu95": {
+      "S2": [
+       3.9,
+       2.2
+      ],
+      "S3": [
+       4.3,
+       3.7
+      ],
+      "spreadS2": 1.7,
+      "spreadS3": 0.6,
+      "meanDiff": 0.95
+     },
+     "calls": {
+      "S2": [
+       175,
+       175
+      ],
+      "S3": [
+       175,
+       175
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       180,
+       180
+      ],
+      "S3": [
+       180,
+       180
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       385293,
+       385293
+      ],
+      "S3": [
+       385293,
+       385293
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       386513,
+       386513
+      ],
+      "S3": [
+       386513,
+       386513
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "pratzen-low-10x|held": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7
+      ],
+      "S3": [
+       7.1,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0.1
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       2.9,
+       2.9
+      ],
+      "S3": [
+       2.9,
+       2.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       3.1,
+       3.1
+      ],
+      "S3": [
+       3.1,
+       3.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "gpu50": {
+      "S2": [
+       4.5,
+       4.4
+      ],
+      "S3": [
+       2.3,
+       2.3
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": -2.15
+     },
+     "gpu95": {
+      "S2": [
+       5.1,
+       5.1
+      ],
+      "S3": [
+       2.3,
+       2.3
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": -2.8
+     },
+     "calls": {
+      "S2": [
+       583,
+       583
+      ],
+      "S3": [
+       583,
+       583
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       583,
+       583
+      ],
+      "S3": [
+       583,
+       583
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       1689487,
+       1689487
+      ],
+      "S3": [
+       1689487,
+       1689487
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       1689487,
+       1689487
+      ],
+      "S3": [
+       1689487,
+       1689487
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "pratzen-low-10x|orbit": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7.1
+      ],
+      "S3": [
+       7.1,
+       7.1
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       3.4,
+       3.4
+      ],
+      "S3": [
+       3.4,
+       3.5
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "js95": {
+      "S2": [
+       3.8,
+       3.9
+      ],
+      "S3": [
+       3.8,
+       3.8
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": -0.05
+     },
+     "gpu50": {
+      "S2": [
+       2.3,
+       4.5
+      ],
+      "S3": [
+       4.4,
+       2.3
+      ],
+      "spreadS2": 2.2,
+      "spreadS3": 2.1,
+      "meanDiff": -0.05
+     },
+     "gpu95": {
+      "S2": [
+       2.4,
+       4.9
+      ],
+      "S3": [
+       4.9,
+       2.4
+      ],
+      "spreadS2": 2.5,
+      "spreadS3": 2.5,
+      "meanDiff": 0
+     },
+     "calls": {
+      "S2": [
+       617,
+       617
+      ],
+      "S3": [
+       617,
+       617
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       631,
+       631
+      ],
+      "S3": [
+       631,
+       631
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       1907679,
+       1907677
+      ],
+      "S3": [
+       1907679,
+       1907691
+      ],
+      "spreadS2": 2,
+      "spreadS3": 12,
+      "meanDiff": 7
+     },
+     "trisMax": {
+      "S2": [
+       1955685,
+       1955685
+      ],
+      "S3": [
+       1955685,
+       1955685
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "ph8-overview|held": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7.1,
+       7.1
+      ],
+      "S3": [
+       7.1,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       3.2,
+       3.2
+      ],
+      "S3": [
+       3.2,
+       3.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       3.5,
+       3.5
+      ],
+      "S3": [
+       3.5,
+       3.5
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "gpu50": {
+      "S2": [
+       2.4,
+       2.4
+      ],
+      "S3": [
+       3.2,
+       2.3
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.9,
+      "meanDiff": 0.35
+     },
+     "gpu95": {
+      "S2": [
+       2.4,
+       2.4
+      ],
+      "S3": [
+       3.5,
+       2.4
+      ],
+      "spreadS2": 0,
+      "spreadS3": 1.1,
+      "meanDiff": 0.55
+     },
+     "calls": {
+      "S2": [
+       800,
+       800
+      ],
+      "S3": [
+       800,
+       800
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       800,
+       800
+      ],
+      "S3": [
+       800,
+       800
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       1959263,
+       1959263
+      ],
+      "S3": [
+       1959263,
+       1959263
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       1959263,
+       1959263
+      ],
+      "S3": [
+       1959263,
+       1959263
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "ph8-overview|orbit": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7.1
+      ],
+      "S3": [
+       7.1,
+       7
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       3.6,
+       3.6
+      ],
+      "S3": [
+       3.6,
+       3.6
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       3.9,
+       3.9
+      ],
+      "S3": [
+       3.9,
+       4
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       2.5,
+       3.2
+      ],
+      "S3": [
+       2.5,
+       4.7
+      ],
+      "spreadS2": 0.7,
+      "spreadS3": 2.2,
+      "meanDiff": 0.75
+     },
+     "gpu95": {
+      "S2": [
+       2.5,
+       3.6
+      ],
+      "S3": [
+       2.5,
+       5.2
+      ],
+      "spreadS2": 1.1,
+      "spreadS3": 2.7,
+      "meanDiff": 0.8
+     },
+     "calls": {
+      "S2": [
+       802,
+       802
+      ],
+      "S3": [
+       802,
+       802
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       802,
+       802
+      ],
+      "S3": [
+       802,
+       802
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       2106337,
+       2106337
+      ],
+      "S3": [
+       2106337,
+       2106337
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       2106487,
+       2106487
+      ],
+      "S3": [
+       2106487,
+       2106487
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "ph8-overview|orbit -figures": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7.1,
+       7.1
+      ],
+      "S3": [
+       7,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": -0.05
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       2,
+       2
+      ],
+      "S3": [
+       2,
+       2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       2.3,
+       2.3
+      ],
+      "S3": [
+       2.3,
+       2.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": -0.05
+     },
+     "gpu50": {
+      "S2": [
+       4.9,
+       4.9
+      ],
+      "S3": [
+       4.9,
+       2.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 2.8,
+      "meanDiff": -1.4
+     },
+     "gpu95": {
+      "S2": [
+       6.2,
+       6.2
+      ],
+      "S3": [
+       6.2,
+       2.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 4,
+      "meanDiff": -2
+     },
+     "calls": {
+      "S2": [
+       247,
+       247
+      ],
+      "S3": [
+       247,
+       247
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       247,
+       247
+      ],
+      "S3": [
+       247,
+       247
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       851561,
+       851561
+      ],
+      "S3": [
+       851561,
+       851561
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       851711,
+       851711
+      ],
+      "S3": [
+       851711,
+       851711
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "ph8-overview|orbit -effects": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7.1
+      ],
+      "S3": [
+       7.1,
+       7.1
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.1,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": -0.05
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       3.5,
+       3.5
+      ],
+      "S3": [
+       3.5,
+       3.6
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "js95": {
+      "S2": [
+       3.8,
+       3.8
+      ],
+      "S3": [
+       3.9,
+       3.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0.1
+     },
+     "gpu50": {
+      "S2": [
+       3.1,
+       2.1
+      ],
+      "S3": [
+       3,
+       3
+      ],
+      "spreadS2": 1,
+      "spreadS3": 0,
+      "meanDiff": 0.4
+     },
+     "gpu95": {
+      "S2": [
+       4.8,
+       2.2
+      ],
+      "S3": [
+       4.8,
+       4.8
+      ],
+      "spreadS2": 2.6,
+      "spreadS3": 0,
+      "meanDiff": 1.3
+     },
+     "calls": {
+      "S2": [
+       795,
+       795
+      ],
+      "S3": [
+       795,
+       795
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       795,
+       795
+      ],
+      "S3": [
+       795,
+       795
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       2106330,
+       2106330
+      ],
+      "S3": [
+       2106330,
+       2106330
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       2106480,
+       2106480
+      ],
+      "S3": [
+       2106480,
+       2106480
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "paper|held": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7
+      ],
+      "S3": [
+       7,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.1,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": -0.05
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       1.6,
+       1.6
+      ],
+      "S3": [
+       1.6,
+       1.4
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.2,
+      "meanDiff": -0.1
+     },
+     "js95": {
+      "S2": [
+       1.8,
+       1.9
+      ],
+      "S3": [
+       1.8,
+       1.6
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.2,
+      "meanDiff": -0.15
+     },
+     "gpu50": {
+      "S2": [
+       1.8,
+       3.5
+      ],
+      "S3": [
+       3.4,
+       2.2
+      ],
+      "spreadS2": 1.7,
+      "spreadS3": 1.2,
+      "meanDiff": 0.15
+     },
+     "gpu95": {
+      "S2": [
+       1.8,
+       5
+      ],
+      "S3": [
+       4.8,
+       2.4
+      ],
+      "spreadS2": 3.2,
+      "spreadS3": 2.4,
+      "meanDiff": 0.2
+     },
+     "calls": {
+      "S2": [
+       158,
+       158
+      ],
+      "S3": [
+       158,
+       158
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       158,
+       158
+      ],
+      "S3": [
+       158,
+       158
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       245711,
+       245711
+      ],
+      "S3": [
+       245711,
+       245711
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       245711,
+       245711
+      ],
+      "S3": [
+       245711,
+       245711
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "paper|pan": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7
+      ],
+      "S3": [
+       7,
+       7
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       1.7,
+       1.8
+      ],
+      "S3": [
+       1.8,
+       1.8
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "js95": {
+      "S2": [
+       2.1,
+       2.2
+      ],
+      "S3": [
+       2.2,
+       2.2
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       1.7,
+       1.7
+      ],
+      "S3": [
+       1.7,
+       1.7
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "gpu95": {
+      "S2": [
+       1.7,
+       1.7
+      ],
+      "S3": [
+       1.7,
+       1.7
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "calls": {
+      "S2": [
+       158,
+       158
+      ],
+      "S3": [
+       158,
+       158
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       158,
+       158
+      ],
+      "S3": [
+       158,
+       158
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       245711,
+       245711
+      ],
+      "S3": [
+       245711,
+       245711
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       245711,
+       245711
+      ],
+      "S3": [
+       245711,
+       245711
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "eye|held": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7.1
+      ],
+      "S3": [
+       7,
+       7.1
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "max": {
+      "S2": [
+       7.2,
+       7.2
+      ],
+      "S3": [
+       7.1,
+       7.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": -0.05
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       2.3,
+       2.3
+      ],
+      "S3": [
+       2.3,
+       2.3
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       2.5,
+       2.5
+      ],
+      "S3": [
+       2.5,
+       2.6
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       2,
+       2.5
+      ],
+      "S3": [
+       2.6,
+       2
+      ],
+      "spreadS2": 0.5,
+      "spreadS3": 0.6,
+      "meanDiff": 0.05
+     },
+     "gpu95": {
+      "S2": [
+       2.1,
+       2.9
+      ],
+      "S3": [
+       3,
+       2.1
+      ],
+      "spreadS2": 0.8,
+      "spreadS3": 0.9,
+      "meanDiff": 0.05
+     },
+     "calls": {
+      "S2": [
+       193,
+       193
+      ],
+      "S3": [
+       193,
+       193
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       193,
+       193
+      ],
+      "S3": [
+       193,
+       193
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       454617,
+       454617
+      ],
+      "S3": [
+       454617,
+       454617
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       454617,
+       454617
+      ],
+      "S3": [
+       454617,
+       454617
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "eye|look": {
+     "fps": {
+      "S2": [
+       144,
+       144
+      ],
+      "S3": [
+       144,
+       144
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7,
+       7
+      ],
+      "S3": [
+       7,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "max": {
+      "S2": [
+       7.1,
+       7.2
+      ],
+      "S3": [
+       7.2,
+       7.6
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.4,
+      "meanDiff": 0.25
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       2.3,
+       2.3
+      ],
+      "S3": [
+       2.2,
+       2.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": -0.15
+     },
+     "js95": {
+      "S2": [
+       2.7,
+       2.7
+      ],
+      "S3": [
+       2.8,
+       2.7
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": 0.05
+     },
+     "gpu50": {
+      "S2": [
+       2.1,
+       4.7
+      ],
+      "S3": [
+       2.1,
+       2.6
+      ],
+      "spreadS2": 2.6,
+      "spreadS3": 0.5,
+      "meanDiff": -1.05
+     },
+     "gpu95": {
+      "S2": [
+       2.3,
+       5.8
+      ],
+      "S3": [
+       2.3,
+       4
+      ],
+      "spreadS2": 3.5,
+      "spreadS3": 1.7,
+      "meanDiff": -0.9
+     },
+     "calls": {
+      "S2": [
+       84,
+       84
+      ],
+      "S3": [
+       84,
+       84
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "callsMax": {
+      "S2": [
+       175,
+       175
+      ],
+      "S3": [
+       175,
+       175
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "tris": {
+      "S2": [
+       470405,
+       470405
+      ],
+      "S3": [
+       470405,
+       470405
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "trisMax": {
+      "S2": [
+       546717,
+       546717
+      ],
+      "S3": [
+       546717,
+       546717
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     }
+    },
+    "play-4x|played": {
+     "fps": {
+      "S2": [
+       143.8,
+       143.9
+      ],
+      "S3": [
+       143.9,
+       143.8
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7.1,
+       7.1
+      ],
+      "S3": [
+       7,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.1,
+      "meanDiff": -0.05
+     },
+     "max": {
+      "S2": [
+       13.8,
+       13.9
+      ],
+      "S3": [
+       13.8,
+       13.9
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0.1,
+       0.1
+      ],
+      "S3": [
+       0.1,
+       0.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       4.3,
+       4.3
+      ],
+      "S3": [
+       4.3,
+       4.3
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "js95": {
+      "S2": [
+       6.2,
+       6.1
+      ],
+      "S3": [
+       6.1,
+       6
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": -0.1
+     },
+     "gpu50": {
+      "S2": [
+       2.8,
+       2.7
+      ],
+      "S3": [
+       2.8,
+       3
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.2,
+      "meanDiff": 0.15
+     },
+     "gpu95": {
+      "S2": [
+       4.9,
+       4.9
+      ],
+      "S3": [
+       4.9,
+       5.2
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0.3,
+      "meanDiff": 0.15
+     },
+     "calls": {
+      "S2": [
+       823,
+       823
+      ],
+      "S3": [
+       794,
+       794
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": -29
+     },
+     "callsMax": {
+      "S2": [
+       843,
+       843
+      ],
+      "S3": [
+       829,
+       829
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": -14
+     },
+     "tris": {
+      "S2": [
+       2294661,
+       2294679
+      ],
+      "S3": [
+       2281631,
+       2281619
+      ],
+      "spreadS2": 18,
+      "spreadS3": 12,
+      "meanDiff": -13045
+     },
+     "trisMax": {
+      "S2": [
+       2317629,
+       2317629
+      ],
+      "S3": [
+       2300331,
+       2300331
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": -17298
+     }
+    },
+    "play-half|played": {
+     "fps": {
+      "S2": [
+       143.9,
+       144
+      ],
+      "S3": [
+       143.9,
+       144
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "p50": {
+      "S2": [
+       6.9,
+       6.9
+      ],
+      "S3": [
+       6.9,
+       6.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "p95": {
+      "S2": [
+       7.1,
+       7.1
+      ],
+      "S3": [
+       7.1,
+       7.1
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "max": {
+      "S2": [
+       13.9,
+       7.2
+      ],
+      "S3": [
+       14,
+       7.2
+      ],
+      "spreadS2": 6.7,
+      "spreadS3": 6.8,
+      "meanDiff": 0.05
+     },
+     "longPct": {
+      "S2": [
+       0,
+       0
+      ],
+      "S3": [
+       0,
+       0
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0
+     },
+     "missedPct": {
+      "S2": [
+       0.1,
+       0
+      ],
+      "S3": [
+       0.1,
+       0
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0.1,
+      "meanDiff": 0
+     },
+     "js50": {
+      "S2": [
+       5,
+       5
+      ],
+      "S3": [
+       4.9,
+       4.9
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": -0.1
+     },
+     "js95": {
+      "S2": [
+       5.9,
+       5.8
+      ],
+      "S3": [
+       5.7,
+       5.7
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": -0.15
+     },
+     "gpu50": {
+      "S2": [
+       3.9,
+       3.9
+      ],
+      "S3": [
+       4,
+       4
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 0.1
+     },
+     "gpu95": {
+      "S2": [
+       4.7,
+       4.8
+      ],
+      "S3": [
+       5,
+       5
+      ],
+      "spreadS2": 0.1,
+      "spreadS3": 0,
+      "meanDiff": 0.25
+     },
+     "calls": {
+      "S2": [
+       789,
+       789
+      ],
+      "S3": [
+       781,
+       781
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": -8
+     },
+     "callsMax": {
+      "S2": [
+       827,
+       827
+      ],
+      "S3": [
+       817,
+       817
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": -10
+     },
+     "tris": {
+      "S2": [
+       2243605,
+       2243605
+      ],
+      "S3": [
+       2259911,
+       2259911
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 16306
+     },
+     "trisMax": {
+      "S2": [
+       2273009,
+       2273009
+      ],
+      "S3": [
+       2289379,
+       2289379
+      ],
+      "spreadS2": 0,
+      "spreadS3": 0,
+      "meanDiff": 16370
+     }
+    }
+   },
+   "stage7": {
+    "runs": [
+     "desk-S7-1.json",
+     "desk-S7-2.json"
+    ],
+    "played": {
+     "play-4x|played": [
+      {
+       "f": "desk-S7-1.json",
+       "fps": 143.9,
+       "p50": 6.9,
+       "longPct": 0,
+       "missedPct": 0.1,
+       "js50": 4.3,
+       "calls": 823,
+       "callsMax": 843,
+       "tris": 2294687,
+       "trisMax": 2317629
+      },
+      {
+       "f": "desk-S7-2.json",
+       "fps": 143.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "missedPct": 0.1,
+       "js50": 4.3,
+       "calls": 823,
+       "callsMax": 843,
+       "tris": 2294687,
+       "trisMax": 2317741
+      }
+     ],
+     "play-half|played": [
+      {
+       "f": "desk-S7-1.json",
+       "fps": 143.7,
+       "p50": 6.9,
+       "longPct": 0,
+       "missedPct": 0.2,
+       "js50": 4.9,
+       "calls": 789,
+       "callsMax": 827,
+       "tris": 2243605,
+       "trisMax": 2273009
+      },
+      {
+       "f": "desk-S7-2.json",
+       "fps": 143.8,
+       "p50": 6.9,
+       "longPct": 0,
+       "missedPct": 0.2,
+       "js50": 5.1,
+       "calls": 789,
+       "callsMax": 827,
+       "tris": 2243605,
+       "trisMax": 2273009
+      }
+     ]
+    }
+   }
+  },
+  "phone": {
+   "runs": 0,
+   "note": "no reports filed"
+  }
+ }
+}

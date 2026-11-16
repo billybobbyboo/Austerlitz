@@ -1,8 +1,41 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · UI/UX roadmap step 3: the owner's desktop runs of the two builds (records only)
+
+**Status: on `claude/gallant-feynman-gok1g7` (restarted from `main` at `81d7b04`, #113's merge), a draft PR into `main`, for review, not merged.**
+Records only: **no build, source or data changed** (`austerlitz-command-map.html` still 3,085,998 bytes, md5 `fd7b8b72c6315d1bb5bf0b8fa45cf263`;
+`check:baseline` passes on it).
+
+- **What was filed**: the owner's four desktop reports of 16 November 2026 (08:51 to 09:04 UTC), pasted from `tools/step6/perf-run.html` on Pages with
+  the two pinned copies named by `?src=`, in the order the protocol asked (Step 2, Step 3, Step 2, Step 3): `docs/ux-step3-evidence/device/desk-S2-1`,
+  `desk-S3-1`, `desk-S2-2`, `desk-S3-2`, each `.txt` verbatim beside its `AUS_PERF_JSON` line as `.json`, with the folder's `README.md`. Each `.txt` is
+  the route's own `format()` of its `.json` character for character; each names the pinned copy its name says (Step 2 3,071,014 bytes, SHA-256
+  `06842ca4...f186`; Step 3 3,085,998 bytes, `48f5d631...9b34`); each holds the ordinary route's 23 segments, its played ones under Follow from 08:30;
+  each passes `tools/final-stage7/route-check.js`.
+- **New tool**: `tools/ux-step3/device-runs.js` (not bundled), Stage 7's `device-runs.js` for this step's two builds: the checks above, section 8.3's
+  budget, section 8.5's rule each Step 3 run against each Step 2 run, the CPU line, the segments side by side with each build's own run-to-run spread,
+  and Stage 7's `desk-S7-*` for the record; its output `device/reading.txt` and `reading.json`. It reads the phone's reports too, once filed.
+- **What they say** (the RTX 4070 of Stage 7's runs, Chrome 157, 2,560 x 1,440 at 144 Hz, the page 2,560 x 1,305 at density 1): section 8.3's budget
+  within on every run (Step 3's heaviest frame 829 calls and 2,300,331 triangles, play-4x; Step 2's 843 and 2,317,629, Stage 7's 843 and 2,317,629 and 2,317,741); section
+  8.5's rule holds in every segment (every median 6.9 ms, every long-frame share 0%, on both builds); the CPU line holds (the largest `js50` excess
+  +0.1 ms). The played segments at the refresh on both builds (143.8-144 frames a second; at most two missed refreshes a segment, alike on both): at 4x
+  calls median 794 against 823, at half speed 781 against 789, triangles at most 2,289,379 against 2,273,009 (+0.7%), `js50` 4.9 against 5.0 ms, the
+  GPU timer's median 4.0 against 3.9 ms (inside its own run-to-run spread). Every other segment draws identical frames on both builds.
+- **Recorded in**: `docs/ux-step3-evidence/device/README.md`, `PROTOCOL.md` ("Runs received"), `docs/ux-step3-evidence/README.md` (sections 0, 1 and
+  6), `CLAUDE.md`.
+- **Checks**: `npm test` (all 9 suites, the height guard, the dead-code check) and `check:baseline` here on this commit; `route-check.js` on each report;
+  `device-runs.js` exit 0.
+
+### What remains uncertain or open
+
+- **The phone's four runs** (the iPhone 17 Pro, the same links and order): not yet made. The desktop's runs say nothing of the phone's low tier.
+- At 144 Hz this desktop shows no frame-time difference between the builds; whether a slower GPU feels half speed's +0.7% triangles is not shown here
+  (an integrated GPU is still to run, as since Stage 7).
+- The runs were 22-77 s apart, not the two minutes asked; with every median at the refresh and no long frame, nothing reads as the device warming.
+
 ## 2026-11 · UI/UX roadmap step 3: Follow framing and camera continuity (UA-02)
 
-**Status: on `claude/gallant-feynman-gok1g7`, a draft PR into `main` (#113), for review, not merged.** PR 3 of `docs/UX_ART_AUDIT.md` section 6, from `main`
+**Status: merged into `main` by the owner (#113, `81d7b04`, 16 November 2026).** PR 3 of `docs/UX_ART_AUDIT.md` section 6, from `main`
 at `9d6b37451419721c759cca473da20bf8384f9247` (the Step 2 merge itself, verified; its build SHA-256 `06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186`).
 A presentation task: **no data changed** (`check:data`: all 143 declarations byte-identical to its reference). The evidence, with every number's
 method: `docs/ux-step3-evidence/`.

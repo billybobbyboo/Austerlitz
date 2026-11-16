@@ -1,7 +1,7 @@
-# UI/UX roadmap step 3: the matched hardware runs (pending: the owner's devices)
+# UI/UX roadmap step 3: the matched hardware runs (the desktop's received; the phone's pending)
 
-Two builds, one route, the same devices, the same day. **Nothing in this folder has been run on a device yet**; physical-device verification stays
-pending until the owner's reports are filed here (by a follow-up pull request, since the runs are made after #113 is merged).
+Two builds, one route, the same devices, the same day. The desktop's four runs are filed here (16 November 2026, "Runs received" below); the
+phone's are still to come, and physical-device verification stays pending for the phone until they are filed.
 
 ## The two builds
 
@@ -76,6 +76,18 @@ dimming, a fan, a run restarted). They are filed verbatim here as `desk-S2-1.txt
    reference's by more than 1 ms).
 5. **Against the Stage 7 evidence** (`docs/final-stage7-evidence/device/desk-S7-*`, `phone-S7-*`, 13 November 2026, the same desktop and phone on
    Stage 7's build): for the record, not as the comparison: Stage 7 to Step 2 is steps 1 and 2's work, which no device has measured.
+
+## Runs received
+
+- **16 November 2026, the owner's desktop** (the RTX 4070 of Stage 7's `desk-S7-*`; Chrome 157, 2,560 x 1,440 at 144 Hz, the page 2,560 x 1,305 at
+  density 1): the ordinary route four times, Step 2, Step 3, Step 2, Step 3, 08:51 to 09:04 UTC (`desk-S2-1`, `desk-S3-1`, `desk-S2-2`, `desk-S3-2`,
+  each `.txt` beside its `.json`; `README.md` in this folder). Each report is the route's own `format()` of its JSON, names the pinned copy its name
+  says by bytes and SHA-256, holds the whole ordinary route with both played segments under Follow from 08:30, and passes `route-check.js`. Read by
+  `tools/ux-step3/device-runs.js` (`reading.txt`, `reading.json`): section 8.3's budget within on every run (Step 3's heaviest frame 829 calls and
+  2,300,331 triangles; Step 2's 843 and 2,317,629); section 8.5's rule holds in every segment, each Step 3 run against each Step 2 run (every median
+  6.9 ms, every long-frame share 0%); the CPU line holds (the largest `js50` excess +0.1 ms). The played segments at the refresh on both builds
+  (143.8-144 frames a second, at most two missed refreshes a segment on either); every other segment draws the same frames on both builds.
+- **The iPhone 17 Pro**: not yet run.
 
 ## Here, before the devices (software WebGL; its frame times decide nothing)
 
