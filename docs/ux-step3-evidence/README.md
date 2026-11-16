@@ -22,6 +22,10 @@ steeper, closer view fitted to the action. Pause, the natural end of Play and or
 authored phase view. Explicit Phase and Act navigation still use their authored views; a vantage, a tour stop and an explicit centre-on-map command
 stay as they were.
 
+**The owner's decisions on the draft** (16 November 2026, "With decisions, let's go with your recommendations for all"): every point of section 10
+as recommended, so the build is unchanged: `land-play`'s baseline moved; the phone's 360-600 units; Watch nearer than Study in proportion to its free
+map; the ground's 150 px/s cap; the Follow button, PageUp and PageDown and Play at the day's end as built.
+
 ## 1. The result against the five acceptance points
 
 | # | Target | Result | Met? |
@@ -30,7 +34,7 @@ stay as they were.
 | 2 | Continuity by real input: Pause, resume, the end of Play, seeks inside and across phases, event markers and the chooser, Phase and Act buttons, manual camera with Follow off; the 150 px/s pan cap and the floor; the projected movement of angle and distance changes; reduced motion | The live block `ux3` (real clicks, drags, keys and taps): **every check passes on this build; on the Step 2 build 10 fail**: every cross-phase seek (the rail dragged, an event marker, the ten-minute button, the arrow key, the rail's PageDown, a day-track anchor, the Landscape with counters, under reduced motion, the phone's chooser) glided the eye 47 to 296 units to the phase's authored view, the ground crossing the screen at up to 1,807 px/s; and Play from a phase's view moved the ground at 494 px/s. Now no seek moves the eye (0.0000 units), the Phase and Act buttons still reach their authored views exactly, the target never passes 150 px/s and **the ground under the free map never passes 150 px/s** (149.9 at the most) (a new cap on the screen's movement of angle and distance changes: Step 2's ground moved at up to 586 px/s in Study, 746 px/s in Watch) | **Yes** (section 5) |
 | 3 | Step 2's open targets: filled plates over the box against 12%, Watch's count against 12, eligible formation names drawn and why others were outside | 1440 x 900 Study, 08:30 to 09:30: filled plates **13.6% to 7.0% at most, over 12% in 28 to 0 of 548 frames**; 11:30 to 13:00 **17.9% to 11.6%, 91 to 0 of 728**. Watch: 13.4% to 5.3% and 13.8% to 7.5%, **0 frames over 12%**; Watch's labels at most 9 to 10 in the morning, **16 to 17 in the Guard action** (frames over 12: 504 to 344). Formations a live event names drawn: 100% of those in view on both builds; **"no name at that distance" 262 to 0** in the morning, 432 to 0 at noon. Phone: 35.7% to 26.4% at most, median 16.2% to 18.1%: still over 12% in most frames | Desktop **yes**; Watch's 12 **not** in the Guard action; the phone's 12% **no** (section 7) |
 | 4 | Two-build hardware runs prepared, hashes and segments verified, census against Stage 7 and the budgets | Both builds in the repository, the protocol in `device/PROTOCOL.md`, the route run here on both at the desktop's and the phone's page sizes (each report naming its build's hash, `route-check.js` passing; section 6). Census here (every 60th frame of the full day drawn, `renderer.info`): desktop Study at most 854 calls and 2,157,913 triangles (Step 2: 854, 2,207,007), Watch 820 and **2,310,143** (854, 2,207,007: 28 blocks rich at that frame); the phone 551 calls (526) and 1,307,287 triangles (1,398,103). Within section 8.3's budgets (900 calls and 2.8 million on the desktop; 1.62 million and calls within 10% on the phone). **Frame times: pending the owner's runs** | Prepared; **device verification pending** |
-| 5 | The checks; a regression test of the cross-phase issue; guarded declarations byte-identical; the build rebuilt, fingerprinted, logged | `npm test`, `check:data` (143 of 143 identical), `check:chronology`, `check:contrast` and `check:selftest` (354 checks) pass here and on CI; the full `check:visual` dispatched on CI (section 8). The regression test is the live block `ux3` (10 failures on Step 2, none here), with `css-test.js`'s rule and `runtime-test.js`'s dry run in `npm test`. One motion baseline moved, for the owner's word | **Yes**, `check:visual` pending at the time of writing |
+| 5 | The checks; a regression test of the cross-phase issue; guarded declarations byte-identical; the build rebuilt, fingerprinted, logged | `npm test`, `check:data` (143 of 143 identical), `check:chronology`, `check:contrast` and `check:selftest` (354 checks) pass here and on CI; the full `check:visual` dispatched on CI (section 8). The regression test is the live block `ux3` (10 failures on Step 2, none here), with `css-test.js`'s rule and `runtime-test.js`'s dry run in `npm test`. One motion baseline moved, on the owner's word (16 November 2026) | **Yes**; `check:visual` passed on CI (run 43801145325, section 8) |
 
 ## 2. The framing chosen
 
@@ -195,13 +199,15 @@ On the phone the view offset itself eases when the dispatch sheet changes height
 
 ## 6. The hardware runs (pending)
 
-`device/PROTOCOL.md`: the two builds (this branch's, and Step 2's at `device/builds/austerlitz-07cbcaf3-step2.html`), the URLs, the order (Step 2, Step 3,
-Step 2, Step 3, two minutes apart) on the RTX 4070 desktop and the iPhone 17 Pro, what is checked (`route-check.js`, the hashes, every segment of the
+`device/PROTOCOL.md`: the two builds, each a pinned copy in `device/builds/` (Step 2's `austerlitz-07cbcaf3-step2.html`, and Step 3's
+`austerlitz-fd7b8b72-step3.html`, byte for byte this build, so that both links keep working after `main` moves on), the owner's steps once #113 is
+merged and Pages has published `main`, the links, the order (Step 2, Step 3, Step 2, Step 3, two minutes apart) on the RTX 4070 desktop and the iPhone 17 Pro, what is checked (`route-check.js`, the hashes, every segment of the
 ordinary route) and against what (sections 8.3 and 8.5 of `docs/STAGE8_SPEC.md`, Step 3 against Step 2 of the same session; Stage 7's runs for the
 record).
 
 **Here** (`tools/step6/perf-local.js --way frame`, the owner's page and build switch; software WebGL, so frame times decide nothing; `device/local/`):
-both builds load through `perf-run.html` (Step 3 by default, Step 2 by `?src=`), each report names its build by bytes and SHA-256 (3,085,998 /
+the pinned Step 3 copy loads through `perf-run.html` by its `?src=` path and its report names it by 3,085,998 bytes and `48f5d631...` (a trial run, its
+frames too few here to read); both builds load through `perf-run.html` (Step 3 by default, Step 2 by `?src=`), each report names its build by bytes and SHA-256 (3,085,998 /
 `48f5d631...` and 3,071,014 / `06842ca4...`), and `route-check.js` passes on all four reports. At the desktop's page size (2,560 x 1,305) software
 rendering drew too few frames for most segments to record any (4 of 23 with frames on each build), so the route's run here proves the page, the
 build switch and the report, not the segments' content; at the phone's (402 x 714, the low tier) 19 and 21 segments recorded frames. In the two
@@ -301,12 +307,12 @@ Every check of this build, `austerlitz-command-map.html` 3,085,998 bytes, md5 `f
 | `npm run check:chronology` | here, CI | errors 0 |
 | `npm run check:selftest` | here (`checks/check-selftest.log`, 45 min), CI | 354 checks by name, every one passing; the manifest regenerated from this run (351 to 354: the three "Follow fitted" names). The motion block's 16: 246 jumps, 961 pops, 108 switches, 9 flickers; every run's visibility at its baseline with `land-play`'s moved; the blocks `ux1`, `ux2` and `ux3` pass. CI: runs 43801096769, 43801181446 and 43801145325, each passing |
 | `npm run check:contrast` | CI (runs 43801096769, 43801181446, 43801145325) | passes on every run. Not run here (CI's three runs are of this build) |
-| `npm run check:visual` | CI, run [43801145325](https://github.com/billybobbyboo/Austerlitz/actions/runs/43801145325) (dispatched with `visual`) | **running at the time of writing** (about 3 to 4 hours); its result is added to the pull request when it ends |
+| `npm run check:visual` | CI, run [43801145325](https://github.com/billybobbyboo/Austerlitz/actions/runs/43801145325) (dispatched with `visual`, commit `54cdc50`, this build) | **passes** (2 h 48 min). The later commits change records, tools and the pinned copy only, not the build |
 | `tools/ux-step3/continuity.js` (the block `ux3` alone) | here | this build: every check passes; the Step 2 build: 10 failures (`continuity/`) |
 | `tools/stage8/motion-8h.js` + `motion-judge.js` (the motion block alone, both sets) | here | passes with `land-play` moved (`motion/`); the Step 2 build fails `land-play`'s new baseline, as it must |
 | A first self-test run of an earlier build of this branch | here | its new check failed (the ground at 154-175 px/s with 100 ms steps, the elevation off in 12% of steps): the cap's defect, fixed before the run above (`CHANGELOG.md`) |
 
-**One baseline moved, for the owner's word.** The motion block's `land-play` (90 frames of Play under Follow from 09:00 in the Landscape's Field view)
+**One baseline moved, on the owner's word (16 November 2026).** The motion block's `land-play` (90 frames of Play under Follow from 09:00 in the Landscape's Field view)
 counts 3,236 formation-frames in view where its baseline says 3,146 (decision 257 (b) holds the denominator exactly): Follow's closer view brings 90
 more into view and draws 315 more. Re-baselined to this build's own [2918, 3236, 667] (`thresholds.js` `MOTION.VIS`, the record beside it), the same
 in both of the block's sets. Every other baseline and the 16's ceilings are unchanged; the 16's totals are 246 jumps, 961 pops, 108 switches and 9
@@ -331,14 +337,20 @@ Every guarded declaration is byte-identical (`check:data`).
 8. **A lead, not investigated:** a real mouse drag of the rail in several moves lost its pointer capture after the first move in some runs (the
    browser's `lostpointercapture`, no release by the app; seen on the Step 2 build too). The block drives a drag as one move.
 
-## 10. For the owner
+## 10. For the owner: decided
 
-1. **The one moved baseline** (`land-play`, section 8): accept, or keep the old one (the block then fails that line).
+The owner decided every point as recommended on 16 November 2026 ("With decisions, let's go with your recommendations for all"); nothing in the build
+changed for it. What each point was, and the answer:
+
+1. **The one moved baseline** (`land-play`, section 8): accept, or keep the old one (the block then fails that line). **Accepted**: [2918, 3236, 667].
 2. **The phone's distance**: 360-600 (chosen: 99.1% of event-minutes, box 52.7%) or the audit's 300 (97.7%, box 53.7%), or 330 (98.7%, 55.0%).
+   **360-600**, as built.
 3. **Watch nearer than Study** (the distances in proportion to the free map): its box at 52.6% costs 18 rich blocks at the median; at Study's 200 units
-   the box is 45.2% and the rich blocks 2.
+   the box is 45.2% and the rich blocks 2. **Nearer, in proportion to the free map**, as built.
 4. **The ground's 150 px/s cap** (new): it slows the eye's turns and tilts (Play from an authored view tilts to 52 degrees over several seconds); 200 or 300 px/s cost nothing in
-   events either (section 3).
-5. **The Follow button pressed while the clock plays** now takes the view up from where it is; Step 2 glided to the phase's view first.
-6. **PageUp and PageDown on the rail** are treated as seeks (the eye kept), as the slider's own keys; the phase's view is the Phase buttons'.
-7. **Play pressed at the day's end** starts the day again with the eye where it is (Step 2: the phase's view of 04:00).
+   events either (section 3). **150 px/s**, as built.
+5. **The Follow button pressed while the clock plays** now takes the view up from where it is; Step 2 glided to the phase's view first. **As built.**
+6. **PageUp and PageDown on the rail** are treated as seeks (the eye kept), as the slider's own keys; the phase's view is the Phase buttons'. **As built.**
+7. **Play pressed at the day's end** starts the day again with the eye where it is (Step 2: the phase's view of 04:00). **As built.**
+
+Still open: the device runs (section 6, `device/PROTOCOL.md`), made by the owner after #113 is merged and filed by a follow-up pull request.

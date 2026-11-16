@@ -1,50 +1,60 @@
 # UI/UX roadmap step 3: the matched hardware runs (pending: the owner's devices)
 
-Two builds, one route, the same devices, the same day. **Nothing in this folder has been run on a device yet**; the draft pull request keeps
-physical-device verification pending until the owner's logs are filed here.
+Two builds, one route, the same devices, the same day. **Nothing in this folder has been run on a device yet**; physical-device verification stays
+pending until the owner's reports are filed here (by a follow-up pull request, since the runs are made after #113 is merged).
 
 ## The two builds
 
-| on the page | file | bytes | md5 | SHA-256 |
+Both are pinned copies in `builds/`, so both links below keep working after `main` moves on (the route page's default build is whatever `main`
+holds, so it is not used here).
+
+| build | file | bytes | md5 | SHA-256 |
 |---|---|---|---|---|
-| **Step 3** (this branch; the default build of `perf-run.html`) | `austerlitz-command-map.html` | see `README.md` section 0 | see `README.md` | see `README.md` |
-| **Step 2** (`main` at `9d6b374`, the base) | `docs/ux-step3-evidence/device/builds/austerlitz-07cbcaf3-step2.html` | 3,071,014 | `07cbcaf32808c430198d55b1b7ed78b7` | `06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186` |
+| **Step 2** (`main` at `9d6b374`, the base) | `builds/austerlitz-07cbcaf3-step2.html` | 3,071,014 | `07cbcaf32808c430198d55b1b7ed78b7` | `06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186` |
+| **Step 3** (this pull request's build, byte for byte its `austerlitz-command-map.html`) | `builds/austerlitz-fd7b8b72-step3.html` | 3,085,998 | `fd7b8b72c6315d1bb5bf0b8fa45cf263` | `48f5d6314e2b8b336d17d3be6caad94c5c4254471da6095605fd013d644c9b34` |
 
-Every report names the build it measured by its bytes and SHA-256 in its header (`build:`). A report whose hash is neither of these is not
-filed as either build's.
+Every report names the build it measured on its sixth line (`build: <bytes> bytes, sha256 <hash>`). A report whose hash is neither of these is
+not filed as either build's. Both links were opened through the route page here before the pull request was finished (a local server, the same
+paths; the page loaded each copy and named it by the hash above).
 
-## Hosting
+## The steps (the owner's)
 
-The route page reads the build in a same-origin frame, so the pages must be served, not opened from disk.
+**Before you start (once):** merge pull request #113, wait a few minutes for GitHub Pages to publish `main` (the repository's Actions tab shows a
+green "pages build and deployment" run), then open the Step 3 link below once. If its panel says "The build did not start within 120 s", Pages has
+not published yet: wait a few minutes and reload.
 
-- **GitHub Pages from this branch** (the simplest for the iPhone): Settings, Pages, "Deploy from a branch", this pull request's branch, root; after
-  the runs, set it back to `main`. The pages are then:
-  - Step 3: `https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html`
-  - Step 2: `https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html?src=../../docs/ux-step3-evidence/device/builds/austerlitz-07cbcaf3-step2.html`
-- **Or, on the desktop only, a local server** in a clone of this branch: `python -m http.server 8000`, then the same two paths under
-  `http://localhost:8000/`.
+**The two links** (the same on both devices):
 
-## What to run
+- **Step 2:** <https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html?src=../../docs/ux-step3-evidence/device/builds/austerlitz-07cbcaf3-step2.html>
+- **Step 3:** <https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html?src=../../docs/ux-step3-evidence/device/builds/austerlitz-fd7b8b72-step3.html>
 
-As before (`docs/final-stage7-evidence/device-protocol.md`): the window maximised at 100% zoom, plugged in, other tabs closed, nothing touched
-during a run; on the phone Low Power Mode off, Reduce Motion off, Auto-Lock "Never" for the runs and set back after, held upright.
+**One run** (about 3 minutes):
 
-**The ordinary route** (no `?route=`), each build twice, alternating, about two minutes apart, so that neither the order nor the device's state
-is read as the build:
+1. Open the link.
+2. Wait until the panel says "The build has started ... Press Start".
+3. Press **Start (about 3 minutes)**. Do not touch the mouse, keyboard or screen until the panel comes back.
+4. Press **Copy the report** (on the iPhone, **Share…** to Notes works too).
+5. Paste it somewhere with its name (below). Its first line begins "Austerlitz step 6 frame-time route".
 
-1. Step 2, Start, wait for the report, Copy.
-2. Step 3, Start, Copy.
-3. Step 2 again.
-4. Step 3 again.
+**The order on each device:** four runs, alternating builds, about two minutes apart, so that neither the order nor the device's warming is read as
+the build:
 
-**On the RTX 4070 desktop** (Chrome or Edge, as for `desk-S7-*`: 2,560 x 1,440 at 144 Hz, the page about 2,560 x 1,305 at density 1) and **on the
-iPhone 17 Pro** (Safari, as for `phone-S7-*`: 402 x 714, drawn at density 1 by the build's low tier). Both builds see the same route, the same
-viewport, the same clock and the same settings: the route sets every view's clock, presentation, ground and camera itself, and its two played
-segments start each build at 08:30 in Watch from the same view, Follow pressed, then Play at 4x and at half speed for 12 s each.
+| run | link | name it |
+|---|---|---|
+| 1 | Step 2 | `desk-S2-1` (`phone-S2-1`) |
+| 2 | Step 3 | `desk-S3-1` (`phone-S3-1`) |
+| 3 | Step 2 | `desk-S2-2` (`phone-S2-2`) |
+| 4 | Step 3 | `desk-S3-2` (`phone-S3-2`) |
 
-**What to send back:** the eight reports as pasted text (each begins "Austerlitz step 6 frame-time route"), and anything that happened during a run
-(a notification, the screen dimming, a fan). They will be filed verbatim here as `desk-S2-1`, `desk-S3-1`, `desk-S2-2`, `desk-S3-2`, `phone-S2-1`,
-and so on, each `.txt` beside its JSON line.
+**The desktop** (the RTX 4070, Chrome, as for `desk-S7-*` on 13 November 2026): plugged in, the 2,560 x 1,440 monitor at 144 Hz, other tabs and
+heavy programs closed, the window maximised, zoom 100% (Ctrl+0).
+
+**The iPhone** (the iPhone 17 Pro, Safari, as for `phone-S7-*`): charging, Low Power Mode off, Settings → Accessibility → Motion → Reduce Motion
+off, Settings → Display & Brightness → Auto-Lock → Never (set it back after the runs), other Safari tabs closed, held upright and untouched while
+it runs.
+
+**Send back:** the eight reports (pasted, or as text files named as above), and anything that happened during a run (a notification, the screen
+dimming, a fan, a run restarted). They are filed verbatim here as `desk-S2-1.txt` and so on, each beside its JSON line.
 
 ## What will be checked, and against what
 
@@ -53,8 +63,10 @@ and so on, each `.txt` beside its JSON line.
    `play-4x` and `play-half` present, `follow: true`, their clock covered (`clockFrom` 510, `clockTo` after it). A report missing a segment of the
    ordinary route (idle; overview held, orbit, orbit -figures, orbit -effects; pratzen-low-4x the same four; pratzen-low-1x and -10x held and orbit;
    ph8-overview the four; paper held and pan; eye held and look; play-4x; play-half) is re-run, not read.
-2. **What step 3 changes is the played segments.** Every other segment sets its own camera and should measure the same on both builds within the
-   run-to-run spread; a difference there is the device's, and says how far the played segments' differences can be read.
+2. **What step 3 changes is the played segments.** Both builds see the same route, the same viewport, the same clock and the same settings: the route
+   sets every view's clock, presentation, ground and camera itself, and its two played segments start each build at 08:30 in Watch from the same
+   view, Follow pressed, then Play at 4x and at half speed for 12 s each. Every other segment sets its own camera and should measure the same on both
+   builds within the run-to-run spread; a difference there is the device's, and says how far the played segments' differences can be read.
 3. **Per segment, Step 3 against Step 2 on the same device and day:** the median and 95th-percentile frame interval, frames a second, the
    long-frame share (frames over max(1.5 refreshes, 25 ms)), the missed-refresh share (`missedPct`), the script's median (`js50`), and the median and
    largest draw calls and triangles (`calls`, `callsMax`, `tris`, `trisMax`).
@@ -67,6 +79,6 @@ and so on, each `.txt` beside its JSON line.
 
 ## Here, before the devices (software WebGL; its frame times decide nothing)
 
-`tools/step6/perf-local.js` ran the ordinary route on both builds at the desktop's page size and at the phone's (section 6 of `README.md`): every
-segment recorded, the builds named by their hashes, and the draw calls and triangles each build draws in the route's own views. Those counts are
-the builds' own; whether the device holds them is what the runs above decide.
+`tools/step6/perf-local.js` ran the ordinary route on both builds at the desktop's page size and at the phone's (section 6 of `README.md`;
+`local/`): every segment recorded, the builds named by their hashes, and the draw calls and triangles each build draws in the route's own views.
+Those counts are the builds' own; whether the device holds them is what the runs above decide.

@@ -2,7 +2,7 @@
 
 ## 2026-11 · UI/UX roadmap step 3: Follow framing and camera continuity (UA-02)
 
-**Status: on `claude/gallant-feynman-gok1g7`, a draft PR into `main`, for review, not merged.** PR 3 of `docs/UX_ART_AUDIT.md` section 6, from `main`
+**Status: on `claude/gallant-feynman-gok1g7`, a draft PR into `main` (#113), for review, not merged.** PR 3 of `docs/UX_ART_AUDIT.md` section 6, from `main`
 at `9d6b37451419721c759cca473da20bf8384f9247` (the Step 2 merge itself, verified; its build SHA-256 `06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186`).
 A presentation task: **no data changed** (`check:data`: all 143 declarations byte-identical to its reference). The evidence, with every number's
 method: `docs/ux-step3-evidence/`.
@@ -10,6 +10,12 @@ method: `docs/ux-step3-evidence/`.
 **The owner's decision** (15 November 2026, this step's brief): decision 78 is revisited for this step. During Landscape Play, Follow may use a
 steeper, closer view fitted to the action; a pause, the natural end of Play and ordinary timeline seeks keep the camera pose; explicit Phase and Act
 navigation still use their authored views; a vantage, a tour stop and an explicit centre-on-map command are kept.
+
+**The owner's decisions on the draft** (16 November 2026, "With decisions, let's go with your recommendations for all"): every point put with the
+draft decided as recommended, so nothing in the build changed for them: the motion block's `land-play` baseline moved (below); the phone held upright
+at 360-600 units; Watch nearer than Study in proportion to its free map; the ground under the free map capped at 150 px/s; the Follow button pressed
+while playing taking the view up from where it is; PageUp and PageDown on the rail as seeks; Play at the day's end keeping the eye
+(`docs/ux-step3-evidence/README.md` section 10).
 
 **The build:** `austerlitz-command-map.html` was 3,071,014 bytes, md5 `07cbcaf32808c430198d55b1b7ed78b7`; it is now **3,085,998 bytes, md5
 `fd7b8b72c6315d1bb5bf0b8fa45cf263`** (SHA-256 `48f5d6314e2b8b336d17d3be6caad94c5c4254471da6095605fd013d644c9b34`). `check:baseline` moved to it (`package.json`).
@@ -67,22 +73,24 @@ navigation still use their authored views; a vantage, a tour stop and an explici
   74.9% to 69.6% (08:30-09:30); `MOTION.LONG`'s runs 75.2% and 82.0% (bar 70%; Step 2 76.2% and 75.9%).
 - **Checks** (this build, md5 `fd7b8b72...`): `npm test` (all 9 suites, the height guard, the dead-code check), `check:data` (143 of 143
   identical), `check:chronology` (0 errors), `check:selftest` (354 of 354; the manifest regenerated, 351 to 354, the three names of "Follow fitted to
-  the action (UI/UX step 3, UA-02)") here and on CI; `check:contrast` on CI (three runs). `check:visual`: dispatched on CI (run 43801145325), running
-  when this was written.
-- **One baseline moved, for the owner's word:** `thresholds.js` `MOTION.VIS["land-play"]` [2603,3146,667] to [2918,3236,667] (Follow's closer view
+  the action (UI/UX step 3, UA-02)") here and on CI; `check:contrast` on CI (three runs). `check:visual` on CI passes (run 43801145325, dispatched with
+  `visual`, on `54cdc50`, this build; 2 h 48 min). The later commits change records, tools and a pinned copy of the build only.
+- **One baseline moved, on the owner's word (16 November 2026):** `thresholds.js` `MOTION.VIS["land-play"]` [2603,3146,667] to [2918,3236,667] (Follow's closer view
   brings 90 more formation-frames into view; decision 257 (b) holds that denominator exactly). The 16's totals 234/948/105/10 to 246/961/108/9 under
   their ceilings 251/1,049/130/12. Nothing else moved; no assertion loosened.
-- **Hardware:** both builds and the route instructions in `docs/ux-step3-evidence/device/PROTOCOL.md`; the route run here on both (each report naming
-  its build's SHA-256, `route-check.js` passing). Frame times on the owner's RTX 4070 desktop and iPhone: **pending**.
+- **Hardware:** both builds pinned in `docs/ux-step3-evidence/device/builds/` (Step 2's `austerlitz-07cbcaf3-step2.html` and, added with the
+  owner's decisions, Step 3's `austerlitz-fd7b8b72-step3.html`, byte for byte this build, SHA-256 `48f5d631...9b34`: the Step 3 build is on Pages
+  only once #113 is merged, and the pinned copies keep both links valid after `main` moves on); the owner's steps in
+  `docs/ux-step3-evidence/device/PROTOCOL.md`; the route run here on both (each report naming its build's SHA-256, `route-check.js` passing; the pinned
+  Step 3 copy loaded through `perf-run.html` by its `?src=` path and named by its hash). Frame times on the owner's RTX 4070 desktop and iPhone:
+  **pending**, to be made after the merge and filed by a follow-up pull request.
 
 ### What remains uncertain or open
 
-- **Frame times on the owner's devices**: pending (`docs/ux-step3-evidence/device/PROTOCOL.md`: both builds, the route, the order).
+- **Frame times on the owner's devices**: pending (`docs/ux-step3-evidence/device/PROTOCOL.md`: both builds, the links, the order), after the merge.
 - Raigern (04:00-04:45) framed in 76-79% of its minutes (the run's first minutes from phase 0's view, under the caps); Watch's 12 labels exceeded in
   the Guard action (17 at most); the phone's 12% still exceeded; the Landscape with counters' event-named counters drawn 69.6% in 08:30-09:30 (74.9%);
   the motion block's jumps at 246 of 251.
-- **Owner decisions put** (README section 10): the moved `land-play` baseline; the phone's distance; Watch nearer than Study; the ground's cap; the
-  Follow button while playing; PageUp/PageDown as seeks; Play at the day's end.
 - A lead, not investigated: a multi-move mouse drag of the rail lost its pointer capture after its first move in some runs (both builds).
 
 ## 2026-11 · UI/UX roadmap step 2: the Landscape's label tiers and Watch's label set (UA-01, UA-15)

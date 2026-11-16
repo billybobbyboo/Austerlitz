@@ -397,7 +397,7 @@ const MOTION={JUMPS:251, POPS:1049, FLICKER:12, LOD:130, REAL_TOL:{abs:6, rel:0.
      "paper-play" [1564,1694,667] to [1533,1694,667]. Each as approved, measured again on the implementation; every other baseline and the 16's
      ceilings unchanged (the 16: 249 jumps, 1,043 pops, 9 flickers, 105 switches) */
   /* UI/UX roadmap step 3 (UA-02; the owner's decision of 15 November 2026, which revisits decision 78 for Play: Follow at 52 degrees, fitted to the
-     action; docs/ux-step3-evidence/): one baseline moved, put to the owner with the draft. "land-play" (90 frames of Play under Follow from 09:00 in
+     action; docs/ux-step3-evidence/): one baseline moved, on the owner's word of 16 November 2026 (put with the draft, accepted as recommended). "land-play" (90 frames of Play under Follow from 09:00 in
      the Landscape's Field view, 1600 x 900) [2603,3146,667] to [2918,3236,667], the step 3 build's own counts (fd7b8b72...), the same in check:selftest's
      set and check:visual's (tools/stage8/motion-8h.js on a page of its own, Chromium 141): Follow now tilts toward 52 degrees and comes nearer, so 90
      more formation-frames stand in view and 315 more are drawn; its jumps 30 to 42, pops 60 to 62, switches 2 to 5, flickers 3 to 0. "hybrid-play" and
