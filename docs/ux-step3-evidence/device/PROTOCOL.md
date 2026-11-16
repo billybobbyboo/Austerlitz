@@ -1,7 +1,8 @@
-# UI/UX roadmap step 3: the matched hardware runs (the desktop's received; the phone's pending)
+# UI/UX roadmap step 3: the matched hardware runs (both devices received)
 
-Two builds, one route, the same devices, the same day. The desktop's four runs are filed here (16 November 2026, "Runs received" below); the
-phone's are still to come, and physical-device verification stays pending for the phone until they are filed.
+Two builds, one route, the same devices, the same day. The desktop's four runs and the phone's four are filed here (16 November 2026, "Runs
+received" below). The phone's leave one comparison unsettled, half-speed Play; a short re-run that would settle it is offered below, for the owner
+to choose ("A targeted re-run").
 
 ## The two builds
 
@@ -87,7 +88,40 @@ dimming, a fan, a run restarted). They are filed verbatim here as `desk-S2-1.txt
   2,300,331 triangles; Step 2's 843 and 2,317,629); section 8.5's rule holds in every segment, each Step 3 run against each Step 2 run (every median
   6.9 ms, every long-frame share 0%); the CPU line holds (the largest `js50` excess +0.1 ms). The played segments at the refresh on both builds
   (143.8-144 frames a second, at most two missed refreshes a segment on either); every other segment draws the same frames on both builds.
-- **The iPhone 17 Pro**: not yet run.
+- **16 November 2026, the owner's iPhone 17 Pro** (Safari 26.6.1 on iOS 18.7, 402 x 714 at density 3, drawn at 1, `lowTier`): the ordinary route four
+  times in the same order, 23:23 to 23:34 UTC, 29-34 s apart (`phone-S2-1`, `phone-S3-1`, `phone-S2-2`, `phone-S3-2`; `README.md`). Each report
+  verbatim, its build the pinned copy its label names, the route whole, `route-check.js` passing. Read by `device-runs.js`: section 8.3's phone
+  budget within on both builds (Step 3's heaviest frame 1,311,877 triangles; its segment medians of calls at most 6.0% above Step 2's, half-speed
+  Play 481 to 510); section 8.5's rule fails in three segments of Step 3's runs: the ph8 overview's orbit and its orbit with effects off, where both
+  builds draw the same frames and Step 3's numbers sit inside what Stage 7's runs of the same phone measured there; and half-speed Play, 0% and
+  11.7% long on Step 3 against 1.1% and 1.1% on Step 2, the two Step 3 runs drawing identical frames, the second in the run where the phone was
+  slowest in the segments both builds draw alike. Not settled by two runs a build.
+
+## A targeted re-run (only if the owner chooses it)
+
+To settle half-speed Play on the phone, the two segments step 3 changes and the ph8 overview's orbits, nothing else (about a minute a run, the
+route's own `?only=`):
+
+- **Step 3:** <https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html?src=../../docs/ux-step3-evidence/device/builds/austerlitz-fd7b8b72-step3.html&only=ph8-overview,play-4x,play-half>
+- **Step 2:** <https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html?src=../../docs/ux-step3-evidence/device/builds/austerlitz-07cbcaf3-step2.html&only=ph8-overview,play-4x,play-half>
+
+1. Set the iPhone up as before (charging, Low Power Mode off, Reduce Motion off, Auto-Lock Never, other tabs closed), then lock it and leave it
+   five minutes.
+2. Six runs, starting with **Step 3** this time (the reverse of the first set, so that the order is not read as the build): Step 3, Step 2, Step 3,
+   Step 2, Step 3, Step 2. **Lock the phone and wait three minutes between runs.**
+3. Each run: open the link, wait for "Press Start", press Start, hold the phone still until the panel returns, then Copy the report (or Share it to
+   Notes) and label it ("Step 3 short run 1", and so on).
+4. Send the six reports. Set Auto-Lock back afterwards.
+
+**How they will be read, stated before the runs**: each Step 3 run against the Step 2 run after it (three pairs). Step 3's half-speed Play counts as
+**costing the phone** if, in at least two of the three pairs, its long-frame share is above 5% where its pair's is under; as **not costing it** if,
+in at least two of the three pairs, its long-frame share is at most its pair's plus one point; otherwise it stays unsettled and is accepted as
+measured. The ph8 overview's orbits (the same frames on both builds) are read only as the phone's state in each run. The reader is
+`tools/ux-step3/device-runs.js`, extended then for the short route's three segments.
+
+Checked here before it was offered (`tools/step6/perf-local.js --way frame --src <the Step 3 copy> --only ph8-overview,play-4x,play-half`, the
+phone's page size, software WebGL): the wrapper page with `&only=` runs exactly the ph8 overview's four segments, play-4x and play-half, on the pinned
+Step 3 copy, its report naming it by 3,085,998 bytes and `48f5d631...`; its frame counts there mean nothing.
 
 ## Here, before the devices (software WebGL; its frame times decide nothing)
 

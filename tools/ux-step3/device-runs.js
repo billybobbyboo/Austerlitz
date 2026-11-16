@@ -12,7 +12,11 @@
    (5) section 8.5's rule, each Step 3 run against each Step 2 run: no segment's long-frame share rising above 5% where it was under, no median
        interval moving by more than one refresh;
    (6) the desktop's CPU line: no segment's js50 more than 1 ms above Step 2's (each Step 3 run against each Step 2 run);
-   (7) per segment, the two builds' runs side by side, with the spread between a build's own two runs beside the difference between the builds.
+   (7) per segment, the two builds' runs side by side, with the spread between a build's own two runs beside the difference between the builds;
+   (8) since the phone's runs: each failure of (5) marked where both builds draw the same frames (a segment not played whose median calls are the
+       same in every run: the route sets its camera, so a difference there is the device's, PROTOCOL.md's point 2), with the same segment on
+       Stage 7's runs of the same device beside it; and each run's device state, its segments not played under 59 frames a second (the refresh
+       59.9-60 at a 17 ms refresh) and their long-frame shares summed.
    node tools/ux-step3/device-runs.js [--json out.json] [--txt out.txt]   Exit 1 if (1), (2) or (3) fails. */
 "use strict";
 const fs=require("fs"), path=require("path"), vm=require("vm");
@@ -54,8 +58,8 @@ for(const dev of ["desk","phone"]){
   /* (5) section 8.5 and (6) the CPU line, each Step 3 run against each Step 2 run */
   let maxEx=-Infinity, maxAt=null;
   for(const a of runs.S3) for(const b of runs.S2) for(const k of segs){ const x=a.B[k], y=b.B[k]; if(!x||!y) continue;
-    if(Math.abs(x.p50-y.p50)>Math.max(a.j.refreshMs,b.j.refreshMs)+1e-9){ D.rule85.held=false; D.rule85.fails.push(a.f+" vs "+b.f+" "+k+": median "+y.p50+" to "+x.p50); }
-    if(y.longPct<=5&&x.longPct>5){ D.rule85.held=false; D.rule85.fails.push(a.f+" vs "+b.f+" "+k+": long-frame share "+y.longPct+"% to "+x.longPct+"%"); }
+    if(Math.abs(x.p50-y.p50)>Math.max(a.j.refreshMs,b.j.refreshMs)+1e-9){ D.rule85.held=false; D.rule85.fails.push({s3:a.f, s2:b.f, seg:k, what:"median "+y.p50+" to "+x.p50}); }
+    if(y.longPct<=5&&x.longPct>5){ D.rule85.held=false; D.rule85.fails.push({s3:a.f, s2:b.f, seg:k, what:"long-frame share "+y.longPct+"% to "+x.longPct+"%"}); }
     if(dev==="desk"&&x.js50!=null&&y.js50!=null){ const ex=r2(x.js50-y.js50); if(ex>maxEx){ maxEx=ex; maxAt=a.f+" vs "+b.f+" "+k; } if(ex>1+1e-9){ D.cpu.held=false; D.cpu.fails.push(a.f+" vs "+b.f+" "+k+": js50 "+y.js50+" to "+x.js50); } } }
   if(dev==="desk") { D.cpu.maxExcess=maxEx; D.cpu.at=maxAt; D.cpu.rule="js50 not above Step 2's by more than 1 ms"; } else D.cpu={note:"the CPU line is the desktop's (section 8.3)"};
   /* (7) side by side */
@@ -68,7 +72,13 @@ for(const dev of ["desk","phone"]){
   /* for the record: Stage 7's runs on the same device (13 November 2026, Stage 7's build) */
   const s7=fs.existsSync(S7)?fs.readdirSync(S7).filter(f=>new RegExp("^"+dev+"-S7-\\d+\\.json$").test(f)).sort():[];
   D.stage7={runs:s7, played:{}};
-  s7.forEach(f=>{ const B=by(JSON.parse(fs.readFileSync(path.join(S7,f),"utf8"))); ["play-4x|played","play-half|played"].forEach(k=>{ const s=B[k]; if(s) (D.stage7.played[k]=D.stage7.played[k]||[]).push({f, fps:s.fps, p50:s.p50, longPct:s.longPct, missedPct:s.missedPct, js50:s.js50, calls:s.calls, callsMax:s.callsMax, tris:s.tris, trisMax:s.trisMax}); }); });
+  const S7B=s7.map(f=>({f, B:by(JSON.parse(fs.readFileSync(path.join(S7,f),"utf8")))}));
+  S7B.forEach(({f,B})=>{ ["play-4x|played","play-half|played"].forEach(k=>{ const s=B[k]; if(s) (D.stage7.played[k]=D.stage7.played[k]||[]).push({f, fps:s.fps, p50:s.p50, longPct:s.longPct, missedPct:s.missedPct, js50:s.js50, calls:s.calls, callsMax:s.callsMax, tris:s.tris, trisMax:s.trisMax}); }); });
+  /* (8) each failure of section 8.5 by segment: the same frames on both builds or not, and Stage 7's runs of the same segment */
+  const all=runs.S2.concat(runs.S3), sameFrames=k=>!k.endsWith("|played")&&all.every(r=>r.B[k]&&r.B[k].calls===all[0].B[k].calls);
+  D.rule85.bySegment={};
+  D.rule85.fails.forEach(x=>{ const g=D.rule85.bySegment[x.seg]||(D.rule85.bySegment[x.seg]={sameFrames:sameFrames(x.seg), fails:[], stage7:S7B.map(({f,B})=>B[x.seg]?{f, fps:B[x.seg].fps, longPct:B[x.seg].longPct, calls:B[x.seg].calls}:null).filter(Boolean)}); g.fails.push(x.s3+" vs "+x.s2+": "+x.what); });
+  D.deviceState=all.map(r=>{ const slow=segs.filter(k=>!k.endsWith("|played")&&r.B[k]&&r.B[k].fps<59); return {f:r.f, started:r.j.started, slowSegments:slow.map(k=>k+" "+r.B[k].fps), slowCount:slow.length, longSum:r2(slow.reduce((a,k)=>a+r.B[k].longPct,0))}; }).sort((p,q)=>p.started<q.started?-1:1);
   out.devices[dev]=D;
 }
 /* the printed reading */
@@ -77,7 +87,12 @@ for(const dev of Object.keys(out.devices)){ const D=out.devices[dev]; if(!D.segm
   L.push(dev+": "+D.runs.join(", ")+"; "+D.gpu+"; viewport "+D.viewport.join(" x ")+"; refresh "+D.refreshMs+" ms");
   D.started.forEach(([f,s,e,t])=>L.push("  "+f+": "+s+" to "+e+", "+t+" bytes transferred"));
   Object.keys(D.budget).forEach(f=>{ const b=D.budget[f]; L.push("  8.3 "+f+": calls at most "+b.callsMax.v+" ("+b.callsMax.at+"), triangles at most "+b.trisMax.v+" ("+b.trisMax.at+"): "+(b.within?"within":"OVER")+" ("+b.rule+")"); });
-  L.push("  8.5 (each Step 3 run against each Step 2 run): "+(D.rule85.held?"holds in every segment":"fails: "+D.rule85.fails.join("; ")));
+  if(D.rule85.held) L.push("  8.5 (each Step 3 run against each Step 2 run): holds in every segment");
+  else { L.push("  8.5 (each Step 3 run against each Step 2 run): fails in "+Object.keys(D.rule85.bySegment).length+" segments:");
+    Object.keys(D.rule85.bySegment).forEach(k=>{ const g=D.rule85.bySegment[k]; L.push("    "+k+(g.sameFrames?" (the same frames on both builds: the device's)":" (a played segment: the builds draw different frames)")+": "+g.fails.join("; ")+
+      (g.stage7.length?"; Stage 7's runs of it: "+g.stage7.map(s=>s.f+" "+s.fps+" fps, "+s.longPct+"% long, calls "+s.calls).join("; "):"")); }); }
+  L.push("  device state by run (segments not played under 59 fps, in the order run):");
+  D.deviceState.forEach(d=>L.push("    "+d.f+" ("+d.started.slice(11,19)+"): "+d.slowCount+(d.slowCount?" ("+d.slowSegments.join(", ")+"; long-frame shares summed "+d.longSum+"%)":"")));
   if(dev==="desk") L.push("  CPU line: "+(D.cpu.held?"holds":"fails: "+D.cpu.fails.join("; "))+"; the largest js50 excess "+D.cpu.maxExcess+" ms ("+D.cpu.at+")");
   L.push("  segment                         fps S2|S3        p50 S2|S3        p95 S2|S3      long% S2|S3   miss% S2|S3     js50 S2|S3      gpu50 S2|S3       calls S2|S3          callsMax S2|S3      trisMax S2|S3");
   const j=v=>v.map(x=>x==null?"-":x).join("/");

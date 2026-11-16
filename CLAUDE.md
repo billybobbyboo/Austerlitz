@@ -901,4 +901,6 @@ its free map, the ground's 150 px/s cap, the Follow button, PageUp/PageDown and 
 (`docs/ux-step3-evidence/device/PROTOCOL.md`, `builds/`): the owner's desktop's four of 16 November 2026 filed verbatim and read by
 `tools/ux-step3/device-runs.js` (`device/README.md`, `reading.txt`; a draft PR, records only): section 8.3's budget, section 8.5's rule and the CPU line
 hold, Step 3's heaviest frame 829 calls and 2,300,331 triangles (Step 2's 843 and 2,317,629), every median at the 144 Hz refresh on both builds; the
-phone's pending.
+phone's four of the same day: section 8.3's phone budget holds, section 8.5's rule fails in three segments of Step 3's runs (two drawing the same frames
+on both builds, inside Stage 7's history there; the third half-speed Play, 0% and 11.7% long against 1.1% and 1.1%, unsettled by two runs a build); put
+to the owner: accept as measured, or a short targeted re-run (recommended, `PROTOCOL.md`).

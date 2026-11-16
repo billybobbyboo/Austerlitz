@@ -1,8 +1,8 @@
 # Austerlitz Command Map — Changelog
 
-## 2026-11 · UI/UX roadmap step 3: the owner's desktop runs of the two builds (records only)
+## 2026-11 · UI/UX roadmap step 3: the owner's device runs of the two builds (records only)
 
-**Status: on `claude/gallant-feynman-gok1g7` (restarted from `main` at `81d7b04`, #113's merge), a draft PR into `main`, for review, not merged.**
+**Status: on `claude/gallant-feynman-gok1g7` (restarted from `main` at `81d7b04`, #113's merge), a draft PR into `main` (#114), for review, not merged.**
 Records only: **no build, source or data changed** (`austerlitz-command-map.html` still 3,085,998 bytes, md5 `fd7b8b72c6315d1bb5bf0b8fa45cf263`;
 `check:baseline` passes on it).
 
@@ -21,14 +21,31 @@ Records only: **no build, source or data changed** (`austerlitz-command-map.html
   +0.1 ms). The played segments at the refresh on both builds (143.8-144 frames a second; at most two missed refreshes a segment, alike on both): at 4x
   calls median 794 against 823, at half speed 781 against 789, triangles at most 2,289,379 against 2,273,009 (+0.7%), `js50` 4.9 against 5.0 ms, the
   GPU timer's median 4.0 against 3.9 ms (inside its own run-to-run spread). Every other segment draws identical frames on both builds.
-- **Recorded in**: `docs/ux-step3-evidence/device/README.md`, `PROTOCOL.md` ("Runs received"), `docs/ux-step3-evidence/README.md` (sections 0, 1 and
-  6), `CLAUDE.md`.
+- **The phone's four** (16 November 2026, 23:23 to 23:34 UTC; the owner's iPhone 17 Pro of Stage 7's runs, Safari 26.6.1, 402 x 714 drawn at density 1,
+  `lowTier`): `phone-S2-1`, `phone-S3-1`, `phone-S2-2`, `phone-S3-2`, filed and checked as the desktop's (the owner's labels and the hashes agree; run
+  1's `bodyBytes` 4,119,590 is Safari's `decodedBodySize` of a first load, as in Stage 7's `phone-S7-1`, not the build's size, which its hash names).
+  Section 8.3's phone budget holds on both builds (Step 3's heaviest frame 1,311,877 triangles, Step 2's 1,394,981; Step 3's segment medians of calls
+  at most 6.0% above Step 2's, half-speed Play 481 to 510). Section 8.5's rule **fails in three segments of Step 3's runs**: the ph8 overview's orbit
+  (0% and 23.7% long against 0% and 0%) and its orbit with effects off (42.9% and 76% against 0.3% and 0%), where both builds draw the same frames and
+  Step 3's numbers sit inside what Stage 7's runs of the same phone measured there (47-48 frames a second, 8.9-15.6% long; 30-34, 80-89%); and
+  half-speed Play (0% and 11.7% against 1.1% and 1.1%), where the builds differ: Step 2's frames slow at the same moment in every run, today's and
+  Stage 7's (6.4-6.7 s into the 12 s, to about 48 frames a second), while Step 3's two runs, identical frames, one never slowing and the other
+  slowing from 6.3 s to 44.5, the second in the session's slowest run (5 of the segments both builds draw alike under 59 frames a second, against 2,
+  3 and 1). Two runs a build cannot separate Step 3's half-speed Play from the phone's spread.
+- **The reader extended** for that: each failure of section 8.5 marked where both builds draw the same frames (the route sets the camera, so a
+  difference there is the device's), with Stage 7's runs of the segment beside it, and each run's device state (its segments not played under 59
+  frames a second).
+- **Put to the owner** (`docs/ux-step3-evidence/README.md` section 10): (a) accept the phone as measured, half-speed Play carried as unsettled, or (b,
+  recommended) a short targeted re-run on the phone (`?only=ph8-overview,play-4x,play-half`, six runs starting with Step 3, three minutes apart),
+  read by a rule stated in `PROTOCOL.md` before the runs.
+- **Recorded in**: `docs/ux-step3-evidence/device/README.md`, `PROTOCOL.md` ("Runs received", "A targeted re-run"), `docs/ux-step3-evidence/README.md`
+  (sections 0, 1, 6 and 10), `CLAUDE.md`.
 - **Checks**: `npm test` (all 9 suites, the height guard, the dead-code check) and `check:baseline` here on this commit; `route-check.js` on each report;
   `device-runs.js` exit 0.
 
 ### What remains uncertain or open
 
-- **The phone's four runs** (the iPhone 17 Pro, the same links and order): not yet made. The desktop's runs say nothing of the phone's low tier.
+- **Half-speed Play on the phone**: unsettled by two runs a build (above); the owner's choice between accepting it as measured and a targeted re-run.
 - At 144 Hz this desktop shows no frame-time difference between the builds; whether a slower GPU feels half speed's +0.7% triangles is not shown here
   (an integrated GPU is still to run, as since Stage 7).
 - The runs were 22-77 s apart, not the two minutes asked; with every median at the refresh and no long frame, nothing reads as the device warming.
