@@ -682,6 +682,21 @@ body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
 #firstrun .key-sw{display:inline-block;width:11px;height:11px;border:1px solid rgba(0,0,0,.55);border-radius:1px;
   margin:0 5px 0 1px;vertical-align:-1px}
 #firstrun .fr-act .t{min-height:34px;padding:7px 14px;font-size:var(--t-ui)}
+/* UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03, UA-04): the key as three rows, each with its sample in a column of its own (the sides'
+   colours, the grade letters as the names carry them, the plateau's contour), the grades one line each in the interface's type; the key's
+   button after the two actions */
+#firstrun .fr-rows{display:flex;flex-direction:column;gap:11px}
+#firstrun .fr-row{display:grid;grid-template-columns:46px minmax(0,1fr);column-gap:12px;align-items:start}
+#firstrun .fr-row p{margin:0}
+#firstrun .fr-smp{display:flex;gap:3px;align-items:center;padding-top:4px;color:var(--text-hi)}
+#firstrun .fr-smp .key-sw{width:15px;height:15px;margin:0}
+#firstrun .fr-smp svg{width:34px;height:20px}
+#firstrun .fr-smp b,#firstrun .fr-grades b{display:inline-block;min-width:13px;text-align:center;font-family:var(--sans);font-size:var(--t-small);font-weight:600;line-height:1.35;
+  color:var(--text-hi);background:var(--ink);border:1px solid var(--text-muted);border-radius:2px;padding:0 3px}
+#firstrun .fr-grades{list-style:none;margin:7px 0 0;padding:0;font-family:var(--sans);font-size:var(--t-ui);line-height:1.45;color:var(--text-body)}
+#firstrun .fr-grades li{display:flex;gap:8px;align-items:baseline;margin:3px 0 0}
+#firstrun .fr-grades b{flex:0 0 auto}
+#firstrun .fr-more{margin:9px 0 0;font-family:var(--sans);font-size:var(--t-ui);line-height:1.4}
 /* Stage 7B (decisions 111, 113): the card's one primary action, drawn as a pressed button is; the dispatch stays hidden under the card only
    below 1080 px, where it is a card the first-run card would stand over (decision 58); docked it is the rail's Now tab, shown */
 #firstrun .fr-act .t.fr-primary{background:var(--text);color:var(--on-accent);border-color:var(--text)}
@@ -935,8 +950,10 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .brand{position:relative;padding-right:48px}
   .railclose{display:block;position:absolute;right:-6px;top:-4px;min-width:44px;min-height:44px;padding:0;background:none;border:0;
     color:var(--text-muted);font-size:var(--t-h3);line-height:1;cursor:pointer}
-  /* the first-run card across the foot, scrolling inside */
-  #firstrun,body.rail-hidden #firstrun{left:0;right:0;width:auto;transform:none;bottom:var(--tb);max-height:min(50vh,calc(100vh - var(--tb) - 64px));
+  /* the first-run card across the foot, scrolling inside. UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03): a bottom sheet of the same three
+     rows, no taller than the card before them (274 px at 390 x 844, the phone's first screen's unobstructed baseline): its title, two actions and
+     the key's button stay in view, the rows scroll between them (the block after this one; at 430 px tall or less the card scrolls whole, as before) */
+  #firstrun,body.rail-hidden #firstrun{left:0;right:0;width:auto;transform:none;bottom:var(--tb);max-height:min(32vh,calc(100vh - var(--tb) - 64px));
     overflow-y:auto;padding:14px 16px 12px;border-left:0;border-right:0}
   /* the Menu (decision 223): the tools and, in Study, the presentation switch behind one button at the top right; not in Watch or Clean,
      which show no tools */
@@ -951,6 +968,15 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .tools-vm{display:block}
   .tools-vm #viewmode{position:static;transform:none;opacity:1;backdrop-filter:none}
   .tools-vm .vm-btn{flex:1 1 0;min-height:44px}
+}
+/* UI/UX roadmap step 4 (UA-03): the phone's bottom sheet held upright: its rows scroll between its title and its actions */
+@media (max-width:720px) and (min-height:431px){
+  #firstrun:not([hidden]){display:flex;flex-direction:column;overflow:hidden}
+  #firstrun h2,#firstrun .fr-act,#firstrun .fr-more{flex:0 0 auto}
+  #firstrun h2{margin-bottom:6px}
+  #firstrun .fr-rows{flex:1 1 auto;min-height:0;overflow-y:auto;gap:9px;padding-right:2px}
+  #firstrun .fr-act{margin-top:10px}
+  #firstrun .fr-more{margin-top:4px}
 }
 /* roadmap step 6 item 3 (decision 226): a phone held landscape (430 px tall or less) keeps the layout above it, with the controls that leave
    the phone's timeline (decision 225: the ten-minute steps and "Whose eyes?"; the speeds as one button), which gives Watch's control row its

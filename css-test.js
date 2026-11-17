@@ -916,12 +916,13 @@ if(cerrs) process.exitCode=1;
     ferr.push("shell.html: the first-run card is not a modal dialog labelled by its title and described by its key: "+tag);
   const card=sh.slice(sh.indexOf('<div id="firstrun"'),sh.indexOf('<div id="toast"'));
   const ids=[...card.matchAll(/<button[^>]*id="([^"]+)"/g)].map(m=>m[1]);
-  if(ids.join(",")!=="fr-tour,fr-close") ferr.push("shell.html: the first-run card's buttons are "+ids.join(", ")+", not the primary and the stay");
+  /* UI/UX roadmap step 4 (UA-03): the key's button after the two actions (until step 4 written inline in the key's sentence by paintKey) */
+  if(ids.join(",")!=="fr-tour,fr-close,fr-grades") ferr.push("shell.html: the first-run card's buttons are "+ids.join(", ")+", not the primary, the stay and the key's");
   if(/fr-hint|fr-watch/.test(card)) ferr.push("shell.html: the first-run card still carries the hint or \"Watch the battle\" (decision 120, decision 111)");
   /* roadmap step 2 (decision 127 (b); decision 108's decided words): the key's plateau sentence, written twice (shell.html's #fr-key, shown
      before start-up repaints it, and paintKey), labelled as this map's reading in both, the unlabelled verdict in neither */
   { const KEY127="The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.";
-    const frKey=((card.match(/<p id="fr-key">([\s\S]*?)<\/p>/)||[])[1]||"").replace(/\s+/g," ");
+    const frKey=((card.match(/<div id="fr-key" class="fr-rows">([\s\S]*?)<div class="fr-act">/)||[])[1]||"").replace(/\s+/g," ");   /* UI/UX step 4: the key's rows */
     const pk=(app.match(/function paintKey\(\)\{[\s\S]*?\n\}/)||[""])[0];
     if(frKey.indexOf(KEY127)<0) ferr.push("shell.html: #fr-key does not carry decision 127 (b)'s labelled sentence: "+frKey.slice(-120));
     if(pk.indexOf(JSON.stringify(KEY127))<0) ferr.push("app.js: paintKey does not write decision 127 (b)'s labelled sentence");

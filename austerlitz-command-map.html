@@ -688,6 +688,21 @@ body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
 #firstrun .key-sw{display:inline-block;width:11px;height:11px;border:1px solid rgba(0,0,0,.55);border-radius:1px;
   margin:0 5px 0 1px;vertical-align:-1px}
 #firstrun .fr-act .t{min-height:34px;padding:7px 14px;font-size:var(--t-ui)}
+/* UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03, UA-04): the key as three rows, each with its sample in a column of its own (the sides'
+   colours, the grade letters as the names carry them, the plateau's contour), the grades one line each in the interface's type; the key's
+   button after the two actions */
+#firstrun .fr-rows{display:flex;flex-direction:column;gap:11px}
+#firstrun .fr-row{display:grid;grid-template-columns:46px minmax(0,1fr);column-gap:12px;align-items:start}
+#firstrun .fr-row p{margin:0}
+#firstrun .fr-smp{display:flex;gap:3px;align-items:center;padding-top:4px;color:var(--text-hi)}
+#firstrun .fr-smp .key-sw{width:15px;height:15px;margin:0}
+#firstrun .fr-smp svg{width:34px;height:20px}
+#firstrun .fr-smp b,#firstrun .fr-grades b{display:inline-block;min-width:13px;text-align:center;font-family:var(--sans);font-size:var(--t-small);font-weight:600;line-height:1.35;
+  color:var(--text-hi);background:var(--ink);border:1px solid var(--text-muted);border-radius:2px;padding:0 3px}
+#firstrun .fr-grades{list-style:none;margin:7px 0 0;padding:0;font-family:var(--sans);font-size:var(--t-ui);line-height:1.45;color:var(--text-body)}
+#firstrun .fr-grades li{display:flex;gap:8px;align-items:baseline;margin:3px 0 0}
+#firstrun .fr-grades b{flex:0 0 auto}
+#firstrun .fr-more{margin:9px 0 0;font-family:var(--sans);font-size:var(--t-ui);line-height:1.4}
 /* Stage 7B (decisions 111, 113): the card's one primary action, drawn as a pressed button is; the dispatch stays hidden under the card only
    below 1080 px, where it is a card the first-run card would stand over (decision 58); docked it is the rail's Now tab, shown */
 #firstrun .fr-act .t.fr-primary{background:var(--text);color:var(--on-accent);border-color:var(--text)}
@@ -941,8 +956,10 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .brand{position:relative;padding-right:48px}
   .railclose{display:block;position:absolute;right:-6px;top:-4px;min-width:44px;min-height:44px;padding:0;background:none;border:0;
     color:var(--text-muted);font-size:var(--t-h3);line-height:1;cursor:pointer}
-  /* the first-run card across the foot, scrolling inside */
-  #firstrun,body.rail-hidden #firstrun{left:0;right:0;width:auto;transform:none;bottom:var(--tb);max-height:min(50vh,calc(100vh - var(--tb) - 64px));
+  /* the first-run card across the foot, scrolling inside. UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03): a bottom sheet of the same three
+     rows, no taller than the card before them (274 px at 390 x 844, the phone's first screen's unobstructed baseline): its title, two actions and
+     the key's button stay in view, the rows scroll between them (the block after this one; at 430 px tall or less the card scrolls whole, as before) */
+  #firstrun,body.rail-hidden #firstrun{left:0;right:0;width:auto;transform:none;bottom:var(--tb);max-height:min(32vh,calc(100vh - var(--tb) - 64px));
     overflow-y:auto;padding:14px 16px 12px;border-left:0;border-right:0}
   /* the Menu (decision 223): the tools and, in Study, the presentation switch behind one button at the top right; not in Watch or Clean,
      which show no tools */
@@ -957,6 +974,15 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .tools-vm{display:block}
   .tools-vm #viewmode{position:static;transform:none;opacity:1;backdrop-filter:none}
   .tools-vm .vm-btn{flex:1 1 0;min-height:44px}
+}
+/* UI/UX roadmap step 4 (UA-03): the phone's bottom sheet held upright: its rows scroll between its title and its actions */
+@media (max-width:720px) and (min-height:431px){
+  #firstrun:not([hidden]){display:flex;flex-direction:column;overflow:hidden}
+  #firstrun h2,#firstrun .fr-act,#firstrun .fr-more{flex:0 0 auto}
+  #firstrun h2{margin-bottom:6px}
+  #firstrun .fr-rows{flex:1 1 auto;min-height:0;overflow-y:auto;gap:9px;padding-right:2px}
+  #firstrun .fr-act{margin-top:10px}
+  #firstrun .fr-more{margin-top:4px}
 }
 /* roadmap step 6 item 3 (decision 226): a phone held landscape (430 px tall or less) keeps the layout above it, with the controls that leave
    the phone's timeline (decision 225: the ten-minute steps and "Whose eyes?"; the speeds as one button), which gives Watch's control row its
@@ -1634,6 +1660,13 @@ $Id$
     </svg><span class="lg-name">Key</span>
   </button>
   <div class="lg-rows" id="lg-rows">
+    <!-- UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-04): the letter beside a name, one row per position grade, first in the key wherever the
+         letters are drawn; their words CONF_TEXT's own, written at start-up (app.js paintKey), so the key and the dossier cannot disagree; the
+         timing grades, which use the same letters on another scale, are not these rows' -->
+    <div class="k" data-lg="grade-a"><span>A: <span class="gtx" data-grade="A">Position documented in the sources.</span></span><span class="bdg"><b>A</b></span></div>
+    <div class="k" data-lg="grade-b"><span>B: <span class="gtx" data-grade="B">Sector documented; the frontage shown is an approximation.</span></span><span class="bdg"><b>B</b></span></div>
+    <div class="k" data-lg="grade-c"><span>C: <span class="gtx" data-grade="C">Reconstructed from the narrative — treat as indicative only.</span></span><span class="bdg"><b>C</b></span></div>
+    <div class="k" data-lg="badge"><span>?: reported only (under a headquarters&rsquo; reading)</span><span class="bdg"><b>?</b></span></div>
     <!-- Stage 6C (docs/STAGE6_SPEC.md section 4.3; decisions 97, 98, 107): the nation colours are the counters', shown where counters are drawn;
          where figures are drawn, what the figures and the standards are; the sides are carried by the marks beside the names and on the ground -->
     <div class="k" data-lg="nation"><span>counters: French</span><span class="sw" data-key="fr"></span></div>
@@ -1690,7 +1723,6 @@ $Id$
     <div class="k" data-lg="vine"><span>vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not established)</span></div>
     <!-- Stage 4C (docs/STAGE4_SPEC.md section C.5; decisions 72, 73): shown only while the valley fog is drawn -->
     <div class="k" data-lg="fog"><span>valley fog: the narrative's; depth (238 m) and lifting modelled; drawn see-through</span></div>
-    <div class="k" data-lg="badge"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
     <!-- Stage 5B: the grades drawn on the ground (decisions 85-88); only the rows for the grades on screen are shown -->
     <div class="k" data-lg="conf-a"><span>A: position documented (its footprint)</span><span class="cfk cfk-a"></span></div>
     <div class="k" data-lg="conf-b"><span>B: sector documented, frontage approximate</span><span class="cfk cfk-b"></span></div>
@@ -1819,14 +1851,23 @@ $Id$
      its focus is managed by app.js (openFirstRun, closeFirst); the controls' hint is in the "?" overlay and the legend's control line -->
 <div id="firstrun" role="dialog" aria-modal="true" aria-labelledby="fr-title" aria-describedby="fr-key">
   <h2 id="fr-title">The Battle of Austerlitz</h2>
-  <!-- written at start-up from the same colour key as the legend (COLOUR_KEY), so the two cannot disagree -->
-  <p id="fr-key">French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath
-     them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.
-     It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.</p>
+  <!-- UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03, UA-04): the key as three rows, each with its sample: the sides' colours, the position
+       grades (one line each, CONF_TEXT's words) and the plateau; written at start-up from the same colour key as the legend (COLOUR_KEY) and
+       from CONF_TEXT (app.js paintKey), so the card, the key and the dossier cannot disagree; the words below are shown until then -->
+  <div id="fr-key" class="fr-rows">
+    <div class="fr-row fr-r-side"><span class="fr-smp" aria-hidden="true"><i class="key-sw"></i><i class="key-sw"></i></span>
+      <p>French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows.</p></div>
+    <div class="fr-row fr-r-grade"><span class="fr-smp" aria-hidden="true"><b>A</b><b>B</b><b>C</b></span>
+      <div><p>It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.</p>
+      <ul class="fr-grades"><li><b>A</b> Position documented in the sources.</li><li><b>B</b> Sector documented; the frontage shown is an approximation.</li><li><b>C</b> Reconstructed from the narrative — treat as indicative only.</li></ul></div></div>
+    <div class="fr-row fr-r-plateau"><span class="fr-smp" aria-hidden="true"><svg viewBox="0 0 30 18"><path d="M2 15 Q9 4 15 4 T28 15" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 15 Q12 9 15 9 T22 15" fill="none" stroke="currentColor" stroke-width="1"/></svg></span>
+      <p>The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.</p></div>
+  </div>
   <div class="fr-act">
     <button class="t fr-primary" id="fr-tour" type="button">Begin (two min)</button>
     <button class="t" id="fr-close" type="button">Explore on my own</button>
   </div>
+  <p class="fr-more"><button class="fr-link" id="fr-grades" type="button">Every symbol: the key</button></p>
 </div>
 
 <div id="toast"></div>
@@ -14081,6 +14122,8 @@ function paintLegend(){
   on.chapel=placeLabels.some(function(o){ return o.show&&o.ft.id==="chapel"; }); on.chapelsite=placeLabels.some(function(o){ return o.show&&o.ft.id==="santon"; });
   on.landmark=!!((LMCUE.castle&&LMCUE.castle.visible)||(LMCUE.garden&&LMCUE.garden.visible));
   on.badge=on.badge||(mode==="terrain"&&textOn());
+  /* UI/UX roadmap step 4 (UA-04): the three grades, one row each, wherever the letters are drawn; the "?" row only under a headquarters' reading */
+  on["grade-a"]=on["grade-b"]=on["grade-c"]=on.badge; on.badge=on.badge&&commandView!=="none";
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
   _lgKey=key; ML.lgSize=null;
@@ -15130,7 +15173,7 @@ var LABELS={
      meanwhile): the ten themes "themes" (the code's and the specifications' word; "moment" stays a phase's or an event's), the phase's own
      text "the phase text" (the Now tab's note; "dispatch" was the code's word on screen), the sources sheet "Accuracy and sources" (its
      button, its name; its heading is SOURCE_NOTE.title, data) */
-  card:{recon:"It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.", key:"Show the key"},   /* decision 276 (a) */
+  card:{recon:"It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.", key:"Every symbol: the key"},   /* decision 276 (a); UI/UX step 4 (UA-03): the audit's words, the button after the card's two actions */
   nowOff:{hidden:"The phase text is hidden.", opening:"The phase text is hidden during the opening: its words are in the opening's bar.",
     tour:"The phase text is hidden during the guided tour: its words are in the tour's bar.", key:"Or press D.", show:"Show the phase text"},   /* the final audits' Stage 6 (CL-UX-12) */
   names:{themes:"The battle in ten themes", themePick:"Pick one of the ten themes above.", theme:"The theme", phaseText:"the phase text",
@@ -15742,19 +15785,25 @@ function paintKey(){
   if(gk) gk.innerHTML=TOKENS.sym.going.map(function(g){
     var lab=g.label+(GT[g.key]!==undefined?" (true slope over "+GT[g.key].toFixed(2)+"\u00b0, provisional)":"");
     return '<div class="k"><span>'+esc(lab)+'</span><span class="sw" data-going="'+g.key+'" style="background:'+g.hex+'"></span></div>'; }).join("");
+  /* UI/UX roadmap step 4 (UA-04): the key's grade rows in CONF_TEXT's own words (guarded data, read, never copied) */
+  document.querySelectorAll(".legend .gtx[data-grade]").forEach(function(e){ var t=CONF_TEXT[e.dataset.grade]; if(t) e.textContent=t; });
   var p=document.getElementById("fr-key"); if(!p) return;
   var K=COLOUR_KEY;
   function sw(k,cls){ return '<i class="'+(cls||"key-sw")+'" data-key="'+k+'" style="background:'+K[k].hex+'" aria-hidden="true"></i>'; }
-  function cap(w){ return w.charAt(0).toUpperCase()+w.slice(1); }
   /* Stage 6C (decision 108; section 4.3 item 4): the key names the symbology, not the coats, which follow the sources (decision 97);
-     roadmap step 2 (decision 127 (b); docs/FINAL_AUDIT.md H-4): its verdict on the plateau labelled as this map's reading */
-  p.innerHTML="French formations are marked in "+sw("side-fr")+K["side-fr"].word+" and the Allies in "+sw("side-al")+K["side-al"].word+
-    ": on their names, their counters and the ground beneath them, and on the movement arrows. "+
-    "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle."+" "+
-    /* the final audits' Stage 6, WP-09 (CL-UX-11; owner decision 276 (a)): the map said nowhere on its first screen that it is a reconstruction or what
-       the letters beside names are; one sentence, and the key's grade rows one press away (the button closes the card where it stands, the key open) */
-    esc(LABELS.card.recon)+' <button class="fr-link" id="fr-grades" type="button">'+esc(LABELS.card.key)+'</button>';
-  var gb=document.getElementById("fr-grades"); if(gb) gb.addEventListener("click",showKeyFromCard);
+     roadmap step 2 (decision 127 (b); docs/FINAL_AUDIT.md H-4): its verdict on the plateau labelled as this map's reading.
+     UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03, UA-04): the same sentences as three rows, each with its sample: the sides' colours; the
+     reconstruction's sentence (the final audits' Stage 6, WP-09, CL-UX-11; owner decision 276 (a)) with one line per position grade in CONF_TEXT's
+     words (read, never copied: the dossier's); the plateau. The key's button ("Every symbol: the key") follows the card's two actions */
+  function row(cls,smp,body){ return '<div class="fr-row '+cls+'"><span class="fr-smp" aria-hidden="true">'+smp+'</span>'+body+'</div>'; }
+  p.innerHTML=row("fr-r-side",sw("side-fr")+sw("side-al"),
+      "<p>French formations are marked in "+K["side-fr"].word+" and the Allies in "+K["side-al"].word+
+      ": on their names, their counters and the ground beneath them, and on the movement arrows.</p>")+
+    row("fr-r-grade","<b>A</b><b>B</b><b>C</b>",
+      "<div><p>"+esc(LABELS.card.recon)+'</p><ul class="fr-grades">'+["A","B","C"].map(function(g){ return "<li><b>"+g+"</b> "+esc(CONF_TEXT[g])+"</li>"; }).join("")+"</ul></div>")+
+    row("fr-r-plateau",'<svg viewBox="0 0 30 18"><path d="M2 15 Q9 4 15 4 T28 15" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 15 Q12 9 15 9 T22 15" fill="none" stroke="currentColor" stroke-width="1"/></svg>',
+      "<p>"+"The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle."+"</p>");
+  var gb=document.getElementById("fr-grades"); if(gb&&!gb._bound){ gb._bound=true; gb.textContent=LABELS.card.key; gb.addEventListener("click",showKeyFromCard); }
 }
 /* UI/UX roadmap step 1 (docs/UX_ART_AUDIT.md UA-05): "Show the key" shows the key on every layout. The card closes where it stands (decision 276
    (a)); where the key panel is shown (from 1080 px wide and above 430 px tall, not squeezed beside the dispatch) it opens, laid out at once, and the
@@ -18457,6 +18506,60 @@ function wp08Checks(){
    since the label pass saw no lights), and the shadow map is drawn once a frame (the label pass sees the lights now, so it must not draw it
    again). (2) CL-PERF-13: MAPCAM.freeRect returns the search's own rectangle, searches once for inputs it has seen, again for new inputs, and a
    caller's change to a returned rectangle does not reach the next call */
+/* UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03, UA-04): the first frame. The key's grade rows (one per position grade, CONF_TEXT's words, first in
+   the key wherever the letters are drawn, in the "?" sheet's copy too, no timing grade among them) and the welcome's rows (three, each with its
+   sample, then the two actions, then the key's button; the card a modal dialog, its primary focused) */
+function ux4Checks(){
+  var out=[], K={t:clock,mode:mode,pres:presentation,cv:commandView,lg:ML.legendOpen,act:document.activeElement};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function txt(e){ return (e&&e.textContent||"").replace(/\s+/g," ").trim(); }
+  if(playing) stopPlay();
+  try{
+    if(mode!=="terrain") setMode("terrain"); if(presentation!=="study") setPresentation("study"); if(commandView!=="none") setCommandView("none");
+    var N1="the key's grades (UI/UX step 4, UA-04): one row per position grade in CONF_TEXT's words, first in the key wherever the letters are drawn, and in the “?” sheet's copy; no timing grade among them";
+    guard(N1,function(){
+      var bad=[], rows=document.getElementById("lg-rows"), G=["A","B","C"];
+      setClock(570,{instant:true,force:true,camera:false}); updateVisibility(); _lgKey=null; paintLegend();
+      var shownRows=[].filter.call(rows.querySelectorAll(":scope > .k"),function(k){ return !k.hidden; });
+      G.forEach(function(g,i){ var r=rows.querySelector('[data-lg="grade-'+g.toLowerCase()+'"]'), w=g+": "+CONF_TEXT[g];
+        if(!r) { bad.push("no row for "+g); return; }
+        if(r.hidden) bad.push(g+"'s row hidden on the Landscape with names");
+        if(txt(r.querySelector("span")).indexOf(w)!==0) bad.push(g+"'s row says “"+txt(r)+"”, not “"+w+"”");
+        if(shownRows[i]!==r) bad.push(g+"'s row not the key's row "+(i+1)); });
+      var all=txt(rows);
+      ["A","B","C"].forEach(function(g){ if(all.indexOf(TIMING_TEXT[g])>=0) bad.push("the timing grade "+g+"'s words in the key"); });
+      var q=rows.querySelector('[data-lg="badge"]'); if(q&&!q.hidden) bad.push("the reported-only row shown without a headquarters' reading");
+      setCommandView("fr"); updateVisibility(); paintLegend(); if(!q||q.hidden) bad.push("the reported-only row not shown under a headquarters' reading"); setCommandView("none"); updateVisibility(); paintLegend();
+      buildHelp(); var hk=document.getElementById("help-key"), ht=txt(hk);
+      G.forEach(function(g){ if(ht.indexOf(g+": "+CONF_TEXT[g])<0) bad.push("the “?” sheet's key lacks "+g+"'s row"); });
+      setMode("staff"); updateVisibility(); paintLegend(); shownRows=[].filter.call(rows.querySelectorAll(":scope > .k"),function(k){ return !k.hidden; });
+      if(layerOn.symbols&&shownRows.slice(0,3).map(function(k){ return k.dataset.lg; }).join(",")!=="grade-a,grade-b,grade-c") bad.push("on the paper map the key's first rows are "+shownRows.slice(0,3).map(function(k){ return k.dataset.lg; }).join(","));
+      setMode("terrain"); updateVisibility(); paintLegend();
+      ck(N1,!bad.length,bad.length?"WRONG: "+bad.join("; "):G.map(function(g){ return g+": "+CONF_TEXT[g]; }).join(" | "));
+    });
+    var N2="the welcome's rows (UI/UX step 4, UA-03): the sides' colours, the grades (CONF_TEXT's three lines) and the plateau, each with its sample, then the two actions, then “"+LABELS.card.key+"”";
+    guard(N2,function(){
+      var bad=[], fr=document.getElementById("firstrun"), key=document.getElementById("fr-key");
+      var R=[].slice.call(key.querySelectorAll(":scope > .fr-row"));
+      if(R.map(function(r){ return r.className.replace("fr-row ",""); }).join(",")!=="fr-r-side,fr-r-grade,fr-r-plateau") bad.push("the rows are "+R.map(function(r){ return r.className; }).join(", "));
+      R.forEach(function(r){ var s=r.querySelector(":scope > .fr-smp"); if(!s||!s.children.length) bad.push(r.className+" has no sample"); else if(s.getAttribute("aria-hidden")!=="true") bad.push(r.className+"'s sample not hidden from assistive technology"); });
+      var sw=R[0]&&R[0].querySelectorAll(".fr-smp [data-key]"); if(!sw||sw.length!==2||sw[0].dataset.key!=="side-fr"||sw[1].dataset.key!=="side-al") bad.push("the sides' row's sample is not the two side colours");
+      var li=R[1]?[].slice.call(R[1].querySelectorAll(".fr-grades li")):[];
+      if(li.map(txt).join("|")!==["A","B","C"].map(function(g){ return g+" "+CONF_TEXT[g]; }).join("|")) bad.push("the grades' lines are “"+li.map(txt).join(" | ")+"”");
+      if(R[1]&&txt(R[1]).indexOf(LABELS.card.recon)<0) bad.push("the reconstruction's sentence (decision 276 (a)) missing");
+      if(R[2]&&txt(R[2]).indexOf("which this map reads as deciding the battle")<0) bad.push("the plateau's sentence (decision 127 (b)) missing");
+      var B=frButtons().map(function(b){ return b.id; });
+      if(B.join(",")!=="fr-tour,fr-close,fr-grades") bad.push("the card's buttons in the order "+B.join(", "));
+      var gb=document.getElementById("fr-grades"); if(txt(gb)!==LABELS.card.key) bad.push("the key's button says “"+txt(gb)+"”");
+      ck(N2,!bad.length,bad.length?"WRONG: "+bad.join("; "):R.length+" rows; buttons "+B.join(", "));
+    });
+  } finally {
+    if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); if(commandView!==K.cv) setCommandView(K.cv);
+    setClock(K.t,{instant:true,force:true,camera:false}); ML.legendOpen=K.lg; updateVisibility(); paintLegend(); if(K.act&&K.act.focus) K.act.focus(); requestRender(3);
+  }
+  return out;
+}
 function wp16Checks(){
   var out=[];
   function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
@@ -21605,8 +21708,9 @@ var AUSTERLITZ_DEBUG=(function(){
       [["role","dialog"],["aria-modal","true"],["aria-labelledby","fr-title"],["aria-describedby","fr-key"]].forEach(function(a){
         if(fr.getAttribute(a[0])!==a[1]) bad.push("the card's "+a[0]+" is "+fr.getAttribute(a[0])); });
       var B=frButtons().map(function(b){ return b.textContent; });
-      /* since the final audits' Stage 6 (decision 276 (a)): the key's "Show the key" in the card's sentence, before its two actions */
-      if(B.join("|")!==LABELS.card.key+"|"+LABELS.firstRun.primary+"|"+LABELS.firstRun.stay) bad.push("the card's buttons are "+B.join(", "));
+      /* since the final audits' Stage 6 (decision 276 (a)): the key's button in the card; since UI/UX step 4 (UA-03) after its two actions (until step 4
+         inline in the key's sentence, before them) */
+      if(B.join("|")!==LABELS.firstRun.primary+"|"+LABELS.firstRun.stay+"|"+LABELS.card.key) bad.push("the card's buttons are "+B.join(", "));
       if(aid()!=="fr-tour") bad.push("focus on "+aid()+" when the card opens, not its primary action");
       key("Tab"); said.push(aid()); key("Tab"); said.push(aid()); key("Tab",true); said.push(aid());
       if(said.join(",")!=="fr-close,fr-grades,fr-close") bad.push("Tab, Tab, Shift+Tab went to "+said.join(", "));   /* the third button wraps to the first, kept inside */
@@ -24108,6 +24212,7 @@ var AUSTERLITZ_DEBUG=(function(){
     wp10pChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the facings, the camp, the tier) */
     wp10gChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the crowns, the blocks among the buildings) */
     wp16Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 7, WP-16 (the label pass's lights, the free rectangle kept) */
+    ux4Checks().forEach(function(c){ out.push(c); });   /* UI/UX roadmap step 4 (UA-03, UA-04: the first frame) */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();

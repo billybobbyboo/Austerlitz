@@ -741,7 +741,8 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   MLT:"UI/UX roadmap step 2: the Landscape's label tiers (the owner's decision of 15 November 2026; they supersede the follow-up 8I's far plate, decision 263 (a))",
   TOAST:"Stage 8, the follow-up 8I: the phase's message placed again under a layout's change",
   UX1:"UI/UX roadmap step 1: the map key shown from the first card, the markers' drags, the touch scrub lane, the coincident events (UA-05, 06, 12, 13, 17)",
-  UX3:"UI/UX roadmap step 3: Follow fitted to the action during Play, a pause, the end of Play and every ordinary seek keeping the eye (UA-02; the owner's decision of 15 November 2026)"};
+  UX3:"UI/UX roadmap step 3: Follow fitted to the action during Play, a pause, the end of Play and every ordinary seek keeping the eye (UA-02; the owner's decision of 15 November 2026)",
+  UX4:"UI/UX roadmap step 4: the first frame: the welcome's rows, the key's position grades one row each (UA-03, UA-04)"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -1016,6 +1017,8 @@ function checkLive(live,opts){
   if(req("ux2","the Landscape's label tiers and Watch's set while the clock plays (UI/UX roadmap step 2)")) checkUx2(live.ux2,so).forEach(x=>f.push(x));
   /* UI/UX roadmap step 3 (UA-02): the live block "ux3" (tools/visual/ux3.js), who moves the camera, judged by checkUx3 (below) */
   if(req("ux3","who moves the camera: Play's stops, the seeks and the deliberate moves by real input (UI/UX roadmap step 3)")) checkUx3(live.ux3,so).forEach(x=>f.push(x));
+  /* UI/UX roadmap step 4 (UA-03, UA-04): the live block "ux4" (tools/visual/ux4.js), the first frame, judged by checkUx4 (below) */
+  if(req("ux4","the first frame: the welcome, its focus and ways out, the key's grades on screen in every layout (UI/UX roadmap step 4)")) checkUx4(live.ux4,so).forEach(x=>f.push(x));
   if(req("tips","the timeline's tips by real keys, mouse and touch (Stage 8, implementation PR 8A, decision 251)")){ const T=live.tips, b=[];
     const is=(o,k)=>!!(o&&o.tip&&o.tip===o[k]), none=o=>!!(o&&o.tip===null);
     if(!is(T.focus,"focusTip")) b.push("Tab to a marker showed no tip");
@@ -1427,3 +1430,35 @@ function checkUx3(L,so){
   return f;
 }
 module.exports.checkUx3=checkUx3;
+
+/* UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03, UA-04): the live block "ux4" (tools/visual/ux4.js runBlock), judged.
+   - grades (UA-04): with the key opened from the card (a real click, or a tap on the phone's page), each of CONF_TEXT's three sentences on screen
+     (inside the viewport, topmost at its middle) at every layout the block visits, and none of TIMING_TEXT's (the timing grades are not the
+     position grades);
+   - focus (decisions 117, 118): on each fresh page the primary action focused at load; Tab, Tab, Tab and Shift+Tab inside the card in its order
+     (the stay, the key's button, the primary, the key's button); Esc and the stay button close it where it stands (the eye and the clock moved at
+     most EPS) with the focus on Play;
+   - first (UA-03): the card's buttons inside the card and on screen; the unobstructed share of the first screen at least FREE at 1600 x 900 and
+     1366 x 768 and, on the phone's page, at least the phone's first-screen baseline (UNOBSTRUCTED_PHONE, the case phone-390-first's) */
+const UX4={EPS:1e-6, FREE:0.70, PHONE_FREE:0.535, TAB:["fr-close","fr-grades","fr-tour","fr-grades"]};
+module.exports.UX4=UX4;
+function checkUx4(L,so){
+  const f=[]; if(!L) return ["ux4: no record"];
+  const G=L.grades||[];
+  if(!G.length) f.push("ux4 grades: not run");
+  G.forEach(r=>{ const miss=["A","B","C"].filter(g=>!(r.on&&r.on[g]));
+    if(miss.length) f.push("ux4 grades "+r.vp+" ("+r.how+", "+r.where+"): "+miss.join(", ")+" not on screen with the key open");
+    if(r.timing&&r.timing.length) f.push("ux4 grades "+r.vp+": the timing grades' words shown with the key ("+r.timing.join(", ")+")"); });
+  if(!so&&G.length<9) f.push("ux4 grades: "+G.length+" layouts, not 9");
+  const F=L.first||[];
+  if(F.length<(so?2:3)) f.push("ux4 first: "+F.length+" fresh pages");
+  F.forEach(r=>{ const w="ux4 first "+r.vp+": ";
+    if(r.atLoad!=="fr-tour") f.push(w+"the focus at load on "+r.atLoad+", not the primary action");
+    if(JSON.stringify(r.tab)!==JSON.stringify(UX4.TAB)) f.push(w+"Tab, Tab, Tab, Shift+Tab went to "+r.tab.join(", "));
+    ["esc","stay"].forEach(k=>{ const x=r[k]; if(!x||x.card!==false||x.focus!=="play"||!(x.moved<=UX4.EPS)) f.push(w+k+": "+JSON.stringify(x)); });
+    if(!r.boxes||!r.boxes.buttonsInCard) f.push(w+"a button outside the card or off the screen");
+    const want=r.phone?UX4.PHONE_FREE:UX4.FREE;
+    if(!r.boxes||!(r.boxes.unobstructed>=want)) f.push(w+"the unobstructed share "+(r.boxes&&r.boxes.unobstructed)+", under "+want); });
+  return f;
+}
+module.exports.checkUx4=checkUx4;
