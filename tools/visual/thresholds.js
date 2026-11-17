@@ -219,6 +219,15 @@ UNOBSTRUCTED["first-run"]=[0.607,0.478];   /* was [0.625,0.506] */
 UNOBSTRUCTED["first-run-laptop"]=[0.521,0.478];   /* was [0.546,0.506] */
 UNOBSTRUCTED["phone-390-first"]=[0.535,null];   /* was [0.591,null] */
 PHONE.framing["phone-390-first"]=13;   /* was 16 */
+/* UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03; the owner's decision of 17 November 2026 on decision 113, W1t as recommended): from 1080 px
+   the welcome stands in the rail's column, over its Now tab, the tools and the view switch standing down while it is open; on a phone the same rows in
+   a sheet no taller than before. Raised to what the step-4 build measures, rounded down to 0.1 point (the 3B and 3C method; this machine's pinned
+   browser measured the base build exactly as CI did, 0.6076 / 0.4788, 0.5214 / 0.4788 and 0.5356): first-run 0.7294 / 0.6678, first-run-laptop
+   0.6875 / 0.6678, phone-390-first 0.5403. The audit's 0.70 is met at 1600 x 900 and not at 1366 x 768 (0.6875): accepted as measured, with these three baselines, by the
+   owner's answer of 17 November 2026 ("Your recommendations for all", docs/ux-step4-evidence/README.md section 10) */
+UNOBSTRUCTED["first-run"]=[0.729,0.667];   /* was [0.607,0.478] */
+UNOBSTRUCTED["first-run-laptop"]=[0.687,0.667];   /* was [0.521,0.478] */
+UNOBSTRUCTED["phone-390-first"]=[0.540,null];   /* was [0.535,null] */
 /* the caption's parts give way in order where its row is narrow (decision 159): the phase's title first, then the act, then the events' names;
    each is whole elsewhere on the screen or one press away (the act as a heading of the phase list, the phase as the dispatch sheet's title, the
    event in the sheet and in its dossier). Held landscape, the track's act and phase names are cut where their band is narrower than the name
@@ -556,8 +565,12 @@ module.exports.check=function(name,m,spec,opts){
      dispatch from 1080 px is the rail's Now tab, which the card cannot stand over, and decision 113 shows it there under the card. The test
      is now what the message says: the two boxes may not meet. Below 1080 px, where the dispatch is a card again (decision 58), it still
      fails as before (the boxes overlap there, Part A section 6). Without the boxes (a build measured by an older harness) it fails as before. */
-  if(m.firstRunVisible&&m.dispatchVisible){ const a=m.firstRunBox, b=m.dispatchBox;
-    if(!a||!b||(Math.min(a[2],b[2])-Math.max(a[0],b[0])>0&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0)) f.push("first-run card stacked on the dispatch card"); }
+  /* UI/UX roadmap step 4 (UA-03; the owner's decision of 17 November 2026 on decision 113, as recommended): docked, the welcome stands in the rail's
+     column with the rail's Now tab behind it, so there the card covers the dispatch's whole width (a sheet over the rail, never a card half over
+     it); undocked the two boxes may still not meet */
+  if(m.firstRunVisible&&m.dispatchVisible){ const a=m.firstRunBox, b=m.dispatchBox, dk=!!(m.docking&&m.docking.docked&&m.docking.dispatchInRail);
+    const meet=!a||!b||(Math.min(a[2],b[2])-Math.max(a[0],b[0])>0&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0);
+    if(meet&&!(dk&&a&&b&&a[0]<=b[0]+0.5&&a[2]>=b[2]-0.5)) f.push("first-run card stacked on the dispatch card"); }
   /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111, 118): on the fresh first-run page, by real key presses, the card has focus
      on its primary action, Tab stays inside it, and Esc closes it where it stands with focus on Play */
   /* roadmap step 3 (SW-8): a mostly sideways wheel leaves Follow on and the card open; a vertical wheel over the map closes it and zooms */
@@ -741,7 +754,8 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   MLT:"UI/UX roadmap step 2: the Landscape's label tiers (the owner's decision of 15 November 2026; they supersede the follow-up 8I's far plate, decision 263 (a))",
   TOAST:"Stage 8, the follow-up 8I: the phase's message placed again under a layout's change",
   UX1:"UI/UX roadmap step 1: the map key shown from the first card, the markers' drags, the touch scrub lane, the coincident events (UA-05, 06, 12, 13, 17)",
-  UX3:"UI/UX roadmap step 3: Follow fitted to the action during Play, a pause, the end of Play and every ordinary seek keeping the eye (UA-02; the owner's decision of 15 November 2026)"};
+  UX3:"UI/UX roadmap step 3: Follow fitted to the action during Play, a pause, the end of Play and every ordinary seek keeping the eye (UA-02; the owner's decision of 15 November 2026)",
+  UX4:"UI/UX roadmap step 4: the first frame: the welcome's rows, the key's position grades one row each (UA-03, UA-04)"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -1016,6 +1030,8 @@ function checkLive(live,opts){
   if(req("ux2","the Landscape's label tiers and Watch's set while the clock plays (UI/UX roadmap step 2)")) checkUx2(live.ux2,so).forEach(x=>f.push(x));
   /* UI/UX roadmap step 3 (UA-02): the live block "ux3" (tools/visual/ux3.js), who moves the camera, judged by checkUx3 (below) */
   if(req("ux3","who moves the camera: Play's stops, the seeks and the deliberate moves by real input (UI/UX roadmap step 3)")) checkUx3(live.ux3,so).forEach(x=>f.push(x));
+  /* UI/UX roadmap step 4 (UA-03, UA-04): the live block "ux4" (tools/visual/ux4.js), the first frame, judged by checkUx4 (below) */
+  if(req("ux4","the first frame: the welcome, its focus and ways out, the key's grades on screen in every layout (UI/UX roadmap step 4)")) checkUx4(live.ux4,so).forEach(x=>f.push(x));
   if(req("tips","the timeline's tips by real keys, mouse and touch (Stage 8, implementation PR 8A, decision 251)")){ const T=live.tips, b=[];
     const is=(o,k)=>!!(o&&o.tip&&o.tip===o[k]), none=o=>!!(o&&o.tip===null);
     if(!is(T.focus,"focusTip")) b.push("Tab to a marker showed no tip");
@@ -1427,3 +1443,41 @@ function checkUx3(L,so){
   return f;
 }
 module.exports.checkUx3=checkUx3;
+
+/* UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03, UA-04): the live block "ux4" (tools/visual/ux4.js runBlock), judged.
+   - grades (UA-04): with the key opened from the card (a real click, or a tap on the phone's page), each of CONF_TEXT's three sentences on screen
+     (inside the viewport, topmost at its middle) at every layout the block visits, and none of TIMING_TEXT's (the timing grades are not the
+     position grades);
+   - focus (decisions 117, 118): on each fresh page the primary action focused at load; Tab, Tab, Tab and Shift+Tab inside the card in its order
+     (the stay, the key's button, the primary, the key's button); Esc and the stay button close it where it stands (the eye and the clock moved at
+     most EPS) with the focus on Play;
+   - first (UA-03): the card's buttons inside the card and on screen; the unobstructed share of the first screen at least FREE at 1600 x 900 and
+     1366 x 768 and, on the phone's page, at least the phone's first-screen baseline (UNOBSTRUCTED_PHONE, the case phone-390-first's) */
+/* FREE by viewport: the audit's 0.70 at 1600 x 900; at 1366 x 768 the owner's choice (17 November 2026, as recommended: the timeline kept beside
+   the welcome) measures 0.6875, under the audit's 0.70, accepted as measured by the owner's answer of the same day ("Your recommendations for
+   all"); held at it rounded down to 0.1 point. LUM: the battle area's
+   median at 04:00 at 1600 x 900 at least LUM (the base build's 31.9 times 1.6; the owner's decision on decision 71, the light lifted 1.66 times, N3 kept by the owner's answer) */
+const UX4={EPS:1e-6, FREE:{"1600x900":0.70,"1366x768":0.687}, PHONE_FREE:0.540, LUM:51.0, TAB:["fr-close","fr-grades","fr-tour","fr-grades"]};
+module.exports.UX4=UX4;
+function checkUx4(L,so){
+  const f=[]; if(!L) return ["ux4: no record"];
+  const G=L.grades||[];
+  if(!G.length) f.push("ux4 grades: not run");
+  G.forEach(r=>{ const miss=["A","B","C"].filter(g=>!(r.on&&r.on[g]));
+    if(miss.length) f.push("ux4 grades "+r.vp+" ("+r.how+", "+r.where+"): "+miss.join(", ")+" not on screen with the key open");
+    if(r.timing&&r.timing.length) f.push("ux4 grades "+r.vp+": the timing grades' words shown with the key ("+r.timing.join(", ")+")"); });
+  if(!so&&G.length<9) f.push("ux4 grades: "+G.length+" layouts, not 9");
+  const F=L.first||[];
+  if(F.length<(so?2:3)) f.push("ux4 first: "+F.length+" fresh pages");
+  F.forEach(r=>{ const w="ux4 first "+r.vp+": ";
+    if(r.atLoad!=="fr-tour") f.push(w+"the focus at load on "+r.atLoad+", not the primary action");
+    if(JSON.stringify(r.tab)!==JSON.stringify(UX4.TAB)) f.push(w+"Tab, Tab, Tab, Shift+Tab went to "+r.tab.join(", "));
+    ["esc","stay"].forEach(k=>{ const x=r[k]; if(!x||x.card!==false||x.focus!=="play"||!(x.moved<=UX4.EPS)) f.push(w+k+": "+JSON.stringify(x)); });
+    if(!r.boxes||!r.boxes.buttonsInCard) f.push(w+"a button outside the card or off the screen");
+    const want=r.phone?UX4.PHONE_FREE:UX4.FREE[r.vp];
+    if(r.lum&&!(r.lum.median>=UX4.LUM)) f.push(w+"the battle area's median luminance at 04:00 "+r.lum.median+", under "+UX4.LUM);
+    if(!so&&!r.phone&&r.vp==="1600x900"&&!r.lum) f.push(w+"the battle area's luminance not measured");
+    if(!r.boxes||!(r.boxes.unobstructed>=want)) f.push(w+"the unobstructed share "+(r.boxes&&r.boxes.unobstructed)+", under "+want); });
+  return f;
+}
+module.exports.checkUx4=checkUx4;

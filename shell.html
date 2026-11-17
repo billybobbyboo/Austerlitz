@@ -224,6 +224,13 @@
     </svg><span class="lg-name">Key</span>
   </button>
   <div class="lg-rows" id="lg-rows">
+    <!-- UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-04): the letter beside a name, one row per position grade, first in the key wherever the
+         letters are drawn; their words CONF_TEXT's own, written at start-up (app.js paintKey), so the key and the dossier cannot disagree; the
+         timing grades, which use the same letters on another scale, are not these rows' -->
+    <div class="k" data-lg="grade-a"><span>A: <span class="gtx" data-grade="A">Position documented in the sources.</span></span><span class="bdg"><b>A</b></span></div>
+    <div class="k" data-lg="grade-b"><span>B: <span class="gtx" data-grade="B">Sector documented; the frontage shown is an approximation.</span></span><span class="bdg"><b>B</b></span></div>
+    <div class="k" data-lg="grade-c"><span>C: <span class="gtx" data-grade="C">Reconstructed from the narrative — treat as indicative only.</span></span><span class="bdg"><b>C</b></span></div>
+    <div class="k" data-lg="badge"><span>?: reported only (under a headquarters&rsquo; reading)</span><span class="bdg"><b>?</b></span></div>
     <!-- Stage 6C (docs/STAGE6_SPEC.md section 4.3; decisions 97, 98, 107): the nation colours are the counters', shown where counters are drawn;
          where figures are drawn, what the figures and the standards are; the sides are carried by the marks beside the names and on the ground -->
     <div class="k" data-lg="nation"><span>counters: French</span><span class="sw" data-key="fr"></span></div>
@@ -280,7 +287,6 @@
     <div class="k" data-lg="vine"><span>vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not established)</span></div>
     <!-- Stage 4C (docs/STAGE4_SPEC.md section C.5; decisions 72, 73): shown only while the valley fog is drawn -->
     <div class="k" data-lg="fog"><span>valley fog: the narrative's; depth (238 m) and lifting modelled; drawn see-through</span></div>
-    <div class="k" data-lg="badge"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
     <!-- Stage 5B: the grades drawn on the ground (decisions 85-88); only the rows for the grades on screen are shown -->
     <div class="k" data-lg="conf-a"><span>A: position documented (its footprint)</span><span class="cfk cfk-a"></span></div>
     <div class="k" data-lg="conf-b"><span>B: sector documented, frontage approximate</span><span class="cfk cfk-b"></span></div>
@@ -409,14 +415,23 @@
      its focus is managed by app.js (openFirstRun, closeFirst); the controls' hint is in the "?" overlay and the legend's control line -->
 <div id="firstrun" role="dialog" aria-modal="true" aria-labelledby="fr-title" aria-describedby="fr-key">
   <h2 id="fr-title">The Battle of Austerlitz</h2>
-  <!-- written at start-up from the same colour key as the legend (COLOUR_KEY), so the two cannot disagree -->
-  <p id="fr-key">French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath
-     them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.
-     It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.</p>
+  <!-- UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03, UA-04): the key as three rows, each with its sample: the sides' colours, the position
+       grades (one line each, CONF_TEXT's words) and the plateau; written at start-up from the same colour key as the legend (COLOUR_KEY) and
+       from CONF_TEXT (app.js paintKey), so the card, the key and the dossier cannot disagree; the words below are shown until then -->
+  <div id="fr-key" class="fr-rows">
+    <div class="fr-row fr-r-side"><span class="fr-smp" aria-hidden="true"><i class="key-sw"></i><i class="key-sw"></i></span>
+      <p>French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows.</p></div>
+    <div class="fr-row fr-r-grade"><span class="fr-smp" aria-hidden="true"><b>A</b><b>B</b><b>C</b></span>
+      <div><p>It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.</p>
+      <ul class="fr-grades"><li><b>A</b> Position documented in the sources.</li><li><b>B</b> Sector documented; the frontage shown is an approximation.</li><li><b>C</b> Reconstructed from the narrative — treat as indicative only.</li></ul></div></div>
+    <div class="fr-row fr-r-plateau"><span class="fr-smp" aria-hidden="true"><svg viewBox="0 0 30 18"><path d="M2 15 Q9 4 15 4 T28 15" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 15 Q12 9 15 9 T22 15" fill="none" stroke="currentColor" stroke-width="1"/></svg></span>
+      <p>The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.</p></div>
+  </div>
   <div class="fr-act">
     <button class="t fr-primary" id="fr-tour" type="button">Begin (two min)</button>
     <button class="t" id="fr-close" type="button">Explore on my own</button>
   </div>
+  <p class="fr-more"><button class="fr-link" id="fr-grades" type="button">Every symbol: the key</button></p>
 </div>
 
 <div id="toast"></div>

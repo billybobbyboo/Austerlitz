@@ -1,0 +1,375 @@
+{
+ "build": {
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/902c8da2-f34b-5e47-9c76-13067be3db8f/scratchpad/step4.html",
+  "bytes": 3100850,
+  "md5": "66b4edc251ada879b2146ed7dabd385b",
+  "sha256": "393bbc1e88cdb7847939fede792134a09fe7dcfe16fd527d65c535783ae4f3bf"
+ },
+ "cases": [
+  {
+   "mode": "forced",
+   "vp": "1366x768",
+   "rmWaitMs": 314,
+   "card": {
+    "rows": 3,
+    "rowsText": [
+     "French formations are marked in blue and",
+     "It is a reconstruction from the sources,",
+     "The high ground in the centre is the Pra"
+    ],
+    "smp": [
+     {
+      "w": 46,
+      "h": 19,
+      "sw": [
+       {
+        "bg": "rgb(76, 134, 216)",
+        "outline": "solid 1px"
+       },
+       {
+        "bg": "rgb(212, 112, 58)",
+        "outline": "solid 1px"
+       }
+      ],
+      "letters": "",
+      "svgStroke": null
+     },
+     {
+      "w": 46,
+      "h": 22,
+      "sw": [],
+      "letters": "A:rgb(0, 0, 0) B:rgb(0, 0, 0) C:rgb(0, 0, 0)",
+      "svgStroke": null
+     },
+     {
+      "w": 46,
+      "h": 24,
+      "sw": [],
+      "letters": "",
+      "svgStroke": "rgb(0, 0, 0)"
+     }
+    ],
+    "buttons": [
+     true,
+     true,
+     true
+    ],
+    "focus": "fr-tour",
+    "forced": true,
+    "rm": false,
+    "RM": false
+   },
+   "after": {
+    "card": false,
+    "focus": "play",
+    "moved": 0
+   },
+   "grades": {
+    "on": {
+     "A": [
+      1101,
+      145,
+      1306,
+      159
+     ],
+     "B": [
+      1079,
+      164,
+      1306,
+      196
+     ],
+     "C": [
+      1105,
+      199,
+      1305,
+      231
+     ]
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   "afterKey": {
+    "card": false,
+    "help": false,
+    "legend": true,
+    "focus": "lg-rows"
+   }
+  },
+  {
+   "mode": "forced",
+   "vp": "390x844",
+   "rmWaitMs": 241,
+   "card": {
+    "rows": 3,
+    "rowsText": [
+     "French formations are marked in blue and",
+     "It is a reconstruction from the sources,",
+     "The high ground in the centre is the Pra"
+    ],
+    "smp": [
+     {
+      "w": 46,
+      "h": 19,
+      "sw": [
+       {
+        "bg": "rgb(76, 134, 216)",
+        "outline": "solid 1px"
+       },
+       {
+        "bg": "rgb(212, 112, 58)",
+        "outline": "solid 1px"
+       }
+      ],
+      "letters": "",
+      "svgStroke": null
+     },
+     {
+      "w": 46,
+      "h": 22,
+      "sw": [],
+      "letters": "A:rgb(0, 0, 0) B:rgb(0, 0, 0) C:rgb(0, 0, 0)",
+      "svgStroke": null
+     },
+     {
+      "w": 46,
+      "h": 24,
+      "sw": [],
+      "letters": "",
+      "svgStroke": "rgb(0, 0, 0)"
+     }
+    ],
+    "buttons": [
+     true,
+     true,
+     true
+    ],
+    "focus": "fr-tour",
+    "forced": true,
+    "rm": false,
+    "RM": false
+   },
+   "after": {
+    "card": false,
+    "focus": "play",
+    "moved": 0
+   },
+   "grades": {
+    "on": {
+     "A": [
+      92,
+      324,
+      297,
+      338
+     ],
+     "B": [
+      78,
+      343,
+      331,
+      375
+     ],
+     "C": [
+      79,
+      378,
+      323,
+      410
+     ]
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   "afterKey": {
+    "card": false,
+    "help": false,
+    "legend": true,
+    "focus": "play"
+   }
+  },
+  {
+   "mode": "reduce",
+   "vp": "1366x768",
+   "rmWaitMs": 2373,
+   "card": {
+    "rows": 3,
+    "rowsText": [
+     "French formations are marked in blue and",
+     "It is a reconstruction from the sources,",
+     "The high ground in the centre is the Pra"
+    ],
+    "smp": [
+     {
+      "w": 46,
+      "h": 19,
+      "sw": [
+       {
+        "bg": "rgb(76, 134, 216)",
+        "outline": "none 0px"
+       },
+       {
+        "bg": "rgb(212, 112, 58)",
+        "outline": "none 0px"
+       }
+      ],
+      "letters": "",
+      "svgStroke": null
+     },
+     {
+      "w": 46,
+      "h": 22,
+      "sw": [],
+      "letters": "A:rgb(231, 223, 204) B:rgb(231, 223, 204) C:rgb(231, 223, 204)",
+      "svgStroke": null
+     },
+     {
+      "w": 46,
+      "h": 24,
+      "sw": [],
+      "letters": "",
+      "svgStroke": "rgb(231, 223, 204)"
+     }
+    ],
+    "buttons": [
+     true,
+     true,
+     true
+    ],
+    "focus": "fr-tour",
+    "forced": false,
+    "rm": true,
+    "RM": true
+   },
+   "after": {
+    "card": false,
+    "focus": "play",
+    "moved": 0
+   },
+   "grades": {
+    "on": {
+     "A": [
+      1101,
+      145,
+      1306,
+      159
+     ],
+     "B": [
+      1079,
+      164,
+      1306,
+      196
+     ],
+     "C": [
+      1105,
+      199,
+      1305,
+      231
+     ]
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   "afterKey": {
+    "card": false,
+    "help": false,
+    "legend": true,
+    "focus": "lg-rows"
+   }
+  },
+  {
+   "mode": "reduce",
+   "vp": "390x844",
+   "rmWaitMs": 249,
+   "card": {
+    "rows": 3,
+    "rowsText": [
+     "French formations are marked in blue and",
+     "It is a reconstruction from the sources,",
+     "The high ground in the centre is the Pra"
+    ],
+    "smp": [
+     {
+      "w": 46,
+      "h": 19,
+      "sw": [
+       {
+        "bg": "rgb(76, 134, 216)",
+        "outline": "none 0px"
+       },
+       {
+        "bg": "rgb(212, 112, 58)",
+        "outline": "none 0px"
+       }
+      ],
+      "letters": "",
+      "svgStroke": null
+     },
+     {
+      "w": 46,
+      "h": 22,
+      "sw": [],
+      "letters": "A:rgb(231, 223, 204) B:rgb(231, 223, 204) C:rgb(231, 223, 204)",
+      "svgStroke": null
+     },
+     {
+      "w": 46,
+      "h": 24,
+      "sw": [],
+      "letters": "",
+      "svgStroke": "rgb(231, 223, 204)"
+     }
+    ],
+    "buttons": [
+     true,
+     true,
+     true
+    ],
+    "focus": "fr-tour",
+    "forced": false,
+    "rm": true,
+    "RM": true
+   },
+   "after": {
+    "card": false,
+    "focus": "play",
+    "moved": 0
+   },
+   "grades": {
+    "on": {
+     "A": [
+      92,
+      324,
+      297,
+      338
+     ],
+     "B": [
+      78,
+      343,
+      331,
+      375
+     ],
+     "C": [
+      79,
+      378,
+      323,
+      410
+     ]
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   "afterKey": {
+    "card": false,
+    "help": false,
+    "legend": true,
+    "focus": "play"
+   }
+  }
+ ],
+ "failures": []
+}
