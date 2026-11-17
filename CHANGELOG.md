@@ -1,5 +1,48 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · UI/UX roadmap step 4: the first frame (UA-03, UA-04)
+
+**Status: on `claude/great-hopper-fsyck2` (from `main` at `2b3e747`, #114's merge, which contains #113's `81d7b04`), a draft PR into `main` (#115),
+for review, not merged.** Presentation only: **no data changed** (`check:data`, 143 of 143 declarations identical; `CONF_TEXT` and `TIMING_TEXT` read,
+not changed). Evidence: `docs/ux-step4-evidence/README.md`; tools `tools/ux-step4/` and the live block `tools/visual/ux4.js` (not bundled).
+
+- **The owner's decisions** (17 November 2026, "Your recommendations for both", asked with the measures first): **decision 71** lifted as option N3
+  (the predawn row's sun 0.26 to 0.60, hemisphere 0.62 to 1.25, a cooler grade: gain 0.92 / 0.97 / 1.10, saturation 0.86, exposure 1.22; the clock
+  04:00, the computed sun and the blend into dawn unchanged); **decision 113** superseded while the card stands, option W1t (from 1080 px the welcome in
+  the rail's column over its Now tab, the tools and the view switch hidden in place while it is open; the dispatch back the moment it closes; decision
+  119's "derived" kept by the map's own plateau label, now held by the self-test).
+- **UA-04** (`shell.html`, `app.js` `paintKey`, `paintLegend`): the key's badge row "position approximate (B, C) · reported only (?)" replaced by one
+  row per position grade in `CONF_TEXT`'s words, first in the key, shown wherever the letters are drawn (the badge row's rule); "?" a row of its own,
+  shown only under a headquarters' reading; the "?" sheet copies them. No timing grade among them.
+- **UA-03, the welcome** (`shell.html` `#firstrun`, `style.css`, `app.js` `paintKey`, `landPanels`): three rows with `aria-hidden` samples (the sides'
+  swatches; the badges A B C with the card's reconstruction sentence and `CONF_TEXT`'s three lines; the plateau's contour), the base card's sentences
+  split into them; then Begin and Explore on my own; then "Every symbol: the key" (`LABELS.card.key`, the old inline "Show the key"). From 1080 px the
+  card is the rail's column from the top to the timeline; `landPanels` counts the hidden tools and switch, so the framing does not move as it closes.
+  Below 1080 px the centred card as before. On a phone the bottom sheet no taller than before (274 px at 390 x 844, its cap 50vh to 32vh), the rows
+  scrolling between the title and the actions from 431 px tall.
+- **Unchanged and held**: the modal dialog, focus on Begin at load, Tab and Shift+Tab inside, Esc, Explore on my own and a press outside closing it in
+  place with focus on Play and the eye and clock unmoved (decisions 117-118); the opening (7C, 7D); steps 1 to 3's blocks.
+- **Measured** (Chromium 141.0.7390.37, software WebGL; this machine measured the base's first screens as CI did): the first-run unobstructed share
+  0.6076 to **0.7294** at 1600 x 900 and 0.5214 to **0.6875** at 1366 x 768 (the audit's 0.70 met at 1600, **not at 1366**), 0.4788 to 0.6678 at 1280 x
+  720, the phone 0.5356 to 0.5403; the battle area's median luma at 04:00 31.9 to **52.8** (1.66 times; **not doubled**: doubling needs about sun 0.8
+  and hemisphere 1.6, whose night is brighter than the dawn at 07:30, 61.0 against 56.0; N3 keeps the morning brightening at every clock measured, 52.8
+  to 62.6 at 08:00); with the key open `CONF_TEXT`'s three lines on screen in 9 of 9 layouts (0 of 9 on the base), the phone at 390 x 844 and 844 x 390
+  included. The placements and lights compared are in the README's section 3.
+- **The live block `ux4`** in `check:selftest` and `check:visual` (feature `UX4` required, judged by `thresholds.js` `checkUx4`, its bars `UX4`): on the
+  base 13 failures, on this build 0.
+- **Baselines moved** (raised, none lowered; `thresholds.js`, the was in each line): `first-run` [0.607, 0.478] to [0.729, 0.667], `first-run-laptop`
+  [0.521, 0.478] to [0.687, 0.667], `phone-390-first` [0.535] to [0.540]. One Stage 0 rule adapted, not loosened: the docked card may cover the
+  dispatch where the dispatch is the rail's Now tab.
+- **The self-test**: 354 to **356** checks (added "the key's grades (UI/UX step 4, UA-04)" and "the welcome's rows (UI/UX step 4, UA-03)"; Stage 7B's
+  first-run check renamed for decision 113's answer; the legend rows' check holds the grade rows and the "?" row by their rules); the manifest from a
+  passing run of this build. `css-test.js`: the card's buttons and the key's paragraph read from the rows.
+- **Checks**: CHECKS_RESULT
+- **Uncertain or open** (put to the owner, README section 10): 1366 x 768 at 0.6875 (the timeline standing down too would give 0.7807); the light at 1.66
+  times; the baselines as listed. The light's look is a design decision (decision 71: a design night light), and nothing about the real light at 04:00
+  is claimed. Everything is software WebGL; `check:visual` in full on CI only; no device run (the light change is uniform values only).
+- **Build**: `austerlitz-command-map.html` **3,100,850 bytes, md5 `66b4edc251ada879b2146ed7dabd385b`** (SHA-256 `393bbc1e...f3bf`); `check:baseline` moved
+  to it.
+
 ## 2026-11 · UI/UX roadmap step 3: the owner's device runs of the two builds (records only)
 
 **Status: on `claude/gallant-feynman-gok1g7` (restarted from `main` at `81d7b04`, #113's merge), a draft PR into `main` (#114), for review, not merged.**

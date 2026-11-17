@@ -1,9 +1,9 @@
 {
  "build": {
-  "file": "../../../tmp/claude-0/-home-user-Austerlitz/902c8da2-f34b-5e47-9c76-13067be3db8f/scratchpad/new1.html",
-  "bytes": 3100382,
-  "md5": "149bb4ee5c64f32fea5688cfa7514425",
-  "sha256": "8977061a92634b18e28219070ec933a0e9252e0c20bc39cc0e24ee340392f24d"
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/902c8da2-f34b-5e47-9c76-13067be3db8f/scratchpad/step4.html",
+  "bytes": 3100850,
+  "md5": "66b4edc251ada879b2146ed7dabd385b",
+  "sha256": "393bbc1e88cdb7847939fede792134a09fe7dcfe16fd527d65c535783ae4f3bf"
  },
  "env": {
   "chromium": "141.0.7390.37",
@@ -21,8 +21,18 @@
       1540,
       163
      ],
-     "B": null,
-     "C": null
+     "B": [
+      1313,
+      168,
+      1540,
+      200
+     ],
+     "C": [
+      1339,
+      203,
+      1539,
+      235
+     ]
     },
     "timing": [],
     "where": "legend",
@@ -39,8 +49,18 @@
       1306,
       159
      ],
-     "B": null,
-     "C": null
+     "B": [
+      1079,
+      164,
+      1306,
+      196
+     ],
+     "C": [
+      1105,
+      199,
+      1305,
+      231
+     ]
     },
     "timing": [],
     "where": "legend",
@@ -57,8 +77,18 @@
       1220,
       159
      ],
-     "B": null,
-     "C": null
+     "B": [
+      993,
+      164,
+      1220,
+      196
+     ],
+     "C": [
+      1019,
+      199,
+      1219,
+      231
+     ]
     },
     "timing": [],
     "where": "legend",
@@ -75,8 +105,18 @@
       1020,
       159
      ],
-     "B": null,
-     "C": null
+     "B": [
+      793,
+      164,
+      1020,
+      196
+     ],
+     "C": [
+      819,
+      199,
+      1019,
+      231
+     ]
     },
     "timing": [],
     "where": "legend",
@@ -177,8 +217,18 @@
       297,
       338
      ],
-     "B": null,
-     "C": null
+     "B": [
+      78,
+      343,
+      331,
+      375
+     ],
+     "C": [
+      79,
+      378,
+      323,
+      410
+     ]
     },
     "timing": [],
     "where": "help",
@@ -368,12 +418,6 @@
    }
   ]
  },
- "failures": [
-  "ux4 grades 1600x900 (click, legend): B, C not on screen with the key open",
-  "ux4 grades 1366x768 (click, legend): B, C not on screen with the key open",
-  "ux4 grades 1280x720 (click, legend): B, C not on screen with the key open",
-  "ux4 grades 1080x800 (click, legend): B, C not on screen with the key open",
-  "ux4 grades 390x844 (tap, help): B, C not on screen with the key open"
- ],
+ "failures": [],
  "errors": []
 }
