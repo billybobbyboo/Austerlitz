@@ -144,11 +144,26 @@ the overlap of a centred card over a dispatch card below 1080 px is still a fail
 
 ## 6. `check:contrast`
 
-CONTRAST_RESULT
+`npm run check:contrast` on this build: **57 of 57 states reached** (10 at 390 x 844 as a phone; 12 at 320 x 256 and in forced colours), 9,431 text
+elements, 125 distinct text and background pairs, **0 below AA, 0 under 10.5 px**, 472 cased map texts read against their casing, 0 font failures
+(1,030 characters in 22 computed fonts, every one an embedded face), 0 console messages; the boot cases 10 of 10. The first screen's states are the
+welcome's new rows (the docked column at 1600 x 900 and 1280 x 720, the phone's sheet), so the rows' sentences, the grades' lines, the badges and the
+key's button are among the elements read.
 
 ## 7. Forced colours and reduced motion (`spot/`)
 
-SPOT_RESULT
+`tools/ux-step4/spot.js` (`spot/spot.json`, captures `spot/new-*.png`): forced colours (Chromium's emulation, set on the loaded page) and reduced motion
+(set before the page loads, as a visitor with the preference has it) at 1366 x 768 and on the phone at 390 x 844. **4 of 4 pass**: the card shown with
+its three rows; focus on Begin at load; every sample drawn (under forced colours the side swatches keep their 1 px `CanvasText` outline, step 3's
+forced-colours rule, and the badges and the contour take the system's text colour); the three controls inside the card; `RM` set under reduced
+motion; Esc closing the card in place, focus on Play, the eye and the clock unmoved (0); the card opened again and its key's button opening the key
+(the legend at 1366 x 768, the "?" sheet on the phone) with `CONF_TEXT`'s three lines on screen and no timing line. Recorded, not judged: Esc from the
+key leaves focus in the legend's rows at 1366 x 768 and on Play on the phone, step 1's behaviour, unchanged.
+
+The live change of the preference while the page is open is `check:selftest`'s block `rmLive` (unchanged). A first version of the spot script
+changed the preference on the loaded page and read `RM` without a drawn frame: the media query's change event waits for a rendering update, which an
+idle page does not make, so `RM` lagged (it missed on the base build's page too in a re-probe). The harness's `rmLive` forces a frame after the change
+for that reason; the script now sets the preference at load.
 
 ## 8. The self-test (`tools/visual/selftest-manifest.json`, 354 to 356)
 
