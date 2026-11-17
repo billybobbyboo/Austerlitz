@@ -1,0 +1,379 @@
+{
+ "build": {
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/902c8da2-f34b-5e47-9c76-13067be3db8f/scratchpad/new1.html",
+  "bytes": 3100382,
+  "md5": "149bb4ee5c64f32fea5688cfa7514425",
+  "sha256": "8977061a92634b18e28219070ec933a0e9252e0c20bc39cc0e24ee340392f24d"
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "playwright": "1.56.0"
+ },
+ "live": {
+  "grades": [
+   {
+    "vp": "1600x900",
+    "how": "click",
+    "on": {
+     "A": [
+      1335,
+      149,
+      1540,
+      163
+     ],
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   {
+    "vp": "1366x768",
+    "how": "click",
+    "on": {
+     "A": [
+      1101,
+      145,
+      1306,
+      159
+     ],
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   {
+    "vp": "1280x720",
+    "how": "click",
+    "on": {
+     "A": [
+      1015,
+      145,
+      1220,
+      159
+     ],
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   {
+    "vp": "1080x800",
+    "how": "click",
+    "on": {
+     "A": [
+      815,
+      145,
+      1020,
+      159
+     ],
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   {
+    "vp": "1024x768",
+    "how": "click",
+    "on": {
+     "A": [
+      220,
+      267,
+      425,
+      281
+     ],
+     "B": [
+      220,
+      287,
+      564,
+      301
+     ],
+     "C": [
+      222,
+      307,
+      553,
+      321
+     ]
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   {
+    "vp": "800x450",
+    "how": "click",
+    "on": {
+     "A": [
+      108,
+      240,
+      313,
+      254
+     ],
+     "B": [
+      108,
+      261,
+      452,
+      275
+     ],
+     "C": [
+      110,
+      283,
+      441,
+      297
+     ]
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   {
+    "vp": "1280x430",
+    "how": "click",
+    "on": {
+     "A": [
+      348,
+      238,
+      553,
+      252
+     ],
+     "B": [
+      348,
+      259,
+      692,
+      273
+     ],
+     "C": [
+      350,
+      281,
+      681,
+      295
+     ]
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   {
+    "vp": "390x844",
+    "how": "tap",
+    "on": {
+     "A": [
+      92,
+      324,
+      297,
+      338
+     ],
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   {
+    "vp": "844x390",
+    "how": "tap",
+    "on": {
+     "A": [
+      130,
+      234,
+      335,
+      248
+     ],
+     "B": [
+      130,
+      256,
+      474,
+      270
+     ],
+     "C": [
+      132,
+      277,
+      463,
+      291
+     ]
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   }
+  ],
+  "first": [
+   {
+    "vp": "1600x900",
+    "phone": false,
+    "atLoad": "fr-tour",
+    "boxes": {
+     "card": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "rail": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "timebar": [
+      0,
+      810,
+      1600,
+      900
+     ],
+     "docked": true,
+     "scrolls": false,
+     "rowsScroll": false,
+     "buttonsInCard": true,
+     "unobstructed": 0.7294
+    },
+    "lum": {
+     "samples": 3906,
+     "median": 52.8,
+     "mean": 57.3,
+     "p10": 41.8,
+     "p90": 75.7,
+     "frameMedian": 54.3,
+     "clock": 240
+    },
+    "tab": [
+     "fr-close",
+     "fr-grades",
+     "fr-tour",
+     "fr-grades"
+    ],
+    "esc": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    },
+    "stay": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    }
+   },
+   {
+    "vp": "1366x768",
+    "phone": false,
+    "atLoad": "fr-tour",
+    "boxes": {
+     "card": [
+      0,
+      0,
+      300,
+      677
+     ],
+     "rail": [
+      0,
+      0,
+      300,
+      677
+     ],
+     "timebar": [
+      0,
+      678,
+      1366,
+      768
+     ],
+     "docked": true,
+     "scrolls": false,
+     "rowsScroll": false,
+     "buttonsInCard": true,
+     "unobstructed": 0.6875
+    },
+    "lum": {
+     "samples": 3906,
+     "median": 52.7,
+     "mean": 57.5,
+     "p10": 41.7,
+     "p90": 79.1,
+     "frameMedian": 54.3,
+     "clock": 240
+    },
+    "tab": [
+     "fr-close",
+     "fr-grades",
+     "fr-tour",
+     "fr-grades"
+    ],
+    "esc": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    },
+    "stay": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    }
+   },
+   {
+    "vp": "390x844",
+    "phone": true,
+    "atLoad": "fr-tour",
+    "boxes": {
+     "card": [
+      0,
+      453,
+      390,
+      723
+     ],
+     "rail": null,
+     "timebar": [
+      0,
+      723,
+      390,
+      844
+     ],
+     "docked": false,
+     "scrolls": false,
+     "rowsScroll": true,
+     "buttonsInCard": true,
+     "unobstructed": 0.5403
+    },
+    "tab": [
+     "fr-close",
+     "fr-grades",
+     "fr-tour",
+     "fr-grades"
+    ],
+    "esc": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    },
+    "stay": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    }
+   }
+  ]
+ },
+ "failures": [
+  "ux4 grades 1600x900 (click, legend): B, C not on screen with the key open",
+  "ux4 grades 1366x768 (click, legend): B, C not on screen with the key open",
+  "ux4 grades 1280x720 (click, legend): B, C not on screen with the key open",
+  "ux4 grades 1080x800 (click, legend): B, C not on screen with the key open",
+  "ux4 grades 390x844 (tap, help): B, C not on screen with the key open"
+ ],
+ "errors": []
+}

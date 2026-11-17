@@ -30,7 +30,9 @@ function gradesOnScreen(){
       if(e.checkVisibility&&!e.checkVisibility({checkOpacity:true,checkVisibilityCSS:true})) return;
       const r=e.getBoundingClientRect(); if(!(r.width>0&&r.height>0)) return;
       if(r.top<-0.5||r.left<-0.5||r.bottom>vh+0.5||r.right>vw+0.5) return;
-      const h=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2); if(h&&(h===e||e.contains(h))) hit=[r.left,r.top,r.right,r.bottom].map(Math.round); });
+      /* every line box of the text topmost at its middle (a wrapped inline element's box middle can fall between its lines, on its parent) */
+      const lines=[].filter.call(e.getClientRects(),q=>q.width>0&&q.height>0);
+      if(lines.length&&lines.every(q=>{ const h=document.elementFromPoint((q.left+q.right)/2,(q.top+q.bottom)/2); return !!h&&(h===e||e.contains(h)); })) hit=[r.left,r.top,r.right,r.bottom].map(Math.round); });
     return hit; }
   ["A","B","C"].forEach(g=>{ out.on[g]=seen(CONF_TEXT[g]); if(seen(TIMING_TEXT[g])) out.timing.push(g); });
   const hp=document.getElementById("help"), a=document.activeElement;

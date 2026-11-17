@@ -1,0 +1,302 @@
+{
+ "build": {
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/902c8da2-f34b-5e47-9c76-13067be3db8f/scratchpad/base.html",
+  "bytes": 3085998,
+  "md5": "fd7b8b72c6315d1bb5bf0b8fa45cf263",
+  "sha256": "48f5d6314e2b8b336d17d3be6caad94c5c4254471da6095605fd013d644c9b34"
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "playwright": "1.56.0"
+ },
+ "live": {
+  "grades": [
+   {
+    "vp": "1600x900",
+    "how": "click",
+    "on": {
+     "A": null,
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   {
+    "vp": "1366x768",
+    "how": "click",
+    "on": {
+     "A": null,
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   {
+    "vp": "1280x720",
+    "how": "click",
+    "on": {
+     "A": null,
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   {
+    "vp": "1080x800",
+    "how": "click",
+    "on": {
+     "A": null,
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "legend",
+    "focus": "lg-rows",
+    "card": false
+   },
+   {
+    "vp": "1024x768",
+    "how": "click",
+    "on": {
+     "A": null,
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   {
+    "vp": "800x450",
+    "how": "click",
+    "on": {
+     "A": null,
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   {
+    "vp": "1280x430",
+    "how": "click",
+    "on": {
+     "A": null,
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   {
+    "vp": "390x844",
+    "how": "tap",
+    "on": {
+     "A": null,
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   },
+   {
+    "vp": "844x390",
+    "how": "tap",
+    "on": {
+     "A": null,
+     "B": null,
+     "C": null
+    },
+    "timing": [],
+    "where": "help",
+    "focus": "help-key",
+    "card": false
+   }
+  ],
+  "first": [
+   {
+    "vp": "1600x900",
+    "phone": false,
+    "atLoad": "fr-tour",
+    "boxes": {
+     "card": [
+      680,
+      529,
+      1220,
+      791
+     ],
+     "rail": [
+      0,
+      0,
+      300,
+      809
+     ],
+     "timebar": [
+      0,
+      810,
+      1600,
+      900
+     ],
+     "docked": true,
+     "scrolls": false,
+     "rowsScroll": false,
+     "buttonsInCard": true,
+     "unobstructed": 0.6076
+    },
+    "lum": {
+     "samples": 3906,
+     "median": 31.9,
+     "mean": 37.4,
+     "p10": 21.2,
+     "p90": 54,
+     "frameMedian": 33.5,
+     "clock": 240
+    },
+    "tab": [
+     "fr-close",
+     "fr-grades",
+     "fr-tour",
+     "fr-grades"
+    ],
+    "esc": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    },
+    "stay": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    }
+   },
+   {
+    "vp": "1366x768",
+    "phone": false,
+    "atLoad": "fr-tour",
+    "boxes": {
+     "card": [
+      563,
+      397,
+      1103,
+      659
+     ],
+     "rail": [
+      0,
+      0,
+      300,
+      677
+     ],
+     "timebar": [
+      0,
+      678,
+      1366,
+      768
+     ],
+     "docked": true,
+     "scrolls": false,
+     "rowsScroll": false,
+     "buttonsInCard": true,
+     "unobstructed": 0.5214
+    },
+    "lum": {
+     "samples": 3906,
+     "median": 31.6,
+     "mean": 37.4,
+     "p10": 20.7,
+     "p90": 54.8,
+     "frameMedian": 33.4,
+     "clock": 240
+    },
+    "tab": [
+     "fr-close",
+     "fr-grades",
+     "fr-tour",
+     "fr-grades"
+    ],
+    "esc": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    },
+    "stay": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    }
+   },
+   {
+    "vp": "390x844",
+    "phone": true,
+    "atLoad": "fr-tour",
+    "boxes": {
+     "card": [
+      0,
+      449,
+      390,
+      723
+     ],
+     "rail": null,
+     "timebar": [
+      0,
+      723,
+      390,
+      844
+     ],
+     "docked": false,
+     "scrolls": false,
+     "rowsScroll": false,
+     "buttonsInCard": true,
+     "unobstructed": 0.5356
+    },
+    "tab": [
+     "fr-close",
+     "fr-grades",
+     "fr-tour",
+     "fr-grades"
+    ],
+    "esc": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    },
+    "stay": {
+     "card": false,
+     "focus": "play",
+     "moved": 0
+    }
+   }
+  ]
+ },
+ "failures": [
+  "ux4 grades 1600x900 (click, legend): A, B, C not on screen with the key open",
+  "ux4 grades 1366x768 (click, legend): A, B, C not on screen with the key open",
+  "ux4 grades 1280x720 (click, legend): A, B, C not on screen with the key open",
+  "ux4 grades 1080x800 (click, legend): A, B, C not on screen with the key open",
+  "ux4 grades 1024x768 (click, help): A, B, C not on screen with the key open",
+  "ux4 grades 800x450 (click, help): A, B, C not on screen with the key open",
+  "ux4 grades 1280x430 (click, help): A, B, C not on screen with the key open",
+  "ux4 grades 390x844 (tap, help): A, B, C not on screen with the key open",
+  "ux4 grades 844x390 (tap, help): A, B, C not on screen with the key open",
+  "ux4 first 1600x900: the battle area's median luminance at 04:00 31.9, under 51",
+  "ux4 first 1600x900: the unobstructed share 0.6076, under 0.7",
+  "ux4 first 1366x768: the battle area's median luminance at 04:00 31.6, under 51",
+  "ux4 first 1366x768: the unobstructed share 0.5214, under 0.687"
+ ],
+ "errors": []
+}
