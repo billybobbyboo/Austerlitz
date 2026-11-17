@@ -45,6 +45,19 @@ geometry, pass or draw call, so the device route was not required by the brief a
 | 8 | A live block `ux4`, judged in `thresholds.js`, failing on the base | | base 13 failures, this build 0 | yes |
 | 9 | The self-test's manifest by name | 354 | **356** (section 8) | yes |
 
+### The first frame on both builds (`first/base.json`, `first/new.json`; captures `captures/base-*.png`, `captures/new-*.png`)
+
+`tools/ux-step4/base.js` on each build, each page fresh at 04:00 with the card open (the battle area's median luma as `ux4` reads it):
+
+| view | base: unobstructed | base: luma | this build: unobstructed | this build: luma | the card (this build) |
+|---|---|---|---|---|---|
+| 1600 x 900 | 0.6076 | 31.9 | **0.7294** | **52.8** | the rail's column, 0-300 x 0-809 |
+| 1366 x 768 | 0.5214 | 31.6 | **0.6875** | **52.7** | 0-300 x 0-677 |
+| 1280 x 720 | 0.4788 | 31.7 | **0.6678** | **52.7** | 0-300 x 0-629 |
+| 390 x 844 (phone) | 0.5356 | 30.3 | **0.5403** | **51.2** | the sheet, 453-723 (base 449-723) |
+
+The lights read from the page: sun 0.26 to 0.60, hemisphere 0.62 to 1.25, the fill 0.16 unchanged.
+
 ## 2. What changed
 
 **UA-04, the key** (`shell.html`, `app.js` `paintKey`, `paintLegend`): the old badge row "position approximate (B, C) · reported only (?)" is
