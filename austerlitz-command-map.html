@@ -21753,8 +21753,8 @@ var AUSTERLITZ_DEBUG=(function(){
       setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
       tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id);
-      ck("first run: a modal dialog (focus on its primary action, Tab kept inside); docked, the Now tab and its derived tag beside it; Esc, the stay button and a press outside close it in place, focus on Play (decisions 111-113, 118-120)",
-        !bad.length, bad.length?bad.join("; "):"Tab, Tab, Shift+Tab: "+said.join(", ")+"; "+(docked?"the Now tab, "+der+" derived tag(s) on screen; ":"undocked; ")+"after Esc, the button and the primary: Play, Play, the opening's Next");
+      ck("first run: a modal dialog (focus on its primary action, Tab kept inside); docked, the welcome in the rail's column over its Now tab, the tools standing down, the plateau's reading marked derived on the map; Esc, the stay button and a press outside close it in place, focus on Play (decisions 111-113, 118-120; 113 as answered in UI/UX step 4)",
+        !bad.length, bad.length?bad.join("; "):"Tab, Tab, Shift+Tab: "+said.join(", ")+"; "+(docked?"the welcome over the Now tab in the rail's column; ":"undocked; ")+"after Esc, the button and the primary: Play, Play, the opening's Next");
     })();
     /* roadmap step 3 (docs/FINAL_AUDIT.md SW-8): a wheel that is mostly sideways (a horizontal swipe, a small vertical part, Shift and the
        wheel) changes nothing: the camera, Follow, the opening and the paper map stay; a wheel over the map closes the first card where it
