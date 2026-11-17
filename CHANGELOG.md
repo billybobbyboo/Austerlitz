@@ -36,7 +36,11 @@ not changed). Evidence: `docs/ux-step4-evidence/README.md`; tools `tools/ux-step
 - **The self-test**: 354 to **356** checks (added "the key's grades (UI/UX step 4, UA-04)" and "the welcome's rows (UI/UX step 4, UA-03)"; Stage 7B's
   first-run check renamed for decision 113's answer; the legend rows' check holds the grade rows and the "?" row by their rules); the manifest from a
   passing run of this build. `css-test.js`: the card's buttons and the key's paragraph read from the rows.
-- **Checks**: CHECKS_RESULT
+- **Checks** (here, on this build): `npm test` all 9 suites and the height guard; `check:data` 143 of 143 declarations byte-identical;
+  `check:chronology` 0 errors; `check:contrast` 57 of 57 states, 0 below AA, 0 under 10.5 px, the boot cases 10 of 10; `check:selftest` 356 of 356 and
+  every live block (`ux4` among them); `check:baseline` on this build; `harness.js --only` over the first-screen, opening and zoom cases, every drop
+  and unobstructed share within its limit; the `ux4` block alone 0 failures (13 on the base); forced colours and reduced motion 4 of 4
+  (`tools/ux-step4/spot.js`). `check:visual` in full: on CI.
 - **Uncertain or open** (put to the owner, README section 10): 1366 x 768 at 0.6875 (the timeline standing down too would give 0.7807); the light at 1.66
   times; the baselines as listed. The light's look is a design decision (decision 71: a design night light), and nothing about the real light at 04:00
   is claimed. Everything is software WebGL; `check:visual` in full on CI only; no device run (the light change is uniform values only).

@@ -39,7 +39,7 @@ geometry, pass or draw call, so the device route was not required by the brief a
 | 2 | No other baseline lowered; moved baselines listed | | three raised, none lowered (section 4) | yes |
 | 3 | The battle area's median luminance at 04:00 at least doubled, if decision 71 allows | 31.9 (1600), 31.6 (1366) | **52.8, 52.7** (1.66 times) | **no** (question 2) |
 | 4 | With the key open, the three grade definitions on screen in every layout, the phone included | in none of 9 layouts | **in all 9** (section 5) | yes |
-| 5 | `check:contrast`: every text at AA and the 10.5 px floor | | see section 6 | see section 6 |
+| 5 | `check:contrast`: every text at AA and the 10.5 px floor | | 57 of 57 states, 0 below AA, 0 under 10.5 px (section 6) | yes |
 | 6 | Forced colours and reduced motion spot-checked | | section 7 | yes |
 | 7 | Focus: the primary at load, Tab kept inside, Esc and the stay button close in place with focus on Play | as required | unchanged, by real keys (section 5) | yes |
 | 8 | A live block `ux4`, judged in `thresholds.js`, failing on the base | | base 13 failures, this build 0 | yes |
