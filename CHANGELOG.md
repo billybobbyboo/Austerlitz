@@ -3,7 +3,8 @@
 ## 2026-11 · UI/UX roadmap step 4: the first frame (UA-03, UA-04)
 
 **Status: on `claude/great-hopper-fsyck2` (from `main` at `2b3e747`, #114's merge, which contains #113's `81d7b04`), a draft PR into `main` (#115),
-for review, not merged.** Presentation only: **no data changed** (`check:data`, 143 of 143 declarations identical; `CONF_TEXT` and `TIMING_TEXT` read,
+for review, not merged.** The owner answered its three questions on 17 November 2026, "Your recommendations for all" (README section 10): 1366 x
+768 accepted as measured at 0.6875, the light kept at N3 (1.66 times), the three raised baselines accepted; the build unchanged. Presentation only: **no data changed** (`check:data`, 143 of 143 declarations identical; `CONF_TEXT` and `TIMING_TEXT` read,
 not changed). Evidence: `docs/ux-step4-evidence/README.md`; tools `tools/ux-step4/` and the live block `tools/visual/ux4.js` (not bundled).
 
 - **The owner's decisions** (17 November 2026, "Your recommendations for both", asked with the measures first): **decision 71** lifted as option N3
@@ -41,8 +42,9 @@ not changed). Evidence: `docs/ux-step4-evidence/README.md`; tools `tools/ux-step
   every live block (`ux4` among them); `check:baseline` on this build; `harness.js --only` over the first-screen, opening and zoom cases, every drop
   and unobstructed share within its limit; the `ux4` block alone 0 failures (13 on the base); forced colours and reduced motion 4 of 4
   (`tools/ux-step4/spot.js`). `check:visual` in full: on CI.
-- **Uncertain or open** (put to the owner, README section 10): 1366 x 768 at 0.6875 (the timeline standing down too would give 0.7807); the light at 1.66
-  times; the baselines as listed. The light's look is a design decision (decision 71: a design night light), and nothing about the real light at 04:00
+- **Decided** (the owner's answer of 17 November 2026, "Your recommendations for all", README section 10): 1366 x 768 at 0.6875 accepted as measured
+  (the timeline standing down too would have given 0.7807; not done); the light kept at N3, 1.66 times (not doubled); the baselines as listed. The audit's
+  two targets not met there are carried as accepted, not met. **Uncertain:** The light's look is a design decision (decision 71: a design night light), and nothing about the real light at 04:00
   is claimed. Everything is software WebGL; `check:visual` in full on CI only; no device run (the light change is uniform values only).
 - **Build**: `austerlitz-command-map.html` **3,100,850 bytes, md5 `66b4edc251ada879b2146ed7dabd385b`** (SHA-256 `393bbc1e...f3bf`); `check:baseline` moved
   to it.

@@ -35,9 +35,9 @@ geometry, pass or draw call, so the device route was not required by the brief a
 
 | # | Target | Base | This build | Met? |
 |---|---|---|---|---|
-| 1 | First-run unobstructed share at least 0.70 at 1600 x 900 and 1366 x 768 | 0.6076, 0.5214 | **0.7294, 0.6875** | 1600 yes; **1366 no** (0.0125 short; question 1) |
+| 1 | First-run unobstructed share at least 0.70 at 1600 x 900 and 1366 x 768 | 0.6076, 0.5214 | **0.7294, 0.6875** | 1600 yes; **1366 no** (0.0125 short; accepted as measured, question 1 (a)) |
 | 2 | No other baseline lowered; moved baselines listed | | three raised, none lowered (section 4) | yes |
-| 3 | The battle area's median luminance at 04:00 at least doubled, if decision 71 allows | 31.9 (1600), 31.6 (1366) | **52.8, 52.7** (1.66 times) | **no** (question 2) |
+| 3 | The battle area's median luminance at 04:00 at least doubled, if decision 71 allows | 31.9 (1600), 31.6 (1366) | **52.8, 52.7** (1.66 times) | **no** (N3 kept, question 2 (a)) |
 | 4 | With the key open, the three grade definitions on screen in every layout, the phone included | in none of 9 layouts | **in all 9** (section 5) | yes |
 | 5 | `check:contrast`: every text at AA and the 10.5 px floor | | 57 of 57 states, 0 below AA, 0 under 10.5 px (section 6) | yes |
 | 6 | Forced colours and reduced motion spot-checked | | section 7 | yes |
@@ -190,13 +190,20 @@ for that reason; the script now sets the preference at load.
 
 ## 9. What remains uncertain
 
-- 1366 x 768 at 0.6875, under the audit's 0.70 (question 1).
-- The 04:00 light at 1.66 times, not double (question 2). Its look is a design decision: the night is still a design night light (decision 71), and
+- 1366 x 768 at 0.6875, under the audit's 0.70 (accepted as measured, question 1 (a)).
+- The 04:00 light at 1.66 times, not double (N3 kept, question 2 (a)). Its look is a design decision: the night is still a design night light (decision 71), and
   nothing historical about the light at 04:00 is claimed.
 - The matched captures and every measure are software WebGL; the light's look on the owner's displays is not checked here.
 - `check:visual` in full runs on CI only.
 
-## 10. Questions for the owner
+## 10. Questions for the owner, and the answers
+
+**Answered on 17 November 2026: "Your recommendations for all"**: 1 (a), 2 (a), 3 accepted. The build is unchanged (3,100,850 bytes, md5
+`66b4edc251ada879b2146ed7dabd385b`): every recommendation was what this build already does. So 1366 x 768 stays at 0.6875 with its baseline at 0.687
+(`UX4.FREE` and `first-run-laptop`), the light stays N3 at 1.66 times, and the three baselines of section 4 stand as listed. The audit's two targets
+not met (0.70 at 1366 x 768; the light doubled) are carried as accepted, not as met.
+
+The questions as put:
 
 1. **1366 x 768.** The first screen's free map is 0.6875 there, short of the audit's 0.70. (a, recommended) accept it as measured, the baseline at
    0.687; (b) also stand the timeline down while the card is open (W1tb: 0.7807 at 1366 x 768, 0.8125 at 1600 x 900), which hides the clock and the

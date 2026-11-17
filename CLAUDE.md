@@ -914,9 +914,10 @@ to the owner, who chose (17 November 2026) to accept it as measured: section 8.5
 Play carried as unsettled, the targeted re-run (`PROTOCOL.md`) not made. Step 3 is closed with that records PR's merge.
 UI/UX roadmap step 4 (its section 6, PR 4: UA-03 and UA-04; presentation only; the owner's decisions of 17 November 2026, "Your recommendations for
 both": decision 71's night light lifted, N3; decision 113 superseded while the card stands, W1t) is on `claude/great-hopper-fsyck2`, draft PR #115 into
-`main`, for review, not merged: the key's position grades one row each in `CONF_TEXT`'s words (the "?" row its own, under a reading); the welcome three
+`main`, for review, not merged (the owner answered its three questions the same day, "Your recommendations for all": 1366 x 768 accepted as
+measured at 0.6875, the light kept at N3, the three raised baselines accepted; the build unchanged): the key's position grades one row each in `CONF_TEXT`'s words (the "?" row its own, under a reading); the welcome three
 rows with samples (the sides, the grades with `CONF_TEXT`'s lines, the plateau), the two actions, then "Every symbol: the key"; from 1080 px in the
 rail's column with the tools and the view switch standing down, on a phone a sheet no taller than before; the predawn light sun 0.60, hemisphere 1.25,
 a cooler grade, 04:00 kept. Measured (`docs/ux-step4-evidence/`): the first-run unobstructed share 0.6076 to 0.7294 at 1600 x 900 and 0.5214 to 0.6875
-at 1366 x 768 (the audit's 0.70 not met there, put to the owner), the battle area's median luma at 04:00 31.9 to 52.8 (1.66 times, not doubled: doubling
-darkens the dawn after it, put to the owner), the grades on screen with the key open in 9 of 9 layouts (0 on the base). The live block `ux4`.
+at 1366 x 768 (the audit's 0.70 not met there, accepted as measured), the battle area's median luma at 04:00 31.9 to 52.8 (1.66 times, not doubled:
+doubling darkens the dawn after it; kept), the grades on screen with the key open in 9 of 9 layouts (0 on the base). The live block `ux4`.
