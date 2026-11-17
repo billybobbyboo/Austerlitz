@@ -18,6 +18,8 @@ const OPT={
 /* added after the first run (a lifted night is brighter than the dawn after it): N4, N2 with the "dawn" row's sun and sky fill raised as well
    (sun 0.60, sky fill 0.95), so that the morning does not darken between the night and the day */
 OPT.N4={i:0.60,hemi:1.25,gain:[0.92,0.97,1.10],dawn:{i:0.60,hemi:0.95}};
+/* N5: a light that doubles the base's median (N1 and N2 lift it by 1.67 and 1.49 times): sun 0.80, sky fill 1.60, the cooler gain, exposure 1.22 */
+OPT.N5={i:0.80,hemi:1.60,gain:[0.92,0.97,1.10],exp:1.22};
 const ONLY=(process.env.ONLY||"").split(",").filter(Boolean); if(ONLY.length) Object.keys(OPT).forEach(k=>{ if(ONLY.indexOf(k)<0) delete OPT[k]; });
 const CLOCKS=[240,300,360,390,420,450,480,540];
 (async()=>{ const b=await L.launch(), R={build:L.buildInfo(html), options:OPT, clocks:CLOCKS, results:{}};
