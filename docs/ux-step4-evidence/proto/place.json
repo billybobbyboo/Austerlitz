@@ -1,0 +1,498 @@
+{
+ "build": {
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/902c8da2-f34b-5e47-9c76-13067be3db8f/scratchpad/rows.html",
+  "bytes": 3090803,
+  "md5": "7cf80190c5878a9be4ba6f38b26f6f13",
+  "sha256": "abe3a8822cd9123a710fee2dc501c293c686ad50f5398393c46605d429b4cd41"
+ },
+ "places": {
+  "W0": "",
+  "W1": "body.docked #firstrun{left:0;top:0;bottom:var(--tb);transform:none;width:var(--rail);box-sizing:border-box;overflow-y:auto;border:0;border-right:1px solid var(--line-2);box-shadow:none;padding:22px 18px 16px}",
+  "W2": "body.docked #firstrun{left:0;top:auto;bottom:var(--tb);transform:none;width:var(--rail);box-sizing:border-box;max-height:calc(100vh - var(--tb));overflow-y:auto;border:0;border-top:1px solid var(--line-2);border-right:1px solid var(--line-2);box-shadow:0 -12px 30px rgba(0,0,0,.45);padding:18px 18px 14px}"
+ },
+ "results": {
+  "W0": {
+   "1600x900": {
+    "vw": 1600,
+    "vh": 900,
+    "unobstructed": 0.5536,
+    "card": [
+     680,
+     383,
+     1220,
+     791
+    ],
+    "rail": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "dispatch": [
+     18,
+     137,
+     277,
+     2139
+    ],
+    "timebar": [
+     0,
+     810,
+     1600,
+     900
+    ],
+    "tools": [
+     1260,
+     20,
+     1578,
+     106
+    ],
+    "legend": null,
+    "freeMap": [
+     312,
+     120,
+     1584,
+     792
+    ],
+    "docked": true,
+    "tab": "now",
+    "derivedOnScreen": 1,
+    "cardOverDispatch": 0,
+    "focus": "fr-tour",
+    "cardScrolls": 0,
+    "buttonsInView": [
+     true,
+     true,
+     true
+    ]
+   },
+   "1366x768": {
+    "vw": 1366,
+    "vh": 768,
+    "unobstructed": 0.4474,
+    "card": [
+     563,
+     251,
+     1103,
+     659
+    ],
+    "rail": [
+     0,
+     0,
+     300,
+     677
+    ],
+    "dispatch": [
+     18,
+     137,
+     277,
+     2139
+    ],
+    "timebar": [
+     0,
+     678,
+     1366,
+     768
+    ],
+    "tools": [
+     1026,
+     20,
+     1344,
+     102
+    ],
+    "legend": null,
+    "freeMap": [
+     312,
+     112,
+     1352,
+     664
+    ],
+    "docked": true,
+    "tab": "now",
+    "derivedOnScreen": 1,
+    "cardOverDispatch": 0,
+    "focus": "fr-tour",
+    "cardScrolls": 0,
+    "buttonsInView": [
+     true,
+     true,
+     true
+    ]
+   },
+   "1280x720": {
+    "vw": 1280,
+    "vh": 720,
+    "unobstructed": 0.3944,
+    "card": [
+     520,
+     203,
+     1060,
+     611
+    ],
+    "rail": [
+     0,
+     0,
+     300,
+     629
+    ],
+    "dispatch": [
+     18,
+     137,
+     277,
+     2139
+    ],
+    "timebar": [
+     0,
+     630,
+     1280,
+     720
+    ],
+    "tools": [
+     940,
+     20,
+     1258,
+     102
+    ],
+    "legend": null,
+    "freeMap": [
+     312,
+     112,
+     1264,
+     616
+    ],
+    "docked": true,
+    "tab": "now",
+    "derivedOnScreen": 1,
+    "cardOverDispatch": 0,
+    "focus": "fr-tour",
+    "cardScrolls": 0,
+    "buttonsInView": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  "W1": {
+   "1600x900": {
+    "vw": 1600,
+    "vh": 900,
+    "unobstructed": 0.7066,
+    "card": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "rail": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "dispatch": [
+     18,
+     137,
+     277,
+     2139
+    ],
+    "timebar": [
+     0,
+     810,
+     1600,
+     900
+    ],
+    "tools": [
+     1260,
+     20,
+     1578,
+     106
+    ],
+    "legend": null,
+    "freeMap": [
+     288,
+     120,
+     1584,
+     792
+    ],
+    "docked": true,
+    "tab": "now",
+    "derivedOnScreen": 1,
+    "cardOverDispatch": 174088,
+    "focus": "fr-tour",
+    "cardScrolls": 0,
+    "buttonsInView": [
+     true,
+     true,
+     true
+    ]
+   },
+   "1366x768": {
+    "vw": 1366,
+    "vh": 768,
+    "unobstructed": 0.6571,
+    "card": [
+     0,
+     0,
+     300,
+     677
+    ],
+    "rail": [
+     0,
+     0,
+     300,
+     677
+    ],
+    "dispatch": [
+     18,
+     137,
+     277,
+     2139
+    ],
+    "timebar": [
+     0,
+     678,
+     1366,
+     768
+    ],
+    "tools": [
+     1026,
+     20,
+     1344,
+     102
+    ],
+    "legend": null,
+    "freeMap": [
+     288,
+     112,
+     1352,
+     664
+    ],
+    "docked": true,
+    "tab": "now",
+    "derivedOnScreen": 1,
+    "cardOverDispatch": 139900,
+    "focus": "fr-tour",
+    "cardScrolls": 0,
+    "buttonsInView": [
+     true,
+     true,
+     true
+    ]
+   },
+   "1280x720": {
+    "vw": 1280,
+    "vh": 720,
+    "unobstructed": 0.6335,
+    "card": [
+     0,
+     0,
+     300,
+     629
+    ],
+    "rail": [
+     0,
+     0,
+     300,
+     629
+    ],
+    "dispatch": [
+     18,
+     137,
+     277,
+     2139
+    ],
+    "timebar": [
+     0,
+     630,
+     1280,
+     720
+    ],
+    "tools": [
+     940,
+     20,
+     1258,
+     102
+    ],
+    "legend": null,
+    "freeMap": [
+     288,
+     112,
+     1264,
+     616
+    ],
+    "docked": true,
+    "tab": "now",
+    "derivedOnScreen": 1,
+    "cardOverDispatch": 127468,
+    "focus": "fr-tour",
+    "cardScrolls": 0,
+    "buttonsInView": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  "W2": {
+   "1600x900": {
+    "vw": 1600,
+    "vh": 900,
+    "unobstructed": 0.7066,
+    "card": [
+     0,
+     191,
+     300,
+     809
+    ],
+    "rail": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "dispatch": [
+     18,
+     137,
+     277,
+     2139
+    ],
+    "timebar": [
+     0,
+     810,
+     1600,
+     900
+    ],
+    "tools": [
+     1260,
+     20,
+     1578,
+     106
+    ],
+    "legend": null,
+    "freeMap": [
+     312,
+     120,
+     1584,
+     792
+    ],
+    "docked": true,
+    "tab": "now",
+    "derivedOnScreen": 1,
+    "cardOverDispatch": 160094,
+    "focus": "fr-tour",
+    "cardScrolls": 0,
+    "buttonsInView": [
+     true,
+     true,
+     true
+    ]
+   },
+   "1366x768": {
+    "vw": 1366,
+    "vh": 768,
+    "unobstructed": 0.6571,
+    "card": [
+     0,
+     59,
+     300,
+     677
+    ],
+    "rail": [
+     0,
+     0,
+     300,
+     677
+    ],
+    "dispatch": [
+     18,
+     137,
+     277,
+     2139
+    ],
+    "timebar": [
+     0,
+     678,
+     1366,
+     768
+    ],
+    "tools": [
+     1026,
+     20,
+     1344,
+     102
+    ],
+    "legend": null,
+    "freeMap": [
+     312,
+     112,
+     1352,
+     664
+    ],
+    "docked": true,
+    "tab": "now",
+    "derivedOnScreen": 1,
+    "cardOverDispatch": 139900,
+    "focus": "fr-tour",
+    "cardScrolls": 0,
+    "buttonsInView": [
+     true,
+     true,
+     true
+    ]
+   },
+   "1280x720": {
+    "vw": 1280,
+    "vh": 720,
+    "unobstructed": 0.6335,
+    "card": [
+     0,
+     11,
+     300,
+     629
+    ],
+    "rail": [
+     0,
+     0,
+     300,
+     629
+    ],
+    "dispatch": [
+     18,
+     137,
+     277,
+     2139
+    ],
+    "timebar": [
+     0,
+     630,
+     1280,
+     720
+    ],
+    "tools": [
+     940,
+     20,
+     1258,
+     102
+    ],
+    "legend": null,
+    "freeMap": [
+     312,
+     112,
+     1264,
+     616
+    ],
+    "docked": true,
+    "tab": "now",
+    "derivedOnScreen": 1,
+    "cardOverDispatch": 127468,
+    "focus": "fr-tour",
+    "cardScrolls": 0,
+    "buttonsInView": [
+     true,
+     true,
+     true
+    ]
+   }
+  }
+ }
+}

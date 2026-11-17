@@ -15,10 +15,14 @@ const OPT={
   /* N2 with the exposure of the audit's mock */
   N3:{i:0.60,hemi:1.25,gain:[0.92,0.97,1.10],exp:1.22}
 };
+/* added after the first run (a lifted night is brighter than the dawn after it): N4, N2 with the "dawn" row's sun and sky fill raised as well
+   (sun 0.60, sky fill 0.95), so that the morning does not darken between the night and the day */
+OPT.N4={i:0.60,hemi:1.25,gain:[0.92,0.97,1.10],dawn:{i:0.60,hemi:0.95}};
+const ONLY=(process.env.ONLY||"").split(",").filter(Boolean); if(ONLY.length) Object.keys(OPT).forEach(k=>{ if(ONLY.indexOf(k)<0) delete OPT[k]; });
 const CLOCKS=[240,300,360,390,420,450,480,540];
 (async()=>{ const b=await L.launch(), R={build:L.buildInfo(html), options:OPT, clocks:CLOCKS, results:{}};
   for(const k of Object.keys(OPT)){ const p=await L.open(b,html,{vp:[1600,900]});
-    await p.evaluate(o=>{ if(!o) return; var P=LIGHT.predawn; P.i=o.i; P.hemi=o.hemi; if(o.gain) P.grade[1]=o.gain.slice(); if(o.sat) P.grade[2]=o.sat; if(o.exp) P.grade[5]=o.exp; applyLight(true); requestRender(6); },OPT[k]);
+    await p.evaluate(o=>{ if(!o) return; var P=LIGHT.predawn; P.i=o.i; P.hemi=o.hemi; if(o.gain) P.grade[1]=o.gain.slice(); if(o.sat) P.grade[2]=o.sat; if(o.exp) P.grade[5]=o.exp; if(o.dawn){ LIGHT.dawn.i=o.dawn.i; LIGHT.dawn.hemi=o.dawn.hemi; } applyLight(true); requestRender(6); },OPT[k]);
     await L.settle(p,8);
     if(cap) await p.screenshot({path:cap+"-"+k+"-1600x900.png",timeout:300000});
     const r={first:await L.battleLum(p), morning:{}};
