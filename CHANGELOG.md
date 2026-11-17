@@ -38,6 +38,10 @@ Records only: **no build, source or data changed** (`austerlitz-command-map.html
 - **Put to the owner** (`docs/ux-step3-evidence/README.md` section 10): (a) accept the phone as measured, half-speed Play carried as unsettled, or (b,
   recommended) a short targeted re-run on the phone (`?only=ph8-overview,play-4x,play-half`, six runs starting with Step 3, three minutes apart),
   read by a rule stated in `PROTOCOL.md` before the runs.
+- **The owner's decision** (17 November 2026, "I'll go with option a"): **(a), the phone accepted as measured**, as decision 324 (a) did for the ph8
+  overview's orbit: section 8.3's phone budget holds; section 8.5's three failures recorded as the phone's run-to-run spread (two of them on frames
+  both builds draw alike); half-speed Play's comparison carried as unsettled. The targeted re-run was not made; its protocol stays in `PROTOCOL.md`,
+  marked not chosen, for a later step that wants it. With it, UI/UX roadmap step 3 is closed once this pull request is merged.
 - **Recorded in**: `docs/ux-step3-evidence/device/README.md`, `PROTOCOL.md` ("Runs received", "A targeted re-run"), `docs/ux-step3-evidence/README.md`
   (sections 0, 1, 6 and 10), `CLAUDE.md`.
 - **Checks**: `npm test` (all 9 suites, the height guard, the dead-code check) and `check:baseline` here on this commit; `route-check.js` on each report;
@@ -45,7 +49,8 @@ Records only: **no build, source or data changed** (`austerlitz-command-map.html
 
 ### What remains uncertain or open
 
-- **Half-speed Play on the phone**: unsettled by two runs a build (above); the owner's choice between accepting it as measured and a targeted re-run.
+- **Half-speed Play on the phone**: unsettled by two runs a build (above), accepted as measured on the owner's decision (a) of 17 November 2026 and
+  carried: whether Step 3's closer view costs the phone in Play at half speed is not shown (Step 3's two runs this phone's best and worst there).
 - At 144 Hz this desktop shows no frame-time difference between the builds; whether a slower GPU feels half speed's +0.7% triangles is not shown here
   (an integrated GPU is still to run, as since Stage 7).
 - The runs were 22-77 s apart, not the two minutes asked; with every median at the refresh and no long frame, nothing reads as the device warming.

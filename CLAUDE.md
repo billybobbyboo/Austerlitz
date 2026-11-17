@@ -903,4 +903,5 @@ its free map, the ground's 150 px/s cap, the Follow button, PageUp/PageDown and 
 hold, Step 3's heaviest frame 829 calls and 2,300,331 triangles (Step 2's 843 and 2,317,629), every median at the 144 Hz refresh on both builds; the
 phone's four of the same day: section 8.3's phone budget holds, section 8.5's rule fails in three segments of Step 3's runs (two drawing the same frames
 on both builds, inside Stage 7's history there; the third half-speed Play, 0% and 11.7% long against 1.1% and 1.1%, unsettled by two runs a build); put
-to the owner: accept as measured, or a short targeted re-run (recommended, `PROTOCOL.md`).
+to the owner, who chose (17 November 2026) to accept it as measured: section 8.5's three failures recorded as the phone's run-to-run spread, half-speed
+Play carried as unsettled, the targeted re-run (`PROTOCOL.md`) not made. Step 3 is closed with that records PR's merge.

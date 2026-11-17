@@ -91,5 +91,6 @@ calls and 6.2% fewer triangles at most than Step 2's). Section 8.5's rule fails 
 on both builds, so the phone's run-to-run spread, not the build, is what they measure; the third, half-speed Play, is the one where the build can
 matter, and its two Step 3 runs are this phone's best and worst on record for the segment. Two runs a build cannot tell Step 3's half-speed Play
 from the phone's spread. Put to the owner (`../README.md` section 10): accept as measured, or settle it with a short targeted re-run
-(`PROTOCOL.md`, "A targeted re-run").
+(`PROTOCOL.md`, "A targeted re-run"). **Decided (a)** (17 November 2026): accepted as measured, section 8.5's three failures recorded as the phone's
+run-to-run spread, half-speed Play carried as unsettled; the re-run not made.
 

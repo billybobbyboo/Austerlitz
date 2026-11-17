@@ -1,8 +1,8 @@
 # UI/UX roadmap step 3: the matched hardware runs (both devices received)
 
 Two builds, one route, the same devices, the same day. The desktop's four runs and the phone's four are filed here (16 November 2026, "Runs
-received" below). The phone's leave one comparison unsettled, half-speed Play; a short re-run that would settle it is offered below, for the owner
-to choose ("A targeted re-run").
+received" below). The phone's leave one comparison unsettled, half-speed Play; a short re-run that would settle it was offered below ("A targeted
+re-run"). The owner chose instead to accept the phone as measured (decision (a), 17 November 2026), so that re-run was not made.
 
 ## The two builds
 
@@ -97,7 +97,9 @@ dimming, a fan, a run restarted). They are filed verbatim here as `desk-S2-1.txt
   11.7% long on Step 3 against 1.1% and 1.1% on Step 2, the two Step 3 runs drawing identical frames, the second in the run where the phone was
   slowest in the segments both builds draw alike. Not settled by two runs a build.
 
-## A targeted re-run (only if the owner chooses it)
+## A targeted re-run (offered; not chosen: the owner accepted the phone as measured, 17 November 2026)
+
+Kept as written, for a later step that wants to settle half-speed Play on the phone.
 
 To settle half-speed Play on the phone, the two segments step 3 changes and the ph8 overview's orbits, nothing else (about a minute a run, the
 route's own `?only=`):
