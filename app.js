@@ -157,9 +157,13 @@ var placeLabels=[];   /* {ft, world}: the map layer's place names */
    sky: zenith, mid, horizon · disc: how much of the low sun shows ·
    grade: lift, gain, saturation, contrast, bloom, exposure */
 var LIGHT={
- predawn:  {i:0.26,c:0x8FA2B6,p:[ -60, 80,-160],hemi:0.62,fogN:100,fogF:640, fogC:0x4A5666,bg:0x0D1520,
+ /* the night: a design light (decision 71), not a moon. UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03; the owner's decision of 17 November
+    2026 on decision 71, as recommended): lifted so that the 04:00 ground reads as a map, the night kept as a cooler grade: the sun 0.26 to 0.60,
+    the sky fill 0.62 to 1.25, the gain [0.96, 0.98, 1.06] to [0.92, 0.97, 1.10], the exposure 1.08 to 1.22 (the battle area's median at 04:00
+    31.9 to 52.8, 1.66 times; the morning still brightening toward the day, docs/ux-step4-evidence/). Design values */
+ predawn:  {i:0.60,c:0x8FA2B6,p:[ -60, 80,-160],hemi:1.25,fogN:100,fogF:640, fogC:0x4A5666,bg:0x0D1520,
             sky:[0x0F1A26,0x2B3A48,0x4A5666],mistC:0x3E4852,disc:0.0,
-            grade:[[0,0,0],[0.96,0.98,1.06],0.86,1.02,0.22,1.08]},
+            grade:[[0,0,0],[0.92,0.97,1.10],0.86,1.02,0.22,1.22]},
  dawn:     {i:0.46,c:0xD9B189,p:[ 210, 30, 140],hemi:0.50,fogN:110,fogF:680, fogC:0x787A7E,bg:0x152029,
             sky:[0x1B2836,0x4A5866,0x787A7E],mistC:0x8A8884,disc:0.35,
             grade:[[0,0,0],[1.02,1.00,0.98],0.94,1.04,0.34,1.00]},
@@ -6805,7 +6809,11 @@ var VOFF={x:0,y:0,tx:0,ty:0,key:"",W:0,H:0};
 function landPanels(){
   mlLegendFit(renderer.domElement.clientWidth||innerWidth,viewH());
   var P=mlPanels(), fr=document.getElementById("firstrun");
-  if(fr&&!fr.hidden){ var r=fr.getBoundingClientRect(); P=P.filter(function(q){ return !(Math.abs(q[0]-r.left)<0.5&&Math.abs(q[1]-r.top)<0.5&&Math.abs(q[2]-r.right)<0.5&&Math.abs(q[3]-r.bottom)<0.5); }); }
+  if(fr&&!fr.hidden){ var r=fr.getBoundingClientRect(); P=P.filter(function(q){ return !(Math.abs(q[0]-r.left)<0.5&&Math.abs(q[1]-r.top)<0.5&&Math.abs(q[2]-r.right)<0.5&&Math.abs(q[3]-r.bottom)<0.5); });
+    /* UI/UX roadmap step 4 (UA-03): docked, the tools and the presentation switch stand down (hidden, keeping their place) while the card stands;
+       their boxes kept here, so the field is framed as Study shows it and closing the card moves nothing */
+    if(docked) [".tools","#viewmode"].forEach(function(q){ var e=document.querySelector(q); if(!e||e.hidden||getComputedStyle(e).display==="none") return;
+      var b=e.getBoundingClientRect(); if(b.width>=2&&b.height>=2) P.push([b.left,b.top,b.right,b.bottom]); }); }
   return P;
 }
 function landFreeRect(){ return MAPCAM.freeRect(null,landPanels()); }
@@ -13604,13 +13612,16 @@ var AUSTERLITZ_DEBUG=(function(){
       if(aid()!=="fr-tour") bad.push("focus on "+aid()+" when the card opens, not its primary action");
       key("Tab"); said.push(aid()); key("Tab"); said.push(aid()); key("Tab",true); said.push(aid());
       if(said.join(",")!=="fr-close,fr-grades,fr-close") bad.push("Tab, Tab, Shift+Tab went to "+said.join(", "));   /* the third button wraps to the first, kept inside */
-      var der=[].filter.call(document.querySelectorAll("small"),function(e){ return /derived/.test(e.textContent)&&e.getBoundingClientRect().width>0&&!(e.closest&&e.closest("#maplayer")); }).length;
-      if(docked){ var dp=document.querySelector(".dispatch"), rl=document.querySelector(".rail"), db=box(dp), cb=box(fr), rb=box(rl);
-        if(tabNow!=="now") bad.push("the rail shows the "+tabNow+" tab under the card (decision 113)");
-        if(getComputedStyle(dp).display==="none") bad.push("the dispatch is hidden under the card");
+      /* UI/UX roadmap step 4 (UA-03; the owner's decision of 17 November 2026 on decision 113, as recommended): docked, the card stands in the rail's
+         column from its top to the timeline, the rail on its Now tab behind it (until step 4 the dispatch beside the card, decision 113), the tools
+         and the presentation switch standing down; the plateau's derived reading says "derived" on the map (decision 119) */
+      if(docked){ var dp=document.querySelector(".dispatch"), rl=document.querySelector(".rail"), tb=document.querySelector(".timebar"), db=box(dp), cb=box(fr), rb=box(rl), tbb=box(tb);
+        if(tabNow!=="now") bad.push("the rail shows the "+tabNow+" tab under the card (decision 55)");
         if(db[0]<rb[0]-0.5||db[2]>rb[2]+0.5) bad.push("the dispatch is not in the rail");
-        if(Math.min(db[2],cb[2])-Math.max(db[0],cb[0])>0&&Math.min(db[3],cb[3])-Math.max(db[1],cb[1])>0) bad.push("the card stands over the dispatch");
-        if(!der) bad.push("no derived tag on screen while the plateau reading is drawn (decision 119)"); }
+        if(Math.abs(cb[0]-rb[0])>0.5||Math.abs(cb[2]-rb[2])>0.5||cb[1]>0.5||Math.abs(cb[3]-tbb[1])>1.5) bad.push("the card is not the rail's column from its top to the timeline ("+cb.map(Math.round)+" against the rail "+rb.map(Math.round)+")");
+        [".tools","#viewmode"].forEach(function(q){ var e=document.querySelector(q); if(e&&getComputedStyle(e).visibility!=="hidden") bad.push(q+" shown beside the card"); });
+        var pl=[].some.call(document.querySelectorAll("#maplayer .ml-item"),function(e){ return /derived/.test(e.textContent)&&/Pratzen/i.test(e.textContent)&&e.getBoundingClientRect().width>0&&getComputedStyle(e).visibility!=="hidden"; });
+        if(!pl) bad.push("the plateau's derived reading not marked “derived” on the map while the card stands (decision 119)"); }
       key("Escape"); still("Esc"); if(aid()!=="play") bad.push("focus on "+aid()+" after Esc, not Play");
       open(); document.body.dispatchEvent(new PointerEvent("pointerdown",{bubbles:true,cancelable:true,pointerId:1}));
       still("a press outside"); if(fr.contains(document.activeElement)) bad.push("focus left on the hidden card after a press outside");

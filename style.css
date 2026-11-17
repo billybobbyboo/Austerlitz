@@ -700,6 +700,16 @@ body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
 /* Stage 7B (decisions 111, 113): the card's one primary action, drawn as a pressed button is; the dispatch stays hidden under the card only
    below 1080 px, where it is a card the first-run card would stand over (decision 58); docked it is the rail's Now tab, shown */
 #firstrun .fr-act .t.fr-primary{background:var(--text);color:var(--on-accent);border-color:var(--text)}
+/* UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03; the owner's decision of 17 November 2026 on decision 113, as recommended): from 1080 px the
+   welcome stands in the rail's column, from its top to the timeline, the rail and its Now tab behind it (decision 113's dispatch beside the card
+   superseded while the card stands; the plateau's derived reading keeps its "derived" on the map, decision 119); the tools and the presentation
+   switch, inert under the modal card, stand down while it stands, keeping their place (visibility, so the field is framed as Study shows it,
+   landPanels); the timeline stays */
+body.docked #firstrun{left:0;top:0;bottom:var(--tb);transform:none;width:var(--rail);box-sizing:border-box;overflow-y:auto;
+  background:rgb(var(--scrim-rgb));border:0;border-right:1px solid var(--line-2);box-shadow:none;backdrop-filter:none;padding:22px 18px 16px}
+body.docked #firstrun .fr-act{flex-direction:column;gap:6px}
+body.docked #firstrun .fr-act .t{width:100%}
+body.docked.firstrun-on .tools,body.docked.firstrun-on #viewmode{visibility:hidden}
 body.firstrun-on:not(.docked) .dispatch,body.firstrun-on .legend,body.firstrun-on .drawer,
 body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{display:none !important}
 /* Stage 7C: the tools' "Begin the opening" stands down while the card, whose primary action it is, is open (at 390 px it would wrap the tools' row) */

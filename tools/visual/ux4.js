@@ -37,6 +37,26 @@ function gradesOnScreen(){
   out.where=hp&&!hp.hidden?"help":"legend"; out.focus=a?(a.id||a.className||a.tagName):null; out.card=firstRunOpen;
   return out;
 }
+/* in the page: the battle area's luminance. One frame drawn by the app (renderFrame) and its drawing buffer read in the same task (gl.readPixels: the
+   canvas alone, the post-processing included, no element over it, not the CSS vignette), sampled at the drawn ground's points on a 4-unit grid
+   inside actionExtent() that project into the viewport (Rec. 709 luma of the sRGB values, 0-255); and the whole frame's median */
+function battleLum(){
+  var X=actionExtent(), v=new THREE.Vector3(), cv=renderer.domElement, VW=cv.clientWidth, VH=cv.clientHeight, pts=[];
+  syncViewOffset(true); landCam.updateMatrixWorld(true);
+  for(var x=X[0];x<=X[2];x+=4) for(var z=X[1];z<=X[3];z+=4){ v.set(x,groundY(x,z),z).project(landCam); if(v.z<-1||v.z>1) continue;
+    var sx=(v.x*0.5+0.5)*VW, sy=(-v.y*0.5+0.5)*VH; if(sx>=0&&sy>=0&&sx<VW&&sy<VH) pts.push([sx,sy]); }
+  renderFrame();
+  var gl=renderer.getContext(), W=gl.drawingBufferWidth, H=gl.drawingBufferHeight, d=new Uint8Array(W*H*4);
+  gl.bindFramebuffer(gl.FRAMEBUFFER,null); gl.readPixels(0,0,W,H,gl.RGBA,gl.UNSIGNED_BYTE,d);
+  var k=W/VW, L=[], all=[];
+  function lum(o){ return 0.2126*d[o]+0.7152*d[o+1]+0.0722*d[o+2]; }
+  pts.forEach(function(q){ var px=Math.min(W-1,Math.floor(q[0]*k)), py=Math.min(H-1,Math.floor(q[1]*k)); L.push(lum(((H-1-py)*W+px)*4)); });
+  for(var y=0;y<H;y+=4) for(var xx=0;xx<W;xx+=4) all.push(lum((y*W+xx)*4));
+  function srt(A){ return A.slice().sort(function(a,b){ return a-b; }); }
+  var sL=srt(L), sA=srt(all); requestRender(2);
+  return {samples:L.length, median:+sL[Math.floor(sL.length/2)].toFixed(1), mean:+(L.reduce(function(a,b){ return a+b; },0)/L.length).toFixed(1),
+    p10:+sL[Math.floor(sL.length*0.1)].toFixed(1), p90:+sL[Math.floor(sL.length*0.9)].toFixed(1), frameMedian:+sA[Math.floor(sA.length/2)].toFixed(1), clock:clock};
+}
 async function reopenCard(page){
   await page.evaluate(()=>{ if(typeof setHelp==="function") setHelp(false); if(typeof stopPlay==="function") stopPlay(); if(typeof select==="function") select(null,null);
     ML.legendOpen=false; const fr=document.getElementById("firstrun"); fr.hidden=false; openFirstRun(); });
@@ -79,11 +99,11 @@ async function firstCase(page,vp,phone,o){
 }
 async function runBlock(open,settle,opts){
   opts=opts||{}; const log=opts.log||(()=>{}), SO=!!opts.selftestOnly, out={grades:[],first:[]};
-  const lum=opts.lum||null;
+  const lum=page=>page.evaluate(battleLum);
   /* fresh pages: the first frame */
   for(const [vp,dev] of [[[1600,900],null],[[1366,768],null],[[390,844],"ios"]]){ if(SO&&vp[0]===1600) continue;
     const pg=await open(vp,dev);
-    try{ await settle(pg); const r=await firstCase(pg,vp,!!dev,{lum:SO?null:lum}); out.first.push(r);
+    try{ await settle(pg); const r=await firstCase(pg,vp,!!dev,{lum:(SO||dev)?null:lum}); out.first.push(r);
       log("  ux4 first "+r.vp+": focus "+r.atLoad+", Tab "+r.tab.join(">")+", Esc "+JSON.stringify(r.esc)+", stay "+JSON.stringify(r.stay)+", free "+r.boxes.unobstructed+(r.lum?", battle median "+r.lum.median:""));
     } finally { const cx=pg.context(); await pg.close(); await cx.close().catch(()=>{}); } }
   /* the grades with the key open: a mouse page through the desktop sizes, then a phone's */
@@ -101,4 +121,4 @@ async function runBlock(open,settle,opts){
   } finally { const cx=pp.context(); await pp.close(); await cx.close().catch(()=>{}); }
   return out;
 }
-module.exports={runBlock, gradesOnScreen, firstCase, GRADE_VIEWS, PHONE_VIEWS};
+module.exports={runBlock, gradesOnScreen, firstCase, battleLum, GRADE_VIEWS, PHONE_VIEWS};

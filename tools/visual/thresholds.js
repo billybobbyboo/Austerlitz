@@ -556,8 +556,12 @@ module.exports.check=function(name,m,spec,opts){
      dispatch from 1080 px is the rail's Now tab, which the card cannot stand over, and decision 113 shows it there under the card. The test
      is now what the message says: the two boxes may not meet. Below 1080 px, where the dispatch is a card again (decision 58), it still
      fails as before (the boxes overlap there, Part A section 6). Without the boxes (a build measured by an older harness) it fails as before. */
-  if(m.firstRunVisible&&m.dispatchVisible){ const a=m.firstRunBox, b=m.dispatchBox;
-    if(!a||!b||(Math.min(a[2],b[2])-Math.max(a[0],b[0])>0&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0)) f.push("first-run card stacked on the dispatch card"); }
+  /* UI/UX roadmap step 4 (UA-03; the owner's decision of 17 November 2026 on decision 113, as recommended): docked, the welcome stands in the rail's
+     column with the rail's Now tab behind it, so there the card covers the dispatch's whole width (a sheet over the rail, never a card half over
+     it); undocked the two boxes may still not meet */
+  if(m.firstRunVisible&&m.dispatchVisible){ const a=m.firstRunBox, b=m.dispatchBox, dk=!!(m.docking&&m.docking.docked&&m.docking.dispatchInRail);
+    const meet=!a||!b||(Math.min(a[2],b[2])-Math.max(a[0],b[0])>0&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0);
+    if(meet&&!(dk&&a&&b&&a[0]<=b[0]+0.5&&a[2]>=b[2]-0.5)) f.push("first-run card stacked on the dispatch card"); }
   /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111, 118): on the fresh first-run page, by real key presses, the card has focus
      on its primary action, Tab stays inside it, and Esc closes it where it stands with focus on Play */
   /* roadmap step 3 (SW-8): a mostly sideways wheel leaves Follow on and the card open; a vertical wheel over the map closes it and zooms */
@@ -1440,7 +1444,10 @@ module.exports.checkUx3=checkUx3;
      most EPS) with the focus on Play;
    - first (UA-03): the card's buttons inside the card and on screen; the unobstructed share of the first screen at least FREE at 1600 x 900 and
      1366 x 768 and, on the phone's page, at least the phone's first-screen baseline (UNOBSTRUCTED_PHONE, the case phone-390-first's) */
-const UX4={EPS:1e-6, FREE:0.70, PHONE_FREE:0.535, TAB:["fr-close","fr-grades","fr-tour","fr-grades"]};
+/* FREE by viewport: the audit's 0.70 at 1600 x 900; at 1366 x 768 the owner's choice (17 November 2026, as recommended: the timeline kept beside
+   the welcome) measures 0.6875, under the audit's 0.70, put to the owner in the PR; held at it rounded down to 0.1 point. LUM: the battle area's
+   median at 04:00 at 1600 x 900 at least LUM (the base build's 31.9 times 1.6; the owner's decision on decision 71, the light lifted 1.66 times) */
+const UX4={EPS:1e-6, FREE:{"1600x900":0.70,"1366x768":0.687}, PHONE_FREE:0.535, LUM:51.0, TAB:["fr-close","fr-grades","fr-tour","fr-grades"]};
 module.exports.UX4=UX4;
 function checkUx4(L,so){
   const f=[]; if(!L) return ["ux4: no record"];
@@ -1457,7 +1464,9 @@ function checkUx4(L,so){
     if(JSON.stringify(r.tab)!==JSON.stringify(UX4.TAB)) f.push(w+"Tab, Tab, Tab, Shift+Tab went to "+r.tab.join(", "));
     ["esc","stay"].forEach(k=>{ const x=r[k]; if(!x||x.card!==false||x.focus!=="play"||!(x.moved<=UX4.EPS)) f.push(w+k+": "+JSON.stringify(x)); });
     if(!r.boxes||!r.boxes.buttonsInCard) f.push(w+"a button outside the card or off the screen");
-    const want=r.phone?UX4.PHONE_FREE:UX4.FREE;
+    const want=r.phone?UX4.PHONE_FREE:UX4.FREE[r.vp];
+    if(r.lum&&!(r.lum.median>=UX4.LUM)) f.push(w+"the battle area's median luminance at 04:00 "+r.lum.median+", under "+UX4.LUM);
+    if(!so&&!r.phone&&r.vp==="1600x900"&&!r.lum) f.push(w+"the battle area's luminance not measured");
     if(!r.boxes||!(r.boxes.unobstructed>=want)) f.push(w+"the unobstructed share "+(r.boxes&&r.boxes.unobstructed)+", under "+want); });
   return f;
 }
