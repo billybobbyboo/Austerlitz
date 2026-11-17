@@ -219,6 +219,14 @@ UNOBSTRUCTED["first-run"]=[0.607,0.478];   /* was [0.625,0.506] */
 UNOBSTRUCTED["first-run-laptop"]=[0.521,0.478];   /* was [0.546,0.506] */
 UNOBSTRUCTED["phone-390-first"]=[0.535,null];   /* was [0.591,null] */
 PHONE.framing["phone-390-first"]=13;   /* was 16 */
+/* UI/UX roadmap step 4 (docs/UX_ART_AUDIT.md UA-03; the owner's decision of 17 November 2026 on decision 113, W1t as recommended): from 1080 px
+   the welcome stands in the rail's column, over its Now tab, the tools and the view switch standing down while it is open; on a phone the same rows in
+   a sheet no taller than before. Raised to what the step-4 build measures, rounded down to 0.1 point (the 3B and 3C method; this machine's pinned
+   browser measured the base build exactly as CI did, 0.6076 / 0.4788, 0.5214 / 0.4788 and 0.5356): first-run 0.7294 / 0.6678, first-run-laptop
+   0.6875 / 0.6678, phone-390-first 0.5403. The audit's 0.70 is met at 1600 x 900 and not at 1366 x 768 (0.6875): put to the owner */
+UNOBSTRUCTED["first-run"]=[0.729,0.667];   /* was [0.607,0.478] */
+UNOBSTRUCTED["first-run-laptop"]=[0.687,0.667];   /* was [0.521,0.478] */
+UNOBSTRUCTED["phone-390-first"]=[0.540,null];   /* was [0.535,null] */
 /* the caption's parts give way in order where its row is narrow (decision 159): the phase's title first, then the act, then the events' names;
    each is whole elsewhere on the screen or one press away (the act as a heading of the phase list, the phase as the dispatch sheet's title, the
    event in the sheet and in its dossier). Held landscape, the track's act and phase names are cut where their band is narrower than the name
@@ -1447,7 +1455,7 @@ module.exports.checkUx3=checkUx3;
 /* FREE by viewport: the audit's 0.70 at 1600 x 900; at 1366 x 768 the owner's choice (17 November 2026, as recommended: the timeline kept beside
    the welcome) measures 0.6875, under the audit's 0.70, put to the owner in the PR; held at it rounded down to 0.1 point. LUM: the battle area's
    median at 04:00 at 1600 x 900 at least LUM (the base build's 31.9 times 1.6; the owner's decision on decision 71, the light lifted 1.66 times) */
-const UX4={EPS:1e-6, FREE:{"1600x900":0.70,"1366x768":0.687}, PHONE_FREE:0.535, LUM:51.0, TAB:["fr-close","fr-grades","fr-tour","fr-grades"]};
+const UX4={EPS:1e-6, FREE:{"1600x900":0.70,"1366x768":0.687}, PHONE_FREE:0.540, LUM:51.0, TAB:["fr-close","fr-grades","fr-tour","fr-grades"]};
 module.exports.UX4=UX4;
 function checkUx4(L,so){
   const f=[]; if(!L) return ["ux4: no record"];
