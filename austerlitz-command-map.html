@@ -19555,7 +19555,10 @@ var AUSTERLITZ_DEBUG=(function(){
         if(row("halt")!==(layerOn.arrows&&(O.arrows||[]).some(function(a){ return a.kind==="halt"; }))) R.ctx.push(s.n+": the halt row");
         if(row("bound")!==(layerOn.arrows&&(O.bounds||[]).length>0)) R.ctx.push(s.n+": the boundary row");
         /* Stage 5B (section A.4 item 4): the badge also on the landscape's names, so its row wherever names or counters are drawn */
-        if(row("badge")!==((mode!=="terrain"&&layerOn.symbols)||(mode==="terrain"&&textOn()))) R.ctx.push(s.n+": the badge row");
+        /* UI/UX roadmap step 4 (UA-04): the letters' rows, one per grade, wherever the letters are drawn; the "?" row there under a headquarters' reading */
+        var lett=(mode!=="terrain"&&layerOn.symbols)||(mode==="terrain"&&textOn());
+        ["a","b","c"].forEach(function(g){ if(row("grade-"+g)!==lett) R.ctx.push(s.n+": the grade letter "+g.toUpperCase()+"'s row"); });
+        if(row("badge")!==(lett&&commandView!=="none")) R.ctx.push(s.n+": the reported-only row");
         /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes with any of them */
         ["A","B","C"].forEach(function(g){ if(row("conf-"+g.toLowerCase())!==!!CONF.shown[g]) R.ctx.push(s.n+": the grade "+g+" row"); });
         /* Stage 8, 8B (decision 239): the outlines' rows, by side, the selection and the grades' extents with the layer on */
