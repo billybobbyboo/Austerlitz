@@ -1,7 +1,8 @@
-# UI/UX roadmap step 3: the matched hardware runs (pending: the owner's devices)
+# UI/UX roadmap step 3: the matched hardware runs (both devices received)
 
-Two builds, one route, the same devices, the same day. **Nothing in this folder has been run on a device yet**; physical-device verification stays
-pending until the owner's reports are filed here (by a follow-up pull request, since the runs are made after #113 is merged).
+Two builds, one route, the same devices, the same day. The desktop's four runs and the phone's four are filed here (16 November 2026, "Runs
+received" below). The phone's leave one comparison unsettled, half-speed Play; a short re-run that would settle it was offered below ("A targeted
+re-run"). The owner chose instead to accept the phone as measured (decision (a), 17 November 2026), so that re-run was not made.
 
 ## The two builds
 
@@ -76,6 +77,53 @@ dimming, a fan, a run restarted). They are filed verbatim here as `desk-S2-1.txt
    reference's by more than 1 ms).
 5. **Against the Stage 7 evidence** (`docs/final-stage7-evidence/device/desk-S7-*`, `phone-S7-*`, 13 November 2026, the same desktop and phone on
    Stage 7's build): for the record, not as the comparison: Stage 7 to Step 2 is steps 1 and 2's work, which no device has measured.
+
+## Runs received
+
+- **16 November 2026, the owner's desktop** (the RTX 4070 of Stage 7's `desk-S7-*`; Chrome 157, 2,560 x 1,440 at 144 Hz, the page 2,560 x 1,305 at
+  density 1): the ordinary route four times, Step 2, Step 3, Step 2, Step 3, 08:51 to 09:04 UTC (`desk-S2-1`, `desk-S3-1`, `desk-S2-2`, `desk-S3-2`,
+  each `.txt` beside its `.json`; `README.md` in this folder). Each report is the route's own `format()` of its JSON, names the pinned copy its name
+  says by bytes and SHA-256, holds the whole ordinary route with both played segments under Follow from 08:30, and passes `route-check.js`. Read by
+  `tools/ux-step3/device-runs.js` (`reading.txt`, `reading.json`): section 8.3's budget within on every run (Step 3's heaviest frame 829 calls and
+  2,300,331 triangles; Step 2's 843 and 2,317,629); section 8.5's rule holds in every segment, each Step 3 run against each Step 2 run (every median
+  6.9 ms, every long-frame share 0%); the CPU line holds (the largest `js50` excess +0.1 ms). The played segments at the refresh on both builds
+  (143.8-144 frames a second, at most two missed refreshes a segment on either); every other segment draws the same frames on both builds.
+- **16 November 2026, the owner's iPhone 17 Pro** (Safari 26.6.1 on iOS 18.7, 402 x 714 at density 3, drawn at 1, `lowTier`): the ordinary route four
+  times in the same order, 23:23 to 23:34 UTC, 29-34 s apart (`phone-S2-1`, `phone-S3-1`, `phone-S2-2`, `phone-S3-2`; `README.md`). Each report
+  verbatim, its build the pinned copy its label names, the route whole, `route-check.js` passing. Read by `device-runs.js`: section 8.3's phone
+  budget within on both builds (Step 3's heaviest frame 1,311,877 triangles; its segment medians of calls at most 6.0% above Step 2's, half-speed
+  Play 481 to 510); section 8.5's rule fails in three segments of Step 3's runs: the ph8 overview's orbit and its orbit with effects off, where both
+  builds draw the same frames and Step 3's numbers sit inside what Stage 7's runs of the same phone measured there; and half-speed Play, 0% and
+  11.7% long on Step 3 against 1.1% and 1.1% on Step 2, the two Step 3 runs drawing identical frames, the second in the run where the phone was
+  slowest in the segments both builds draw alike. Not settled by two runs a build.
+
+## A targeted re-run (offered; not chosen: the owner accepted the phone as measured, 17 November 2026)
+
+Kept as written, for a later step that wants to settle half-speed Play on the phone.
+
+To settle half-speed Play on the phone, the two segments step 3 changes and the ph8 overview's orbits, nothing else (about a minute a run, the
+route's own `?only=`):
+
+- **Step 3:** <https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html?src=../../docs/ux-step3-evidence/device/builds/austerlitz-fd7b8b72-step3.html&only=ph8-overview,play-4x,play-half>
+- **Step 2:** <https://billybobbyboo.github.io/Austerlitz/tools/step6/perf-run.html?src=../../docs/ux-step3-evidence/device/builds/austerlitz-07cbcaf3-step2.html&only=ph8-overview,play-4x,play-half>
+
+1. Set the iPhone up as before (charging, Low Power Mode off, Reduce Motion off, Auto-Lock Never, other tabs closed), then lock it and leave it
+   five minutes.
+2. Six runs, starting with **Step 3** this time (the reverse of the first set, so that the order is not read as the build): Step 3, Step 2, Step 3,
+   Step 2, Step 3, Step 2. **Lock the phone and wait three minutes between runs.**
+3. Each run: open the link, wait for "Press Start", press Start, hold the phone still until the panel returns, then Copy the report (or Share it to
+   Notes) and label it ("Step 3 short run 1", and so on).
+4. Send the six reports. Set Auto-Lock back afterwards.
+
+**How they will be read, stated before the runs**: each Step 3 run against the Step 2 run after it (three pairs). Step 3's half-speed Play counts as
+**costing the phone** if, in at least two of the three pairs, its long-frame share is above 5% where its pair's is under; as **not costing it** if,
+in at least two of the three pairs, its long-frame share is at most its pair's plus one point; otherwise it stays unsettled and is accepted as
+measured. The ph8 overview's orbits (the same frames on both builds) are read only as the phone's state in each run. The reader is
+`tools/ux-step3/device-runs.js`, extended then for the short route's three segments.
+
+Checked here before it was offered (`tools/step6/perf-local.js --way frame --src <the Step 3 copy> --only ph8-overview,play-4x,play-half`, the
+phone's page size, software WebGL): the wrapper page with `&only=` runs exactly the ph8 overview's four segments, play-4x and play-half, on the pinned
+Step 3 copy, its report naming it by 3,085,998 bytes and `48f5d631...`; its frame counts there mean nothing.
 
 ## Here, before the devices (software WebGL; its frame times decide nothing)
 

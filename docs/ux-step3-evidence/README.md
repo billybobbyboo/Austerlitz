@@ -15,7 +15,7 @@ captures [`captures/`](captures/), and the hardware protocol with both builds [`
 
 **Every number here:** Chromium 141.0.7390.37 (Playwright 1.56.0's pinned build), headless, **software WebGL** (ANGLE on SwiftShader), Linux, 4 cores.
 The phone is **Chromium's emulation** (390 x 844, density 3, touch, an iPhone's user agent), not a physical device. **Nothing here is a frame rate**;
-the frame times are the owner's two devices' to give (section 6), and the draft keeps that verification pending.
+the frame times are the owner's two devices' to give (section 6): both are filed (16 November 2026, after #113's merge); the phone's leave half-speed Play unsettled (section 6), accepted as measured on the owner's decision (a) of 17 November 2026 (section 10).
 
 **The owner's decision** (15 November 2026, this step's brief): decision 78 is revisited for this step. During Landscape Play, Follow may use a
 steeper, closer view fitted to the action. Pause, the natural end of Play and ordinary timeline seeks keep the camera pose instead of sending it to an
@@ -33,7 +33,7 @@ map; the ground's 150 px/s cap; the Follow button, PageUp and PageDown and Play 
 | 1 | Frame the action: every live event above 0.3 inside the free map in at least 90% of its minutes; the share of live minutes with every one inside; the formations' box at 50% of the free map (desktop) and 40% (phone), with the formations in frame | Over the full battle at half speed (04:00 to 18:00, 683 live minutes, 1,500 event-minutes): **1440 x 900 Study** event-minutes inside 97.8% to **98.9%**, live minutes all inside 95.2% to **97.7%**, the box's median share **30.0% to 53.0%** (at 50% or more in 3.6% to 57.5% of frames), formations in the free map 28 to 23 (median, of 31). **Watch** 99.3% to 98.7%, 98.4% to 97.2%, box 22.1% to 52.6%. **390 x 844 Study** 93.0% to **99.1%**, 87.4% to **98.1%**, box **21.9% to 52.7%** (at 40% or more in 19.4% to 63.8% of frames), formations 18 to 16; phone Watch 93.1% to 100%. Every event at 90% or more but one, **Raigern (04:00-04:45) at 76% to 79%** (Step 2: 65%, 84%, 98%): the first minutes of a Play begun at 04:00 from phase 0's view, the eye held to 150 px/s on the screen while it comes | **Yes** but Raigern at the run's start (section 4) |
 | 2 | Continuity by real input: Pause, resume, the end of Play, seeks inside and across phases, event markers and the chooser, Phase and Act buttons, manual camera with Follow off; the 150 px/s pan cap and the floor; the projected movement of angle and distance changes; reduced motion | The live block `ux3` (real clicks, drags, keys and taps): **every check passes on this build; on the Step 2 build 10 fail**: every cross-phase seek (the rail dragged, an event marker, the ten-minute button, the arrow key, the rail's PageDown, a day-track anchor, the Landscape with counters, under reduced motion, the phone's chooser) glided the eye 47 to 296 units to the phase's authored view, the ground crossing the screen at up to 1,807 px/s; and Play from a phase's view moved the ground at 494 px/s. Now no seek moves the eye (0.0000 units), the Phase and Act buttons still reach their authored views exactly, the target never passes 150 px/s and **the ground under the free map never passes 150 px/s** (149.9 at the most) (a new cap on the screen's movement of angle and distance changes: Step 2's ground moved at up to 586 px/s in Study, 746 px/s in Watch) | **Yes** (section 5) |
 | 3 | Step 2's open targets: filled plates over the box against 12%, Watch's count against 12, eligible formation names drawn and why others were outside | 1440 x 900 Study, 08:30 to 09:30: filled plates **13.6% to 7.0% at most, over 12% in 28 to 0 of 548 frames**; 11:30 to 13:00 **17.9% to 11.6%, 91 to 0 of 728**. Watch: 13.4% to 5.3% and 13.8% to 7.5%, **0 frames over 12%**; Watch's labels at most 9 to 10 in the morning, **16 to 17 in the Guard action** (frames over 12: 504 to 344). Formations a live event names drawn: 100% of those in view on both builds; **"no name at that distance" 262 to 0** in the morning, 432 to 0 at noon. Phone: 35.7% to 26.4% at most, median 16.2% to 18.1%: still over 12% in most frames | Desktop **yes**; Watch's 12 **not** in the Guard action; the phone's 12% **no** (section 7) |
-| 4 | Two-build hardware runs prepared, hashes and segments verified, census against Stage 7 and the budgets | Both builds in the repository, the protocol in `device/PROTOCOL.md`, the route run here on both at the desktop's and the phone's page sizes (each report naming its build's hash, `route-check.js` passing; section 6). Census here (every 60th frame of the full day drawn, `renderer.info`): desktop Study at most 854 calls and 2,157,913 triangles (Step 2: 854, 2,207,007), Watch 820 and **2,310,143** (854, 2,207,007: 28 blocks rich at that frame); the phone 551 calls (526) and 1,307,287 triangles (1,398,103). Within section 8.3's budgets (900 calls and 2.8 million on the desktop; 1.62 million and calls within 10% on the phone). **Frame times: pending the owner's runs** | Prepared; **device verification pending** |
+| 4 | Two-build hardware runs prepared, hashes and segments verified, census against Stage 7 and the budgets | Both builds in the repository, the protocol in `device/PROTOCOL.md`, the route run here on both at the desktop's and the phone's page sizes (each report naming its build's hash, `route-check.js` passing; section 6). Census here (every 60th frame of the full day drawn, `renderer.info`): desktop Study at most 854 calls and 2,157,913 triangles (Step 2: 854, 2,207,007), Watch 820 and **2,310,143** (854, 2,207,007: 28 blocks rich at that frame); the phone 551 calls (526) and 1,307,287 triangles (1,398,103). Within section 8.3's budgets (900 calls and 2.8 million on the desktop; 1.62 million and calls within 10% on the phone). **The owner's desktop** (16 November 2026, RTX 4070 at 144 Hz, four runs alternating the builds; `device/README.md`): section 8.3's budget, section 8.5's rule and the CPU line hold, Step 3's heaviest frame 829 calls and 2,300,331 triangles (Step 2's 843 and 2,317,629), every median at the refresh on both builds. **The owner's iPhone** (the same day, four runs): section 8.3's phone budget holds (Step 3's heaviest frame 1,311,877 triangles, its call medians at most +6.0%); section 8.5's rule fails in three segments of Step 3's runs, two of them drawing the same frames on both builds, the third half-speed Play (0% and 11.7% long on Step 3, 1.1% and 1.1% on Step 2): two runs a build cannot tell it from the phone's own spread | Desktop **verified**; the phone within its budget, half-speed Play **unsettled**, accepted as measured (the owner's decision (a), 17 November 2026; section 10) |
 | 5 | The checks; a regression test of the cross-phase issue; guarded declarations byte-identical; the build rebuilt, fingerprinted, logged | `npm test`, `check:data` (143 of 143 identical), `check:chronology`, `check:contrast` and `check:selftest` (354 checks) pass here and on CI; the full `check:visual` dispatched on CI (section 8). The regression test is the live block `ux3` (10 failures on Step 2, none here), with `css-test.js`'s rule and `runtime-test.js`'s dry run in `npm test`. One motion baseline moved, on the owner's word (16 November 2026) | **Yes**; `check:visual` passed on CI (run 43801145325, section 8) |
 
 ## 2. The framing chosen
@@ -197,7 +197,51 @@ On the phone the view offset itself eases when the dispatch sheet changes height
 297 px/s (289 on the Step 2 build), whatever Follow does; those frames are counted apart. **The floor:** the eye never went below it in any run
 (its least clearance 55 units on Step 2, 118 or more now).
 
-## 6. The hardware runs (pending)
+## 6. The hardware runs (both devices received)
+
+**The owner's desktop, 16 November 2026** (`device/README.md`, the reports `device/desk-S{2,3}-{1,2}.{txt,json}` verbatim, read by
+`tools/ux-step3/device-runs.js` into `device/reading.txt`): the RTX 4070 desktop of Stage 7's runs, Chrome 157, 2,560 x 1,440 at 144 Hz; the ordinary
+route four times, Step 2, Step 3, Step 2, Step 3. Each report its route's own `format()`, its build the pinned copy its name says, the route whole,
+`route-check.js` passing.
+
+| | Step 2 (two runs) | Step 3 (two runs) | rule |
+|---|---|---|---|
+| heaviest frame (any segment) | 843 calls, 2,317,629 triangles (play-4x) | **829 calls, 2,300,331 triangles** (play-4x) | section 8.3: at most 900 and 2.8 million: **within** |
+| median interval, every segment | 6.9 ms | 6.9 ms | section 8.5: no move over one refresh: **holds** |
+| long-frame share, every segment | 0% | 0% | section 8.5: none rising above 5%: **holds** |
+| `js50`, the largest excess over Step 2 | | +0.1 ms (overview, orbit, effects off) | CPU line: at most +1 ms: **holds** |
+| play-4x (Follow, 08:30 at 4x, 12 s): fps, missed refreshes | 143.8/143.9, 0.1%/0.1% | 143.9/143.8, 0.1%/0.1% | |
+| play-4x: calls median (max), triangles max, `js50`, GPU median | 823 (843), 2,317,629, 4.3/4.3, 2.8/2.7 ms | 794 (829), 2,300,331, 4.3/4.3, 2.8/3.0 ms | |
+| play-half (Follow, 08:30 at ½×, 12 s): fps, missed refreshes | 143.9/144, 0.1%/0% | 143.9/144, 0.1%/0% | |
+| play-half: calls median (max), triangles max, `js50`, GPU median | 789 (827), 2,273,009, 5.0/5.0, 3.9/3.9 ms | 781 (817), 2,289,379, 4.9/4.9, 4.0/4.0 ms | |
+
+Every other segment sets its own camera and draws identical frames on both builds (calls, triangles and their maxima the same run for run). Step 2's
+played segments draw what Stage 7's `desk-S7-*` drew (823/843 calls, 2,317,629 and 2,317,741 triangles at most; 789/827, 2,273,009), so the only change
+in what they draw since Stage 7 is this step's, and at 144 Hz it shows in no frame time. The GPU timer's medians differ between the builds by at most 0.3 ms in the played
+segments, inside that timer's spread between one build's own two runs in the held views (up to 3.3 ms). Not shown by this desktop: a slower GPU's
+answer to half speed's +0.7% triangles.
+
+**The owner's iPhone 17 Pro, the same day** (23:23 to 23:34 UTC; `device/phone-S{2,3}-{1,2}.{txt,json}`, `device/README.md`): Safari 26.6.1, 402 x 714
+drawn at density 1 (`lowTier`), refresh 17 ms; Step 2, Step 3, Step 2, Step 3, 29-34 s apart. Each report verbatim, its build the pinned copy its
+label names, the route whole, `route-check.js` passing.
+
+| | Step 2 (two runs) | Step 3 (two runs) | rule |
+|---|---|---|---|
+| heaviest frame | 1,394,981 triangles (play-half) | **1,311,877 triangles** (overview orbit) | section 8.3: at most 1.62 million: **within** |
+| segment medians of calls | | at most +6.0% over Step 2's (play-half 481 to 510) | section 8.3: at most +10%: **within** |
+| play-4x: fps, long-frame share, calls median (max) | 60/60, 0%/0%, 430 (525) | 60/59.7, 0%/0.3%, 425 (539) | |
+| play-half: fps, long-frame share, calls median (max), triangles max | 53.4/53.7, 1.1%/1.1%, 481 (528), 1,394,981 | **60/50.8, 0%/11.7%**, 510 (550), 1,308,005 | section 8.5: **fails** in Step 3's second run |
+| ph8 overview, orbit / orbit with effects off (the same frames on both builds) | 60 fps, 0% / 58.8-60 fps, 0-0.3% | 50.9-45 fps, 0-23.7% / 39-37.1 fps, 42.9-76% | section 8.5: **fails**; Stage 7's runs of the same frames 47-48 fps, 8.9-15.6% / 30-34 fps, 80-89% |
+
+Step 2's half-speed Play slows at the same moment in every run on this phone, today's and Stage 7's (the same frames, 481 calls): 6.4-6.7 s into the
+12 s (about 08:50 on the clock), to 47.3-48.5 frames a second. Step 3's two runs draw identical frames to each other (510 calls) and one never slows
+(60 frames a second, 0% long: better than any Step 2 or Stage 7 run) while the other slows from 6.3 s to 44.5 frames a second (23.1% long in its second
+half: worse than any). That second Step 3 run was the session's slowest in the segments both builds draw alike (5 of them under 59 frames a second,
+against 2, 3 and 1 in the other runs). So the phone's own state moved more between runs than the builds differ, and two runs a build cannot say
+whether Step 3's closer view costs the phone in half-speed Play; what the build certainly changes there is 6.0% more draw calls and 6.2% fewer
+triangles at most. Put to the owner in section 10, who accepted it as measured (decision (a), 17 November 2026).
+
+### Before the devices
 
 `device/PROTOCOL.md`: the two builds, each a pinned copy in `device/builds/` (Step 2's `austerlitz-07cbcaf3-step2.html`, and Step 3's
 `austerlitz-fd7b8b72-step3.html`, byte for byte this build, so that both links keep working after `main` moves on), the owner's steps once #113 is
@@ -353,4 +397,19 @@ changed for it. What each point was, and the answer:
 6. **PageUp and PageDown on the rail** are treated as seeks (the eye kept), as the slider's own keys; the phase's view is the Phase buttons'. **As built.**
 7. **Play pressed at the day's end** starts the day again with the eye where it is (Step 2: the phase's view of 04:00). **As built.**
 
-Still open: the device runs (section 6, `device/PROTOCOL.md`), made by the owner after #113 is merged and filed by a follow-up pull request.
+#113 was merged on 16 November 2026 (`81d7b04`); both devices' runs followed it the same day and are filed by a follow-up pull request.
+
+**Put to the owner after the phone's runs** (17 November 2026): **half-speed Play on the phone** (section 6). Section 8.3's phone budget holds on both
+builds; section 8.5's long-frame clause fails in three segments of Step 3's runs, two where both builds draw the same frames (the phone's state, inside
+Stage 7's history on those frames) and one, half-speed Play, where Step 3's two runs are this phone's best and worst for the segment.
+
+- **(a) Accept as measured** (as decision 324 (a) did for the ph8 overview's orbit): section 8.3 holds; section 8.5's three failures recorded as the
+  phone's run-to-run spread, half-speed Play's comparison carried as unsettled.
+- **(b) Settle it with a short targeted re-run** (recommended): six runs of the route's three segments that matter (`?only=ph8-overview,play-4x,play-half`,
+  about a minute each), starting with Step 3, three minutes' rest between runs, read by a rule stated before them (`device/PROTOCOL.md`, "A targeted
+  re-run"). About 25 minutes of the owner's time; it decides whether Step 3's closer view costs the phone in Play at its default speed, the one
+  device question this step's change can raise.
+
+**Decided** (17 November 2026, "I'll go with option a"): **(a)**. The phone is accepted as measured; section 8.5's three failures are recorded as the
+phone's run-to-run spread and half-speed Play's comparison is carried as unsettled. The targeted re-run was not made (its protocol kept in
+`device/PROTOCOL.md`, marked not chosen). Nothing in the build changed. Step 3 is closed with the merge of the pull request that files these records.

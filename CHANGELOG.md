@@ -1,8 +1,63 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · UI/UX roadmap step 3: the owner's device runs of the two builds (records only)
+
+**Status: on `claude/gallant-feynman-gok1g7` (restarted from `main` at `81d7b04`, #113's merge), a draft PR into `main` (#114), for review, not merged.**
+Records only: **no build, source or data changed** (`austerlitz-command-map.html` still 3,085,998 bytes, md5 `fd7b8b72c6315d1bb5bf0b8fa45cf263`;
+`check:baseline` passes on it).
+
+- **What was filed**: the owner's four desktop reports of 16 November 2026 (08:51 to 09:04 UTC), pasted from `tools/step6/perf-run.html` on Pages with
+  the two pinned copies named by `?src=`, in the order the protocol asked (Step 2, Step 3, Step 2, Step 3): `docs/ux-step3-evidence/device/desk-S2-1`,
+  `desk-S3-1`, `desk-S2-2`, `desk-S3-2`, each `.txt` verbatim beside its `AUS_PERF_JSON` line as `.json`, with the folder's `README.md`. Each `.txt` is
+  the route's own `format()` of its `.json` character for character; each names the pinned copy its name says (Step 2 3,071,014 bytes, SHA-256
+  `06842ca4...f186`; Step 3 3,085,998 bytes, `48f5d631...9b34`); each holds the ordinary route's 23 segments, its played ones under Follow from 08:30;
+  each passes `tools/final-stage7/route-check.js`.
+- **New tool**: `tools/ux-step3/device-runs.js` (not bundled), Stage 7's `device-runs.js` for this step's two builds: the checks above, section 8.3's
+  budget, section 8.5's rule each Step 3 run against each Step 2 run, the CPU line, the segments side by side with each build's own run-to-run spread,
+  and Stage 7's `desk-S7-*` for the record; its output `device/reading.txt` and `reading.json`. It reads the phone's reports too, once filed.
+- **What they say** (the RTX 4070 of Stage 7's runs, Chrome 157, 2,560 x 1,440 at 144 Hz, the page 2,560 x 1,305 at density 1): section 8.3's budget
+  within on every run (Step 3's heaviest frame 829 calls and 2,300,331 triangles, play-4x; Step 2's 843 and 2,317,629, Stage 7's 843 and 2,317,629 and 2,317,741); section
+  8.5's rule holds in every segment (every median 6.9 ms, every long-frame share 0%, on both builds); the CPU line holds (the largest `js50` excess
+  +0.1 ms). The played segments at the refresh on both builds (143.8-144 frames a second; at most two missed refreshes a segment, alike on both): at 4x
+  calls median 794 against 823, at half speed 781 against 789, triangles at most 2,289,379 against 2,273,009 (+0.7%), `js50` 4.9 against 5.0 ms, the
+  GPU timer's median 4.0 against 3.9 ms (inside its own run-to-run spread). Every other segment draws identical frames on both builds.
+- **The phone's four** (16 November 2026, 23:23 to 23:34 UTC; the owner's iPhone 17 Pro of Stage 7's runs, Safari 26.6.1, 402 x 714 drawn at density 1,
+  `lowTier`): `phone-S2-1`, `phone-S3-1`, `phone-S2-2`, `phone-S3-2`, filed and checked as the desktop's (the owner's labels and the hashes agree; run
+  1's `bodyBytes` 4,119,590 is Safari's `decodedBodySize` of a first load, as in Stage 7's `phone-S7-1`, not the build's size, which its hash names).
+  Section 8.3's phone budget holds on both builds (Step 3's heaviest frame 1,311,877 triangles, Step 2's 1,394,981; Step 3's segment medians of calls
+  at most 6.0% above Step 2's, half-speed Play 481 to 510). Section 8.5's rule **fails in three segments of Step 3's runs**: the ph8 overview's orbit
+  (0% and 23.7% long against 0% and 0%) and its orbit with effects off (42.9% and 76% against 0.3% and 0%), where both builds draw the same frames and
+  Step 3's numbers sit inside what Stage 7's runs of the same phone measured there (47-48 frames a second, 8.9-15.6% long; 30-34, 80-89%); and
+  half-speed Play (0% and 11.7% against 1.1% and 1.1%), where the builds differ: Step 2's frames slow at the same moment in every run, today's and
+  Stage 7's (6.4-6.7 s into the 12 s, to about 48 frames a second), while Step 3's two runs, identical frames, one never slowing and the other
+  slowing from 6.3 s to 44.5, the second in the session's slowest run (5 of the segments both builds draw alike under 59 frames a second, against 2,
+  3 and 1). Two runs a build cannot separate Step 3's half-speed Play from the phone's spread.
+- **The reader extended** for that: each failure of section 8.5 marked where both builds draw the same frames (the route sets the camera, so a
+  difference there is the device's), with Stage 7's runs of the segment beside it, and each run's device state (its segments not played under 59
+  frames a second).
+- **Put to the owner** (`docs/ux-step3-evidence/README.md` section 10): (a) accept the phone as measured, half-speed Play carried as unsettled, or (b,
+  recommended) a short targeted re-run on the phone (`?only=ph8-overview,play-4x,play-half`, six runs starting with Step 3, three minutes apart),
+  read by a rule stated in `PROTOCOL.md` before the runs.
+- **The owner's decision** (17 November 2026, "I'll go with option a"): **(a), the phone accepted as measured**, as decision 324 (a) did for the ph8
+  overview's orbit: section 8.3's phone budget holds; section 8.5's three failures recorded as the phone's run-to-run spread (two of them on frames
+  both builds draw alike); half-speed Play's comparison carried as unsettled. The targeted re-run was not made; its protocol stays in `PROTOCOL.md`,
+  marked not chosen, for a later step that wants it. With it, UI/UX roadmap step 3 is closed once this pull request is merged.
+- **Recorded in**: `docs/ux-step3-evidence/device/README.md`, `PROTOCOL.md` ("Runs received", "A targeted re-run"), `docs/ux-step3-evidence/README.md`
+  (sections 0, 1, 6 and 10), `CLAUDE.md`.
+- **Checks**: `npm test` (all 9 suites, the height guard, the dead-code check) and `check:baseline` here on this commit; `route-check.js` on each report;
+  `device-runs.js` exit 0.
+
+### What remains uncertain or open
+
+- **Half-speed Play on the phone**: unsettled by two runs a build (above), accepted as measured on the owner's decision (a) of 17 November 2026 and
+  carried: whether Step 3's closer view costs the phone in Play at half speed is not shown (Step 3's two runs this phone's best and worst there).
+- At 144 Hz this desktop shows no frame-time difference between the builds; whether a slower GPU feels half speed's +0.7% triangles is not shown here
+  (an integrated GPU is still to run, as since Stage 7).
+- The runs were 22-77 s apart, not the two minutes asked; with every median at the refresh and no long frame, nothing reads as the device warming.
+
 ## 2026-11 · UI/UX roadmap step 3: Follow framing and camera continuity (UA-02)
 
-**Status: on `claude/gallant-feynman-gok1g7`, a draft PR into `main` (#113), for review, not merged.** PR 3 of `docs/UX_ART_AUDIT.md` section 6, from `main`
+**Status: merged into `main` by the owner (#113, `81d7b04`, 16 November 2026).** PR 3 of `docs/UX_ART_AUDIT.md` section 6, from `main`
 at `9d6b37451419721c759cca473da20bf8384f9247` (the Step 2 merge itself, verified; its build SHA-256 `06842ca46dfbdaf6c892de2393b83b5e28c6fe211a180c53244688bfbedaf186`).
 A presentation task: **no data changed** (`check:data`: all 143 declarations byte-identical to its reference). The evidence, with every number's
 method: `docs/ux-step3-evidence/`.

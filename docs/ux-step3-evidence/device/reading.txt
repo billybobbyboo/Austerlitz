@@ -1,0 +1,85 @@
+desk: desk-S2-1.json, desk-S2-2.json, desk-S3-1.json, desk-S3-2.json; ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002786) Direct3D11 vs_5_0 ps_5_0, D3D11); viewport 2560 x 1305; refresh 6.9 ms
+  desk-S2-1.json: 2026-11-16T08:51:50.126Z to 2026-11-16T08:54:23.936Z, 1300599 bytes transferred
+  desk-S2-2.json: 2026-11-16T08:58:45.961Z to 2026-11-16T09:01:17.584Z, 0 bytes transferred
+  desk-S3-1.json: 2026-11-16T08:55:40.804Z to 2026-11-16T08:58:12.468Z, 1306181 bytes transferred
+  desk-S3-2.json: 2026-11-16T09:01:39.490Z to 2026-11-16T09:04:11.134Z, 0 bytes transferred
+  8.3 desk-S2-1.json: calls at most 843 (play-4x|played), triangles at most 2317629 (play-4x|played): within (at most 900 calls and 2.8 million triangles in any frame)
+  8.3 desk-S2-2.json: calls at most 843 (play-4x|played), triangles at most 2317629 (play-4x|played): within (at most 900 calls and 2.8 million triangles in any frame)
+  8.3 desk-S3-1.json: calls at most 829 (play-4x|played), triangles at most 2300331 (play-4x|played): within (at most 900 calls and 2.8 million triangles in any frame)
+  8.3 desk-S3-2.json: calls at most 829 (play-4x|played), triangles at most 2300331 (play-4x|played): within (at most 900 calls and 2.8 million triangles in any frame)
+  8.5 (each Step 3 run against each Step 2 run): holds in every segment
+  device state by run (segments not played under 59 fps, in the order run):
+    desk-S2-1.json (08:51:50): 0
+    desk-S3-1.json (08:55:40): 0
+    desk-S2-2.json (08:58:45): 0
+    desk-S3-2.json (09:01:39): 0
+  CPU line: holds; the largest js50 excess 0.1 ms (desk-S3-1.json vs desk-S2-1.json overview|orbit -effects)
+  segment                         fps S2|S3        p50 S2|S3        p95 S2|S3      long% S2|S3   miss% S2|S3     js50 S2|S3      gpu50 S2|S3       calls S2|S3          callsMax S2|S3      trisMax S2|S3
+  overview|held                 144/144 | 144/144 6.9/6.9 | 6.9/6.9 7.1/7.1 | 7.1/7.1       0/0 | 0/0       0/0 | 0/0 3.2/3.2 | 3.2/3.3 3.2/6.5 | 4.8/2.3   825/825 | 825/825   825/825 | 825/825 1977737/1977737 | 1977737/1977737
+  overview|orbit                144/144 | 144/144 6.9/6.9 | 6.9/6.9   7/7 | 7.1/7.1       0/0 | 0/0       0/0 | 0/0 3.6/3.6 | 3.6/3.6 2.5/2.5 | 2.5/4.8   827/827 | 827/827   827/827 | 827/827 2124847/2124847 | 2124847/2124847
+  overview|orbit -figures       144/144 | 144/144 6.9/6.9 | 6.9/6.9   7.1/7.1 | 7/7       0/0 | 0/0       0/0 | 0/0       2/2 | 2/2 2.1/2.1 | 4.2/4.3   258/258 | 258/258   258/258 | 258/258 850239/850239 | 850239/850239
+  overview|orbit -effects       144/144 | 144/144 6.9/6.9 | 6.9/6.9     7/7 | 7/7.1       0/0 | 0/0       0/0 | 0/0 3.5/3.5 | 3.6/3.6 2.9/2.9 | 2.9/2.9   820/820 | 820/820   820/820 | 820/820 2124840/2124840 | 2124840/2124840
+  pratzen-low-4x|held           144/144 | 144/144 6.9/6.9 | 6.9/6.9     7/7 | 7/7.1       0/0 | 0/0       0/0 | 0/0 2.9/2.8 | 2.9/2.8 4.2/4.2 | 4.2/2.8   570/570 | 570/570   570/570 | 570/570 1690237/1690237 | 1690237/1690237
+  pratzen-low-4x|orbit          144/144 | 144/144 6.9/6.9 | 6.9/6.9     7/7.1 | 7/7       0/0 | 0/0       0/0 | 0/0 3.3/3.3 | 3.3/3.4 2.7/2.7 | 2.7/2.7   590/590 | 590/590   633/633 | 633/633 1976613/1976613 | 1976613/1976613
+  pratzen-low-4x|orbit -figures 144/144 | 144/144 6.9/6.9 | 6.9/6.9   7.1/7 | 7/7.1       0/0 | 0/0       0/0 | 0/0 2.3/2.3 | 2.3/2.3 5/4.5 | 4.4/5.1   221/221 | 221/221   227/226 | 227/227 844065/844065 | 844065/844065
+  pratzen-low-4x|orbit -effects 144/144 | 144/144 6.9/6.9 | 6.9/6.9     7.1/7 | 7/7       0/0 | 0/0       0/0 | 0/0 3.2/3.3 | 3.3/3.3 4.3/4.2 | 4.2/4.2   583/583 | 583/583   626/626 | 626/626 1976606/1976606 | 1976606/1976606
+  pratzen-low-1x|held           144/144 | 144/144 6.9/6.9 | 6.9/6.9       7/7 | 7/7       0/0 | 0/0       0/0 | 0/0 1.7/1.7 | 1.7/1.8 3.4/3.4 | 3.4/3.4   158/158 | 158/158   158/158 | 158/158 234003/234003 | 234003/234003
+  pratzen-low-1x|orbit          144/144 | 144/144 6.9/6.9 | 6.9/6.9   7/7.1 | 7/7.1       0/0 | 0/0       0/0 | 0/0 1.8/1.9 | 1.9/1.9 3.2/2.1 | 3.4/3   175/175 | 175/175   180/180 | 180/180 386513/386513 | 386513/386513
+  pratzen-low-10x|held          144/144 | 144/144 6.9/6.9 | 6.9/6.9   7/7 | 7.1/7.1       0/0 | 0/0       0/0 | 0/0 2.9/2.9 | 2.9/2.9 4.5/4.4 | 2.3/2.3   583/583 | 583/583   583/583 | 583/583 1689487/1689487 | 1689487/1689487
+  pratzen-low-10x|orbit         144/144 | 144/144 6.9/6.9 | 6.9/6.9 7/7.1 | 7.1/7.1       0/0 | 0/0       0/0 | 0/0 3.4/3.4 | 3.4/3.5 2.3/4.5 | 4.4/2.3   617/617 | 617/617   631/631 | 631/631 1955685/1955685 | 1955685/1955685
+  ph8-overview|held             144/144 | 144/144 6.9/6.9 | 6.9/6.9 7.1/7.1 | 7.1/7.1       0/0 | 0/0       0/0 | 0/0 3.2/3.2 | 3.2/3.2 2.4/2.4 | 3.2/2.3   800/800 | 800/800   800/800 | 800/800 1959263/1959263 | 1959263/1959263
+  ph8-overview|orbit            144/144 | 144/144 6.9/6.9 | 6.9/6.9   7/7.1 | 7.1/7       0/0 | 0/0       0/0 | 0/0 3.6/3.6 | 3.6/3.6 2.5/3.2 | 2.5/4.7   802/802 | 802/802   802/802 | 802/802 2106487/2106487 | 2106487/2106487
+  ph8-overview|orbit -figures   144/144 | 144/144 6.9/6.9 | 6.9/6.9 7.1/7.1 | 7/7.1       0/0 | 0/0       0/0 | 0/0       2/2 | 2/2 4.9/4.9 | 4.9/2.1   247/247 | 247/247   247/247 | 247/247 851711/851711 | 851711/851711
+  ph8-overview|orbit -effects   144/144 | 144/144 6.9/6.9 | 6.9/6.9 7/7.1 | 7.1/7.1       0/0 | 0/0       0/0 | 0/0 3.5/3.5 | 3.5/3.6   3.1/2.1 | 3/3   795/795 | 795/795   795/795 | 795/795 2106480/2106480 | 2106480/2106480
+  paper|held                    144/144 | 144/144 6.9/6.9 | 6.9/6.9     7/7 | 7/7.1       0/0 | 0/0       0/0 | 0/0 1.6/1.6 | 1.6/1.4 1.8/3.5 | 3.4/2.2   158/158 | 158/158   158/158 | 158/158 245711/245711 | 245711/245711
+  paper|pan                     144/144 | 144/144 6.9/6.9 | 6.9/6.9       7/7 | 7/7       0/0 | 0/0       0/0 | 0/0 1.7/1.8 | 1.8/1.8 1.7/1.7 | 1.7/1.7   158/158 | 158/158   158/158 | 158/158 245711/245711 | 245711/245711
+  eye|held                      144/144 | 144/144 6.9/6.9 | 6.9/6.9   7/7.1 | 7/7.1       0/0 | 0/0       0/0 | 0/0 2.3/2.3 | 2.3/2.3   2/2.5 | 2.6/2   193/193 | 193/193   193/193 | 193/193 454617/454617 | 454617/454617
+  eye|look                      144/144 | 144/144 6.9/6.9 | 6.9/6.9     7/7 | 7/7.1       0/0 | 0/0       0/0 | 0/0 2.3/2.3 | 2.2/2.1 2.1/4.7 | 2.1/2.6       84/84 | 84/84   175/175 | 175/175 546717/546717 | 546717/546717
+  play-4x|played                143.8/143.9 | 143.9/143.8 6.9/6.9 | 6.9/6.9 7.1/7.1 | 7/7.1       0/0 | 0/0 0.1/0.1 | 0.1/0.1 4.3/4.3 | 4.3/4.3 2.8/2.7 | 2.8/3   823/823 | 794/794   843/843 | 829/829 2317629/2317629 | 2300331/2300331
+  play-half|played              143.9/144 | 143.9/144 6.9/6.9 | 6.9/6.9 7.1/7.1 | 7.1/7.1       0/0 | 0/0   0.1/0 | 0.1/0   5/5 | 4.9/4.9   3.9/3.9 | 4/4   789/789 | 781/781   827/827 | 817/817 2273009/2273009 | 2289379/2289379
+  Stage 7 play-4x|played: desk-S7-1.json fps 143.9, p50 6.9, long% 0, miss% 0.1, js50 4.3, calls 823 (max 843), triangles max 2317629; desk-S7-2.json fps 143.8, p50 6.9, long% 0, miss% 0.1, js50 4.3, calls 823 (max 843), triangles max 2317741
+  Stage 7 play-half|played: desk-S7-1.json fps 143.7, p50 6.9, long% 0, miss% 0.2, js50 4.9, calls 789 (max 827), triangles max 2273009; desk-S7-2.json fps 143.8, p50 6.9, long% 0, miss% 0.2, js50 5.1, calls 789 (max 827), triangles max 2273009
+phone: phone-S2-1.json, phone-S2-2.json, phone-S3-1.json, phone-S3-2.json; Apple GPU; viewport 402 x 714; refresh 17 ms
+  phone-S2-1.json: 2026-11-16T23:23:11.745Z to 2026-11-16T23:25:43.507Z, 1301319 bytes transferred
+  phone-S2-2.json: 2026-11-16T23:29:18.564Z to 2026-11-16T23:31:50.307Z, 0 bytes transferred
+  phone-S3-1.json: 2026-11-16T23:26:12.572Z to 2026-11-16T23:28:44.224Z, 1306901 bytes transferred
+  phone-S3-2.json: 2026-11-16T23:32:21.841Z to 2026-11-16T23:34:53.776Z, 0 bytes transferred
+  8.3 phone-S2-1.json: calls at most 542 (overview|orbit), triangles at most 1394981 (play-half|played): within (the heaviest frame at most 1.62 million triangles; segment medians of calls at most 10% above Step 2's)
+  8.3 phone-S2-2.json: calls at most 542 (overview|orbit), triangles at most 1394981 (play-half|played): within (the heaviest frame at most 1.62 million triangles; segment medians of calls at most 10% above Step 2's)
+  8.3 phone-S3-1.json: calls at most 550 (play-half|played), triangles at most 1311877 (overview|orbit): within (the heaviest frame at most 1.62 million triangles; segment medians of calls at most 10% above Step 2's)
+  8.3 phone-S3-2.json: calls at most 550 (play-half|played), triangles at most 1311877 (overview|orbit): within (the heaviest frame at most 1.62 million triangles; segment medians of calls at most 10% above Step 2's)
+  8.5 (each Step 3 run against each Step 2 run): fails in 3 segments:
+    ph8-overview|orbit -effects (the same frames on both builds: the device's): phone-S3-1.json vs phone-S2-1.json: long-frame share 0.3% to 42.9%; phone-S3-1.json vs phone-S2-2.json: long-frame share 0% to 42.9%; phone-S3-2.json vs phone-S2-1.json: long-frame share 0.3% to 76%; phone-S3-2.json vs phone-S2-2.json: long-frame share 0% to 76%; Stage 7's runs of it: phone-S7-1.json 30.3 fps, 89.4% long, calls 517; phone-S7-2.json 34.3 fps, 79.7% long, calls 517
+    ph8-overview|orbit (the same frames on both builds: the device's): phone-S3-2.json vs phone-S2-1.json: long-frame share 0% to 23.7%; phone-S3-2.json vs phone-S2-2.json: long-frame share 0% to 23.7%; Stage 7's runs of it: phone-S7-1.json 48 fps, 8.9% long, calls 524; phone-S7-2.json 47 fps, 15.6% long, calls 524
+    play-half|played (a played segment: the builds draw different frames): phone-S3-2.json vs phone-S2-1.json: long-frame share 1.1% to 11.7%; phone-S3-2.json vs phone-S2-2.json: long-frame share 1.1% to 11.7%; Stage 7's runs of it: phone-S7-1.json 53.1 fps, 2.1% long, calls 481; phone-S7-2.json 52.9 fps, 2.8% long, calls 481
+  device state by run (segments not played under 59 fps, in the order run):
+    phone-S2-1.json (23:23:11): 2 (overview|orbit -effects 38.7, ph8-overview|orbit -effects 58.8; long-frame shares summed 52.2%)
+    phone-S3-1.json (23:26:12): 3 (ph8-overview|orbit 50.9, ph8-overview|orbit -figures 51.1, ph8-overview|orbit -effects 39; long-frame shares summed 42.9%)
+    phone-S2-2.json (23:29:18): 1 (overview|orbit -effects 38.7; long-frame shares summed 53%)
+    phone-S3-2.json (23:32:21): 5 (overview|orbit -effects 38.6, pratzen-low-4x|orbit -effects 46.6, ph8-overview|orbit 45, ph8-overview|orbit -figures 47.4, ph8-overview|orbit -effects 37.1; long-frame shares summed 157.3%)
+  segment                         fps S2|S3        p50 S2|S3        p95 S2|S3      long% S2|S3   miss% S2|S3     js50 S2|S3      gpu50 S2|S3       calls S2|S3          callsMax S2|S3      trisMax S2|S3
+  overview|held                   60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       4/4 | 4/4       -/- | -/-   540/540 | 540/540   540/540 | 540/540 1164903/1164903 | 1164903/1164903
+  overview|orbit                  60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       3/3 | 3/3       -/- | -/-   542/542 | 542/542   542/542 | 542/542 1311877/1311877 | 1311877/1311877
+  overview|orbit -figures         60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       3/3 | 3/3       -/- | -/-   244/244 | 244/244   244/244 | 244/244 673173/673173 | 673173/673173
+  overview|orbit -effects       38.7/38.7 | 60/38.6   26/26 | 17/26   29/29 | 17/29 51.9/53 | 0/55.3 34.1/34.6 | 0/35.6       4/4 | 3/4       -/- | -/-   535/535 | 535/535   535/535 | 535/535 1311870/1311870 | 1311870/1311870
+  pratzen-low-4x|held           60/59.7 | 60/60   17/17 | 17/17   18/18 | 17/18       0/0 | 0/0       0/0 | 0/0       4/4 | 4/4       -/- | -/-   215/215 | 215/215   215/215 | 215/215 711113/711113 | 711113/711113
+  pratzen-low-4x|orbit          59.9/59.6 | 60/59.8   17/17 | 17/17   18/18 | 17/18       0/0 | 0/0       0/0 | 0/0       4/4 | 4/4       -/- | -/-   206/206 | 206/206   370/369 | 369/370 1067057/1067057 | 1067057/1067057
+  pratzen-low-4x|orbit -figures 60/60 | 60/59.5   17/17 | 17/17   17/17 | 17/18       0/0 | 0/0       0/0 | 0/0       4/4 | 3/4       -/- | -/-   153/153 | 153/153   207/207 | 207/207 660455/660455 | 660455/660455
+  pratzen-low-4x|orbit -effects 60/60 | 60/46.6   17/17 | 17/21   17/17 | 17/25     0/0 | 0/2.3     0/0 | 0/2.3       4/3 | 4/5       -/- | -/-   199/199 | 199/196   362/362 | 362/362 1067050/1067050 | 1067050/1067050
+  pratzen-low-1x|held             60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       3/3 | 3/4       -/- | -/-   132/132 | 132/132   132/132 | 132/132 228035/228035 | 228035/228035
+  pratzen-low-1x|orbit            60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       3/3 | 3/4       -/- | -/-   130/130 | 130/130   175/175 | 175/175 385415/385415 | 385415/385415
+  pratzen-low-10x|held            60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       4/4 | 4/4       -/- | -/-   216/216 | 216/216   216/216 | 216/216 710763/710763 | 710763/710763
+  pratzen-low-10x|orbit           60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       4/4 | 4/5       -/- | -/-   205/205 | 205/205   368/368 | 368/368 1074789/1074789 | 1074789/1074789
+  ph8-overview|held               60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       4/4 | 4/4       -/- | -/-   522/522 | 522/522   522/522 | 522/522 1157837/1157837 | 1157837/1157837
+  ph8-overview|orbit            60/60 | 50.9/45   17/17 | 19/23   17/17 | 24/27    0/0 | 0/23.7    0/0 | 0/19.2       3/3 | 3/5       -/- | -/-   524/524 | 524/524   524/524 | 524/524 1306213/1306213 | 1306213/1306173
+  ph8-overview|orbit -figures   60/60 | 51.1/47.4   17/17 | 20/21   17/17 | 22/23       0/0 | 0/0       0/0 | 0/0       3/2 | 3/4       -/- | -/-   233/233 | 233/233   233/233 | 233/233 677425/677425 | 677425/677425
+  ph8-overview|orbit -effects   58.8/60 | 39/37.1   17/17 | 25/27   20/17 | 29/30 0.3/0 | 42.9/76 0.3/0 | 30/43.2       3/3 | 4/5       -/- | -/-   517/517 | 517/517   517/517 | 517/517 1306166/1306206 | 1306166/1306206
+  paper|held                      60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       4/4 | 4/4       -/- | -/-   158/158 | 158/158   158/158 | 158/158 245711/245711 | 245711/245711
+  paper|pan                       60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       3/4 | 3/4       -/- | -/-   157/157 | 157/157   158/158 | 158/158 245711/245711 | 245711/245711
+  eye|held                        60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       4/4 | 4/4       -/- | -/-   135/135 | 135/135   135/135 | 135/135 277077/277077 | 277077/277077
+  eye|look                        60/60 | 60/60   17/17 | 17/17   17/17 | 17/17       0/0 | 0/0       0/0 | 0/0       4/3 | 3/4       -/- | -/-       47/47 | 47/47   136/136 | 136/136 423375/423375 | 423375/423375
+  play-4x|played                60/60 | 60/59.7   17/17 | 17/17   17/17 | 17/18     0/0 | 0/0.3     0/0 | 0/0.3       5/5 | 5/6       -/- | -/-   430/430 | 425/425   525/525 | 539/539 1367081/1367081 | 1301681/1301681
+  play-half|played              53.4/53.7 | 60/50.8   17/17 | 17/18   24/24 | 17/27 1.1/1.1 | 0/11.7 1.1/1.1 | 0/10.5       6/6 | 6/7       -/- | -/-   481/481 | 510/510   528/528 | 550/550 1394981/1394981 | 1308005/1308005
+  Stage 7 play-4x|played: phone-S7-1.json fps 60, p50 17, long% 0.1, miss% 0.1, js50 5, calls 430 (max 525), triangles max 1367081; phone-S7-2.json fps 60, p50 17, long% 0, miss% 0, js50 5, calls 430 (max 525), triangles max 1367081
+  Stage 7 play-half|played: phone-S7-1.json fps 53.1, p50 17, long% 2.1, miss% 2.1, js50 6, calls 481 (max 528), triangles max 1395047; phone-S7-2.json fps 52.9, p50 17, long% 2.8, miss% 2.7, js50 6, calls 481 (max 528), triangles max 1395047
+every report verbatim, its build the pinned copy its name says, the ordinary route whole: OK
