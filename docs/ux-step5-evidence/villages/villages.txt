@@ -1,0 +1,22 @@
+strings read: 568 (PHASES, EVENTS, TOUR, ANALYSIS; camera presets skipped)
+name                   FEATURES id   strings   by source
+Sokolnitz              sokolnitz          15   {"PHASES":8,"EVENTS":6,"ANALYSIS":1}
+Telnitz                telnitz            12   {"PHASES":7,"EVENTS":5}
+Augezd                 augezd             10   {"PHASES":3,"EVENTS":5,"TOUR":1,"ANALYSIS":1}
+Blasowitz              blasowitz           8   {"PHASES":4,"EVENTS":2,"ANALYSIS":2}
+Austerlitz             austerlitz          4   {"PHASES":2,"EVENTS":2}
+Kobelnitz              kobelnitz           4   {"PHASES":1,"EVENTS":2,"ANALYSIS":1}
+Puntowitz              puntowitz           4   {"PHASES":1,"EVENTS":1,"TOUR":1,"ANALYSIS":1}
+Pratzen                pratzenv            3   {"PHASES":2,"EVENTS":1}
+Satschan               -                   3   {"PHASES":1,"EVENTS":2}
+Turas                  -                   3   {"PHASES":1,"EVENTS":1,"ANALYSIS":1}
+Holubitz               -                   2   {"PHASES":1,"ANALYSIS":1}
+Krug                   -                   2   {"PHASES":1,"ANALYSIS":1}
+Krzenowitz             krzenowitz          2   {"PHASES":2}
+Bellowitz              -                   0   {}
+Bosenitz               -                   0   {}
+Girzikowitz            girzikowitz         0   {}
+Hostieradek            -                   0   {}
+Menitz                 -                   0   {}
+Posoritz post house    -                   0   {}
+Schlapanitz            -                   0   {}

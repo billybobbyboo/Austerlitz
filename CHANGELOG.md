@@ -1,5 +1,54 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-11 · UI/UX roadmap step 5: the paper plate (UA-08)
+
+**Status: on `claude/paper-plate-presentation-11l8zs` (from `main` at `78ba837`, #115's merge), a draft PR into `main`, for review, not merged.**
+PR 5 of `docs/UX_ART_AUDIT.md` section 6, Direction B on the paper map only. Presentation only: **no data changed** (`check:data`, 143 of 143
+declarations byte-identical). Evidence: `docs/ux-step5-evidence/README.md`; tools `tools/ux-step5/` and the live block `tools/visual/ux5.js` (not bundled).
+
+- **The owner's decisions** (18 November 2026, each as recommended, asked with the measures first): **decision 302 (b)**, reopened by UA-08, option (b):
+  the twelve villages' names laid out after the counters and before every other label while the plate stands (7, 5 and 7 of 12 as entered at 1600 x
+  900, 1366 x 768 and 1280 x 720; **the audit's 10 of 12 not met, accepted**; no motion baseline lowered); **the plate stands while the field is shown
+  as framed**; **on a phone the plate is the surround alone**.
+- **The tilt, measured first** (`tools/ux-step5/probe.js`): the paper map is north-up (north 0.000 degrees off up in every view; the scale's spread
+  0.2%, the bar within 0.2-0.4%). What the audit read as the sheet "tilted about 20 degrees" is the modelled ground's frame, its edges 17.42 degrees from
+  the screen's axes, `GEOREF.ROT_DEG`: drawn where it lies. Nothing rotated, `GEOREF` untouched; the neatline north-aligned round the free map.
+- **The surround** (`app.js` `plateSurround`, `plateTone`): the olive apron covered on the paper map by a sheet of the apron's own geometry (a child of the
+  apron, 0.05 units above it, under the flat field), unlit, in `TOKENS.theme.paper.ink`, its colour through the inverse of the post pass's tone curve
+  and exposure (untoned with the pass off); the apron and `world.js` untouched. On screen 243, 238, 226 at the middle; the composite's vignette darkens
+  it toward the corners as it does the whole map (232, 227, 217 at the free map's corners at 1600 x 900).
+- **The neatline** (`#neatline`, `plateSync`): a 2 px line and a 1 px line inside it in the paper theme's ink, 7 px round the free rectangle MAPCAM
+  frames the field in (inside its 10 px margin); the framing unchanged (the plate's obstacles reach the map layer only, never `env.panels`).
+- **The counters inside it** (`plateObstacles`): while the plate stands, outside the neatline is a panel to the map layer: no counter on a leader in
+  the margin. Counters outside the free map as entered: 0, 1, 4 on the base to 0, 0, 0, every counter drawn.
+- **The cartouche** (`#cartouche`, `plateCartouche`, `plateWords`, `LABELS.plate.date`): the rail head's date and the clock, the phase's title, its act
+  and span, words the page already shows; in the plate's margin right of the neatline (else left of it, else the free map's band beside the field,
+  else none); a panel to the layer while drawn; aria-hidden (the caption and the phase's announcement say the moment).
+- **The twelve villages** (`PLATE_TWELVE`, `plateLetters`, `#paperletters`, `.pl-name`): derived from the data (`tools/ux-step5/villages.js`): the eleven
+  villages PHASES, EVENTS, TOUR and ANALYSIS name as villages (Sokolnitz 15 strings, Telnitz 12, Augezd 10, Blasowitz 8, Kobelnitz 4, Puntowitz 4,
+  Austerlitz 3, Pratzen village 3, Holubitz 2, Krug 2, Krzenowitz 2) and Girzikowitz, the next by the same rule over the formations' text; each under
+  the name the page gives it (FEATURES, or VILLAGES for Holubitz and Krug); none added or renamed. A base lettering under the map layer, cased in the
+  paper's tone; while the plate stands laid out after the counters and before every other item, which place round it; after the layer otherwise; a
+  village's own place label withheld while its name stands (no village named twice).
+- **Contours**: already on by default and drawn on the paper map (`layerOn.contours`, since Stage 2E); nothing changed.
+- **Nothing on the landscape changes**: the canvas and the page pixel for pixel as the base build's at the Field vantage in Study and Watch
+  (`tools/ux-step5/spot.js`, SPOT_LAND).
+- **Measured, the options** (`docs/ux-step5-evidence/` sections 4-5): the motion block's paper runs on the base build 22 jumps, 178 pops, 29 switches, 4
+  flickers, every visibility baseline exact; this build REPLACE_MOTION. Option (a), the names first, drew 12 of 12 but lowered six visibility baselines
+  (paper-pan 1,274 to 1,216 drawn and 0 to 533 ms; paper-zoom 852 to 835; paper-glide 551 to 539; zoom+point 852 to 813; zoom+sel 821 to 749; play+al
+  1,182 to 1,109) and took the jumps over their ceiling (about 254 of 251). The plate held always lowered paper-pan to 963 drawn; the cartouche alone,
+  always drawn, paper-pan to 1,243 and paper-glide's in-view to 735.
+- **The live block `ux5`** in `check:selftest` and `check:visual` (feature `UX5` required, judged by `thresholds.js` `checkUx5`, its bars `UX5`): on the base
+  14 failures, on this build 0.
+- **The self-test**: 356 to **360** checks (added "the paper plate as entered", "the layer inside the neatline while the plate stands", "the cartouche"
+  and "the twelve villages' names", each "(UI/UX step 5, UA-08)"); the manifest from a passing run of this build. `css-test.js`: the plate's rules
+  (the paper theme's colours, the rail head's day, nothing to MAPCAM's framing, the plate's scope, the surround, the lettering's casing).
+  `check:contrast`: the base lettering read against its casing, as the Landscape's tier 3 labels are.
+- **Baselines**: none moved. CHECKS_LINE
+- **Uncertain**: the audit's 10 of 12 not met (decision 1); the plate stands down at the first pan or zoom (the Overview brings it back); everything is
+  software WebGL; `check:visual` in full on CI only; no device run (one draw call more on the paper map, none on the landscape or the phone's layout).
+- **Build**: `austerlitz-command-map.html` **BUILD_BYTES bytes, md5 `BUILD_MD5`** (SHA-256 `BUILD_SHA`); `check:baseline` moved to it.
+
 ## 2026-11 · UI/UX roadmap step 4: the first frame (UA-03, UA-04)
 
 **Status: on `claude/great-hopper-fsyck2` (from `main` at `2b3e747`, #114's merge, which contains #113's `81d7b04`), a draft PR into `main` (#115),

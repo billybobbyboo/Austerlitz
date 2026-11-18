@@ -1,0 +1,990 @@
+{
+ "t": 570,
+ "builds": [
+  {
+   "label": "base",
+   "build": {
+    "file": "../../../tmp/claude-0/-home-user-Austerlitz/2a30654d-ed59-5eff-a7b4-2563e5fa9bdc/scratchpad/base/austerlitz-66b4edc2-step4.html",
+    "bytes": 3100850,
+    "md5": "66b4edc251ada879b2146ed7dabd385b",
+    "sha256": "393bbc1e88cdb7847939fede792134a09fe7dcfe16fd527d65c535783ae4f3bf"
+   },
+   "chromium": "141.0.7390.37",
+   "views": [
+    {
+     "vp": [
+      1600,
+      900
+     ],
+     "phone": false,
+     "vw": 1600,
+     "vh": 900,
+     "mode": "staff",
+     "clock": 570,
+     "phase": 4,
+     "contours": {
+      "layer": true,
+      "visible": true
+     },
+     "freeRect": [
+      312,
+      64,
+      1248,
+      792
+     ],
+     "neatline": null,
+     "fieldCorners": [
+      [
+       553.9,
+       64
+      ],
+      [
+       1173.5,
+       258.4
+      ],
+      [
+       1006.1,
+       792
+      ],
+      [
+       386.5,
+       597.6
+      ]
+     ],
+     "fieldBox": [
+      387,
+      64,
+      1174,
+      792
+     ],
+     "fieldInFree": true,
+     "edgesDeg": [
+      17.419,
+      17.418,
+      17.419,
+      17.418
+     ],
+     "paper": {
+      "north": 0,
+      "spread": 0.00203,
+      "scaleBar": {
+       "label": "5 km",
+       "px": 143,
+       "want": 142.7,
+       "err": 0.00217
+      },
+      "pxPerKm": {
+       "pratzeberg": 28.537,
+       "sokolnitz": 28.529,
+       "santon": 28.572,
+       "satschan": 28.514
+      },
+      "frameInFree": 1
+     },
+     "counters": 14,
+     "countersOutside": 0,
+     "countersOutsideIds": [],
+     "leaders": 22,
+     "countersLed": 14,
+     "placed": 23,
+     "dropped": 12,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:satschan",
+      "t:austerlitz"
+     ],
+     "withheld": 1,
+     "placesOn": [],
+     "byCat": {
+      "plateau": 1,
+      "counter": 14,
+      "event": 1,
+      "overlay": 6,
+      "objective": 1
+     },
+     "twelve": [
+      {
+       "id": "sokolnitz",
+       "name": "Sokolnitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "telnitz",
+       "name": "Telnitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "augezd",
+       "name": "Augezd",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "blasowitz",
+       "name": "Blasowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "kobelnitz",
+       "name": "Kobelnitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "puntowitz",
+       "name": "Puntowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "austerlitz",
+       "name": "Austerlitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "pratzenv",
+       "name": "Pratzen village",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "krzenowitz",
+       "name": "Krzenowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": null,
+       "name": "Holubitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": null,
+       "name": "Krug",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "girzikowitz",
+       "name": "Girzikowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      }
+     ],
+     "twelveDrawn": 0,
+     "cartouche": null,
+     "layerMs": 2.1,
+     "surround": [
+      [
+       115,
+       117,
+       99
+      ],
+      [
+       114,
+       116,
+       99
+      ],
+      [
+       107,
+       111,
+       99
+      ],
+      [
+       107,
+       110,
+       98
+      ]
+     ],
+     "errors": [
+      "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+     ]
+    },
+    {
+     "vp": [
+      1366,
+      768
+     ],
+     "phone": false,
+     "vw": 1366,
+     "vh": 768,
+     "mode": "staff",
+     "clock": 570,
+     "phase": 4,
+     "contours": {
+      "layer": true,
+      "visible": true
+     },
+     "freeRect": [
+      312,
+      64,
+      1016,
+      664
+     ],
+     "neatline": null,
+     "fieldCorners": [
+      [
+       477.7,
+       64
+      ],
+      [
+       988.3,
+       224.3
+      ],
+      [
+       850.3,
+       664
+      ],
+      [
+       339.7,
+       503.7
+      ]
+     ],
+     "fieldBox": [
+      340,
+      64,
+      988,
+      664
+     ],
+     "fieldInFree": true,
+     "edgesDeg": [
+      17.429,
+      17.424,
+      17.429,
+      17.424
+     ],
+     "paper": {
+      "north": 0,
+      "spread": 0.00204,
+      "scaleBar": {
+       "label": "5 km",
+       "px": 118,
+       "want": 117.6,
+       "err": 0.0034
+      },
+      "pxPerKm": {
+       "pratzeberg": 23.519,
+       "sokolnitz": 23.513,
+       "santon": 23.548,
+       "satschan": 23.5
+      },
+      "frameInFree": 1
+     },
+     "counters": 14,
+     "countersOutside": 1,
+     "countersOutsideIds": [
+      "c:c_cav"
+     ],
+     "leaders": 21,
+     "countersLed": 13,
+     "placed": 23,
+     "dropped": 12,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:satschan",
+      "t:austerlitz"
+     ],
+     "withheld": 1,
+     "placesOn": [],
+     "byCat": {
+      "plateau": 1,
+      "counter": 14,
+      "event": 1,
+      "overlay": 6,
+      "objective": 1
+     },
+     "twelve": [
+      {
+       "id": "sokolnitz",
+       "name": "Sokolnitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "telnitz",
+       "name": "Telnitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "augezd",
+       "name": "Augezd",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "blasowitz",
+       "name": "Blasowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "kobelnitz",
+       "name": "Kobelnitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "puntowitz",
+       "name": "Puntowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "austerlitz",
+       "name": "Austerlitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "pratzenv",
+       "name": "Pratzen village",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "krzenowitz",
+       "name": "Krzenowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": null,
+       "name": "Holubitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": null,
+       "name": "Krug",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "girzikowitz",
+       "name": "Girzikowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      }
+     ],
+     "twelveDrawn": 0,
+     "cartouche": null,
+     "layerMs": 2.4,
+     "surround": [
+      [
+       114,
+       116,
+       98
+      ],
+      [
+       116,
+       119,
+       101
+      ],
+      [
+       108,
+       111,
+       99
+      ],
+      [
+       110,
+       113,
+       101
+      ]
+     ],
+     "errors": [
+      "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+     ]
+    },
+    {
+     "vp": [
+      1280,
+      720
+     ],
+     "phone": false,
+     "vw": 1280,
+     "vh": 720,
+     "mode": "staff",
+     "clock": 570,
+     "phase": 4,
+     "contours": {
+      "layer": true,
+      "visible": true
+     },
+     "freeRect": [
+      312,
+      64,
+      928,
+      616
+     ],
+     "neatline": null,
+     "fieldCorners": [
+      [
+       448.6,
+       64
+      ],
+      [
+       918.4,
+       211.4
+      ],
+      [
+       791.4,
+       616
+      ],
+      [
+       321.6,
+       468.6
+      ]
+     ],
+     "fieldBox": [
+      322,
+      64,
+      918,
+      616
+     ],
+     "fieldInFree": true,
+     "edgesDeg": [
+      17.419,
+      17.427,
+      17.419,
+      17.427
+     ],
+     "paper": {
+      "north": 0,
+      "spread": 0.00203,
+      "scaleBar": {
+       "label": "5 km",
+       "px": 108,
+       "want": 108.2,
+       "err": 0.00178
+      },
+      "pxPerKm": {
+       "pratzeberg": 21.638,
+       "sokolnitz": 21.632,
+       "santon": 21.664,
+       "satschan": 21.62
+      },
+      "frameInFree": 1
+     },
+     "counters": 14,
+     "countersOutside": 4,
+     "countersOutsideIds": [
+      "c:c_iii",
+      "c:c_cav",
+      "c:c_gren",
+      "c:lich"
+     ],
+     "leaders": 21,
+     "countersLed": 14,
+     "placed": 23,
+     "dropped": 12,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:satschan",
+      "t:austerlitz"
+     ],
+     "withheld": 1,
+     "placesOn": [],
+     "byCat": {
+      "plateau": 1,
+      "counter": 14,
+      "event": 1,
+      "overlay": 6,
+      "objective": 1
+     },
+     "twelve": [
+      {
+       "id": "sokolnitz",
+       "name": "Sokolnitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "telnitz",
+       "name": "Telnitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "augezd",
+       "name": "Augezd",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "blasowitz",
+       "name": "Blasowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "kobelnitz",
+       "name": "Kobelnitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "puntowitz",
+       "name": "Puntowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "austerlitz",
+       "name": "Austerlitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "pratzenv",
+       "name": "Pratzen village",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "krzenowitz",
+       "name": "Krzenowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": null,
+       "name": "Holubitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": null,
+       "name": "Krug",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "girzikowitz",
+       "name": "Girzikowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      }
+     ],
+     "twelveDrawn": 0,
+     "cartouche": null,
+     "layerMs": 2.5,
+     "surround": [
+      [
+       116,
+       118,
+       100
+      ],
+      [
+       118,
+       120,
+       103
+      ],
+      [
+       108,
+       111,
+       100
+      ],
+      [
+       108,
+       112,
+       99
+      ]
+     ],
+     "errors": [
+      "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+     ]
+    },
+    {
+     "vp": [
+      390,
+      844
+     ],
+     "phone": true,
+     "vw": 390,
+     "vh": 844,
+     "mode": "staff",
+     "clock": 570,
+     "phase": 4,
+     "contours": {
+      "layer": true,
+      "visible": true
+     },
+     "freeRect": [
+      16,
+      64,
+      376,
+      536
+     ],
+     "neatline": null,
+     "fieldCorners": [
+      [
+       92.6,
+       133.5
+      ],
+      [
+       376,
+       222.4
+      ],
+      [
+       299.4,
+       466.5
+      ],
+      [
+       16,
+       377.6
+      ]
+     ],
+     "fieldBox": [
+      16,
+      134,
+      376,
+      467
+     ],
+     "fieldInFree": true,
+     "edgesDeg": [
+      17.416,
+      17.422,
+      17.416,
+      17.422
+     ],
+     "paper": {
+      "north": 0,
+      "spread": 0.00207,
+      "scaleBar": {
+       "label": "5 km",
+       "px": 65,
+       "want": 65.3,
+       "err": 0.00408
+      },
+      "pxPerKm": {
+       "pratzeberg": 13.053,
+       "sokolnitz": 13.049,
+       "santon": 13.069,
+       "satschan": 13.042
+      },
+      "frameInFree": 1
+     },
+     "counters": 10,
+     "countersOutside": 4,
+     "countersOutsideIds": [
+      "c:c_v",
+      "c:c_cav",
+      "c:c_i",
+      "c:constantine"
+     ],
+     "leaders": 17,
+     "countersLed": 10,
+     "placed": 18,
+     "dropped": 17,
+     "droppedIds": [
+      "c:c_gd",
+      "c:lich",
+      "c:c_iii",
+      "c:c_gren",
+      "o:Levasseur up the Goldbach",
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:satschan",
+      "t:austerlitz"
+     ],
+     "withheld": 1,
+     "placesOn": [],
+     "byCat": {
+      "plateau": 1,
+      "counter": 10,
+      "event": 1,
+      "overlay": 5,
+      "objective": 1
+     },
+     "twelve": [
+      {
+       "id": "sokolnitz",
+       "name": "Sokolnitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "telnitz",
+       "name": "Telnitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "augezd",
+       "name": "Augezd",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "blasowitz",
+       "name": "Blasowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "kobelnitz",
+       "name": "Kobelnitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "puntowitz",
+       "name": "Puntowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "austerlitz",
+       "name": "Austerlitz",
+       "layer": false,
+       "layerState": "dropped",
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "pratzenv",
+       "name": "Pratzen village",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "krzenowitz",
+       "name": "Krzenowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": null,
+       "name": "Holubitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": null,
+       "name": "Krug",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      },
+      {
+       "id": "girzikowitz",
+       "name": "Girzikowitz",
+       "layer": false,
+       "layerState": null,
+       "layerShare": null,
+       "base": null,
+       "drawn": false
+      }
+     ],
+     "twelveDrawn": 0,
+     "cartouche": null,
+     "layerMs": 3.2,
+     "surround": [
+      [
+       113,
+       115,
+       97
+      ],
+      [
+       115,
+       117,
+       99
+      ],
+      [
+       106,
+       109,
+       98
+      ],
+      [
+       107,
+       110,
+       99
+      ]
+     ],
+     "errors": [
+      "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+     ]
+    }
+   ]
+  }
+ ]
+}

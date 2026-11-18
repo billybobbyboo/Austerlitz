@@ -1,0 +1,5 @@
+variant       jumps pops lod flick | paper-pan          paper-zoom         paper-glide        paper-play         paper-zoom+point   paper-zoom+real    paper-zoom+sel     paper-play+al      | lowered
+base             22  178  29     4 | 1274/1274 0ms      852/1232 667ms     551/822 667ms      1533/1694 667ms    852/1232 667ms     852/1232 667ms     821/1232 667ms     1182/1331 667ms    | none
+after            22  178  29     4 | 1274/1274 0ms      852/1232 667ms     551/822 667ms      1533/1694 667ms    852/1232 667ms     852/1232 667ms     821/1232 667ms     1182/1331 667ms    | none
+counters         20  164  29     4 | 1274/1274 0ms      852/1232 667ms     551/822 667ms      1533/1694 667ms    852/1232 667ms     852/1232 667ms     821/1232 667ms     1182/1331 667ms    | none
+framed           30  160  29     4 | 1216/1274 533ms    835/1232 667ms     539/822 633ms      1596/1694 667ms    813/1232 667ms     722/1232 667ms     749/1232 667ms     1109/1331 667ms    | paper-pan drawn 1216<1274; paper-pan longest 533>0; paper-zoom drawn 835<852; paper-glide drawn 539<551; paper-zoom+point drawn 813<852; paper-zoom+sel drawn 749<821; paper-play+al drawn 1109<1171
