@@ -116,7 +116,8 @@
       TOAST:typeof toastRelayout==="function",   /* Stage 8, the follow-up 8I */
       UX1:typeof showKeyFromCard==="function"&&typeof evPickOpen==="function"&&typeof fitPhaseLabels==="function",   /* UI/UX roadmap step 1 */
       UX3:typeof followProfile==="function"&&typeof followFlow==="function",
-      UX4:!!document.querySelector("#fr-key .fr-row")&&!!document.querySelector('#lg-rows [data-lg="grade-a"]')};   /* UI/UX roadmap step 4: the first frame (UA-03, UA-04) */   /* UI/UX roadmap step 3: Follow fitted to the action, the seeks keeping the eye */
+      UX4:!!document.querySelector("#fr-key .fr-row")&&!!document.querySelector('#lg-rows [data-lg="grade-a"]'),
+      UX5:typeof plateSync==="function"&&!!document.getElementById("neatline")};   /* UI/UX roadmap step 4: the first frame (UA-03, UA-04) */   /* UI/UX roadmap step 3: Follow fitted to the action, the seeks keeping the eye */
   }
 
   /* ---- roadmap step 1 (T-1): an app canvas's pixels are read through a canvas the harness owns ----

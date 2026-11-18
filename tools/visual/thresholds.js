@@ -755,7 +755,8 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   TOAST:"Stage 8, the follow-up 8I: the phase's message placed again under a layout's change",
   UX1:"UI/UX roadmap step 1: the map key shown from the first card, the markers' drags, the touch scrub lane, the coincident events (UA-05, 06, 12, 13, 17)",
   UX3:"UI/UX roadmap step 3: Follow fitted to the action during Play, a pause, the end of Play and every ordinary seek keeping the eye (UA-02; the owner's decision of 15 November 2026)",
-  UX4:"UI/UX roadmap step 4: the first frame: the welcome's rows, the key's position grades one row each (UA-03, UA-04)"};
+  UX4:"UI/UX roadmap step 4: the first frame: the welcome's rows, the key's position grades one row each (UA-03, UA-04)",
+  UX5:"UI/UX roadmap step 5: the paper plate: the surround, the neatline, the cartouche, the twelve villages (UA-08)"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -1032,6 +1033,8 @@ function checkLive(live,opts){
   if(req("ux3","who moves the camera: Play's stops, the seeks and the deliberate moves by real input (UI/UX roadmap step 3)")) checkUx3(live.ux3,so).forEach(x=>f.push(x));
   /* UI/UX roadmap step 4 (UA-03, UA-04): the live block "ux4" (tools/visual/ux4.js), the first frame, judged by checkUx4 (below) */
   if(req("ux4","the first frame: the welcome, its focus and ways out, the key's grades on screen in every layout (UI/UX roadmap step 4)")) checkUx4(live.ux4,so).forEach(x=>f.push(x));
+  /* UI/UX roadmap step 5 (UA-08): the live block "ux5" (tools/visual/ux5.js), the paper plate, judged by checkUx5 (below) */
+  if(req("ux5","the paper plate as entered by real clicks: the neatline, the counters inside it, the twelve villages, the cartouche; down and back; the phone (UI/UX roadmap step 5)")) checkUx5(live.ux5,so).forEach(x=>f.push(x));
   if(req("tips","the timeline's tips by real keys, mouse and touch (Stage 8, implementation PR 8A, decision 251)")){ const T=live.tips, b=[];
     const is=(o,k)=>!!(o&&o.tip&&o.tip===o[k]), none=o=>!!(o&&o.tip===null);
     if(!is(T.focus,"focusTip")) b.push("Tab to a marker showed no tip");
@@ -1481,3 +1484,48 @@ function checkUx4(L,so){
   return f;
 }
 module.exports.checkUx4=checkUx4;
+/* UI/UX roadmap step 5 (docs/UX_ART_AUDIT.md UA-08, Direction B on the paper map; the live block "ux5", tools/visual/ux5.js): the paper plate as entered by
+   real clicks at 1600 x 900, 1366 x 768 and 1280 x 720 (check:selftest: 1366 x 768 and the window then 1280 x 720), north, one scale and the scale bar at
+   PAPER's tolerances, the field inside the free rectangle it is framed in, the neatline round that rectangle (PLATE.OUT, NEAT px, within 1 px), no
+   counter beyond the neatline's inner side, at least TWELVE_MIN of the step's twelve villages drawn, the cartouche drawn with the words the data give
+   it; a real drag standing the plate down and the Overview's button bringing it back; a phone's paper map by taps the surround alone (no neatline, no
+   cartouche: the phone case, phone-390-paper, checked as before; the owner's decision of 18 November 2026).
+   TWELVE_MIN by viewport: the counts this build draws as entered at 09:30 by real input under the owner's decision on decision 302 (b) (18 November
+   2026, option (b): the names laid after the counters and before the other labels while the plate stands): 7, 5 and 7, the audit's 10 of 12 not met
+   and accepted as measured with that option (option (a), the names laid first, drew 12 at each size at a cost the owner declined:
+   docs/ux-step5-evidence/README.md); the base build draws 0, 1 and 0 there */
+const UX5={NEAT:7, TWELVE_MIN:{"1600x900":7,"1366x768":5,"1280x720":7}};
+module.exports.UX5=UX5;
+function checkUx5(L,so){
+  const f=[]; if(!L) return ["ux5: no record"];
+  const E=L.entered||[];
+  if(E.length<(so?2:3)) f.push("ux5 entered: "+E.length+" views, not "+(so?2:3));
+  E.forEach(r=>{ const w="ux5 "+r.how+" "+r.vpName+": ", P=r.paperMap;
+    if(r.mode!=="staff"||!P){ f.push(w+"not on the paper map"); return; }
+    if(!(Math.abs(P.north)<=PAPER.north)) f.push(w+"north "+P.north+" degrees off up");
+    if(!(P.spread<=PAPER.spread)) f.push(w+"the scale's spread "+P.spread);
+    if(!(P.scaleBar&&P.scaleBar.err!==null&&P.scaleBar.err<=PAPER.scaleBar)) f.push(w+"the scale bar "+JSON.stringify(P.scaleBar));
+    if(!r.fieldInFree) f.push(w+"the field's box "+JSON.stringify(r.fieldBox)+" beyond the free rectangle "+JSON.stringify(r.freeRect));
+    const fr=r.freeRect, n=UX5.NEAT, want=[fr[0]-n,fr[1]-n,fr[2]+n,fr[3]+n];
+    if(!r.neatline) f.push(w+"no neatline round the free map");
+    else if(want.some((v,i)=>Math.abs(v-r.neatline[i])>1)) f.push(w+"the neatline at "+JSON.stringify(r.neatline)+", not round the free rectangle ("+JSON.stringify(want)+")");
+    if(r.countersOutside.length) f.push(w+r.countersOutside.length+" counters beyond the neatline: "+r.countersOutside.join(" "));
+    const tm=UX5.TWELVE_MIN[r.vpName];
+    if(tm===undefined) f.push(w+"no bar for the twelve villages at this size (thresholds.js UX5.TWELVE_MIN)");
+    else if(!(r.twelveDrawn>=tm)) f.push(w+r.twelveDrawn+" of the twelve villages drawn, under "+tm+" ("+r.twelve.filter(t=>!t.drawn).map(t=>t.name).join(", ")+" not)");
+    if(!(r.clock===570)) f.push(w+"entered at "+r.clock+", not at 09:30 (570)");
+    if(!r.cartouche) f.push(w+"no cartouche");
+    else if(!r.cartWant||JSON.stringify(r.cartWords)!==JSON.stringify(r.cartWant)) f.push(w+"the cartouche says "+JSON.stringify(r.cartWords)+", not "+JSON.stringify(r.cartWant)); });
+  const D=L.downBack;
+  if(!D) f.push("ux5 down and back: not run");
+  else { if(D.down.neatline||D.down.cartouche||D.down.framed!==false) f.push("ux5 down: after a real drag the plate stands ("+JSON.stringify(D.down)+")");
+    if(!D.back.neatline||!D.back.cartouche||D.back.framed!==true) f.push("ux5 back: the Overview's button did not bring the plate back ("+JSON.stringify(D.back)+")");
+    if(D.back.countersOutside&&D.back.countersOutside.length) f.push("ux5 back: counters beyond the neatline: "+D.back.countersOutside.join(" ")); }
+  const Ph=L.phone;
+  if(!Ph||Ph.mode!=="staff") f.push("ux5 phone: the paper map not entered by its taps");
+  else { if(Ph.surround!==true) f.push("ux5 phone: the surround not drawn");
+    if(Ph.neatline||Ph.cartouche) f.push("ux5 phone: the neatline or the cartouche drawn below 720 px");
+    if(!Ph.fieldInFree) f.push("ux5 phone: the field beyond its free rectangle"); }
+  return f;
+}
+module.exports.checkUx5=checkUx5;

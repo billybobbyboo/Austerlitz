@@ -602,6 +602,24 @@ body.pm-map #restore{display:block}
 #vignette{position:fixed;inset:0;pointer-events:none;z-index:4;
   background:radial-gradient(ellipse 78% 70% at 50% 46%, rgba(0,0,0,0) 62%, rgba(5,8,11,.30) 100%)}
 body.mode-staff #vignette{display:none}
+/* UI/UX roadmap step 5 (docs/UX_ART_AUDIT.md UA-08, Direction B): the paper plate, on the paper map only (app.js plateSync places both and keeps them
+   hidden elsewhere). The neatline: a 2 px line and, 2 px inside it, a 1 px line in the paper theme's ink, round the free map, under the map layer.
+   The cartouche: the paper theme's panel and ink, a 1 px rule and a second one 3 px outside it (a box-shadow: in a forced-colours mode the border
+   alone), over the map layer and under every panel. Their colours are the paper theme's variables (tokens.js theme.paper) */
+#neatline{position:fixed;left:0;top:0;z-index:5;pointer-events:none;box-sizing:border-box;border:2px solid var(--text)}
+#neatline::after{content:"";position:absolute;inset:2px;border:1px solid var(--text)}
+#cartouche{position:fixed;left:0;top:0;z-index:16;pointer-events:none;box-sizing:border-box;max-width:320px;padding:7px 12px 8px;
+  background:var(--panel);color:var(--text-hi);border:1px solid var(--text);box-shadow:0 0 0 3px var(--panel),0 0 0 4px var(--text);font-family:var(--serif)}
+#cartouche small{display:block;margin-bottom:2px;font-family:var(--sans);font-size:var(--t-micro);letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted)}
+#cartouche b{display:block;font-weight:400;font-size:var(--t-h2);line-height:1.15}
+#cartouche i{display:block;margin-top:3px;font-style:normal;font-family:var(--sans);font-size:var(--t-small);color:var(--text-body)}
+@media (max-width:719.98px){ #cartouche{max-width:min(300px,calc(100vw - 32px));padding:4px 8px 5px} #cartouche b{font-size:var(--t-h3)} }
+/* the base lettering (app.js plateLetters): the villages' names in the serif, letter-spaced, in the paper theme's ink, cased in the paper's tone as
+   the Landscape's tier 3 labels are cased in the keyline (eight shadows at 1 px, sixteen at 2 px, one opaque colour: check:contrast reads it against
+   its casing); under the map layer (z-index 6, before #maplayer in the document) */
+#paperletters{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+.pl-name{position:absolute;left:0;top:0;white-space:nowrap;font-family:var(--serif);font-size:var(--t-ui);line-height:15px;letter-spacing:.04em;color:var(--text);
+  text-shadow:1px 0 0 var(--panel),0.71px 0.71px 0 var(--panel),0 1px 0 var(--panel),-0.71px 0.71px 0 var(--panel),-1px 0 0 var(--panel),-0.71px -0.71px 0 var(--panel),0 -1px 0 var(--panel),0.71px -0.71px 0 var(--panel),2px 0 0 var(--panel),1.85px 0.77px 0 var(--panel),1.41px 1.41px 0 var(--panel),0.77px 1.85px 0 var(--panel),0 2px 0 var(--panel),-0.77px 1.85px 0 var(--panel),-1.41px 1.41px 0 var(--panel),-1.85px 0.77px 0 var(--panel),-2px 0 0 var(--panel),-1.85px -0.77px 0 var(--panel),-1.41px -1.41px 0 var(--panel),-0.77px -1.85px 0 var(--panel),0 -2px 0 var(--panel),0.77px -1.85px 0 var(--panel),1.41px -1.41px 0 var(--panel),1.85px -0.77px 0 var(--panel)}
 @media (max-width:1079.98px){   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): the complement of app.js's DOCK_MIN (innerWidth>=1080 docks) */
   :root{--rail:272px;--draw:min(360px,90vw)}
   .rail{box-shadow:12px 0 40px rgba(0,0,0,.45)}
@@ -1057,6 +1075,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
      transparent: a tier 3 label stands on the system's Canvas, as every plate does there, and the tiers are told apart by an outline (a live
      event's 2 px, a tier 2 item's 1 px; the keyboard's focus keeps its own ring, a more specific rule) */
   #maplayer .ml-q{background-color:Canvas!important}
+  .pl-name{background-color:Canvas!important}   /* UI/UX step 5: the base lettering on the system's Canvas, as a tier 3 label is */
   .ml-t1{outline:2px solid CanvasText}
   .ml-t2{outline:1px solid CanvasText}
 }
@@ -1456,6 +1475,11 @@ $Id$
 <body>
 <div id="stage"></div>
 <div id="vignette" aria-hidden="true"></div>
+<!-- UI/UX roadmap step 5 (docs/UX_ART_AUDIT.md UA-08): the paper plate, drawn on the paper map only (app.js plateSync): the neatline round the free
+     map, over the canvas and under the map layer; the cartouche, the moment in words the page already shows, over the map layer and under every
+     panel (aria-hidden: the timeline's caption and the phase's announcement say it) -->
+<div id="neatline" aria-hidden="true" hidden></div>
+<div id="cartouche" aria-hidden="true" hidden></div>
 
 <div id="viewmode" role="group" aria-label="Presentation">
   <button class="vm-btn" data-vm="study" aria-pressed="true" title="Everything: panels, dossiers, sources (key 1)">Study</button>
@@ -1889,6 +1913,9 @@ $Id$
 
 <!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
      canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
+<!-- UI/UX roadmap step 5 (UA-08): the paper map's base lettering, the narrative's twelve villages, under the map layer (app.js plateLetters); names on the
+     ground as its village footprints are, not controls: each village with a place of its own is reached in the map layer -->
+<div id="paperletters" aria-hidden="true"></div>
 <main id="map-main"><div id="maplayer" role="group" aria-label="The map: formations, events and places"></div></main>
 <!-- Stage 5E: the eye-level vantage's caption (a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch) -->
 <div id="eyecap" class="eyecap" hidden></div>
@@ -13290,6 +13317,11 @@ var MAPCAM=(function(){
       return k>=1; }, dur); }
   /* the whole modelled ground, framed; the zoom limits follow it (from 12 times closer to 1.5 times farther) */
   function fieldState(){ var s=fit(FIELD); lim.max=Math.max(0.8,s.wpp*1.5); return s; }
+  /* UI/UX roadmap step 5: the field's extent along east and north (ground units), the extent fit() frames: the paper plate's neatline stands round
+     the free rectangle freeRect(fieldExt()) gives, the one the field is framed in */
+  function fieldExt(){ var a0=1e9,a1=-1e9,b0=1e9,b1=-1e9;
+    FIELD.forEach(function(p){ var a=p[0]*E.x+p[1]*E.z, b=p[0]*N.x+p[1]*N.z; a0=Math.min(a0,a); a1=Math.max(a1,a); b0=Math.min(b0,b); b1=Math.max(b1,b); });
+    return [Math.max(1e-6,a1-a0),Math.max(1e-6,b1-b0)]; }
   /* the screen and the panels the field was framed among (decision 238): what syncPanels compares */
   function panelsKey(){ var v=vp(), P=env.panels(), k=v[0]+"x"+v[1];
     for(var i=0;i<P.length;i++) k+=";"+Math.round(P[i][0])+","+Math.round(P[i][1])+","+Math.round(P[i][2])+","+Math.round(P[i][3]);
@@ -13299,7 +13331,7 @@ var MAPCAM=(function(){
   return {
     init:init, apply:apply, toGround:toGround, toScreen:toScreen, pan:pan, zoomAt:zoomAt, freeRect:freeRect, stop:stop,
     frStats:frStats, freeRectSearch:function(ext,P0){ return freeRectSearch(ext,P0||env.panels(),vp()); },   /* the final audits' Stage 7, WP-16: for the self-test */
-    frameField:frameField,
+    frameField:frameField, fieldExt:fieldExt,
     framed:function(){ return framed; },
     /* roadmap step 6, decision 238: while the field is shown as framed (the visitor has not panned or zoomed it), a panel's change that gives
        it more room frames it again (drawn more than 1% larger), as a resize does: on a phone held upright the Paper map button is in the Layers
@@ -13320,6 +13352,160 @@ var MAPCAM=(function(){
 function mapSchedule(step,ms){
   if(RM){ mlReset("at once"); step(performance.now()+1e9); return; }   /* Stage 8, 8C: under reduced motion a jump (MLS) */
   setTween("cam",step);   /* Stage 3D: the camera slot; a phase change's fade runs on in its own */
+}
+/* ---------------- the paper plate (UI/UX roadmap step 5; docs/UX_ART_AUDIT.md UA-08, Direction B on the paper map only) ----------------
+   The paper map is a plate: the sheet's surround in the paper's own tone, a north-aligned double neatline round the free map and a title cartouche
+   that states the moment. Nothing on the landscape changes, and nothing here moves the framing (decisions 25 and 238): the neatline stands round
+   the free rectangle MAPCAM frames the field in (freeRect over the field's own extent, the rectangle fieldState fits), and the plate's own
+   obstacles reach the map layer only (mlLayout's panels), never MAPCAM's (env.panels reads mlPanels, unchanged).
+   - North up, as decision 25 has it (north within 0.5 degrees of up): what the audit read as the sheet "tilted about 20 degrees" is the modelled
+     ground's frame, rotated GEOREF.ROT_DEG (17.42 degrees) from north, drawn where it lies (measured: north 0.000 degrees on screen, the field's edges
+     17.42 degrees from the screen's axes; docs/ux-step5-evidence/). The map is not turned to square it; the neatline is north-aligned round the free map.
+   - The surround: the apron, which the landscape draws in its own colours beyond the field, covered on the paper map by a sheet of its own geometry
+     (a child of the apron, 0.05 units above it, under the flat field) drawn unlit in the paper's own tone, TOKENS.theme.paper.ink (the page's
+     paper), its colour put through the inverse of the post pass's tone curve (the composite's ACES fit and exposure) so that it reaches the screen
+     as the token; with the post pass off the renderer's tone mapping is skipped for it. The apron and world.js are untouched. The composite's
+     vignette darkens it toward the screen's corners as it does the whole map.
+   - The neatline: #neatline (style.css), PLATE.OUT px outside the free rectangle (inside its MARGIN, clear of every panel), a 2 px line and a 1 px line
+     inside it in the paper theme's ink. While it stands the map layer is laid out inside it (plateObstacles: outside it a panel to the layer, no
+     item placed there, an anchor there not drawn and not dropped): no counter on a leader in the margin, the audit's ring of counters round the
+     sheet as the entry state removed.
+   - The cartouche: #cartouche, the moment in words the page already shows (LABELS.plate.date, the rail head's date; the clock as the timeline
+     reads it; the phase's title; its act and span as the dispatch gives them); no new historical text. It stands in the plate's margin beside the
+     neatline where it fits whole (to the right, then to the left), else in the free rectangle's band above or below the field (the field framed by
+     its other dimension), else it is not drawn; while drawn it is a panel to the map layer (no item placed over it, an anchor under it not drawn),
+     never to MAPCAM. aria-hidden: the timeline's caption and the phase's announcement say the moment already.
+   docs/ux-step5-evidence/README.md has the measures and the owner's decisions (18 November 2026, each as recommended): the lettering, decision 302 (b)
+   reopened, option (b) (PLATE.NAMES below); the plate while framed; the phone the surround alone. */
+var PLATE={OUT:7, IN:2, GAP:10, box:null, frame:null, cart:null, nk:"", ck:"", pk:"", surr:{mesh:null, mat:null, key:""}, stats:{cart:null}};
+/* the plate stands while the field is shown as framed (MAPCAM.framed(): entered, the Overview's frame, a resize or a panel's change that frames it
+   again; not once the visitor pans, zooms or glides it), on the paper map, but in Clean. Measured on the motion block's paper runs before it was
+   built (docs/ux-step5-evidence/): held so, every run's counts and visibility are the base build's, a pan or a zoom standing the plate down at
+   its first frame; held always, the neatline's rule cost paper-pan 311 of 1,274 formation-frames and paper-zoom and paper-glide their
+   baselines, and the cartouche alone, always drawn, cost paper-pan 31 and paper-glide 87 formation-frames in view */
+/* Below 720 px wide (the phone layout, PHONE) the plate is the surround alone: there the free map is the sheet's own width, and measured as entered at
+   390 x 844 the neatline's rule dropped one item more than the phone case allows (18 against phone-390-paper's 17), and with the cartouche in the band
+   above the field three more (20); the dispatch sheet under the map states the moment there */
+function plateOn(){ return mode==="staff"&&!cleanView&&!PHONE&&MAPCAM.framed(); }
+/* the free rectangle the field is framed in, and the neatline's box round it */
+function plateFrame(){ return MAPCAM.freeRect(MAPCAM.fieldExt()); }
+/* the composite's tone curve (Narkowicz's ACES fit, initFX), inverted per channel: the linear colour that reaches the screen as y */
+function acesInv(y){ y=Math.min(0.995,Math.max(0,y)); var a=2.51-2.43*y, b=0.03-0.59*y, c=-0.14*y; return (-b+Math.sqrt(b*b-4*a*c))/(2*a); }
+/* the surround's colour: TOKENS.theme.paper.ink, linear, through the tone curve's inverse and the exposure where the post pass draws (fx) */
+function plateTone(fx,ex){ var c=new THREE.Color(parseInt(TOKENS.theme.paper.ink.slice(1),16)).convertSRGBToLinear();
+  if(fx){ c.r=acesInv(c.r)/ex; c.g=acesInv(c.g)/ex; c.b=acesInv(c.b)/ex; } return c; }
+function plateSurround(on){
+  var a=world&&world.apron, S=PLATE.surr; if(!a) return;
+  if(!S.mesh){ S.mat=new THREE.MeshBasicMaterial({fog:false, toneMapped:false});
+    S.mesh=new THREE.Mesh(a.geometry,S.mat); S.mesh.position.y=0.05; S.mesh.visible=false; S.mesh.frustumCulled=false; a.add(S.mesh); }
+  if(S.mesh.geometry!==a.geometry) S.mesh.geometry=a.geometry;   /* the apron's own, rebuilt with the display factor (world.js scaleGround) */
+  if(on){
+    var fx=!!(FX.on&&FX.matComp), ex=fx?FX.matComp.uniforms.exposure.value:1, key=(fx?"fx":"std")+"|"+ex;
+    if(S.key!==key){ S.key=key; var c=plateTone(fx,ex); S.mat.color.copy(c); requestRender(2); }
+  }
+  if(S.mesh.visible!==!!on){ S.mesh.visible=!!on; requestRender(2); }
+}
+/* the cartouche's words: the date, the clock, the phase's title, its act and span (the act's line below 720 px left out) */
+function plateWords(){
+  var P=PHASES[curPhase], act=null; ACTS.forEach(function(x){ if(x.phases&&x.phases.indexOf(curPhase)>=0) act=x; });
+  return {k:LABELS.plate.date+" · "+fmtClock(clock), t:P.title, s:(act?act.n+" · ":"")+phaseSpan(curPhase)};
+}
+function plateCartouche(f,b,VW,VH,panels){
+  var ct=document.getElementById("cartouche"); if(!ct) return null;
+  var w0=plateWords(), wide=window.innerWidth>=720, ck=w0.k+"|"+w0.t+"|"+(wide?w0.s:"");
+  if(ck!==PLATE.ck){ PLATE.ck=ck; PLATE.pk="";
+    ct.innerHTML='<small>'+esc(w0.k)+'</small><b>'+esc(w0.t)+'</b>'+(wide?'<i>'+esc(w0.s)+'</i>':''); }
+  var pk=ck+"|"+b.join(",")+"|"+VW+"x"+VH+"|"+panels.map(function(q){ return q.map(Math.round).join(","); }).join(";");
+  if(pk===PLATE.pk) return PLATE.cart;
+  PLATE.pk=pk;
+  ct.hidden=false; ct.style.visibility="hidden"; ct.style.transform="translate(0px,0px)"; ct.style.maxWidth="";
+  var r=ct.getBoundingClientRect(), w=Math.ceil(r.width), h=Math.ceil(r.height), G=PLATE.GAP;
+  function free(x0,y0){ var x1=x0+w, y1=y0+h; if(x0<G||y0<G||x1>VW-G||y1>VH-G) return false;
+    for(var i=0;i<panels.length;i++){ var q=panels[i]; if(x0<q[2]+G&&x1>q[0]-G&&y0<q[3]+G&&y1>q[1]-G) return false; } return true; }
+  var C=[], y;
+  for(y=f[1];y<=f[3]-h;y+=8) C.push([b[2]+G,y,"right"]);   /* the margin to the neatline's right, from its top down */
+  for(y=f[1];y<=f[3]-h;y+=8) C.push([b[0]-G-w,y,"left"]);   /* to its left */
+  /* the free rectangle's band above or below the field's box, where the field is framed by its width */
+  var S=MAPCAM.field.map(function(p){ return MAPCAM.toScreen(p[0],p[1]); }), ft=Math.min.apply(null,S.map(function(s){ return s[1]; })), fb=Math.max.apply(null,S.map(function(s){ return s[1]; }));
+  if(ft-f[1]>=h+PLATE.IN+2) C.push([f[0]+PLATE.IN+2,f[1]+PLATE.IN,"above"]);
+  if(f[3]-fb>=h+PLATE.IN+2) C.push([f[0]+PLATE.IN+2,f[3]-h-PLATE.IN,"below"]);
+  var at=null; for(var i=0;i<C.length&&!at;i++) if(free(C[i][0],C[i][1])) at=C[i];
+  PLATE.stats.cart=at?at[2]:"none";
+  if(!at){ ct.hidden=true; ct.style.visibility=""; PLATE.cart=null; return null; }
+  ct.style.transform="translate("+Math.round(at[0])+"px,"+Math.round(at[1])+"px)"; ct.style.visibility="";
+  PLATE.cart=[Math.round(at[0]),Math.round(at[1]),Math.round(at[0])+w,Math.round(at[1])+h];
+  return PLATE.cart;
+}
+/* each drawn frame, before the map layer's pass (mlLayout): the surround, the neatline and the cartouche of the view as it stands */
+function plateSync(VW,VH,panels){
+  var on=plateOn(), nl=document.getElementById("neatline"), ct=document.getElementById("cartouche");
+  plateSurround(mode==="staff");
+  if(!on){ if(nl&&!nl.hidden) nl.hidden=true; if(ct&&!ct.hidden) ct.hidden=true; PLATE.box=PLATE.frame=PLATE.cart=null; PLATE.nk=PLATE.pk=""; return; }
+  var f=plateFrame(), o=PLATE.OUT, b=[f[0]-o,f[1]-o,f[2]+o,f[3]+o], nk=b.join(",");
+  if(nl){ if(nk!==PLATE.nk){ nl.style.transform="translate("+b[0]+"px,"+b[1]+"px)"; nl.style.width=(b[2]-b[0])+"px"; nl.style.height=(b[3]-b[1])+"px"; } if(nl.hidden) nl.hidden=false; }
+  PLATE.nk=nk; PLATE.frame=f; PLATE.box=b;
+  plateCartouche(f,b,VW,VH,panels);
+}
+/* what the plate hands the map layer as panels (mlLayout): the cartouche while drawn, and the screen outside the neatline (its inner edge PLATE.IN px
+   inside its box, the 1 px line's inner side) */
+function plateObstacles(){
+  var R=[], b=PLATE.box; if(!plateOn()||!b) return R;
+  if(PLATE.cart) R.push(PLATE.cart.slice());
+  var g=PLATE.IN+3, x0=b[0]+g, y0=b[1]+g, x1=b[2]-g, y1=b[3]-g, VW=renderer.domElement.clientWidth||innerWidth, VH=renderer.domElement.clientHeight||innerHeight;
+  R.push([-10,-10,VW+10,y0],[-10,y1,VW+10,VH+10],[-10,y0,x0,y1],[x1,y0,VW+10,y1]);
+  return R;
+}
+/* the twelve villages (UA-08's "place names at entry for the dozen villages the narrative uses"), derived from the data, not chosen
+   (tools/ux-step5/villages.js; docs/ux-step5-evidence/README.md): the villages the narrative (PHASES, EVENTS, TOUR, ANALYSIS) names as villages, by the
+   strings that name them: Sokolnitz 15, Telnitz 12, Augezd 10, Blasowitz 8, Kobelnitz 4, Puntowitz 4, Austerlitz 3, Pratzen village 3 (the strings
+   that say "Pratzen village": "Pratzen" alone is the plateau as often), Holubitz 2, Krug 2, Krzenowitz 2 (Satschan is named only as its mere and dam,
+   Turas only as its wood), and the twelfth by the same rule over the formations' own text, Girzikowitz (7). Each is drawn under the name the page
+   gives it: the map layer's place (FEATURES) where it has one, else world.js's VILLAGES (Holubitz, Krug); none is renamed or added */
+var PLATE_TWELVE=[{id:"sokolnitz"},{id:"telnitz"},{id:"augezd"},{id:"blasowitz"},{id:"kobelnitz"},{id:"puntowitz"},{id:"austerlitz"},{id:"pratzenv",v:"Pratzen"},
+  {id:"krzenowitz"},{v:"Holubitz"},{v:"Krug"},{id:"girzikowitz"}];
+/* the base lettering: the twelve's names on the paper map, under the map layer (#paperletters), cased in the paper's tone (.pl-name, style.css), each
+   beside its village (three rings of eight places round its footprint, the place it had kept first). PLATE.NAMES, the owner's decision on decision 302
+   (b), reopened by UA-08 (18 November 2026, option (b), as recommended): "counters", while the plate stands the names are laid out once the counters
+   are placed and before every other item of the layer, which then places round them as round a symbol (the counters keep their places; a label
+   makes room; a village's own place label withheld while its name stands), and after the layer otherwise (a name never moving a layer item, standing
+   down where the layer draws the village's own place). Measured as entered at 09:30 (docs/ux-step5-evidence/): 7, 5 and 7 of the twelve at 1600 x
+   900, 1366 x 768 and 1280 x 720 (the audit's 10 not met, accepted), no motion baseline lowered. The other modes, measured and not adopted: "after"
+   (after the layer only: 5, 2, 3), "framed" (first, before the layer, while the plate stands: 12 of 12 at each size, six of the paper runs'
+   visibility baselines lowered and the jumps over their ceiling), "rest" and "always" (first at rest only, or always: costlier); "none" (decision
+   302 (b) as it was) */
+PLATE.NAMES="counters";
+PLATE.letters={el:{}, rects:[], shown:0, on:{}}; PLATE.RINGS=[0,7,14];   /* px beyond the footprint's edge: three rings of eight places */
+function plateNameOf(t){ if(t.id){ var ft=FEATURES.filter(function(f){ return f.id===t.id; })[0]; return ft?ft.name:null; } return t.v; }
+function plateLettersOn(){ return mode==="staff"&&textOn()&&PLATE.NAMES!=="none"; }
+function plateFirst(){ var n=PLATE.NAMES; return n==="always"?plateLettersOn():n==="framed"?plateOn():n==="rest"?plateOn()&&!playing:false; }
+function plateLetters(VW,VH,panels,obst,taken,pre){
+  var host=document.getElementById("paperletters"), L=PLATE.letters; if(!host) return;
+  var on=plateLettersOn(); L.rects=[]; L.shown=0; L.on={};
+  PLATE_TWELVE.forEach(function(t){
+    var nm=plateNameOf(t), e=L.el[nm]; if(!nm) return;
+    if(!e){ e=L.el[nm]=document.createElement("div"); e.className="pl-name"; e.dataset.v=nm; e.textContent=nm; e.hidden=true; host.appendChild(e); e._w=0; e._c=-1; }
+    if(!on){ if(!e.hidden) e.hidden=true; return; }
+    var li=t.id?ML.items["t:"+t.id]:null;
+    if(!pre&&li&&li.eFrame===ML.frame&&li.state==="on"){ if(!e.hidden) e.hidden=true; return; }   /* the layer draws the village's own place */
+    var mp=null, rr=6; if(t.id){ var ft=FEATURES.filter(function(f){ return f.id===t.id; })[0]; if(ft) mp=ft.p; }
+    VILLAGES.forEach(function(v){ if(v[0]===(t.v||nm)){ if(!mp) mp=[v[1],v[2]]; rr=v[3]; } });
+    if(!mp){ e.hidden=true; return; }
+    var w0=W(mp[0],mp[1]), sc=MAPCAM.toScreen(w0[0],w0[1]), wpp=MAPCAM.state().wpp, rp=Math.max(3,rr*0.3/wpp)+3;   /* the footprint's half-size, about 0.3 world units per unit of VILLAGES' size (world.js paper footprints), and 3 px */
+    if(e.hidden) e.hidden=false;
+    if(!e._w){ var b=e.getBoundingClientRect(); e._w=Math.ceil(b.width); e._h=Math.ceil(b.height); }
+    var w=e._w, h=e._h, C=[];
+    PLATE.RINGS.forEach(function(dd){ var r0=rp+dd, d=r0*0.7; C.push([sc[0]+r0,sc[1]-h/2],[sc[0]-r0-w,sc[1]-h/2],[sc[0]-w/2,sc[1]-r0-h],[sc[0]-w/2,sc[1]+r0],
+      [sc[0]+d,sc[1]-d-h],[sc[0]-d-w,sc[1]-d-h],[sc[0]+d,sc[1]+d],[sc[0]-d-w,sc[1]+d]); });
+    var order=e._c>=0?[e._c].concat(C.map(function(c,i){ return i; }).filter(function(i){ return i!==e._c; })):C.map(function(c,i){ return i; }), got=-1;
+    for(var k=0;k<order.length&&got<0;k++){ var c=C[order[k]], x0=c[0], y0=c[1], x1=x0+w, y1=y0+h;
+      if(x0<ML_PAD||y0<ML_PAD||x1>VW-ML_PAD||y1>VH-ML_PAD) continue;
+      if(mlHits(x0,y0,x1,y1,panels)||mlHits(x0,y0,x1,y1,obst)||mlHits(x0,y0,x1,y1,taken)||mlHits(x0,y0,x1,y1,L.rects)) continue;
+      got=order[k]; }
+    if(got<0){ e.style.visibility="hidden"; e._on=false; return; }
+    e._c=got; var q=C[got], tx=Math.round(q[0])+","+Math.round(q[1]);
+    if(e._tx!==tx){ e.style.transform="translate("+Math.round(q[0])+"px,"+Math.round(q[1])+"px)"; e._tx=tx; }
+    e.style.visibility=""; e._on=true; L.shown++; L.rects.push([q[0],q[1],q[0]+w,q[1]+h]); if(t.id) L.on[t.id]=true;
+  });
 }
 var ECH_RANK={army:0,corps:1,div:2,bde:3};
 var CORPS_AT=250, CORPS_HYST=15;   /* units: the eye's distance at which the corps counters replace the divisions, and its band once the view has moved (WP-07, decision 300) */
@@ -13917,6 +14103,7 @@ function mlLayout(){
   mlPriPrep();   /* WP-07 (decision 299): the order's Play terms for this pass */
   mlTierPrep();  /* UI/UX step 2: the Landscape's tiers for this pass */
   var list=mlCollect(), panels=mlPanels();
+  plateSync(VW,VH,panels); panels=panels.concat(plateObstacles());   /* UI/UX step 5: the paper plate, and what it hands the layer (never MAPCAM) */
   /* calm: UI/UX step 2 (UA-15), a tier 3 item not drawn in Watch while the clock plays; t1, t2, t3: the drawn items by tier; fills: the drawn items
      standing on a filled plate (a tier 1 or tier 2 item, a tier 3 item drawn on the plate for the keyboard's focus, and every tier 0 label) */
   var st={items:list.length,placed:0,leaders:0,dropped:0,held:0,occluded:0,offscreen:0,underPanel:0,withheld:0,calm:0,t1:0,t2:0,t3:0,fills:0,keepMissing:[],dropped_:[],ms:0,nodes:0};   /* withheld: WP-08 (CL-MAP-09), an arrow's name-only label while its formation's own is in view */
@@ -13957,6 +14144,8 @@ function mlLayout(){
   elig.forEach(function(it){ if(it.far!==!!it.farC){ it.el.classList.toggle("ml-far",it.far); it.farC=it.far; it.fdirty=true; } if(it.farC&&it.fdirty) fdirty.push(it); });
   fdirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.fw=Math.ceil(r.width||0); it.fh=Math.ceil(r.height||0); it.fdirty=false; });
   var maxG=mlMaxG(), obst=mlObstacles(VW,VH);
+  /* UI/UX step 5: the base lettering laid out first while the plate stands at rest (PLATE.NAMES "rest"): the layer places round it as round a symbol */
+  var plPre=plateFirst(); if(plPre){ plateLetters(VW,VH,panels,obst,[],true); obst=obst.concat(PLATE.letters.rects); }
   elig.forEach(function(it){ it.occ=!it.keep&&it.occl&&mlOccluded(it.world,maxG); if(it.occ){ it.state="occluded"; st.occluded++; } });
   /* UI/UX step 2: while the clock plays, after what is never dropped, the Landscape's formations a live event names (it.first) before every
      other item, the aged (WP-07) included; within each, the order as before. At rest, and on the paper map and the Landscape with counters: as before */
@@ -13988,14 +14177,21 @@ function mlLayout(){
     if(mlPlaceItem(it,VW,VH,panels,obst)){ it.room2=(it.room2||0)+1; if(it.room2>=MLS.PASSES){ it.room2=0; return true; } mlUntake(it); it.held=true; return false; }
     it.room2=0; return false;
   }
+  /* UI/UX step 5 (PLATE.NAMES "counters"): while the plate stands, the base lettering laid out once the counters are placed, before every other item
+     of the layer, which then places round it as round a symbol: the counters keep their places, the labels make room for the villages' names */
+  var plMid=false;
+  /* a village's own place label, withheld (neither placed nor dropped) while the base lettering, laid before it, names the village */
+  function plateNamed(it){ return it.cat==="place"&&(plPre||plMid)&&!!it.pick&&!it.keep&&PLATE.letters.on[it.pick.id]===true; }
+  function plateMidAt(it){ if(plMid||plPre||it.cat==="counter"||PLATE.NAMES!=="counters"||!plateOn()||!plateLettersOn()) return;
+    plMid=true; plateLetters(VW,VH,panels,obst,ML.taken.slice(),true); Array.prototype.push.apply(obst,PLATE.letters.rects); }
   function runRest(s){
     if(s==="persist"){   /* at rest after motion: every place that still fits is kept first, in priority order; then the others by the full search,
                             into the room left: nothing drawn moves to make room for another (no reshuffle) */
       var later=[];
-      for(var i=nk;i<order.length;i++){ var it=order[i]; it.held=false; if(calm(it)){ it.state="calm"; continue; } if(dupDrawn(it)){ it.state="withheld"; continue; } if(it.el===foc||!mlHoldTry(it,VW,VH,panels,obst)) later.push(it); }
-      later.forEach(function(it){ if(dupDrawn(it)){ it.state="withheld"; return; } if(!mlPlaceItem(it,VW,VH,panels,obst)) it.state="dropped"; });
+      for(var i=nk;i<order.length;i++){ var it=order[i]; it.held=false; plateMidAt(it); if(calm(it)){ it.state="calm"; continue; } if(dupDrawn(it)||plateNamed(it)){ it.state="withheld"; continue; } if(it.el===foc||!mlHoldTry(it,VW,VH,panels,obst)) later.push(it); }
+      later.forEach(function(it){ if(dupDrawn(it)||plateNamed(it)){ it.state="withheld"; return; } if(!mlPlaceItem(it,VW,VH,panels,obst)) it.state="dropped"; });
       return; }
-    for(var j=nk;j<order.length;j++){ var jt=order[j]; jt.held=false; if(calm(jt)){ jt.state="calm"; jt.room2=0; continue; } if(dupDrawn(jt)){ jt.state="withheld"; jt.room2=0; continue; } if(!placeRest(jt,s)) jt.state="dropped"; }
+    for(var j=nk;j<order.length;j++){ var jt=order[j]; jt.held=false; plateMidAt(jt); if(calm(jt)){ jt.state="calm"; jt.room2=0; continue; } if(dupDrawn(jt)||plateNamed(jt)){ jt.state="withheld"; jt.room2=0; continue; } if(!placeRest(jt,s)) jt.state="dropped"; }
   }
   runRest(strat);
   order.forEach(function(it){
@@ -14020,6 +14216,7 @@ function mlLayout(){
     fit.rect=pick; fit.state="on"; fit.lead=true; fit.forced=true; fit.el.classList.add("ml-forced");
   }
   mlGrow(elig,VW,VH,panels,obst);   /* UI/UX step 2: a live event's plate at t-live where it stands clear */
+  if(!plPre&&!plMid) plateLetters(VW,VH,panels,obst,ML.taken.concat(elig.filter(function(it){ return it.grow; }).map(function(it){ return [it.grow[0],it.grow[1],it.grow[0]+it.w1,it.grow[1]+it.h1]; })),false);   /* UI/UX step 5: else after the layer, in the room it leaves */
   /* Stage 8, 8C: what each item held, for the next pass (a place the layout gave it, against its anchor; not the focus's forced place), and
      its fade: from its alpha toward 1 if drawn, 0 if not, by the wall-clock time since its last pass over FADE_MS; at once where fades are off
      (a fresh view, reduced motion) or the item is new to the layer. A leaving item with alpha left is a remnant at its last drawn place.
@@ -15191,7 +15388,10 @@ var LABELS={
      meanwhile): the ten themes "themes" (the code's and the specifications' word; "moment" stays a phase's or an event's), the phase's own
      text "the phase text" (the Now tab's note; "dispatch" was the code's word on screen), the sources sheet "Accuracy and sources" (its
      button, its name; its heading is SOURCE_NOTE.title, data) */
-  card:{recon:"It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.", key:"Every symbol: the key"},   /* decision 276 (a); UI/UX step 4 (UA-03): the audit's words, the button after the card's two actions */
+  card:{recon:"It is a reconstruction from the sources, its certainty graded A to C: the letter beside a name is its position's grade.", key:"Every symbol: the key"},
+  /* UI/UX roadmap step 5 (UA-08): the paper plate's cartouche reads the day as the rail's head gives it (shell.html .brand; css-test.js holds the two
+     the same), then the clock, the phase's title, its act and span from the data: no new words about the battle */
+  plate:{date:"2 December 1805"},   /* decision 276 (a); UI/UX step 4 (UA-03): the audit's words, the button after the card's two actions */
   nowOff:{hidden:"The phase text is hidden.", opening:"The phase text is hidden during the opening: its words are in the opening's bar.",
     tour:"The phase text is hidden during the guided tour: its words are in the tour's bar.", key:"Or press D.", show:"Show the phase text"},   /* the final audits' Stage 6 (CL-UX-12) */
   names:{themes:"The battle in ten themes", themePick:"Pick one of the ten themes above.", theme:"The theme", phaseText:"the phase text",
@@ -18575,6 +18775,117 @@ function ux4Checks(){
   } finally {
     if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); if(commandView!==K.cv) setCommandView(K.cv);
     setClock(K.t,{instant:true,force:true,camera:false}); ML.legendOpen=K.lg; updateVisibility(); paintLegend(); if(K.act&&K.act.focus) K.act.focus(); requestRender(3);
+  }
+  return out;
+}
+/* UI/UX roadmap step 5 (docs/UX_ART_AUDIT.md UA-08, Direction B on the paper map): the paper plate, at this page's size. (1) North up and the field as
+   it lies, the plate standing as entered: north within 0.5 degrees of up, the field's edges GEOREF.ROT_DEG from the screen's axes, the neatline
+   PLATE.OUT px round the free rectangle MAPCAM frames the field in and the field's box inside its inner line, the surround the paper's tone through
+   the tone curve's inverse, the contours drawn; on the landscape none of it and the apron's own material back. (2) The layer inside the neatline
+   while the plate stands, at five clocks: no drawn item's box beyond the neatline's inner side, no counter on the screen outside it; a pan stands
+   the plate down (the layer's panels then mlPanels' alone), the Overview's frame brings it back, Clean has none. (3) The cartouche: its words the
+   date, the clock, the phase's title and its act and span; clear of every panel and of the field's box as entered; a panel to the layer (no item
+   drawn over it); its words following the clock across a phase. (4) The twelve villages' base lettering as the owner decided (option (b)) */
+function ux5Checks(){
+  var out=[], K={t:clock,mode:mode,pres:presentation,cv:commandView,map:MAPCAM.state(),sel:selection?[selection.kind,selection.id]:null};
+  function ck(n,ok,d){ out.push({name:n,ok:!!ok,detail:d}); }
+  function guard(n,fn){ try{ fn(); }catch(e){ ck(n,false,"threw: "+e.message+" "+String(e.stack||"").split("\n")[1]); } }
+  function box(id){ var e=document.getElementById(id); if(!e||e.hidden||getComputedStyle(e).display==="none") return null; var r=e.getBoundingClientRect(); return [r.left,r.top,r.right,r.bottom]; }
+  function enter(){ select(null,null); if(presentation!=="study") setPresentation("study"); if(mode!=="staff") setMode("staff"); MAPCAM.frameField(true); updateVisibility(); mlLayout(); }
+  if(playing) stopPlay();
+  try{
+    if(commandView!=="none") setCommandView("none");
+    var N1="the paper plate as entered (UI/UX step 5, UA-08): north up, the field as it lies ("+GEOREF.ROT_DEG.toFixed(2)+" degrees from the screen's axes), the neatline round the free map, the surround in the paper's tone, the contours drawn";
+    guard(N1,function(){
+      var bad=[]; setClock(570,{instant:true,force:true,camera:false}); enter();
+      if(PHONE){ if(box("neatline")||box("cartouche")) bad.push("the neatline or the cartouche drawn below 720 px");
+        if(!(PLATE.surr.mesh&&PLATE.surr.mesh.visible)) bad.push("the surround not drawn below 720 px");
+        ck(N1,!bad.length,bad.length?"WRONG: "+bad.join("; "):"below 720 px: the surround alone"); return; }
+      var V=MAPCAM.toScreen(0,0), g=MAPCAM.north, p=MAPCAM.toScreen(g.x*10,g.z*10), brg=Math.atan2(p[0]-V[0],-(p[1]-V[1]))*180/Math.PI;
+      if(Math.abs(brg)>0.5) bad.push("north "+brg.toFixed(3)+" degrees off up");
+      var C=MAPCAM.field.map(function(q){ return MAPCAM.toScreen(q[0],q[1]); });
+      C.forEach(function(c,i){ var d=C[(i+1)%4], a=Math.atan2(d[1]-c[1],d[0]-c[0])*180/Math.PI, m=((a%90)+90)%90, e=Math.min(Math.abs(m-GEOREF.ROT_DEG),Math.abs(90-m-GEOREF.ROT_DEG));
+        if(e>0.05) bad.push("the field's edge "+i+" at "+m.toFixed(3)+" degrees, not "+GEOREF.ROT_DEG); });
+      var f=MAPCAM.freeRect(MAPCAM.fieldExt()), nb=box("neatline"), o=PLATE.OUT;
+      if(!nb) bad.push("no neatline"); else { var want=[f[0]-o,f[1]-o,f[2]+o,f[3]+o]; if(want.some(function(v,i){ return Math.abs(v-nb[i])>0.75; })) bad.push("the neatline at "+nb.map(Math.round)+", not "+want); }
+      var fb=[Math.min.apply(null,C.map(function(c){ return c[0]; })),Math.min.apply(null,C.map(function(c){ return c[1]; })),Math.max.apply(null,C.map(function(c){ return c[0]; })),Math.max.apply(null,C.map(function(c){ return c[1]; }))];
+      if(nb&&(fb[0]<nb[0]+5-0.5||fb[1]<nb[1]+5-0.5||fb[2]>nb[2]-5+0.5||fb[3]>nb[3]-5+0.5)) bad.push("the field's box "+fb.map(Math.round)+" beyond the neatline's inner line");
+      var S=PLATE.surr, fx=!!(FX.on&&FX.matComp), ex=fx?FX.matComp.uniforms.exposure.value:1, c=plateTone(fx,ex);
+      if(!(S.mesh&&S.mesh.visible&&S.mesh.parent===world.apron&&S.mesh.geometry===world.apron.geometry)) bad.push("the surround not drawn over the apron with its geometry");
+      else if(Math.abs(S.mat.color.r-c.r)>1e-6||Math.abs(S.mat.color.g-c.g)>1e-6||Math.abs(S.mat.color.b-c.b)>1e-6||S.mat.toneMapped!==false||S.mat.fog!==false) bad.push("the surround's colour or its tone mapping not the paper's tone");
+      if(!(world.contours.visible&&layerOn.contours)) bad.push("the contours not drawn on the paper map");
+      setMode("terrain"); updateVisibility(); mlLayout();
+      if(S.mesh.visible) bad.push("the surround drawn on the landscape");
+      if(box("neatline")||box("cartouche")) bad.push("the neatline or the cartouche drawn on the landscape");
+      ck(N1,!bad.length,bad.length?"WRONG: "+bad.join("; "):"north "+brg.toFixed(3)+" degrees; edges "+GEOREF.ROT_DEG.toFixed(3)+"; neatline "+(nb||[]).map(Math.round)+"; surround "+(fx?"through the curve's inverse":"untoned"));
+    });
+    var N2="the layer inside the neatline while the plate stands (UI/UX step 5, UA-08): no item beyond its inner side, no counter outside it, at five clocks; a pan stands the plate down, the Overview's frame brings it back, Clean has none";
+    guard(N2,function(){
+      var bad=[], seen=0; if(PHONE){ ck(N2,true,"below 720 px: no plate (the surround alone)"); return; }
+      [240,540,570,720,900].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); enter();
+        var nb=box("neatline"); if(!nb){ bad.push(fmtClock(t)+": no neatline"); return; }
+        var g=PLATE.IN+3, x0=nb[0]+g, y0=nb[1]+g, x1=nb[2]-g, y1=nb[3]-g;
+        for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame||it.state!=="on"||!it.rect) continue; seen++;
+          var r=it.rect; if(r[0]<x0-0.5||r[1]<y0-0.5||r[2]>x1+0.5||r[3]>y1+0.5) bad.push(fmtClock(t)+": "+k+" at "+r.map(Math.round)+" beyond the neatline"); } });
+      MAPCAM.pan(40,0); updateVisibility(); mlLayout();
+      if(box("neatline")||box("cartouche")) bad.push("the plate still standing after a pan");
+      if(plateObstacles().length) bad.push("the layer still given the plate's panels after a pan");
+      MAPCAM.frameField(true); updateVisibility(); mlLayout(); if(!box("neatline")) bad.push("the plate not back with the field framed again");
+      setPresentation("map"); updateVisibility(); mlLayout(); if(box("neatline")||box("cartouche")) bad.push("the plate drawn in Clean"); setPresentation("study");
+      ck(N2,!bad.length&&seen>0,bad.length?"WRONG: "+bad.slice(0,8).join("; "):seen+" drawn items inside the neatline at 04:00, 09:00, 09:30, 12:00 and 15:00; down after a pan, back when framed, none in Clean");
+    });
+    var N3="the cartouche (UI/UX step 5, UA-08): the date, the clock, the phase's title, its act and span; clear of every panel and of the field as entered; a panel to the layer; following the clock";
+    guard(N3,function(){
+      var bad=[]; if(PHONE){ ck(N3,true,"below 720 px: no cartouche (the dispatch sheet states the moment)"); return; }
+      [570,840].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); enter();
+        var cb=box("cartouche"), ct=document.getElementById("cartouche"), w=plateWords();
+        if(!cb){ bad.push(fmtClock(t)+": no cartouche ("+PLATE.stats.cart+")"); return; }
+        var sm=ct.querySelector("small"), b=ct.querySelector("b"), i=ct.querySelector("i");
+        if(!sm||sm.textContent!==LABELS.plate.date+" \u00b7 "+fmtClock(clock)) bad.push(fmtClock(t)+": its kicker “"+(sm&&sm.textContent)+"”");
+        if(!b||b.textContent!==PHASES[curPhase].title) bad.push(fmtClock(t)+": its title “"+(b&&b.textContent)+"”, the phase's “"+PHASES[curPhase].title+"”");
+        if(window.innerWidth>=720&&(!i||i.textContent!==w.s)) bad.push(fmtClock(t)+": its line “"+(i&&i.textContent)+"”, not “"+w.s+"”");
+        mlPanels().forEach(function(q){ if(cb[0]<q[2]&&cb[2]>q[0]&&cb[1]<q[3]&&cb[3]>q[1]) bad.push(fmtClock(t)+": over a panel at "+q.map(Math.round)); });
+        var C=MAPCAM.field.map(function(q){ return MAPCAM.toScreen(q[0],q[1]); });
+        function inside(x,y){ var s=0; for(var j=0;j<4;j++){ var a=C[j], d=C[(j+1)%4], c2=(d[0]-a[0])*(y-a[1])-(d[1]-a[1])*(x-a[0]); s+=c2>0?1:c2<0?-1:0; } return Math.abs(s)===4; }
+        for(var y=cb[1];y<=cb[3];y+=4) for(var x=cb[0];x<=cb[2];x+=4) if(inside(x,y)){ bad.push(fmtClock(t)+": over the field at "+Math.round(x)+","+Math.round(y)); y=1e9; break; }
+        if(plateObstacles().every(function(q){ return !(Math.abs(q[0]-PLATE.cart[0])<0.5&&Math.abs(q[1]-PLATE.cart[1])<0.5); })) bad.push(fmtClock(t)+": not a panel to the layer");
+        for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame||it.state!=="on"||!it.rect) continue; var r=it.rect;
+          if(r[0]<cb[2]&&r[2]>cb[0]&&r[1]<cb[3]&&r[3]>cb[1]) bad.push(fmtClock(t)+": "+k+" drawn over it"); } });
+      ck(N3,!bad.length,bad.length?"WRONG: "+bad.slice(0,8).join("; "):"09:30 and 14:00: its words as the data give them, "+PLATE.stats.cart+" of the neatline, clear of the panels and the field, nothing drawn over it");
+    });
+    var N4="the twelve villages' names (UI/UX step 5, UA-08; decision 302 (b) reopened, option (b)): each once, as the page names it; while the plate stands laid after the counters, none moving a counter; beside its village, over no drawn item, panel or the cartouche; its own place label withheld; after a pan after the layer; none in Clean or on the landscape";
+    guard(N4,function(){
+      var bad=[], host=document.getElementById("paperletters"), shownAt={};
+      var want=PLATE_TWELVE.map(plateNameOf); if(want.some(function(n){ return !n; })) bad.push("a village without a name in FEATURES or VILLAGES");
+      var VN=VILLAGES.map(function(v){ return v[0]; }); PLATE_TWELVE.forEach(function(t){ if(!t.id&&VN.indexOf(t.v)<0) bad.push(t.v+" not in VILLAGES"); if(t.id&&!FEATURES.some(function(f){ return f.id===t.id&&(f.kind==="village"||f.kind==="town"); })) bad.push(t.id+" not a village of FEATURES"); });
+      function rects(){ var R={}; for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame===ML.frame&&it.state==="on"&&it.rect&&it.cat==="counter") R[k]=it.rect.map(function(v){ return Math.round(v*10)/10; }).join(","); } return R; }
+      function judge(tag,first){ var els=[].slice.call(host.querySelectorAll(".pl-name")), drawn=0, P=mlPanels().concat(PLATE.cart?[PLATE.cart]:[]);
+        want.forEach(function(n){ var m=els.filter(function(e){ return e.dataset.v===n; }); if(m.length!==1) bad.push(tag+": "+n+" "+m.length+" times"); });
+        els.forEach(function(e){ if(e.hidden||e.style.visibility==="hidden") return; var r=e.getBoundingClientRect(), b=[r.left,r.top,r.right,r.bottom]; drawn++;
+          var t=PLATE_TWELVE.filter(function(x){ return plateNameOf(x)===e.dataset.v; })[0], li=t&&t.id?ML.items["t:"+t.id]:null;
+          if(li&&li.eFrame===ML.frame&&li.state==="on") bad.push(tag+": "+e.dataset.v+" named twice (its place label drawn too)");
+          for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame||it.state!=="on"||!it.rect) continue; var q=it.rect; if(b[0]<q[2]-0.5&&b[2]>q[0]+0.5&&b[1]<q[3]-0.5&&b[3]>q[1]+0.5){ bad.push(tag+": "+e.dataset.v+" under "+k); break; } }
+          P.forEach(function(q){ if(b[0]<q[2]&&b[2]>q[0]&&b[1]<q[3]&&b[3]>q[1]) bad.push(tag+": "+e.dataset.v+" under a panel or the cartouche"); });
+          var mp=null; if(t&&t.id){ var ft=FEATURES.filter(function(f){ return f.id===t.id; })[0]; mp=ft.p; } VILLAGES.forEach(function(v){ if(!mp&&v[0]===(t.v||e.dataset.v)) mp=[v[1],v[2]]; });
+          var w=W(mp[0],mp[1]), sc=MAPCAM.toScreen(w[0],w[1]), nx=Math.max(b[0],Math.min(sc[0],b[2])), ny=Math.max(b[1],Math.min(sc[1],b[3])), d=Math.hypot(sc[0]-nx,sc[1]-ny);
+          var vr=6; VILLAGES.forEach(function(v){ if(v[0]===(t.v||e.dataset.v)) vr=v[3]; }); var lim=Math.max(3,vr*0.3/MAPCAM.state().wpp)+3+PLATE.RINGS[PLATE.RINGS.length-1]+1;
+          if(d>lim) bad.push(tag+": "+e.dataset.v+" "+d.toFixed(1)+" px from its village (at most "+lim.toFixed(1)+")"); if(first) shownAt[e.dataset.v]=1; });
+        return drawn; }
+      setClock(570,{instant:true,force:true,camera:false}); enter();
+      var keep=PLATE.NAMES; PLATE.NAMES="none"; mlReset("selftest"); mlLayout(); var R0=rects(); PLATE.NAMES=keep; mlReset("selftest"); mlLayout(); var R1=rects();
+      Object.keys(R0).forEach(function(k){ if(R0[k]!==R1[k]) bad.push("the names moved "+k+" ("+R0[k]+" to "+(R1[k]||"not drawn")+")"); });
+      if(Object.keys(R0).length!==Object.keys(R1).length) bad.push("the counters drawn "+Object.keys(R0).length+" without the names, "+Object.keys(R1).length+" with them");
+      var n1=PHONE?judge("phone",true):judge("as entered",true);
+      if(!PHONE&&n1<1) bad.push("no village named as entered");
+      MAPCAM.pan(60,30); updateVisibility(); mlLayout(); var n2=judge("after a pan",false);
+      setPresentation("map"); updateVisibility(); mlLayout(); if([].some.call(host.querySelectorAll(".pl-name"),function(e){ return !e.hidden; })) bad.push("names shown in Clean"); setPresentation("study");
+      setMode("terrain"); updateVisibility(); mlLayout(); if([].some.call(host.querySelectorAll(".pl-name"),function(e){ return !e.hidden; })) bad.push("names shown on the landscape");
+      ck(N4,!bad.length,bad.length?"WRONG: "+bad.slice(0,8).join("; "):n1+" of 12 named as entered at 09:30 ("+Object.keys(shownAt).join(", ")+"), "+n2+" after a pan; "+Object.keys(R0).length+" counters where they stand without the names");
+    });
+  } finally {
+    if(mode!==K.mode) setMode(K.mode); if(presentation!==K.pres) setPresentation(K.pres); if(commandView!==K.cv) setCommandView(K.cv);
+    if(K.sel) select(K.sel[0],K.sel[1]); else select(null,null);
+    setClock(K.t,{instant:true,force:true,camera:false}); if(mode==="staff") MAPCAM.restore(K.map); updateVisibility(); requestRender(3);
   }
   return out;
 }
@@ -24237,6 +24548,7 @@ var AUSTERLITZ_DEBUG=(function(){
     wp10gChecks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 6, WP-10 (the crowns, the blocks among the buildings) */
     wp16Checks().forEach(function(c){ out.push(c); });   /* the final audits' Stage 7, WP-16 (the label pass's lights, the free rectangle kept) */
     ux4Checks().forEach(function(c){ out.push(c); });   /* UI/UX roadmap step 4 (UA-03, UA-04: the first frame) */
+    ux5Checks().forEach(function(c){ out.push(c); });   /* UI/UX roadmap step 5 (UA-08: the paper plate) */
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
