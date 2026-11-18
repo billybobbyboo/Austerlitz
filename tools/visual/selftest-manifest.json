@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 66b4edc251ada879b2146ed7dabd385b (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "66b4edc251ada879b2146ed7dabd385b",
- "count": 356,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build bfda6af8f046d29848d60fb72bba77fb (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "bfda6af8f046d29848d60fb72bba77fb",
+ "count": 360,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -358,6 +358,10 @@
   "each figure's beat in its slopes' attribute (WP-16, CL-PERF-12)",
   "the free rectangle kept by its inputs (WP-16, CL-PERF-13)",
   "the key's grades (UI/UX step 4, UA-04): one row per position grade in CONF_TEXT's words, first in the key wherever the letters are drawn, and in the “?” sheet's copy; no timing grade among them",
-  "the welcome's rows (UI/UX step 4, UA-03): the sides' colours, the grades (CONF_TEXT's three lines) and the plateau, each with its sample, then the two actions, then “Every symbol: the key”"
+  "the welcome's rows (UI/UX step 4, UA-03): the sides' colours, the grades (CONF_TEXT's three lines) and the plateau, each with its sample, then the two actions, then “Every symbol: the key”",
+  "the paper plate as entered (UI/UX step 5, UA-08): north up, the field as it lies (17.42 degrees from the screen's axes), the neatline round the free map, the surround in the paper's tone, the contours drawn",
+  "the layer inside the neatline while the plate stands (UI/UX step 5, UA-08): no item beyond its inner side, no counter outside it, at five clocks; a pan stands the plate down, the Overview's frame brings it back, Clean has none",
+  "the cartouche (UI/UX step 5, UA-08): the date, the clock, the phase's title, its act and span; clear of every panel and of the field as entered; a panel to the layer; following the clock",
+  "the twelve villages' names (UI/UX step 5, UA-08; decision 302 (b) reopened, option (b)): each once, as the page names it; while the plate stands laid after the counters, none moving a counter; beside its village, over no drawn item, panel or the cartouche; its own place label withheld; after a pan after the layer; none in Clean or on the landscape"
  ]
 }
