@@ -32,9 +32,10 @@ declarations byte-identical). Evidence: `docs/ux-step5-evidence/README.md`; tool
   village's own place label withheld while its name stands (no village named twice).
 - **Contours**: already on by default and drawn on the paper map (`layerOn.contours`, since Stage 2E); nothing changed.
 - **Nothing on the landscape changes**: the canvas and the page pixel for pixel as the base build's at the Field vantage in Study and Watch
-  (`tools/ux-step5/spot.js`, SPOT_LAND).
+  (`tools/ux-step5/spot.js`: the canvas 0 of 1,440,000 pixels differing in each; the page 1 pixel at 1 level, the base build's own noise against itself).
 - **Measured, the options** (`docs/ux-step5-evidence/` sections 4-5): the motion block's paper runs on the base build 22 jumps, 178 pops, 29 switches, 4
-  flickers, every visibility baseline exact; this build REPLACE_MOTION. Option (a), the names first, drew 12 of 12 but lowered six visibility baselines
+  flickers, every visibility baseline exact; this build 20, 162, 29, 3, every visibility baseline exact and paper-zoom's pointer twin equal to its run (the full block's 16 at 244, 947, 108, 9 under
+  251, 1,049, 130, 12). Option (a), the names first, drew 12 of 12 but lowered six visibility baselines
   (paper-pan 1,274 to 1,216 drawn and 0 to 533 ms; paper-zoom 852 to 835; paper-glide 551 to 539; zoom+point 852 to 813; zoom+sel 821 to 749; play+al
   1,182 to 1,109) and took the jumps over their ceiling (about 254 of 251). The plate held always lowered paper-pan to 963 drawn; the cartouche alone,
   always drawn, paper-pan to 1,243 and paper-glide's in-view to 735.
@@ -44,7 +45,17 @@ declarations byte-identical). Evidence: `docs/ux-step5-evidence/README.md`; tool
   and "the twelve villages' names", each "(UI/UX step 5, UA-08)"); the manifest from a passing run of this build. `css-test.js`: the plate's rules
   (the paper theme's colours, the rail head's day, nothing to MAPCAM's framing, the plate's scope, the surround, the lettering's casing).
   `check:contrast`: the base lettering read against its casing, as the Landscape's tier 3 labels are.
-- **Baselines**: none moved. CHECKS_LINE
+- **Baselines**: none moved (the paper cases' drops 9, 8, 8 as entered against limits 20 and 21, the withheld place labels no longer counted as dropped;
+  `phone-390-paper` 17 as before; the unobstructed shares the base's).
+- **A fault found and fixed on the way** (`bf6754b`): the base lettering kept its last place across views, so paper-zoom's twin with the pointer differed
+  from the 16's run by one pop (`check:selftest`'s twin rule); the names are now laid out fresh in a fresh view and keep their places only while the view
+  moves or rests after motion.
+- **Checks** (here, on this build): `npm test` all 9 suites, the height guard and the dead-code check; `check:data` 143 of 143 declarations identical;
+  `check:chronology` 0 errors; `check:selftest` 360 of 360 and every live block, the only failing lines the manifest's, which was then written from that
+  run (356 to 360, 4 added, 0 removed); `check:baseline` on this build; the `ux5` block alone 0 failures (14 on the base); the spot checks (forced colours,
+  reduced motion, the landscape unchanged) all passing. On CI on this build: `check:contrast` 57 of 57 states, 9,467 text elements, 0 below AA, 0 under
+  10.5 px, 510 cased map texts (the base lettering among them), the boot cases 10 of 10 (runs 44226346847 and 44232536488). `check:visual` in full:
+  dispatched on CI.
 - **Uncertain**: the audit's 10 of 12 not met (decision 1); the plate stands down at the first pan or zoom (the Overview brings it back); everything is
   software WebGL; `check:visual` in full on CI only; no device run (one draw call more on the paper map, none on the landscape or the phone's layout).
 - **Build**: `austerlitz-command-map.html` **3,136,806 bytes, md5 `bfda6af8f046d29848d60fb72bba77fb`** (SHA-256 `bc7e71ebdbaef549d9efcc05ac487d2cce2d65d7cc563ab94ddc18c1f83edab9`); `check:baseline` moved to it.

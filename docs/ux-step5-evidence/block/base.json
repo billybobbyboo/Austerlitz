@@ -15,8 +15,8 @@
     "vw": 1600,
     "vh": 900,
     "mode": "staff",
-    "clock": 240,
-    "phase": 0,
+    "clock": 570,
+    "phase": 4,
     "edges": [
      17.423,
      17.423,
@@ -59,11 +59,16 @@
     "cartouche": null,
     "cartWords": null,
     "surround": null,
+    "leadPx": {
+     "median": 89,
+     "max": 223,
+     "sum": 1081
+    },
     "counters": 14,
     "countersOutside": [],
     "itemsOutside": [],
-    "countersLed": 10,
-    "placed": 28,
+    "countersLed": 14,
+    "placed": 23,
     "dropped": 12,
     "droppedIds": [
      "t:pratzen",
@@ -173,8 +178,8 @@
     "vw": 1366,
     "vh": 768,
     "mode": "staff",
-    "clock": 240,
-    "phase": 0,
+    "clock": 570,
+    "phase": 4,
     "edges": [
      17.423,
      17.423,
@@ -217,17 +222,21 @@
     "cartouche": null,
     "cartWords": null,
     "surround": null,
+    "leadPx": {
+     "median": 72,
+     "max": 173,
+     "sum": 1028
+    },
     "counters": 14,
     "countersOutside": [
-     "c:c_iii"
+     "c:c_cav"
     ],
     "itemsOutside": [
-     "o:V Corps · IV Corps",
-     "c:c_iii"
+     "c:c_cav"
     ],
-    "countersLed": 10,
-    "placed": 29,
-    "dropped": 11,
+    "countersLed": 13,
+    "placed": 23,
+    "dropped": 12,
     "droppedIds": [
      "t:pratzen",
      "t:vinohrady",
@@ -238,6 +247,7 @@
      "t:litava",
      "t:telnitz",
      "t:sokolnitz",
+     "t:augezd",
      "t:satschan",
      "t:austerlitz"
     ],
@@ -259,9 +269,9 @@
      {
       "id": "augezd",
       "name": "Augezd",
-      "layer": 1,
+      "layer": null,
       "base": null,
-      "drawn": true
+      "drawn": false
      },
      {
       "id": "blasowitz",
@@ -327,7 +337,7 @@
       "drawn": false
      }
     ],
-    "twelveDrawn": 1,
+    "twelveDrawn": 0,
     "vpName": "1366x768",
     "how": "entered"
    },
@@ -335,8 +345,8 @@
     "vw": 1280,
     "vh": 720,
     "mode": "staff",
-    "clock": 240,
-    "phase": 0,
+    "clock": 570,
+    "phase": 4,
     "edges": [
      17.423,
      17.423,
@@ -379,17 +389,28 @@
     "cartouche": null,
     "cartWords": null,
     "surround": null,
+    "leadPx": {
+     "median": 99,
+     "max": 286,
+     "sum": 1623
+    },
     "counters": 14,
     "countersOutside": [
-     "c:constantine",
-     "c:c_gren"
+     "c:c_iii",
+     "c:c_cav",
+     "c:c_gren",
+     "c:lich"
     ],
     "itemsOutside": [
-     "c:constantine",
-     "c:c_gren"
+     "p:plateau",
+     "o:Kamensky turns about (disputed)",
+     "c:c_iii",
+     "c:c_cav",
+     "c:c_gren",
+     "c:lich"
     ],
-    "countersLed": 10,
-    "placed": 28,
+    "countersLed": 14,
+    "placed": 23,
     "dropped": 12,
     "droppedIds": [
      "t:pratzen",
@@ -501,24 +522,24 @@
     "neatline": null,
     "cartouche": null,
     "framed": false,
-    "itemsOutside": 1
+    "itemsOutside": 0
    },
    "back": {
     "neatline": null,
     "cartouche": null,
     "framed": true,
     "countersOutside": [
-     "c:c_iii"
+     "c:c_cav"
     ],
-    "twelveDrawn": 1
+    "twelveDrawn": 0
    }
   },
   "phone": {
    "vw": 390,
    "vh": 844,
    "mode": "staff",
-   "clock": 240,
-   "phase": 0,
+   "clock": 570,
+   "phase": 4,
    "edges": [
     17.423,
     17.423,
@@ -556,42 +577,40 @@
     },
     "frameInFree": 1
    },
-   "unobstructed": 0.6576,
+   "unobstructed": 0.6529,
    "neatline": null,
    "cartouche": null,
    "cartWords": null,
    "surround": null,
-   "counters": 11,
+   "leadPx": {
+    "median": 60,
+    "max": 215,
+    "sum": 756
+   },
+   "counters": 10,
    "countersOutside": [
     "c:c_v",
-    "c:c_gd",
-    "c:constantine",
-    "c:ahq"
+    "c:c_cav",
+    "c:c_i",
+    "c:constantine"
    ],
    "itemsOutside": [
-    "p:plateau",
-    "o:French line on the Goldbach",
-    "o:V Corps · IV Corps",
-    "o:I Column → Telnitz",
-    "o:II Column → Sokolnitz",
-    "o:III Column → the castle",
-    "o:Sokolnitz",
+    "o:French hold the crest",
+    "o:Kamensky turns about (disputed)",
     "c:c_v",
-    "c:c_gd",
-    "c:constantine",
-    "c:ahq"
+    "c:c_cav",
+    "c:c_i",
+    "c:constantine"
    ],
    "countersLed": 10,
-   "placed": 21,
-   "dropped": 19,
+   "placed": 18,
+   "dropped": 17,
    "droppedIds": [
+    "c:c_gd",
     "c:lich",
     "c:c_iii",
     "c:c_gren",
-    "o:Allied columns on the plateau",
-    "o:Soult's assault · Legrand",
-    "o:IV Column → Kobelnitz",
-    "o:V Column counter-marches north",
+    "o:Levasseur up the Goldbach",
     "t:pratzen",
     "t:vinohrady",
     "t:pratzeberg",
@@ -698,18 +717,18 @@
  },
  "failures": [
   "ux5 entered 1600x900: no neatline round the free map",
-  "ux5 entered 1600x900: 0 of the twelve villages drawn, under 10 (Sokolnitz, Telnitz, Augezd, Blasowitz, Kobelnitz, Puntowitz, Austerlitz, Pratzen village, Krzenowitz, Holubitz, Krug, Girzikowitz not)",
+  "ux5 entered 1600x900: 0 of the twelve villages drawn, under 7 (Sokolnitz, Telnitz, Augezd, Blasowitz, Kobelnitz, Puntowitz, Austerlitz, Pratzen village, Krzenowitz, Holubitz, Krug, Girzikowitz not)",
   "ux5 entered 1600x900: no cartouche",
   "ux5 entered 1366x768: no neatline round the free map",
-  "ux5 entered 1366x768: 1 counters beyond the neatline: c:c_iii",
-  "ux5 entered 1366x768: 1 of the twelve villages drawn, under 10 (Sokolnitz, Telnitz, Blasowitz, Kobelnitz, Puntowitz, Austerlitz, Pratzen village, Krzenowitz, Holubitz, Krug, Girzikowitz not)",
+  "ux5 entered 1366x768: 1 counters beyond the neatline: c:c_cav",
+  "ux5 entered 1366x768: 0 of the twelve villages drawn, under 5 (Sokolnitz, Telnitz, Augezd, Blasowitz, Kobelnitz, Puntowitz, Austerlitz, Pratzen village, Krzenowitz, Holubitz, Krug, Girzikowitz not)",
   "ux5 entered 1366x768: no cartouche",
   "ux5 entered 1280x720: no neatline round the free map",
-  "ux5 entered 1280x720: 2 counters beyond the neatline: c:constantine c:c_gren",
-  "ux5 entered 1280x720: 0 of the twelve villages drawn, under 10 (Sokolnitz, Telnitz, Augezd, Blasowitz, Kobelnitz, Puntowitz, Austerlitz, Pratzen village, Krzenowitz, Holubitz, Krug, Girzikowitz not)",
+  "ux5 entered 1280x720: 4 counters beyond the neatline: c:c_iii c:c_cav c:c_gren c:lich",
+  "ux5 entered 1280x720: 0 of the twelve villages drawn, under 7 (Sokolnitz, Telnitz, Augezd, Blasowitz, Kobelnitz, Puntowitz, Austerlitz, Pratzen village, Krzenowitz, Holubitz, Krug, Girzikowitz not)",
   "ux5 entered 1280x720: no cartouche",
-  "ux5 back: the Overview's button did not bring the plate back ({\"neatline\":null,\"cartouche\":null,\"framed\":true,\"countersOutside\":[\"c:c_iii\"],\"twelveDrawn\":1})",
-  "ux5 back: counters beyond the neatline: c:c_iii",
+  "ux5 back: the Overview's button did not bring the plate back ({\"neatline\":null,\"cartouche\":null,\"framed\":true,\"countersOutside\":[\"c:c_cav\"],\"twelveDrawn\":0})",
+  "ux5 back: counters beyond the neatline: c:c_cav",
   "ux5 phone: the surround not drawn"
  ],
  "errors": []

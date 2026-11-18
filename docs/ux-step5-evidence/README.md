@@ -38,14 +38,14 @@ required by the brief and was not run.
 
 | # | Target | Base | This build | Met? |
 |---|---|---|---|---|
-| 1 | As entered at 1600 x 900, 1366 x 768, 1280 x 720: at least 10 of the 12 village names drawn | 0, 1, 0 (by real input) | **7, 5, 7** | **no** (decision 1: option (b), accepted as measured) |
-| 2 | No counter outside the neatline | 0, 1, 2 outside the free map (no neatline) | **0, 0, 0** | yes |
+| 1 | As entered at 1600 x 900, 1366 x 768, 1280 x 720: at least 10 of the 12 village names drawn | 0, 0, 0 (by real input at 09:30) | **7, 5, 7** | **no** (decision 1: option (b), accepted as measured) |
+| 2 | No counter outside the neatline | 0, 1, 4 outside the free map (no neatline) | **0, 0, 0** | yes |
 | 3 | North within 0.5 degrees; one scale and the scale bar to 1% | 0.000 degrees; spread 0.2%; bar 0.2-0.3% | the same | yes |
 | 4 | The field framed inside the free area as before | inside | the same framing, box for box | yes |
 | 5 | The phone's paper map framed and checked as now; say what the plate does | | the surround alone (decision 3); drops 17, as now | yes |
 | 6 | The motion block's paper runs: no visibility baseline lowered, no ceiling raised | | every run's counts and visibility the base build's or better (section 4) | yes |
 | 7 | No other baseline lowered | | none moved (section 6) | yes |
-| 8 | `check:contrast`: every text at AA and the 10.5 px floor, the cartouche and the names included | | CONTRAST_LINE | CONTRAST_MET |
+| 8 | `check:contrast`: every text at AA and the 10.5 px floor, the cartouche and the names included | | 57 of 57 states, 9,467 text elements, 0 below AA, 0 under 10.5 px; 510 cased map texts read against their casing, the names among them (section 8) | yes |
 | 9 | Forced colours and reduced motion spot-checked | | section 7 | yes |
 | 10 | A live block `ux5`, judged in `thresholds.js`, failing on the base and passing here | 14 failures | **0** | yes |
 | 11 | The self-test's manifest by name | 356 | **360** (section 8) | yes |
@@ -133,7 +133,38 @@ name-only labels are), so the drops as entered fall from 12 to 9, 8 and 8.
 
 ## 5. This build (`block/`, `names/`, `captures/`)
 
-FINAL_SECTION
+Each view as entered at 09:30, the base build then this one (`captures/probe.json`, `tools/ux-step5/probe.js`; the harness's own entry, `paper:"frame"`;
+the captures `captures/base-*-paper-entered.jpg` and `captures/new-*-paper-entered.jpg`):
+
+| view | north, degrees | the field's edges | counters drawn / outside | the twelve | layer drops | the surround at the free map's corner (RGB) |
+|---|---|---|---|---|---|---|
+| 1600 x 900 base / new | 0 / 0 | 17.423 / 17.423 | 14, 0 / 14, 0 | 0 / **7** | 12 / 9 | 115, 117, 99 / **232, 227, 217** |
+| 1366 x 768 base / new | 0 / 0 | 17.423 / 17.423 | 14, 1 / 14, **0** | 0 / **5** | 12 / 8 | 114, 116, 98 / **233, 228, 218** |
+| 1280 x 720 base / new | 0 / 0 | 17.423 / 17.423 | 14, 4 / 14, **0** | 0 / **7** | 12 / 8 | 116, 118, 100 / **234, 229, 219** |
+| 390 x 844 phone base / new | 0 / 0 | 17.423 / 17.423 | 10, 4 / 10, 4 (no neatline) | 0 / 0 | 17 / 17 | 113, 115, 97 / **227, 222, 212** |
+
+The drops fall because a village's own place label is withheld while its base name stands (counted as withheld, not dropped). The phone draws the
+surround alone: its layer, its drops (17, `phone-390-paper`'s limit) and its counters are the base's; its base lettering is laid out after the layer
+and draws none as entered (four after a pan).
+
+**By real input** (`block/new.json`, `block/base.json`; `tools/ux-step5/block.js`, the live block `ux5`, judged by `checkUx5`): the paper map entered by
+the Layers and Paper map buttons after the rail's PageDown to 09:30, on fresh pages. This build: the neatline at 305, 57, 1255, 799 (1600 x 900),
+305, 57, 1023, 671 and 305, 57, 935, 623, each 7 px round the free rectangle; 14 counters, none beyond the neatline's inner side; the twelve 7, 5, 7;
+the cartouche right of the neatline with "2 December 1805 · 09:30", "The crisis on the Pratzeberg", "The Pratzen Strike · 09:30 - 10:30"; the
+unobstructed share 0.7038, 0.6533, 0.6291 (the base's own); a drag stands the plate down, the Overview's button brings it back (the field framed
+again, nothing beyond the neatline); the phone's paper map by taps the surround alone. **0 failures** (the base build: **14**, no neatline, no
+cartouche, no village named, counters beyond the free map at 1366 and 1280, the phone's surround olive).
+
+**In motion** (`motion/build/final.json`): the motion block's paper runs on this build: paper-pan 1,274 of 1,274 drawn (0 ms hidden), paper-zoom 852 of
+1,232 (667 ms), paper-glide 551 of 822, paper-play 1,533 of 1,694, paper-zoom+point 852 (equal to paper-zoom in every count), paper-zoom+sel 821,
+paper-play+al 1,182 of 1,331: every visibility baseline exact (play+al's 1,171 exceeded as on the base). The paper four: 20 jumps, 162 pops, 29
+switches, 3 flickers (base 22, 178, 29, 4). `check:selftest`'s full block on this build: the 16 at 244 jumps, 947 pops, 108 switches, 9 flickers
+(ceilings 251, 1,049, 130, 12).
+
+**A fault found and fixed on the way**: the first `check:selftest` run failed one motion rule: paper-zoom's twin with the pointer (hovering nothing) must
+equal the 16's run, and differed by one pop. The base lettering had kept its last place across views (its memory outlived a fresh view, which the
+layer's does not); since `bf6754b` the names are laid out fresh in a fresh view and keep their places only while the view moves or rests after motion.
+The twin and its run are identical frame for frame (`tools/ux-step5/motion-paper.js`).
 
 ## 6. Baselines and limits
 
@@ -143,11 +174,38 @@ the cartouche, which stands in the margin outside the free map as entered: secti
 
 ## 7. Spot checks (`spot/`, `tools/ux-step5/spot.js`)
 
-SPOT_SECTION
+`spot/spot.json`, `tools/ux-step5/spot.js`, on this build (captures `spot/forced-1366x768.jpg`, `spot/reduced-1366x768.jpg`): **every check passed**.
+
+- **Forced colours** (Chromium's emulation of `forced-colors: active`, 1366 x 768, entered by real clicks): the neatline's two lines drawn in the system's
+  ink (`rgb(0, 0, 0)`, 2 px and 1 px), the cartouche's border drawn and its box on Canvas, each of the five names drawn on Canvas (the casing gone, as
+  the browser draws no text-shadow there; style.css's forced-colours rule).
+- **Reduced motion** (`prefers-reduced-motion: reduce` before load): the app reads it (`RM` true); the plate as entered at once (the neatline, the
+  cartouche, five names, no counter outside); a drag stands it down; the Overview's button brings it back within one frame (no glide).
+- **The landscape unchanged**: the Field vantage at 09:00 in Study and in Watch at 1600 x 900 on the base build and this one: the canvas alone **0 of
+  1,440,000 pixels differing** in both; the whole page 1 pixel at 1 level in each, the renderer's own noise (the base build against itself: 1 pixel at
+  1 level). On the landscape the surround's sheet is not drawn, the neatline, the cartouche and the names are hidden.
+- The surround's sheet: 12,688 triangles, the apron's own geometry, one draw call on the paper map alone.
 
 ## 8. Checks
 
-CHECKS_SECTION
+Here (Chromium 141.0.7390.37, the pinned Playwright 1.56.0, software WebGL), on this build (`bfda6af8...`) unless named:
+
+- `npm test`: all nine suites, the height guard and the dead-code check pass (`npm-test.log`); `css-test.js` holds the plate's rules (the paper theme's
+  colours, the rail head's day, nothing to MAPCAM's framing, the plate's scope, the surround through the curve's inverse, the lettering's casing and
+  place); `runtime-test.js` 0 errors, "console.warn unique" 0.
+- `check:data`: all 143 data declarations byte-identical to `archive/stage6wp09w-45d29cc5.html`.
+- `check:chronology`: 0 errors.
+- `check:selftest`: on this build **360 of 360** checks pass and every live block (the motion block, `ux1` to `ux5` among them); the run's only failing
+  lines were the manifest's (4 checks not in it), and the manifest was written from that run (`check-report.js --write-manifest`: 356 to 360, 4 added,
+  0 removed). A run on the build before `bf6754b` had also failed the twin rule above (fixed). A second local run after the manifest was cut off by the
+  container's restart; the clean run is CI's: SELFTEST_CI
+- `check:contrast` (CI, run 44226346847 on `a267a82` and run 44232536488 on `3f66434`, both this build): 57 of 57 states reached (10 as a phone, 12 at
+  320 x 256 and in forced colours), 9,467 text elements, 126 distinct pairs, **0 below AA, 0 under 10.5 px**, 510 cased map texts read against their
+  casing (the base lettering's among them, `tools/visual/contrast.js`'s casing rule extended to `.pl-name`), 0 font failures, 0 console messages; the
+  boot cases 10 of 10. The cartouche is page text on the paper theme's panel.
+- `check:baseline`: on this build, `bfda6af8f046d29848d60fb72bba77fb`, 3,136,806 bytes.
+- The live block `ux5` alone (`tools/ux-step5/block.js`): 0 failures here, 14 on the base build.
+- `check:visual` in full: dispatched on CI for this branch (VISUAL_CI).
 
 ## 9. Not met, uncertain, handed on
 
