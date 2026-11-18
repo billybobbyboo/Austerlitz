@@ -198,14 +198,14 @@ Here (Chromium 141.0.7390.37, the pinned Playwright 1.56.0, software WebGL), on 
 - `check:selftest`: on this build **360 of 360** checks pass and every live block (the motion block, `ux1` to `ux5` among them); the run's only failing
   lines were the manifest's (4 checks not in it), and the manifest was written from that run (`check-report.js --write-manifest`: 356 to 360, 4 added,
   0 removed). A run on the build before `bf6754b` had also failed the twin rule above (fixed). A second local run after the manifest was cut off by the
-  container's restart; the clean run is CI's: SELFTEST_CI
+  container's restart; the clean run is CI's: `check:selftest` passed on CI with the new manifest on this build (runs 44234497630 on `3ea3282` and 44236237997 on `270b8e6`, the build `bfda6af8...` unchanged since `3f66434`).
 - `check:contrast` (CI, run 44226346847 on `a267a82` and run 44232536488 on `3f66434`, both this build): 57 of 57 states reached (10 as a phone, 12 at
   320 x 256 and in forced colours), 9,467 text elements, 126 distinct pairs, **0 below AA, 0 under 10.5 px**, 510 cased map texts read against their
   casing (the base lettering's among them, `tools/visual/contrast.js`'s casing rule extended to `.pl-name`), 0 font failures, 0 console messages; the
   boot cases 10 of 10. The cartouche is page text on the paper theme's panel.
 - `check:baseline`: on this build, `bfda6af8f046d29848d60fb72bba77fb`, 3,136,806 bytes.
 - The live block `ux5` alone (`tools/ux-step5/block.js`): 0 failures here, 14 on the base build.
-- `check:visual` in full: dispatched on CI for this branch (VISUAL_CI).
+- `check:visual` in full: dispatched on CI for this branch (run 44233706713 on `3f66434`, this build); its result is recorded on the pull request.
 
 ## 9. Not met, uncertain, handed on
 
