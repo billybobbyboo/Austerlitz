@@ -47,7 +47,7 @@ declarations byte-identical). Evidence: `docs/ux-step5-evidence/README.md`; tool
 - **Baselines**: none moved. CHECKS_LINE
 - **Uncertain**: the audit's 10 of 12 not met (decision 1); the plate stands down at the first pan or zoom (the Overview brings it back); everything is
   software WebGL; `check:visual` in full on CI only; no device run (one draw call more on the paper map, none on the landscape or the phone's layout).
-- **Build**: `austerlitz-command-map.html` **BUILD_BYTES bytes, md5 `BUILD_MD5`** (SHA-256 `BUILD_SHA`); `check:baseline` moved to it.
+- **Build**: `austerlitz-command-map.html` **3,136,806 bytes, md5 `bfda6af8f046d29848d60fb72bba77fb`** (SHA-256 `bc7e71ebdbaef549d9efcc05ac487d2cce2d65d7cc563ab94ddc18c1f83edab9`); `check:baseline` moved to it.
 
 ## 2026-11 · UI/UX roadmap step 4: the first frame (UA-03, UA-04)
 

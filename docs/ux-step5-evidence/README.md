@@ -11,15 +11,15 @@ unchanged), [`names/`](names/) (this build's lettering modes as entered) and the
 
 | | Base (UI/UX step 4, `main` at `78ba837b0ae8518bfe9a3c9edbf383d8f721702f`, #115's merge) | This build |
 |---|---|---|
-| `austerlitz-command-map.html` | 3,100,850 bytes, md5 `66b4edc251ada879b2146ed7dabd385b` | **BUILD_BYTES bytes, md5 `BUILD_MD5`** |
-| SHA-256 | `393bbc1e88cdb7847939fede792134a09fe7dcfe16fd527d65c535783ae4f3bf` | `BUILD_SHA` |
+| `austerlitz-command-map.html` | 3,100,850 bytes, md5 `66b4edc251ada879b2146ed7dabd385b` | **3,136,806 bytes, md5 `bfda6af8f046d29848d60fb72bba77fb`** |
+| SHA-256 | `393bbc1e88cdb7847939fede792134a09fe7dcfe16fd527d65c535783ae4f3bf` | `bc7e71ebdbaef549d9efcc05ac487d2cce2d65d7cc563ab94ddc18c1f83edab9` |
 
 The branch was made from `origin/main` at `78ba837`, which contains #115's merge (`git merge-base --is-ancestor 78ba837 origin/main`: yes; it is
 that merge).
 
 **Every number here:** Chromium 141.0.7390.37 (Playwright 1.56.0's pinned build), headless, **software WebGL** (ANGLE on SwiftShader), Linux, 4 cores.
 The phone is **Chromium's emulation** (390 x 844, density 3, touch, an iPhone's user agent), not a physical device. No frame rate is measured. The
-plate adds on the paper map one draw call (the surround's sheet over the apron, 13,072 triangles, the apron's own geometry) and three DOM elements
+plate adds on the paper map one draw call (the surround's sheet over the apron, 12,688 triangles, the apron's own geometry) and three DOM elements
 (the neatline, the cartouche, the base lettering's twelve names); the landscape and the phone's layout draw nothing new, so the device route was not
 required by the brief and was not run.
 
