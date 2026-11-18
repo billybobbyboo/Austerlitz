@@ -1,0 +1,12 @@
+1600x900  none      twelve 0 leaders {"median":89,"max":223,"sum":1081} counters 14 outside 0 placed 23 dropped 12 errors 0
+1600x900  after     twelve 5 leaders {"median":89,"max":223,"sum":1081} counters 14 outside 0 placed 23 dropped 12 errors 0
+1600x900  counters  twelve 7 leaders {"median":89,"max":223,"sum":1081} counters 14 outside 0 placed 23 dropped 9 errors 0
+1600x900  framed    twelve 12 leaders {"median":111,"max":198,"sum":1384} counters 14 outside 0 placed 23 dropped 8 errors 0
+1366x768  none      twelve 0 leaders {"median":89,"max":306,"sum":1198} counters 14 outside 0 placed 23 dropped 12 errors 0
+1366x768  after     twelve 2 leaders {"median":89,"max":306,"sum":1198} counters 14 outside 0 placed 23 dropped 12 errors 0
+1366x768  counters  twelve 5 leaders {"median":89,"max":306,"sum":1198} counters 14 outside 0 placed 23 dropped 8 errors 0
+1366x768  framed    twelve 12 leaders {"median":110,"max":350,"sum":1821} counters 14 outside 0 placed 23 dropped 8 errors 0
+1280x720  none      twelve 0 leaders {"median":97,"max":326,"sum":1572} counters 14 outside 0 placed 23 dropped 12 errors 0
+1280x720  after     twelve 3 leaders {"median":97,"max":326,"sum":1572} counters 14 outside 0 placed 23 dropped 12 errors 0
+1280x720  counters  twelve 7 leaders {"median":97,"max":326,"sum":1572} counters 14 outside 0 placed 23 dropped 8 errors 0
+1280x720  framed    twelve 12 leaders {"median":119,"max":273,"sum":1767} counters 14 outside 0 placed 23 dropped 8 errors 0
