@@ -205,7 +205,12 @@ Here (Chromium 141.0.7390.37, the pinned Playwright 1.56.0, software WebGL), on 
   boot cases 10 of 10. The cartouche is page text on the paper theme's panel.
 - `check:baseline`: on this build, `bfda6af8f046d29848d60fb72bba77fb`, 3,136,806 bytes.
 - The live block `ux5` alone (`tools/ux-step5/block.js`): 0 failures here, 14 on the base build.
-- `check:visual` in full: dispatched on CI for this branch (run 44233706713 on `3f66434`, this build); its result is recorded on the pull request.
+- `check:visual` in full on CI: the first run (44233706713 on `3f66434`, this build) stopped after 2 h 48 min. Every case and block before it ran.
+  It stopped in step 2's live block `ux2`, before its scripted Play: `playRun: the app's pending frame did not come within 15 s of the driver's start`
+  (`tools/visual/ux2.js` line 171, a step 2 harness wait). It was a harness error, not a failed check. The same block passed on this build in the four
+  CI runs of `check:selftest` and locally (`tools/ux-step2/block.js`, every check, 169 s, Play in Study 270 frames). The app's loop always
+  requests its next frame, so the missed frame is the runner's; the cause is not known. Re-dispatched as run 44260893369 on `1a74ab8`, the same build;
+  its result is recorded on the pull request.
 
 ## 9. Not met, uncertain, handed on
 
