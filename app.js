@@ -5327,7 +5327,7 @@ var PLATE_TWELVE=[{id:"sokolnitz"},{id:"telnitz"},{id:"augezd"},{id:"blasowitz"}
    visibility baselines lowered and the jumps over their ceiling), "rest" and "always" (first at rest only, or always: costlier); "none" (decision
    302 (b) as it was) */
 PLATE.NAMES="counters";
-PLATE.letters={el:{}, rects:[], shown:0, on:{}}; PLATE.RINGS=[0,7,14];   /* px beyond the footprint's edge: three rings of eight places */
+PLATE.letters={el:{}, rects:[], shown:0, on:{}, fresh:true}; PLATE.RINGS=[0,7,14];   /* px beyond the footprint's edge: three rings of eight places */
 function plateNameOf(t){ if(t.id){ var ft=FEATURES.filter(function(f){ return f.id===t.id; })[0]; return ft?ft.name:null; } return t.v; }
 function plateLettersOn(){ return mode==="staff"&&textOn()&&PLATE.NAMES!=="none"; }
 function plateFirst(){ var n=PLATE.NAMES; return n==="always"?plateLettersOn():n==="framed"?plateOn():n==="rest"?plateOn()&&!playing:false; }
@@ -5349,7 +5349,7 @@ function plateLetters(VW,VH,panels,obst,taken,pre){
     var w=e._w, h=e._h, C=[];
     PLATE.RINGS.forEach(function(dd){ var r0=rp+dd, d=r0*0.7; C.push([sc[0]+r0,sc[1]-h/2],[sc[0]-r0-w,sc[1]-h/2],[sc[0]-w/2,sc[1]-r0-h],[sc[0]-w/2,sc[1]+r0],
       [sc[0]+d,sc[1]-d-h],[sc[0]-d-w,sc[1]-d-h],[sc[0]+d,sc[1]+d],[sc[0]-d-w,sc[1]+d]); });
-    var order=e._c>=0?[e._c].concat(C.map(function(c,i){ return i; }).filter(function(i){ return i!==e._c; })):C.map(function(c,i){ return i; }), got=-1;
+    var order=e._c>=0&&!L.fresh?[e._c].concat(C.map(function(c,i){ return i; }).filter(function(i){ return i!==e._c; })):C.map(function(c,i){ return i; }), got=-1;
     for(var k=0;k<order.length&&got<0;k++){ var c=C[order[k]], x0=c[0], y0=c[1], x1=x0+w, y1=y0+h;
       if(x0<ML_PAD||y0<ML_PAD||x1>VW-ML_PAD||y1>VH-ML_PAD) continue;
       if(mlHits(x0,y0,x1,y1,panels)||mlHits(x0,y0,x1,y1,obst)||mlHits(x0,y0,x1,y1,taken)||mlHits(x0,y0,x1,y1,L.rects)) continue;
@@ -5997,8 +5997,6 @@ function mlLayout(){
   elig.forEach(function(it){ if(it.far!==!!it.farC){ it.el.classList.toggle("ml-far",it.far); it.farC=it.far; it.fdirty=true; } if(it.farC&&it.fdirty) fdirty.push(it); });
   fdirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.fw=Math.ceil(r.width||0); it.fh=Math.ceil(r.height||0); it.fdirty=false; });
   var maxG=mlMaxG(), obst=mlObstacles(VW,VH);
-  /* UI/UX step 5: the base lettering laid out first while the plate stands at rest (PLATE.NAMES "rest"): the layer places round it as round a symbol */
-  var plPre=plateFirst(); if(plPre){ plateLetters(VW,VH,panels,obst,[],true); obst=obst.concat(PLATE.letters.rects); }
   elig.forEach(function(it){ it.occ=!it.keep&&it.occl&&mlOccluded(it.world,maxG); if(it.occ){ it.state="occluded"; st.occluded++; } });
   /* UI/UX step 2: while the clock plays, after what is never dropped, the Landscape's formations a live event names (it.first) before every
      other item, the aged (WP-07) included; within each, the order as before. At rest, and on the paper map and the Landscape with counters: as before */
@@ -6009,6 +6007,11 @@ function mlLayout(){
   var now=performance.now(), foc=document.activeElement, nk=0;
   mlStabBegin(now,VW,VH);
   var strat=MLS.moving?"hold":MLS.fromMotion?"persist":"build";
+  /* UI/UX step 5: the base lettering laid out fresh in a fresh view (the layer's "build"), keeping its places while the view moves or comes to rest after
+     motion, as the layer's own items do; laid out first, before the layer, in the modes that ask it (PLATE.NAMES "framed", "rest", "always"), the layer
+     then placing round it as round a symbol */
+  PLATE.letters.fresh=(strat==="build");
+  var plPre=plateFirst(); if(plPre){ plateLetters(VW,VH,panels,obst,[],true); obst=obst.concat(PLATE.letters.rects); }
   while(nk<order.length&&order[nk].keep) nk++;
   for(var ik=0;ik<nk;ik++){ var kt=order[ik]; kt.held=false; if(!(mlPlaceItem(kt,VW,VH,panels,obst)||mlWrapPlace(kt,VW,VH,panels,obst))) kt.state="dropped"; }
   /* WP-08 (CL-MAP-09): an arrow's label that only names its formation, withheld while the formation's own counter or name is in view in this pass
