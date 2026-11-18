@@ -1,0 +1,211 @@
+{
+ "strings": 568,
+ "rows": [
+  {
+   "name": "Sokolnitz",
+   "feature": "sokolnitz",
+   "featureName": "Sokolnitz",
+   "strings": 15,
+   "by": {
+    "PHASES": 8,
+    "EVENTS": 6,
+    "ANALYSIS": 1
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Telnitz",
+   "feature": "telnitz",
+   "featureName": "Telnitz",
+   "strings": 12,
+   "by": {
+    "PHASES": 7,
+    "EVENTS": 5
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Augezd",
+   "feature": "augezd",
+   "featureName": "Augezd",
+   "strings": 10,
+   "by": {
+    "PHASES": 3,
+    "EVENTS": 5,
+    "TOUR": 1,
+    "ANALYSIS": 1
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Blasowitz",
+   "feature": "blasowitz",
+   "featureName": "Blasowitz",
+   "strings": 8,
+   "by": {
+    "PHASES": 4,
+    "EVENTS": 2,
+    "ANALYSIS": 2
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Austerlitz",
+   "feature": "austerlitz",
+   "featureName": "Austerlitz",
+   "strings": 4,
+   "by": {
+    "PHASES": 2,
+    "EVENTS": 2
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Kobelnitz",
+   "feature": "kobelnitz",
+   "featureName": "Kobelnitz",
+   "strings": 4,
+   "by": {
+    "PHASES": 1,
+    "EVENTS": 2,
+    "ANALYSIS": 1
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Puntowitz",
+   "feature": "puntowitz",
+   "featureName": "Puntowitz",
+   "strings": 4,
+   "by": {
+    "PHASES": 1,
+    "EVENTS": 1,
+    "TOUR": 1,
+    "ANALYSIS": 1
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Pratzen",
+   "feature": "pratzenv",
+   "featureName": "Pratzen village",
+   "strings": 3,
+   "by": {
+    "PHASES": 2,
+    "EVENTS": 1
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Satschan",
+   "feature": null,
+   "featureName": null,
+   "strings": 3,
+   "by": {
+    "PHASES": 1,
+    "EVENTS": 2
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Turas",
+   "feature": null,
+   "featureName": null,
+   "strings": 3,
+   "by": {
+    "PHASES": 1,
+    "EVENTS": 1,
+    "ANALYSIS": 1
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Holubitz",
+   "feature": null,
+   "featureName": null,
+   "strings": 2,
+   "by": {
+    "PHASES": 1,
+    "ANALYSIS": 1
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Krug",
+   "feature": null,
+   "featureName": null,
+   "strings": 2,
+   "by": {
+    "PHASES": 1,
+    "ANALYSIS": 1
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Krzenowitz",
+   "feature": "krzenowitz",
+   "featureName": "Krzenowitz",
+   "strings": 2,
+   "by": {
+    "PHASES": 2
+   },
+   "inVillages": true
+  },
+  {
+   "name": "Bellowitz",
+   "feature": null,
+   "featureName": null,
+   "strings": 0,
+   "by": {},
+   "inVillages": true
+  },
+  {
+   "name": "Bosenitz",
+   "feature": null,
+   "featureName": null,
+   "strings": 0,
+   "by": {},
+   "inVillages": true
+  },
+  {
+   "name": "Girzikowitz",
+   "feature": "girzikowitz",
+   "featureName": "Girzikowitz",
+   "strings": 0,
+   "by": {},
+   "inVillages": true
+  },
+  {
+   "name": "Hostieradek",
+   "feature": null,
+   "featureName": null,
+   "strings": 0,
+   "by": {},
+   "inVillages": true
+  },
+  {
+   "name": "Menitz",
+   "feature": null,
+   "featureName": null,
+   "strings": 0,
+   "by": {},
+   "inVillages": true
+  },
+  {
+   "name": "Posoritz post house",
+   "feature": null,
+   "featureName": null,
+   "strings": 0,
+   "by": {},
+   "inVillages": true
+  },
+  {
+   "name": "Schlapanitz",
+   "feature": null,
+   "featureName": null,
+   "strings": 0,
+   "by": {},
+   "inVillages": true
+  }
+ ]
+}

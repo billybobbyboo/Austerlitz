@@ -1287,3 +1287,41 @@ if(cerrs) process.exitCode=1;
   console.log("the Landscape's label tiers (UI/UX step 2): "+(terr.length?terr.length+" wrong":"a live event above weight 0.3 on the accent plate, at t-live 13.5 px where the larger plate stands clear and never in the layout's box; the formations it names tier 2, placed first while the clock plays; every other label cased by 24 unblurred shadows of the keyline, on no plate; Watch's set tier 3 alone, never the focus; forced colours"));
   if(terr.length) process.exitCode=1;
 }
+/* UI/UX roadmap step 5 (docs/UX_ART_AUDIT.md UA-08, Direction B on the paper map): the paper plate. Its colours are the paper theme's variables and
+   TOKENS.theme.paper.ink, never a literal; the cartouche reads the day as the rail's head gives it; nothing of the plate reaches MAPCAM's framing
+   (env.panels reads mlPanels alone; the plate's obstacles are concatenated in mlLayout only); the plate stands only on the paper map, but in Clean,
+   below 720 px and once the field is no longer shown as framed; the surround is a child of the apron, unlit and untoned, its colour the token through
+   acesInv; the base lettering is cased in the paper's tone like .ml-q (24 shadows, 8 at 1 px, 16 at 2 px, no blur) and stands under the map layer */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), css=fs.readFileSync('style.css','utf8'), sh=fs.readFileSync('shell.html','utf8'), perr=[];
+  const fnOf=name=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?src.slice(n.start,n.end):""; };
+  const brand=(/<div class="brand">[\s\S]*?<p>([^<]*)<\/p>\s*<\/div>/.exec(sh)||["",""])[1].replace(/&middot;/g,"\u00b7");
+  const lab=(/plate:\{date:"([^"]*)"\}/.exec(src)||["",""])[1];
+  if(!lab||brand.indexOf(lab)!==0) perr.push("LABELS.plate.date (“"+lab+"”) is not the rail head's day (“"+brand+"”)");
+  const on=fnOf("plateOn"), sync=fnOf("plateSync"), sur=fnOf("plateSurround"), obs=fnOf("plateObstacles"), words=fnOf("plateWords"), lay=fnOf("mlLayout");
+  if(!/return mode==="staff"&&!cleanView&&!PHONE&&MAPCAM\.framed\(\);/.test(on)) perr.push("plateOn is not: the paper map, not Clean, not below 720 px, the field shown as framed");
+  if(!/plateSurround\(mode==="staff"\);/.test(sync)) perr.push("the surround is not drawn on the paper map alone");
+  if(!/new THREE\.MeshBasicMaterial\(\{fog:false, toneMapped:false\}\)/.test(sur)||!/a\.add\(S\.mesh\)/.test(sur)||!/TOKENS\.theme\.paper\.ink/.test(fnOf("plateTone"))||!/plateTone\(fx,ex\)/.test(sur)||!/c\.r=acesInv\(c\.r\)\/ex/.test(fnOf("plateTone"))) perr.push("the surround is not an unlit, untoned child of the apron in TOKENS.theme.paper.ink through the tone curve's inverse");
+  if(/rgba?\(|#[0-9A-Fa-f]{3,8}\b|0x[0-9A-Fa-f]{6}/.test(sur+sync+obs+words+fnOf("plateCartouche")+fnOf("plateLetters"))) perr.push("the plate's code types a colour");
+  if(!/panels:function\(\)\{ mlLegendFit\(renderer\.domElement\.clientWidth\|\|innerWidth,viewH\(\)\); return mlPanels\(\); \}/.test(src)) perr.push("MAPCAM's panels are not mlPanels alone");
+  if(/plate/i.test(fnOf("mlPanels"))) perr.push("mlPanels reads the plate (the plate's obstacles would move MAPCAM's framing)");
+  if(!/plateSync\(VW,VH,panels\); panels=panels\.concat\(plateObstacles\(\)\);/.test(lay)) perr.push("mlLayout does not hand the layer the plate's obstacles after the panels it reads");
+  if(!/if\(!plateOn\(\)\|\|!b\) return R;/.test(obs)) perr.push("the plate's obstacles are given while the plate does not stand");
+  if(!/LABELS\.plate\.date\+" (?:\u00b7|\\u00b7) "\+fmtClock\(clock\), t:P\.title, s:\(act\?act\.n\+" (?:\u00b7|\\u00b7) ":""\)\+phaseSpan\(curPhase\)/.test(words)) perr.push("the cartouche's words are not the date, the clock, the phase's title, its act and span");
+  const rule=sel=>{ const m=new RegExp("(^|\\})\\s*"+sel.replace(/[.#]/g,"\\$&")+"\\{([^}]*)\\}","m").exec(css); return m?m[2]:null; };
+  const nl=rule("#neatline"), ct=rule("#cartouche"), pl=rule(".pl-name");
+  if(nl===null||ct===null||pl===null) perr.push("style.css: #neatline, #cartouche or .pl-name has no base rule");
+  else {
+    [["#neatline",nl],["#cartouche",ct],[".pl-name",pl]].forEach(x=>{ if(/#[0-9A-Fa-f]{3,8}\b|rgba?\(/.test(x[1])) perr.push("style.css: "+x[0]+" types a colour"); });
+    if(!/z-index:5;/.test(nl)||!/z-index:16;/.test(ct)||!/pointer-events:none/.test(nl+ct)) perr.push("style.css: the neatline not under the map layer, or the cartouche not over it and under the panels, or either takes the pointer");
+    const S=(/text-shadow:([^;]*)/.exec(pl)||["",""])[1].split(",").map(x=>x.trim()).filter(Boolean), R=S.map(x=>{ const m=/^(-?[\d.]+)(?:px)? (-?[\d.]+)(?:px)? (-?[\d.]+)(?:px)? var\(--panel\)$/.exec(x); return m?{r:Math.hypot(+m[1],+m[2]),blur:+m[3]}:null; });
+    const at=r=>R.filter(x=>x&&Math.abs(x.r-r)<0.02).length;
+    if(R.some(x=>!x)||S.length!==24||at(1)!==8||at(2)!==16||R.some(x=>x&&x.blur!==0)) perr.push("style.css: the base lettering's casing is not 24 unblurred offsets of the paper's tone, 8 at 1 px and 16 at 2 px");
+  }
+  if(!/<div id="paperletters" aria-hidden="true"><\/div>\s*<main id="map-main">/.test(sh)) perr.push("shell.html: the base lettering is not just before the map layer (under it)");
+  const fc=(/@media \(forced-colors: active\)\{([\s\S]*?)\n\}/.exec(css)||["",""])[1];
+  if(!/\.pl-name\{background-color:Canvas!important\}/.test(fc)) perr.push("style.css: in a forced-colours mode the base lettering does not stand on Canvas");
+  perr.forEach(e=>console.log("  ! "+e));
+  console.log("the paper plate (UI/UX step 5): "+(perr.length?perr.length+" wrong":"the paper theme's colours, the rail head's day, nothing to MAPCAM's framing, the paper map alone (not Clean, not below 720 px, while framed), the surround through the curve's inverse, the base lettering cased and under the layer"));
+  if(perr.length) process.exitCode=1;
+}

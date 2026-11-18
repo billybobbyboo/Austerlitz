@@ -81,13 +81,16 @@ const COLLECT=`(function(state){
     /* UI/UX roadmap step 2: a tier 3 label of the Landscape stands on no plate; its own words are cased (style.css .ml-q). Its casing is read
        off its computed text-shadow: one opaque colour, no blur, at least eight shadows 1 px from the letters and sixteen at 2 px, or "bad" */
     var casing=null;
-    if(e.classList&&e.classList.contains("ml-q")&&e.classList.contains("ml-item")&&!bgs.some(function(b){ return /\\bml-item\\b/.test(String(b[4])); })){
+    /* UI/UX roadmap step 5: the paper map's base lettering (.pl-name, the twelve villages' names under the map layer) is cased the same way, in the paper's
+       tone, and read against its casing, over black and white too as map text */
+    var plName=!!(e.classList&&e.classList.contains("pl-name"));
+    if(plName||(e.classList&&e.classList.contains("ml-q")&&e.classList.contains("ml-item")&&!bgs.some(function(b){ return /\\bml-item\\b/.test(String(b[4])); }))){
       var sh=cs.textShadow==="none"?[]:cs.textShadow.split(/,(?![^(]*\\))/), cc=null, n1=0, n2=0, okc=true;
       sh.forEach(function(x){ var c=rgba(x), m=x.replace(/rgba?\\([^)]*\\)/,"").trim().split(/\\s+/).map(parseFloat); if(!c||m.length<3||c[3]<1||m[2]!==0){ okc=false; return; }
         if(cc&&(cc[0]!==c[0]||cc[1]!==c[1]||cc[2]!==c[2])) okc=false; cc=c; var r=Math.hypot(m[0],m[1]); if(Math.abs(r-1)<0.03) n1++; else if(Math.abs(r-2)<0.03) n2++; });
       casing=okc&&cc&&n1>=8&&n2>=16?[cc[0],cc[1],cc[2]]:"bad"; }
     out.push({state:state, sel:sel, text:own.slice(0,40), color:rgba(cs.color), size:parseFloat(cs.fontSize), weight:cs.fontWeight, opacity:op, bgs:bgs,
-      map:!!(e.closest&&e.closest("#maplayer")), casing:casing});
+      map:!!(e.closest&&(e.closest("#maplayer")||e.closest("#paperletters"))), casing:casing});
   }
   return out;
 })`;

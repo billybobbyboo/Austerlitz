@@ -1,0 +1,5 @@
+hold-nocart   390x844p   twelve 0 counters 9 outside 0 led 9 placed 17 dropped 18 byCat {"plateau":1,"counter":9,"event":1,"overlay":5,"objective":1} cart no surround [227,222,212] errors 0
+surround      390x844p   twelve 0 counters 10 outside 4 led 10 placed 18 dropped 17 byCat {"plateau":1,"counter":10,"event":1,"overlay":5,"objective":1} cart no surround [227,222,212] errors 0
+neat-only     390x844p   twelve 0 counters 10 outside 2 led 10 placed 18 dropped 17 byCat {"plateau":1,"counter":10,"event":1,"overlay":5,"objective":1} cart no surround [227,222,212] errors 0
+basel-framed  390x844p   twelve 1 counters 8 outside 0 led 8 placed 15 dropped 20 byCat {"plateau":1,"counter":8,"event":1,"overlay":4,"objective":1} cart yes surround [227,222,212] errors 0
+first-framed  390x844p   twelve 9 counters 5 outside 0 led 5 placed 12 dropped 23 byCat {"plateau":1,"counter":5,"event":1,"overlay":4,"objective":1} cart yes surround [227,222,212] errors 0

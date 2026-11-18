@@ -471,6 +471,13 @@ async function interact(page,it,vp){
     if(await has(first,"UX4","the first frame (UI/UX roadmap step 4)")){
       const UX4=require("./ux4.js");
       LIVE.ux4=await UX4.runBlock((vp,dev)=>openPage(browser,vp,vp.join("x")+" ux4"+(dev?" ("+dev+")":""),dev),settle,{selftestOnly:SELFTEST_ONLY,log:s=>console.log(s)}); }
+    /* UI/UX roadmap step 5 (docs/UX_ART_AUDIT.md UA-08; tools/visual/ux5.js; judged by thresholds.js checkUx5): the paper plate entered by real clicks on
+       fresh pages (1600 x 900, 1366 x 768, 1280 x 720; check:selftest 1366 x 768 and the window to 1280 x 720), a drag and the Overview's button, and a
+       phone's paper map by taps */
+    AT="ux5";
+    if(await has(first,"UX5","the paper plate (UI/UX roadmap step 5)")){
+      const UX5=require("./ux5.js");
+      LIVE.ux5=await UX5.runBlock((vp,dev)=>openPage(browser,vp,vp.join("x")+" ux5"+(dev?" ("+dev+")":""),dev),settle,{selftestOnly:SELFTEST_ONLY,log:s=>console.log(s)}); }
     /* Stage 8, implementation PR 8C (decision 240 (a); docs/STAGE8_SPEC.md sections 3.5 and 15): the map layer in motion. On a page of its own at
        1600 x 900, the 16 motions of tools/stage8/label-motion.js driven through the app's own input and its own frame on a clock of its own
        (tools/visual/motion.js: 30 frames a second, the WebGL draw skipped, nothing set that the app does not set), each after a view reached

@@ -1,0 +1,762 @@
+{
+ "build": {
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/2a30654d-ed59-5eff-a7b4-2563e5fa9bdc/scratchpad/new.html",
+  "bytes": 3136806,
+  "md5": "bfda6af8f046d29848d60fb72bba77fb",
+  "sha256": "bc7e71ebdbaef549d9efcc05ac487d2cce2d65d7cc563ab94ddc18c1f83edab9"
+ },
+ "env": {
+  "chromium": "141.0.7390.37",
+  "playwright": "1.56.0"
+ },
+ "live": {
+  "entered": [
+   {
+    "vw": 1600,
+    "vh": 900,
+    "mode": "staff",
+    "clock": 570,
+    "phase": 4,
+    "edges": [
+     17.423,
+     17.423,
+     17.423,
+     17.423
+    ],
+    "freeRect": [
+     312,
+     64,
+     1248,
+     792
+    ],
+    "fieldBox": [
+     386,
+     64,
+     1174,
+     792
+    ],
+    "fieldInFree": true,
+    "framed": true,
+    "paperMap": {
+     "north": 0,
+     "spread": 0.00203,
+     "scaleBar": {
+      "label": "5 km",
+      "px": 143,
+      "want": 142.7,
+      "err": 0.00217
+     },
+     "pxPerKm": {
+      "pratzeberg": 28.537,
+      "sokolnitz": 28.529,
+      "santon": 28.572,
+      "satschan": 28.514
+     },
+     "frameInFree": 1
+    },
+    "unobstructed": 0.7038,
+    "neatline": [
+     305,
+     57,
+     1255,
+     799
+    ],
+    "cartouche": [
+     1265,
+     120,
+     1545,
+     192.1
+    ],
+    "cartWords": [
+     "2 December 1805 · 09:30",
+     "The crisis on the Pratzeberg",
+     "The Pratzen Strike · 09:30 - 10:30"
+    ],
+    "cartWant": [
+     "2 December 1805 · 09:30",
+     "The crisis on the Pratzeberg",
+     "The Pratzen Strike · 09:30 - 10:30"
+    ],
+    "surround": true,
+    "leadPx": {
+     "median": 89,
+     "max": 223,
+     "sum": 1081
+    },
+    "counters": 14,
+    "countersOutside": [],
+    "itemsOutside": [],
+    "countersLed": 14,
+    "placed": 23,
+    "dropped": 9,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:litava",
+     "t:augezd",
+     "t:satschan"
+    ],
+    "twelve": [
+     {
+      "id": "sokolnitz",
+      "name": "Sokolnitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "telnitz",
+      "name": "Telnitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "augezd",
+      "name": "Augezd",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": "blasowitz",
+      "name": "Blasowitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": "kobelnitz",
+      "name": "Kobelnitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "puntowitz",
+      "name": "Puntowitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": "austerlitz",
+      "name": "Austerlitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "pratzenv",
+      "name": "Pratzen village",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "krzenowitz",
+      "name": "Krzenowitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": null,
+      "name": "Holubitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": null,
+      "name": "Krug",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "girzikowitz",
+      "name": "Girzikowitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     }
+    ],
+    "twelveDrawn": 7,
+    "vpName": "1600x900",
+    "how": "entered"
+   },
+   {
+    "vw": 1366,
+    "vh": 768,
+    "mode": "staff",
+    "clock": 570,
+    "phase": 4,
+    "edges": [
+     17.423,
+     17.423,
+     17.423,
+     17.423
+    ],
+    "freeRect": [
+     312,
+     64,
+     1016,
+     664
+    ],
+    "fieldBox": [
+     340,
+     64,
+     988,
+     664
+    ],
+    "fieldInFree": true,
+    "framed": true,
+    "paperMap": {
+     "north": 0,
+     "spread": 0.00204,
+     "scaleBar": {
+      "label": "5 km",
+      "px": 118,
+      "want": 117.6,
+      "err": 0.0034
+     },
+     "pxPerKm": {
+      "pratzeberg": 23.519,
+      "sokolnitz": 23.513,
+      "santon": 23.548,
+      "satschan": 23.5
+     },
+     "frameInFree": 1
+    },
+    "unobstructed": 0.6533,
+    "neatline": [
+     305,
+     57,
+     1023,
+     671
+    ],
+    "cartouche": [
+     1033,
+     112,
+     1313,
+     184.1
+    ],
+    "cartWords": [
+     "2 December 1805 · 09:30",
+     "The crisis on the Pratzeberg",
+     "The Pratzen Strike · 09:30 - 10:30"
+    ],
+    "cartWant": [
+     "2 December 1805 · 09:30",
+     "The crisis on the Pratzeberg",
+     "The Pratzen Strike · 09:30 - 10:30"
+    ],
+    "surround": true,
+    "leadPx": {
+     "median": 89,
+     "max": 306,
+     "sum": 1198
+    },
+    "counters": 14,
+    "countersOutside": [],
+    "itemsOutside": [],
+    "countersLed": 13,
+    "placed": 23,
+    "dropped": 8,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:litava",
+     "t:satschan"
+    ],
+    "twelve": [
+     {
+      "id": "sokolnitz",
+      "name": "Sokolnitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "telnitz",
+      "name": "Telnitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "augezd",
+      "name": "Augezd",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "blasowitz",
+      "name": "Blasowitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "kobelnitz",
+      "name": "Kobelnitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": "puntowitz",
+      "name": "Puntowitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": "austerlitz",
+      "name": "Austerlitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "pratzenv",
+      "name": "Pratzen village",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": "krzenowitz",
+      "name": "Krzenowitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": null,
+      "name": "Holubitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": null,
+      "name": "Krug",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": "girzikowitz",
+      "name": "Girzikowitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     }
+    ],
+    "twelveDrawn": 5,
+    "vpName": "1366x768",
+    "how": "entered"
+   },
+   {
+    "vw": 1280,
+    "vh": 720,
+    "mode": "staff",
+    "clock": 570,
+    "phase": 4,
+    "edges": [
+     17.423,
+     17.423,
+     17.423,
+     17.423
+    ],
+    "freeRect": [
+     312,
+     64,
+     928,
+     616
+    ],
+    "fieldBox": [
+     322,
+     64,
+     918,
+     616
+    ],
+    "fieldInFree": true,
+    "framed": true,
+    "paperMap": {
+     "north": 0,
+     "spread": 0.00203,
+     "scaleBar": {
+      "label": "5 km",
+      "px": 108,
+      "want": 108.2,
+      "err": 0.00178
+     },
+     "pxPerKm": {
+      "pratzeberg": 21.638,
+      "sokolnitz": 21.632,
+      "santon": 21.664,
+      "satschan": 21.62
+     },
+     "frameInFree": 1
+    },
+    "unobstructed": 0.6291,
+    "neatline": [
+     305,
+     57,
+     935,
+     623
+    ],
+    "cartouche": [
+     945,
+     112,
+     1225,
+     184.1
+    ],
+    "cartWords": [
+     "2 December 1805 · 09:30",
+     "The crisis on the Pratzeberg",
+     "The Pratzen Strike · 09:30 - 10:30"
+    ],
+    "cartWant": [
+     "2 December 1805 · 09:30",
+     "The crisis on the Pratzeberg",
+     "The Pratzen Strike · 09:30 - 10:30"
+    ],
+    "surround": true,
+    "leadPx": {
+     "median": 97,
+     "max": 326,
+     "sum": 1572
+    },
+    "counters": 14,
+    "countersOutside": [],
+    "itemsOutside": [],
+    "countersLed": 14,
+    "placed": 23,
+    "dropped": 8,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:litava",
+     "t:satschan"
+    ],
+    "twelve": [
+     {
+      "id": "sokolnitz",
+      "name": "Sokolnitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "telnitz",
+      "name": "Telnitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "augezd",
+      "name": "Augezd",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "blasowitz",
+      "name": "Blasowitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "kobelnitz",
+      "name": "Kobelnitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "puntowitz",
+      "name": "Puntowitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "austerlitz",
+      "name": "Austerlitz",
+      "layer": null,
+      "base": 1,
+      "drawn": true
+     },
+     {
+      "id": "pratzenv",
+      "name": "Pratzen village",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": "krzenowitz",
+      "name": "Krzenowitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": null,
+      "name": "Holubitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": null,
+      "name": "Krug",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     },
+     {
+      "id": "girzikowitz",
+      "name": "Girzikowitz",
+      "layer": null,
+      "base": null,
+      "drawn": false
+     }
+    ],
+    "twelveDrawn": 7,
+    "vpName": "1280x720",
+    "how": "entered"
+   }
+  ],
+  "downBack": {
+   "down": {
+    "neatline": null,
+    "cartouche": null,
+    "framed": false,
+    "itemsOutside": 0
+   },
+   "back": {
+    "neatline": [
+     305,
+     57,
+     1023,
+     671
+    ],
+    "cartouche": [
+     1033,
+     112,
+     1313,
+     184.1
+    ],
+    "framed": true,
+    "countersOutside": [],
+    "twelveDrawn": 5
+   }
+  },
+  "phone": {
+   "vw": 390,
+   "vh": 844,
+   "mode": "staff",
+   "clock": 570,
+   "phase": 4,
+   "edges": [
+    17.423,
+    17.423,
+    17.423,
+    17.423
+   ],
+   "freeRect": [
+    16,
+    64,
+    376,
+    536
+   ],
+   "fieldBox": [
+    16,
+    134,
+    376,
+    466
+   ],
+   "fieldInFree": true,
+   "framed": true,
+   "paperMap": {
+    "north": 0,
+    "spread": 0.00207,
+    "scaleBar": {
+     "label": "5 km",
+     "px": 65,
+     "want": 65.3,
+     "err": 0.00408
+    },
+    "pxPerKm": {
+     "pratzeberg": 13.053,
+     "sokolnitz": 13.049,
+     "santon": 13.069,
+     "satschan": 13.042
+    },
+    "frameInFree": 1
+   },
+   "unobstructed": 0.6529,
+   "neatline": null,
+   "cartouche": null,
+   "cartWords": null,
+   "cartWant": [
+    "2 December 1805 · 09:30",
+    "The crisis on the Pratzeberg"
+   ],
+   "surround": true,
+   "leadPx": {
+    "median": 60,
+    "max": 215,
+    "sum": 756
+   },
+   "counters": 10,
+   "countersOutside": [
+    "c:c_v",
+    "c:c_cav",
+    "c:c_i",
+    "c:constantine"
+   ],
+   "itemsOutside": [
+    "o:French hold the crest",
+    "o:Kamensky turns about (disputed)",
+    "c:c_v",
+    "c:c_cav",
+    "c:c_i",
+    "c:constantine"
+   ],
+   "countersLed": 10,
+   "placed": 18,
+   "dropped": 17,
+   "droppedIds": [
+    "c:c_gd",
+    "c:lich",
+    "c:c_iii",
+    "c:c_gren",
+    "o:Levasseur up the Goldbach",
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:litava",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd",
+    "t:satschan",
+    "t:austerlitz"
+   ],
+   "twelve": [
+    {
+     "id": "sokolnitz",
+     "name": "Sokolnitz",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": "telnitz",
+     "name": "Telnitz",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": "augezd",
+     "name": "Augezd",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": "blasowitz",
+     "name": "Blasowitz",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": "kobelnitz",
+     "name": "Kobelnitz",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": "puntowitz",
+     "name": "Puntowitz",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": "austerlitz",
+     "name": "Austerlitz",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": "pratzenv",
+     "name": "Pratzen village",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": "krzenowitz",
+     "name": "Krzenowitz",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": null,
+     "name": "Holubitz",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": null,
+     "name": "Krug",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    },
+    {
+     "id": "girzikowitz",
+     "name": "Girzikowitz",
+     "layer": null,
+     "base": null,
+     "drawn": false
+    }
+   ],
+   "twelveDrawn": 0,
+   "vpName": "390x844",
+   "how": "taps"
+  }
+ },
+ "failures": [],
+ "errors": []
+}

@@ -1,0 +1,151 @@
+{
+ "base": {
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/2a30654d-ed59-5eff-a7b4-2563e5fa9bdc/scratchpad/base/austerlitz-66b4edc2-step4.html",
+  "bytes": 3100850,
+  "md5": "66b4edc251ada879b2146ed7dabd385b",
+  "sha256": "393bbc1e88cdb7847939fede792134a09fe7dcfe16fd527d65c535783ae4f3bf"
+ },
+ "build": {
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/2a30654d-ed59-5eff-a7b4-2563e5fa9bdc/scratchpad/new.html",
+  "bytes": 3136806,
+  "md5": "bfda6af8f046d29848d60fb72bba77fb",
+  "sha256": "bc7e71ebdbaef549d9efcc05ac487d2cce2d65d7cc563ab94ddc18c1f83edab9"
+ },
+ "chromium": "141.0.7390.37",
+ "forced": {
+  "forced": true,
+  "neatline": {
+   "border": "rgb(0, 0, 0)",
+   "borderW": "2px",
+   "bg": "rgba(255, 255, 255, 0)",
+   "color": "rgb(0, 0, 0)",
+   "display": "block"
+  },
+  "neatInner": "rgb(0, 0, 0)",
+  "cartouche": {
+   "border": "rgb(0, 0, 0)",
+   "borderW": "1px",
+   "bg": "rgb(255, 255, 255)",
+   "color": "rgb(0, 0, 0)",
+   "display": "block"
+  },
+  "names": [
+   {
+    "n": "Sokolnitz",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(0, 0, 0)",
+    "shadow": "none"
+   },
+   {
+    "n": "Telnitz",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(0, 0, 0)",
+    "shadow": "none"
+   },
+   {
+    "n": "Augezd",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(0, 0, 0)",
+    "shadow": "none"
+   },
+   {
+    "n": "Blasowitz",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(0, 0, 0)",
+    "shadow": "none"
+   },
+   {
+    "n": "Austerlitz",
+    "bg": "rgb(255, 255, 255)",
+    "color": "rgb(0, 0, 0)",
+    "shadow": "none"
+   }
+  ]
+ },
+ "reduced": {
+  "RM": true,
+  "entered": {
+   "neatline": [
+    305,
+    57,
+    1023,
+    671
+   ],
+   "cartouche": true,
+   "twelve": 5,
+   "outside": 0
+  },
+  "afterDrag": {
+   "neatline": null,
+   "framed": false
+  },
+  "afterOverview1Frame": {
+   "neatline": [
+    305,
+    57,
+    1023,
+    671
+   ],
+   "framed": true,
+   "twelve": 5
+  }
+ },
+ "landscape": [
+  {
+   "presentation": "study",
+   "whole": {
+    "differing": 1,
+    "beyond2": 0,
+    "maxLevels": 1,
+    "pixels": 1440000
+   },
+   "canvas": {
+    "differing": 0,
+    "beyond2": 0,
+    "maxLevels": 0,
+    "pixels": 1440000
+   },
+   "base": {
+    "apronTris": 12688,
+    "surround": null,
+    "neat": false,
+    "names": 0
+   },
+   "build": {
+    "apronTris": 12688,
+    "surround": false,
+    "neat": false,
+    "names": 0
+   }
+  },
+  {
+   "presentation": "watch",
+   "whole": {
+    "differing": 1,
+    "beyond2": 0,
+    "maxLevels": 1,
+    "pixels": 1440000
+   },
+   "canvas": {
+    "differing": 0,
+    "beyond2": 0,
+    "maxLevels": 0,
+    "pixels": 1440000
+   },
+   "base": {
+    "apronTris": 12688,
+    "surround": null,
+    "neat": false,
+    "names": 0
+   },
+   "build": {
+    "apronTris": 12688,
+    "surround": false,
+    "neat": false,
+    "names": 0
+   }
+  }
+ ],
+ "surroundTriangles": 12688,
+ "failures": []
+}

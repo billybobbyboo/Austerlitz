@@ -1,0 +1,35 @@
+base          1600x900   twelve 0 counters 14 outside 0 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart no surround [115,117,99] errors 0
+base          1366x768   twelve 0 counters 14 outside 1 led 13 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart no surround [114,116,98] errors 0
+base          1280x720   twelve 0 counters 14 outside 4 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart no surround [116,118,100] errors 0
+base          390x844p   twelve 0 counters 10 outside 4 led 10 placed 18 dropped 17 byCat {"plateau":1,"counter":10,"event":1,"overlay":5,"objective":1} cart no surround [113,115,97] errors 0
+frame         1600x900   twelve 0 counters 14 outside 0 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [232,227,217] errors 0
+frame         1366x768   twelve 0 counters 14 outside 1 led 13 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [233,228,218] errors 0
+frame         1280x720   twelve 0 counters 14 outside 3 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [234,229,219] errors 0
+frame         390x844p   twelve 0 counters 9 outside 2 led 9 placed 17 dropped 18 byCat {"plateau":1,"counter":9,"event":1,"overlay":5,"objective":1} cart yes surround [227,222,212] errors 0
+hold          1600x900   twelve 0 counters 14 outside 0 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [232,227,217] errors 0
+hold          1366x768   twelve 0 counters 14 outside 0 led 13 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [233,228,218] errors 0
+hold          1280x720   twelve 0 counters 14 outside 0 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [234,229,219] errors 0
+hold          390x844p   twelve 0 counters 8 outside 0 led 8 placed 15 dropped 20 byCat {"plateau":1,"counter":8,"event":1,"overlay":4,"objective":1} cart yes surround [227,222,212] errors 0
+holdc         1600x900   twelve 0 counters 14 outside 0 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [232,227,217] errors 0
+holdc         1366x768   twelve 0 counters 14 outside 0 led 13 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [233,228,218] errors 0
+holdc         1280x720   twelve 0 counters 14 outside 0 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [234,229,219] errors 0
+holdc         390x844p   twelve 0 counters 8 outside 0 led 8 placed 17 dropped 18 byCat {"plateau":1,"counter":8,"event":1,"overlay":6,"objective":1} cart yes surround [227,222,212] errors 0
+hold-framed   1600x900   twelve 0 counters 14 outside 0 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [232,227,217] errors 0
+hold-framed   1366x768   twelve 0 counters 14 outside 0 led 13 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [233,228,218] errors 0
+hold-framed   1280x720   twelve 0 counters 14 outside 0 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [234,229,219] errors 0
+hold-framed   390x844p   twelve 0 counters 8 outside 0 led 8 placed 15 dropped 20 byCat {"plateau":1,"counter":8,"event":1,"overlay":4,"objective":1} cart yes surround [227,222,212] errors 0
+rank          1600x900   twelve 1 counters 14 outside 0 led 14 placed 24 dropped 17 byCat {"plateau":1,"place":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [232,227,217] errors 0
+rank          1366x768   twelve 1 counters 14 outside 0 led 13 placed 24 dropped 17 byCat {"plateau":1,"place":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [233,228,218] errors 0
+rank          1280x720   twelve 1 counters 14 outside 0 led 14 placed 24 dropped 17 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1,"place":1} cart yes surround [234,229,219] errors 0
+rank          390x844p   twelve 0 counters 8 outside 0 led 8 placed 15 dropped 26 byCat {"plateau":1,"counter":8,"event":1,"overlay":4,"objective":1} cart yes surround [227,222,212] errors 0
+rank25        1600x900   twelve 6 counters 14 outside 0 led 14 placed 29 dropped 12 byCat {"plateau":1,"place":6,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [232,227,217] errors 0
+rank25        1366x768   twelve 6 counters 14 outside 0 led 13 placed 29 dropped 12 byCat {"plateau":1,"place":6,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [233,228,218] errors 0
+rank25        1280x720   twelve 5 counters 14 outside 0 led 14 placed 27 dropped 14 byCat {"place":5,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [234,229,219] errors 0
+rank25        390x844p   twelve 5 counters 6 outside 0 led 6 placed 19 dropped 22 byCat {"place":5,"counter":6,"event":1,"overlay":6,"objective":1} cart yes surround [227,222,212] errors 0
+basel         1600x900   twelve 5 counters 14 outside 0 led 14 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [232,227,217] errors 0
+basel         1366x768   twelve 1 counters 14 outside 0 led 13 placed 23 dropped 12 byCat {"plateau":1,"counter":14,"event":1,"overlay":6,"objective":1} cart yes surround [233,228,218] errors 0
+page.waitForFunction: Target page, context or browser has been closed
+    at Object.waitBoot (/home/user/Austerlitz/tools/visual/three-route.js:34:22)
+    at Object.open (/home/user/Austerlitz/tools/ux-step3/lib.js:18:159)
+    at async Object.open (/home/user/Austerlitz/tools/ux-step4/lib.js:11:46)
+    at async /home/user/Austerlitz/tools/ux-step5/protos-run.js:20:49

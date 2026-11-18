@@ -10,6 +10,11 @@
 <body>
 <div id="stage"></div>
 <div id="vignette" aria-hidden="true"></div>
+<!-- UI/UX roadmap step 5 (docs/UX_ART_AUDIT.md UA-08): the paper plate, drawn on the paper map only (app.js plateSync): the neatline round the free
+     map, over the canvas and under the map layer; the cartouche, the moment in words the page already shows, over the map layer and under every
+     panel (aria-hidden: the timeline's caption and the phase's announcement say it) -->
+<div id="neatline" aria-hidden="true" hidden></div>
+<div id="cartouche" aria-hidden="true" hidden></div>
 
 <div id="viewmode" role="group" aria-label="Presentation">
   <button class="vm-btn" data-vm="study" aria-pressed="true" title="Everything: panels, dossiers, sources (key 1)">Study</button>
@@ -443,6 +448,9 @@
 
 <!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
      canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
+<!-- UI/UX roadmap step 5 (UA-08): the paper map's base lettering, the narrative's twelve villages, under the map layer (app.js plateLetters); names on the
+     ground as its village footprints are, not controls: each village with a place of its own is reached in the map layer -->
+<div id="paperletters" aria-hidden="true"></div>
 <main id="map-main"><div id="maplayer" role="group" aria-label="The map: formations, events and places"></div></main>
 <!-- Stage 5E: the eye-level vantage's caption (a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch) -->
 <div id="eyecap" class="eyecap" hidden></div>

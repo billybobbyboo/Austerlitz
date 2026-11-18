@@ -1,0 +1,278 @@
+{
+ "build": {
+  "file": "../../../tmp/claude-0/-home-user-Austerlitz/2a30654d-ed59-5eff-a7b4-2563e5fa9bdc/scratchpad/new.html",
+  "bytes": 3136806,
+  "md5": "bfda6af8f046d29848d60fb72bba77fb",
+  "sha256": "bc7e71ebdbaef549d9efcc05ac487d2cce2d65d7cc563ab94ddc18c1f83edab9"
+ },
+ "chromium": "141.0.7390.37",
+ "t": 570,
+ "rows": [
+  {
+   "vp": "1600x900",
+   "mode": "none",
+   "twelve": 0,
+   "named": [],
+   "lead": {
+    "median": 89,
+    "max": 223,
+    "sum": 1081
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 12,
+   "errors": 0
+  },
+  {
+   "vp": "1600x900",
+   "mode": "after",
+   "twelve": 5,
+   "named": [
+    "Sokolnitz",
+    "Telnitz",
+    "Kobelnitz",
+    "Pratzen village",
+    "Krug"
+   ],
+   "lead": {
+    "median": 89,
+    "max": 223,
+    "sum": 1081
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 12,
+   "errors": 0
+  },
+  {
+   "vp": "1600x900",
+   "mode": "counters",
+   "twelve": 7,
+   "named": [
+    "Sokolnitz",
+    "Telnitz",
+    "Kobelnitz",
+    "Austerlitz",
+    "Pratzen village",
+    "Holubitz",
+    "Krug"
+   ],
+   "lead": {
+    "median": 89,
+    "max": 223,
+    "sum": 1081
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 9,
+   "errors": 0
+  },
+  {
+   "vp": "1600x900",
+   "mode": "framed",
+   "twelve": 12,
+   "named": [
+    "Sokolnitz",
+    "Telnitz",
+    "Augezd",
+    "Blasowitz",
+    "Kobelnitz",
+    "Puntowitz",
+    "Austerlitz",
+    "Pratzen village",
+    "Krzenowitz",
+    "Holubitz",
+    "Krug",
+    "Girzikowitz"
+   ],
+   "lead": {
+    "median": 111,
+    "max": 198,
+    "sum": 1384
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 8,
+   "errors": 0
+  },
+  {
+   "vp": "1366x768",
+   "mode": "none",
+   "twelve": 0,
+   "named": [],
+   "lead": {
+    "median": 89,
+    "max": 306,
+    "sum": 1198
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 12,
+   "errors": 0
+  },
+  {
+   "vp": "1366x768",
+   "mode": "after",
+   "twelve": 2,
+   "named": [
+    "Telnitz",
+    "Austerlitz"
+   ],
+   "lead": {
+    "median": 89,
+    "max": 306,
+    "sum": 1198
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 12,
+   "errors": 0
+  },
+  {
+   "vp": "1366x768",
+   "mode": "counters",
+   "twelve": 5,
+   "named": [
+    "Sokolnitz",
+    "Telnitz",
+    "Augezd",
+    "Blasowitz",
+    "Austerlitz"
+   ],
+   "lead": {
+    "median": 89,
+    "max": 306,
+    "sum": 1198
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 8,
+   "errors": 0
+  },
+  {
+   "vp": "1366x768",
+   "mode": "framed",
+   "twelve": 12,
+   "named": [
+    "Sokolnitz",
+    "Telnitz",
+    "Augezd",
+    "Blasowitz",
+    "Kobelnitz",
+    "Puntowitz",
+    "Austerlitz",
+    "Pratzen village",
+    "Krzenowitz",
+    "Holubitz",
+    "Krug",
+    "Girzikowitz"
+   ],
+   "lead": {
+    "median": 110,
+    "max": 350,
+    "sum": 1821
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 8,
+   "errors": 0
+  },
+  {
+   "vp": "1280x720",
+   "mode": "none",
+   "twelve": 0,
+   "named": [],
+   "lead": {
+    "median": 97,
+    "max": 326,
+    "sum": 1572
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 12,
+   "errors": 0
+  },
+  {
+   "vp": "1280x720",
+   "mode": "after",
+   "twelve": 3,
+   "named": [
+    "Telnitz",
+    "Augezd",
+    "Puntowitz"
+   ],
+   "lead": {
+    "median": 97,
+    "max": 326,
+    "sum": 1572
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 12,
+   "errors": 0
+  },
+  {
+   "vp": "1280x720",
+   "mode": "counters",
+   "twelve": 7,
+   "named": [
+    "Sokolnitz",
+    "Telnitz",
+    "Augezd",
+    "Blasowitz",
+    "Kobelnitz",
+    "Puntowitz",
+    "Austerlitz"
+   ],
+   "lead": {
+    "median": 97,
+    "max": 326,
+    "sum": 1572
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 8,
+   "errors": 0
+  },
+  {
+   "vp": "1280x720",
+   "mode": "framed",
+   "twelve": 12,
+   "named": [
+    "Sokolnitz",
+    "Telnitz",
+    "Augezd",
+    "Blasowitz",
+    "Kobelnitz",
+    "Puntowitz",
+    "Austerlitz",
+    "Pratzen village",
+    "Krzenowitz",
+    "Holubitz",
+    "Krug",
+    "Girzikowitz"
+   ],
+   "lead": {
+    "median": 119,
+    "max": 273,
+    "sum": 1767
+   },
+   "counters": 14,
+   "outside": 0,
+   "placed": 23,
+   "dropped": 8,
+   "errors": 0
+  }
+ ]
+}

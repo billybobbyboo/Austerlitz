@@ -1,0 +1,21 @@
+  ux5 entered 1600x900: north 0, neatline null, counters 14 (0 outside), twelve 0, cartouche no, free 0.7038
+  ux5 entered 1366x768: north 0, neatline null, counters 14 (1 outside), twelve 0, cartouche no, free 0.6533
+  ux5 down and back: {"down":{"neatline":null,"cartouche":null,"framed":false,"itemsOutside":0},"back":{"neatline":null,"cartouche":null,"framed":true,"countersOutside":["c:c_cav"],"twelveDrawn":0}}
+  ux5 entered 1280x720: north 0, neatline null, counters 14 (4 outside), twelve 0, cartouche no, free 0.6291
+  ux5 phone 390x844: north 0, neatline null, counters 10 (4 outside), twelve 0, cartouche no, free 0.6529, surround null
+build 66b4edc251ada879b2146ed7dabd385b (sha256 393bbc1e88cdb7847939fede792134a09fe7dcfe16fd527d65c535783ae4f3bf, 3100850 bytes), Chromium 141.0.7390.37 (Playwright 1.56.0, software WebGL), 270 s; page errors and console messages 0
+FAILED (14):
+  ux5 entered 1600x900: no neatline round the free map
+  ux5 entered 1600x900: 0 of the twelve villages drawn, under 7 (Sokolnitz, Telnitz, Augezd, Blasowitz, Kobelnitz, Puntowitz, Austerlitz, Pratzen village, Krzenowitz, Holubitz, Krug, Girzikowitz not)
+  ux5 entered 1600x900: no cartouche
+  ux5 entered 1366x768: no neatline round the free map
+  ux5 entered 1366x768: 1 counters beyond the neatline: c:c_cav
+  ux5 entered 1366x768: 0 of the twelve villages drawn, under 5 (Sokolnitz, Telnitz, Augezd, Blasowitz, Kobelnitz, Puntowitz, Austerlitz, Pratzen village, Krzenowitz, Holubitz, Krug, Girzikowitz not)
+  ux5 entered 1366x768: no cartouche
+  ux5 entered 1280x720: no neatline round the free map
+  ux5 entered 1280x720: 4 counters beyond the neatline: c:c_iii c:c_cav c:c_gren c:lich
+  ux5 entered 1280x720: 0 of the twelve villages drawn, under 7 (Sokolnitz, Telnitz, Augezd, Blasowitz, Kobelnitz, Puntowitz, Austerlitz, Pratzen village, Krzenowitz, Holubitz, Krug, Girzikowitz not)
+  ux5 entered 1280x720: no cartouche
+  ux5 back: the Overview's button did not bring the plate back ({"neatline":null,"cartouche":null,"framed":true,"countersOutside":["c:c_cav"],"twelveDrawn":0})
+  ux5 back: counters beyond the neatline: c:c_cav
+  ux5 phone: the surround not drawn

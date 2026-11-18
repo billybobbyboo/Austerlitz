@@ -1,0 +1,7 @@
+  ux5 entered 1600x900: north 0, neatline [305,57,1255,799], counters 14 (0 outside), twelve 7, cartouche yes, free 0.7038
+  ux5 entered 1366x768: north 0, neatline [305,57,1023,671], counters 14 (0 outside), twelve 5, cartouche yes, free 0.6533
+  ux5 down and back: {"down":{"neatline":null,"cartouche":null,"framed":false,"itemsOutside":0},"back":{"neatline":[305,57,1023,671],"cartouche":[1033,112,1313,184.1],"framed":true,"countersOutside":[],"twelveDrawn":5}}
+  ux5 entered 1280x720: north 0, neatline [305,57,935,623], counters 14 (0 outside), twelve 7, cartouche yes, free 0.6291
+  ux5 phone 390x844: north 0, neatline null, counters 10 (4 outside), twelve 0, cartouche no, free 0.6529, surround true
+build bfda6af8f046d29848d60fb72bba77fb (sha256 bc7e71ebdbaef549d9efcc05ac487d2cce2d65d7cc563ab94ddc18c1f83edab9, 3136806 bytes), Chromium 141.0.7390.37 (Playwright 1.56.0, software WebGL), 263 s; page errors and console messages 0
+ux5: every check passed
