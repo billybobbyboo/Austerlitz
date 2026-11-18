@@ -198,7 +198,7 @@ Here (Chromium 141.0.7390.37, the pinned Playwright 1.56.0, software WebGL), on 
 - `check:selftest`: on this build **360 of 360** checks pass and every live block (the motion block, `ux1` to `ux5` among them); the run's only failing
   lines were the manifest's (4 checks not in it), and the manifest was written from that run (`check-report.js --write-manifest`: 356 to 360, 4 added,
   0 removed). A run on the build before `bf6754b` had also failed the twin rule above (fixed). A second local run after the manifest was cut off by the
-  container's restart; the clean run is CI's: `check:selftest` passed on CI with the new manifest on this build (runs 44234497630 on `3ea3282` and 44236237997 on `270b8e6`, the build `bfda6af8...` unchanged since `3f66434`).
+  container's restart; the clean run is CI's: `check:selftest` passed on CI with the new manifest on this build (runs 44232536488 and 44233706713 on `3f66434`, 43 and 44 minutes, and 44234497630 on `3ea3282` and 44236237997 on `270b8e6`, the build `bfda6af8...` unchanged since `3f66434`).
 - `check:contrast` (CI, run 44226346847 on `a267a82` and run 44232536488 on `3f66434`, both this build): 57 of 57 states reached (10 as a phone, 12 at
   320 x 256 and in forced colours), 9,467 text elements, 126 distinct pairs, **0 below AA, 0 under 10.5 px**, 510 cased map texts read against their
   casing (the base lettering's among them, `tools/visual/contrast.js`'s casing rule extended to `.pl-name`), 0 font failures, 0 console messages; the

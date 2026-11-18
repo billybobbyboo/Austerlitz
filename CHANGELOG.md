@@ -54,8 +54,8 @@ declarations byte-identical). Evidence: `docs/ux-step5-evidence/README.md`; tool
   `check:chronology` 0 errors; `check:selftest` 360 of 360 and every live block, the only failing lines the manifest's, which was then written from that
   run (356 to 360, 4 added, 0 removed); `check:baseline` on this build; the `ux5` block alone 0 failures (14 on the base); the spot checks (forced colours,
   reduced motion, the landscape unchanged) all passing. On CI on this build: `check:contrast` 57 of 57 states, 9,467 text elements, 0 below AA, 0 under
-  10.5 px, 510 cased map texts (the base lettering among them), the boot cases 10 of 10 (runs 44226346847 and 44232536488). `check:visual` in full:
-  dispatched on CI.
+  10.5 px, 510 cased map texts (the base lettering among them), the boot cases 10 of 10 (runs 44226346847 and 44232536488); `check:selftest` with the 360-check manifest passing (runs 44232536488
+  and 44233706713 on `3f66434`, 44234497630 and 44236237997 later, the build unchanged). `check:visual` in full: dispatched on CI (run 44233706713).
 - **Uncertain**: the audit's 10 of 12 not met (decision 1); the plate stands down at the first pan or zoom (the Overview brings it back); everything is
   software WebGL; `check:visual` in full on CI only; no device run (one draw call more on the paper map, none on the landscape or the phone's layout).
 - **Build**: `austerlitz-command-map.html` **3,136,806 bytes, md5 `bfda6af8f046d29848d60fb72bba77fb`** (SHA-256 `bc7e71ebdbaef549d9efcc05ac487d2cce2d65d7cc563ab94ddc18c1f83edab9`); `check:baseline` moved to it.
