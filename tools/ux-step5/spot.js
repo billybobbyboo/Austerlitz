@@ -5,7 +5,8 @@
    - reduced motion (prefers-reduced-motion: reduce, set before load) at 1366 x 768: the plate as entered at once, a real drag standing it down, the
      Overview's button bringing it back with no glide (the plate there in the next frame);
    - the landscape unchanged: the Field vantage at 09:00 in Study and in Watch at 1600 x 900, the canvas alone (every element over it hidden) and the
-     whole page, on the base build and on this one, pixel for pixel;
+     whole page, on the base build and on this one, pixel for pixel (the canvas exactly; the whole page within two levels, the base build against itself
+     differing by a pixel one level apart);
    - the surround's own geometry (the apron's, its triangles) read from the page.
    node tools/ux-step5/spot.js <base.html> <build.html> [--json out.json] [--cap dir] */
 "use strict";
@@ -54,12 +55,14 @@ async function shot(p,f){ const b=await p.screenshot({timeout:300000}); if(CAP&&
       bufs.push({whole,canvas,st}); await p.context().close(); }
     const p=await U.open(b,NEW,{vp:[400,300]});
     const d=await p.evaluate(async([A,B])=>{ async function px(s){ const im=new Image(); await new Promise(r=>{ im.onload=r; im.src="data:image/png;base64,"+s; }); const c=document.createElement("canvas"); c.width=im.width; c.height=im.height; const x=c.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); return x.getImageData(0,0,c.width,c.height).data; }
-      async function n(a,b){ const P=await px(a), Q=await px(b); let k=0; for(let i=0;i<P.length;i+=4) if(P[i]!==Q[i]||P[i+1]!==Q[i+1]||P[i+2]!==Q[i+2]) k++; return {differing:k, pixels:P.length/4}; }
+      async function n(a,b){ const P=await px(a), Q=await px(b); let k=0, k2=0, mx=0; for(let i=0;i<P.length;i+=4){ const d=Math.max(Math.abs(P[i]-Q[i]),Math.abs(P[i+1]-Q[i+1]),Math.abs(P[i+2]-Q[i+2])); if(d){ k++; mx=Math.max(mx,d); } if(d>2) k2++; } return {differing:k, beyond2:k2, maxLevels:mx, pixels:P.length/4}; }
       return {whole:await n(A.whole,B.whole), canvas:await n(A.canvas,B.canvas)}; },[bufs[0],bufs[1]]);
     await p.context().close();
     R.landscape.push({presentation:pres, whole:d.whole, canvas:d.canvas, base:bufs[0].st, build:bufs[1].st});
     if(d.canvas.differing) fails.push("the landscape's canvas differs in "+pres+": "+d.canvas.differing+" pixels");
-    if(d.whole.differing) fails.push("the landscape's page differs in "+pres+": "+d.whole.differing+" pixels"); }
+    /* the whole page: a pixel or two one level apart is the renderer's own noise (measured: the base build against itself, one pixel one level apart);
+       a difference beyond two levels is a change */
+    if(d.whole.beyond2) fails.push("the landscape's page differs in "+pres+": "+d.whole.beyond2+" pixels beyond two levels"); }
   R.surroundTriangles=R.landscape.length?R.landscape[0].build.apronTris:null;
   await b.close();
   R.failures=fails;
