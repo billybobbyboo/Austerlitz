@@ -57,7 +57,7 @@ declarations byte-identical). Evidence: `docs/ux-step5-evidence/README.md`; tool
   10.5 px, 510 cased map texts (the base lettering among them), the boot cases 10 of 10 (runs 44226346847 and 44232536488); `check:selftest` with the 360-check manifest passing (runs 44232536488
   and 44233706713 on `3f66434`, 44234497630 and 44236237997 later, the build unchanged). `check:visual` in full: the first CI run (44233706713) stopped after 2 h 48 min with a harness error
   in step 2's `ux2` block (its scripted Play waited 15 s for the app's pending frame). The same block passes on this build locally and in check:selftest
-  on CI. Re-dispatched (run 44260893369).
+  on CI. Re-dispatched (run 44260893369 on `1a74ab8`, the same build): passed, every case and live block, 2 h 54 min.
 - **Uncertain**: the audit's 10 of 12 not met (decision 1); the plate stands down at the first pan or zoom (the Overview brings it back); everything is
   software WebGL; `check:visual` in full on CI only; no device run (one draw call more on the paper map, none on the landscape or the phone's layout).
 - **Build**: `austerlitz-command-map.html` **3,136,806 bytes, md5 `bfda6af8f046d29848d60fb72bba77fb`** (SHA-256 `bc7e71ebdbaef549d9efcc05ac487d2cce2d65d7cc563ab94ddc18c1f83edab9`); `check:baseline` moved to it.

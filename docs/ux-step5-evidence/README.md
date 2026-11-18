@@ -209,8 +209,8 @@ Here (Chromium 141.0.7390.37, the pinned Playwright 1.56.0, software WebGL), on 
   It stopped in step 2's live block `ux2`, before its scripted Play: `playRun: the app's pending frame did not come within 15 s of the driver's start`
   (`tools/visual/ux2.js` line 171, a step 2 harness wait). It was a harness error, not a failed check. The same block passed on this build in the four
   CI runs of `check:selftest` and locally (`tools/ux-step2/block.js`, every check, 169 s, Play in Study 270 frames). The app's loop always
-  requests its next frame, so the missed frame is the runner's; the cause is not known. Re-dispatched as run 44260893369 on `1a74ab8`, the same build;
-  its result is recorded on the pull request.
+  requests its next frame, so the missed frame is the runner's; the cause is not known. Re-dispatched as run 44260893369 on `1a74ab8`, the same build:
+  **passed** (`STAGE0: all checks passed`, 2 h 54 min, every case and live block, `ux2` to `ux5` among them).
 
 ## 9. Not met, uncertain, handed on
 
